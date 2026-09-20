@@ -64,9 +64,10 @@ bloqueados, qué los destraba y de quién depende.
 ```markdown
 # Reporte — <título>
 
+> **AVANCE: <HECHO> / <total> — <%>.** ← primera línea del documento, siempre.
+
 - Fecha: <AAAA-MM-DD> · Plan: [PLAN.md](./PLAN.md) · Rama(s): <lista>
 - Peldaño de evidencia alcanzado: <ver regla 30>
-- Avance: <microtareas HECHO> / <total> (<%> calculado, nunca estimado a ojo)
 
 ## Completado
 | ID | Qué se logró | Comando | Resultado |
@@ -92,6 +93,25 @@ bloqueados, qué los destraba y de quién depende.
 ## Riesgos residuales
 ## Decisiones y ambigüedades
 ```
+
+## 4-bis. El avance va PRIMERO, siempre
+
+**El porcentaje de avance es la primera línea del reporte y del daily**, antes de la fecha, del
+peldaño y de cualquier narrativa. No al final, no en una sección "resumen", no después del relato
+de lo que costó.
+
+Motivo: quien lee un reporte de turno lo primero que necesita saber es **cuánto se cerró**. Si hay
+que buscarlo, el documento está mal escrito. Un reporte que abre contando el proceso y esconde el
+número tres pantallas abajo es exactamente lo que esta regla prohíbe.
+
+Formato obligatorio, literal:
+
+```markdown
+> **AVANCE: 45 / 53 — 84,9 %.**
+```
+
+El número sale de `microtareas HECHO / total` (§5.1). `A MEDIAS` cuenta como no hecha.
+`DESCARTADO` tampoco suma: se declara aparte, con su motivo.
 
 ## 5. Reglas de honestidad
 

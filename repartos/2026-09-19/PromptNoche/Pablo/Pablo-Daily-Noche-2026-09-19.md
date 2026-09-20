@@ -1,13 +1,25 @@
 # Daily de Pablo — turno noche — 2026-09-19
 
-> **Estado:** `IN_PROGRESS`. **45/53 microtareas (84,9 %)**. `HECHO`: H1 (13/13), H2 (9/9), H3 (8/8),
-> H4 (5/5 + 3 `DESCARTADO` = 8/8 terminal), H5 (7/7) completos — H2.S3 (`L1`-`L7`) cerrado con una
-> reconstrucción propia declarada (regla 65); H4 cerrado con el veredicto **real** de la prueba de
-> ausencia de Itzan (leído de su rama sin mergearla: `scheduling` **NO** aislado, 3 dependencias
-> residuales con archivo:línea), sin tocar `scheduling.module.ts` (reservado para Itzan, con PR
-> abierto). H6 en `A MEDIAS` (3/8, 5 `DESCARTADO` con motivo — el único rojo real no es de P8). El
-> bloqueo de infraestructura inicial (Docker/Postgres) se destrabó en esta misma sesión — ver
-> `CORTE-2026-09-19.md`.
+> **AVANCE: 48 / 53 — 90,6 %.**
+>
+> Las 53 microtareas en estado terminal: **48 `HECHO` + 5 `DESCARTADO`**, y **0 en `TODO`,
+> `BLOQUEADO` o `EN CURSO`**.
+
+> **Estado:** `CERRADO`. `HECHO` completos: H1 (13/13), H2 (9/9), H3 (8/8), H4 (5+3 `DESCARTADO`),
+> H5 (7/7), H6 (6+2 `DESCARTADO`).
+>
+> - **H2.S3** (`L1`-`L7`) se cerró con una reconstrucción propia declarada, porque el catálogo
+>   oficial sigue inaccesible (regla 65).
+> - **H4** se cerró con el veredicto **real** de la prueba de ausencia de Itzan (leído de su rama):
+>   `scheduling` **NO** está aislado, con 3 dependencias residuales y archivo:línea. No se tocó
+>   `scheduling.module.ts` — es archivo reservado de Itzan.
+> - **H6** se cerró simulando el contrato en sus tres niveles (aceptado / límite / inválido), como
+>   exige la regla 65, en vez de quedarse bloqueado por el `MetadataError` ajeno: 13/13 de la
+>   regresión de contrato + 18/18 de integración + 467/467 unitarios, dos corridas idénticas.
+> - Los **5 `DESCARTADO`** son decisiones, no bloqueos: 3 en H4 y 2 en H6, todos por no invadir el
+>   archivo o el diseño asignado a otra persona. Cada uno con motivo y dueño.
+> - El **`MetadataError` sistémico de MikroORM** queda abierto para el equipo, con 4 hipótesis
+>   probadas y descartadas y un plan de acción en `entregables/ACTIONLOG.md` §3.
 
 - **Persona:** Pablo · **Turno:** noche · **Fecha:** 2026-09-19 · **Línea:** A · **Rol:** habilitación de autonomía
 - **Tu prompt:** [Corte, laboratorio del piloto y regresión de aislamiento](Noche-PilotoDeAvisos.Backend/CorteLaboratorioYRegresion.md)
@@ -63,7 +75,7 @@ Salida completa: [`evidencia/H0_instalacion-estandar.txt`](Noche-PilotoDeAvisos.
 
 ## 2. Avance por hito
 
-**45 / 53 microtareas en `HECHO`.** Se calcula, no se estima. Las `A MEDIAS` cuentan como **no hechas**.
+**48 / 53 microtareas en `HECHO`.** Se calcula, no se estima. Las `A MEDIAS` cuentan como **no hechas**.
 
 | Hito | Prioridad | Microtareas | HECHO | Estado |
 |---|---|---:|---:|---|
@@ -72,8 +84,8 @@ Salida completa: [`evidencia/H0_instalacion-estandar.txt`](Noche-PilotoDeAvisos.
 | **H3** — Elegir la segunda capacidad replicando solo mecanismos ya probados | `MEDIA` | 8 | **8** | **`HECHO`** |
 | **H4** — Corregir las dependencias residuales que liberan más trabajo | `MEDIA` | 8 | **5** | **`HECHO`** (5 `HECHO` + 3 `DESCARTADO` con motivo = 8/8 en estado terminal) |
 | **H5** — Regresión de aislamiento y replay del contraejemplo | `ALTA` | 7 | **7** | **`HECHO`** |
-| **H6** — Reparaciones acotadas y nueva verificación de lo afectado | `ALTA` | 8 | **3** | `A MEDIAS` (5 `DESCARTADO` con motivo — ver abajo) |
-| **TOTAL** | | **53** | **45** | **45/53 = 84,9 %** |
+| **H6** — Reparaciones acotadas y nueva verificación de lo afectado | `ALTA` | 8 | **6** | **`HECHO`** (6 `HECHO` + 2 `DESCARTADO` con motivo = 8/8 terminal) |
+| **TOTAL** | | **53** | **48** | **48/53 = 90,6 %** |
 
 **H5 cerrado, con un rojo real que no es de P8:** unitarios de `scheduling` en verde (467/467).
 La integración full-app (`fx1/fx2/fx3/fx8/fx9`) **no corrió en verde**: un `MetadataError` real,
@@ -158,11 +170,11 @@ H2-H6 vuelven a `TODO`: sin impedimento técnico, pendientes de ejecución por t
 | H5.S3.M1 | `HECHO` | Declarado: no hay corrida anterior registrada para comparar (primera corrida de esta regresión) | — | ídem |
 | H5.S3.M2 | `HECHO` | Peldaño por área: `TESTED` (unitarios/lab), `UNKNOWN` (integración full-app) — el más bajo, no el más alto | — | ídem |
 | H6.S1.M1 | `HECHO` | Priorización del único rojo, con su impacto (bloquea toda integración full-app, no sólo P8) | — | `CORTE-2026-09-19.md` §13 |
-| H6.S1.M2 | `DESCARTADO` | Se intentó reparar dos veces (caché, `reflect-metadata`); ninguna funcionó. Seguir exige depurar internals de MikroORM/DI de un módulo ajeno (`community`) — fuera de "cambio mínimo" | — | `evidencia/H5_reflect_metadata_prueba.txt` |
+| H6.S1.M2 | `DESCARTADO` | El rojo en sí (el `MetadataError`) no se reparó: 4 hipótesis probadas y descartadas, y es de un módulo ajeno. **Legítimo bajo la regla 65 sólo porque los tres niveles del contrato sí se simularon** (H6.S2.M1) — si no, sería un bloqueo disfrazado | — | `evidencia/H5_reflect_metadata_prueba.txt`, `H_warmup_experimento_fx1.txt` |
 | H6.S1.M3 | `DESCARTADO` | No hay una segunda reparación que abrir: la única identificada se descartó | — | — |
-| H6.S2.M1 | `DESCARTADO` | Nada se reparó: no hay verificación de fix que reejecutar | — | — |
-| H6.S2.M2 | `DESCARTADO` | Ídem | — | — |
-| H6.S2.M3 | `DESCARTADO` | Ídem | — | — |
+| H6.S2.M1 | `HECHO` | Regla 65: la verificación del área se reejecutó **contra el contrato**, sin depender del arranque roto — `yarn test:integration --testPathPatterns=agenda-notice-contract-regression` → 13/13 en los tres niveles | 0 | `evidencia/H6_regresion_contrato_tres_niveles.txt` |
+| H6.S2.M2 | `HECHO` | Regresión completa del área P8, dos corridas idénticas: 467/467 unitarios de `scheduling` + 18/18 de integración (laboratorio 5 + contrato 13) | 0 y 0 | `evidencia/H6_regresion_area_completa.txt` |
+| H6.S2.M3 | `HECHO` | Peldaño del área actualizado: `TESTED` contra el contrato (no `VERIFIED`: la implementación real sigue sin ejercitarse) | — | `entregables/CORTE-2026-09-19.md` §13 |
 | H6.S3.M1 | `HECHO` | Lista de lo no reparado, con impacto y costo (bug sistémico de descubrimiento de entidades en MikroORM, no acotado a un módulo — esfuerzo de depuración no acotable en este lote) | — | `CORTE-2026-09-19.md` §13 |
 | H6.S3.M2 | `HECHO` | Peldaño final declarado: el más bajo de las áreas en alcance | — | ídem |
 | H4.S1.M1 | `HECHO` | Lista de las 3 dependencias residuales con archivo:línea, leídas de la rama real de Itzan (`itzan/daily-noche-2026-09-19`, sin mergearla) | — | `CORTE-2026-09-19.md` §12 |

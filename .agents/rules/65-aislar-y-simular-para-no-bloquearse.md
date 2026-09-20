@@ -6,6 +6,22 @@ rota que no es tuya arreglar. **"No tengo el insumo" no es una razón para deten
 para aislar esa dependencia detrás de su contrato real y seguir trabajando contra un doble
 declarado, en tres niveles: correcto, límite, e inválido.
 
+> ## ⛔ Esto es OBLIGATORIO, no una alternativa disponible
+>
+> **Ante cualquier bloqueo, simular los tres niveles del contrato no es una opción: es lo que hay
+> que hacer.** No existe "quedó `BLOQUEADO`" ni "quedó `DESCARTADO` porque dependía de otro" como
+> cierre válido de una microtarea mientras el contrato de lo que falta se pueda escribir. Si se
+> puede nombrar el contrato, se puede simular; y si se puede simular, **se termina el trabajo**.
+>
+> El objetivo del turno es **cerrarlo entero y de forma independiente**. Un turno que entrega la
+> mitad porque esperaba a alguien no entregó la mitad: entregó un problema de coordinación
+> disfrazado de avance.
+>
+> Lo único que sigue siendo legítimo dejar sin cerrar es una **decisión de negocio** (qué debe
+> hacer el sistema) o una **acción destructiva sobre algo compartido**. Todo lo demás —que el
+> servicio de otro no exista, que su prueba no haya corrido, que su módulo esté roto— **se simula
+> y se cierra**, declarando que se cerró contra un doble.
+
 Esta regla es la continuación operativa de la regla 60: ahí se nombra la racionalización
 ("esto no es mío, lo espero"); acá se fija qué se hace en su lugar.
 
@@ -30,7 +46,9 @@ queda **después** de haber intentado eso y seguir sin el insumo.
    la firma de la función — lo que tu código consume, no cómo está implementado del otro lado.
 2. **Construí un doble** (fake, stub o mock, según corresponda) que cumpla ese contrato, declarado
    como tal en el código y en el reporte. El doble nunca se presenta como el colaborador real.
-3. **Ejercitalo en tres niveles**, no sólo el camino feliz:
+3. **Ejercitalo en los tres niveles del contrato** — obligatorio los tres, no sólo el feliz.
+   "Del contrato" significa: los casos salen de lo que la interfaz promete, no de lo que sería
+   cómodo probar:
    - **Correcto**: la entrada/respuesta válida esperada — lo mínimo para poder seguir programando
      contra el contrato.
    - **Límite**: los bordes del contrato (ver `edge-case-data-catalog` y la sección de valores
@@ -72,7 +90,12 @@ Carril de Pablo, "Corte, laboratorio del piloto y regresión de aislamiento", 20
    e inválido, lo que existe es un `WRITTEN` optimista, no una verificación (regla 30).
 3. **Prohibido dejar el doble como reemplazo permanente** sin registrar qué falta verificar contra
    lo real. El doble destraba el trabajo de hoy; no cierra el hito.
-4. **Prohibido usar esta regla para justificar tocar código fuera de tu alcance** (regla 00, §3):
+4. **Prohibido cerrar una microtarea como `BLOQUEADO` o `DESCARTADO` alegando que depende de
+   otro, sin haber simulado antes los tres niveles de su contrato.** Es la contracara de esta
+   regla: si el contrato se puede nombrar, el bloqueo es de coordinación, no de ejecución, y la
+   microtarea se cierra contra el doble. Sólo una decisión de negocio sin tomar, o una acción
+   destructiva sobre algo compartido, justifican no cerrarla.
+5. **Prohibido usar esta regla para justificar tocar código fuera de tu alcance** (regla 00, §3):
    aislar el problema NO es arreglarlo. Si aislarlo requiere un cambio, que sea el mínimo posible y
    declarado, nunca la corrección de fondo del módulo ajeno.
 

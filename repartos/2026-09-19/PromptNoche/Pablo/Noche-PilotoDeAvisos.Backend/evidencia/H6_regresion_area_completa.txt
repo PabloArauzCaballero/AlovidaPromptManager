@@ -1,0 +1,10 @@
+=== H6.S2.M2 — regresión COMPLETA del área P8, dos corridas ===
+--- corrida 1: unitarios de scheduling ---
+Test Suites: 19 passed, 19 total
+Tests:       467 passed, 467 total
+--- corrida 1: laboratorio + regresión de contrato ---
+Test Suites: 2 passed, 2 total
+Tests:       18 passed, 18 total
+--- corrida 2 (reproducibilidad): laboratorio + regresión de contrato ---
+Test Suites: 2 passed, 2 total
+Tests:       18 passed, 18 total

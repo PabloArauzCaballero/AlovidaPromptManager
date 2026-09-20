@@ -1,0 +1,8 @@
+=== H6 — regresión del contrato en tres niveles (aceptado / límite / inválido) ===
+(node:39972) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+Test Suites: 1 passed, 1 total
+Tests:       13 passed, 13 total
+Snapshots:   0 total
+Time:        0.783 s
+Ran all test suites matching agenda-notice-contract-regression.
