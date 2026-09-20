@@ -1,0 +1,10 @@
+=== H2 por via segura: push directo a main protegida ===
+  proteccion activa ahora:  true
+  check requerido:          Espejo sin deriva y candados en verde
+  enforce_admins:           false
+
+  commits que llegaron a main DESPUES de aplicar la proteccion:
+    98a7c10  2026-09-20T04:16:15Z  Merge pull request #3 from PabloArauzCaballero/prueba/cami
+    6d55f7c  2026-09-20T04:15:46Z  docs: anotar en la verificacion que main exige el check
+    db37ae4  2026-09-20T04:15:37Z  docs: plan de las dos pruebas que faltaban
+    e514427  2026-09-20T04:13:06Z  feat: main protegida — el candado ahora bloquea, demostrad

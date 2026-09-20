@@ -1,3 +1,10 @@
 $ H1.S1.M1 — cambio legitimo, sin deriva
 sync --check: OK, 192 archivo(s) en espejo, sin deriva
   exit=0
+$ H1.S1.M4 — main despues del merge
+completed	success	Merge pull request #3 from PabloArauzCaballero/prueba/camino-feliz	estandar	main	push	35488719969	16s	2026-09-20T04:16:17Z
+
+  main == origin/main: si
+  rama de prueba en remoto: 0  (0 = la borro el merge)
+sync --check: OK, 192 archivo(s) en espejo, sin deriva
+  exit=0

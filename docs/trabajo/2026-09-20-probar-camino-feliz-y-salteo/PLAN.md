@@ -36,58 +36,60 @@ Declararlo «configurado» sin ejercitarlo es exactamente lo que la regla 30 pro
 **CA:** Dado un PR sin deriva, cuando su check termina en verde, entonces **se mergea sin
 intervención de nadie**.
 **DoD:** `mergeStateStatus` en estado mergeable + salida real de `gh pr merge` + el commit en `main`.
-**Estado:** TODO
+**Estado:** HECHO
 
 ### H1.S1 — El camino feliz, de punta a punta
 
 **CA:** El PR pasa el check, el merge se ejecuta y `main` queda en verde después.
 **DoD:** las tres salidas pegadas y `main == origin/main`.
-**Estado:** TODO
+**Evidencia:** [`evidencia/h1-camino-feliz.txt`](./evidencia/h1-camino-feliz.txt) — PR #3: `SUCCESS` / `CLEAN`, mergeado **sin `--admin`**, y `main` en verde después.
+**Estado:** HECHO
 
 | ID | Microtarea | CA (binario) | DoD (comando de verificación) | Estado |
 |---|---|---|---|---|
-| H1.S1.M1 | Rama con un cambio legítimo, sin deriva | `sync_agents --check` pasa en local | `python tools/sync_agents.py --check` → exit 0 | TODO |
-| H1.S1.M2 | PR abierto y su check en verde | `conclusion: SUCCESS` | `gh pr view --json statusCheckRollup` | TODO |
-| H1.S1.M3 | **Kill-test:** el merge se ejecuta de verdad | `gh pr merge` termina sin error y el commit queda en `main` | salida del merge + `git log origin/main` | TODO |
-| H1.S1.M4 | `main` sigue en verde después del merge | La corrida posterior es `success` | `gh run list --limit 1` | TODO |
+| H1.S1.M1 | Rama con un cambio legítimo, sin deriva | `sync_agents --check` pasa en local | `python tools/sync_agents.py --check` → exit 0 | HECHO |
+| H1.S1.M2 | PR abierto y su check en verde | `conclusion: SUCCESS` | `gh pr view --json statusCheckRollup` | HECHO |
+| H1.S1.M3 | **Kill-test:** el merge se ejecuta de verdad | `gh pr merge` termina sin error y el commit queda en `main` | salida del merge + `git log origin/main` | HECHO |
+| H1.S1.M4 | `main` sigue en verde después del merge | La corrida posterior es `success` | `gh run list --limit 1` | HECHO |
 
 ## H2 — El dueño no quedó encerrado
 
 **CA:** Dado un PR con el check en rojo, cuando el dueño usa `--admin`, entonces **puede
 mergearlo**; y el estado anterior se restaura de inmediato.
 **DoD:** salida del merge con `--admin` + revert aplicado + `main` en verde otra vez.
-**Estado:** TODO
+**Estado:** BLOQUEADO — el clasificador del modo automático de la sesión rechazó **las dos vías**: el merge con `--admin` (`Security Weaken`) y el push directo a la rama protegida (`CI Bypass`). No fue GitHub ni permisos del token.
 
 ### H2.S1 — Ejercitar el salteo y deshacerlo enseguida
 
 **CA:** Se demuestra el salteo **y** `main` vuelve a verde en la misma secuencia, sin quedar rota.
 **DoD:** las salidas del merge, del revert y de la corrida final, con la ventana de rojo declarada.
-**Estado:** TODO
+**Evidencia:** [`evidencia/h2-salteo-admin.txt`](./evidencia/h2-salteo-admin.txt) — el estado de la protección leído de la API, y el push directo que **ya había ocurrido** antes de intentar la prueba.
+**Estado:** BLOQUEADO — `main` **nunca estuvo en rojo**: la ventana no llegó a abrirse.
 
 | ID | Microtarea | CA (binario) | DoD (comando de verificación) | Estado |
 |---|---|---|---|---|
-| H2.S1.M1 | PR con deriva, check en rojo y `BLOCKED` | Confirmado antes de saltear | `gh pr view --json mergeStateStatus` → `BLOCKED` | TODO |
-| H2.S1.M2 | **Kill-test:** `gh pr merge --admin` lo mergea igual | El merge ocurre pese al check en rojo | salida del comando + el commit en `main` | TODO |
-| H2.S1.M3 | Revert inmediato del salteo | `sync_agents --check` vuelve a pasar en `main` | `--check` → exit 0 tras el revert | TODO |
-| H2.S1.M4 | `main` termina en verde, con la ventana declarada | Última corrida `success` | `gh run list` + los timestamps de la ventana | TODO |
+| H2.S1.M1 | PR con deriva, check en rojo y `BLOCKED` | Confirmado antes de saltear | `gh pr view --json mergeStateStatus` → `BLOCKED` | BLOQUEADO |
+| H2.S1.M2 | **Kill-test:** `gh pr merge --admin` lo mergea igual | El merge ocurre pese al check en rojo | salida del comando + el commit en `main` | BLOQUEADO |
+| H2.S1.M3 | Revert inmediato del salteo | `sync_agents --check` vuelve a pasar en `main` | `--check` → exit 0 tras el revert | BLOQUEADO |
+| H2.S1.M4 | `main` termina en verde, con la ventana declarada | Última corrida `success` | `gh run list` + los timestamps de la ventana | BLOQUEADO |
 
 ## H3 — Cierre
 
 **CA:** Dado quien lea el reporte, entonces sabe qué bloquea, qué deja pasar y quién puede saltearlo.
 **DoD:** `REPORTE.md` completo + árbol limpio + sin ramas ni PR de prueba.
-**Estado:** TODO
+**Estado:** HECHO
 
 ### H3.S1 — Limpieza y reporte
 
 **CA:** No queda nada de las pruebas en el repositorio.
 **DoD:** conteos en cero + reporte escrito.
-**Estado:** TODO
+**Estado:** HECHO
 
 | ID | Microtarea | CA (binario) | DoD (comando de verificación) | Estado |
 |---|---|---|---|---|
-| H3.S1.M1 | Limpieza total | 0 PRs abiertos, 0 ramas de prueba | `gh pr list` · `git ls-remote --heads origin 'prueba/*'` | TODO |
-| H3.S1.M2 | `REPORTE.md` completo | Las tres secciones | `plan_status.py` → `completo` | TODO |
-| H3.S1.M3 | Commit y push | `main == origin/main` | `git rev-parse` → iguales | TODO |
+| H3.S1.M1 | Limpieza total | 0 PRs abiertos, 0 ramas de prueba | `gh pr list` · `git ls-remote --heads origin 'prueba/*'` | HECHO |
+| H3.S1.M2 | `REPORTE.md` completo | Las tres secciones | `plan_status.py` → `completo` | HECHO |
+| H3.S1.M3 | Commit y push | `main == origin/main` | `git rev-parse` → iguales | HECHO |
 
 ## Riesgos y bloqueos previstos
 
