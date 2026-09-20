@@ -17,6 +17,45 @@
 | `ALLOWED_INFRA` | Lectura del repo, `git`, `yarn`, `node`. PostgreSQL y Docker: **verificar, no asumir** |
 | `Predecesor` | Tu lote del Día 4. **No repitas lo que ya verificaste; sí re-verificá lo que tocaste después** |
 
+> ### ✅ Hechos ya verificados contra el corte — no los repitas
+>
+> Las afirmaciones técnicas de este prompt salían del paquete, que es **la lectura de otra persona**.
+> El 2026-09-19 se contrastaron contra el repositorio real, leyendo el corte
+> `32ae939983f0d665e4ed371362858801134d35cd`. El detalle con localizadores está en
+> [`VERIFICACION-CONTRA-CODIGO-2026-09-19.md`](../../../../../docs/verificacion/VERIFICACION-CONTRA-CODIGO-2026-09-19.md).
+>
+> **Ya confirmado, no hace falta que lo rehagas:**
+>
+> - `scheduling.module.ts` (145 líneas) importa **8 módulos**: `AuditModule`, `DirectoryModule`,
+>   `PracticeModule`, `MessagingModule`, `CommunityModule`, `InsuranceModule`, `ProfilesModule`,
+>   `CommonModule`. `MessagingModule` y `CommunityModule` confirmados.
+> - El binding es `{ provide: AGENDA_NOTICE_PORT, useExisting: MessagingAgendaNoticeAdapter }`,
+>   **línea 142**. Es **`useExisting`, no `useClass`**: la instancia ya viene provista de otro lado,
+>   y eso cambia cómo se sustituye.
+> - **Hay un SEGUNDO adaptador que el paquete nunca mencionó:** `SupportAdminNoticeAdapter`
+>   (línea 72). Un análisis de la composición que lo ignore está incompleto.
+> - `orm.config.ts`: globs globales (líneas 57-61), `TsMorphMetadataProvider` (68), caché en
+>   `node_modules/.cache/mikro-orm` (78-81) y `HistoryMirrorSubscriber` (129). **Los cuatro, confirmados.**
+> - El comentario de la línea 67 dice *«analizar 1159 archivos»*. **1159 es un comentario, no una
+>   medición vigente.** No lo adoptes como inventario.
+> - `transaction.port.ts`: existen `TransactionManager`, `execute<T>` y `TransactionOptions`. El
+>   token es `TRANSACTION_MANAGER = Symbol(...)`. **`TransactionContext` no vive ahí**: se importa
+>   de `./persistence-context`. **La propagación sigue sin verificar: exige ejecutar.**
+>
+> **El corte se movió:** `32ae939…` **es ancestro** del `HEAD` de `dev`, con **2 commits** de
+> diferencia (`dev` = `5d5007f…`, 2026-09-19T21:33). Cuál de los dos es el corte de trabajo lo
+> fija Pablo, no esta verificación.
+>
+> ⚠️ **Lo que esa verificación NO hizo: ejecutar.** No se corrió build, ni tests, ni arranque.
+> **Que un símbolo exista no prueba que haga lo que su comentario promete.** Todo lo que sea
+> comportamiento sigue siendo tuyo.
+>
+> 🔧 **Y una trampa de método, porque te va a pasar:** buscar con `git grep <SHA>` sobre un clon
+> parcial (`--filter=blob:none`) en una ruta larga de Windows devolvió **`NOT_FOUND` para tres
+> clases que sí existen**. El error real era `fatal: ... Filename too long`, y un `2>/dev/null` se
+> lo comía. Usá `git cat-file -p <SHA>:<ruta>` y `git ls-tree -r --name-only <SHA>`.
+> **Si tu búsqueda no encuentra algo, verificá primero que tu búsqueda funcione.**
+
 ## 1. Antes de escribir una línea — instalación OBLIGATORIA del estándar
 
 > **Esta sección no es opcional y no es el final del día: es lo primero.** Un prompt ejecutado sin

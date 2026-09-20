@@ -17,6 +17,43 @@
 | `ALLOWED_INFRA` | Lectura del repo, `git`, `yarn`, `node`. PostgreSQL y Docker: **verificar, no asumir** |
 | `Predecesor` | Tu lote del Día 1. **No repitas lo que ya verificaste; sí re-verificá lo que tocaste después** |
 
+> ### ✅ Hechos ya verificados contra el corte — no los repitas
+>
+> Las afirmaciones técnicas de este prompt salían del paquete, que es **la lectura de otra persona**.
+> El 2026-09-19 se contrastaron contra el repositorio real, leyendo el corte
+> `32ae939983f0d665e4ed371362858801134d35cd`. El detalle con localizadores está en
+> [`VERIFICACION-CONTRA-CODIGO-2026-09-19.md`](../../../../../docs/verificacion/VERIFICACION-CONTRA-CODIGO-2026-09-19.md).
+>
+> **Ya confirmado, no hace falta que lo rehagas:**
+>
+> - **Pista fuerte para tu microtarea del registro original.** El comentario de
+>   `agenda-notice.port.ts` cita: *«Los cuatro avisos que **el registro del cliente** pide
+>   (**3.4, 3.5, 4.2 y 4.3**)»*, y más abajo *«**TAREA-15, punto 1 y 3 del pedido**»*.
+>   **El registro original tiene secciones numeradas.**
+> - El documento transcrito en [`REQUISITOS-CLIENTE-ALOVIDA.md`](../../../../../docs/requisitos/REQUISITOS-CLIENTE-ALOVIDA.md)
+>   **no tiene numeración**. Eso **debilita** la hipótesis de que sean el mismo artefacto: se
+>   solapan en contenido, pero probablemente no son el mismo documento. **`Q-04` sigue abierta**, y
+>   ahora buscás algo concreto: un documento con secciones 3.x y 4.x y un pedido «TAREA-15».
+> - Segunda pista: el script `ddl:sources` corre
+>   `python ../mantra-core-health-model/salud-db/check_ddl_sources.py`. El backend espera el
+>   **modelo canónico como checkout hermano**. El paquete lo reportó 404: eso es un **límite de
+>   acceso**, no una inexistencia.
+> - `package.json` tiene **112 scripts**, entre ellos `test:e2e` y `smoke`.
+>
+> **El corte se movió:** `32ae939…` **es ancestro** del `HEAD` de `dev`, con **2 commits** de
+> diferencia (`dev` = `5d5007f…`, 2026-09-19T21:33). Cuál de los dos es el corte de trabajo lo
+> fija Pablo, no esta verificación.
+>
+> ⚠️ **Lo que esa verificación NO hizo: ejecutar.** No se corrió build, ni tests, ni arranque.
+> **Que un símbolo exista no prueba que haga lo que su comentario promete.** Todo lo que sea
+> comportamiento sigue siendo tuyo.
+>
+> 🔧 **Y una trampa de método, porque te va a pasar:** buscar con `git grep <SHA>` sobre un clon
+> parcial (`--filter=blob:none`) en una ruta larga de Windows devolvió **`NOT_FOUND` para tres
+> clases que sí existen**. El error real era `fatal: ... Filename too long`, y un `2>/dev/null` se
+> lo comía. Usá `git cat-file -p <SHA>:<ruta>` y `git ls-tree -r --name-only <SHA>`.
+> **Si tu búsqueda no encuentra algo, verificá primero que tu búsqueda funcione.**
+
 ## 1. Antes de escribir una línea — instalación OBLIGATORIA del estándar
 
 > **Esta sección no es opcional y no es el final del día: es lo primero.** Un prompt ejecutado sin

@@ -17,6 +17,47 @@
 | `ALLOWED_INFRA` | Lectura del repo, `git`, `yarn`, `node`. PostgreSQL y Docker: **verificar, no asumir** |
 | `Predecesor` | Tu lote del Día 3. **No repitas lo que ya verificaste; sí re-verificá lo que tocaste después** |
 
+> ### ✅ Hechos ya verificados contra el corte — no los repitas
+>
+> Las afirmaciones técnicas de este prompt salían del paquete, que es **la lectura de otra persona**.
+> El 2026-09-19 se contrastaron contra el repositorio real, leyendo el corte
+> `32ae939983f0d665e4ed371362858801134d35cd`. El detalle con localizadores está en
+> [`VERIFICACION-CONTRA-CODIGO-2026-09-19.md`](../../../../../docs/verificacion/VERIFICACION-CONTRA-CODIGO-2026-09-19.md).
+>
+> **Ya confirmado, no hace falta que lo rehagas:**
+>
+> - `AgendaNoticePort`, `emit`, `emitMany` y `AGENDA_NOTICE_PORT` existen. El token es un
+>   **`Symbol`**, no una cadena.
+> - El archivo **no declara versión de contrato**: hay que fijar snapshot y hash, como decía el prompt.
+> - La regla «exactamente uno» de `recipient` existe **como comentario, no como tipo**. Literal:
+>   `/** A quién va dirigido el aviso. Uno de los dos, no los dos. */`, sobre dos campos opcionales.
+> - **`emit` nunca lanza:** *«No lanza: los fallos vuelven como `{ delivered: false, skippedReason }`»*.
+> - `debounceKey` **no define ventana ni TTL**. Su comentario dice *«no se duplican mientras el
+>   primero siga vivo»*, que no es una ventana. Sigue `DECISION_REQUIRED`.
+> - **`AgendaNoticeKind` tiene exactamente 4 valores:** `SLOT_RELEASED`, `PRACTITIONER_DELAY`,
+>   `APPOINTMENT_REMINDER`, `BOOKING_STATE_CHANGED`.
+> - **La tensión `Q-06` está confirmada por escrito en el código:** *«Un aviso que falla se registra
+>   y se descarta; jamás revierte la reserva…»*.
+>
+> **❌ CORRECCIÓN — el paquete estaba incompleto.** `PILOTO_MANTRA.md` lista **6** campos del
+> resultado; el archivo real tiene **8**. El paquete omitió **`skippedReason`** y
+> **`chatSkippedReason`**. Un doble construido contra la tabla del paquete devuelve resultados
+> incompletos y tu validador los aceptaría. **Trabajá sobre los 8.**
+>
+> **El corte se movió:** `32ae939…` **es ancestro** del `HEAD` de `dev`, con **2 commits** de
+> diferencia (`dev` = `5d5007f…`, 2026-09-19T21:33). Cuál de los dos es el corte de trabajo lo
+> fija Pablo, no esta verificación.
+>
+> ⚠️ **Lo que esa verificación NO hizo: ejecutar.** No se corrió build, ni tests, ni arranque.
+> **Que un símbolo exista no prueba que haga lo que su comentario promete.** Todo lo que sea
+> comportamiento sigue siendo tuyo.
+>
+> 🔧 **Y una trampa de método, porque te va a pasar:** buscar con `git grep <SHA>` sobre un clon
+> parcial (`--filter=blob:none`) en una ruta larga de Windows devolvió **`NOT_FOUND` para tres
+> clases que sí existen**. El error real era `fatal: ... Filename too long`, y un `2>/dev/null` se
+> lo comía. Usá `git cat-file -p <SHA>:<ruta>` y `git ls-tree -r --name-only <SHA>`.
+> **Si tu búsqueda no encuentra algo, verificá primero que tu búsqueda funcione.**
+
 ## 1. Antes de escribir una línea — instalación OBLIGATORIA del estándar
 
 > **Esta sección no es opcional y no es el final del día: es lo primero.** Un prompt ejecutado sin

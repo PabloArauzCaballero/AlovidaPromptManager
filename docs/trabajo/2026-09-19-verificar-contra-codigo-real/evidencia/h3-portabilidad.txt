@@ -1,0 +1,43 @@
+=== R1: open() sin encoding explicito (en Windows toma cp1252, en Linux utf-8) ===
+  tools/check_reparto.py:209:    (turno / "Pablo" / "Dia1-Algo.Backend" / "Tarea.md").write_text(
+  tools/check_reparto.py:295:        tarea.write_text(
+  tools/check_reparto.py:303:        tarea.write_text(
+  tools/check_skills_citadas.py:72:        (lote / "T.md").write_text(
+  tools/check_skills_citadas.py:80:        (lote / "T.md").write_text(
+  tools/check_skills_citadas.py:87:        (lote / "T.md").write_text(
+  tools/sync_agents.py:107:            (dst_base / "LEEME-GENERADO.md").write_text(
+  (sin lineas = todos declaran encoding)
+
+=== R2: separadores de ruta de Windows codificados ===
+  (sin lineas = ninguno)
+
+=== R3: rutas absolutas o letras de unidad ===
+  (sin lineas = ninguna)
+
+=== R4: dependencias de terceros que CI tendria que instalar ===
+__future__ argparse datetime filecmp json os pathlib plan_lib re shutil sys tempfile unicodedata 
+=== R5: nombres de carpeta con mayusculas (Linux distingue) ===
+PromptNoche
+Daily-Noche-2026-09-19.md
+Ender
+Itzan
+=== R1 en detalle: las 7 llamadas multilinea, con su linea siguiente ===
+  tools/check_reparto.py:209  -> PROMPT_MINIMO, encoding="utf-8")
+  tools/check_reparto.py:295  -> PROMPT_MINIMO.replace("`skills-router`", "el catalogo"), encoding="utf-8")
+  tools/check_reparto.py:303  -> PROMPT_MINIMO.replace("plan_gate.py --self-test", "instalalo y listo"),
+  tools/check_skills_citadas.py:72  -> "| Skill | Para que |\n|---|---|\n| `existe-esta` | si |\n| `y-esta` | si |\n",
+  tools/check_skills_citadas.py:80  -> "| Skill | Para que |\n|---|---|\n| `existe-esta` | si |\n| `no-existe` | no |\n",
+  tools/check_skills_citadas.py:87  -> "Texto suelto que menciona `no-existe` en prosa, sin tabla.\n", encoding="utf-8")
+  tools/sync_agents.py:107  -> AVISO.format(carpeta=carpeta), encoding="utf-8"
+
+=== conteo de write_text/read_text SIN encoding en ninguna de sus 2 lineas ===
+  0 sin encoding declarado
+$ YAML valido y sin continue-on-error
+  pasos: 11
+  exit=0
+  continue-on-error como clave: 0
+
+$ simulo la expansion tal como la hara CI
+  fechas encontradas: 6
+check_reparto: OK, 2026-09-24 cumple la estructura obligatoria
+  exit=0

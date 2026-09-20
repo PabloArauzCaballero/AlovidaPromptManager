@@ -15,9 +15,13 @@ Ese chequeo existe porque el primer reparto se entregó con cero menciones a las
 notó hasta que se contó. Un prompt sin esa sección produce trabajo sin plan, sin evidencia y sin
 reporte, que después hay que rehacer.
 
-Fuera de esas dos cosas, este script NO juzga el contenido de los prompts. Verifica que los
-archivos que el equipo espera encontrar estén donde el equipo los busca, y que traigan la sección
-que los hace ejecutables. Un archivo presente no prueba que su contenido sirva.
+Exige además un contenido mínimo: tabla de microtareas, kill-test, alcance OUT, tabla de
+ambigüedades y Definition of Done del hito. Sin esas piezas el encargo no es ejecutable: sin
+microtareas no hay unidad de verificación, y sin kill-test nadie sabe cómo demostrar que NO está
+hecho.
+
+**Lo que este script NO puede hacer es juzgar si ese contenido es bueno.** Un prompt con las cinco
+piezas presentes y mal escritas pasa el chequeo. Eso lo revisa una persona, no un script.
 
 Uso:
     python tools/check_reparto.py repartos/2026-09-19     # sale 1 si falta algo
@@ -43,6 +47,20 @@ MARCAS_OBLIGATORIAS = (
     ("instalación OBLIGATORIA", "la seccion 1 de instalacion obligatoria del estandar"),
     ("skills-router", "la entrada al catalogo de skills"),
     ("plan_gate.py --self-test", "el comando que verifica que el estandar quedo instalado"),
+)
+
+# Contenido minimo. No juzga la calidad —un script no puede—, pero si que las piezas que hacen
+# ejecutable un encargo esten: sin microtareas no hay unidad de verificacion; sin kill-test nadie
+# sabe como demostrar que NO esta hecho; sin alcance OUT se toca lo que no se debe; y sin tabla de
+# ambiguedades, las dudas se resuelven por conveniencia en vez de registrarse.
+CONTENIDO_MINIMO = (
+    (re.compile(r"^\|\s*M\d+\s*\|", re.M), "la tabla de microtareas (ninguna fila `| M<n> |`)"),
+    (re.compile(r"Kill-test", re.I), "el kill-test"),
+    (re.compile(r"Ambigüedades registradas", re.I), "la tabla de ambiguedades a registrar"),
+    # Ojo: el encabezado de la tabla de microtareas ya dice "Definition of Done", asi que
+    # buscar el texto suelto daria por bueno un prompt sin la seccion. Se exige el encabezado.
+    (re.compile(r"^#+ .*Definition of Done", re.M | re.I), "el Definition of Done del hito"),
+    (re.compile(r"\*\*OUT:\*\*", re.I), "el alcance OUT (lo que NO se toca)"),
 )
 
 
@@ -128,6 +146,7 @@ def _revisar_prompt(tarea: Path, raiz: Path) -> list[str]:
         return [f"{_rel(tarea, raiz)}: no se pudo leer ({exc})"]
 
     faltantes = [que for marca, que in MARCAS_OBLIGATORIAS if marca not in texto]
+    faltantes += [que for patron, que in CONTENIDO_MINIMO if not patron.search(texto)]
     if faltantes:
         return [f"{_rel(tarea, raiz)}: le FALTA {', y '.join(faltantes)}"]
     return []
@@ -149,6 +168,34 @@ PROMPT_MINIMO = """# Tarea de prueba
 Entrá por `skills-router`.
 
     python .claude/hooks/plan_gate.py --self-test
+
+## 2. Resultado observable
+
+Algo observable pasa.
+
+**Kill-test:** la comprobación más barata que demuestra que NO está hecho.
+
+## 3. Alcance
+
+**IN:** esto.
+
+**OUT:** aquello.
+
+## 4. Plan
+
+| # | Microtarea | Criterio de aceptación | Definition of Done |
+|---|---|---|---|
+| M1 | Hacer algo | Está hecho | `<comando>` |
+
+## 5. Ambigüedades registradas
+
+| ID | Ambigüedad | Quién puede resolverla | Qué bloquea |
+|---|---|---|---|
+| Q-01 | algo | alguien | algo |
+
+## 6. Definition of Done del hito
+
+- [ ] La microtarea está en `HECHO` o en `BLOCKED`.
 """
 
 
@@ -262,6 +309,22 @@ def self_test() -> int:
 
         check("el daily NO se exige que traiga la seccion (solo los prompts de tarea)",
               revisar(_armar_arbol_ok(base / "daily_simple")) == [])
+
+        # --- contenido minimo: sin estas piezas el encargo no es ejecutable ---
+        for quitar, espera, nombre in (
+            ("| M1 | Hacer algo | Está hecho | `<comando>` |", "tabla de microtareas", "microtareas"),
+            ("**Kill-test:** la comprobación más barata que demuestra que NO está hecho.",
+             "kill-test", "kill-test"),
+            ("## 5. Ambigüedades registradas", "ambiguedades", "ambiguedades"),
+            ("## 6. Definition of Done del hito", "Definition of Done", "DoD del hito"),
+            ("**OUT:** aquello.", "alcance OUT", "alcance OUT"),
+        ):
+            raiz = _armar_arbol_ok(base / ("sin_" + nombre.replace(" ", "_")))
+            tarea = raiz / "PromptNoche" / "Pablo" / "Dia1-Algo.Backend" / "Tarea.md"
+            tarea.write_text(PROMPT_MINIMO.replace(quitar, ""), encoding="utf-8")
+            p = revisar(raiz)
+            check("detecta prompt sin %s" % nombre,
+                  any(espera in x for x in p))
 
     fallos = [n for n, ok in casos if not ok]
     for nombre, ok in casos:

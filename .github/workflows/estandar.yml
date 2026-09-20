@@ -58,8 +58,20 @@ jobs:
 
       # Los dos candados del reparto, sobre el reparto real. Sin esto solo frenan a quien
       # se acuerde de correrlos a mano, que es como se entrego el primer reparto sin skills.
+      # El glob se expande explicitamente: si `repartos/` quedara vacio, `repartos/*` llegaria
+      # literal al script y el fallo se leeria como "no existe esa carpeta" en vez de como
+      # "no hay reparto". Un check que falla por el motivo equivocado hace perder una hora.
       - name: Estructura del reparto y seccion obligatoria de skills
-        run: python tools/check_reparto.py repartos/*
+        shell: bash
+        run: |
+          shopt -s nullglob
+          fechas=(repartos/*/)
+          if [ ${#fechas[@]} -eq 0 ]; then
+            echo "::error::no hay ninguna carpeta de fecha bajo repartos/"
+            exit 1
+          fi
+          echo "verificando ${#fechas[@]} fecha(s) de reparto"
+          python tools/check_reparto.py "${fechas[@]}"
 
       - name: Ninguna skill citada que no exista
         run: python tools/check_skills_citadas.py

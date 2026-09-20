@@ -1,0 +1,28 @@
+$ python tools/check_reparto.py --self-test
+  [PASS] detecta prompt sin comando que verifique la instalacion
+  [PASS] el daily NO se exige que traiga la seccion (solo los prompts de tarea)
+  [PASS] detecta prompt sin microtareas
+  [PASS] detecta prompt sin kill-test
+  [PASS] detecta prompt sin ambiguedades
+  [PASS] detecta prompt sin DoD del hito
+  [PASS] detecta prompt sin alcance OUT
+check_reparto self-test: 23 PASS, 0 FAIL
+exit=0
+
+$ los 30 prompts reales
+check_reparto: OK, 2026-09-23 cumple la estructura obligatoria
+check_reparto: OK, 2026-09-24 cumple la estructura obligatoria
+exit=0
+$ KILL-TEST sobre un prompt REAL: le saco el kill-test al lote de Justin del Dia 4
+check_reparto: ESTRUCTURA INCOMPLETA en 2026-09-22
+  - 2026-09-22/PromptNoche/Justin/Dia4-IdempotenciaYConcurrencia.Integracion/ProbarIdempotenciaYConcurrencia.md: le FALTA el kill-test
+exit=1
+
+$ restauro
+check_reparto: OK, 2026-09-19 cumple la estructura obligatoria
+check_reparto: OK, 2026-09-20 cumple la estructura obligatoria
+check_reparto: OK, 2026-09-21 cumple la estructura obligatoria
+check_reparto: OK, 2026-09-22 cumple la estructura obligatoria
+check_reparto: OK, 2026-09-23 cumple la estructura obligatoria
+check_reparto: OK, 2026-09-24 cumple la estructura obligatoria
+exit=0

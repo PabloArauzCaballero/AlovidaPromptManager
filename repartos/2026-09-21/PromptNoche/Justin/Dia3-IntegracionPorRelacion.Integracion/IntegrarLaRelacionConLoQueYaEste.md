@@ -17,6 +17,43 @@
 | `ALLOWED_INFRA` | Lectura del repo, `git`, `yarn`, `node`. PostgreSQL y Docker: **verificar, no asumir** |
 | `Predecesor` | Tu lote del Día 2. **No repitas lo que ya verificaste; sí re-verificá lo que tocaste después** |
 
+> ### ✅ Hechos ya verificados contra el corte — no los repitas
+>
+> Las afirmaciones técnicas de este prompt salían del paquete, que es **la lectura de otra persona**.
+> El 2026-09-19 se contrastaron contra el repositorio real, leyendo el corte
+> `32ae939983f0d665e4ed371362858801134d35cd`. El detalle con localizadores está en
+> [`VERIFICACION-CONTRA-CODIGO-2026-09-19.md`](../../../../../docs/verificacion/VERIFICACION-CONTRA-CODIGO-2026-09-19.md).
+>
+> **Ya confirmado, no hace falta que lo rehagas:**
+>
+> - **`emit` nunca lanza.** Literal: *«No lanza: los fallos vuelven como
+>   `{ delivered: false, skippedReason }`»*. Esto es **central para tu harness**: el fake **no puede**
+>   convertir una llamada no registrada en `{delivered:false}`, porque sería indistinguible de un
+>   fallo operacional legítimo del puerto real. Es exactamente ADV-02.
+> - **El resultado tiene 8 campos, no los 6 del paquete.** Faltaban **`skippedReason`** y
+>   **`chatSkippedReason`**. Tu doble estricto tiene que validar los 8.
+> - `chatDelivered` está **ausente** para cupo liberado, demora y recordatorio: solo aplica al chat
+>   de `SupportAdmin`. Un doble que siempre lo devuelve está mintiendo.
+> - `emailRequestId` es **«encolado», no «entregado»**. La evidencia de que salió es la fila de
+>   `messaging.notification_deliveries` con su `provider_message_ref`.
+> - `AGENDA_NOTICE_PORT` es un **`Symbol`**; el binding real usa **`useExisting`**.
+> - `test/jest-integration.json`: `maxWorkers: 1`, `@swc/jest`, `testTimeout: 180000`,
+>   `testMatch` sobre `test/integration/**/*.int-spec.ts`. `test:integration` fija `ORM_SCHEMA_SYNC=off`.
+>
+> **El corte se movió:** `32ae939…` **es ancestro** del `HEAD` de `dev`, con **2 commits** de
+> diferencia (`dev` = `5d5007f…`, 2026-09-19T21:33). Cuál de los dos es el corte de trabajo lo
+> fija Pablo, no esta verificación.
+>
+> ⚠️ **Lo que esa verificación NO hizo: ejecutar.** No se corrió build, ni tests, ni arranque.
+> **Que un símbolo exista no prueba que haga lo que su comentario promete.** Todo lo que sea
+> comportamiento sigue siendo tuyo.
+>
+> 🔧 **Y una trampa de método, porque te va a pasar:** buscar con `git grep <SHA>` sobre un clon
+> parcial (`--filter=blob:none`) en una ruta larga de Windows devolvió **`NOT_FOUND` para tres
+> clases que sí existen**. El error real era `fatal: ... Filename too long`, y un `2>/dev/null` se
+> lo comía. Usá `git cat-file -p <SHA>:<ruta>` y `git ls-tree -r --name-only <SHA>`.
+> **Si tu búsqueda no encuentra algo, verificá primero que tu búsqueda funcione.**
+
 ## 1. Antes de escribir una línea — instalación OBLIGATORIA del estándar
 
 > **Esta sección no es opcional y no es el final del día: es lo primero.** Un prompt ejecutado sin

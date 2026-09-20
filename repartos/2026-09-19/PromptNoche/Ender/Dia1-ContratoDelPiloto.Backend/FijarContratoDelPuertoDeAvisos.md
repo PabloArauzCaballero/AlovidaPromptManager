@@ -17,6 +17,47 @@
 | `ALLOWED_INFRA` | Lectura del repo, `git`, herramienta de hash. No necesitás levantar la base para esta tarea |
 | `Escritura permitida` | Solo tu directorio de evidencia. `scheduling.module.ts` y la composición: **reservados para Itzan** |
 
+> ### ✅ Hechos ya verificados contra el corte — no los repitas
+>
+> Las afirmaciones técnicas de este prompt salían del paquete, que es **la lectura de otra persona**.
+> El 2026-09-19 se contrastaron contra el repositorio real, leyendo el corte
+> `32ae939983f0d665e4ed371362858801134d35cd`. El detalle con localizadores está en
+> [`VERIFICACION-CONTRA-CODIGO-2026-09-19.md`](../../../../../docs/verificacion/VERIFICACION-CONTRA-CODIGO-2026-09-19.md).
+>
+> **Ya confirmado, no hace falta que lo rehagas:**
+>
+> - `AgendaNoticePort`, `emit`, `emitMany` y `AGENDA_NOTICE_PORT` existen. El token es un
+>   **`Symbol`**, no una cadena.
+> - El archivo **no declara versión de contrato**: hay que fijar snapshot y hash, como decía el prompt.
+> - La regla «exactamente uno» de `recipient` existe **como comentario, no como tipo**. Literal:
+>   `/** A quién va dirigido el aviso. Uno de los dos, no los dos. */`, sobre dos campos opcionales.
+> - **`emit` nunca lanza:** *«No lanza: los fallos vuelven como `{ delivered: false, skippedReason }`»*.
+> - `debounceKey` **no define ventana ni TTL**. Su comentario dice *«no se duplican mientras el
+>   primero siga vivo»*, que no es una ventana. Sigue `DECISION_REQUIRED`.
+> - **`AgendaNoticeKind` tiene exactamente 4 valores:** `SLOT_RELEASED`, `PRACTITIONER_DELAY`,
+>   `APPOINTMENT_REMINDER`, `BOOKING_STATE_CHANGED`.
+> - **La tensión `Q-06` está confirmada por escrito en el código:** *«Un aviso que falla se registra
+>   y se descarta; jamás revierte la reserva…»*.
+>
+> **❌ CORRECCIÓN — el paquete estaba incompleto.** `PILOTO_MANTRA.md` lista **6** campos del
+> resultado; el archivo real tiene **8**. El paquete omitió **`skippedReason`** y
+> **`chatSkippedReason`**. Un doble construido contra la tabla del paquete devuelve resultados
+> incompletos y tu validador los aceptaría. **Trabajá sobre los 8.**
+>
+> **El corte se movió:** `32ae939…` **es ancestro** del `HEAD` de `dev`, con **2 commits** de
+> diferencia (`dev` = `5d5007f…`, 2026-09-19T21:33). Cuál de los dos es el corte de trabajo lo
+> fija Pablo, no esta verificación.
+>
+> ⚠️ **Lo que esa verificación NO hizo: ejecutar.** No se corrió build, ni tests, ni arranque.
+> **Que un símbolo exista no prueba que haga lo que su comentario promete.** Todo lo que sea
+> comportamiento sigue siendo tuyo.
+>
+> 🔧 **Y una trampa de método, porque te va a pasar:** buscar con `git grep <SHA>` sobre un clon
+> parcial (`--filter=blob:none`) en una ruta larga de Windows devolvió **`NOT_FOUND` para tres
+> clases que sí existen**. El error real era `fatal: ... Filename too long`, y un `2>/dev/null` se
+> lo comía. Usá `git cat-file -p <SHA>:<ruta>` y `git ls-tree -r --name-only <SHA>`.
+> **Si tu búsqueda no encuentra algo, verificá primero que tu búsqueda funcione.**
+
 ## 1. Antes de escribir una línea — instalación OBLIGATORIA del estándar
 
 > **Esta sección no es opcional y no es el final del día: es lo primero.** Un prompt ejecutado sin
@@ -158,7 +199,7 @@ validación runtime con su fuente — sin consultarte y sin abrir el repositorio
 
 | # | Microtarea | Criterio de aceptación | Definition of Done |
 |---|---|---|---|
-| M5 | Tabla de semántica del resultado, campo por campo | Cada uno de los campos observados tiene su significado **según la definición leída**, y ninguno tiene significado inventado | Tabla con `delivered`, `inAppNotificationId`, `notificationRequestId`, `emailRequestId`, `emailSkippedReason`, `chatDelivered`. Contraste obligatorio contra la tabla de `PILOTO_MANTRA.md` paso 2: si tu lectura difiere de la del paquete, **gana el archivo** y la discrepancia se registra |
+| M5 | Tabla de semántica del resultado, campo por campo | Cada uno de los campos observados tiene su significado **según la definición leída**, y ninguno tiene significado inventado | Tabla con los **8** campos reales: `delivered`, `inAppNotificationId`, `notificationRequestId`, **`skippedReason`**, `emailRequestId`, `emailSkippedReason`, `chatDelivered` y **`chatSkippedReason`**. ⚠️ `PILOTO_MANTRA.md` paso 2 lista solo **6**: omite `skippedReason` y `chatSkippedReason`. Ya está verificado contra el corte (ver el bloque de arriba): **gana el archivo**, y la discrepancia con el paquete queda registrada |
 | M6 | Declarar explícitamente qué **no** prueba `delivered` | Está escrito que es resultado de entrega in-app y que **no prueba correo entregado** | Cita del paquete + lo que verificaste en el archivo. Si el archivo no lo aclara, el estado es `HYPOTHESIS`, no hecho |
 | M7 | La regla «exactamente uno» de `recipient` | Está la cita literal del comentario, y la afirmación explícita de que el tipo **no** la hace cumplir | Comentario pegado con localizador + especificación del validador runtime (dónde cruza el límite de confianza, qué rechaza, con qué error) y **fuente identificada** de la regla. No implementarlo: especificarlo |
 | M8 | Orden, cardinalidad y errores por elemento de `emitMany` | Para cada uno: lo que el archivo define, o `DECISION_REQUIRED` si no lo define | Fragmentos pegados. Prohibido asumir que el orden de salida sigue al de entrada si la firma no lo dice |
