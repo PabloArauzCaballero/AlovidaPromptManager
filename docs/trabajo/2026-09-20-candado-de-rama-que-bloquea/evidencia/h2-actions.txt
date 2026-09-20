@@ -16,3 +16,25 @@ $ YAML valido
   pasos: 11
   actions: ['actions/checkout@v7', 'actions/setup-python@v7']
   exit=0
+$ gh run list --limit 2
+completed	success	ci: subir checkout y setup-python a v7, verificado contra la API	estandar	main	push	35487762395	9s	2026-09-20T03:54:01Z
+completed	success	docs: cerrar la microtarea del push, ya ejecutado	estandar	main	push	35487397233	8s	2026-09-20T03:45:21Z
+
+$ gh run view 35487762395
+
+✓ main estandar · 35487762395
+Triggered via push less than a minute ago
+
+JOBS
+✓ Espejo sin deriva y candados en verde in 6s (ID 106017166066)
+
+ANNOTATIONS
+- "The ubuntu-latest label will migrate to Ubuntu 26 beginning October 19, 2026. For more information, see https://github.com/actions/runner-images/issues/14748"
+Espejo sin deriva y candados en verde: .github#1
+
+
+For more information about the job, try: gh run view --job=106017166066
+View this run on GitHub: https://github.com/PabloArauzCaballero/AlovidaPromptManager/actions/runs/35487762395
+
+$ avisos de Node 20 en esta corrida:
+  0   ( 0 = el aviso desaparecio )
