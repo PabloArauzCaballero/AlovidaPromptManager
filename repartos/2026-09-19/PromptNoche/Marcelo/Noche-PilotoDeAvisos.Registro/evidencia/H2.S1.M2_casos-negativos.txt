@@ -1,0 +1,17 @@
+# H2.S1.M2 casos negativos — DoD ejecutado el 2026-09-20T18:33:38Z sobre CASOS-ACEPTACION-M06-2026-09-20.md
+
+$ grep -c '^### CA-M06-N-AUTH' CASOS-ACEPTACION-M06-2026-09-20.md
+8
+exit_code=0   # esperado: >= 6
+
+$ grep -c '^### CA-M06-N-VAL' CASOS-ACEPTACION-M06-2026-09-20.md
+9
+exit_code=0   # esperado: >= 6
+
+$ grep -c '^### CA-M06-N-EST' CASOS-ACEPTACION-M06-2026-09-20.md
+5
+exit_code=0   # esperado: >= 5
+
+$ grep -c '^Esperado:' CASOS-ACEPTACION-M06-2026-09-20.md
+22
+exit_code=0   # esperado: = cantidad de negativos (rechazo + sin efecto explícitos)

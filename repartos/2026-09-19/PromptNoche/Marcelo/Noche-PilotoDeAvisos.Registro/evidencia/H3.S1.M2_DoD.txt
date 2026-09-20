@@ -1,0 +1,9 @@
+# H3.S1.M2 ADV-04 escritura + consulta posterior — DoD ejecutado el 2026-09-20T20:09:46Z sobre PERMISOS-ESTADOS-DINERO-M06-2026-09-20.md
+
+$ grep -c 'consulta posterior\|Consulta posterior' PERMISOS-ESTADOS-DINERO-M06-2026-09-20.md
+3
+exit_code=0   # esperado: >= 1
+
+$ grep -c 'contaminada' PERMISOS-ESTADOS-DINERO-M06-2026-09-20.md
+2
+exit_code=0   # esperado: >= 1 (la corrida rota se declara, no se oculta)

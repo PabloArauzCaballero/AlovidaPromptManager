@@ -1,0 +1,21 @@
+# H3 ronda 2 — cita fresca, orden a prueba de contaminación: reservar → T1 (completar CONFIRMADA) → W3 (PA2 reprograma) → W2 (PB1 cancela desde B) → C1 (PA1 cancela) → T2 (iniciar CANCELADA) — ejecutado 2026-09-20T19:00:23Z contra 127.0.0.1:3000 (PID 29640)
+# Motivo: en la ronda 1, W1 (PA2 canceló la cita de PA1 con 200) cambió el estado y dejó W2/W3/T1 sin valor probatorio (409/422 por estado, no por autorización).
+$ node h3-recorrido.mjs --step round2
+✓ [R2-0 PA1 retiene el cupo (liberado en la ronda 1)] POST /scheduling/slots/b7ded3db…/holds → 201 (esperado 200|201)
+✓ [R2-0 PA1 confirma] POST /scheduling/holds/c4ac5733…/confirm → 201 (esperado 200|201)
+✓ [R2-0 estado inicial (PA1)] GET /scheduling/bookings/0602d55f… → 200 (esperado 200)
+✓ [T1 admin completa una cita CONFIRMADA sin iniciarla] POST /scheduling/bookings/0602d55f…/complete → 422 (esperado 422)
+✓ [T1 consulta posterior (PA1)] GET /scheduling/bookings/0602d55f… → 200 (esperado 200)
+✗ [W3 PA2 (otro paciente, misma org) reprograma la cita de PA1] POST /scheduling/bookings/0602d55f…/reschedule → 200 (esperado 403|404)
+    cuerpo: {"bookingId":"0602d55f-6358-4717-a564-b499301c81fd","fromSlotId":"b7ded3db-154d-4643-9653-cf35b14f836f","toSlotId":"9fff6bc1-8691-4c74-a374-05466b3121a9"}
+✓ [W3 consulta posterior (PA1)] GET /scheduling/bookings/0602d55f… → 200 (esperado 200)
+✗ [W2 PB1 (miembro de B, contexto B) cancela la cita de PA1 (org A)] POST /scheduling/bookings/0602d55f…/cancel → 200 (esperado 403|404)
+    cuerpo: {"bookingId":"0602d55f-6358-4717-a564-b499301c81fd","capacityReleased":true}
+✓ [W2 consulta posterior (PA1)] GET /scheduling/bookings/0602d55f… → 200 (esperado 200)
+✓ [W2 bandeja de PA1] GET /notifications/me?limit=50 → 200 (esperado 200)
+  C1 omitido: la cita ya no está en su estado inicial (la canceló o movió otro actor).
+✓ [T2 admin inicia la consulta de una cita CANCELADA] POST /scheduling/bookings/0602d55f…/start → 422 (esperado 422)
+✓ [T2 consulta posterior (PA1)] GET /scheduling/bookings/0602d55f… → 200 (esperado 200)
+✓ [C2 el cupo vuelve a ofrecerse] GET /scheduling/resources/22f1b9ac…/slots?from=2026-09-20T22%3A00%3A00.000Z&to=2026-09-20T22%3A01%3A00.000Z → 200 (esperado 200)
+  resumen ronda 2: {"bookingA2":"0602d55f…","estadoInicial":"bf910452-1485-58ca-88dc-184b8b4b2935","T1":{"status":422,"failureCode":"INVALID_STATE_TRANSITION","estadoDespues":"bf910452-1485-58ca-88dc-184b8b4b2935","sinCambio":true},"W3":{"status":200,"code":null,"slotDespues":"MOVIDO","estadoDespues":"bf910452-1485-58ca-88dc-184b8b4b2935"},"W2":{"status":200,"code":null,"estadoDespues":"3fbee3a4-f674-5520-a805-32098f7b019c","sinCambio":false,"bandejaPA1":0},"C1":"omitido","T2":{"status":422,"failureCode":"INVALID_STATE_TRANSITION","estadoFinal":"3fbee3a4-f674-5520-a805-32098f7b019c"},"cupoRemainingCapacity":1}
+exit_code=1   # 1 = al menos un desvío respecto de la regla

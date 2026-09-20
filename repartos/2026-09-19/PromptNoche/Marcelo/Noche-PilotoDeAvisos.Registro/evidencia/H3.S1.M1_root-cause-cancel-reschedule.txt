@@ -1,0 +1,57 @@
+# Causa raiz de W3/W2 (H3.S1.M2) y de R1/R2 (H3.S1.M1) - leido 2026-09-20 sobre
+# mantra-core-health-api @ a5753dc7, src/modules/scheduling/services/scheduling-bookings.service.ts
+
+$ grep -n "private async assertPuedeActuarPorElPaciente" src/modules/scheduling/services/scheduling-bookings.service.ts
+408:  private async assertPuedeActuarPorElPaciente(
+
+Cuerpo literal (líneas 408-418):
+  private async assertPuedeActuarPorElPaciente(
+    patientProfileId: string,
+    actor: AuthenticatedUser,
+    em?: EntityManager,
+  ): Promise<void> {
+    if (!this.esUnPaciente(actor)) return;
+    await this.representation.assertMayActForPatient(
+      patientProfileId,
+      actor,
+      em,
+    );
+  }
+
+Se llama con el patientProfileId DEL RECURSO (no el del actor) en:
+  - placeHold          (linea ~443, dto.patientProfileId)
+  - confirmHold/plan    (linea ~718, plan.patientProfileId)
+  - searchBookings      (linea ~2640, dto.patientProfileId; visto en H1 S2.M3)
+  - enroll (waitlist)   (scheduling-waitlist.service.ts:102, patientProfileId)
+
+$ grep -nE "assert|actor\.|patientProfileId|Forbidden|cargarParaOperar" con rango de cada metodo:
+
+  async cancel(...)      [linea ~1357-1420]  -> SOLO "assertTransition(fromState, CANCELLED)" (linea 1414).
+                          NINGUNA llamada a assertPuedeActuarPorElPaciente ni a cargarParaOperar.
+  async reschedule(...)  [linea ~1232-1300]  -> SOLO "touch(origin, actor.id)" (bitacora).
+                          NINGUNA llamada a assertPuedeActuarPorElPaciente ni a cargarParaOperar.
+  async getBookingById(...) [linea 2823-2834] -> findBookingById(em, { id }); NINGUN chequeo.
+
+Cadena de carga (ambas mutaciones y la lectura):
+  findBookingByIdForUpdate(em, id)  / findBookingById(em, id)
+    -> repositories/scheduling-bookings.repository.ts:309-318 / 378-383
+    -> WHERE = { id }  (sin tenantId, sin patientProfileId)
+
+CAUSA RAIZ: el patron correcto YA EXISTE en el mismo archivo (assertPuedeActuarPorElPaciente,
+usado por placeHold/confirmHold/searchBookings/enroll) pero NO se aplico a cancel() ni a
+reschedule() cuando se agrego el rol PATIENT a esos dos endpoints
+(scheduling-bookings.controller.ts:311,327 @Roles(...,'PATIENT')). El unico control activo
+sobre esas dos rutas es RolesGuard, que autoriza a CUALQUIER actor con rol global PATIENT,
+sin comparar el patientProfileId del actor contra el patientProfileId de la reserva.
+Es BOLA/IDOR de escritura (OWASP API1/API3): un paciente cualquiera opera la reserva de otro.
+
+Consecuencia medida en runtime (ver H3.S1.M1_adv04-lectura.txt y
+H3.S1.M2_adv04-escritura-ronda2.txt):
+  - R1/R2: GET /scheduling/bookings/:id devuelve 200 con los datos completos de la cita
+    (patientProfileId, resourceId, horario, estado) a otro paciente de la MISMA organizacion
+    y a un actor de OTRA organizacion.
+  - W3: POST /scheduling/bookings/:id/reschedule devuelve 200 cuando lo invoca otro paciente
+    de la MISMA organizacion (mueve la cita a otro cupo sin ser su dueño).
+  - W2: POST /scheduling/bookings/:id/cancel devuelve 200 cuando lo invoca un actor de OTRA
+    organizacion (cancela una cita de una organizacion en la que no tiene membresia sobre
+    ese recurso).

@@ -1,0 +1,5 @@
+=== H1.S3.M3 — capacidad del equipo en horas netas · consulta 2026-09-20T17:37:53Z
+
+$ grep -nE "Q-0[123]|TEAM_CAPACITY" AlovidaPromptManager/repartos/2026-09-19/PromptNoche/Daily-Noche-2026-09-19.md
+64:| Q-01 | El paquete se fecha el 20-09 y hoy es 19-09 | Quien encargó el paquete | `ABIERTA` |
+65:| Q-03 | `TEAM_CAPACITY` en horas netas sin calcular | Coordinación | `ABIERTA` |

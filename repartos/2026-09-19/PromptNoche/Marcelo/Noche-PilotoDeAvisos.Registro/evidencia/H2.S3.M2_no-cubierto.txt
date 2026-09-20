@@ -1,0 +1,9 @@
+# H2.S3.M2 ítems del cliente no cubiertos — DoD ejecutado el 2026-09-20T18:33:42Z sobre CASOS-ACEPTACION-M06-2026-09-20.md
+
+$ sed -n '/^## §8/,/^## §9/p' CASOS-ACEPTACION-M06-2026-09-20.md | grep -cE '^\| [1-9] \|'
+9
+exit_code=0   # esperado: >= 7
+
+$ sed -n '/^## §8/,/^## §9/p' CASOS-ACEPTACION-M06-2026-09-20.md | grep -E '^\| [1-9] \|' | grep -cvE ':[0-9]+'
+0
+exit_code=1   # esperado: 0 (cada ítem cita su línea del cliente)

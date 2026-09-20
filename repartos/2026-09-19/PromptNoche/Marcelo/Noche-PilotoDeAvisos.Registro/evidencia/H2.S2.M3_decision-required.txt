@@ -1,0 +1,13 @@
+# H2.S2.M3 datos no generables — DoD ejecutado el 2026-09-20T18:33:41Z sobre CASOS-ACEPTACION-M06-2026-09-20.md
+
+$ grep -c '^| DR-M06-' CASOS-ACEPTACION-M06-2026-09-20.md
+8
+exit_code=0   # esperado: >= 7
+
+$ sed -n '/^## §6/,/^## §7/p' CASOS-ACEPTACION-M06-2026-09-20.md | grep -c 'Quién define'
+1
+exit_code=0   # esperado: 1 (columna presente)
+
+$ sed -n '/^## §6/,/^## §7/p' CASOS-ACEPTACION-M06-2026-09-20.md | grep '^| DR-M06-' | awk -F'|' '{ if ($5 ~ /^ *$/) print "FILA SIN DUEÑO: " $2 }' | wc -l
+0
+exit_code=0   # esperado: 0 filas sin dueño

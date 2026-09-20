@@ -1,0 +1,28 @@
+# H2.S1.M3 oráculo de cada caso — DoD ejecutado el 2026-09-20T18:33:38Z sobre CASOS-ACEPTACION-M06-2026-09-20.md
+
+$ grep -c '^| CA-M06-' CASOS-ACEPTACION-M06-2026-09-20.md
+33
+exit_code=0   # esperado: = total de casos (33)
+
+$ grep -ciE '\| *(el sistema|lo que hace el sistema|comportamiento actual) *\|' CASOS-ACEPTACION-M06-2026-09-20.md
+0
+exit_code=1   # esperado: 0 (el sistema no es su propio oráculo)
+
+$ grep -c 'DECISION_REQUIRED' CASOS-ACEPTACION-M06-2026-09-20.md
+14
+exit_code=0   # esperado: >= 3 (los límites que salen del código están rotulados)
+
+$ sed -n '/^## §3/,/^## §4/p' CASOS-ACEPTACION-M06-2026-09-20.md | grep -c '| \*\*No\*\* |'
+4
+exit_code=0   # esperado: = 5 (casos que NO cuentan como aceptación)
+
+## Corrección del esperado — 2026-09-20T18:34:43Z
+El plan preveía 5 casos sin oráculo externo porque CA-M06-F09 (correo) iba a quedar DECISION_REQUIRED; al localizar TAREA-15 §1 punto 2 ganó oráculo PEDIDO-INTERNO. Son 4 (N-VAL-02, 03, 04, 08). Los totales del documento (veredicto y §3) se corrigieron a REGLA-CASA 15 · DECISION_REQUIRED 4 · aceptación 29.
+
+$ sed -n '/^## §3 /,/^## §4 /p' CASOS-ACEPTACION-M06-2026-09-20.md | grep -c '| \*\*No\*\* |'
+4
+exit_code=0   # esperado: 4
+
+$ sed -n '/^## §3 /,/^## §4 /p' CASOS-ACEPTACION-M06-2026-09-20.md | grep -c '^| CA-M06-.*| Sí'
+29
+exit_code=0   # esperado: 29 (33 - 4)

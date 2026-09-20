@@ -1,0 +1,28 @@
+# H2.S1.M1 casos del camino feliz — DoD ejecutado el 2026-09-20T18:33:37Z sobre CASOS-ACEPTACION-M06-2026-09-20.md
+
+$ grep -c '^### CA-M06-F' CASOS-ACEPTACION-M06-2026-09-20.md
+11
+exit_code=0   # esperado: >= 11 (uno por paso de H1 §8)
+
+$ grep -c '^### CA-M06-' CASOS-ACEPTACION-M06-2026-09-20.md
+33
+exit_code=0   # esperado: total de casos
+
+$ grep -c '^Fuente:' CASOS-ACEPTACION-M06-2026-09-20.md
+33
+exit_code=0   # esperado: = total de casos (cada caso cita su fuente)
+
+$ sed -n '/^## §1/,/^## §3/p' CASOS-ACEPTACION-M06-2026-09-20.md | grep -ciE 'controller|service|endpoint|dto|\.ts\b'
+15
+exit_code=0   # esperado: 0 (los casos no mencionan implementación)
+
+## Corrección (regla 80.4, TEST_BUG del DoD, no del documento) — 2026-09-20T18:34:42Z
+El rango sed "/^## §1/,/^## §3/" también casa con "## §10" y "## §11", por lo que reabría la ventana en §10-§11 (handoffs y trazabilidad, que SÍ citan código a propósito). Las 15 coincidencias eran todas de §10-§11 (líneas 281-310 del extracto). Rango corregido con espacio tras el dígito:
+
+$ sed -n '/^## §1 /,/^## §3 /p' CASOS-ACEPTACION-M06-2026-09-20.md | grep -ciE 'controller|service|endpoint|dto|\.ts\b'
+0
+exit_code=1   # esperado: 0 (los casos de §1-§2 no mencionan implementación)
+
+$ sed -n '/^## §1 /,/^## §3 /p' CASOS-ACEPTACION-M06-2026-09-20.md | grep -c '^### CA-M06-'
+33
+exit_code=0   # control positivo: el rango corregido contiene los 33 casos

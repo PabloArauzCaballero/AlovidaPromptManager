@@ -1,0 +1,5 @@
+# H3.S2.M1 transiciones legales con fuente — DoD ejecutado el 2026-09-20T20:09:46Z sobre PERMISOS-ESTADOS-DINERO-M06-2026-09-20.md
+
+$ sed -n '/^### H3.S2.M1/,/^### H3.S2.M2/p' PERMISOS-ESTADOS-DINERO-M06-2026-09-20.md | grep -cE '^\| .+ \| .+ \| .+ \|'
+7
+exit_code=0   # esperado: >= 6 filas de la tabla

@@ -1,0 +1,13 @@
+# H2.S3.M1 correspondencia paso ↔ cliente — DoD ejecutado el 2026-09-20T18:33:42Z sobre CASOS-ACEPTACION-M06-2026-09-20.md
+
+$ sed -n '/^## §7/,/^## §8/p' CASOS-ACEPTACION-M06-2026-09-20.md | grep -cE '^\| (1[01]|[1-9]) \|'
+11
+exit_code=0   # esperado: = 11 pasos
+
+$ sed -n '/^## §7/,/^## §8/p' CASOS-ACEPTACION-M06-2026-09-20.md | grep -E '^\| (1[01]|[1-9]) \|' | grep -cvE ':[0-9]+|AGREGADO'
+0
+exit_code=1   # esperado: 0 (cada fila cita línea o AGREGADO)
+
+$ sed -n '/^## §7/,/^## §8/p' CASOS-ACEPTACION-M06-2026-09-20.md | grep -E '^\| (1[01]|[1-9]) \|' | grep -c 'AGREGADO'
+4
+exit_code=0   # esperado: filas con AGREGADO (informativo)
