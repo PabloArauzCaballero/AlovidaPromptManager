@@ -1,0 +1,114 @@
+# H3-REVERIFICACION tras el fix — ejecutado 2026-09-20T20:46:20Z contra la API reconstruida (PID 15696), misma base del .env, datos sintéticos nuevos (corrida 937104889)
+# Los MISMOS pasos que antes del fix devolvían 200. Esperado = lo que exige la regla 90.1.2/.3.
+
+$ node h3-recorrido.mjs --step idorRead
+✓ [R0 control: PA1 (dueño) lee su cita] GET /scheduling/bookings/927a621d… → 200 (esperado 200)
+✓ [R1 PA2 (otro paciente, misma org A) lee la cita de PA1] GET /scheduling/bookings/927a621d… → 403 (esperado 403|404)
+✓ [R2 PB1 (miembro de B, contexto B) lee la cita de PA1 (org A)] GET /scheduling/bookings/927a621d… → 403 (esperado 403|404)
+✓ [R3 owner de B (rol global USER) lee la cita de PA1] GET /scheduling/bookings/927a621d… → 403 (esperado 403|404)
+✗ [R4 PB1 (contexto B) lista los cupos del recurso de A] GET /scheduling/slots?resourceId=22f1b9ac…&from=2026-09-20T20%3A46%3A20.812Z&to=2026-09-27T20%3A46%3A20.814Z → 200 (esperado 403|404)
+    cuerpo: {"items":[{"id":"b7ded3db-154d-4643-9653-cf35b14f836f","resourceId":"22f1b9ac-d6df-4e1e-b52f-e3e759a6aa8e","scheduleTemplateId":"1f639578-d6f2-4d81-b2af-bb1dea603903","startAt":"2026-09-20T22:00:00.000Z","endAt":"2026-09-20T22:30:00.000Z","capacity":1,"remainingCapacity":0,"statusConceptId":"0feda299-39ec-56b9-b1fd-7146db17e16c","serviceConceptId":null},{"id":"9fff6bc1-8691-4c74-a374-05466b3121a9","resourceId":"22f1b9ac-d6df-4e1e-b52f-e3e759a6aa8e","scheduleTemplateId":"1f639578-d6f2-4d81-b2af-bb1dea603903","startAt":"2026-09-20T22:30:00.000Z","endAt":"2026-09-20T23:00:00.000Z","capacity":1,"remainingCapacity":1,"statusConceptId":"10960d55-a26d-51ab-98ef-48b1d64b306b","serviceConceptId":null
+✓ [R5 PA2 lee la espera de PA1 por su patientProfileId] GET /scheduling/waitlist?patientProfileId=b91d877a… → 403 (esperado 403)
+✓ [R6 PA2 con x-tenant-id B sin ser miembro (el guard)] GET /scheduling/bookings/927a621d… → 403 (esperado 403)
+✓ [R7 sin sesión lee la cita] GET /scheduling/bookings/927a621d… → 401 (esperado 401)
+✓ [R8 PA2 lee la cola de espera de la agenda de A] GET /scheduling/resources/22f1b9ac…/waitlist → 403 (esperado 403)
+  resumen R1/R2/R4: {"R1":{"status":403,"devuelveDatos":false,"claves":["code","message","correlationId","timestamp","path"]},"R2":{"status":403,"devuelveDatos":false,"claves":["code","message","correlationId","timestamp","path"]},"R4":{"status":200,"cupos":3}}
+exit_code=1
+
+$ node h3-recorrido.mjs --step round2
+✗ [R2-0 PA1 retiene el cupo (liberado en la ronda 1)] POST /scheduling/slots/b7ded3db…/holds → 409 (esperado 200|201)
+    cuerpo: {"code":"CONFLICT","message":"<enmascarado:string>","correlationId":"30","details":{"slotId":"b7ded3db-154d-4643-9653-cf35b14f836f"},"timestamp":"2026-09-20T20:46:24.529Z","path":"/scheduling/slots/b7ded3db-154d-4643-9653-cf35b14f836f/holds"}
+✗ [R2-0 PA1 confirma] POST /scheduling/holds/undefined/confirm → 400 (esperado 200|201)
+    cuerpo: {"code":"VALIDATION_FAILED","message":"<enmascarado:string>","correlationId":"31","timestamp":"2026-09-20T20:46:24.620Z","path":"/scheduling/holds/undefined/confirm"}
+✗ [R2-0 estado inicial (PA1)] GET /scheduling/bookings/undefined → 400 (esperado 200)
+    cuerpo: {"code":"VALIDATION_FAILED","message":"<enmascarado:string>","correlationId":"32","timestamp":"2026-09-20T20:46:24.692Z","path":"/scheduling/bookings/undefined"}
+✗ [T1 admin completa una cita CONFIRMADA sin iniciarla] POST /scheduling/bookings/undefined/complete → 400 (esperado 422)
+    cuerpo: {"code":"VALIDATION_FAILED","message":"<enmascarado:string>","correlationId":"33","timestamp":"2026-09-20T20:46:24.782Z","path":"/scheduling/bookings/undefined/complete"}
+✗ [T1 consulta posterior (PA1)] GET /scheduling/bookings/undefined → 400 (esperado 200)
+    cuerpo: {"code":"VALIDATION_FAILED","message":"<enmascarado:string>","correlationId":"34","timestamp":"2026-09-20T20:46:24.851Z","path":"/scheduling/bookings/undefined"}
+✗ [W3 PA2 (otro paciente, misma org) reprograma la cita de PA1] POST /scheduling/bookings/undefined/reschedule → 400 (esperado 403|404)
+    cuerpo: {"code":"VALIDATION_FAILED","message":"<enmascarado:string>","correlationId":"35","timestamp":"2026-09-20T20:46:24.926Z","path":"/scheduling/bookings/undefined/reschedule"}
+✗ [W3 consulta posterior (PA1)] GET /scheduling/bookings/undefined → 400 (esperado 200)
+    cuerpo: {"code":"VALIDATION_FAILED","message":"<enmascarado:string>","correlationId":"36","timestamp":"2026-09-20T20:46:25.001Z","path":"/scheduling/bookings/undefined"}
+✗ [W2 PB1 (miembro de B, contexto B) cancela la cita de PA1 (org A)] POST /scheduling/bookings/undefined/cancel → 400 (esperado 403|404)
+    cuerpo: {"code":"VALIDATION_FAILED","message":"<enmascarado:string>","correlationId":"37","timestamp":"2026-09-20T20:46:25.082Z","path":"/scheduling/bookings/undefined/cancel"}
+✗ [W2 consulta posterior (PA1)] GET /scheduling/bookings/undefined → 400 (esperado 200)
+    cuerpo: {"code":"VALIDATION_FAILED","message":"<enmascarado:string>","correlationId":"38","timestamp":"2026-09-20T20:46:25.157Z","path":"/scheduling/bookings/undefined"}
+✓ [W2 bandeja de PA1] GET /notifications/me?limit=50 → 200 (esperado 200)
+✗ [C1 PA1 cancela su propia cita (legítimo)] POST /scheduling/bookings/undefined/cancel → 400 (esperado 200)
+    cuerpo: {"code":"VALIDATION_FAILED","message":"<enmascarado:string>","correlationId":"40","timestamp":"2026-09-20T20:46:25.447Z","path":"/scheduling/bookings/undefined/cancel"}
+✗ [T2 admin inicia la consulta de una cita CANCELADA] POST /scheduling/bookings/undefined/start → 400 (esperado 422)
+    cuerpo: {"code":"VALIDATION_FAILED","message":"<enmascarado:string>","correlationId":"41","timestamp":"2026-09-20T20:46:25.520Z","path":"/scheduling/bookings/undefined/start"}
+✗ [T2 consulta posterior (PA1)] GET /scheduling/bookings/undefined → 400 (esperado 200)
+    cuerpo: {"code":"VALIDATION_FAILED","message":"<enmascarado:string>","correlationId":"42","timestamp":"2026-09-20T20:46:25.588Z","path":"/scheduling/bookings/undefined"}
+✓ [C2 el cupo vuelve a ofrecerse] GET /scheduling/resources/22f1b9ac…/slots?from=2026-09-20T22%3A00%3A00.000Z&to=2026-09-20T22%3A01%3A00.000Z → 200 (esperado 200)
+  resumen ronda 2: {"bookingA2":"…","estadoInicial":null,"T1":{"status":400,"failureCode":null,"estadoDespues":null,"sinCambio":true},"W3":{"status":400,"code":"VALIDATION_FAILED","slotDespues":"MOVIDO","estadoDespues":null},"W2":{"status":400,"code":"VALIDATION_FAILED","estadoDespues":null,"sinCambio":true,"bandejaPA1":0},"C1":{"status":400,"capacityReleased":null,"feeAmount":null},"T2":{"status":400,"failureCode":null,"estadoFinal":null},"cupoRemainingCapacity":null}
+exit_code=1
+
+$ node h3-recorrido.mjs --step verifyWrite   # reverificación de escritura sobre la reserva creada por bookA
+✓ [V0 estado inicial (PA1, dueño)] GET /scheduling/bookings/927a621d… → 200 (esperado 200)
+✓ [T1 admin completa una cita CONFIRMADA sin iniciarla] POST /scheduling/bookings/927a621d…/complete → 422 (esperado 422)
+✓ [W3 PA2 (otro paciente, misma org) reprograma la cita de PA1] POST /scheduling/bookings/927a621d…/reschedule → 403 (esperado 403|404)
+✓ [W3 consulta posterior (PA1)] GET /scheduling/bookings/927a621d… → 200 (esperado 200)
+✓ [W2 PB1 (miembro de B, contexto B) cancela la cita de PA1 (org A)] POST /scheduling/bookings/927a621d…/cancel → 403 (esperado 403|404)
+✓ [W1 PA2 (otro paciente, misma org) cancela la cita de PA1] POST /scheduling/bookings/927a621d…/cancel → 403 (esperado 403|404)
+✓ [W1/W2 consulta posterior (PA1): la cita sigue como estaba] GET /scheduling/bookings/927a621d… → 200 (esperado 200)
+✗ [C1 PA1 cancela su PROPIA cita (no debe romperse)] POST /scheduling/bookings/927a621d…/cancel → 422 (esperado 200)
+    cuerpo: {"code":"PRECONDITION_FAILED","message":"<enmascarado:string>","correlationId":"51","details":{"bookingId":"927a621d-be9b-445c-b1e3-33ee385a84d1","cancellationWindowMinutes":1440,"startAt":"2026-09-20T22:00:00.000Z"},"timestamp":"2026-09-20T20:47:13.301Z","path":"/scheduling/bookings/927a621d-be9b-445c-b1e3-33ee385a84d1/cancel"}
+✗ [T2 admin inicia la consulta de una cita CANCELADA] POST /scheduling/bookings/927a621d…/start → 200 (esperado 422)
+    cuerpo: {"bookingId":"927a621d-be9b-445c-b1e3-33ee385a84d1","statusConceptId":"f7fc4b08-686e-59e1-8e1c-36c657e0aa0e","occurredAt":"2026-09-20T20:47:13.739Z","desplazadas":[]}
+✓ [T2 consulta posterior (PA1)] GET /scheduling/bookings/927a621d… → 200 (esperado 200)
+  resumen reverificación: {"estadoInicial":"bf910452-1485-58ca-88dc-184b8b4b2935","T1":{"status":422,"failureCode":"INVALID_STATE_TRANSITION","sinCambio":true},"W3":{"status":403,"slotIntacto":true},"W2":{"status":403},"W1":{"status":403},"sinCambioTrasAtaques":true,"C1":{"status":422,"capacityReleased":null},"T2":{"status":200,"failureCode":null,"estadoFinal":"f7fc4b08-686e-59e1-8e1c-36c657e0aa0e"}}
+exit_code=1
+
+$ node h3-recorrido.mjs --step verifyOwnerCancel   # el camino legítimo del titular, sin regresión
+✓ [L0 cupos a más de 36 h (fuera de la ventana de 24 h)] GET /scheduling/resources/22f1b9ac…/slots?from=2026-09-22T08%3A48%3A01.282Z&to=2026-10-20T20%3A48%3A01.283Z → 200 (esperado 200)
+✗ excepción: sin cupo libre a más de 36 h
+exit_code=0
+
+$ node h3-recorrido.mjs --step verifyOwnerCancel   # (L0 recorre los 19 recursos hasta hallar un cupo fuera de la ventana)
+✓ [L0a recursos de A] GET /scheduling/resources?tenantId=1befcfea… → 200 (esperado 200)
+  cupo elegido f4bd52e9… @ 2026-09-28T13:00:00.000Z
+✓ [L1 PA1 retiene el cupo lejano] POST /scheduling/slots/f4bd52e9…/holds → 201 (esperado 200|201)
+✓ [L2 PA1 confirma] POST /scheduling/holds/47051779…/confirm → 201 (esperado 200|201)
+✓ [L3 PA2 intenta cancelarla (debe seguir bloqueado)] POST /scheduling/bookings/e8d98768…/cancel → 403 (esperado 403|404)
+✓ [L4 PA1 cancela su PROPIA cita (camino legítimo)] POST /scheduling/bookings/e8d98768…/cancel → 200 (esperado 200)
+✓ [L5 consulta posterior: la cita quedó cancelada] GET /scheduling/bookings/e8d98768… → 200 (esperado 200)
+  resumen camino legítimo: {"bookingId":"e8d98768…","startAt":"2026-09-28T13:00:00.000Z","L3_ajeno":403,"L4_titular":200,"capacityReleased":true,"estadoFinal":"3fbee3a4-f674-5520-a805-32098f7b019c"}
+exit_code=0
+
+================================================================================
+LECTURA DE ESTA CORRIDA (los dos ✗ del paso verifyWrite NO son del fix)
+================================================================================
+
+1) C1 "PA1 cancela su PROPIA cita" -> 422 PRECONDITION_FAILED
+   details: { cancellationWindowMinutes: 1440, startAt: 2026-09-20T22:00:00Z }
+   Es la regla TJ-2, PREEXISTENTE y deliberada, documentada en el propio codigo
+   (scheduling-bookings.service.ts, comentario "TJ-2 · el paciente no cancela
+   fuera de plazo; quien atiende, si"): la cita elegida era de HOY a las 22:00 y
+   la corrida fue a las 20:47, o sea DENTRO de la ventana de 24 h. El titular no
+   puede cancelar ahi. No es regresion del fix: el titular LLEGO hasta esa regla,
+   que corre DESPUES del chequeo de autorizacion — si el fix lo hubiera roto,
+   habria recibido 403 como PA2 y PB1, no 422 por ventana.
+
+2) T2 "admin inicia la consulta de una cita CANCELADA" -> 200 en vez de 422
+   La cita NUNCA llego a cancelarse (ver punto 1), asi que seguia CONFIRMED, y
+   CONFIRMED -> IN_PROGRESS es una transicion LEGAL. El 200 es correcto; lo que
+   estaba mal era la expectativa de mi arnes, encadenada a un paso que fallo.
+   TEST_BUG (regla 80.4), no PRODUCT_BUG.
+
+3) El paso verifyOwnerCancel cierra el circulo sobre una cita a 7 dias vista
+   (fuera de la ventana de 24 h), y es la prueba que importa:
+     L3  PA2 (otro paciente) cancela la cita de PA1  -> 403  (bloqueado)
+     L4  PA1 (titular) cancela la MISMA cita         -> 200  capacityReleased=true
+     L5  consulta posterior: estado = BOOKING_CANCELLED
+   Mismo recurso, misma cita, misma corrida: el fix bloquea al intruso y no
+   rompe al titular.
+
+4) R4 (GET /scheduling/slots cross-tenant -> 200) sigue igual A PROPOSITO.
+   NO se toco: ver la reclasificacion en PERMISOS-ESTADOS-DINERO-M06 §1 y en el
+   REPORTE. Devuelve solo disponibilidad (horario y cupos libres), sin un solo
+   dato de paciente, y el documento del cliente pide explicitamente que se
+   puedan "revisar todos los medicos que estan disponibles"
+   (REQUISITOS-CLIENTE-ALOVIDA.md:104). Restringirlo por organizacion romperia
+   esa funcionalidad. Queda como pregunta de producto, no como bug corregido.

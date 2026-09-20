@@ -1,0 +1,9 @@
+# H3.S3.M1 enteros de menor unidad — DoD ejecutado el 2026-09-20T20:09:47Z sobre PERMISOS-ESTADOS-DINERO-M06-2026-09-20.md
+
+$ grep -c 'numeric' PERMISOS-ESTADOS-DINERO-M06-2026-09-20.md
+4
+exit_code=0   # esperado: >= 1
+
+$ grep -c 'no hay flotantes\|No hay flotantes\|cero.*columnas.*real' PERMISOS-ESTADOS-DINERO-M06-2026-09-20.md
+2
+exit_code=0   # esperado: >= 1

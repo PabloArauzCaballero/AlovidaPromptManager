@@ -1,0 +1,97 @@
+=== H1.S1.M2 — corte real de los checkouts · consulta 2026-09-20T15:56:33Z
+
+########## mantra-core-health · ruta=D:/Trabajos Secundarios/Mantra Core Technologies/mantra-core-health
+$ git fetch --quiet origin
+fetch_exit=0
+$ date -u +%FT%TZ
+2026-09-20T15:56:35Z
+$ git rev-parse --abbrev-ref HEAD; git rev-parse HEAD
+marcelo/feat-insurance-antifraud-hardening
+35cf35dc864e3ea9f10525a59bcf0d123a1efa3d
+$ git log -1 --format="%H %cI %an %s"
+35cf35dc864e3ea9f10525a59bcf0d123a1efa3d 2026-09-20T02:00:35-04:00 t test(seguros): el carril antifraude cubre hover, cláusula y canales de contacto
+$ for ref in origin/dev origin/mockup origin/main; do git log -1 --format="$ref %H %cI %s" $ref; done
+origin/dev 3f001e49020f842cc59d9b1254dcde0433890dbb 2026-09-20T00:29:28-04:00 Merge pull request #546 from mdavila-2001/marcelo/feat-portability-e2e-hardening
+origin/mockup 48a402cd602af602377212e18cf3bc30ae2f488b 2026-09-20T00:29:18-04:00 Merge pull request #548 from mdavila-2001/justin/perfil-medico-correcciones
+origin/main e12364ccdd102d76ae172924490ce00fe311531d 2026-08-13T17:11:15-04:00 docs(reports): sincroniza contrato e inventarios de scheduling
+$ git status --porcelain=v1 -b | head -5
+## marcelo/feat-insurance-antifraud-hardening...origin/marcelo/feat-insurance-antifraud-hardening
+$ git merge-base HEAD origin/dev (o origin/main)
+3f001e49020f842cc59d9b1254dcde0433890dbb
+
+########## mantra_core_health_mobile · ruta=D:/Trabajos Secundarios/Mantra Core Technologies/mantra_core_health_mobile
+$ git fetch --quiet origin
+fetch_exit=0
+$ date -u +%FT%TZ
+2026-09-20T15:56:38Z
+$ git rev-parse --abbrev-ref HEAD; git rev-parse HEAD
+dev
+2c2e257a2e99b38899354d2b20f8aae006dfaf68
+$ git log -1 --format="%H %cI %an %s"
+2c2e257a2e99b38899354d2b20f8aae006dfaf68 2026-09-05T17:36:46-04:00 Pablo Arauz Caballero refactor(marca): fuera REDESA, VITARA y REDSAT — el nombre es ALOVIDA
+$ for ref in origin/dev origin/mockup origin/main; do git log -1 --format="$ref %H %cI %s" $ref; done
+origin/dev 2c2e257a2e99b38899354d2b20f8aae006dfaf68 2026-09-05T17:36:46-04:00 refactor(marca): fuera REDESA, VITARA y REDSAT — el nombre es ALOVIDA
+origin/main 0decf423171ff854fa26a8eabdd70381f10e01c2 2026-08-07T19:25:41-04:00 Refactor code structure for improved readability and maintainability
+$ git status --porcelain=v1 -b | head -5
+## dev...origin/dev
+?? android/app/google-services.json
+?? ios/Runner/GoogleService-Info.plist
+$ git merge-base HEAD origin/dev (o origin/main)
+2c2e257a2e99b38899354d2b20f8aae006dfaf68
+
+########## AloVida · ruta=D:/Trabajos Secundarios/Mantra Core Technologies/AloVida
+$ git fetch --quiet origin
+fetch_exit=0
+$ date -u +%FT%TZ
+2026-09-20T15:56:41Z
+$ git rev-parse --abbrev-ref HEAD; git rev-parse HEAD
+main
+ec5e0083cf472f17db16d3e027624c83d2f36533
+$ git log -1 --format="%H %cI %an %s"
+ec5e0083cf472f17db16d3e027624c83d2f36533 2026-08-24T14:40:17-04:00 Marcelo Dávila feat: implement construction landing page with animated aurora background and responsive layout components
+$ for ref in origin/dev origin/mockup origin/main; do git log -1 --format="$ref %H %cI %s" $ref; done
+origin/main ec5e0083cf472f17db16d3e027624c83d2f36533 2026-08-24T14:40:17-04:00 feat: implement construction landing page with animated aurora background and responsive layout components
+$ git status --porcelain=v1 -b | head -5
+## main...origin/main
+$ git merge-base HEAD origin/dev (o origin/main)
+ec5e0083cf472f17db16d3e027624c83d2f36533
+
+########## mantra-core-health-api · ruta=D:/Trabajos Secundarios/Mantra Core Technologies/mantra-core-health-api
+$ git fetch --quiet origin
+fetch_exit=0
+$ date -u +%FT%TZ
+2026-09-20T15:56:43Z
+$ git rev-parse --abbrev-ref HEAD; git rev-parse HEAD
+marcelo/feat-representantes-nombre-en-partes-api
+a5753dc763a330b4fa78f72cc8bcd843553a8334
+$ git log -1 --format="%H %cI %an %s"
+a5753dc763a330b4fa78f72cc8bcd843553a8334 2026-09-19T17:27:59-04:00 t docs(api): regenerar OpenAPI, endpoints y Postman tras el nombre en partes
+$ for ref in origin/dev origin/mockup origin/main; do git log -1 --format="$ref %H %cI %s" $ref; done
+origin/dev 4cc5ea1fa925258db730c7d4d9bffd5f5ab2c8e9 2026-09-20T10:50:34-04:00 Merge pull request #443 from mdavila-2001/justin/noche-2026-09-19-relacion-agenda-mensajeria
+$ git status --porcelain=v1 -b | head -5
+## marcelo/feat-representantes-nombre-en-partes-api...origin/marcelo/feat-representantes-nombre-en-partes-api
+$ git merge-base HEAD origin/dev (o origin/main)
+a5753dc763a330b4fa78f72cc8bcd843553a8334
+
+########## TARGET_REF de la ficha en la API
+$ git cat-file -t 32ae939983f0d665e4ed371362858801134d35cd
+commit
+exit_code=0
+$ git rev-list --count 32ae939983f0d665e4ed371362858801134d35cd..origin/dev
+8
+$ git merge-base --is-ancestor HEAD origin/dev; echo $?   # 0 = mi checkout es ancestro de origin/dev
+0
+$ git log --oneline 32ae939983f0d665e4ed371362858801134d35cd..origin/dev
+4cc5ea1f Merge pull request #443 from mdavila-2001/justin/noche-2026-09-19-relacion-agenda-mensajeria
+cac54e70 Merge pull request #444 from mdavila-2001/pablo/h2-lab-avisos-agenda
+cd1889bf test(scheduling): laboratorio de la capacidad de avisos de agenda (H2, carril Pablo)
+f9afde23 test(scheduling): la relación entrega — el hallazgo era la base, no el producto
+0d94d358 docs: completar el índice de evidencia del reporte
+89382d40 test(scheduling): la relación agenda → mensajería, ejercitada con dobles y medida contra Postgres
+5d5007fb Merge pull request #442 from mdavila-2001/itzan/f09-mch008-2-encounter-coherence
+70f8f1a8 fix(clinical): MCH-008.2 · condiciones y órdenes exigen un encuentro del mismo paciente y custodio
+
+########## TARGET_REF en los otros repos
+mantra-core-health: fatal: git cat-file: could not get object info
+mantra_core_health_mobile: fatal: git cat-file: could not get object info
+AloVida: fatal: git cat-file: could not get object info

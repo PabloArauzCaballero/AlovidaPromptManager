@@ -1,0 +1,5 @@
+=== Verificaciones post-escritura del documento · 2026-09-20T17:44:49Z
+
+$ grep -n "mockBackend" "$DOC" | head -1
+7:> `mantra-core-health` compila el backend simulado **encendido** en `yarn start` (desarrollo) y en `yarn build` (producción, `defaultConfiguration` sin `fileReplacements`) — es así en `HEAD`, `origin/dev` y `origin/mockup` por igual. **Un recorrido verde con `mockBackend` activo no acredita el backend.** Sólo tres arneses lo apagan: `yarn start:real-api`, `yarn recorrido:real` (Cypress `cypress/e2e/real/`) y la configuración `e2e-real` de Playwright, todos contra la API real en `:3000`. No se afirma que todo endpoint esté simulado en toda configuración: no se comprobó exhaustivamente. Detalle en §3.
+exit_code=0  (linea < 30 => la advertencia esta en la primera pantalla)

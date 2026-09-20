@@ -1,0 +1,5 @@
+# H3.S3.M3 porcentajes copagos sin definir — DoD ejecutado el 2026-09-20T20:09:48Z sobre PERMISOS-ESTADOS-DINERO-M06-2026-09-20.md
+
+$ sed -n '/^### H3.S3.M3/,/^---/p' PERMISOS-ESTADOS-DINERO-M06-2026-09-20.md | grep -cE '^\| DR-M06-DINERO'
+5
+exit_code=0   # esperado: >= 5
