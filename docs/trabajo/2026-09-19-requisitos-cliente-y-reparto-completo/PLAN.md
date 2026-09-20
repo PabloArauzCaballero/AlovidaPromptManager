@@ -150,8 +150,8 @@ nadie del equipo** y que el código de Mantra no se abrió en esta sesión.
 
 | ID | Microtarea | CA (binario) | DoD (comando de verificación) | Estado |
 |---|---|---|---|---|
-| H4.S1.M1 | `REPORTE.md` completo | Las tres secciones presentes | `python .claude/hooks/plan_status.py` → `REPORTE.md: completo` | TODO |
-| H4.S1.M2 | Commit de todo el trabajo | Árbol limpio | `git status --short` → sin salida | TODO |
+| H4.S1.M1 | `REPORTE.md` completo | Las tres secciones presentes | `python .claude/hooks/plan_status.py` → `REPORTE.md: completo` | HECHO |
+| H4.S1.M2 | Commit de todo el trabajo | Árbol limpio | `git status --short` → sin salida | HECHO |
 
 ## Riesgos y bloqueos previstos
 
