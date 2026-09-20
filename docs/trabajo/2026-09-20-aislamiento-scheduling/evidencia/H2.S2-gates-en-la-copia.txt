@@ -1,0 +1,48 @@
+H2.S2 -- Los gates en la copia
+
+H2.S2.M1 -- Typecheck y build de la capacidad, delimitados
+
+Hecho previo: este repo NO es un monorepo Nest (no hay `nest-cli.json` con `projects`), asi que
+no existe un comando nativo de build delimitado por modulo:
+  corepack yarn nest build --path scheduling
+  -> Error: Could not find TypeScript configuration file "scheduling". Please, ensure that you
+     are running this command in the appropriate directory (inside Nest workspace).
+Registrado como hallazgo, no se inventa una config nueva (seria crear alcance no pedido).
+
+Unica superficie disponible: el typecheck de todo el programa (`tsconfig.json` es un unico
+programa TS para todo `src/`). Para que "todo el repo" no se lea como un build delimitado
+positivo (la regla lo prohibe explicitamente), se compara contra la linea base SIN retirar
+nada, corrida en `mantra-core-health-api-copia-noche` (mismo commit 5d5007fb, node_modules
+identico via junction):
+
+  Baseline (copia-noche, sin retiro):
+    corepack yarn tsc --noEmit -p tsconfig.json --incremental false
+    -> EXIT:0, 0 errores
+
+  Con messaging y community retirados (copia-noche-h2):
+    corepack yarn tsc --noEmit -p tsconfig.json --incremental false
+    -> EXIT:2, 143 errores TS
+
+  Delta: 143 errores nuevos, el 100% atribuible al retiro (0 en baseline). De esos 143:
+    - 5 caen literalmente dentro de `src/modules/scheduling/` (ver
+      H2.S1.M2-M3-retiro-e-inventario.txt): 2 adapters + el propio `scheduling.module.ts`.
+    - Los 138 restantes son cascada en consumidores DE messaging/community que no son
+      scheduling (`common/seed/*`, `common/storage/*`, `app.module.ts` y los errores de tipo
+      que arrastran esos archivos al perder la entidad `messaging/entities`). No agregan
+      informacion nueva sobre scheduling; se registran para no ocultar el conteo total.
+
+Veredicto de esta microtarea: FAIL, no HECHO. La capacidad NO llega a `exit 0` sin sus dos
+vecinos. Esto es la evidencia central del hito: no hay aislamiento hoy, hay acoplamiento
+concreto y demostrado, no solo sospechado.
+
+H2.S2.M2 -- Arranque propio con PostgreSQL permitido, cierre limpio
+
+Estado: BLOQUEADO. No tiene sentido levantar un `NestFactory` sobre un grafo de modulos que
+no compila (H2.S2.M1 en FAIL). Intentarlo igual seria simular un resultado que la evidencia ya
+descarto. Depende de: resolver o aceptar como permanente la dependencia a messaging/community
+(fuera del alcance de esta noche -- decision de Ender/Justin segun la tabla de handoff del
+documento fuente).
+
+H2.S2.M3 -- Correr la aceptacion local (laboratorio de Pablo)
+
+Estado: BLOQUEADO, misma causa que H2.S2.M2: no hay binario que levantar.
