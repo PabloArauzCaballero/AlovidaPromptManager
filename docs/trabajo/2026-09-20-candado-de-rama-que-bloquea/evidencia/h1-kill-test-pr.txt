@@ -1,0 +1,60 @@
+$ H1.S2.M1 — el candado detecta la deriva en local
+sync --check: DERIVA DETECTADA entre .claude/ y .agents/
+  [difiere] rules/00-no-negociables.md
+
+Corregi con: python tools/sync_agents.py
+exit=1
+$ H1.S2.M3 — KILL-TEST: estado del PR #1
+  PR #1
+  check:            Espejo sin deriva y candados en verde
+  conclusion:       FAILURE
+  mergeable:        MERGEABLE
+  mergeStateStatus: UNSTABLE
+
+$ el paso exacto que fallo
+JOBS
+X Espejo sin deriva y candados en verde in 6s (ID 106017261523)
+  ✓ Set up job
+  ✓ Run actions/checkout@v7
+  ✓ Run actions/setup-python@v7
+  X Espejo .agents/ sin deriva
+  - Self-test de sync_agents
+  - Self-test de plan_gate
+  - Self-test de report_gate
+  - Self-test de plan_status
+  - Self-test de check_reparto
+  - Self-test de check_skills_citadas
+  - Estructura del reparto y seccion obligatoria de skills
+  - Ninguna skill citada que no exista
+  - Post Run actions/setup-python@v7
+  ✓ Post Run actions/checkout@v7
+  ✓ Complete job
+
+$ H1.S2.M4 — limpieza
+  PRs abiertos:        0
+  rama en el remoto:   1  (0 = borrada)
+  rama local:          1  (0 = borrada)
+  rama actual:         prueba/candado-deriva
+  arbol:               1 cambios  (0 = limpio)
+  main == origin/main: si
+
+$ el espejo volvio a estar sano
+sync --check: DERIVA DETECTADA entre .claude/ y .agents/
+  [difiere] rules/00-no-negociables.md
+
+Corregi con: python tools/sync_agents.py
+  exit=1
+
+$ H1.S2.M4 — limpieza
+  PRs abiertos:        0
+  rama en el remoto:   0  (0 = borrada)
+  rama local:          0  (0 = borrada)
+  rama actual:         main
+  main == origin/main: si
+
+$ el espejo, sano otra vez en main
+sync --check: DERIVA DETECTADA entre .claude/ y .agents/
+  [difiere] rules/00-no-negociables.md
+
+Corregi con: python tools/sync_agents.py
+  exit=1

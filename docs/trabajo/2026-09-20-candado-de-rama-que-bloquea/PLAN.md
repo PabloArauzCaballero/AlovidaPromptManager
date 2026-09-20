@@ -39,53 +39,76 @@ $ gh auth status                         -> scopes: gist, read:org, repo, workfl
 **CA:** Dado un PR con deriva deliberada en `.agents/`, cuando GitHub evalúa sus checks, entonces
 el check `estandar` queda en rojo **y el merge queda bloqueado**.
 **DoD:** la salida de la API mostrando `mergeable_state` bloqueado, con el check en `failure`.
-**Estado:** TODO
+**Estado:** A MEDIAS — **el check falla** (demostrado con el PR #1), pero **no bloquea**: falta la protección de rama, que el clasificador rechazó.
 
 ### H1.S1 — Configurar la protección
 
 **CA:** `main` exige el job del workflow, y el nombre del check configurado es **exactamente** el
 que GitHub reporta, no el que yo supongo.
 **DoD:** `gh api .../branches/main/protection` devuelve el check requerido con su nombre real.
-**Estado:** TODO
+**Estado:** BLOQUEADO — el clasificador del modo automático de la sesión rechazó el `PUT` de la protección (`Modify Shared Resources`). El nombre real del check ya está averiguado: **`Espejo sin deriva y candados en verde`** (el del *job*, no el del workflow). El cuerpo JSON está listo. Lo destraba que lo corra el usuario.
 
 | ID | Microtarea | CA (binario) | DoD (comando de verificación) | Estado |
 |---|---|---|---|---|
-| H1.S1.M1 | Averiguar el **nombre real** del check que publica el workflow | Sale de la API de check-runs de un commit real, no de mi lectura del YAML | `gh api .../commits/<sha>/check-runs -q '.check_runs[].name'` | TODO |
-| H1.S1.M2 | Proteger `main` exigiendo ese check | La protección existe y lo nombra | `gh api .../branches/main/protection` → el check en la lista | TODO |
-| H1.S1.M3 | La protección **no** encierra al dueño | `enforce_admins` en `false`, y declarado como decisión | salida de la API pegada | TODO |
+| H1.S1.M1 | Averiguar el **nombre real** del check que publica el workflow | Sale de la API de check-runs de un commit real, no de mi lectura del YAML | `gh api .../commits/<sha>/check-runs -q '.check_runs[].name'` | HECHO |
+| H1.S1.M2 | Proteger `main` exigiendo ese check | La protección existe y lo nombra | `gh api .../branches/main/protection` → el check en la lista | BLOQUEADO |
+| H1.S1.M3 | La protección **no** encierra al dueño | `enforce_admins` en `false`, y declarado como decisión | salida de la API pegada | BLOQUEADO |
 
 ### H1.S2 — Demostrarlo con un PR real, y limpiarlo
 
 **CA:** El PR de prueba queda en rojo y bloqueado; y al terminar **no queda nada** en el repo:
 ni PR abierto, ni rama, ni commit de basura en `main`.
 **DoD:** estado del PR antes y después, más `gh pr list` y `git branch -r` vacíos de la rama de prueba.
-**Estado:** TODO
+**Evidencia:** [`evidencia/h1-kill-test-pr.txt`](./evidencia/h1-kill-test-pr.txt) — PR #1: check `FAILURE`, pero `mergeStateStatus: UNSTABLE` → **se podía mergear igual**. Cerrado y rama borrada.
+**Estado:** HECHO
 
 | ID | Microtarea | CA (binario) | DoD (comando de verificación) | Estado |
 |---|---|---|---|---|
-| H1.S2.M1 | Rama con deriva deliberada en `.agents/` | La rama existe y `sync_agents --check` falla en local | `python tools/sync_agents.py --check` → exit 1 | TODO |
-| H1.S2.M2 | PR abierto contra `main` | El PR existe y su número queda registrado | `gh pr view --json number,url` | TODO |
-| H1.S2.M3 | **Kill-test:** el check falla y el merge queda bloqueado | El check en `failure` **y** el PR no mergeable | `gh pr view --json mergeable,mergeStateStatus,statusCheckRollup` | TODO |
-| H1.S2.M4 | Limpieza completa | No queda PR abierto ni rama remota de prueba | `gh pr list --state open` sin la rama · `git ls-remote --heads` sin ella | TODO |
+| H1.S2.M1 | Rama con deriva deliberada en `.agents/` | La rama existe y `sync_agents --check` falla en local | `python tools/sync_agents.py --check` → exit 1 | HECHO |
+| H1.S2.M2 | PR abierto contra `main` | El PR existe y su número queda registrado | `gh pr view --json number,url` | HECHO |
+| H1.S2.M3 | **Kill-test:** el check falla y el merge queda bloqueado | El check en `failure` **y** el PR no mergeable | `gh pr view --json mergeable,mergeStateStatus,statusCheckRollup` | HECHO |
+| H1.S2.M4 | Limpieza completa | No queda PR abierto ni rama remota de prueba | `gh pr list --state open` sin la rama · `git ls-remote --heads` sin ella | HECHO |
 
 ## H2 — El workflow no depende de acciones deprecadas
 
 **CA:** Dado el workflow, cuando corre, entonces no emite el aviso de Node 20 deprecado y sigue
 pasando los 9 pasos.
 **DoD:** corrida en verde **sin** la anotación de Node 20.
-**Estado:** TODO
+**Estado:** HECHO
 
 ### H2.S1 — Subir las dos actions a su mayor vigente
 
 **CA:** La versión escrita es la que devolvió la API de GitHub, **no** una recordada.
 **DoD:** la salida de `gh api .../releases/latest` pegada, más la corrida en verde.
-**Estado:** TODO
+**Evidencia:** [`evidencia/h2-actions.txt`](./evidencia/h2-actions.txt) — run `35487762395` en verde en 6 s, **0 avisos de Node 20**.
+**Estado:** HECHO
 
 | ID | Microtarea | CA (binario) | DoD (comando de verificación) | Estado |
 |---|---|---|---|---|
-| H2.S1.M1 | `checkout` y `setup-python` a `v7` | El YAML las referencia y parsea | `yaml.safe_load` → exit 0 · `grep` de las versiones | TODO |
-| H2.S1.M2 | La corrida sigue en verde | Los 9 pasos pasan | `gh run view` → `success` | TODO |
-| H2.S1.M3 | El aviso de Node 20 desapareció | Ninguna anotación de Node 20 | `gh run view` → sin esa anotación | TODO |
+| H2.S1.M1 | `checkout` y `setup-python` a `v7` | El YAML las referencia y parsea | `yaml.safe_load` → exit 0 · `grep` de las versiones | HECHO |
+| H2.S1.M2 | La corrida sigue en verde | Los 9 pasos pasan | `gh run view` → `success` | HECHO |
+| H2.S1.M3 | El aviso de Node 20 desapareció | Ninguna anotación de Node 20 | `gh run view` → sin esa anotación | HECHO |
+
+### H2.S2 — Deriva falsa por finales de línea (agregada durante la ejecución)
+
+> **Trabajo no previsto, agregado al plan** (regla 20.6.6). Apareció al limpiar el PR de prueba:
+> tras cambiar de rama, `sync_agents --check` cantó **`DERIVA DETECTADA`** sobre un archivo cuyo
+> contenido es **idéntico**. Medido: el del espejo tenía 100 `CRLF` y el de origen 100 `LF`.
+> En Windows, git reescribe con CRLF el archivo que cambia entre ramas y deja el otro como estaba.
+> **A cualquiera del equipo le va a pasar al cambiar de rama**, y va a perder el tiempo buscando
+> una deriva que no existe. En CI no se ve porque Linux es uniforme.
+
+**CA:** Dado un archivo con el mismo contenido y distinto final de línea en origen y espejo, cuando
+corre `sync_agents --check`, entonces **no** reporta deriva.
+**DoD:** caso reproducido en el self-test + `--check` en verde sobre el árbol local que hoy falla.
+**Evidencia:** [`evidencia/h2-deriva-falsa.txt`](./evidencia/h2-deriva-falsa.txt) — 13 PASS/1 FAIL antes del arreglo, 14 PASS/0 FAIL después.
+**Estado:** HECHO
+
+| ID | Microtarea | CA (binario) | DoD (comando de verificación) | Estado |
+|---|---|---|---|---|
+| H2.S2.M1 | Reproducir el falso positivo en el self-test **antes** de tocar el código | El self-test falla por este caso | `--self-test` → 1 FAIL, el nuevo | HECHO |
+| H2.S2.M2 | Comparar por contenido normalizado, no byte a byte | `--check` deja de reportar deriva falsa | `--self-test` → `0 FAIL` · `--check` → exit 0 | HECHO |
+| H2.S2.M3 | Una diferencia **real** sigue detectándose | No se debilitó el candado | caso de contenido distinto → sigue en rojo | HECHO |
 
 ## H3 — El trabajo queda cerrado y publicado
 

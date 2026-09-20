@@ -1,0 +1,23 @@
+$ H2.S2.M1 — el self-test falla por el defecto, ANTES de arreglarlo
+
+Corregi con: python tools/sync_agents.py
+PASS  una diferencia real sigue siendo deriva
+
+sync_agents self-test: 13 PASS, 1 FAIL
+  exit=0
+$ H2.S2.M2 y M3 — self-test completo
+sync --check: DERIVA DETECTADA entre .claude/ y .agents/
+  [difiere] rules/00.md
+
+Corregi con: python tools/sync_agents.py
+PASS  una diferencia real sigue siendo deriva
+
+sync_agents self-test: 14 PASS, 0 FAIL
+  exit=0
+
+$ --check sobre el arbol local que hasta recien fallaba
+sync --check: OK, 192 archivo(s) en espejo, sin deriva
+  exit=0
+
+$ filecmp ya no aparece
+1
