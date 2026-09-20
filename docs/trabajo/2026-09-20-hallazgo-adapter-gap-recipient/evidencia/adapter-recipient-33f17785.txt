@@ -1,0 +1,45 @@
+=== PRODUCTION_ADAPTER_GAP · evidencia literal · corte 33f17785 de mantra-core-health-api
+=== generado 2026-09-20 · sólo lectura, sin ejecutar la app
+
+--- 1. El tipo: los dos campos son opcionales (la regla es un comentario)
+$ git show 33f17785:src/modules/scheduling/ports/agenda-notice.port.ts | sed -n '43,53p'
+/** A quién va dirigido el aviso. Uno de los dos, no los dos. */
+export interface AgendaNoticeRecipient {
+  /**
+   * Perfil de paciente destinatario. El adaptador resuelve la cuenta que lo
+   * encarna; si esa persona no tiene cuenta de portal, el aviso no se entrega
+   * (y se registra el motivo).
+   */
+  readonly patientProfileId?: string;
+  /** Cuenta destinataria, cuando ya se conoce (el profesional, por ejemplo). */
+  readonly userId?: string;
+}
+
+--- 2. resolverDestinatario: prioriza userId y no señala nada si vienen los dos
+$ git show 33f17785:src/modules/scheduling/adapters/messaging-agenda-notice.adapter.ts | sed -n '418,425p'
+  ): Promise<string | null> {
+    if (notice.recipient.userId !== undefined) return notice.recipient.userId;
+    if (notice.recipient.patientProfileId === undefined) return null;
+    return this.noticeRepo.findAccountForProfile(
+      this.em.fork(),
+      notice.recipient.patientProfileId,
+    );
+  }
+
+--- 3. Con recipient vacío devuelve null -> motivo que afirma otra cosa
+$ git show 33f17785:src/modules/scheduling/adapters/messaging-agenda-notice.adapter.ts | sed -n '177,191p'
+    const recipientUserId = await this.resolverDestinatario(notice);
+    if (recipientUserId === null) {
+      this.logger.info(
+        {
+          operation: 'scheduling.notice.emit',
+          kind: notice.kind,
+          patientProfileId: notice.recipient.patientProfileId,
+        },
+        'Aviso sin destinatario con cuenta de portal',
+      );
+      return {
+        delivered: false,
+        skippedReason: 'El destinatario no tiene cuenta de portal',
+      };
+    }
