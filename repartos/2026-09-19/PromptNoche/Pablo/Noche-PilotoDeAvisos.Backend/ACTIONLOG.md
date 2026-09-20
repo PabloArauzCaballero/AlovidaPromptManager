@@ -52,22 +52,32 @@ ajeno (`community`), que la regla 65 prohíbe explícitamente en su §4.4.
 no sólo los de agenda. Es plausible que explique fallos intermitentes de integración que el equipo
 venía atribuyendo a otra causa (memoria, timeouts, `host.docker.internal`).
 
-**Plan de acción propuesto, en orden:**
+**Plan de acción — actualizado, con lo ya intentado marcado:**
 
-1. **Reproducir con el caso mínimo** (regla `root-cause-debugging`): un test que sólo compile
-   `CommunityModule` solo (no el `AppModule` entero) y llame `orm.em.getRepository(ChatAutoReplies)`.
-   Si reproduce ahí, el problema está acotado a ese módulo o a la interacción
-   `TsMorphMetadataProvider` + `MikroOrmModule.forFeature`.
-2. **Medir el orden de discovery real**: instrumentar (log temporal) `MetadataDiscovery.discover()`
-   de MikroORM para ver en qué orden entra cada archivo `.entity.ts` y si `community`'s entidades
-   quedan al final de una cola async que no se espera antes de que Nest instancie providers.
-3. **Probar con `warmup` explícito**: llamar `await orm.discoverEntities()` (o el método equivalente
-   de la versión instalada) **antes** de `moduleRef.compile()`, en vez de dejar que el discovery
-   ocurra implícito dentro del factory de cada `forFeature()`.
-4. **Si el punto 3 lo resuelve**, el fix es agregar ese `warmup` a `bootstrapTestApp()` — pequeño,
-   acotado a `test/integration/harness.ts`, sin tocar `src/`.
-5. **Si no lo resuelve**, escalar a quien mantenga la versión de `@mikro-orm/core` instalada
-   (`7.1.7`): puede ser un bug conocido de esa versión con proyectos de más de mil entidades.
+1. ~~**Probar con `warmup` explícito**: `await MikroORM.init(buildOrmConfig())` + `.close()` **antes**
+   de `moduleRef.compile()`, para forzar una pasada de discovery completa y síncrona con el await,
+   sobre la hipótesis de que `MetadataStorage` es un singleton de proceso.~~ **Probado y descartado**
+   (2026-09-20): mismo `MetadataError: ChatAutoReplies`, `exit_code=1`
+   (`evidencia/H_warmup_experimento_fx1.txt`). El cambio se revirtió (`harness.ts` sin diff). La
+   hipótesis del singleton global era correcta en la lectura del código, pero no explica el fallo:
+   `warmup.close()` probablemente libera algo que `moduleRef.compile()` necesita de nuevo, o cada
+   `MikroORM.init()` no reutiliza el `MetadataStorage` de una instancia anterior de la forma que
+   el código de `MetadataStorage.js` sugiere.
+2. **Reproducir con el caso mínimo** (regla `root-cause-debugging`), todavía no intentado: un test
+   que sólo compile `CommunityModule` sola (no el `AppModule` entero) y llame
+   `orm.em.getRepository(ChatAutoReplies)`. Acotaría si el problema es de `community` en particular
+   o de la interacción `TsMorphMetadataProvider` + `MikroOrmModule.forFeature` en general.
+3. **Medir el orden de discovery real**, todavía no intentado: instrumentar (log temporal)
+   `MetadataDiscovery.discover()` de MikroORM para ver en qué orden entra cada archivo `.entity.ts`.
+4. **Si ninguno de los dos anteriores lo explica**, escalar a quien mantenga la versión de
+   `@mikro-orm/core` instalada (`7.1.7`): puede ser un bug conocido de esa versión con proyectos de
+   más de mil entidades — vale la pena revisar el changelog/issues de la 7.x antes de seguir
+   instrumentando a mano.
+
+**Tres intentos reales agotados en esta sesión** (caché, `reflect-metadata`, aislamiento por
+entidad, warmup de discovery): ninguno lo resolvió. Esto ya no es "probar una hipótesis barata": el
+siguiente paso exige instrumentar y leer trazas de MikroORM paso a paso, que es trabajo de una
+sesión dedicada, no de un intento más al pasar.
 
 **A quién le toca:** dueño de `community`/`accounting`, o quien tenga tiempo de depurar MikroORM a
 fondo — no es de P8 ni de este carril. Está entregado a Justin y Marcelo por el daily (H6).

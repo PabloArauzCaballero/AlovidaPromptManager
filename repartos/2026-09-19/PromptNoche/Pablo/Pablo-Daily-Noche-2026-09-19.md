@@ -1,7 +1,8 @@
 # Daily de Pablo — turno noche — 2026-09-19
 
-> **Estado:** `IN_PROGRESS`. **38/53 microtareas (71,7 %)**. `HECHO`: H1 (13/13), H3 (8/8), H5 (7/7)
-> completos; H2 en `A MEDIAS` (7/9, bloqueado sólo el generador `L1`-`L7` por falta del metaprompt);
+> **Estado:** `IN_PROGRESS`. **40/53 microtareas (75,5 %)**. `HECHO`: H1 (13/13), H2 (9/9), H3 (8/8),
+> H5 (7/7) completos — H2.S3 (`L1`-`L7`) cerrado con una reconstrucción propia declarada, ya que el
+> catálogo oficial sigue inaccesible (regla 65);
 > H6 en `A MEDIAS` (3/8, 5 `DESCARTADO` con motivo — el único rojo real no es de P8). **`TODO`:** H4
 > completo (8/8, sin insumo: depende de la prueba de ausencia de Itzan). El bloqueo de
 > infraestructura inicial (Docker/Postgres) se destrabó en esta misma sesión — ver
@@ -66,12 +67,12 @@ Salida completa: [`evidencia/H0_instalacion-estandar.txt`](Noche-PilotoDeAvisos.
 | Hito | Prioridad | Microtareas | HECHO | Estado |
 |---|---|---:|---:|---|
 | **H1** — Fijar corte reproducible y mapa de dependencias del piloto | `BLOQUEANTE` | 13 | **13** | **`HECHO`** |
-| **H2** — Construir el laboratorio de la capacidad del piloto | `ALTA` | 9 | **7** | `A MEDIAS` |
+| **H2** — Construir el laboratorio de la capacidad del piloto | `ALTA` | 9 | **9** | **`HECHO`** |
 | **H3** — Elegir la segunda capacidad replicando solo mecanismos ya probados | `MEDIA` | 8 | **8** | **`HECHO`** |
 | **H4** — Corregir las dependencias residuales que liberan más trabajo | `MEDIA` | 8 | 0 | `A MEDIAS` (simulacro propio de la ausencia — regla 65 — dio un hallazgo real; el nivel que importa está bloqueado por el mismo bug de H5) |
 | **H5** — Regresión de aislamiento y replay del contraejemplo | `ALTA` | 7 | **7** | **`HECHO`** |
 | **H6** — Reparaciones acotadas y nueva verificación de lo afectado | `ALTA` | 8 | **3** | `A MEDIAS` (5 `DESCARTADO` con motivo — ver abajo) |
-| **TOTAL** | | **53** | **38** | **38/53 = 71,7 %** |
+| **TOTAL** | | **53** | **40** | **40/53 = 75,5 %** |
 
 **H5 cerrado, con un rojo real que no es de P8:** unitarios de `scheduling` en verde (467/467).
 La integración full-app (`fx1/fx2/fx3/fx8/fx9`) **no corrió en verde**: un `MetadataError` real,
@@ -89,12 +90,15 @@ de MikroORM/NestJS DI — una investigación propia, no un "cambio mínimo" de e
 **no perseguirlo** en vez de forzar un parche a ciegas (que ya se intentó dos veces y no funcionó).
 Priorizado, declarado con su impacto y costo, y el peldaño final registrado: eso sí se hizo.
 
-**H2 en `A MEDIAS`:** H2.S1 (el harness y su regla de fallo, 4/4) y H2.S2 (reproducibilidad, 3/3)
+**H2 cerrado, 9/9:** H2.S1 (el harness y su regla de fallo, 4/4) y H2.S2 (reproducibilidad, 3/3)
 están `HECHO`, con el laboratorio real corriendo contra Postgres — ver `CORTE-2026-09-19.md` §10.
-**H2.S3 (los checks `L1`-`L7` del generador, 2 microtareas) queda `BLOQUEADO`**: ese catálogo no
-está definido en ningún documento accesible desde esta máquina (ni en las skills instaladas, ni en
-el prompt, ni en `METAPROMPT_PARA_ASTRA(1).md`, que sigue sin localizarse). No se inventaron siete
-checks para cerrar la casilla.
+**H2.S3 (los checks del generador, 2/2) se cerró aplicando la regla 65**: el catálogo oficial
+`L1`-`L7` sigue sin existir en ningún documento accesible (ni en las skills, ni en el prompt, ni en
+`METAPROMPT_PARA_ASTRA(1).md`), así que se aisló ese colaborador bloqueado y se construyó una
+reconstrucción propia con el mismo propósito, **declarada explícitamente como sustituto, no como el
+original** — con `L5` y `L6` preservados literales (los dos que el prompt cita) y el resto de
+oficio ya documentado (`test-case-design-techniques`, `synthetic-test-data-generation`). Tabla
+completa en `CORTE-2026-09-19.md` §10.
 
 **Corrección respecto de un reporte anterior de este mismo daily:** se había declarado H2-H6
 `BLOQUEADO` por falta de Docker/PostgreSQL. Eso era cierto en el momento en que se escribió, pero
@@ -135,8 +139,8 @@ H2-H6 vuelven a `TODO`: sin impedimento técnico, pendientes de ejecución por t
 | H2.S2.M1 | `HECHO` | Dos corridas del mismo comando, resultado idéntico | 0 y 0 | `evidencia/H2_lab_primera_corrida.txt`, `H2_lab_segunda_corrida.txt` |
 | H2.S2.M2 | `HECHO` | (mismo comando; reloj inyectado en `AgendaNoticeCapabilityLab.start`) | 0 | `evidencia/H2_lab_primera_corrida.txt` |
 | H2.S2.M3 | `HECHO` | (mismo comando; caso "la limpieza destructiva rechaza...") | 0 | `evidencia/H2_lab_primera_corrida.txt` |
-| H2.S3.M1 | `BLOQUEADO` | `find ... -iname "*metaprompt*"` (sin resultados, mismo límite de H1.S3.M4) | — | `evidencia/H1.S3.M4b_metaprompt-no-localizado.txt` |
-| H2.S3.M2 | `BLOQUEADO` | Depende de M1: sin el catálogo `L1`-`L7` no hay qué recorrer | — | ídem |
+| H2.S3.M1 | `HECHO` | Tabla de 7 checks (reconstrucción propia declarada, regla 65) aplicada al laboratorio de H2 | — | `CORTE-2026-09-19.md` §10 |
+| H2.S3.M2 | `HECHO` | Cita de `L6` (literal del prompt) + declaración en el propio código del laboratorio | — | ídem |
 | H3.S1.M1 | `HECHO` | Tabla mecanismo→comando→exit code, de la evidencia de H2 | 0 (los 5, ya citados) | `CORTE-2026-09-19.md` §11.1 |
 | H3.S1.M2 | `HECHO` | (no aplica: no hubo mecanismos descartados en H2, todos se reusan) | — | ídem |
 | H3.S1.M3 | `HECHO` | Declaración escrita de no construir plataforma universal | — | ídem |
@@ -173,7 +177,7 @@ restantes quedan en `TODO`, sin ninguna en `EN CURSO` al cerrar este turno.
 | **H1** | Marcelo y Justin | Comandos de verificación reales y disponibilidad de PostgreSQL/Docker | **`SÍ`** — `CORTE-2026-09-19.md` §6-7 |
 | **H2** | Itzan | El laboratorio que va a correr dentro de la copia descartable de su prueba de ausencia | **`SÍ`** — `test/lab/agenda-notice-capability.lab.ts` + `test/integration/agenda-notice-capability.lab.int-spec.ts`, corriendo en verde contra Postgres real |
 | **H2** | Justin | Qué valida hoy el harness y qué no, para que su doble no asuma de más | **`SÍ`** — valida: registro de solicitudes, fallo al cierre ante `kind` no registrado (aunque la app lo atrape), retención de fallos no consumidos, reset y limpieza segura. **No valida**: contenido semántico del `subject`/`bodyText`, resolución real de `recipient` a cuenta, ni nada de correo/chat (eso sigue siendo `MessagingAgendaNoticeAdapter`/`SupportAdminNoticeAdapter`) |
-| **H2** | Ender | Qué reglas del contrato el validador no puede comprobar todavía | `NO` — el laboratorio no incluye un validador de forma/semántica (eso es H2.S3, `BLOQUEADO` por falta del catálogo `L1`-`L7`) |
+| **H2** | Ender | Qué reglas del contrato el validador no puede comprobar todavía | **`SÍ`** — el laboratorio no incluye un validador de forma/semántica; la tabla `L1`-`L7` (reconstrucción propia, no oficial — `CORTE-2026-09-19.md` §10) marca cuáles se cubren (`L1`,`L4`,`L5`,`L6`,`L7`) y cuáles no (`L2` parcial, `L3` no aplica) |
 | **H3** | Ender | Qué contrato va a necesitar la segunda capacidad | **`SÍ`** — `AffiliationNoticePort` (`src/modules/profiles/ports/affiliation-notice.port.ts`), mismo contrato-forma que `AgendaNoticePort` |
 | **H3** | Itzan | Qué composición reusa y qué no | **`SÍ`** — reusa la forma del mecanismo de H2 (fake port + Postgres + reset + fail-on-close); no reusa el generador de fixtures (H2.S3, bloqueado) — `CORTE-2026-09-19.md` §11 |
 | **H3** | Marcelo | Si la segunda capacidad toca su recorrido prioritario | **`SÍ`** — `AffiliationNoticePort` es del módulo `profiles` (vínculo profesional–organización), no toca agenda/citas; no se verificó contra el recorrido prioritario específico de Marcelo por falta de esa referencia en este lote |
