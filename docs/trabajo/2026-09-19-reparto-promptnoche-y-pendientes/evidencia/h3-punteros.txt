@@ -1,0 +1,19 @@
+$ punteros de configuracion presentes
+.github/copilot-instructions.md
+AGENTS.md
+
+.continue/rules/:
+00-estandar-de-la-casa.md
+
+.cursor/rules/:
+estandar-de-la-casa.mdc
+
+$ no se escribieron punteros de rutas no confirmadas
+  .windsurf      no existe (correcto: cubiertas por AGENTS.md)
+  .devin         no existe (correcto: cubiertas por AGENTS.md)
+  .clinerules    no existe (correcto: cubiertas por AGENTS.md)
+  .cline         no existe (correcto: cubiertas por AGENTS.md)
+
+$ python tools/sync_agents.py --check
+sync --check: OK, 192 archivo(s) en espejo, sin deriva
+exit=0

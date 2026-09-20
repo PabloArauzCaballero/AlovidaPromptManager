@@ -1,0 +1,28 @@
+$ python tools/check_reparto.py --self-test
+  [PASS] arbol correcto no reporta problemas
+  [PASS] detecta falta de daily de equipo
+  [PASS] nombra el daily de equipo faltante
+  [PASS] detecta falta de daily personal
+  [PASS] nombra el daily personal faltante
+  [PASS] detecta lote sin tarea
+  [PASS] detecta persona sin lote
+  [PASS] detecta lote sin punto en el nombre
+  [PASS] detecta persona desconocida
+  [PASS] detecta turno no permitido
+  [PASS] detecta primer nivel que no es fecha
+  [PASS] carpeta inexistente se reporta, no explota
+  [PASS] fecha sin turnos se reporta
+check_reparto self-test: 13 PASS, 0 FAIL
+exit=0
+
+$ python tools/check_reparto.py repartos/2026-09-19
+check_reparto: OK, 2026-09-19 cumple la estructura obligatoria
+exit=0
+$ KILL-TEST: escondo el daily de Ender y vuelvo a correr
+check_reparto: ESTRUCTURA INCOMPLETA en 2026-09-19
+  - FALTA el daily personal: 2026-09-19/PromptNoche/Ender/Ender-Daily-Noche-2026-09-19.md
+exit=1
+
+$ restauro y confirmo que vuelve a OK
+check_reparto: OK, 2026-09-19 cumple la estructura obligatoria
+exit=0

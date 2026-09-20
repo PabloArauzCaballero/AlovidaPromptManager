@@ -1,0 +1,34 @@
+$ python tools/sync_agents.py --check
+sync --check: OK, 192 archivo(s) en espejo, sin deriva
+exit=0
+
+$ python tools/sync_agents.py --self-test
+PASS  el aviso no se cuenta como huerfano
+
+sync_agents self-test: 12 PASS, 0 FAIL
+exit=0
+
+$ python .claude/hooks/plan_gate.py --self-test
+PASS  plan ilegible: igual permite (no bloquea por formato)
+
+plan_gate self-test: 11 PASS, 0 FAIL
+exit=0
+
+$ python .claude/hooks/report_gate.py --self-test
+PASS  limpiar sesion reinicia el contador
+
+report_gate self-test: 14 PASS, 0 FAIL
+exit=0
+
+$ python .claude/hooks/plan_status.py --self-test
+PASS  JSON que no es objeto -> rechazado
+
+plan_status self-test: 30 PASS, 0 FAIL
+exit=0
+
+$ python tools/check_reparto.py --self-test
+  [PASS] carpeta inexistente se reporta, no explota
+  [PASS] fecha sin turnos se reporta
+check_reparto self-test: 13 PASS, 0 FAIL
+exit=0
+

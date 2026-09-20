@@ -1,0 +1,5 @@
+repartos/2026-09-19/PromptNoche/Ender/Dia1-ContratoDelPiloto.Backend/FijarContratoDelPuertoDeAvisos.md secciones=7
+repartos/2026-09-19/PromptNoche/Itzan/Dia1-ComposicionYBaseline.Backend/DelimitarComposicionYBaseline.md secciones=7
+repartos/2026-09-19/PromptNoche/Justin/Dia1-AdaptadorAgendaMensajeria.Integracion/IniciarAdaptadorConDoblesEstrictos.md secciones=7
+repartos/2026-09-19/PromptNoche/Marcelo/Dia1-RecorridoPrioritario.Registro/SeleccionarRecorridoPrioritarioYRelaciones.md secciones=7
+repartos/2026-09-19/PromptNoche/Pablo/Dia1-CorteReproducible.Backend/FijarCorteYMapaDeDependencias.md secciones=7

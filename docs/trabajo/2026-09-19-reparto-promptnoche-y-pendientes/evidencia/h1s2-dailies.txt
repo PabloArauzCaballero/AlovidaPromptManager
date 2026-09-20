@@ -1,0 +1,22 @@
+== H1.S2.M1: daily de equipo nombra a los 5 ==
+  Pablo    8
+  Ender    6
+  Itzan    7
+  Marcelo  5
+  Justin   7
+== H1.S2.M2: dailies personales ==
+  repartos/2026-09-19/PromptNoche/Ender/Ender-Daily-Noche-2026-09-19.md  NOT_RUN=1 HECHO_precargado=1
+  repartos/2026-09-19/PromptNoche/Itzan/Itzan-Daily-Noche-2026-09-19.md  NOT_RUN=1 HECHO_precargado=1
+  repartos/2026-09-19/PromptNoche/Justin/Justin-Daily-Noche-2026-09-19.md NOT_RUN=1 HECHO_precargado=1
+  repartos/2026-09-19/PromptNoche/Marcelo/Marcelo-Daily-Noche-2026-09-19.md NOT_RUN=1 HECHO_precargado=1
+  repartos/2026-09-19/PromptNoche/Pablo/Pablo-Daily-Noche-2026-09-19.md  NOT_RUN=1 HECHO_precargado=1
+  total personales: 5
+== control: ninguna microtarea precargada como HECHO ==
+0
+  (0 = ninguna precargada)
+== filas de microtarea en TODO por persona ==
+  repartos/2026-09-19/PromptNoche/Ender/Ender-Daily-Noche-2026-09-19.md    TODO=14
+  repartos/2026-09-19/PromptNoche/Itzan/Itzan-Daily-Noche-2026-09-19.md    TODO=14
+  repartos/2026-09-19/PromptNoche/Justin/Justin-Daily-Noche-2026-09-19.md  TODO=13
+  repartos/2026-09-19/PromptNoche/Marcelo/Marcelo-Daily-Noche-2026-09-19.md TODO=13
+  repartos/2026-09-19/PromptNoche/Pablo/Pablo-Daily-Noche-2026-09-19.md    TODO=13

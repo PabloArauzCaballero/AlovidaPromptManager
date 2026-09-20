@@ -1,0 +1,13 @@
+$ grep -c continue-on-error .github/workflows/estandar.yml
+1
+
+$ python -c "yaml.safe_load(...)"
+YAML valido. jobs: ['candados']
+pasos: 8
+exit=0
+$ ocurrencias de continue-on-error COMO CLAVE (no en comentario)
+0
+  (0 = no hay ningun step que lo use; la unica aparicion es el comentario que lo prohibe)
+
+$ la unica linea que lo menciona:
+7:# Prohibido agregar `continue-on-error` acá: un check obligatorio que no puede fallar no es un check.
