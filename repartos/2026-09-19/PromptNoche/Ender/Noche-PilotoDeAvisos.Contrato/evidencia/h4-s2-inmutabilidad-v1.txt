@@ -1,0 +1,11 @@
+# H4.S2.M3 — inmutabilidad de v1.0.0 al momento de congelar la versión estable
+
+$ git rev-parse HEAD:repartos/2026-09-19/PromptNoche/Ender/CONTRATO-AGENDA-NOTICE-PORT.md
+de23711979b33e813d792ea53e501c6d24496197
+
+$ git log --oneline -- repartos/2026-09-19/PromptNoche/Ender/CONTRATO-AGENDA-NOTICE-PORT.md
+01e8035 docs(ender): usar el commit de git como identidad de versión, no un hash embebido
+06dc335 docs(ender): completar referencia de hash/commit del snapshot v1.0.0
+b3f78f1 docs(ender): fijar contrato v1.0.0 de AgendaNoticePort con hash y consumidores
+
+Los 3 commits son todos de H1 (b3f78f1, 06dc335, 01e8035). H2 y H3 no lo tocaron.

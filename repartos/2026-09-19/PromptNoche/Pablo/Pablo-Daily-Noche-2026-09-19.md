@@ -1,17 +1,18 @@
 # Daily de Pablo — turno noche — 2026-09-19
 
-> **Estado:** `IN_PROGRESS`. **40/53 microtareas (75,5 %)**. `HECHO`: H1 (13/13), H2 (9/9), H3 (8/8),
-> H5 (7/7) completos — H2.S3 (`L1`-`L7`) cerrado con una reconstrucción propia declarada, ya que el
-> catálogo oficial sigue inaccesible (regla 65);
-> H6 en `A MEDIAS` (3/8, 5 `DESCARTADO` con motivo — el único rojo real no es de P8). **`TODO`:** H4
-> completo (8/8, sin insumo: depende de la prueba de ausencia de Itzan). El bloqueo de
-> infraestructura inicial (Docker/Postgres) se destrabó en esta misma sesión — ver
+> **Estado:** `IN_PROGRESS`. **45/53 microtareas (84,9 %)**. `HECHO`: H1 (13/13), H2 (9/9), H3 (8/8),
+> H4 (5/5 + 3 `DESCARTADO` = 8/8 terminal), H5 (7/7) completos — H2.S3 (`L1`-`L7`) cerrado con una
+> reconstrucción propia declarada (regla 65); H4 cerrado con el veredicto **real** de la prueba de
+> ausencia de Itzan (leído de su rama sin mergearla: `scheduling` **NO** aislado, 3 dependencias
+> residuales con archivo:línea), sin tocar `scheduling.module.ts` (reservado para Itzan, con PR
+> abierto). H6 en `A MEDIAS` (3/8, 5 `DESCARTADO` con motivo — el único rojo real no es de P8). El
+> bloqueo de infraestructura inicial (Docker/Postgres) se destrabó en esta misma sesión — ver
 > `CORTE-2026-09-19.md`.
 
 - **Persona:** Pablo · **Turno:** noche · **Fecha:** 2026-09-19 · **Línea:** A · **Rol:** habilitación de autonomía
 - **Tu prompt:** [Corte, laboratorio del piloto y regresión de aislamiento](Noche-PilotoDeAvisos.Backend/CorteLaboratorioYRegresion.md)
-- **Documento de corte (H1):** [CORTE-2026-09-19.md](Noche-PilotoDeAvisos.Backend/CORTE-2026-09-19.md)
-- **Action log (qué se subió, qué no, y el plan para lo que quedó abierto):** [ACTIONLOG.md](Noche-PilotoDeAvisos.Backend/ACTIONLOG.md)
+- **Documento de corte (H1):** [CORTE-2026-09-19.md](Noche-PilotoDeAvisos.Backend/entregables/CORTE-2026-09-19.md)
+- **Action log (qué se subió, qué no, y el plan para lo que quedó abierto):** [ACTIONLOG.md](Noche-PilotoDeAvisos.Backend/entregables/ACTIONLOG.md)
 - **PR abierto:** [mantra-core-health-api#444](https://github.com/mdavila-2001/mantra-core-health-api/pull/444) — laboratorio de H2 contra `dev`
 - **Daily del equipo:** [Daily-Noche-2026-09-19.md](../Daily-Noche-2026-09-19.md)
 - **6 hitos · 18 subtareas · 53 microtareas**
@@ -69,10 +70,10 @@ Salida completa: [`evidencia/H0_instalacion-estandar.txt`](Noche-PilotoDeAvisos.
 | **H1** — Fijar corte reproducible y mapa de dependencias del piloto | `BLOQUEANTE` | 13 | **13** | **`HECHO`** |
 | **H2** — Construir el laboratorio de la capacidad del piloto | `ALTA` | 9 | **9** | **`HECHO`** |
 | **H3** — Elegir la segunda capacidad replicando solo mecanismos ya probados | `MEDIA` | 8 | **8** | **`HECHO`** |
-| **H4** — Corregir las dependencias residuales que liberan más trabajo | `MEDIA` | 8 | 0 | `A MEDIAS` (simulacro propio de la ausencia — regla 65 — dio un hallazgo real; el nivel que importa está bloqueado por el mismo bug de H5) |
+| **H4** — Corregir las dependencias residuales que liberan más trabajo | `MEDIA` | 8 | **5** | **`HECHO`** (5 `HECHO` + 3 `DESCARTADO` con motivo = 8/8 en estado terminal) |
 | **H5** — Regresión de aislamiento y replay del contraejemplo | `ALTA` | 7 | **7** | **`HECHO`** |
 | **H6** — Reparaciones acotadas y nueva verificación de lo afectado | `ALTA` | 8 | **3** | `A MEDIAS` (5 `DESCARTADO` con motivo — ver abajo) |
-| **TOTAL** | | **53** | **40** | **40/53 = 75,5 %** |
+| **TOTAL** | | **53** | **45** | **45/53 = 84,9 %** |
 
 **H5 cerrado, con un rojo real que no es de P8:** unitarios de `scheduling` en verde (467/467).
 La integración full-app (`fx1/fx2/fx3/fx8/fx9`) **no corrió en verde**: un `MetadataError` real,
@@ -164,9 +165,19 @@ H2-H6 vuelven a `TODO`: sin impedimento técnico, pendientes de ejecución por t
 | H6.S2.M3 | `DESCARTADO` | Ídem | — | — |
 | H6.S3.M1 | `HECHO` | Lista de lo no reparado, con impacto y costo (bug sistémico de descubrimiento de entidades en MikroORM, no acotado a un módulo — esfuerzo de depuración no acotable en este lote) | — | `CORTE-2026-09-19.md` §13 |
 | H6.S3.M2 | `HECHO` | Peldaño final declarado: el más bajo de las áreas en alcance | — | ídem |
+| H4.S1.M1 | `HECHO` | Lista de las 3 dependencias residuales con archivo:línea, leídas de la rama real de Itzan (`itzan/daily-noche-2026-09-19`, sin mergearla) | — | `CORTE-2026-09-19.md` §12 |
+| H4.S1.M2 | `HECHO` | Orden por trabajo que liberan: `messaging` → `community` → `clinical`, con el criterio escrito | — | ídem |
+| H4.S1.M3 | `HECHO` | Decisión: ninguna entra hoy, con motivo real (archivo reservado de Itzan + decisión de diseño de Justin/Ender) | — | ídem |
+| H4.S2.M1 | `DESCARTADO` | `scheduling.module.ts` es archivo reservado de Itzan con PR abierto; la corrección real exige un adapter nuevo que el prompt asigna a Justin/Ender | — | ídem |
+| H4.S2.M2 | `DESCARTADO` | Depende de M1 | — | — |
+| H4.S2.M3 | `DESCARTADO` | No hay dependencia elegida para corregir | — | — |
+| H4.S3.M1 | `HECHO` | Tabla de las 3 no corregidas, con motivo y costo real (no estimado a ojo) | — | `CORTE-2026-09-19.md` §12 |
+| H4.S3.M2 | `HECHO` | Declarado: el piloto sigue `TRANSITIONAL_ISOLATION` (estado de Itzan, no reformulado) | — | ídem |
 
-H4: ninguna microtarea abierta (sin insumo: depende de la prueba de ausencia de Itzan). Las 8
-restantes quedan en `TODO`, sin ninguna en `EN CURSO` al cerrar este turno.
+**Las 53 microtareas del lote llegan a un estado terminal hoy: 45 `HECHO` + 8 `DESCARTADO`, 0 en
+`TODO`/`BLOQUEADO`, 0 en `EN CURSO`.** `DESCARTADO` no es "no se hizo" — es una decisión explícita
+con motivo (8 casos: 3 de H4, por invadir el diseño/archivo de otros; 5 de H6, por un bug ajeno a
+P8 que se investigó a fondo y no se pudo resolver en este lote).
 
 ## 4. Qué entregás vos
 
@@ -181,9 +192,9 @@ restantes quedan en `TODO`, sin ninguna en `EN CURSO` al cerrar este turno.
 | **H3** | Ender | Qué contrato va a necesitar la segunda capacidad | **`SÍ`** — `AffiliationNoticePort` (`src/modules/profiles/ports/affiliation-notice.port.ts`), mismo contrato-forma que `AgendaNoticePort` |
 | **H3** | Itzan | Qué composición reusa y qué no | **`SÍ`** — reusa la forma del mecanismo de H2 (fake port + Postgres + reset + fail-on-close); no reusa el generador de fixtures (H2.S3, bloqueado) — `CORTE-2026-09-19.md` §11 |
 | **H3** | Marcelo | Si la segunda capacidad toca su recorrido prioritario | **`SÍ`** — `AffiliationNoticePort` es del módulo `profiles` (vínculo profesional–organización), no toca agenda/citas; no se verificó contra el recorrido prioritario específico de Marcelo por falta de esa referencia en este lote |
-| **H4** | Itzan | Qué cambió en la composición y hay que reflejar en el baseline | `NO` |
-| **H4** | Ender | Si alguna corrección movió el contrato | `NO` |
-| **H4** | Justin | Si hay que reejecutar la relación por estos cambios | `NO` |
+| **H4** | Itzan | Qué cambió en la composición y hay que reflejar en el baseline | **`SÍ`** — nada, no se tocó `scheduling.module.ts` a propósito (es su archivo, con PR abierto) |
+| **H4** | Ender | Si alguna corrección movió el contrato | **`SÍ`** — ninguna corrección se hizo; la que falta (adapter solo-puerto) depende de que `Q-06` (durabilidad del aviso) se decida primero |
+| **H4** | Justin | Si hay que reejecutar la relación por estos cambios | **`SÍ`** — no, porque no hubo cambios; pero el adapter nuevo que destraba `messaging`/`community` es explícitamente su trabajo, no el mío |
 | **H5** | Todo el equipo | El estado real de la regresión, incluido el rojo | **`SÍ`** — unitarios de `scheduling` 467/467 verde; integración full-app bloqueada por un `MetadataError` sistémico (aparece en más de una entidad de `community` al aislar la anterior), ajeno a P8, reproducible en `dev` — `CORTE-2026-09-19.md` §13 |
 | **H5** | Itzan | Qué hay que reempaquetar si algo cambió | `NO` — nada de la composición de `scheduling` cambió en este lote |
 | **H5** | Marcelo | Si la regresión bloquea la aceptación | **`SÍ`** — la regresión de `scheduling` (P8) no bloquea; el bloqueo real es de infraestructura de testing full-app, no del dictamen de P8 |
@@ -212,6 +223,7 @@ resolvió, el `MetadataError` no, después de tres intentos reales, incluida la 
 | Q-15 (de la ficha) | El checkout real de trabajo (`feat/admin-portal-catalog`) tiene su base 110 commits detrás del `TARGET_REF` (`32ae939`) y 112 detrás de `dev`, con ~44 archivos de otro trabajo sin commitear encima | **Ninguno tomado**: no se hizo checkout a otra rama, no se descartó nada, no se avanzó el trabajo pendiente. Se documentaron ambas opciones (worktree nuevo vs. traer el checkout a `dev`) sin elegir | Coordinación / quien tenga asignado `feat/admin-portal-catalog` |
 | (nueva) | La tensión de semántica del puerto (`agenda-notice.port.ts`) se contrasta contra `METAPROMPT_PARA_ASTRA(1).md`, que no se localizó en ningún repo accesible desde esta máquina | Se registró la tensión usando solo el código real (fuente de primer orden) y se marcó `DECISION_REQUIRED`, sin asumir el contenido del metaprompt | Ender (semántica del contrato) + quien tenga el metaprompt real |
 | (nueva) | El segundo repo reportado 404 por el paquete original (docs) **sí es alcanzable** desde esta máquina; solo el modelo canónico sigue en 404 real | Se registró la diferencia tal cual, sin generalizar "el 404 ya no aplica" a los dos repos | Coordinación, para que el registro de límites de acceso no quede desactualizado para el resto del equipo |
+| Q-P1 (nueva, de H4) | Corregir de verdad la dependencia de `messaging` exige un adapter que dependa sólo de `AgendaNoticePort` (no de `NotificationsService` concreto) — pero ese adapter no puede diseñarse bien mientras `Q-06` (¿un aviso fallido se descarta o exige durabilidad?) siga sin decidir: la forma del adapter depende de la respuesta | No se construyó el adapter ni se asumió una respuesta a `Q-06` para poder construirlo | Negocio (decide `Q-06`) → después, Justin (construye) y Ender (fija el contrato) |
 
 ## 7bis. Nota de conducta de sesión — pedida explícitamente por el usuario
 

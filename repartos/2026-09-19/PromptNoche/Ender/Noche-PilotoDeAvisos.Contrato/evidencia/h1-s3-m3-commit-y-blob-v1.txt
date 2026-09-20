@@ -1,0 +1,10 @@
+# H1.S3.M3 — Publicación del snapshot v1.0.0: commit y hash de blob
+
+$ git log -1 --format="%H %s"   (rama ender/contrato-agenda-notice-port, AlovidaPromptManager)
+b3f78f1ccc3b4d916959211f09df2a8ad421b977 docs(ender): fijar contrato v1.0.0 de AgendaNoticePort con hash y consumidores
+
+$ git rev-parse HEAD:repartos/2026-09-19/PromptNoche/Ender/CONTRATO-AGENDA-NOTICE-PORT.md
+8c0289f942f2cb153c64e07fdf68d609d5c822bc
+
+Versión: v1.0.0
+Estado:  IMPLEMENTADO (H1 — snapshot inicial, previo a H4/H6)

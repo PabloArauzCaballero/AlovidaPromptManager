@@ -1,0 +1,17 @@
+# H5.S1 — ADV-06 re-ejecutado (independiente de H3) + inmutabilidad histórica
+
+Fecha de esta corrida: domingo, 20 de septiembre de 2026, 01:18:18 -04
+
+$ tsc -p tsconfig.json   (copia temporal nueva, mismo cambio incompatible que H3)
+agenda-notice-validator.ts(113,5): error TS2820: ...
+consumidor-real-simulado.ts(3,30): error TS2561: Object literal may only specify known
+  properties, but 'skippedReason' does not exist in type 'AgendaNoticeResult'.
+exit 2 — mismo resultado que H3, reproducible
+
+== Inmutabilidad, verificada de nuevo ==
+$ git rev-parse HEAD:repartos/2026-09-19/PromptNoche/Ender/validador/agenda-notice.types.ts
+ee26fe75f22ffb3542973f59f8085fe86432de72
+(idéntico al de H2/H3)
+$ git rev-parse HEAD:repartos/2026-09-19/PromptNoche/Ender/CONTRATO-AGENDA-NOTICE-PORT.md
+de23711979b33e813d792ea53e501c6d24496197
+(idéntico al de H4)

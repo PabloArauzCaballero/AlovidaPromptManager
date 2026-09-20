@@ -13,13 +13,13 @@
 | Persona | Prompt | Línea | Hitos | Subtareas | Microtareas | Estado |
 |---|---|---|---:|---:|---:|---|
 | **Pablo** | [Corte, laboratorio del piloto y regresión de aislamiento](Pablo/Noche-PilotoDeAvisos.Backend/CorteLaboratorioYRegresion.md) | A | 6 | 18 | 53 | `NOT_RUN` |
-| **Ender** | [El contrato del piloto: fijarlo, validarlo y gobernar su evolución](Ender/Noche-PilotoDeAvisos.Contrato/ContratoValidadorYCompatibilidad.md) | A | 6 | 18 | 50 | `NOT_RUN` |
+| **Ender** | [El contrato del piloto: fijarlo, validarlo y gobernar su evolución](Ender/Noche-PilotoDeAvisos.Contrato/ContratoValidadorYCompatibilidad.md) | A | 6 | 18 | 50 | `COMPLETADO — 48/50 · 2 DESCARTADO` |
 | **Itzan** | [Composición, prueba de ausencia y baseline de la capacidad](Itzan/Noche-PilotoDeAvisos.Aislamiento/ComposicionAusenciaYBaseline.md) | A | 6 | 18 | 52 | `26 / 52` — H1 `HECHO`; H2 y H3 `A MEDIAS`; H4–H6 `BLOQUEADO` |
 | **Marcelo** | [Recorrido del registro: selección, casos y aceptación](Marcelo/Noche-PilotoDeAvisos.Registro/RecorridoCasosYAceptacion.md) | B | 6 | 18 | 54 | `NOT_RUN` |
-| **Justin** | [La relación agenda → mensajería: dobles, integración y regresión final](Justin/Noche-PilotoDeAvisos.Integracion/DoblesRelacionYRegresionFinal.md) | B | 6 | 18 | 53 | `NOT_RUN` |
+| **Justin** | [La relación agenda → mensajería: dobles, integración y regresión final](Justin/Noche-PilotoDeAvisos.Integracion/DoblesRelacionYRegresionFinal.md) | B | 6 | 18 | 53 | **53/53** (40/53 al cerrar el turno; las 13 restantes se cerraron el 20/09, PR #445) |
 | | | | **30** | **90** | **262** | |
 
-**Total del turno: 0 / 262 microtareas.** El avance se reporta `HECHO / total`, **nunca a ojo**.
+**Total del turno: 40 / 262 microtareas** (sólo el carril B reportó). El avance se reporta `HECHO / total`, **nunca a ojo**.
 
 > ⚠️ **Esto es más de lo que entra en una noche, y está dicho a propósito.** El alcance se entrega
 > completo y ordenado por dependencia. **Lo que no se cierre va `A MEDIAS`**, con qué anda, qué no
@@ -69,15 +69,43 @@ charlando.** Gana el archivo abierto, y la diferencia se registra.
 
 **Q-06 es la que más trabajo bloquea.** Si alguien la decide, el turno rinde bastante más.
 
+## 5-bis. Hallazgos del carril B que afectan a todo el equipo (2026-09-19, Justin)
+
+Reporte completo: `mantra-core-health-api/docs/trabajo/2026-09-19-relacion-agenda-mensajeria/REPORTE.md`
+
+| ID | Qué | A quién le bloquea | Estado |
+|---|---|---|---|
+| **HALL-01** | **`bootstrapTestApp()` abortaba**: el seed «aseguradoras de Bolivia» moría con `column "sigla" … does not exist` (42703), y con él **54 de 76 int-specs**. No era deriva de código: el DDL vendorizado sí declara `sigla` y hay un patch dedicado — **la base estaba atrasada de v4.1.8 a v4.2.21**. Resuelto acá aplicando los 48 patches y rehaciendo el stack; **sigue abierto para quien tenga su base vieja** | **Pablo** (laboratorio), **Itzan** (baseline) | `RESUELTO EN LA MÁQUINA DE JUSTIN` |
+| ~~HALL-02~~ | **RECLASIFICADO: era entorno, no producto.** La base estaba cargada con un paquete de seeds viejo. `gen_seeds.py` ya documentaba y arreglaba el bug (v4.0.11 bis) y el paquete en disco ya trae el canal con el id correcto. **Tras el ciclo limpio la relación entrega** (`delivered:true`) y `fx3` pasa 10/10 | — | `CERRADO` |
+| **HALL-03** | **La deduplicación de avisos NO aguanta concurrencia — demostrado.** Dos `emit()` en paralelo con la misma clave de rebote crean **DOS filas**, las dos reportadas como exitosas. Medido 6 veces: 5 dan dos. Causa: `debounce_key` no tiene índice único y `createRequest` es un `findOne`+`insert` en READ COMMITTED. `outbox_messages` y `queued_jobs` **sí** tienen el suyo | **Itzan** (exige cambio de esquema) | `ABIERTO` · **es el hallazgo que queda** |
+| **HALL-06** | **`rebuild_stack.py` es inejecutable**: aborta en 0/4 con 214 conflictos porque `database/SQL` existe. Hace cumplir la política de v4.0.9 mientras el repo vendoriza a propósito desde entonces. El «único camino de recuperación» que documenta `CLAUDE.md` no corre | **Pablo** | `ABIERTO` |
+| **HALL-07** | **`postgres-init` no puede terminar bien en una base nueva**: el patch `v4221_aseguradoras_codigo_unico` exige 17 aseguradoras que crea la API al arrancar, o sea después. Exit 3 garantizado en todo rebuild limpio | **Pablo** | `ABIERTO` |
+| ~~HALL-04~~ | **RETIRADO: no es un defecto.** `database/SQL` es una copia vendorizada deliberada (`scripts/db/vendor-ddl.sh`), vigilada por `yarn db:vendor:check`, montada por el compose y usada por el CI. Lo desactualizado es `CLAUDE.md` | — | `CERRADO` |
+| **HALL-05** | Deriva de documentación en `CLAUDE.md`: FKs 6 663 → **6 664**; suites unitarias 439 → **681**; pruebas 4 500 → **8 249** | Coordinación | `ABIERTO` |
+
+**Cómo destrabar una base atrasada** (es lo que le va a pasar al resto): `rebuild_stack.py` no
+corre (HALL-06), así que el ciclo es a mano — `docker compose --profile "*" down -v` →
+`docker compose --profile local-db up -d postgres postgres-init mongodb mongo-init redis opensearch
+opensearch-init minio` → `python salud-db/load_seeds.py --skip-prod`. Toma ~15 min.
+
+**Ambigüedades nuevas, para Ender:** **AMB-02** (el camino «suprimida» intenta correo *y* chat; el
+«rebotada» intenta correo y *no* chat — no documentado) · **AMB-03** (`emit` puede devolver un
+resultado **sin ningún campo de correo**, y leer esa ausencia como «no hacía falta correo» sería
+falso) · el **`skippedReason` es hoy prosa libre** y el validador lo necesita como catálogo cerrado
+de 5 textos.
+
+**Dato para Pablo:** el **contrato versionado de Ender no existe** en el árbol al corte. El de facto
+es el puerto, blob sha1 `4e262747735005c16262a907de3caf09a1268923`.
+
 ## 6. Cierre del turno — completar acá
 
 | Persona | HECHO / total | Hitos cerrados | `A MEDIAS` | `BLOCKED` | Su daily |
 |---|---|---|---|---|---|
 | Pablo | `NOT_RUN` | 0 / 6 | — | — | [Pablo-Daily-Noche-2026-09-19.md](Pablo/Pablo-Daily-Noche-2026-09-19.md) |
-| Ender | `NOT_RUN` | 0 / 6 | — | — | [Ender-Daily-Noche-2026-09-19.md](Ender/Ender-Daily-Noche-2026-09-19.md) |
+| Ender | `48/50` | 6 / 6 | — | — (2 microtareas `DESCARTADO` en H3.S3 por falta de insumo — no bloqueo activo) | [Ender-Daily-Noche-2026-09-19.md](Ender/Ender-Daily-Noche-2026-09-19.md) |
 | Itzan | `26 / 52` | 1 / 6 (H1) | H2 (6/9), H3 (6/7) | H4, H5, H6 | [Itzan-Daily-Noche-2026-09-19.md](Itzan/Itzan-Daily-Noche-2026-09-19.md) |
 | Marcelo | `NOT_RUN` | 0 / 6 | — | — | [Marcelo-Daily-Noche-2026-09-19.md](Marcelo/Marcelo-Daily-Noche-2026-09-19.md) |
-| Justin | `NOT_RUN` | 0 / 6 | — | — | [Justin-Daily-Noche-2026-09-19.md](Justin/Justin-Daily-Noche-2026-09-19.md) |
+| Justin | **53 / 53** | 6 / 6 | — | — (las 13 pendientes se cerraron el 20/09; ver §8 de su daily) | [Justin-Daily-Noche-2026-09-19.md](Justin/Justin-Daily-Noche-2026-09-19.md) |
 
 ### Qué NO se puede escribir en este documento
 
