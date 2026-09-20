@@ -71,10 +71,46 @@ Ninguna.
 
 | ID | Estado | Qué lo destraba |
 |---|---|---|
-| Push a GitHub | **`BLOQUEADO`** | El clasificador del modo automático de la sesión rechaza `git push`. **Lo destraba un comando tuyo:** `! git push origin main` |
-| Que el CI corra | `TODO` | Depende del push |
+| Protección de rama | `TODO` | Marcar `estandar` como check requerido es un cambio de ajustes del repositorio: decisión del dueño |
+| Deriva provocada en un PR | `TODO` | Verificado en local (exit 1). En GitHub no se probó: exige abrir un PR de prueba |
 | Ejecutar las 262 microtareas | `TODO` | Es el turno del equipo |
 | Revisión humana del contenido | `TODO` | El candado verifica que las piezas estén; **no puede juzgar si están bien escritas** |
+
+## Cierre posterior — el CI corrió, y en verde
+
+El 2026-09-20T03:42Z el usuario ejecutó `git push origin main` (el clasificador de la sesión lo
+rechazaba, no el remoto). Con eso:
+
+- **Los 8 commits quedaron publicados.** `main` y `origin/main` en `ef1baf9`.
+- **El workflow corrió por primera vez en `ubuntu-latest` y pasó**, en 8 segundos, run
+  [`35487274310`](https://github.com/PabloArauzCaballero/AlovidaPromptManager/actions/runs/35487274310).
+
+```text
+✓ main estandar · 35487274310
+✓ Espejo sin deriva y candados en verde in 8s
+  ✓ Espejo .agents/ sin deriva
+  ✓ Self-test de sync_agents
+  ✓ Self-test de plan_gate
+  ✓ Self-test de report_gate
+  ✓ Self-test de plan_status
+  ✓ Self-test de check_reparto
+  ✓ Self-test de check_skills_citadas
+  ✓ Estructura del reparto y seccion obligatoria de skills
+  ✓ Ninguna skill citada que no exista
+```
+
+**Qué cambia:** la auditoría de portabilidad se confirmó — los scripts corren igual en Linux que
+en Windows. El peldaño del área de CI sube de `WRITTEN` a **`TESTED`**.
+
+**Qué sigue sin estar:** el workflow **no es un check requerido** de la rama. Hoy muestra rojo,
+pero **no impide mergear**: eso exige configurar protección de rama, que es un cambio de ajustes
+del repositorio y decisión del dueño. Y tampoco se provocó deriva en un PR para verlo fallar en
+GitHub: se verificó en local (exit 1, nombrando el archivo).
+
+**Advertencia registrada en la corrida:** `actions/checkout@v4` y `actions/setup-python@v5`
+apuntan a Node 20, que GitHub deprecó; hoy los fuerza a Node 24 y funcionan. No se cambiaron las
+versiones porque no verifiqué cuál es la mayor vigente de cada una, y **escribir una versión sin
+verificarla es exactamente lo que la regla 00 prohíbe**.
 
 ## Evidencia
 
@@ -144,7 +180,6 @@ check_skills_citadas       73 citadas, 0 inexistentes     exit=0
 - **Los 30 CA de hito y los 90 de subtarea los escribí yo**, derivados de las microtareas que
   contienen. Son la capa que más criterio requiere y la que menos verificación externa tiene.
 - **El reparto sigue sin ejecutarse.** Todo está en `TODO`.
-- **Nada de esto está en GitHub**: el push sigue bloqueado.
 - **La estimación no cambió.** Sigue sin calcularse cuánto de las 262 microtareas entra realmente
   en una noche: `TEAM_CAPACITY` nunca se calculó (`Q-03`).
 

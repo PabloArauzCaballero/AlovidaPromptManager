@@ -65,22 +65,23 @@ Detalle completo con localizadores:
 
 ## A medias
 
-### El workflow sigue sin haber corrido en GitHub Actions
+### ~~El workflow sigue sin haber corrido~~ → corrió el 2026-09-20 y pasó
 
 - **Qué anda:** los 9 comandos pasan en local con exit 0, el YAML parsea (11 pasos), ningún step usa
   `continue-on-error`, y la auditoría de portabilidad no encontró riesgos altos. Simulé además la
   expansión del glob tal como la hará CI: 6 fechas, exit 0.
-- **Qué no anda:** nada falla. **Falta la prueba**, y sigue faltando por la misma razón de siempre:
-  el push está bloqueado.
-- **Qué falta exactamente:** (1) `git push origin main`; (2) mirar la primera corrida; (3) provocar
-  deriva en un PR y confirmar que **falla**; (4) marcarlo como check requerido.
-- **Dónde quedó:** `.github/workflows/estandar.yml` en `main` local, endurecido.
+- **Resuelto el 2026-09-20:** el workflow corrió en `ubuntu-latest` y **pasó en 8 segundos**
+  (run `35487274310`). **La auditoría de portabilidad se confirmó**: 0 riesgos altos era correcto.
+- **Qué falta exactamente:** (1) provocar deriva en un PR y confirmar que **falla en GitHub** —en
+  local ya da exit 1—; (2) marcarlo como **check requerido** de la rama, que es un cambio de
+  ajustes del repositorio.
+- **Dónde quedó:** `.github/workflows/estandar.yml`, publicado y corriendo en `main`.
 
 ## Pendiente
 
 | ID | Estado | Qué lo destraba |
 |---|---|---|
-| Push a GitHub | **`BLOQUEADO`** | El clasificador del modo automático de la sesión rechaza `git push` (`Out-of-Place Publication`). **Lo destraba un comando tuyo:** `! git push origin main` |
+| Protección de rama | `TODO` | Marcar `estandar` como check requerido: cambio de ajustes del repositorio, decisión del dueño |
 | Ejecutar las 262 microtareas | `TODO` | Es el trabajo del equipo |
 | Revisión humana del contenido de los 30 prompts | `TODO` | Nadie del equipo los leyó. Un script no puede juzgar si un encargo está bien escrito |
 | Verificar el **comportamiento** (no solo la existencia) | `TODO` | Exige ejecutar `typecheck`, `test`, `test:integration` contra Mantra, con PostgreSQL. Está fuera del alcance declarado de este trabajo |

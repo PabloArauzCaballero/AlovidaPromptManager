@@ -87,7 +87,7 @@ Inventario final del reparto:
 
 ## A medias
 
-### H2 y H4 — Los candados de CI existen pero nunca corrieron en GitHub Actions
+### H2 y H4 — Los candados de CI ~~nunca corrieron~~ → **corrieron y pasaron** (2026-09-20)
 
 - **Qué anda:** el workflow tiene 11 pasos, el YAML parsea, ningún step usa `continue-on-error`, y
   **los 9 comandos que ejecuta pasan en local con exit 0**: `sync_agents --check` (192 archivos,
