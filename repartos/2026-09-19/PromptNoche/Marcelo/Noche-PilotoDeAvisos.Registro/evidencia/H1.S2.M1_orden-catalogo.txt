@@ -1,0 +1,4 @@
+$ grep -c "auxiliares del paquete" "$DOC"
+1
+exit_code=0
+

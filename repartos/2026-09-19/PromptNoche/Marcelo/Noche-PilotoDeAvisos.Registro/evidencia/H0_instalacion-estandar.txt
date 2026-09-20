@@ -1,0 +1,50 @@
+=== H0 — instalación del estándar · consulta 2026-09-20T15:56:05Z · cwd=D:/Trabajos Secundarios/Mantra Core Technologies/AlovidaPromptManager
+
+$ ls .claude/skills | wc -l
+176
+exit_code=0
+
+$ ls .claude/rules/*.md | wc -l
+15
+exit_code=0
+$ ls .claude/rules/
+00-no-negociables.md
+10-ciclo-de-trabajo.md
+20-plan-obligatorio.md
+30-escalera-de-evidencia.md
+40-reporte-obligatorio.md
+50-progreso-visible.md
+60-guardia-de-racionalizacion.md
+65-aislar-y-simular-para-no-bloquearse.md
+70-control-de-recursos.md
+80-testing.md
+90-seguridad-y-datos-sensibles.md
+95-frontend.md
+96-backend.md
+97-datos-y-esquema.md
+README.md
+(la ficha espera 14: son 14 reglas numeradas + README.md = 15 archivos *.md)
+
+$ python .claude/hooks/plan_gate.py --self-test
+PASS  sin plan: bloquea codigo .ts
+PASS  sin plan: bloquea codigo sin extension conocida
+PASS  sin plan: permite .md
+PASS  sin plan: permite bajo docs/
+PASS  sin plan: permite bajo .claude/
+PASS  sin plan: permite ruta fuera del proyecto
+PASS  sin plan: ignora herramienta fuera de alcance
+PASS  sin plan: evento sin file_path no bloquea
+PASS  mensaje de bloqueo nombra la regla
+PASS  con plan: permite codigo
+PASS  plan ilegible: igual permite (no bloquea por formato)
+
+plan_gate self-test: 11 PASS, 0 FAIL
+exit_code=0
+
+$ git rev-parse --abbrev-ref HEAD; git rev-parse HEAD
+marcelo/features-a-trabajar
+dd89e1fe9cc2d07ae296e900cee771fc91d271fb
+
+$ grep -c plan_gate .claude/settings.json
+1
+(el hook está registrado en el settings.json de AlovidaPromptManager; en la raíz del workspace corren los hooks de ATLAS)

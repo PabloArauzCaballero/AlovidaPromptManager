@@ -1,0 +1,110 @@
+=== H1.S2.M2 (evidencia de descartes) — consulta 2026-09-20T17:38:57Z
+
+--- M-14: cronograma de medicamentos con alarmas ---
+$ grep -rniE "cronograma|medication.?schedule|alarm" mantra-core-health-api/src/modules mantra-core-health/src/app --include=*.ts -l
+mantra-core-health-api/src/modules/accounting/controllers/accounting-accrual.controller.ts
+mantra-core-health-api/src/modules/accounting/controllers/accounting-practitioner.controller.ts
+mantra-core-health-api/src/modules/accounting/dto/accounting-cockpit.dto.ts
+mantra-core-health-api/src/modules/accounting/dto/accrual.dto.ts
+mantra-core-health-api/src/modules/accounting/dto/practitioner-assets-liabilities.dto.ts
+mantra-core-health-api/src/modules/accounting/repositories/accrual.repository.ts
+mantra-core-health-api/src/modules/accounting/repositories/liability.repository.ts
+mantra-core-health-api/src/modules/accounting/services/accounting-read.service.spec.ts
+mantra-core-health-api/src/modules/accounting/services/accounting-read.service.ts
+mantra-core-health-api/src/modules/accounting/services/accrual.service.spec.ts
+mantra-core-health-api/src/modules/accounting/services/accrual.service.ts
+mantra-core-health-api/src/modules/accounting/services/liability-amortization.ts
+mantra-core-health-api/src/modules/accounting/services/practitioner-accounting.service.assets-liabilities.spec.ts
+mantra-core-health-api/src/modules/accounting/services/practitioner-accounting.service.ts
+mantra-core-health-api/src/modules/billing/entities/quotations.entity.ts
+mantra-core-health-api/src/modules/diagnostic_units/controllers/diagnostic-pricing.controller.ts
+mantra-core-health-api/src/modules/diagnostic_units/controllers/diagnostic-units.controller.ts
+mantra-core-health-api/src/modules/diagnostic_units/dto/administration-read.dto.ts
+mantra-core-health-api/src/modules/diagnostic_units/dto/create-price-schedule.dto.ts
+mantra-core-health-api/src/modules/diagnostic_units/dto/directory-read.dto.ts
+mantra-core-health-api/src/modules/diagnostic_units/dto/responses.dto.ts
+mantra-core-health-api/src/modules/diagnostic_units/repositories/diagnostic-price-schedules.repository.ts
+mantra-core-health-api/src/modules/diagnostic_units/repositories/diagnostic-units-admin-read.repository.ts
+mantra-core-health-api/src/modules/diagnostic_units/repositories/diagnostic-units-read.repository.ts
+mantra-core-health-api/src/modules/diagnostic_units/services/diagnostic-pricing.service.ts
+mantra-core-health-api/src/modules/diagnostic_units/services/diagnostic-units-admin-read.service.spec.ts
+mantra-core-health-api/src/modules/diagnostic_units/services/diagnostic-units-admin-read.service.ts
+mantra-core-health-api/src/modules/diagnostic_units/services/diagnostic-units-search.service.ts
+mantra-core-health-api/src/modules/erp/controllers/erp.controller.ts
+mantra-core-health-api/src/modules/erp/services/erp-contracts.service.ts
+mantra-core-health-api/src/modules/practice/dto/organization-console.dto.ts
+mantra-core-health-api/src/modules/quotations/dto/create-quotation.dto.ts
+mantra-core-health-api/src/modules/quotations/dto/quotation-response.dto.ts
+mantra-core-health-api/src/modules/quotations/repositories/quotations.repository.ts
+mantra-core-health-api/src/modules/quotations/services/payment-plan.ts
+mantra-core-health-api/src/modules/quotations/services/quotations.service.spec.ts
+mantra-core-health/src/app/core/data-access/assets-liabilities/assets-liabilities.client.spec.ts
+mantra-core-health/src/app/core/data-access/diagnostic-units/diagnostic-units-admin.client.ts
+mantra-core-health/src/app/core/data-access/diagnostic-units/diagnostic-units-admin.types.ts
+mantra-core-health/src/app/core/mock/fixtures/fichas-estandar.generated.ts
+mantra-core-health/src/app/core/mock/handlers/finance.handlers.ts
+mantra-core-health/src/app/features/account/appointments/appointments.spec.ts
+mantra-core-health/src/app/features/account/appointments/appointments.ts
+mantra-core-health/src/app/features/account/loyalty/punto-motivo.spec.ts
+mantra-core-health/src/app/features/admin/medical-laboratory/medical-laboratory.spec.ts
+mantra-core-health/src/app/features/admin/medical-laboratory/medical-laboratory.ts
+mantra-core-health/src/app/features/admin/medical-laboratory/tarifarios-recordados.spec.ts
+mantra-core-health/src/app/features/auth/verify-email/verify-email.spec.ts
+mantra-core-health/src/app/features/auth/verify-email/verify-email.ts
+mantra-core-health/src/app/features/clinical-record/patient-chart/demo-presets.ts
+mantra-core-health/src/app/features/messaging/thread/composer/emoji-catalog.generated.ts
+mantra-core-health/src/app/features/organization/pharmacy-inbox/alarma-de-pedidos.spec.ts
+mantra-core-health/src/app/features/organization/pharmacy-inbox/alarma-de-pedidos.ts
+mantra-core-health/src/app/features/organization/pharmacy-inbox/pharmacy-inbox.fixtures.ts
+mantra-core-health/src/app/features/organization/pharmacy-inbox/pharmacy-inbox.spec.ts
+mantra-core-health/src/app/features/organization/pharmacy-inbox/pharmacy-inbox.ts
+mantra-core-health/src/app/features/organization/pharmacy-profile/documentos-legales/documentos-legales.spec.ts
+mantra-core-health/src/app/features/symptom-check/corpus.fixture.ts
+mantra-core-health/src/app/features/symptom-check/corpus.spec.ts
+mantra-core-health/src/app/features/symptom-check/motor.spec.ts
+mantra-core-health/src/app/features/symptom-check/motor.ts
+mantra-core-health/src/app/features/symptom-check/sintomas.datos.ts
+mantra-core-health/src/app/features/symptom-check/sintomas.spec.ts
+mantra-core-health/src/app/features/symptom-check/sintomas.ts
+mantra-core-health/src/app/features/symptom-check/symptom-check.ts
+mantra-core-health/src/app/features/symptom-check/zonas.datos.ts
+(vacio => NOT_FOUND en ninguna capa, confirma la marca FALTA del cliente)
+
+--- M-15/16: puntos, decision pendiente de negociacion ---
+$ grep -n "se decidira\|decidiremos" gdoc_procesos.txt
+337:   1. Este módulo tendrá la opción de poder crear puntos o monedas (el nombre lo decidiremos juntos después) para que esos puntos se puedan canjear con las compras en el SUPERMERCADO
+394:   1. Este módulo tendrá la opción de poder crear puntos o monedas (el nombre lo decidiremos juntos después) para que esos puntos se puedan canjear con estudios futuros
+460:   1. Este módulo tendrá la opción de poder crear puntos o monedas (el nombre lo decidiremos juntos después) para que esos puntos se puedan canjear con estudios futuros
+
+--- M-08/09/10: aprobacion parcial de aseguradora, automatizada ---
+$ grep -rliE "approval|aprobaci" mantra-core-health-api/src/modules/insurance --include=*.ts
+mantra-core-health-api/src/modules/insurance/controllers/insurance-backbone.controller.ts
+mantra-core-health-api/src/modules/insurance/dto/backbone.dto.ts
+mantra-core-health-api/src/modules/insurance/dto/claims.dto.ts
+mantra-core-health-api/src/modules/insurance/dto/insurance-analytics.dto.ts
+mantra-core-health-api/src/modules/insurance/dto/read.dto.ts
+mantra-core-health-api/src/modules/insurance/repositories/insurance-analytics.repository.spec.ts
+mantra-core-health-api/src/modules/insurance/repositories/insurance-analytics.repository.ts
+mantra-core-health-api/src/modules/insurance/services/insurance-analytics.service.spec.ts
+mantra-core-health-api/src/modules/insurance/services/insurance-analytics.service.ts
+mantra-core-health-api/src/modules/insurance/services/insurance-read.service.spec.ts
+mantra-core-health-api/src/modules/insurance/services/insurance-read.service.ts
+mantra-core-health-api/src/modules/insurance/services/patient-settlement-projection.spec.ts
+$ grep -n "CHARLAR CON EL TIO\|charlar" gdoc_procesos.txt
+178:      3. Tiene que existir al inicio una lupa de buscar para que pueda escribir su profesión u ocupación y ayude a buscar las 896 opciones que definió el SEGIP las ocupaciones en Bolivia. (FALTA: sin campo de ocupación no hay buscador) (CHARLAR)
+179:      4. Al seleccionar la profesión del Doctor tiene que de manera automática cambiar abajo en MATRICULA QUE SEA ODONTOLOGO y lo mismo para el REGISTRO DEL COLEGIO MEDICO O COLEGIO DE ODONTOLOGO de forma automática[b], para que con esto nosotros conozcamos el numero de MATRICULA de que profesión de manera exacta. (INCOMPLETO: cambia el colegio preseleccionado, no el rótulo; la API guarda el colegio como texto libre) (CHARLAR)
+542:[b]CHARLAR
+
+--- M-11/12/13/17: integracion externa con sistema de farmacia/laboratorio/supermercado ---
+$ grep -rliE "sincroniz|enlazado.{0,20}sistema" gdoc_procesos.txt
+19:   7. Numero celular persona tutor o autorizada (siempre y cuando este enlazado con el menor de edad (hijo) o persona mayor a su cargo (padres o abuelos). (INCOMPLETO - falta sincronización para relacionar usuarios)
+20:      1. Se debe hacer la sincronización con los demás usuarios para poder relacionarlo. (DETALLAR)
+314:      2. La APP tiene que estar enlazado o sincronizado con el sistema de la empresa de Farmacia donde tenga acceso a los precios e inventario 
+331:3. COMPRAS DE SUPERMERCADOS
+332:   1. La APP tendrá una opción de poder ingresar a comprar todo lo disponible en el SUPERMERCADO con descuento especial por ser cliente de ALOVIDA
+337:   1. Este módulo tendrá la opción de poder crear puntos o monedas (el nombre lo decidiremos juntos después) para que esos puntos se puedan canjear con las compras en el SUPERMERCADO
+340:   4. El paciente podrá decidir cuando canjear sus puntos y de manera sencilla a través de un código o QR que DESARROLLE nuestra APP mostrando en el SUPERMERCADO
+341:   5. Pueden DUPLICAR o TRIPLICAR los puntos o monedas con las CAMPAÑAS O PROMOCIONES         que se realicen a través de nuestra APP, fomentando con esto mas compras en los SUPERMERCADOS de nuestro socio aliado
+
+--- M-19: integraciones de precios/inventario/aseguradoras (confirmacion automatica) ---
+$ sed -n "547,554p" gdoc_procesos.txt

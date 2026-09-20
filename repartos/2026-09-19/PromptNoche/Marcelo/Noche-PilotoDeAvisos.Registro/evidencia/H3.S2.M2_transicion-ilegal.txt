@@ -1,0 +1,8 @@
+# H3.S2.M2 — transición ilegal T1: completar una cita CONFIRMADA sin iniciarla — ejecutado 2026-09-20T18:58:59Z contra la API viva en 127.0.0.1:3000 (PID 29640, base del .env = Neon/alovida, RLS_ENFORCE=false)
+# Actores sintéticos: PA1/PA2/PB1 = pacientes SINT<U>n (rol PATIENT, tenant por defecto = org A 1befcfea…); PB1 además miembro STAFF de org B 60519703…; ownerB = rol global USER. bookingA = cita CONFIRMADA de PA1 en A. Los uuid se acortan; los nombres y motivos van enmascarados.
+# Esperado = lo que exige la REGLA (90.1.3 / 90.1.9), no lo que hace el sistema. ✗ = desvío observado, conservado tal cual.
+$ node h3-recorrido.mjs --step illegal
+✓ [T1 admin completa una cita CONFIRMADA sin iniciarla] POST /scheduling/bookings/d4e31932…/complete → 422 (esperado 422)
+✓ [T1 consulta posterior: PA1 lee su cita] GET /scheduling/bookings/d4e31932… → 200 (esperado 200)
+  T1: {"status":422,"code":"PRECONDITION_FAILED","failureCode":"INVALID_STATE_TRANSITION","estadoDespues":"3fbee3a4-f674-5520-a805-32098f7b019c"}
+exit_code=0   # 1 = al menos un desvío respecto de la regla

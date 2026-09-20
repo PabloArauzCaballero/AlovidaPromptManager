@@ -1,0 +1,167 @@
+=== H1.S2.M5 — localizadores reales del recorrido · consulta 2026-09-20T17:37:42Z
+
+--- Paso 1-3: buscar medico, ver horario, reservar (API) ---
+$ grep -n "class SchedulingBookingsController\|@Post\|@Get" mantra-core-health-api/src/modules/scheduling/controllers/scheduling-bookings.controller.ts | head -15
+57:export class SchedulingBookingsController {
+85:  @Get()
+128:  @Get(':id')
+144:  @Post(':id/accept')
+167:  @Post(':id/request-info')
+190:  @Post(':id/propose-schedule')
+206:  @Post(':id/reject')
+256:  @Get(':id/payment-state')
+276:  @Post(':id/start')
+295:  @Post(':id/complete')
+311:  @Post(':id/reschedule')
+327:  @Post(':id/cancel')
+344:  @Post(':id/check-in')
+362:  @Post(':id/delay')
+379:  @Post(':id/reminders')
+
+--- Paso 4: lista de espera ---
+$ grep -n "class\|@Post\|@Get" mantra-core-health-api/src/modules/scheduling/services/scheduling-waitlist.service.ts | head -10
+66:export class SchedulingWaitlistService {
+
+--- Paso 5: cupo liberado -> aviso 3.4/4.3 ---
+$ grep -n "SLOT_RELEASED" mantra-core-health-api/src/modules/scheduling/services/scheduling-agenda-notices.service.ts
+
+--- Paso 6: demora -> aviso 3.5/4.2 ---
+$ grep -n "PRACTITIONER_DELAY\|class SchedulingDelayService" mantra-core-health-api/src/modules/scheduling/services/scheduling-delay.service.ts | head -5
+76:export class SchedulingDelayService {
+
+--- Paso 7: paciente ve el aviso (bandeja/campana) - FRONT ---
+$ ls mantra-core-health/src/app/features/notifications/ 2>&1
+aviso-de-hueco-libre.spec.ts
+aviso-de-hueco-libre.ts
+notification-center.css
+notification-center.html
+notification-center.spec.ts
+notification-center.ts
+notification-presentation.spec.ts
+notification-presentation.ts
+$ grep -rln "campana\|bell\|badge" mantra-core-health/src/app/features/notifications --include=*.ts 2>&1
+mantra-core-health/src/app/features/notifications/aviso-de-hueco-libre.spec.ts
+mantra-core-health/src/app/features/notifications/aviso-de-hueco-libre.ts
+mantra-core-health/src/app/features/notifications/notification-center.spec.ts
+mantra-core-health/src/app/features/notifications/notification-center.ts
+mantra-core-health/src/app/features/notifications/notification-presentation.spec.ts
+mantra-core-health/src/app/features/notifications/notification-presentation.ts
+(revisar cabecera de carril-p8-avisos-agenda.spec.ts: declara que la campana es P1 y no existe)
+
+--- Paso 8: copia al chat SupportAdmin (TAREA-15) ---
+$ grep -n "SupportAdmin\|class SupportAdminNoticeAdapter" mantra-core-health-api/src/modules/scheduling/adapters/support-admin-notice.adapter.ts | head -10
+15: * `SupportAdmin`: quién escribe el aviso de agenda en el chat de la empresa
+43:export class SupportAdminNoticeAdapter {
+50:    this.logger.setContext(SupportAdminNoticeAdapter.name);
+54:   * Manda el mismo texto del aviso al hilo de `SupportAdmin` del destinatario.
+120:        'No se pudo emitir el aviso de agenda por el chat de SupportAdmin',
+
+--- Paso 9: correo ---
+$ grep -n "encolarCorreo\|emailRequestId" mantra-core-health-api/src/modules/scheduling/adapters/messaging-agenda-notice.adapter.ts | head -8
+89: * puntos de emisión leen. El correo se informa aparte (`emailRequestId`,
+229:        ...(await this.encolarCorreo(notice, recipientUserId, actor)),
+242:        ...(await this.encolarCorreo(notice, recipientUserId, actor)),
+257:    const correo = await this.encolarCorreo(notice, recipientUserId, actor);
+342:  private async encolarCorreo(
+347:    Pick<AgendaNoticeResult, 'emailRequestId' | 'emailSkippedReason'>
+388:          emailRequestId: request.id,
+396:          emailRequestId: request.id,
+
+--- Paso 10: datos de facturacion 3.6 en flujo de reserva ---
+$ grep -rn "billing\|invoice\|factura" mantra-core-health-api/src/modules/scheduling/controllers mantra-core-health-api/src/modules/scheduling/dto --include=*.ts
+(vacio => NOT_FOUND en la reserva misma; factura es un flujo de encuentro/consulta, no de agenda)
+
+--- Paso 11: movil ---
+$ sed -n "1,45p" mantra_core_health_mobile/lib/core/constants/api_endpoints.dart
+/// Catálogo centralizado de rutas y endpoints de la API backend de Mantra Core Health.
+///
+/// Regla de oro: cada ruta se COPIA del cliente web correspondiente
+/// (`mantra-core-health/src/app/core/data-access/`), jamás se redacta de
+/// memoria — así se cazaron acá un path de refresh inexistente y dos
+/// endpoints que el servidor nunca tuvo (`/iam/auth/me`, `switch-tenant`:
+/// el perfil sale de los claims del JWT y el tenant se resuelve en cliente).
+class ApiEndpoints {
+  const ApiEndpoints._();
+
+  // --- M01 IAM & Autenticación (espejo de iam.client.ts) ---
+  static const String login = '/iam/auth/login';
+  static const String refreshToken = '/iam/auth/token/refresh';
+  static const String logout = '/iam/auth/logout';
+  static const String registerPatient = '/iam/auth/register-patient';
+  static const String forgotPassword = '/iam/auth/forgot-password';
+  static const String resetPassword = '/iam/auth/reset-password';
+  static String registerDevice(String userId) => '/iam/users/$userId/devices';
+
+  // --- M05 Perfiles ---
+  static const String patientProfileMe = '/profiles/patients/me';
+  static const String patientSummaryMe = '/profiles/patients/me/summary';
+  static const String practitionerProfileMe = '/profiles/practitioners/me';
+  static const String practitionersDirectory = '/profiles/practitioners';
+
+  // --- Buscador público (community-public; sin sesión, contrato CONTRATO-PUBLICO.md) ---
+  static const String publicSearchPractitioners = '/public/search/practitioners';
+  static String publicPractitionerProfile(String slug) => '/public/profiles/p/$slug';
+
+  // --- M41 Agenda & Turnos ---
+  static const String myAgenda = '/scheduling/my-agenda';
+  static const String agendaResources = '/scheduling/resources';
+  static const String agendaSlots = '/scheduling/slots';
+  static String slotHold(String slotId) => '/scheduling/slots/$slotId/holds';
+
+  /// El paciente SOLICITA (canal PORTAL, nace pendiente de aceptación);
+  /// `confirm` es del mostrador — corrección #11.
+  static String holdRequest(String holdToken) => '/scheduling/holds/$holdToken/request';
+  static const String bookings = '/scheduling/bookings';
+  static String cancelBooking(String bookingId) => '/scheduling/bookings/$bookingId/cancel';
+
+  // --- M08 Clinical & M15 Chart ---
+  static String patientClinicalSummary(String patientId) => '/clinical/patients/$patientId/summary';
+  static String patientChart(String patientId) => '/charts/patients/$patientId/chart';
+  static const String encounters = '/clinical/encounters';
+
+$ grep -rln "scheduling\|slots\|bookings" mantra_core_health_mobile/lib/features 2>&1
+
+--- Arneses reales (sin mock) ---
+$ ls mantra-core-health/playwright/ | grep -iE "agenda|p8|real"
+carril-12-agenda-de-hoy.spec.ts
+carril-ag6-agenda-convivencia.spec.ts
+carril-chat-realtime.spec.ts
+carril-p8-avisos-agenda.spec.ts
+patient-coverage-copays.real.spec.ts
+prescription-official-pdf.real.spec.ts
+$ ls mantra-core-health/cypress/e2e/real/ 2>&1
+01-administrador.cy.ts
+02-paciente.cy.ts
+03-medico.cy.ts
+04-organizacion.cy.ts
+05-portal-turnos.cy.ts
+06-estados-de-caso.cy.ts
+07-cola-de-revision.cy.ts
+08-sello-del-titular.cy.ts
+09-camino-consumidor.cy.ts
+10-camino-medico.cy.ts
+11-directorio-publico.cy.ts
+12-foto-profesional.cy.ts
+$ ls mantra-core-health-api/tools/alovida/ 2>&1
+completar-vitrinas-centros.mjs
+correos-reales.mjs
+coverage-report.mjs
+cuenta-doctor-demo.mjs
+datos
+exercise-clinical-personas.mjs
+exercise-front-flows.mjs
+faker-worker.mjs
+generate-carrier-contacts.mjs
+guardrails.mjs
+journey-p1-p2-p9.mjs
+p8-avisos-agenda.mjs
+README.md
+register-insurance-carriers.mjs
+retirar-practitioner-specialty.mjs
+seed-contabilidad.mjs
+seed-dev-data.mjs
+seed-diagnostic-units.mjs
+seed-estudios-duplicados.mjs
+seed-farmacias-marketplace.mjs
+seed-solicitudes-seguro.mjs
+seed-vitrina-publica.mjs

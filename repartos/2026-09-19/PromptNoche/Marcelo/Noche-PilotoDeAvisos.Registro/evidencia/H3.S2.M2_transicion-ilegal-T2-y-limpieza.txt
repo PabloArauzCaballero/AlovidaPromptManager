@@ -1,0 +1,11 @@
+# H3.S2.M2 (T2) + limpieza: PA1 cancela su cita (legítimo) y se intenta iniciar la cancelada — ejecutado 2026-09-20T18:59:00Z contra la API viva en 127.0.0.1:3000 (PID 29640, base del .env = Neon/alovida, RLS_ENFORCE=false)
+# Actores sintéticos: PA1/PA2/PB1 = pacientes SINT<U>n (rol PATIENT, tenant por defecto = org A 1befcfea…); PB1 además miembro STAFF de org B 60519703…; ownerB = rol global USER. bookingA = cita CONFIRMADA de PA1 en A. Los uuid se acortan; los nombres y motivos van enmascarados.
+# Esperado = lo que exige la REGLA (90.1.3 / 90.1.9), no lo que hace el sistema. ✗ = desvío observado, conservado tal cual.
+$ node h3-recorrido.mjs --step cleanup
+✗ [C1 PA1 cancela su propia cita (legítimo)] POST /scheduling/bookings/d4e31932…/cancel → 409 (esperado 200)
+    cuerpo: {"code":"CONFLICT","message":"<enmascarado:string>","correlationId":"84","details":{"bookingId":"d4e31932-b38e-4ce5-b5d7-9bc7a1277fe0"},"timestamp":"2026-09-20T18:59:00.892Z","path":"/scheduling/bookings/d4e31932-b38e-4ce5-b5d7-9bc7a1277fe0/cancel"}
+✓ [T2 admin inicia la consulta de una cita CANCELADA] POST /scheduling/bookings/d4e31932…/start → 422 (esperado 422)
+✓ [T2 consulta posterior: PA1 lee su cita] GET /scheduling/bookings/d4e31932… → 200 (esperado 200)
+✓ [C2 el cupo de PA1 vuelve a ofrecerse] GET /scheduling/resources/22f1b9ac…/slots?from=2026-09-20T22%3A00%3A00.000Z&to=2026-09-20T22%3A01%3A00.000Z → 200 (esperado 200)
+  limpieza/T2: {"cancel":{"status":409,"feeAmount":null,"capacityReleased":null},"T2":{"status":422,"code":"PRECONDITION_FAILED","failureCode":"INVALID_STATE_TRANSITION","estadoDespues":"3fbee3a4-f674-5520-a805-32098f7b019c"},"cupoRemainingCapacity":1}
+exit_code=1   # 1 = al menos un desvío respecto de la regla

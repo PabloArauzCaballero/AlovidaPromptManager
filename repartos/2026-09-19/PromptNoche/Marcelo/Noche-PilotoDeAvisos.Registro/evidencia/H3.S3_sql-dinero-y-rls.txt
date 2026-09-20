@@ -1,0 +1,72 @@
+# H3.S3 (dinero) + apoyo H3.S1 (RLS) — consultas de SOLO LECTURA contra la base del .env de la API, ejecutadas 2026-09-20T18:52:55Z con el cliente pg 8.22 del repo (script h3-sql.mjs en el scratchpad de la sesión)
+$ node h3-sql.mjs <ruta .env>
+conectado a <…>.sa-east-1.aws.neon.tech/alovida como <DB_USER> (ssl=true)
+
+== H3.S3.M1 columnas de dinero en scheduling (information_schema.columns) ==
+$ select table_name, column_name, data_type, numeric_precision, numeric_scale, is_nullable from information_schema.columns where table_schema='scheduling' and (column_name ilike '%amount%' or column_name ilike '%fee%' or column_name ilike '%price%' or column_name ilike '%currency%') order by 1,2
+filas=5
+   {"table_name":"booking_cancellations","column_name":"currency_concept_id","data_type":"uuid","numeric_precision":null,"numeric_scale":null,"is_nullable":"YES"}
+   {"table_name":"booking_cancellations","column_name":"fee_amount","data_type":"numeric","numeric_precision":null,"numeric_scale":null,"is_nullable":"YES"}
+   {"table_name":"booking_cancellations","column_name":"fee_payment_intent_id","data_type":"uuid","numeric_precision":null,"numeric_scale":null,"is_nullable":"YES"}
+   {"table_name":"booking_policies","column_name":"currency_concept_id","data_type":"uuid","numeric_precision":null,"numeric_scale":null,"is_nullable":"YES"}
+   {"table_name":"booking_policies","column_name":"no_show_fee_amount","data_type":"numeric","numeric_precision":null,"numeric_scale":null,"is_nullable":"YES"}
+
+== H3.S3.M1 columnas float/double en los esquemas de dinero (esperado 0 filas) ==
+$ select table_schema, table_name, column_name, data_type from information_schema.columns where data_type in ('real','double precision') and table_schema in ('scheduling','billing','payments','insurance','accounting','pharmacy_inventory') order by 1,2,3
+filas=0
+
+== H3.S3.M2 conceptos de moneda vivos (terminology.catalog_concepts) ==
+$ select code, display from terminology.catalog_concepts where code ilike '%CURRENCY%' order by code
+filas=12
+   {"code":"DEFAULT_CONCURRENCY_POLICY","display":"Catalog concepts — Terminology"}
+   {"code":"DEFAULT_CURRENCY","display":"Catalog concepts — Terminology"}
+   {"code":"DEFAULT_DEFAULT_CURRENCY","display":"Catalog concepts — Terminology"}
+   {"code":"DEFAULT_FROM_CURRENCY","display":"Catalog concepts — Terminology"}
+   {"code":"DEFAULT_OPERATING_CURRENCY","display":"Catalog concepts — Terminology"}
+   {"code":"DEFAULT_TO_CURRENCY","display":"Catalog concepts — Terminology"}
+   {"code":"accounting:CURRENCY_PEN","display":"Peruvian Sol"}
+   {"code":"accounting:CURRENCY_USD","display":"US Dollar"}
+   {"code":"diagnostic_units:CURRENCY_BOB","display":"Boliviano"}
+   {"code":"diagnostic_units:CURRENCY_PEN","display":"Peruvian sol"}
+   {"code":"pharmacy:CURRENCY_USD","display":"US Dollar"}
+   {"code":"pharmacy_inventory:CURRENCY_USD","display":"US Dollar"}
+
+== H3.S3.M2 FK de currency_concept_id en scheduling ==
+$ select tc.table_name, kcu.column_name, ccu.table_schema||'.'||ccu.table_name as referencia from information_schema.table_constraints tc join information_schema.key_column_usage kcu on tc.constraint_name=kcu.constraint_name and tc.table_schema=kcu.table_schema join information_schema.constraint_column_usage ccu on ccu.constraint_name=tc.constraint_name where tc.constraint_type='FOREIGN KEY' and tc.
+filas=2
+   {"table_name":"booking_cancellations","column_name":"currency_concept_id","referencia":"terminology.catalog_concepts"}
+   {"table_name":"booking_policies","column_name":"currency_concept_id","referencia":"terminology.catalog_concepts"}
+
+== H3.S1 RLS en tablas de scheduling (rowsecurity) y políticas ==
+$ select t.tablename, t.rowsecurity, (select count(*) from pg_policies p where p.schemaname=t.schemaname and p.tablename=t.tablename) as policies from pg_tables t where t.schemaname='scheduling' and t.tablename in ('appointment_bookings','bookable_slots','waitlist_entries','booking_cancellations','booking_policies') order by 1
+filas=5
+   {"tablename":"appointment_bookings","rowsecurity":false,"policies":"0"}
+   {"tablename":"bookable_slots","rowsecurity":false,"policies":"0"}
+   {"tablename":"booking_cancellations","rowsecurity":false,"policies":"0"}
+   {"tablename":"booking_policies","rowsecurity":false,"policies":"0"}
+   {"tablename":"waitlist_entries","rowsecurity":false,"policies":"0"}
+
+== H3.S1 rol de conexión y BYPASSRLS ==
+$ select current_user, rolbypassrls, rolsuper from pg_roles where rolname=current_user
+filas=1
+   {"current_user":"neondb_owner","rolbypassrls":true,"rolsuper":false}
+exit_code=0
+
+== H3.S3.M2 redondeo en el código de scheduling (grep) ==
+$ grep -rnE 'Math\.round|toFixed|Math\.floor|Math\.ceil|Decimal|BigInt|Dinero' src/modules/scheduling/ --include=*.ts | grep -v spec
+src/modules/scheduling/services/scheduling-bookings.service.ts:1482:          `Podés cancelar hasta ${Math.round(windowMinutes / 60)} horas antes del turno. Si
+exit_code=0 (1 = sin coincidencias)
+
+$ grep -rnE 'feeAmount|noShowFeeAmount' src/modules/scheduling/ --include=*.ts | grep -v spec | grep -vE 'dto|entity|types' 
+src/modules/scheduling/repositories/scheduling-bookings.repository.ts:1099:      feeAmount?: string;
+src/modules/scheduling/repositories/scheduling-bookings.repository.ts:1125:        feeAmount: data.feeAmount,
+src/modules/scheduling/repositories/scheduling-catalog.repository.ts:98:  noShowFeeAmount?: string;
+src/modules/scheduling/repositories/scheduling-catalog.repository.ts:344:        noShowFeeAmount: data.noShowFeeAmount,
+src/modules/scheduling/services/scheduling-bookings.service.ts:829:        noShowFeeAmount: policy?.noShowFeeAmount ?? undefined,
+src/modules/scheduling/services/scheduling-bookings.service.ts:1430:      let feeSource = snapshot?.noShowFeeAmount;
+src/modules/scheduling/services/scheduling-bookings.service.ts:1437:        feeSource = policy?.noShowFeeAmount ?? undefined;
+src/modules/scheduling/services/scheduling-bookings.service.ts:1498:      const feeAmount = chargeable ? (feeSource ?? undefined) : undefined;
+src/modules/scheduling/services/scheduling-bookings.service.ts:1509:        feeAmount,
+src/modules/scheduling/services/scheduling-bookings.service.ts:1510:        currencyConceptId: feeAmount
+src/modules/scheduling/services/scheduling-bookings.service.ts:1550:      return { bookingId, feeAmount, capacityReleased };
+exit_code=0

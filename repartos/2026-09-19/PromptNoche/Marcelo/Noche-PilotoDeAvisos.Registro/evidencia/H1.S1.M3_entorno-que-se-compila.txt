@@ -1,0 +1,153 @@
+=== H1.S1.M3 — qué configuración de entorno se compila · consulta 2026-09-20T15:56:48Z · cwd=D:/Trabajos Secundarios/Mantra Core Technologies/mantra-core-health · HEAD=35cf35dc
+
+$ grep -nE "mockBackend|campaignsDemo|paymentDemo|loyaltyDemo" src/environments/environment*.ts | grep -vE "^[^:]+:[0-9]+:\s*(\*|/\*\*|//)"   # sin líneas de comentario
+src/environments/environment.development.ts:35:  paymentDemo: envFromProcess.paymentDemo ?? true,
+src/environments/environment.development.ts:43:  loyaltyDemo: envFromProcess.loyaltyDemo ?? true,
+src/environments/environment.development.ts:51:  campaignsDemo: envFromProcess.campaignsDemo ?? true,
+src/environments/environment.development.ts:60:  mockBackend: true,
+src/environments/environment.e2e-real.ts:13:  mockBackend: false,
+src/environments/environment.real-api.spec.ts:14:    expect(apiReal.mockBackend).toBe(false);
+src/environments/environment.real-api.spec.ts:18:    expect(apiReal.campaignsDemo).toBe(false);
+src/environments/environment.real-api.spec.ts:22:    expect(apiReal.paymentDemo).toBe(false);
+src/environments/environment.real-api.spec.ts:26:    expect(desarrollo.mockBackend).toBe(true);
+src/environments/environment.real-api.spec.ts:30:    expect(produccion.mockBackend).toBe(true);
+src/environments/environment.real-api.spec.ts:33:  it('fuera de mockBackend y de las dos demos es idéntico a desarrollo', () => {
+src/environments/environment.real-api.spec.ts:36:      mockBackend: desarrollo.mockBackend,
+src/environments/environment.real-api.spec.ts:37:      campaignsDemo: desarrollo.campaignsDemo,
+src/environments/environment.real-api.spec.ts:38:      paymentDemo: desarrollo.paymentDemo,
+src/environments/environment.real-api.ts:44:  mockBackend: false,
+src/environments/environment.real-api.ts:45:  campaignsDemo: false,
+src/environments/environment.real-api.ts:46:  paymentDemo: false,
+src/environments/environment.ts:40:  paymentDemo: envFromProcess.paymentDemo ?? true,
+src/environments/environment.ts:48:  loyaltyDemo: envFromProcess.loyaltyDemo ?? true,
+src/environments/environment.ts:55:  campaignsDemo: envFromProcess.campaignsDemo ?? true,
+src/environments/environment.ts:62:  mockBackend: true,
+src/environments/environment.types.ts:133:  readonly paymentDemo: boolean;
+src/environments/environment.types.ts:148:  readonly loyaltyDemo: boolean;
+src/environments/environment.types.ts:165:  readonly campaignsDemo: boolean;
+src/environments/environment.types.ts:172:  readonly mockBackend: boolean;
+src/environments/environment.types.ts:187:  readonly paymentDemo?: boolean;
+src/environments/environment.types.ts:188:  readonly loyaltyDemo?: boolean;
+src/environments/environment.types.ts:189:  readonly campaignsDemo?: boolean;
+src/environments/environment.types.ts:190:  readonly mockBackend?: boolean;
+
+$ node -e angular.json (defaultConfiguration + fileReplacements por configuración + serve)
+build.defaultConfiguration = production
+build.configurations.production: "SIN fileReplacements (usa src/environments/environment.ts)"
+build.configurations.development: [{"replace":"src/environments/environment.ts","with":"src/environments/environment.development.ts"}]
+build.configurations.e2e-real: [{"replace":"src/environments/environment.ts","with":"src/environments/environment.e2e-real.ts"}]
+build.configurations.real-api: [{"replace":"src/environments/environment.ts","with":"src/environments/environment.real-api.ts"}]
+serve.defaultConfiguration = development
+serve.configurations.production: mantra-core-health:build:production
+serve.configurations.development: mantra-core-health:build:development
+serve.configurations.e2e-real: mantra-core-health:build:e2e-real
+serve.configurations.real-api: mantra-core-health:build:real-api
+serve.configurations.lan: mantra-core-health:build:development
+
+$ node -e package.json scripts (start|build|real|recorrido|e2e|pw)
+start => yarn env:generate && yarn stock:generate && ng serve
+start:real-api => yarn env:generate && yarn stock:generate && ng serve --configuration real-api
+start:lan => yarn env:generate && ng serve --configuration lan --host 0.0.0.0
+build => yarn env:generate && yarn stock:generate && ng build
+e2e => cypress run --e2e --browser chrome
+e2e:open => cypress open --e2e --browser chrome
+test:e2e => cypress run --e2e --browser chrome
+test:e2e:smoke => cypress run --e2e --browser chrome --spec "cypress/e2e/smoke/**/*.cy.ts"
+test:e2e:critical => cypress run --e2e --browser chrome --spec "cypress/e2e/{smoke,authentication,navigation,forms}/**/*.cy.ts"
+test:e2e:regression => cypress run --e2e --browser chrome --spec "cypress/e2e/regression/**/*.cy.ts"
+test:e2e:responsive => cypress run --e2e --browser chrome --spec "cypress/e2e/responsive/**/*.cy.ts"
+recorrido => node scripts/run-recorrido.mjs
+recorrido:real => node scripts/run-recorrido-real.mjs
+recorrido:report => node scripts/generate-recorrido-report.mjs
+pw => playwright test
+pw:baseline => playwright test playwright/carril-01-baseline.spec.ts
+pw:rutas => playwright test playwright/carril-19-route-health.spec.ts
+pw:accesos => playwright test playwright/carril-02-accesos-rbac.spec.ts
+e2e:p4 => node scripts/e2e-carril-p4.mjs
+e2e:p4:playwright => node scripts/e2e-carril-p4.mjs --solo=playwright
+e2e:p4:cypress => node scripts/e2e-carril-p4.mjs --solo=cypress
+e2e:vertical => playwright test playwright/carril-j5-vertical-p0.spec.ts
+e2e:agenda => playwright test playwright/carril-ag6-agenda-convivencia.spec.ts --reporter=list
+e2e:auditoria => playwright test playwright/auditoria-prompts.spec.ts --reporter=list
+
+$ node scripts/check-real-api-config.mjs
+[check-real-api-config] ✓ real-api apaga la maqueta, las demos de campañas y pago, y el SSR; development y production intactos.
+exit_code=0
+
+$ for ref in HEAD origin/dev origin/mockup; do git show $ref:src/environments/<archivo> | grep -n "mockBackend:\|campaignsDemo:\|paymentDemo:\|loyaltyDemo:"; done
+HEAD environment.ts: 40:  paymentDemo: envFromProcess.paymentDemo ?? true, 48:  loyaltyDemo: envFromProcess.loyaltyDemo ?? true, 55:  campaignsDemo: envFromProcess.campaignsDemo ?? true, 62:  mockBackend: true, 
+HEAD environment.development.ts: 35:  paymentDemo: envFromProcess.paymentDemo ?? true, 43:  loyaltyDemo: envFromProcess.loyaltyDemo ?? true, 51:  campaignsDemo: envFromProcess.campaignsDemo ?? true, 60:  mockBackend: true, 
+HEAD environment.real-api.ts: 44:  mockBackend: false, 45:  campaignsDemo: false, 46:  paymentDemo: false, 
+HEAD environment.e2e-real.ts: 13:  mockBackend: false, 
+origin/dev environment.ts: 40:  paymentDemo: envFromProcess.paymentDemo ?? true, 48:  loyaltyDemo: envFromProcess.loyaltyDemo ?? true, 55:  campaignsDemo: envFromProcess.campaignsDemo ?? true, 62:  mockBackend: true, 
+origin/dev environment.development.ts: 35:  paymentDemo: envFromProcess.paymentDemo ?? true, 43:  loyaltyDemo: envFromProcess.loyaltyDemo ?? true, 51:  campaignsDemo: envFromProcess.campaignsDemo ?? true, 60:  mockBackend: true, 
+origin/dev environment.real-api.ts: 44:  mockBackend: false, 45:  campaignsDemo: false, 46:  paymentDemo: false, 
+origin/dev environment.e2e-real.ts: 13:  mockBackend: false, 
+origin/mockup environment.ts: 40:  paymentDemo: envFromProcess.paymentDemo ?? true, 48:  loyaltyDemo: envFromProcess.loyaltyDemo ?? true, 55:  campaignsDemo: envFromProcess.campaignsDemo ?? true, 62:  mockBackend: true, 
+origin/mockup environment.development.ts: 35:  paymentDemo: envFromProcess.paymentDemo ?? true, 43:  loyaltyDemo: envFromProcess.loyaltyDemo ?? true, 51:  campaignsDemo: envFromProcess.campaignsDemo ?? true, 60:  mockBackend: true, 
+origin/mockup environment.real-api.ts: 44:  mockBackend: false, 45:  campaignsDemo: false, 46:  paymentDemo: false, 
+origin/mockup environment.e2e-real.ts: 13:  mockBackend: false, 
+
+$ git log --format="%h %ci %an %s" -S"mockBackend: true" origin/dev -- src/environments/environment.ts
+5a4bab48 2026-09-05 20:41:29 -0400 Pablo Arauz Caballero feat(mockup): backend simulado en memoria para probar toda la aplicación sin API
+
+$ sed -n "1,17p" src/app/core/mock/README.md
+# Backend simulado (rama `mockup`)
+
+Esta rama es un clon de `dev` en el que **ninguna petición sale a la red**: el
+interceptor `mock-backend.interceptor.ts` va al final de la cadena y contesta
+cada llamada a la API desde datos en memoria. Sirve para recorrer y probar
+todas las pantallas sin levantar la API ni la base de datos.
+
+## Cómo correrla
+
+```bash
+yarn install
+yarn start            # http://localhost:4200
+```
+
+No hace falta `.env`, proxy ni backend. El interruptor es `mockBackend: true`
+en `src/environments/environment*.ts`; con `false` la aplicación vuelve a
+hablar con la API real.
+
+$ sed -n "65,67p" src/app/core/mock/README.md
+Lo que ninguna ruta cubre cae en una respuesta genérica y queda anotado en la
+consola como `[mock] sin manejador para …`: ese es el inventario de lo que
+falta.
+
+$ ls src/app/core/mock/handlers/
+admin-modules.handlers.ts
+auth.handlers.ts
+clinical.handlers.spec.ts
+clinical.handlers.ts
+community.handlers.ts
+diagnostics.handlers.spec.ts
+diagnostics.handlers.ts
+directory.handlers.ts
+files.handlers.ts
+finance.handlers.ts
+identity.handlers.ts
+index.ts
+insurance.handlers.spec.ts
+insurance.handlers.ts
+insurance-analytics.handlers.spec.ts
+insurance-analytics.handlers.ts
+insurance-portability.handlers.spec.ts
+insurance-portability.handlers.ts
+misc.handlers.ts
+notifications.handlers.ts
+pharmacy.handlers.ts
+pharma-lab.handlers.ts
+practice.handlers.ts
+procedures.handlers.ts
+profiles.handlers.ts
+public.handlers.ts
+scheduling.handlers.ts
+surveys-forms.handlers.ts
+terminology.handlers.ts
+
+$ sed -n "25p" src/app/core/mock/modo-api.ts
+export const apiRealForzada = signal(false);
+
+$ ls .env 2>&1; grep -oE "^PUBLIC_[A-Z_]+" .env 2>/dev/null | sort -u   # sólo nombres, sin valores
+ls: cannot access '.env': No such file or directory

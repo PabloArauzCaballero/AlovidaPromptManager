@@ -15,7 +15,7 @@
 | **Pablo** | [Corte, laboratorio del piloto y regresión de aislamiento](Pablo/Noche-PilotoDeAvisos.Backend/CorteLaboratorioYRegresion.md) | A | 6 | 18 | 53 | `NOT_RUN` |
 | **Ender** | [El contrato del piloto: fijarlo, validarlo y gobernar su evolución](Ender/Noche-PilotoDeAvisos.Contrato/ContratoValidadorYCompatibilidad.md) | A | 6 | 18 | 50 | `NOT_RUN` |
 | **Itzan** | [Composición, prueba de ausencia y baseline de la capacidad](Itzan/Noche-PilotoDeAvisos.Aislamiento/ComposicionAusenciaYBaseline.md) | A | 6 | 18 | 52 | `NOT_RUN` |
-| **Marcelo** | [Recorrido del registro: selección, casos y aceptación](Marcelo/Noche-PilotoDeAvisos.Registro/RecorridoCasosYAceptacion.md) | B | 6 | 18 | 54 | `NOT_RUN` |
+| **Marcelo** | [Recorrido del registro: selección, casos y aceptación](Marcelo/Noche-PilotoDeAvisos.Registro/RecorridoCasosYAceptacion.md) | B | 6 | 18 | 54 | `29/54 HECHO` — H1+H2+H3 cerrados; ver su daily |
 | **Justin** | [La relación agenda → mensajería: dobles, integración y regresión final](Justin/Noche-PilotoDeAvisos.Integracion/DoblesRelacionYRegresionFinal.md) | B | 6 | 18 | 53 | `NOT_RUN` |
 | | | | **30** | **90** | **262** | |
 
@@ -76,7 +76,7 @@ charlando.** Gana el archivo abierto, y la diferencia se registra.
 | Pablo | `NOT_RUN` | 0 / 6 | — | — | [Pablo-Daily-Noche-2026-09-19.md](Pablo/Pablo-Daily-Noche-2026-09-19.md) |
 | Ender | `NOT_RUN` | 0 / 6 | — | — | [Ender-Daily-Noche-2026-09-19.md](Ender/Ender-Daily-Noche-2026-09-19.md) |
 | Itzan | `NOT_RUN` | 0 / 6 | — | — | [Itzan-Daily-Noche-2026-09-19.md](Itzan/Itzan-Daily-Noche-2026-09-19.md) |
-| Marcelo | `NOT_RUN` | 0 / 6 | — | — | [Marcelo-Daily-Noche-2026-09-19.md](Marcelo/Marcelo-Daily-Noche-2026-09-19.md) |
+| Marcelo | `29/54` | 3 / 6 | — | — | [Marcelo-Daily-Noche-2026-09-19.md](Marcelo/Marcelo-Daily-Noche-2026-09-19.md) — **H3 confirmó por ejecución un `PRODUCT_BUG` de autorización (leer/cancelar/reprogramar la cita de otro paciente, incluso de otra organización) y lo dejó CORREGIDO y reverificado: PR [api#447](https://github.com/mdavila-2001/mantra-core-health-api/pull/447)** |
 | Justin | `NOT_RUN` | 0 / 6 | — | — | [Justin-Daily-Noche-2026-09-19.md](Justin/Justin-Daily-Noche-2026-09-19.md) |
 
 ### Qué NO se puede escribir en este documento

@@ -1,0 +1,4 @@
+1
+exit_code=0
+
+$ grep -c "ADAPTER_VERIFIED_WITH_DOUBLES" "$DOC"

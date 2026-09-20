@@ -1,0 +1,9 @@
+# H3.S2.M2 transicion ilegal rechazada en backend — DoD ejecutado el 2026-09-20T20:09:46Z sobre PERMISOS-ESTADOS-DINERO-M06-2026-09-20.md
+
+$ grep -c '422' PERMISOS-ESTADOS-DINERO-M06-2026-09-20.md
+6
+exit_code=0   # esperado: >= 2 (T1 y T2)
+
+$ grep -c 'INVALID_STATE_TRANSITION' PERMISOS-ESTADOS-DINERO-M06-2026-09-20.md
+3
+exit_code=0   # esperado: >= 1
