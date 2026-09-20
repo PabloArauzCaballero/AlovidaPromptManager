@@ -1,0 +1,10 @@
+$ docker ps --filter "name=postgres"
+mantra-redesa-postgres-1   Up About a minute (healthy)   0.0.0.0:5433->5432/tcp
+
+$ docker run --rm --network host postgres:16-alpine pg_isready -h host.docker.internal -p 5433
+host.docker.internal:5433 - accepting connections
+
+HALLAZGO: Docker está corriendo (29 contenedores del stack mantra-redesa, incluido postgres sano en
+5433), contra lo que asumía el prompt ("Docker está apagado, Itzan no está"). No es la base aislada
+que pide H1.S3.M2-M5 (es el stack compartido de desarrollo, con datos vivos de otros carriles):
+NO se usa para nada de este turno sin autorización explícita, aunque responda.

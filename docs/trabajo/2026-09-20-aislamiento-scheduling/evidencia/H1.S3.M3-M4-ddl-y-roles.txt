@@ -1,0 +1,34 @@
+H1.S3.M3 -- DDL versionado mínimo: ya existe, no se inventa
+  database/SQL/41_scheduling/{01_schema.sql,02_tables.sql,03_fk_intra.sql,04_indexes.sql,90_fk_deferred.sql}
+  17 CREATE TABLE (grep -c "CREATE TABLE" 02_tables.sql = 17, coincide con el conteo de entidades ORM
+  de H1.S2.M2). FKs de referencia declaradas en 90_fk_deferred.sql (fuera del schema propio):
+    - terminology.catalog_concepts (status_concept_id en availability_slots, y otras)
+    - clinical.appointments (availability_slots.appointment_id, línea 68 y 313)
+  -> CONFIRMA por DDL el hallazgo de H1.S1.M4/H1.S2: scheduling depende de clinical también
+     a nivel de esquema, no solo de código. Tablas de auditoría necesarias para HistoryMirrorSubscriber
+     (H1.S2.M1): schema audit, database/SQL/10_audit/02_tables.sql (123 tablas -- el registro que arma
+     el subscriber consulta information_schema, no una tabla fija por origen).
+  DDL de la capacidad mínima = el propio (17 tablas) + lo que 90_fk_deferred.sql exige como schema
+  referenciado (terminology, clinical) -- TRANSITIONAL_ISOLATION, coherente con H1.S2.M2.
+
+H1.S3.M4 -- Separación de rol de preparación y runtime (ejecutado y probado, no solo diseñado):
+$ docker exec night-scheduling-pg psql -U night_runtime -d postgres -c "
+    CREATE ROLE night_prep LOGIN PASSWORD '***' CREATEDB;
+    CREATE ROLE night_run LOGIN PASSWORD '***';"
+CREATE ROLE
+CREATE ROLE
+$ docker exec night-scheduling-pg psql -U night_runtime -d night_scheduling_20260920_014031 -c "
+    GRANT CONNECT ... TO night_prep, night_run;
+    CREATE SCHEMA IF NOT EXISTS scheduling AUTHORIZATION night_prep;
+    GRANT USAGE ON SCHEMA scheduling TO night_run;
+    ALTER DEFAULT PRIVILEGES FOR ROLE night_prep IN SCHEMA scheduling
+      GRANT SELECT, INSERT, UPDATE, DELETE ON TABLES TO night_run;"
+CREATE SCHEMA / GRANT / ALTER DEFAULT PRIVILEGES -- ok
+
+CASO NEGATIVO (night_run intenta DDL):
+$ psql -U night_run -d night_scheduling_20260920_014031 -c "CREATE TABLE scheduling.deberia_fallar (id int);"
+ERROR:  permission denied for schema scheduling
+exit=1
+-> night_run NO puede evadir la política que se va a probar (regla H1.S3.M4 del prompt, literal):
+   confirmado por ejecución, no por diseño en el papel. Contraseñas reales NO pegadas arriba (se
+   enmascaran: son locales, de un contenedor efímero, y de todos modos no se versionan).
