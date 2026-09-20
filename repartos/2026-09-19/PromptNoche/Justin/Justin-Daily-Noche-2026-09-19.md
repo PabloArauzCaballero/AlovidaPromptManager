@@ -8,6 +8,9 @@
 - **Tu prompt:** [La relación agenda → mensajería: dobles, integración y regresión final](Noche-PilotoDeAvisos.Integracion/DoblesRelacionYRegresionFinal.md)
 - **Daily del equipo:** [Daily-Noche-2026-09-19.md](../Daily-Noche-2026-09-19.md)
 - **6 hitos · 18 subtareas · 53 microtareas**
+- **Entregables legibles acá:** [`Noche-PilotoDeAvisos.Integracion/entregables/`](Noche-PilotoDeAvisos.Integracion/entregables/INDICE.md) — los dos reportes, los dos planes,
+  el registro consolidado, la tabla de gates y **las 17 preguntas al equipo**. Son copia; la
+  fuente es `mantra-core-health-api@8d699ed0` (PR #445 y #446).
 - **Trabajo en disco:** `mantra-core-health-api/docs/trabajo/2026-09-19-relacion-agenda-mensajeria/`
   (`PLAN.md`, `REPORTE.md`, `registro-de-checks.json`, 4 documentos de hito, 13 archivos de evidencia)
 - **Rama:** `justin/noche-2026-09-19-relacion-agenda-mensajeria` · **Corte:** `5d5007fb` (declarado, ver DEC-01)
