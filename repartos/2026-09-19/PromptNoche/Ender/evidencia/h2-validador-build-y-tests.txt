@@ -1,0 +1,25 @@
+$ tsc -p tsconfig.json && node --test dist/*.test.js
+✔ rechaza un recipient con los dos campos vacíos (kill-test del hito) (0.665333ms)
+✔ rechaza un recipient con los dos campos presentes (0.056375ms)
+✔ acepta un recipient con sólo patientProfileId (0.040416ms)
+✔ acepta un recipient con sólo userId (0.038583ms)
+✔ un string vacío no cuenta como "presente" (evita el falso-aceptar de ambos "puestos") (0.041084ms)
+✔ acepta el resultado mínimo válido: sólo delivered (0.072167ms)
+✔ rechaza un resultado sin delivered (campo obligatorio ausente) (0.039584ms)
+✔ rechaza un resultado con un campo que el contrato no declara (el doble "enriqueció" la respuesta) (0.271625ms)
+✔ rechaza delivered con tipo incorrecto (string en vez de boolean) (0.05275ms)
+✔ rechaza chatDelivered=true en un aviso SLOT_RELEASED (estructura válida, semántica inválida — kill-test del hito) (0.091542ms)
+✔ acepta chatDelivered=true en un aviso BOOKING_STATE_CHANGED (el único kind con chat) (0.043292ms)
+✔ acepta un PRACTITIONER_DELAY sin ningún campo de chat (0.034584ms)
+✔ un doble que cumple el esquema pero viola la semántica de chat es rechazado igual (no "pasa por cumplir el esquema") (0.051666ms)
+✔ un doble correcto pasa las tres reglas (0.035625ms)
+✔ ninguna de las 6 formas reales de recipient (L91-L392 de agenda-notices.ts) es rechazada por EXACTLY_ONE_RECIPIENT_FIELD (0.296166ms)
+ℹ tests 15
+ℹ suites 0
+ℹ pass 15
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 35.884334
+exit $? = 0
