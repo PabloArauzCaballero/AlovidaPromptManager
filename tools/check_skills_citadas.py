@@ -20,7 +20,40 @@ import tempfile
 from pathlib import Path
 
 RAIZ = Path(__file__).resolve().parent.parent
-FILA_SKILL = re.compile(r"^\|\s*`([a-z0-9][a-z0-9-]*)`\s*\|", re.M)
+# La tabla de skills es la que encabeza con `| Skill |`. Cualquier otra tabla del
+# reparto -modulos tocados, herramientas, candados- tambien lleva un nombre entre
+# backticks en su primera celda, y no es una cita de skill.
+CABECERA_SKILLS = re.compile(r"^\|\s*Skill\s*\|", re.I)
+FILA_SKILL = re.compile(r"^\|\s*`([a-z0-9][a-z0-9-]*)`\s*\|")
+SEPARADOR = re.compile(r"^\|[\s:|-]+\|?\s*$")
+
+
+def skills_de_texto(texto: str) -> list[str]:
+    """Los nombres citados en las tablas de skills de un documento.
+
+    El docstring del modulo siempre prometio mirar solo esas tablas; la primera
+    implementacion miraba la primera celda de **cualquier** tabla, asi que un
+    cuadro de modulos tocados (`clinical`, `messaging`) o de herramientas
+    (`jest`, `typescript`) se leia como una skill inventada, y el gate se caia
+    por documentos que no citan ninguna skill.
+    """
+    nombres: list[str] = []
+    en_tabla_de_skills = False
+    for linea in texto.splitlines():
+        if CABECERA_SKILLS.match(linea):
+            en_tabla_de_skills = True
+            continue
+        if not en_tabla_de_skills:
+            continue
+        if not linea.lstrip().startswith("|"):
+            en_tabla_de_skills = False  # la tabla termino
+            continue
+        if SEPARADOR.match(linea):
+            continue
+        fila = FILA_SKILL.match(linea)
+        if fila is not None:
+            nombres.append(fila.group(1))
+    return nombres
 
 
 def skills_en_disco(raiz: Path) -> set[str]:
@@ -38,7 +71,7 @@ def citadas(raiz: Path) -> dict[str, list[Path]]:
         return encontradas
     for md in sorted(repartos.rglob("*.md")):
         texto = md.read_text(encoding="utf-8")
-        for nombre in FILA_SKILL.findall(texto):
+        for nombre in skills_de_texto(texto):
             encontradas.setdefault(nombre, []).append(md)
     return encontradas
 
@@ -88,6 +121,23 @@ def self_test() -> int:
             "Texto suelto que menciona `no-existe` en prosa, sin tabla.\n", encoding="utf-8")
         p, n_citadas, _ = revisar(base)
         check("ignora menciones en prosa", p == [] and n_citadas == 0)
+
+        # Una tabla que no es de skills: modulos tocados, herramientas, candados.
+        # Es el caso que tenia el gate en rojo por documentos sin una sola skill.
+        (lote / "T.md").write_text(
+            "| Modulo | Que se toco |\n|---|---|\n| `messaging` | nada |\n",
+            encoding="utf-8")
+        p, n_citadas, _ = revisar(base)
+        check("ignora las tablas que no son de skills", p == [] and n_citadas == 0)
+
+        # Y la tabla de skills se sigue leyendo aunque venga despues de otra tabla.
+        (lote / "T.md").write_text(
+            "| Modulo | Que |\n|---|---|\n| `messaging` | nada |\n\n"
+            "| Skill | Para que |\n|---|---|\n| `no-existe` | no |\n",
+            encoding="utf-8")
+        p, n_citadas, _ = revisar(base)
+        check("lee la tabla de skills que viene despues de otra",
+              len(p) == 1 and n_citadas == 1 and p[0].startswith("no-existe"))
 
         (base / "repartos2").mkdir()
         p, _, _ = revisar(base / "no-hay-nada-aca")
