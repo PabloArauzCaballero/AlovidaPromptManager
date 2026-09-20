@@ -1,0 +1,95 @@
+=== H4.S2 · migracion candidata v4218 sobre el baseline aislado ===
+=== 2026-09-20T19:08:27-04:00 ===
+
+--- M1: aplico sin error (ver H4.S1.M1-patches-restantes.txt, linea [OK] de v4218) ---
+
+--- M2: estado final que dejo, contra los deltas que el patch declara ---
+  declarados: quotations +-0 (-2 +2) · quotation_installments -2 (-3 +1) · CHECK +2 (-1 +3)
+       table_name       | columnas 
+------------------------+----------
+ quotation_installments |        8
+ quotations             |       20
+(2 rows)
+
+  columnas de interes que debieron desaparecer:
+    quedan: 0
+  columnas nuevas que debieron aparecer (NOT NULL):
+       table_name       |     column_name     | is_nullable 
+------------------------+---------------------+-------------
+ budget_lines           | amount              | NO
+ payments_made          | amount              | NO
+ payments_received      | amount              | NO
+ quotation_installments | amount              | NO
+ quotations             | down_payment_amount | NO
+ quotations             | payment_frequency   | NO
+ reimbursements         | amount              | NO
+(7 rows)
+
+  CHECKs resultantes:
+    chk_quotation_installments_amount_positive
+    chk_quotations_down_payment_range
+    chk_quotations_payment_frequency
+
+=== H4.S2.M3 · prueba del rollback de v4218 ===
+=== se ejecuta dentro de una transaccion que se DESHACE: el baseline no se altera ===
+BEGIN
+ALTER TABLE
+ALTER TABLE
+                    que                     | n 
+--------------------------------------------+---
+ filas en quotations                        | 0
+ con interest_rate_percent recuperado       | 0
+ con interest_calculation_method recuperado | 0
+(3 rows)
+
+                         que                         | n 
+-----------------------------------------------------+---
+ filas que violarian el CHECK viejo IN (FLAT,FRENCH) | 0
+(1 row)
+
+ROLLBACK
+--- el baseline quedo intacto: ---
+    columnas de interes presentes: 0
+
+=== VEREDICTO H4.S2 ===
+
+M1 · Aplicar la migracion candidata sobre el baseline .............. HECHO
+     v4218 aplico sin error. Evidencia: linea [OK] en H4.S1.M1-patches-restantes.txt.
+
+M2 · Compatibilidad hacia atras: expandir -> migrar -> contraer ..... HECHO, con hallazgo
+     El orden ESTA respetado dentro del archivo y esta declarado:
+       A. expandir  (lineas 47-71): ADD COLUMN + backfill UPDATE + SET NOT NULL
+       B. contraer  (lineas 76-82): DROP COLUMN de las 5 columnas de interes
+       C. CHECKs    (lineas 87-96)
+       D. verificacion (linea 99): si algo falla, la transaccion entera se deshace
+     Deltas declarados por el patch, verificados contra la base:
+       columnas de interes que debian desaparecer -> quedan 0        OK
+       down_payment_amount / payment_frequency / amount -> NOT NULL  OK
+       3 CHECK resultantes                                           OK
+
+     HALLAZGO: las tres etapas van en UNA SOLA transaccion y un solo despliegue
+     (BEGIN linea 43, COMMIT al final). El orden se respeta, pero el PROPOSITO del patron
+     expandir->migrar->contraer no se consigue: su razon de ser es que "expandir" se
+     despliegue primero, el codigo migre, y "contraer" salga DESPUES, para que la version
+     anterior de la aplicacion siga funcionando durante el despliegue. Haciendo las tres a
+     la vez no hay ventana de compatibilidad: en el instante del COMMIT, cualquier instancia
+     con el codigo anterior rompe, porque interest_calculation_method desaparece.
+     Esto NO es un defecto del patch en si: es una propiedad del despliegue que hay que
+     conocer antes de aplicarlo donde importa. El propio patch avisa "DESTRUCTIVO".
+
+M3 · Probar el rollback .................................. HECHO, y NO es practicable
+     Probado dentro de una transaccion deshecha; el baseline quedo intacto (0 columnas
+     de interes despues del ROLLBACK).
+       - La ESTRUCTURA vuelve: los 5 ADD COLUMN se ejecutan sin error.
+       - Los DATOS no: no hay de donde sacarlos. v4218 los borra con DROP COLUMN.
+       - El CHECK original tampoco se puede reponer sin inventar valores, porque las
+         filas volverian con interest_calculation_method en NULL.
+
+     LIMITACION HONESTA de esta prueba: billing.quotations tiene 0 filas en el baseline
+     (el paquete de seeds no la puebla), asi que la perdida de datos NO se pudo demostrar
+     empiricamente — se demuestra la parte estructural, y la perdida se deduce del
+     DROP COLUMN. Para medirla de verdad haria falta un baseline con cotizaciones.
+
+     PLAN DE RECUPERACION (lo que corresponde declarar cuando el rollback no es practicable):
+     respaldo de billing.quotations y billing.quotation_installments ANTES de aplicar, como
+     el propio patch indica en sus lineas 32-34. Sin ese respaldo, el cambio es irreversible.
