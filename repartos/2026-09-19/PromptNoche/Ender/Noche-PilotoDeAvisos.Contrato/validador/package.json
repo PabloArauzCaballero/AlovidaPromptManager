@@ -1,0 +1,13 @@
+{
+  "name": "agenda-notice-port-validator-lab",
+  "private": true,
+  "type": "module",
+  "description": "Oraculo independiente de laboratorio para AgendaNoticePort (H2). No es un paquete publicable; vive junto a su evidencia en el reparto de Ender.",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "tsc -p tsconfig.json && node --test dist/*.test.js"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.2"
+  }
+}

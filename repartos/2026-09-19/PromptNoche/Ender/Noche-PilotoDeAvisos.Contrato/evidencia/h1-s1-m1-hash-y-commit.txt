@@ -1,0 +1,23 @@
+# H1.S1.M1 — Archivo del puerto en el corte, con hash
+
+$ git -C mantra-core-health-api rev-parse HEAD
+32ae939983f0d665e4ed371362858801134d35cd
+
+$ git show 32ae939983f0d665e4ed371362858801134d35cd:src/modules/scheduling/ports/agenda-notice.port.ts | shasum -a 256
+b462700cd8f382c0c42676cd931a2281198abaf5dca614cb739a47910bfb5877  -
+
+$ git rev-parse 32ae939983f0d665e4ed371362858801134d35cd:src/modules/scheduling/ports/agenda-notice.port.ts   (blob SHA-1 de git)
+4e262747735005c16262a907de3caf09a1268923
+
+$ git log -1 --format="%H %cI %s" 32ae9399... -- src/modules/scheduling/ports/agenda-notice.port.ts
+df2bcd685334e9a16b7f9dde0560f309bdb5706e 2026-09-05T07:45:15-04:00 feat(scheduling): correo con enlace real y chat de SupportAdmin en avisos de agenda
+
+== Drift del corte declarado vs HEAD real de dev (verificado 2026-09-20) ==
+$ git log --oneline dev -3   (checkout local, = TARGET_REF)
+32ae9399 Merge pull request #441 from mdavila-2001/marcelo/feat-representantes-nombre-en-partes-api
+a5753dc7 docs(api): regenerar OpenAPI, endpoints y Postman tras el nombre en partes
+f1d46468 test(iam): int-spec del alta con partes y con la forma legada
+$ git log --oneline origin/dev -3
+5d5007fb Merge pull request #442 from mdavila-2001/itzan/f09-mch008-2-encounter-coherence
+70f8f1a8 fix(clinical): MCH-008.2 · condiciones y órdenes exigen un encuentro del mismo paciente y custodio
+32ae9399 Merge pull request #441 from mdavila-2001/marcelo/feat-representantes-nombre-en-partes-api

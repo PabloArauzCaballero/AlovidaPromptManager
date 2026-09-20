@@ -1,0 +1,6 @@
+# H6.S1.M3 — inmutabilidad final, cuarta verificación
+$ git rev-parse HEAD:repartos/2026-09-19/PromptNoche/Ender/CONTRATO-AGENDA-NOTICE-PORT.md
+de23711979b33e813d792ea53e501c6d24496197
+$ git rev-parse HEAD:repartos/2026-09-19/PromptNoche/Ender/validador/agenda-notice.types.ts
+ee26fe75f22ffb3542973f59f8085fe86432de72
+Ambos idénticos a H2/H3/H4/H5 — ninguna versión publicada se modificó en todo el turno.

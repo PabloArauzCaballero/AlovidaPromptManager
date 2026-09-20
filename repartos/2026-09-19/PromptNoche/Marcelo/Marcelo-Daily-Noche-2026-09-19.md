@@ -6,10 +6,10 @@
 
 - **Persona:** Marcelo · **Turno:** noche · **Fecha:** 2026-09-19 · **Línea:** B · **Rol:** cierre funcional e integración
 - **Tu prompt:** [Recorrido del registro: selección, casos y aceptación](Noche-PilotoDeAvisos.Registro/RecorridoCasosYAceptacion.md)
-- **Documento de H1:** [RECORRIDO-PRIORITARIO-2026-09-20.md](Noche-PilotoDeAvisos.Registro/RECORRIDO-PRIORITARIO-2026-09-20.md)
-- **Documento de H2:** [CASOS-ACEPTACION-M06-2026-09-20.md](Noche-PilotoDeAvisos.Registro/CASOS-ACEPTACION-M06-2026-09-20.md)
-- **Documento de H3:** [PERMISOS-ESTADOS-DINERO-M06-2026-09-20.md](Noche-PilotoDeAvisos.Registro/PERMISOS-ESTADOS-DINERO-M06-2026-09-20.md)
-- **Reporte consolidado (H1+H2+H3):** [REPORTE.md](Noche-PilotoDeAvisos.Registro/REPORTE.md)
+- **Documento de H1:** [RECORRIDO-PRIORITARIO-2026-09-20.md](Noche-PilotoDeAvisos.Registro/entregables/RECORRIDO-PRIORITARIO-2026-09-20.md)
+- **Documento de H2:** [CASOS-ACEPTACION-M06-2026-09-20.md](Noche-PilotoDeAvisos.Registro/entregables/CASOS-ACEPTACION-M06-2026-09-20.md)
+- **Documento de H3:** [PERMISOS-ESTADOS-DINERO-M06-2026-09-20.md](Noche-PilotoDeAvisos.Registro/entregables/PERMISOS-ESTADOS-DINERO-M06-2026-09-20.md)
+- **Reporte consolidado (H1+H2+H3):** [REPORTE.md](Noche-PilotoDeAvisos.Registro/entregables/REPORTE.md)
 - **Daily del equipo:** [Daily-Noche-2026-09-19.md](../Daily-Noche-2026-09-19.md)
 - **6 hitos · 18 subtareas · 54 microtareas**
 
