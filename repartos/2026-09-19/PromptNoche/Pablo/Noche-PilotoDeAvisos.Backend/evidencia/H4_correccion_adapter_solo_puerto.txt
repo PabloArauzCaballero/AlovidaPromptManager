@@ -1,0 +1,6 @@
+=== H4.S2 — corrección de la residual, tres niveles (corrida 1) ===
+Test Suites: 1 passed, 1 total
+Tests:       11 passed, 11 total
+=== corrida 2 (reproducibilidad) ===
+Test Suites: 1 passed, 1 total
+Tests:       11 passed, 11 total

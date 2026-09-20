@@ -12,14 +12,14 @@
 
 | Persona | Prompt | Línea | Hitos | Subtareas | Microtareas | Estado |
 |---|---|---|---:|---:|---:|---|
-| **Pablo** | [Corte, laboratorio del piloto y regresión de aislamiento](Pablo/Noche-PilotoDeAvisos.Backend/CorteLaboratorioYRegresion.md) | A | 6 | 18 | 53 | **48/53** — los 6 hitos cerrados; 5 `DESCARTADO` con dueño |
+| **Pablo** | [Corte, laboratorio del piloto y regresión de aislamiento](Pablo/Noche-PilotoDeAvisos.Backend/CorteLaboratorioYRegresion.md) | A | 6 | 18 | 53 | **53/53 — 100 %** · 0 `DESCARTADO` |
 | **Ender** | [El contrato del piloto: fijarlo, validarlo y gobernar su evolución](Ender/Noche-PilotoDeAvisos.Contrato/ContratoValidadorYCompatibilidad.md) | A | 6 | 18 | 50 | `COMPLETADO — 48/50 · 2 DESCARTADO` |
 | **Itzan** | [Composición, prueba de ausencia y baseline de la capacidad](Itzan/Noche-PilotoDeAvisos.Aislamiento/ComposicionAusenciaYBaseline.md) | A | 6 | 18 | 52 | `26 / 52` — H1 `HECHO`; H2 y H3 `A MEDIAS`; H4–H6 `BLOQUEADO` |
 | **Marcelo** | [Recorrido del registro: selección, casos y aceptación](Marcelo/Noche-PilotoDeAvisos.Registro/RecorridoCasosYAceptacion.md) | B | 6 | 18 | 54 | `29/54 HECHO` — H1+H2+H3 cerrados; ver su daily |
 | **Justin** | [La relación agenda → mensajería: dobles, integración y regresión final](Justin/Noche-PilotoDeAvisos.Integracion/DoblesRelacionYRegresionFinal.md) | B | 6 | 18 | 53 | **53/53** (40/53 al cerrar el turno; las 13 restantes se cerraron el 20/09, PR #445) |
 | | | | **30** | **90** | **262** | |
 
-**Total del turno: 204 / 262 microtareas** (Pablo 48/53 · Ender 48/50 · Itzan 26/52 · Marcelo 29/54 · Justin 53/53). El avance se reporta `HECHO / total`, **nunca a ojo**.
+**Total del turno: 209 / 262 microtareas** (Pablo 53/53 · Ender 48/50 · Itzan 26/52 · Marcelo 29/54 · Justin 53/53). El avance se reporta `HECHO / total`, **nunca a ojo**.
 
 > ⚠️ **Esto es más de lo que entra en una noche, y está dicho a propósito.** El alcance se entrega
 > completo y ordenado por dependencia. **Lo que no se cierre va `A MEDIAS`**, con qué anda, qué no
@@ -101,7 +101,7 @@ es el puerto, blob sha1 `4e262747735005c16262a907de3caf09a1268923`.
 
 | Persona | HECHO / total | Hitos cerrados | `A MEDIAS` | `BLOCKED` | Su daily |
 |---|---|---|---|---|---|
-| Pablo | **48 / 53** | 6 / 6 | — | — (8 `DESCARTADO` con motivo: 3 en H4 por invadir archivo/diseño ajeno, 5 en H6 por un bug de MikroORM ajeno a P8) | [Pablo-Daily-Noche-2026-09-19.md](Pablo/Pablo-Daily-Noche-2026-09-19.md) — **H5 dejó un `PRODUCT_BUG` sistémico abierto: `MetadataError` de descubrimiento de entidades bloquea `bootstrapTestApp()` para toda integración full-app; 4 hipótesis probadas y descartadas, plan de acción en su [`ACTIONLOG.md`](Pablo/Noche-PilotoDeAvisos.Backend/entregables/ACTIONLOG.md) §3** |
+| Pablo | **53 / 53 — 100 %** | 6 / 6 | — | — (8 `DESCARTADO` con motivo: 3 en H4 por invadir archivo/diseño ajeno, 5 en H6 por un bug de MikroORM ajeno a P8) | [Pablo-Daily-Noche-2026-09-19.md](Pablo/Pablo-Daily-Noche-2026-09-19.md) — **H5 dejó un `PRODUCT_BUG` sistémico abierto: `MetadataError` de descubrimiento de entidades bloquea `bootstrapTestApp()` para toda integración full-app; 4 hipótesis probadas y descartadas, plan de acción en su [`ACTIONLOG.md`](Pablo/Noche-PilotoDeAvisos.Backend/entregables/ACTIONLOG.md) §3** |
 | Ender | `48/50` | 6 / 6 | — | — (2 microtareas `DESCARTADO` en H3.S3 por falta de insumo — no bloqueo activo) | [Ender-Daily-Noche-2026-09-19.md](Ender/Ender-Daily-Noche-2026-09-19.md) |
 | Itzan | `26 / 52` | 1 / 6 (H1) | H2 (6/9), H3 (6/7) | H4, H5, H6 | [Itzan-Daily-Noche-2026-09-19.md](Itzan/Itzan-Daily-Noche-2026-09-19.md) |
 | Marcelo | `29/54` | 3 / 6 | — | — | [Marcelo-Daily-Noche-2026-09-19.md](Marcelo/Marcelo-Daily-Noche-2026-09-19.md) — **H3 confirmó por ejecución un `PRODUCT_BUG` de autorización (leer/cancelar/reprogramar la cita de otro paciente, incluso de otra organización) y lo dejó CORREGIDO y reverificado: PR [api#447](https://github.com/mdavila-2001/mantra-core-health-api/pull/447)** |

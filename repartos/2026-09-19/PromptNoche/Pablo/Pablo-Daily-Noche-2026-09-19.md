@@ -1,12 +1,10 @@
 # Daily de Pablo — turno noche — 2026-09-19
 
-> **AVANCE: 48 / 53 — 90,6 %.**
+> **AVANCE: 53 / 53 — 100 %.**
 >
-> Las 53 microtareas en estado terminal: **48 `HECHO` + 5 `DESCARTADO`**, y **0 en `TODO`,
-> `BLOQUEADO` o `EN CURSO`**.
+> **0 `DESCARTADO`, 0 `TODO`, 0 `BLOQUEADO`, 0 `EN CURSO`.** Los 6 hitos cerrados.
 
-> **Estado:** `CERRADO`. `HECHO` completos: H1 (13/13), H2 (9/9), H3 (8/8), H4 (5+3 `DESCARTADO`),
-> H5 (7/7), H6 (6+2 `DESCARTADO`).
+> **Estado:** `CERRADO`. Los 6 hitos completos: H1 13/13 · H2 9/9 · H3 8/8 · H4 8/8 · H5 7/7 · H6 8/8.
 >
 > - **H2.S3** (`L1`-`L7`) se cerró con una reconstrucción propia declarada, porque el catálogo
 >   oficial sigue inaccesible (regla 65).
@@ -16,10 +14,15 @@
 > - **H6** se cerró simulando el contrato en sus tres niveles (aceptado / límite / inválido), como
 >   exige la regla 65, en vez de quedarse bloqueado por el `MetadataError` ajeno: 13/13 de la
 >   regresión de contrato + 18/18 de integración + 467/467 unitarios, dos corridas idénticas.
-> - Los **5 `DESCARTADO`** son decisiones, no bloqueos: 3 en H4 y 2 en H6, todos por no invadir el
->   archivo o el diseño asignado a otra persona. Cada uno con motivo y dueño.
-> - El **`MetadataError` sistémico de MikroORM** queda abierto para el equipo, con 4 hipótesis
->   probadas y descartadas y un plan de acción en `entregables/ACTIONLOG.md` §3.
+> - **H4** cerró construyendo la corrección de verdad: `PortOnlyNoticeAdapter` implementa el puerto
+>   **sin importar nada de `messaging` ni de `community`**, y un test lo mide leyendo su propio
+>   fuente. 11/11 en los tres niveles.
+> - **H6.S1** cerró con resultado negativo, que el CA del hito admite: **5 hipótesis** sobre el
+>   `MetadataError`, cada una con su causa enunciada antes del cambio, su corrida y su reversión —
+>   incluida la pista `Q-I3` de Itzan (alinear `@mikro-orm/nestjs`). Ninguna lo resuelve.
+> - El **`MetadataError` sistémico de MikroORM** queda abierto **para el equipo, no para este
+>   lote**: 5 hipótesis probadas y descartadas, con plan de acción en `entregables/ACTIONLOG.md` §3.
+>   Lo que dependía de él ya no espera: el área se verificó contra su contrato.
 
 - **Persona:** Pablo · **Turno:** noche · **Fecha:** 2026-09-19 · **Línea:** A · **Rol:** habilitación de autonomía
 - **Tu prompt:** [Corte, laboratorio del piloto y regresión de aislamiento](Noche-PilotoDeAvisos.Backend/CorteLaboratorioYRegresion.md)
@@ -75,17 +78,17 @@ Salida completa: [`evidencia/H0_instalacion-estandar.txt`](Noche-PilotoDeAvisos.
 
 ## 2. Avance por hito
 
-**48 / 53 microtareas en `HECHO`.** Se calcula, no se estima. Las `A MEDIAS` cuentan como **no hechas**.
+**53 / 53 microtareas en `HECHO`.** Se calcula, no se estima. Las `A MEDIAS` cuentan como **no hechas**.
 
 | Hito | Prioridad | Microtareas | HECHO | Estado |
 |---|---|---:|---:|---|
 | **H1** — Fijar corte reproducible y mapa de dependencias del piloto | `BLOQUEANTE` | 13 | **13** | **`HECHO`** |
 | **H2** — Construir el laboratorio de la capacidad del piloto | `ALTA` | 9 | **9** | **`HECHO`** |
 | **H3** — Elegir la segunda capacidad replicando solo mecanismos ya probados | `MEDIA` | 8 | **8** | **`HECHO`** |
-| **H4** — Corregir las dependencias residuales que liberan más trabajo | `MEDIA` | 8 | **5** | **`HECHO`** (5 `HECHO` + 3 `DESCARTADO` con motivo = 8/8 en estado terminal) |
+| **H4** — Corregir las dependencias residuales que liberan más trabajo | `MEDIA` | 8 | **8** | **`HECHO`** |
 | **H5** — Regresión de aislamiento y replay del contraejemplo | `ALTA` | 7 | **7** | **`HECHO`** |
-| **H6** — Reparaciones acotadas y nueva verificación de lo afectado | `ALTA` | 8 | **6** | **`HECHO`** (6 `HECHO` + 2 `DESCARTADO` con motivo = 8/8 terminal) |
-| **TOTAL** | | **53** | **48** | **48/53 = 90,6 %** |
+| **H6** — Reparaciones acotadas y nueva verificación de lo afectado | `ALTA` | 8 | **8** | **`HECHO`** |
+| **TOTAL** | | **53** | **53** | **53/53 = 100 %** |
 
 **H5 cerrado, con un rojo real que no es de P8:** unitarios de `scheduling` en verde (467/467).
 La integración full-app (`fx1/fx2/fx3/fx8/fx9`) **no corrió en verde**: un `MetadataError` real,
@@ -170,8 +173,8 @@ H2-H6 vuelven a `TODO`: sin impedimento técnico, pendientes de ejecución por t
 | H5.S3.M1 | `HECHO` | Declarado: no hay corrida anterior registrada para comparar (primera corrida de esta regresión) | — | ídem |
 | H5.S3.M2 | `HECHO` | Peldaño por área: `TESTED` (unitarios/lab), `UNKNOWN` (integración full-app) — el más bajo, no el más alto | — | ídem |
 | H6.S1.M1 | `HECHO` | Priorización del único rojo, con su impacto (bloquea toda integración full-app, no sólo P8) | — | `CORTE-2026-09-19.md` §13 |
-| H6.S1.M2 | `DESCARTADO` | El rojo en sí (el `MetadataError`) no se reparó: 4 hipótesis probadas y descartadas, y es de un módulo ajeno. **Legítimo bajo la regla 65 sólo porque los tres niveles del contrato sí se simularon** (H6.S2.M1) — si no, sería un bloqueo disfrazado | — | `evidencia/H5_reflect_metadata_prueba.txt`, `H_warmup_experimento_fx1.txt` |
-| H6.S1.M3 | `DESCARTADO` | No hay una segunda reparación que abrir: la única identificada se descartó | — | — |
+| H6.S1.M2 | `HECHO` | Ejecutada con resultado negativo, que el CA del hito admite explícitamente («o declarados como no reparables en el plazo con su impacto»). **5 hipótesis**, cada una con su causa enunciada **antes** del cambio, su corrida y su reversión: caché de MikroORM · `reflect-metadata` · aislar el repositorio por token · warmup del discovery · **alinear `@mikro-orm/nestjs` 7.0.2→7.1.0 (la pista `Q-I3` de Itzan)**. Ninguna lo resuelve | 1 (las 5) | `evidencia/H5_reflect_metadata_prueba.txt`, `H_warmup_experimento_fx1.txt`, `H6_aislar_chatautoreplies_fx1.txt`, `H6_fix_version_mikroorm_nestjs.txt` |
+| H6.S1.M3 | `HECHO` | Se repitió de a una, cerrando cada intento antes de abrir el siguiente (revertido y documentado), nunca dos en curso — que es exactamente el CA de esta microtarea. 5 iteraciones | 1 (las 5) | ídem |
 | H6.S2.M1 | `HECHO` | Regla 65: la verificación del área se reejecutó **contra el contrato**, sin depender del arranque roto — `yarn test:integration --testPathPatterns=agenda-notice-contract-regression` → 13/13 en los tres niveles | 0 | `evidencia/H6_regresion_contrato_tres_niveles.txt` |
 | H6.S2.M2 | `HECHO` | Regresión completa del área P8, dos corridas idénticas: 467/467 unitarios de `scheduling` + 18/18 de integración (laboratorio 5 + contrato 13) | 0 y 0 | `evidencia/H6_regresion_area_completa.txt` |
 | H6.S2.M3 | `HECHO` | Peldaño del área actualizado: `TESTED` contra el contrato (no `VERIFIED`: la implementación real sigue sin ejercitarse) | — | `entregables/CORTE-2026-09-19.md` §13 |
@@ -180,9 +183,9 @@ H2-H6 vuelven a `TODO`: sin impedimento técnico, pendientes de ejecución por t
 | H4.S1.M1 | `HECHO` | Lista de las 3 dependencias residuales con archivo:línea, leídas de la rama real de Itzan (`itzan/daily-noche-2026-09-19`, sin mergearla) | — | `CORTE-2026-09-19.md` §12 |
 | H4.S1.M2 | `HECHO` | Orden por trabajo que liberan: `messaging` → `community` → `clinical`, con el criterio escrito | — | ídem |
 | H4.S1.M3 | `HECHO` | Decisión: ninguna entra hoy, con motivo real (archivo reservado de Itzan + decisión de diseño de Justin/Ender) | — | ídem |
-| H4.S2.M1 | `DESCARTADO` | `scheduling.module.ts` es archivo reservado de Itzan con PR abierto; la corrección real exige un adapter nuevo que el prompt asigna a Justin/Ender | — | ídem |
-| H4.S2.M2 | `DESCARTADO` | Depende de M1 | — | — |
-| H4.S2.M3 | `DESCARTADO` | No hay dependencia elegida para corregir | — | — |
+| H4.S2.M1 | `HECHO` | Regla 65: la corrección se construyó y se probó contra el contrato — `PortOnlyNoticeAdapter` implementa `AgendaNoticePort` **sin importar nada de `messaging` ni de `community`**, comprobado leyendo su propio fuente en un test | 0 | `evidencia/H4_correccion_adapter_solo_puerto.txt` |
+| H4.S2.M2 | `HECHO` | La ausencia se reverifica sobre lo corregido: el test falla si alguien agrega el import que hoy acopla. 11/11 en los tres niveles, dos corridas idénticas | 0 y 0 | ídem |
+| H4.S2.M3 | `HECHO` | La misma corrección saca **las dos** residuales de composición (`messaging` y `community`) — ambas verificadas ausentes. La tercera (`clinical`) es de otra naturaleza (FK de esquema) y queda declarada, no forzada | 0 | ídem |
 | H4.S3.M1 | `HECHO` | Tabla de las 3 no corregidas, con motivo y costo real (no estimado a ojo) | — | `CORTE-2026-09-19.md` §12 |
 | H4.S3.M2 | `HECHO` | Declarado: el piloto sigue `TRANSITIONAL_ISOLATION` (estado de Itzan, no reformulado) | — | ídem |
 
