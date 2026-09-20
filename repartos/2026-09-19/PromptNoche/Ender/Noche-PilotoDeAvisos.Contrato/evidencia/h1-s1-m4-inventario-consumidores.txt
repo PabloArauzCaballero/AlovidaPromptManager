@@ -1,0 +1,71 @@
+# H1.S1.M4 — Inventario de consumidores de AGENDA_NOTICE_PORT / AgendaNoticePort (corte 32ae9399)
+
+$ grep -rn "AgendaNoticePort\|AGENDA_NOTICE_PORT\|AgendaNotice\|AgendaNoticeKind\|AgendaNoticeRecipient\|AgendaNoticeResult" --include="*.ts" src | grep -v "ports/agenda-notice.port.ts"
+src/modules/scheduling/adapters/support-admin-notice.adapter.ts:12:import type { AgendaNotice } from '../ports/agenda-notice.port';
+src/modules/scheduling/adapters/support-admin-notice.adapter.ts:63:    notice: AgendaNotice,
+src/modules/scheduling/adapters/messaging-agenda-notice.adapter.ts:12:  AgendaNotice,
+src/modules/scheduling/adapters/messaging-agenda-notice.adapter.ts:13:  AgendaNoticeKind,
+src/modules/scheduling/adapters/messaging-agenda-notice.adapter.ts:14:  AgendaNoticePort,
+src/modules/scheduling/adapters/messaging-agenda-notice.adapter.ts:15:  AgendaNoticeResult,
+src/modules/scheduling/adapters/messaging-agenda-notice.adapter.ts:29:const CATEGORIA: Readonly<Record<AgendaNoticeKind, string>> = {
+src/modules/scheduling/adapters/messaging-agenda-notice.adapter.ts:44:const PRIORIDAD: Readonly<Record<AgendaNoticeKind, number>> = {
+src/modules/scheduling/adapters/messaging-agenda-notice.adapter.ts:113: * `AGENDA_NOTICE_PORT` en `scheduling.module.ts` por un adaptador que delegue en
+src/modules/scheduling/adapters/messaging-agenda-notice.adapter.ts:117:export class MessagingAgendaNoticeAdapter implements AgendaNoticePort {
+src/modules/scheduling/adapters/messaging-agenda-notice.adapter.ts:119:  private static readonly KINDS_CON_CHAT: ReadonlySet<AgendaNoticeKind> =
+src/modules/scheduling/adapters/messaging-agenda-notice.adapter.ts:135:  async emit(notice: AgendaNotice): Promise<AgendaNoticeResult> {
+src/modules/scheduling/adapters/messaging-agenda-notice.adapter.ts:166:    notices: readonly AgendaNotice[],
+src/modules/scheduling/adapters/messaging-agenda-notice.adapter.ts:167:  ): Promise<AgendaNoticeResult[]> {
+src/modules/scheduling/adapters/messaging-agenda-notice.adapter.ts:168:    const resultados: AgendaNoticeResult[] = [];
+src/modules/scheduling/adapters/messaging-agenda-notice.adapter.ts:176:  private async entregar(notice: AgendaNotice): Promise<AgendaNoticeResult> {
+src/modules/scheduling/adapters/messaging-agenda-notice.adapter.ts:284:    notice: AgendaNotice,
+src/modules/scheduling/adapters/messaging-agenda-notice.adapter.ts:286:  ): Promise<Pick<AgendaNoticeResult, 'chatDelivered' | 'chatSkippedReason'>> {
+src/modules/scheduling/adapters/messaging-agenda-notice.adapter.ts:318:    notice: AgendaNotice,
+src/modules/scheduling/adapters/messaging-agenda-notice.adapter.ts:343:    notice: AgendaNotice,
+src/modules/scheduling/adapters/messaging-agenda-notice.adapter.ts:347:    Pick<AgendaNoticeResult, 'emailRequestId' | 'emailSkippedReason'>
+src/modules/scheduling/adapters/messaging-agenda-notice.adapter.ts:417:    notice: AgendaNotice,
+src/modules/scheduling/notices/agenda-notices.ts:1:import type { AgendaNotice } from '../ports/agenda-notice.port';
+src/modules/scheduling/notices/agenda-notices.ts:88:): AgendaNotice {
+src/modules/scheduling/notices/agenda-notices.ts:151:): AgendaNotice {
+src/modules/scheduling/notices/agenda-notices.ts:194:): AgendaNotice {
+src/modules/scheduling/notices/agenda-notices.ts:229:): AgendaNotice {
+src/modules/scheduling/notices/agenda-notices.ts:273:): AgendaNotice {
+src/modules/scheduling/notices/agenda-notices.ts:329:): AgendaNotice {
+src/modules/scheduling/notices/agenda-notices.ts:387:): AgendaNotice {
+src/modules/scheduling/services/scheduling-agenda-notices.service.ts:6:  AGENDA_NOTICE_PORT,
+src/modules/scheduling/services/scheduling-agenda-notices.service.ts:7:  type AgendaNotice,
+src/modules/scheduling/services/scheduling-agenda-notices.service.ts:8:  type AgendaNoticePort,
+src/modules/scheduling/services/scheduling-agenda-notices.service.ts:40:    @Inject(AGENDA_NOTICE_PORT)
+src/modules/scheduling/services/scheduling-agenda-notices.service.ts:41:    private readonly notices: AgendaNoticePort,
+src/modules/scheduling/services/scheduling-agenda-notices.service.ts:77:    const avisos: AgendaNotice[] = candidatos.map((candidato) =>
+src/modules/scheduling/services/scheduling-agenda-notices.service.ts:118:    const avisos: AgendaNotice[] = [];
+src/modules/scheduling/adapters/messaging-agenda-notice.adapter.spec.ts:15:import type { AgendaNotice } from '../ports/agenda-notice.port';
+src/modules/scheduling/adapters/messaging-agenda-notice.adapter.spec.ts:17:const aviso: AgendaNotice = {
+src/modules/scheduling/adapters/messaging-agenda-notice.adapter.spec.ts:314:    const cambio: AgendaNotice = {
+src/modules/scheduling/adapters/messaging-agenda-notice.adapter.spec.ts:340:    const cambio: AgendaNotice = {
+src/modules/scheduling/services/scheduling-catalog.service.ts:52:  AGENDA_NOTICE_PORT,
+src/modules/scheduling/services/scheduling-catalog.service.ts:53:  type AgendaNoticePort,
+src/modules/scheduling/services/scheduling-catalog.service.ts:220:    @Inject(AGENDA_NOTICE_PORT)
+src/modules/scheduling/services/scheduling-catalog.service.ts:221:    private readonly notices: AgendaNoticePort,
+src/modules/scheduling/services/scheduling-bookings.service.ts:49:  AGENDA_NOTICE_PORT,
+src/modules/scheduling/services/scheduling-bookings.service.ts:50:  type AgendaNotice,
+src/modules/scheduling/services/scheduling-bookings.service.ts:51:  type AgendaNoticePort,
+src/modules/scheduling/services/scheduling-bookings.service.ts:349:    @Inject(AGENDA_NOTICE_PORT)
+src/modules/scheduling/services/scheduling-bookings.service.ts:350:    private readonly notices: AgendaNoticePort,
+src/modules/scheduling/services/scheduling-bookings.service.ts:653:    const avisos: AgendaNotice[] = [avisoDeSolicitudAlPaciente(booking)];
+src/modules/scheduling/scheduling.module.ts:70:import { AGENDA_NOTICE_PORT } from './ports/agenda-notice.port';
+src/modules/scheduling/scheduling.module.ts:142:    { provide: AGENDA_NOTICE_PORT, useExisting: MessagingAgendaNoticeAdapter },
+src/modules/scheduling/adapters/support-admin-notice.adapter.spec.ts:7:import type { AgendaNotice } from '../ports/agenda-notice.port';
+src/modules/scheduling/adapters/support-admin-notice.adapter.spec.ts:9:const aviso: AgendaNotice = {
+src/modules/scheduling/services/scheduling-delay.service.ts:19:  AGENDA_NOTICE_PORT,
+src/modules/scheduling/services/scheduling-delay.service.ts:20:  type AgendaNoticePort,
+src/modules/scheduling/services/scheduling-delay.service.ts:82:    @Inject(AGENDA_NOTICE_PORT)
+src/modules/scheduling/services/scheduling-delay.service.ts:83:    private readonly notices: AgendaNoticePort,
+src/modules/profiles/ports/affiliation-notice.port.ts:6: * Mismo criterio que `AgendaNoticePort` en scheduling: el servicio que decide
+
+# Puntos de llamada real a emit()/emitMany() (no imports, no specs)
+src/modules/scheduling/services/scheduling-agenda-notices.service.ts:81:    const resultados = await this.notices.emitMany(avisos);
+src/modules/scheduling/services/scheduling-agenda-notices.service.ts:128:    const resultados = await this.notices.emitMany(avisos);
+src/modules/scheduling/services/scheduling-catalog.service.ts:890:        await this.notices.emit(
+src/modules/scheduling/services/scheduling-delay.service.ts:226:    const resultados = await this.notices.emitMany(
+src/modules/scheduling/services/scheduling-bookings.service.ts:681:    await this.notices.emitMany(avisos);
+src/modules/scheduling/services/scheduling-bookings.service.ts:2486:    await this.notices.emit(

@@ -23,7 +23,7 @@ hito está en [`CORTE-2026-09-19.md`](./CORTE-2026-09-19.md) y en el
 
 | Repo | Rama | Qué | Estado |
 |---|---|---|---|
-| `mantra-core-health-api` | `pablo/h2-lab-avisos-agenda` → PR contra `dev` | `test/lab/agenda-notice-capability.lab.ts` + su `int-spec.ts` | PR #444 abierto (`dev` es rama protegida: push directo rechazado, `GH006`) |
+| **`mantra-core-health-api`** | `pablo/h2-lab-avisos-agenda` → PR contra `dev` | `test/lab/agenda-notice-capability.lab.ts` + su `int-spec.ts` | PR #444 abierto (`dev` es rama protegida: push directo rechazado, `GH006`) |
 | `AlovidaPromptManager` | `dev` | `CORTE-2026-09-19.md`, `ACTIONLOG.md`, daily de Pablo actualizado, regla `65-aislar-y-simular-para-no-bloquearse.md`, índice y `AGENTS.md` actualizados | Ver commit de este mismo turno |
 
 **No se sube el fix del patch `v4.2.8`** (`database/SQL/patches/2026-09-08_v428_billing_quotations.sql`,
