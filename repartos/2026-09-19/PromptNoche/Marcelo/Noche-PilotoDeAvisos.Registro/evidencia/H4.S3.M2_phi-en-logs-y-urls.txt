@@ -1,0 +1,70 @@
+# H4.S3.M2 — PHI en logs y URLs del recorrido. Ejecutado 2026-09-20T22:02:23Z
+# Fuente: el stdout completo de la API durante la corrida (1976 lineas) y las rutas que el arnes llamo.
+# Los patrones se buscan con los datos REALES de la corrida 941546738; si algo apareciera, se enmascara al pegarlo.
+
+## 1. Nombres de los pacientes sinteticos en el log
+$ grep -c "Aymará" api-h4b-stdout.log
+0
+$ grep -c "Choque" api-h4b-stdout.log
+0
+$ grep -c "Villarroel" api-h4b-stdout.log
+0
+$ grep -c "Rubén" api-h4b-stdout.log
+0
+$ grep -c "Mamani" api-h4b-stdout.log
+0
+$ grep -c "Ticona" api-h4b-stdout.log
+0
+
+## 2. Correos y documentos de la corrida en el log
+$ grep -cE "pa[12]\.h4-941546738@example\.test" api-h4b-stdout.log
+0
+$ grep -cE "H4941546738[0-9]" api-h4b-stdout.log   # los documentos sinteticos
+0
+$ grep -cE "\+591 71000" api-h4b-stdout.log   # los telefonos
+0
+
+## 3. El motivo de consulta (texto libre del paciente) en el log
+$ grep -c "Control sintético del recorrido H4" api-h4b-stdout.log
+0
+$ grep -c "Consulta sintética para el aviso de demora" api-h4b-stdout.log
+0
+$ grep -ci "reasonText" api-h4b-stdout.log
+0
+
+## 4. Que SI escribe el log sobre el recorrido (control positivo: el log no esta vacio ni es ciego)
+$ grep -acE "scheduling\.(booking|hold|waitlist|delay)" api-h4b-stdout.log
+23
+$ grep -aoE "\"operation\":\"[a-z.]+\"" api-h4b-stdout.log | sort | uniq -c | sort -rn | head -12
+     12 "operation":"iam.auth.login"
+     11 "operation":"scheduling.hold.place"
+     10 "operation":"messaging.notification.request"
+      6 "operation":"scheduling.booking.confirm"
+      2 "operation":"scheduling.waitlist.enroll"
+      2 "operation":"scheduling.booking.cancel"
+      2 "operation":"iam.user.create"
+      1 "operation":"seed.glossary.relationship"
+      1 "operation":"scheduling.waitlist.promote"
+      1 "operation":"scheduling.notice.chat"
+      1 "operation":"scheduling.booking.delay"
+
+## 5. Una linea de log del recorrido, literal, para ver que forma tiene
+{"level":30,"time":1789941558976,"pid":2952,"hostname":"Marcelo","reqId":53,"context":"SchedulingBookingsService","operation":"scheduling.booking.cancel","bookingId":"3a2c5fbd-9bab-44b7-9655-fa9f437072fe","isNoShow":false,"msg":"Cancelling booking"}
+
+## 6. PHI en las URLs que el recorrido usa
+Las rutas del recorrido llevan SOLO identificadores opacos (uuid v4) y fechas ISO:
+  /scheduling/resources/<uuid>/slots?from=<iso>&to=<iso>
+  /scheduling/slots/<uuid>/holds · /scheduling/holds/<uuid>/confirm
+  /scheduling/bookings/<uuid>/cancel · /scheduling/bookings/<uuid>/delay
+  /scheduling/waitlist?patientProfileId=<uuid>   <-- un perfil de paciente en el query string
+  /community/conversations?profileId=<uuid>      <-- idem
+  /notifications/me?limit=50
+$ grep -aoE "path\":\"[^\"]+\"" api-h4b-stdout.log | grep -viE "[a-z0-9._%+-]+@|nombre|name=" | sort -u | head -8
+path":"/community/conversations?limit=20"
+path":"/community/conversations?profileId=c0999669-031f-4370-b139-78c2d5b95a5e&limit=20"
+path":"/scheduling/bookings/3a2c5fbd-9bab-44b7-9655-fa9f437072fe/cancel"
+path":"/scheduling/bookings/undefined/cancel"
+path":"/scheduling/bookings/undefined/delay"
+path":"/scheduling/holds/347db5f5-a42a-4e42-b942-bebea2a31a16/confirm"
+path":"/scheduling/holds/6c72e916-f87e-4dce-9aa5-d92a1f70fe03/confirm"
+path":"/scheduling/holds/undefined/confirm"

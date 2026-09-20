@@ -15,7 +15,7 @@
 | **Pablo** | [Corte, laboratorio del piloto y regresión de aislamiento](Pablo/Noche-PilotoDeAvisos.Backend/CorteLaboratorioYRegresion.md) | A | 6 | 18 | 53 | `NOT_RUN` |
 | **Ender** | [El contrato del piloto: fijarlo, validarlo y gobernar su evolución](Ender/Noche-PilotoDeAvisos.Contrato/ContratoValidadorYCompatibilidad.md) | A | 6 | 18 | 50 | `COMPLETADO — 48/50 · 2 DESCARTADO` |
 | **Itzan** | [Composición, prueba de ausencia y baseline de la capacidad](Itzan/Noche-PilotoDeAvisos.Aislamiento/ComposicionAusenciaYBaseline.md) | A | 6 | 18 | 52 | `NOT_RUN` |
-| **Marcelo** | [Recorrido del registro: selección, casos y aceptación](Marcelo/Noche-PilotoDeAvisos.Registro/RecorridoCasosYAceptacion.md) | B | 6 | 18 | 54 | `29/54 HECHO` — H1+H2+H3 cerrados; ver su daily |
+| **Marcelo** | [Recorrido del registro: selección, casos y aceptación](Marcelo/Noche-PilotoDeAvisos.Registro/RecorridoCasosYAceptacion.md) | B | 6 | 18 | 54 | **`COMPLETADO — 54/54`** · dictamen: `PRODUCT_ACCEPTANCE_NOT_VERIFIED`, 4 rojos abiertos |
 | **Justin** | [La relación agenda → mensajería: dobles, integración y regresión final](Justin/Noche-PilotoDeAvisos.Integracion/DoblesRelacionYRegresionFinal.md) | B | 6 | 18 | 53 | **53/53** (40/53 al cerrar el turno; las 13 restantes se cerraron el 20/09, PR #445) |
 | | | | **30** | **90** | **262** | |
 

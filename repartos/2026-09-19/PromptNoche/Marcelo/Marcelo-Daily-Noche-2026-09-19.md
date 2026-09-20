@@ -1,6 +1,6 @@
 # Daily de Marcelo — turno noche — 2026-09-19
 
-> **Estado:** `IN_PROGRESS`. H1, H2 y H3 cerrados `HECHO` (29/29 microtareas abiertas). H4-H6 en `TODO` (54 - 29 = 25 restantes), no abiertos por decisión de alcance — ver §5.
+> **Estado:** `COMPLETADO`. **54 / 54 microtareas en `HECHO`** — los seis hitos cerrados. El dictamen está en [`DICTAMEN-M06-2026-09-20.md`](Noche-PilotoDeAvisos.Registro/entregables/DICTAMEN-M06-2026-09-20.md) y **no declara el producto aceptado**: `PRODUCT_ACCEPTANCE_NOT_VERIFIED`. El 100 % es de las microtareas del prompt, no del producto.
 > **Hallazgo que domina el turno, y su arreglo.** `GET /scheduling/bookings/:id`, `POST .../cancel` y `POST .../reschedule` no verificaban de quién era la cita: cualquier paciente, de cualquier organización, la leía, la cancelaba y la movía. Confirmado por ejecución contra la API real y **corregido en el mismo turno**: PR [mantra-core-health-api#447](https://github.com/mdavila-2001/mantra-core-health-api/pull/447), rama `marcelo/fix-authz-citas-ajenas`, commit `9ff1542d` sobre `dev` @ `33f17785`. Reverificado: intruso **403**, titular **200**, sobre la misma cita. Suite de `scheduling` **483/483**; sin el arreglo, 4 de las 7 pruebas nuevas fallan.
 > **Corrección de mi propio hallazgo:** de los 4 rojos que declaré, 3 eran bugs y están arreglados; el cuarto (`GET /scheduling/slots` entre organizaciones) se **reclasificó a `DECISION_REQUIRED`** al ir a corregirlo — no lleva datos de paciente y el cliente pide explícitamente poder ver todos los médicos disponibles, así que restringirlo rompería el recorrido. Es pregunta de producto, no defecto.
 
@@ -47,17 +47,17 @@ Salida completa: [`evidencia/H0_instalacion-estandar.txt`](Noche-PilotoDeAvisos.
 
 ## 2. Avance por hito
 
-**29 / 54 microtareas en `HECHO`.** Se calcula, no se estima.
+**54 / 54 microtareas en `HECHO`.** Se calcula, no se estima: `evidencia/H6.S3.M1_avance-calculado.txt`.
 
 | Hito | Prioridad | Microtareas | HECHO | Estado |
 |---|---|---:|---:|---|
 | **H1** — Seleccionar el recorrido prioritario del registro y sus relaciones | `BLOQUEANTE` | 13 | **13** | **`HECHO`** |
 | **H2** — Diseñar los casos de aceptación del recorrido y sus datos | `ALTA` | 8 | **8** | **`HECHO`** |
 | **H3** — Probar permisos, estados y dinero del recorrido | `ALTA` | 8 | **8** | **`HECHO`** |
-| **H4** — Ejercitar el recorrido que cruza varios módulos | `MEDIA` | 8 | 0 | `TODO` |
-| **H5** — Ejecutar la aceptación del registro con los participantes reales disponibles | `ALTA` | 8 | 0 | `TODO` |
-| **H6** — Emitir el dictamen de aceptación con sus límites externos | `ALTA` | 9 | 0 | `TODO` |
-| **TOTAL** | | **54** | **29** | **29/54 = 54 %** |
+| **H4** — Ejercitar el recorrido que cruza varios módulos | `MEDIA` | 8 | **8** | **`HECHO`** |
+| **H5** — Ejecutar la aceptación del registro con los participantes reales disponibles | `ALTA` | 8 | **8** | **`HECHO`** |
+| **H6** — Emitir el dictamen de aceptación con sus límites externos | `ALTA` | 9 | **9** | **`HECHO`** |
+| **TOTAL** | | **54** | **54** | **54/54 = 100 %** |
 
 **H1** (`HECHO`, 13/13): sin cambios respecto de la entrega anterior — ver §3.
 
@@ -128,21 +128,22 @@ Salida completa: [`evidencia/H0_instalacion-estandar.txt`](Noche-PilotoDeAvisos.
 | **H3** | Justin | Los negativos de autorización que hay que llevar a la relación | **`SÍ`** — §5 de H3: los 4 `FAIL` confirmados por ejecución |
 | **H3** | Ender | Qué transición o regla de dinero el contrato no expresa | **`SÍ`** — §5 de H3: ninguna regla monetaria nueva; sí el dato lateral de que la cancelación ilegítima no dejó aviso a la víctima |
 | **H3** | Pablo | Los controles faltantes, para priorizarlos | **`SÍ`** — §5 de H3: 4 controles con fix señalado (archivo:línea) |
-| **H4** | Justin | Los pasos que fallaron por la relación | `NO` — H4 no se abrió este turno |
-| **H4** | Ender | Qué decisión abierta bloquea qué paso | `NO` |
-| **H4** | Pablo | La lista de proveedores externos pendientes: es decisión de alcance | `NO` |
-| **H5** | Todo el equipo | La matriz de aceptación y los rojos | `NO` |
-| **H5** | Pablo | Las decisiones de alcance que exigen coordinación | `NO` |
-| **H5** | Justin | Qué pasos hay que reejecutar mañana | `NO` |
-| **H6** | Todo el equipo | El dictamen | `NO` |
-| **H6** | Pablo | Las decisiones de alcance que quedan para quien coordine | `NO` |
-| **H6** | Quien encargó el paquete | Los pendientes que solo puede cerrar negocio | `NO` |
+| **H4** | Justin | Los pasos que fallaron por la relación | **`SÍ`** — ninguno: tu relación entregó (4 solicitudes in-app y 8 de correo en la corrida) |
+| **H4** | Ender | Qué decisión abierta bloquea qué paso | **`SÍ`** — el aviso sale por barrido, no al cancelar; y el correo se marca enviado sin confirmación (1 falló) |
+| **H4** | Pablo | La lista de proveedores externos pendientes: es decisión de alcance | **`SÍ`** — 4 proveedores, más 2 hallazgos de auditoría del sistema |
+| **H5** | Todo el equipo | La matriz de aceptación y los rojos | **`SÍ`** — matriz de 11 pasos y 4 rojos, en la cabecera del documento |
+| **H5** | Pablo | Las decisiones de alcance que exigen coordinación | **`SÍ`** — 6 decisiones con dueño; 4 son mías y se pueden revertir |
+| **H5** | Justin | Qué pasos hay que reejecutar mañana | **`SÍ`** — el paso 8 (chat), cuando `SupportAdmin` exista |
+| **H6** | Todo el equipo | El dictamen | **`SÍ`** — `DICTAMEN-M06-2026-09-20.md` |
+| **H6** | Pablo | Las decisiones de alcance que quedan para quien coordine | **`SÍ`** — §3 y §9 del dictamen |
+| **H6** | Quien encargó el paquete | Los pendientes que solo puede cerrar negocio | **`SÍ`** — §9 del dictamen: las tres preguntas de negocio |
 
 ## 5. Bloqueos
 
 | Qué bloquea | Qué intentaste | Qué lo destraba | De quién depende |
 |---|---|---|---|
-| H4-H6 no se abrieron | Ninguno — decisión de alcance, no bloqueo técnico: H1+H2+H3 consumieron el turno con las 29 microtareas completas | Coordinación decide si se retoma H4 en el próximo turno, o si primero se prioriza el fix del `PRODUCT_BUG` que H3 destapó | Coordinación / Pablo |
+| ~~H4-H6 no se abrieron~~ | **Resuelto**: el propietario pidió corregir el fallo primero y seguir; los tres hitos se abrieron y cerraron | — | — |
+| Docker tomó el puerto 3000 a mitad del turno | La API se levantó en `:3010`. Esperar por `/health`, no por el puerto: el puerto abierto era de Docker | Ya sorteado | — |
 | Alta de paciente/organización exigió campos no documentados en los arneses de referencia (`p8-avisos-agenda.mjs`, `fx14-cockpit-contable.int-spec.ts`) | Se resolvió en el momento: `countryConceptId`/`jurisdictionConceptId` para la organización; `email`/`phone`/`birthDate`/`sexAtBirth`/`issuerAdministrativeAreaConceptId`/`residenceMunicipalityConceptId` para el paciente, resueltos por consulta al catálogo de terminología en vivo | Ya destrabado; declarado en `evidencia/H3.prep_datos-sinteticos.txt` | — |
 
 **No hay bloqueos técnicos reales de H1-H3**: las 29 microtareas se ejecutaron sin impedimento que no se haya resuelto en el mismo turno. El único "bloqueo" real es de alcance (Q-C1: seis hitos no entran en una noche), ya anticipado por la ficha.

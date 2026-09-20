@@ -1,0 +1,148 @@
+# H4.S1.M3 (ADV-08, atomicidad) + H4.S3.M1 (rastro de auditoria) — CONSULTAS DESDE CONEXION INDEPENDIENTE
+# Ejecutado 2026-09-20T22:00:53Z con un cliente pg propio, fuera del EntityManager de la aplicacion,
+# sobre los ids que dejo la corrida del recorrido (H4.S1.M1). Solo lectura.
+# Primera version: 3 consultas fallaron por columnas que ASUMI (source_id, subject_profile_id, channel_concept_id).
+#   Se leyeron los nombres reales de information_schema y se corrigieron. Esta es la corrida buena.
+
+conexion INDEPENDIENTE a <…>.sa-east-1.aws.neon.tech/alovida (cliente pg propio, fuera de la app)
+
+== ADV-08a · la cancelacion reintentada dejo UNA sola fila ==
+$ select count(*)::int as filas, count(distinct id)::int as ids from scheduling.booking_cancellations where booking_id = $1
+filas=1
+   {"filas":1,"ids":1}
+
+== ADV-08a · la reserva quedo en UN solo estado final ==
+$ select status_concept_id, row_version from scheduling.appointment_bookings where id = $1
+filas=1
+   {"status_concept_id":"3fbee3a4-f674-5520-a805-32098f7b019c","row_version":2}
+
+== ADV-08b · el cupo disputado tiene UNA sola reserva viva (no dos) ==
+$ select count(*)::int as reservas_vivas from scheduling.appointment_bookings b join terminology.catalog_concepts t on t.id=b.status_concept_id where b.bookable_slot_id = $1 and t.code <> 'BOOKING_CANCELLED'
+filas=1
+   {"reservas_vivas":0}
+
+== ADV-08b · capacidad del cupo disputado: nunca negativa ==
+$ select capacity, remaining_capacity from scheduling.bookable_slots where id = $1
+filas=1
+   {"capacity":1,"remaining_capacity":0}
+
+== H4.S3.M1 · rastro de ESCRITURAS de las dos citas (audit.appointment_bookings_history) ==
+$ select t.code as operacion, count(*)::int as veces from audit.appointment_bookings_history h left join terminology.catalog_concepts t on t.id=h.operation_concept_id where h.appointment_booking_id in ($1,$2) group by 1 order by 1
+filas=2
+   {"operacion":"scheduling:HISTORY_OP_DELAY","veces":1}
+   {"operacion":"scheduling:HISTORY_OP_STATE_TRANSITION","veces":1}
+
+== H4.S3.M1 · el rastro guarda contenido clinico? (claves del snapshot) ==
+$ select distinct jsonb_object_keys(h.data_snapshot) as clave from audit.appointment_bookings_history h where h.appointment_booking_id in ($1,$2) order by 1
+filas=6
+   {"clave":"actorKind"}
+   {"clave":"bookingId"}
+   {"clave":"delayMinutes"}
+   {"clave":"fromStateConceptId"}
+   {"clave":"reasonText"}
+   {"clave":"toStateConceptId"}
+
+== H4.S3.M1 · rastro de LECTURAS de esas citas (audit.data_access_log) — se leyeron 6+ veces ==
+$ select count(*)::int as filas from audit.data_access_log where resource_id in ($1,$2) or patient_profile_id in ($3,$4)
+filas=1
+   {"filas":0}
+
+== H4.S3.M1 · data_access_log tiene filas de ALGUIEN (control positivo: la tabla se usa) ==
+$ select count(*)::int as filas_totales from audit.data_access_log
+filas=1
+   {"filas_totales":16}
+
+== P7 · avisos in-app emitidos a PA2 en esta corrida ==
+$ select t.code as categoria, count(*)::int as veces from messaging.notification_requests r left join terminology.catalog_concepts t on t.id=r.category_concept_id where r.created_at > now() - interval '20 minutes' group by 1 order by 2 desc limit 10
+filas=5
+   {"categoria":"scheduling:NOTICE_SLOT_RELEASED","veces":4}
+   {"categoria":null,"veces":4}
+   {"categoria":"DEFAULT_CATEGORY","veces":2}
+   {"categoria":"scheduling:NOTICE_BOOKING_STATE_CHANGED","veces":2}
+   {"categoria":"scheduling:NOTICE_PRACTITIONER_DELAY","veces":2}
+
+== P9 · correo: solicitudes por canal en esta corrida (EMAIL = encolado, no entregado) ==
+$ select ch2.code as canal, t.code as estado, count(*)::int as veces from messaging.notification_deliveries d left join messaging.channels ch2 on ch2.id=d.channel_id left join terminology.catalog_concepts t on t.id=d.status_concept_id where d.created_at > now() - interval '20 minutes' group by 1,2 ord
+ERROR: relation "messaging.channels" does not exist
+
+exit_code=0
+
+## Segunda tanda: canales reales y QUE guarda el rastro (ejecutado 2026-09-20T22:01:30Z)
+== tablas de canales en messaging ==
+$ select table_name from information_schema.tables where table_schema='messaging' and table_name ilike '%channel%' order by 1
+filas=2
+   {"table_name":"message_channels"}
+   {"table_name":"provider_channel_configs"}
+
+== P9 · canales usados por las entregas de esta corrida ==
+$ select ch.code as canal, count(*)::int as entregas from messaging.notification_deliveries d left join messaging.notification_channels ch on ch.id=d.channel_id where d.created_at > now() - interval '25 minutes' group by 1 order by 2 desc
+ERROR: relation "messaging.notification_channels" does not exist
+
+== P9 · el correo del aviso: solicitudes por canal (EMAIL encolado = existe fila, no entrega) ==
+$ select ch.code as canal, count(*)::int as solicitudes from messaging.notification_requests r left join messaging.notification_channels ch on ch.id=r.channel_id where r.created_at > now() - interval '25 minutes' group by 1 order by 2 desc
+ERROR: relation "messaging.notification_channels" does not exist
+
+== H4.S3.M1 · QUE guarda el rastro: tipo y tamaño de cada clave (SIN volcar el contenido) ==
+$ select k as clave, jsonb_typeof(h.data_snapshot->k) as tipo, max(length(h.data_snapshot->>k))::int as largo_max from audit.appointment_bookings_history h, lateral jsonb_object_keys(h.data_snapshot) k where h.appointment_booking_id in ($1,$2) group by 1,2 order by 1
+filas=6
+   {"clave":"actorKind","tipo":"string","largo_max":8}
+   {"clave":"bookingId","tipo":"string","largo_max":36}
+   {"clave":"delayMinutes","tipo":"number","largo_max":2}
+   {"clave":"fromStateConceptId","tipo":"string","largo_max":36}
+   {"clave":"reasonText","tipo":"string","largo_max":34}
+   {"clave":"toStateConceptId","tipo":"string","largo_max":36}
+
+== H4.S3.M1 · quien quedo registrado como autor del cambio (identificador, no nombre) ==
+$ select count(distinct changed_by_user_id)::int as autores, count(*)::int as revisiones from audit.appointment_bookings_history where appointment_booking_id in ($1,$2)
+filas=1
+   {"autores":2,"revisiones":2}
+
+== H4.S3.M1 · que modulos SI escriben en data_access_log (las 16 filas existentes) ==
+$ select resource_type, count(*)::int as filas from audit.data_access_log group by 1 order by 2 desc limit 10
+filas=8
+   {"resource_type":"DATA_ACCESS_LOG_08","filas":2}
+   {"resource_type":"DATA_ACCESS_LOG_04","filas":2}
+   {"resource_type":"DATA_ACCESS_LOG_07","filas":2}
+   {"resource_type":"DATA_ACCESS_LOG_05","filas":2}
+   {"resource_type":"DATA_ACCESS_LOG_02","filas":2}
+   {"resource_type":"DATA_ACCESS_LOG_01","filas":2}
+   {"resource_type":"DATA_ACCESS_LOG_06","filas":2}
+   {"resource_type":"DATA_ACCESS_LOG_03","filas":2}
+
+
+## Tercera tanda: canal correcto (messaging.message_channels) — 2026-09-20T22:01:51Z
+== P9 · canales usados por las entregas de esta corrida ==
+$ select ch.code as canal, count(*)::int as entregas from messaging.notification_deliveries d left join messaging.message_channels ch on ch.id=d.channel_id where d.created_at > now() - interval '25 minutes' group by 1 order by 2 desc
+filas=4
+   {"canal":"EMAIL","entregas":17}
+   {"canal":"IN_APP","entregas":4}
+   {"canal":"MESSAGE_CHANNELS_01","entregas":1}
+   {"canal":"MESSAGE_CHANNELS_06_MOCK","entregas":1}
+
+== P9 · el correo del aviso: solicitudes por canal (EMAIL encolado = existe fila, no entrega) ==
+$ select ch.code as canal, count(*)::int as solicitudes from messaging.notification_requests r left join messaging.message_channels ch on ch.id=r.channel_id where r.created_at > now() - interval '25 minutes' group by 1 order by 2 desc
+filas=4
+   {"canal":"EMAIL","solicitudes":8}
+   {"canal":"IN_APP","solicitudes":4}
+   {"canal":"MESSAGE_CHANNELS_01","solicitudes":1}
+   {"canal":"MESSAGE_CHANNELS_06_MOCK","solicitudes":1}
+
+
+## Cuarta tanda: el correo, encolado o entregado — 2026-09-20T22:02:56Z
+== P9 · estado REAL de las entregas de correo de la corrida (encolado vs entregado) ==
+$ select ch.code as canal, t.code as estado, count(*)::int as veces, count(d.delivered_at)::int as con_delivered_at, count(d.sent_at)::int as con_sent_at from messaging.notification_deliveries d left join messaging.message_channels ch on ch.id=d.channel_id left join terminology.catalog_conce
+filas=5
+   {"canal":"EMAIL","estado":"ND_SENT","veces":16,"con_delivered_at":0,"con_sent_at":16}
+   {"canal":"IN_APP","estado":"ND_SENT","veces":4,"con_delivered_at":0,"con_sent_at":4}
+   {"canal":"EMAIL","estado":"ND_FAILED","veces":1,"con_delivered_at":0,"con_sent_at":0}
+   {"canal":"MESSAGE_CHANNELS_01","estado":"ACTIVE","veces":1,"con_delivered_at":0,"con_sent_at":1}
+   {"canal":"MESSAGE_CHANNELS_06_MOCK","estado":"ACTIVE","veces":1,"con_delivered_at":0,"con_sent_at":1}
+
+== P9 · que proveedor atendio esas entregas ==
+$ select coalesce(d.adapter_code,'(sin adapter)') as adaptador, count(*)::int as veces from messaging.notification_deliveries d where d.created_at > now() - interval '30 minutes' group by 1 order by 2 desc
+filas=4
+   {"adaptador":"WORKER_DISPATCHED","veces":17}
+   {"adaptador":"IN_APP_DIRECT","veces":4}
+   {"adaptador":"Notification Deliveries · adapter code 08","veces":1}
+   {"adaptador":"Notification Deliveries · adapter code 13","veces":1}
+

@@ -1,0 +1,16 @@
+# H6.S3.M1 — el avance, calculado, no estimado. 2026-09-20T22:06:22Z
+
+Microtareas por hito, segun la ficha maestra RecorridoCasosYAceptacion.md §4:
+  H1=13  H2=8  H3=8  H4=8  H5=8  H6=9   TOTAL=54
+
+$ python -c "..."
+total       = 54
+en HECHO    = 54
+formula     = HECHO / total = 54 / 54 = 100.0 %
+
+  H1: 13/13
+  H2: 8/8
+  H3: 8/8
+  H4: 8/8
+  H5: 8/8
+  H6: 9/9
