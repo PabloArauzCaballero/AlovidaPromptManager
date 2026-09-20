@@ -87,8 +87,15 @@ silenciar el import.
 | H3.S2.M1–M2 | `HECHO` | escaneo de secretos y de datos reales de personas | `0` (sin coincidencias en ambos) | `docs/trabajo/2026-09-20-aislamiento-scheduling/MANIFEST-artefacto-h3.md` §H3.S2 |
 | H3.S3.M1–M2 | `HECHO` | estado de entrega + tabla de gates A1–A8, cada fila PASS / FAIL / `NOT_RUN` | `null` (declaración) | `docs/trabajo/2026-09-20-aislamiento-scheduling/MANIFEST-artefacto-h3.md` §H3.S3 |
 
-**Artefacto:** `scheduling-module-v0.1.0-transitional` · 117 archivos · sha256
-`6d4e53d2d0bf12f7dc166b079929e833f1233556fe2eef7ae0f325e2a47f05c8` · commit de origen `5d5007fb`.
+**Artefacto:** `scheduling-module-v0.1.0-transitional` · 117 archivos · commit de origen `5d5007fb`.
+Hash **de contenido**, reproducible:
+`21fe553b9a97efc9e42d6468b6e7e4d8b34a4a1952a5e79e2c535f360530594a`, calculado con
+`find codigo evidencia yarn.lock -type f | sort | xargs sha256sum | sha256sum`.
+
+> Corrección: una versión previa de esta línea declaraba el sha256 de un `tar`. **No servía**: el
+> `tar` arrastra fechas y permisos, así que el hash no sobrevive a una copia y el artefacto no se
+> podía verificar del otro lado. Se cambia por el hash de contenido, que sí es reproducible. El
+> manifiesto adjunto ya traía el valor corregido; esta línea era la que estaba desactualizada.
 El manifiesto adjunto lista el contenido exacto, así que es reproducible desde ese commit. **Los 117
 archivos de código no se suben acá** — es código de producto y su casa es el repo de la API. Si lo
 quieren como paquete, díganme por dónde y lo paso.
