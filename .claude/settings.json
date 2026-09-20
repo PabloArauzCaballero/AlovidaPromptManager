@@ -23,6 +23,16 @@
             "statusMessage": "Regla 40: verificando REPORTE.md"
           }
         ]
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python \"${CLAUDE_PROJECT_DIR}/.claude/hooks/blocker_gate.py\"",
+            "timeout": 20,
+            "statusMessage": "Regla 65: verificando que no queden bloqueantes sin simular"
+          }
+        ]
       }
     ]
   }
