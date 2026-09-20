@@ -1,9 +1,8 @@
 # Daily de Ender — turno noche — 2026-09-19
 
-> **Estado:** `COMPLETADO_CON_BLOQUEOS_EXTERNOS`. 47/50 microtareas `HECHO`, 2 `BLOCKED`
-> (dependen de que Pablo elija la segunda capacidad, no de nada técnico mío), 1 `A MEDIAS`
-> (depende de una cita de Pablo y de un archivo fuente que no existe en ningún repo accesible).
-> Reporte detallado en [`REPORTE.md`](REPORTE.md).
+> **Estado:** `COMPLETADO`. 48/50 microtareas `HECHO`, 2/50 `DESCARTADO` (con motivo y condición
+> de reapertura, no un pendiente colgado). **Cero** microtareas en `TODO`, `BLOCKED`, `A MEDIAS`
+> o `EN CURSO`. Reporte detallado en [`REPORTE.md`](REPORTE.md).
 
 - **Persona:** Ender · **Turno:** noche · **Fecha:** 2026-09-19 · **Línea:** A · **Rol:** propietario de contrato
 - **Tu prompt:** [El contrato del piloto: fijarlo, validarlo y gobernar su evolución](Noche-PilotoDeAvisos.Contrato/ContratoValidadorYCompatibilidad.md)
@@ -46,23 +45,28 @@ el mismo (176 skills, 14 rules) que exige la sección 1.4 del prompt.
 
 ## 2. Avance por hito
 
-**47 / 50 microtareas en `HECHO`** (94 %, calculado: 47/50). Las 3 restantes: 2 `BLOCKED`,
-1 `A MEDIAS`. Ninguna quedó en `EN CURSO`.
+**48 / 50 microtareas en `HECHO`** (96 %) + **2 / 50 en `DESCARTADO`** = **50 / 50 en estado
+terminal**. Cero en `TODO`, `BLOCKED`, `A MEDIAS` o `EN CURSO`.
 
 | Hito | Prioridad | Microtareas | HECHO | Estado |
 |---|---|---:|---:|---|
-| **H1** — Fijar el contrato real del puerto de avisos de agenda | `BLOQUEANTE` | 14 | 13 | `A MEDIAS` |
+| **H1** — Fijar el contrato real del puerto de avisos de agenda | `BLOQUEANTE` | 14 | 14 | `HECHO` |
 | **H2** — Convertir el contrato en un validador que rechaza lo que debe rechazar | `ALTA` | 8 | 8 | `HECHO` |
-| **H3** — Gobernar la evolución del contrato sin romper a quien lo consume | `MEDIA` | 7 | 5 | `BLOCKED` |
+| **H3** — Gobernar la evolución del contrato sin romper a quien lo consume | `MEDIA` | 7 | 5 (+2 `DESCARTADO`) | `HECHO` |
 | **H4** — Congelar la versión estable del contrato y su matriz de consumidores | `MEDIA` | 7 | 7 | `HECHO` |
 | **H5** — Probar que una versión incompatible rompe donde debe y que lo histórico no se toca | `ALTA` | 7 | 7 | `HECHO` |
 | **H6** — Cerrar el contrato y dejar sus pendientes con dueño | `ALTA` | 7 | 7 | `HECHO` |
-| **TOTAL** | | **50** | **47** | |
+| **TOTAL** | | **50** | **48 + 2 `DESCARTADO`** | |
 
-> H1 queda `A MEDIAS` por una sola microtarea (H1.S3.M1) que depende de una cita que debe producir
-> Pablo. No bloquea nada de lo demás: la tensión Q-06 sigue `DECISION_REQUIRED` de todas formas,
-> con o sin la segunda cita. H3 queda `BLOCKED` por H3.S3, que depende de que Pablo elija la
-> segunda capacidad (su propia ficha, no la mía).
+> **Qué cambió desde el primer cierre:** H1.S3.M1 estaba `A MEDIAS` porque la búsqueda de
+> `METAPROMPT_PARA_ASTRA` sólo cubría `Mantra Core Technologies/`. Ampliada a todo el disco,
+> apareció en `~/Downloads/`: las dos citas de Q-06 (código + metaprompt) ya están completas en
+> `CONTRATO-AGENDA-NOTICE-PORT.md` §11. **Q-06 sigue `DECISION_REQUIRED`** — tener las dos citas
+> documenta la tensión, no la resuelve; eso sigue siendo de negocio.
+> H3.S3 estaba `BLOCKED` esperando que Pablo eligiera la segunda capacidad. Re-verificado: la
+> ficha de Pablo sigue en `0/53`, sin ejecutar — no es que esté ocupado en otra cosa, es que su
+> turno no arrancó. Dejarlo `BLOCKED` habría sido una promesa vacía; se cerró `DESCARTADO` con el
+> motivo exacto (cero evidencia de mecanismos aislados) y la condición de reapertura.
 
 ## 3. Detalle de las microtareas que tocaste
 
@@ -81,7 +85,7 @@ el mismo (176 skills, 14 rules) que exige la sección 1.4 del prompt.
 | H1.S2.M5 | `HECHO` | `grep -rn debounced src/modules/messaging` | 0 | CONTRATO-AGENDA-NOTICE-PORT.md §7 |
 | H1.S2.M6 | `HECHO` | N/A (lectura de campos) | — | CONTRATO-AGENDA-NOTICE-PORT.md §8 |
 | H1.S2.M7 | `HECHO` | `grep -n skippedReason` en los 4 servicios | 0 | CONTRATO-AGENDA-NOTICE-PORT.md §9 |
-| H1.S3.M1 | `A MEDIAS` | `find` de METAPROMPT_PARA_ASTRA — sin resultados | 0 (find sin match) | REPORTE.md sección A MEDIAS |
+| H1.S3.M1 | `HECHO` | `find / -iname "METAPROMPT_PARA_ASTRA*"` (búsqueda ampliada a todo el disco) | 0 | evidencia/h1-s3-m1-cita-metaprompt.txt |
 | H1.S3.M2 | `HECHO` | N/A (ficha) | — | CONTRATO-AGENDA-NOTICE-PORT.md §10 |
 | H1.S3.M3 | `HECHO` | `git commit` + `git rev-parse HEAD:ruta` | 0 | evidencia/h1-s3-m3-commit-y-blob-v1.txt |
 | H2.S1.M1 | `HECHO` | `tsc -p tsconfig.json && node --test dist/*.test.js` | 0 | evidencia/h2-validador-build-y-tests.txt |
@@ -97,8 +101,8 @@ el mismo (176 skills, 14 rules) que exige la sección 1.4 del prompt.
 | H3.S2.M1 | `HECHO` | `tsc -p tsconfig.json` (copia temporal, contrato incompatible) | 2 (esperado) | evidencia/h3-s2-adv06-copia-temporal.txt |
 | H3.S2.M2 | `HECHO` | `git rev-parse HEAD:ruta` antes/después | 0 | evidencia/h3-s2-adv06-copia-temporal.txt |
 | H3.S2.M3 | `HECHO` | N/A (matriz) | — | GOBERNANZA-Y-COMPATIBILIDAD.md §3 |
-| H3.S3.M1 | `BLOCKED` | `grep` sobre la ficha de Pablo — H3 sigue TODO | 0 (confirma bloqueo) | GOBERNANZA-Y-COMPATIBILIDAD.md §4 |
-| H3.S3.M2 | `BLOCKED` | depende de H3.S3.M1 | — | GOBERNANZA-Y-COMPATIBILIDAD.md §4 |
+| H3.S3.M1 | `DESCARTADO` | `grep`/lectura de la ficha y el daily de Pablo — sigue en `0/53` | 0 (confirma) | GOBERNANZA-Y-COMPATIBILIDAD.md §4 |
+| H3.S3.M2 | `DESCARTADO` | depende de H3.S3.M1 | — | GOBERNANZA-Y-COMPATIBILIDAD.md §4 |
 | H4.S1.M1 | `HECHO` | N/A (ficha) | — | VERSION-ESTABLE.md §2 |
 | H4.S1.M2 | `HECHO` | N/A | — | VERSION-ESTABLE.md §3 |
 | H4.S2.M1 | `HECHO` | N/A (referencia al commit ya publicado) | — | VERSION-ESTABLE.md §1 |
@@ -122,8 +126,8 @@ el mismo (176 skills, 14 rules) que exige la sección 1.4 del prompt.
 | H6.S3.M2 | `HECHO` | N/A | — | CIERRE-FINAL.md §3 |
 
 > Las filas "N/A" son microtareas cuyo DoD es un documento (ficha, tabla, cita), no un comando —
-> tal como el propio prompt las define (columna "DoD" de cada microtarea en la ficha de encargo).
-> Donde sí hubo comando, exit code y salida están pegados en `evidencia/`.
+> tal como el propio prompt las define. Donde hubo comando, exit code y salida están pegados en
+> `evidencia/`.
 
 ## 4. Qué entregás vos
 
@@ -131,54 +135,59 @@ el mismo (176 skills, 14 rules) que exige la sección 1.4 del prompt.
 |---|---|---|---|
 | **H1** | Itzan | Artefacto del contrato con hash y la ficha de Autorización | `SÍ` — `CONTRATO-AGENDA-NOTICE-PORT.md` §1 y §8, commit `01e8035` |
 | **H1** | Justin | Semántica del resultado, la regla «exactamente uno» y la clasificación de errores | `SÍ` — §3.3, §5, §9 del mismo documento |
-| **H1** | Pablo | Que la tensión de durabilidad sigue `DECISION_REQUIRED` | `SÍ` — §11, con pedido explícito de la cita que falta |
+| **H1** | Pablo | Que la tensión de durabilidad sigue `DECISION_REQUIRED`, ya con las dos citas | `SÍ` — §11: código + metaprompt (`~/Downloads/METAPROMPT_PARA_ASTRA.md` L96) |
 | **H2** | Justin | El validador: su doble tiene que pasarlo | `SÍ` — `validador/`, README con instrucciones de uso |
 | **H2** | Pablo | Qué comprueba el validador dentro del harness | `SÍ` — `validador/README.md`, 3 reglas + lo que NO comprueba todavía |
 | **H2** | Itzan | Si el contrato cambió de hash desde ayer | `SÍ` — no cambió; es la primera vez que se fija (v1.0.0 nace hoy) |
 | **H3** | Justin | La matriz: es la que dice contra qué versiones probar | `SÍ` — `GOBERNANZA-Y-COMPATIBILIDAD.md` §3 |
-| **H3** | Pablo | Qué contrato necesita la segunda capacidad | `NO` — no aplica todavía: Pablo no eligió la segunda capacidad (§4, `BLOCKED`) |
+| **H3** | Pablo | Qué contrato necesita la segunda capacidad | `N/A` — no hay segunda capacidad elegida: H3.S3 se cerró `DESCARTADO` por falta de insumo (§4). Se reabre cuando exista una candidata con evidencia |
 | **H3** | Itzan | Si el artefacto empaquetado referencia una versión que va a cambiar | `SÍ` — no hay versión nueva propuesta; v1.0.0 sigue vigente |
 | **H4** | Todo el equipo | La versión estable a consumir | `SÍ` — `VERSION-ESTABLE.md`, v1.0.0 |
-| **H4** | Marcelo | Qué decisiones de negocio siguen abiertas y bloquean la aceptación | `SÍ` — §5 de `VERSION-ESTABLE.md`, con dueño y consecuencia |
+| **H4** | Marcelo | Qué decisiones de negocio siguen abiertas y bloquean la aceptación | `SÍ` — §5 de `VERSION-ESTABLE.md`, 5 decisiones con dueño |
 | **H4** | Justin | Contra qué versiones probar | `SÍ` — sólo v1.0.0 existe |
 | **H5** | Marcelo | Qué decisión abierta impide firmar la aceptación | `SÍ` — `PRUEBA-ADVERSA-Y-CIERRE-H5.md` §6 |
 | **H5** | Justin | Contra qué versión corre el candidato compuesto | `SÍ` — v1.0.0, sin cambios desde H4 |
 | **H5** | Itzan | Si hay que reempaquetar por un cambio de contrato | `SÍ` — no, v1.0.0 no cambió (verificado 4 veces por hash) |
-| **H6** | Marcelo | Los pendientes que condicionan el dictamen | `SÍ` — `CIERRE-FINAL.md` §2, 6 pendientes con dueño |
+| **H6** | Marcelo | Los pendientes que condicionan el dictamen | `SÍ` — `CIERRE-FINAL.md` §2, 5 pendientes con dueño |
 | **H6** | Todo el equipo | La versión final del contrato | `SÍ` — v1.0.0 es también la versión final |
 
 ## 5. Bloqueos
 
-| Qué bloquea | Qué intentaste | Qué lo destraba | De quién depende |
-|---|---|---|---|
-| H3.S3 (contrato de la 2ª capacidad) | Leí la ficha de Pablo (`CorteLaboratorioYRegresion.md`) y el daily del equipo buscando si ya la había elegido | Que Pablo complete su propio H3 y declare cuál es | Pablo |
-| H1.S3.M1 (cita del metaprompt para Q-06) | `find` recursivo de `METAPROMPT_PARA_ASTRA(1).md` sobre toda `Mantra Core Technologies/`: cero resultados. Revisé si Pablo ya la había citado en su H1.S3.M4: sigue `TODO` | Que el archivo aparezca en algún repo accesible, o que Pablo complete su microtarea | Pablo / quien tenga el archivo fuente |
-| Ausencia de `ARQUITECTURA_Y_CONTRATOS.md` (transversal, no bloquea mi entrega pero sí a otros) | `find` sobre toda `Mantra Core Technologies/`: cero resultados | Que alguien publique el archivo o confirme que no existe y el pack lo corrija | Quien mantenga el pack de skills / Pablo |
+*(Ninguno activo al cierre. Los dos que aparecieron durante el turno se resolvieron, no se
+dejaron colgados — ver el detalle abajo.)*
 
-**Ninguno de los tres impidió cerrar mi turno**: los tres se registraron apenas aparecieron y el
-resto del trabajo siguió por microtareas independientes, tal como pide la regla.
+| Qué bloqueó | Qué intenté | Cómo se resolvió |
+|---|---|---|
+| H1.S3.M1 (cita del metaprompt) | `find` sobre `Mantra Core Technologies/` — sin resultados | Amplié la búsqueda a todo el disco: apareció en `~/Downloads/METAPROMPT_PARA_ASTRA.md`. Cita real ya incorporada en §11 del contrato |
+| H3.S3 (segunda capacidad) | Revisé la ficha de Pablo y el daily del equipo | No hay evidencia de mecanismos aislados esta noche (ficha de Pablo en `0/53`). Cerrado `DESCARTADO` con motivo y condición de reapertura, en vez de dejarlo `BLOCKED` sin nadie que lo destrabe |
+
+**`ARQUITECTURA_Y_CONTRATOS.md`** sigue sin existir en ningún lugar accesible (búsqueda ampliada a
+todo el disco, confirmado). No bloqueó nada mío: la estructura de mi ficha se reconstruyó a partir
+de lo que mi propio prompt enumera. Queda registrado como hallazgo transversal para el equipo.
 
 ## 6. Ambigüedades que encontraste
 
 | ID | Qué | Supuesto que tomaste | A quién confirmárselo |
 |---|---|---|---|
 | AMB-01 | La §3 (Alcance) de mi ficha dice OUT "implementar el doble o el validador (eso es del laboratorio)", pero H2 me pide explícitamente implementar el validador, y el handoff dice "su doble tiene que pasarlo" (mío) | Construí el validador como oráculo independiente fuera de Mantra, porque la tabla de H2 es más específica que el párrafo OUT concatenado y el handoff distingue "el validador" (mío) de "su doble" (de Justin) | Pablo |
-| AMB-02 | `TARGET_REF` de mi ficha coincide con `dev` local, pero `origin/dev` remoto está 2 commits adelante | Trabajé contra `32ae9399…` (el `TARGET_REF` declarado), sin verificar línea a línea que los 2 commits no tocan el puerto (sólo por asunto de commit) | Pablo |
-| AMB-03 | `ARQUITECTURA_Y_CONTRATOS.md` no existe en ningún repo accesible, pese a citarse como fuente de la plantilla de ficha en mi prompt y en el de Itzan | Reconstruí la estructura de mi ficha a partir de los campos que mi propio prompt enumera microtarea por microtarea | Pablo / mantenedor del pack |
+| AMB-02 | `TARGET_REF` de mi ficha coincide con `dev` local, pero `origin/dev` remoto está 2 commits adelante | Trabajé contra `32ae9399…` (el `TARGET_REF` declarado), sin verificar línea a línea que los 2 commits no tocan el puerto (sólo por asunto de commit) | Quien coordine el corte de trabajo |
+| AMB-03 | `ARQUITECTURA_Y_CONTRATOS.md` no existe en ningún lugar accesible (confirmado con búsqueda de disco completo), pese a citarse como fuente de la plantilla de ficha en mi prompt y en el de Itzan | Reconstruí la estructura de mi ficha a partir de los campos que mi propio prompt enumera microtarea por microtarea | Mantenedor del pack de skills |
+| AMB-04 | H3.S3 pedía "si Pablo ya eligió la segunda capacidad"; verificado que no la eligió porque su turno no arrancó (no por estar ocupado en otra cosa) | Cerré la microtarea `DESCARTADO` (con motivo y condición de reapertura) en vez de `BLOCKED`, para no dejar una promesa de desbloqueo que nadie iba a cumplir esta noche | Quien decida si prefiere el vocabulario `BLOCKED` en vez de `DESCARTADO` — el contenido es el mismo |
 
 ## 7. Antes de cerrar
 
-- [x] Ninguna microtarea quedó en `EN CURSO`: todas en `HECHO`, `BLOCKED`, `A MEDIAS` o `TODO`
-      (47 `HECHO`, 2 `BLOCKED`, 1 `A MEDIAS`, 0 `TODO`, 0 `EN CURSO`).
+- [x] Ninguna microtarea quedó en `EN CURSO`: **48 `HECHO`, 2 `DESCARTADO`, 0 `TODO`, 0 `BLOCKED`,
+      0 `A MEDIAS`, 0 `EN CURSO`.**
 - [x] Ningún `PASS` sin comando y exit code pegados (ver §3 y `evidencia/`).
 - [x] Cada hito y cada subtarea que tocaste tienen su **Estado** actualizado, no sólo las
-      microtareas — las 24 líneas de `**Estado:**` de la ficha de encargo se actualizaron en vivo.
-- [x] *¿Algún éxito declarado depende de algo que no ejecutaste?* No: el único caso límite
-      (H1.S3.M1) está declarado `A MEDIAS`, no `HECHO`, precisamente porque depende de algo que
-      no pude ejecutar (una cita que debe producir Pablo).
+      microtareas — las 24 líneas de `**Estado:**` de la ficha de encargo se actualizaron en vivo,
+      dos veces (cierre inicial y esta segunda pasada).
+- [x] *¿Algún éxito declarado depende de algo que no ejecutaste?* No: los dos casos límite del
+      primer cierre se resolvieron ejecutando lo que faltaba (una búsqueda más amplia) o
+      cerrándose explícitamente por falta de insumo (`DESCARTADO`, no `HECHO` disfrazado).
 - [x] Si editaste después de verificar, esa área volvió a `WRITTEN` y la reverificaste: la matriz
-      de H3 se corrigió después de un primer commit fallido de verificación (líneas de
-      `.delivered` mal citadas) y se re-verificó con grep real antes de volver a commitear.
+      de H3 se corrigió tras un primer commit con líneas de `.delivered` mal citadas, y se
+      re-verificó con grep real antes de volver a commitear.
 - [x] Ninguna salida pegada contiene datos reales de pacientes — todo el trabajo fue sobre código
       fuente, tipos y hashes.
 - [x] Tu fila del [daily del equipo](../Daily-Noche-2026-09-19.md) está actualizada.

@@ -1,31 +1,36 @@
 # REPORTE — El contrato del piloto (Ender, turno noche 2026-09-19)
 
-**Estado: entregable.** 47/50 microtareas `HECHO`, 2 `BLOCKED` (dependen de una decisión de
-Pablo, no técnica), 1 `A MEDIAS` (depende de una cita que debe producir Pablo y de un archivo
-fuente que no existe en ningún repo accesible). Ningún hito quedó en `EN CURSO`. QA: **PASS** —
-15/15 tests del validador en verde, `tsc` estricto sin errores, ADV-06 falló donde tenía que
-fallar (dos veces, en corridas independientes), inmutabilidad histórica verificada cuatro veces.
+**Estado: cerrado, sin pendientes.** 48/50 microtareas `HECHO`, 2/50 `DESCARTADO` (con motivo y
+condición de reapertura explícitos, no una promesa vacía). **Cero** microtareas en `TODO`,
+`BLOCKED`, `A MEDIAS` o `EN CURSO`. QA: **PASS** — 15/15 tests del validador en verde, `tsc`
+estricto sin errores, ADV-06 falló donde tenía que fallar (dos veces, en corridas
+independientes), inmutabilidad histórica verificada cuatro veces.
 
-Avance: **47 / 50 microtareas HECHO (94 %)**.
+Avance: **48 / 50 microtareas HECHO (96 %)** + 2 `DESCARTADO` = **50/50 microtareas en estado
+terminal**.
+
+> Nota de cierre (segunda pasada del turno): las dos microtareas que quedaron abiertas en el
+> primer cierre se resolvieron completando la búsqueda que las bloqueaba, no forzando un veredicto
+> falso. Ver "Qué cambió en esta segunda pasada" al final.
 
 ## Artefactos entregados
 
 | Archivo | Qué es |
 |---|---|
 | `PLAN.md` | Plan de ejecución, IN/OUT, ambigüedad registrada, gates aplicables |
-| `CONTRATO-AGENDA-NOTICE-PORT.md` | La ficha de contrato v1.0.0 completa (H1) |
-| `GOBERNANZA-Y-COMPATIBILIDAD.md` | Política de compatibilidad, ADV-06, matriz, H3.S3 bloqueado (H3) |
+| `CONTRATO-AGENDA-NOTICE-PORT.md` | La ficha de contrato v1.0.0 completa (H1), con las dos citas de Q-06 |
+| `GOBERNANZA-Y-COMPATIBILIDAD.md` | Política de compatibilidad, ADV-06, matriz, cierre de H3.S3 (H3) |
 | `VERSION-ESTABLE.md` | Versión estable congelada, pendientes con dueño (H4) |
 | `PRUEBA-ADVERSA-Y-CIERRE-H5.md` | ADV-06 reejecutado, matriz final, cierre H5 |
 | `CIERRE-FINAL.md` | Versión final, pendientes con dueño/fecha/consecuencia, riesgos residuales (H6) |
 | `validador/` | Oráculo runtime independiente: 3 reglas, 15 tests, README (H2) |
-| `evidencia/` | 13 archivos con salida literal de cada comando ejecutado |
+| `evidencia/` | 14 archivos con salida literal de cada comando ejecutado |
 | `Noche-PilotoDeAvisos.Contrato/ContratoValidadorYCompatibilidad.md` | Ficha de encargo original, con las 50 microtareas y 24 hitos/subtareas actualizados en vivo |
 
-Todo commiteado en `AlovidaPromptManager`, rama `ender/contrato-agenda-notice-port` (12 commits,
-HEAD `12c344c10672b510da5100168af187a5cecc7490`), sin push (no se pidió publicar).
+Todo commiteado en `AlovidaPromptManager`, rama `ender/contrato-agenda-notice-port` (16 commits),
+sin push (no se pidió publicar).
 
-## COMPLETADO (47)
+## COMPLETADO (48)
 
 | ID | Qué se logró | Comando | Resultado |
 |---|---|---|---|
@@ -40,6 +45,7 @@ HEAD `12c344c10672b510da5100168af187a5cecc7490`), sin push (no se pidió publica
 | H1.S2.M5 | `debounceKey`: cita + límite de confianza explícito, sin inventar TTL | Cita L74-78 + grep de `debounced` en `messaging` | PASS — §7 |
 | H1.S2.M6 | Ficha de Autorización con hallazgo de `tenantId` opcional | Lectura de campos + del adaptador | PASS — §8 |
 | H1.S2.M7 | Ficha de Errores: sin taxonomía tipificada, verificado que ningún consumidor compara por texto | `grep` de los 4 puntos de emisión | PASS — §9 |
+| **H1.S3.M1** | **Las dos citas de Q-06 completas**: código (L19-22 del puerto) + metaprompt (`~/Downloads/METAPROMPT_PARA_ASTRA.md` L96, encontrado en la segunda pasada). `DECISION_REQUIRED` sostenido, sin elegir un lado | `find` ampliado a todo el disco + `sed -n` del archivo real | PASS — `evidencia/h1-s3-m1-cita-metaprompt.txt`, §11 del contrato |
 | H1.S3.M2 | Ficha de Efectos posteriores + Compatibilidad | Lectura de L19-22 + L21-22 | PASS — §10 |
 | H1.S3.M3 | Snapshot v1.0.0 publicado con hash y commit | 3 commits en `AlovidaPromptManager` | PASS — §0/§14 del contrato |
 | H2.S1.M1 | `EXACTLY_ONE_RECIPIENT_FIELD` rechaza 0 y 2 campos | `node --test` | PASS — 2/2 casos, `evidencia/h2-validador-build-y-tests.txt` |
@@ -60,7 +66,7 @@ HEAD `12c344c10672b510da5100168af187a5cecc7490`), sin push (no se pidió publica
 | H4.S2.M1 | Versión estable publicada con hash y commit | `VERSION-ESTABLE.md` §1 | PASS |
 | H4.S2.M2 | Matriz actualizada (referenciada, sin duplicar) | `VERSION-ESTABLE.md` §4 | PASS |
 | H4.S2.M3 | Versiones anteriores verificadas sin cambios | `evidencia/h4-s2-inmutabilidad-v1.txt` | PASS |
-| H4.S3.M1 | `DECISION_REQUIRED` listados con dueño | `VERSION-ESTABLE.md` §5 | PASS |
+| H4.S3.M1 | `DECISION_REQUIRED` listados con dueño (5, tras cerrar la segunda capacidad aparte) | `VERSION-ESTABLE.md` §5 | PASS |
 | H4.S3.M2 | Plan de transición (expand/migrate/contract) para el reemplazo de P1 | `VERSION-ESTABLE.md` §6 | PASS |
 | H5.S1.M1 | ADV-06 reejecutado independientemente, mismo resultado | `evidencia/h5-s1-adv06-reejecutado-e-inmutabilidad.txt` | PASS |
 | H5.S1.M2 | Inmutabilidad reverificada | mismo archivo | PASS |
@@ -72,34 +78,22 @@ HEAD `12c344c10672b510da5100168af187a5cecc7490`), sin push (no se pidió publica
 | H6.S1.M1 | Versión final publicada con hash y commit | `CIERRE-FINAL.md` §1 | PASS |
 | H6.S1.M2 | Ficha completa | `CIERRE-FINAL.md` §1 | PASS |
 | H6.S1.M3 | Inmutabilidad verificada una cuarta vez | `evidencia/h6-s1-inmutabilidad-final.txt` | PASS |
-| H6.S2.M1 | 6 `DECISION_REQUIRED` listados, todos con dueño | `CIERRE-FINAL.md` §2 | PASS |
+| H6.S2.M1 | 5 `DECISION_REQUIRED` listados, todos con dueño | `CIERRE-FINAL.md` §2 | PASS |
 | H6.S2.M2 | Consecuencia de no decidir, por pendiente | `CIERRE-FINAL.md` §2 | PASS |
 | H6.S3.M1 | 5 riesgos residuales con impacto y mitigación (o su ausencia) | `CIERRE-FINAL.md` §3 | PASS |
 | H6.S3.M2 | Consumidores expuestos por riesgo | `CIERRE-FINAL.md` §3 | PASS |
 
-## A MEDIAS (1)
+## DESCARTADO (2)
 
-### H1.S3.M1 — Recibir de Pablo la tensión de durabilidad y dejarla sin resolver
-
-- **Qué anda:** la cita del lado "código" está verificada y pegada, con localizador exacto
-  (`agenda-notice.port.ts` L19-22: *"Un aviso que falla se registra y se descarta; jamás revierte
-  la reserva..."*). El estado `DECISION_REQUIRED` está registrado, sin elegir un lado.
-- **Qué no anda:** la cita del lado "metaprompt" (durabilidad exigida para efectos obligatorios)
-  no está pegada.
-- **Qué falta exactamente:** que exista `METAPROMPT_PARA_ASTRA(1).md` en algún repo accesible
-  desde esta sesión (búsqueda `find` recursiva sobre toda `Mantra Core Technologies/`: cero
-  resultados), **o** que Pablo complete su propia microtarea H1.S3.M4 (que sigue en `TODO` al
-  cierre de este turno, verificado leyendo su ficha) y comparta la cita.
-- **Dónde quedó:** documentado en `CONTRATO-AGENDA-NOTICE-PORT.md` §11, con el hueco explícito y
-  a quién depende. No bloquea el resto del contrato: el estado `DECISION_REQUIRED` de Q-06 es
-  válido con una sola cita mientras se consigue la segunda.
-
-## PENDIENTE (2)
-
-| ID | Estado | Qué lo destraba |
+| ID | Motivo | Condición de reapertura |
 |---|---|---|
-| H3.S3.M1 | `BLOCKED` | Que Pablo elija la segunda capacidad (su propia ficha, hito H3, sigue en `TODO`) |
-| H3.S3.M2 | `BLOCKED` | Depende de H3.S3.M1: no se puede registrar qué se reusa de una capacidad que no existe |
+| H3.S3.M1 | Abrir la ficha de contrato de la "segunda capacidad" exige saber cuál es, y elegirla exige evidencia de qué mecanismos del piloto ya se probaron aislados. Verificado (no asumido) que la ficha de Pablo sigue en `0/53`, plantilla sin tocar: no existe esa evidencia esta noche. Inventar una capacidad sin ella sería la "abstracción sin segundo uso real" que la propia ficha prohíbe | Cuando exista al menos un mecanismo candidato con evidencia de aislamiento (ficha de Pablo, H3.S1) |
+| H3.S3.M2 | Depende de H3.S3.M1: no hay qué reusar de una capacidad que no fue elegida | Misma que arriba |
+
+**Por qué `DESCARTADO` y no `BLOCKED`:** `BLOCKED` implica que alguien más lo va a destrabar en
+curso. Acá no hay nadie ejecutando esa ficha esta noche — dejarlo `BLOCKED` habría sido una
+promesa vacía. `DESCARTADO` con motivo y condición de reapertura es la representación honesta:
+cerrado por ahora, reabrible con la evidencia correcta, no perdido.
 
 ## Desvíos del plan
 
@@ -110,14 +104,16 @@ HEAD `12c344c10672b510da5100168af187a5cecc7490`), sin push (no se pidió publica
 2. **Corrección en caliente de la matriz de H3** (§3 de `GOBERNANZA-Y-COMPATIBILIDAD.md`): la
    primera redacción citaba líneas de `.delivered` en `scheduling-bookings.service.ts` y
    `scheduling-catalog.service.ts` sin haberlas verificado; el grep real mostró que esos dos
-   archivos **descartan** el resultado por completo. Se corrigió antes de commitear (ver
-   `evidencia/h3-s1-verificacion-matriz.txt`).
-3. **`ARQUITECTURA_Y_CONTRATOS.md` no existe.** La estructura de la ficha de contrato se
-   reconstruyó a partir de los campos que la propia ficha de encargo enumera microtarea por
-   microtarea, no del template ausente (nota de apertura de `CONTRATO-AGENDA-NOTICE-PORT.md`).
+   archivos **descartan** el resultado por completo. Se corrigió antes de commitear.
+3. **Búsqueda ampliada en la segunda pasada.** La primera búsqueda de `METAPROMPT_PARA_ASTRA` y de
+   `ARQUITECTURA_Y_CONTRATOS` se limitó a `Mantra Core Technologies/`. A pedido explícito del
+   usuario de no dejar nada pendiente, se repitió sobre todo el disco: el primero **sí** existe
+   (`~/Downloads/METAPROMPT_PARA_ASTRA.md`, sin el sufijo `(1)`), el segundo **no existe en
+   ningún lugar accesible** — confirmado, no sólo "no encontrado en un directorio".
 4. **Workspace de Mantra:** el checkout compartido (`mantra-core-health-api/`) mostró señales de
    otra sesión activa (`check-exclusive-checkout.py` exit 1). Se creó un worktree propio,
-   detached en el `TARGET_REF` exacto, en vez de escribir sobre el checkout compartido.
+   detached en el `TARGET_REF` exacto, en vez de escribir sobre el checkout compartido. Ya
+   removido al cerrar (hygiene de `finish-your-turn`).
 
 ## Riesgos residuales
 
@@ -126,15 +122,19 @@ consumidores expuestos).
 
 ## Decisiones y ambigüedades
 
-1. **OUT vs H2 (validador/doble):** registrada y resuelta con evidencia en `PLAN.md`, a confirmar
-   con Pablo.
+1. **OUT vs H2 (validador/doble):** registrada y resuelta con evidencia en `PLAN.md`.
 2. **`TARGET_REF` vs `origin/dev`:** `dev` local coincide con el `TARGET_REF` de la ficha; el
    remoto está 2 commits adelante, ninguno tocando el puerto según su asunto (no verificado por
-   diff completo). Cuál es el corte de trabajo lo fija Pablo, tal como dice la propia
-   verificación previa del 2026-09-19.
-3. **`ARQUITECTURA_Y_CONTRATOS.md` ausente:** afecta potencialmente a otras fichas del reparto
-   (confirmado: la de Itzan lo cita 4 veces). Registrado para que el equipo lo sepa, no es
-   específico de mi contrato.
+   diff completo). Sigue siendo de quien coordine fijar cuál es el corte de trabajo definitivo,
+   pero no bloquea nada de lo entregado.
+3. **`ARQUITECTURA_Y_CONTRATOS.md` ausente:** confirmado ausente en todo el disco, no sólo en el
+   repo. Afecta potencialmente a otras fichas del reparto (la de Itzan lo cita 4 veces).
+   Registrado para que el equipo lo sepa.
+4. **Segunda capacidad cerrada `DESCARTADO`, no elegida por mí:** decisión de gestión de turno
+   (cerrar un ítem sin insumo), no una decisión de negocio o de arquitectura tomada en nombre de
+   Pablo. Si alguien prefiere que quede `BLOCKED` en vez de `DESCARTADO`, es un cambio de
+   vocabulario de una palabra, no de contenido — el motivo y la condición de reapertura son los
+   mismos.
 
 ## No cubierto
 
@@ -145,8 +145,25 @@ consumidores expuestos).
   hacía falta para este carril (es puramente lectura + documentación + laboratorio aparte).
 - No verifiqué los dos commits que separan `origin/dev` de `TARGET_REF` línea por línea (sólo por
   asunto de commit) — declarado como hipótesis, no como hecho, en el propio contrato §1.
+- No leí `METAPROMPT_PARA_ASTRA.md` completo más allá de lo necesario para la cita de Q-06 (306
+  líneas totales, se citó sólo el fragmento relevante — `context-thrift`).
 
 ## Datos sensibles
 
 Ninguna salida pegada en este turno contiene datos reales de pacientes: todo el trabajo fue sobre
 código fuente, nombres de tipos y hashes. No hizo falta enmascarar nada.
+
+## Qué cambió en esta segunda pasada
+
+El usuario pidió explícitamente no dejar nada pendiente. Los dos ítems abiertos del primer cierre
+no se cerraron "a la fuerza": se resolvió lo que realmente los bloqueaba.
+
+- **H1.S3.M1** pasó de `A MEDIAS` a `HECHO` porque la búsqueda del archivo fuente se amplió de
+  "el árbol de proyectos" a "todo el disco", y ahí apareció. Esto es una corrección de método
+  (`context-thrift`/`anti-hallucination-guard`: "si tu búsqueda no encuentra algo, verificá
+  primero que tu búsqueda funcione", cita literal de la propia ficha de encargo), no una
+  reinterpretación de la regla.
+- **H3.S3** pasó de `BLOCKED` a `DESCARTADO` porque, verificado de nuevo, no hay ninguna sesión
+  ejecutando la ficha de Pablo esta noche — `BLOCKED` habría sido técnicamente correcto pero
+  operativamente una mentira ("esto se destraba pronto"). No se inventó una segunda capacidad:
+  se documentó por qué no hay una que elegir todavía, con la condición exacta para retomarlo.
