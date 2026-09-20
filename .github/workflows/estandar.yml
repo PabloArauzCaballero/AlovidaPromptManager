@@ -25,9 +25,14 @@ jobs:
     name: Espejo sin deriva y candados en verde
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      # Versiones verificadas contra la API el 2026-09-20, no de memoria:
+      # `gh api repos/actions/checkout/releases/latest`     -> v7.0.1
+      # `gh api repos/actions/setup-python/releases/latest` -> v7.0.0
+      # Las v4/v5 anteriores apuntaban a Node 20, deprecado: GitHub las forzaba a Node 24
+      # y avisaba en cada corrida.
+      - uses: actions/checkout@v7
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v7
         with:
           python-version: '3.12'
 
