@@ -10,12 +10,18 @@ La estructura la fija la convención del equipo:
 Por qué existe: un reparto al que le falta el daily de una persona se ve igual de bien a simple
 vista que uno completo. Revisarlo a ojo es exactamente lo que esta comprobación reemplaza.
 
-Este script NO juzga el contenido de los prompts. Verifica que los archivos que el equipo
-espera encontrar estén donde el equipo los busca. Un archivo presente no prueba que su
-contenido sirva.
+Además exige que **todo prompt de tarea obligue a instalar y cargar el estándar** (sección 1).
+Ese chequeo existe porque el primer reparto se entregó con cero menciones a las skills: nadie lo
+notó hasta que se contó. Un prompt sin esa sección produce trabajo sin plan, sin evidencia y sin
+reporte, que después hay que rehacer.
+
+Fuera de esas dos cosas, este script NO juzga el contenido de los prompts. Verifica que los
+archivos que el equipo espera encontrar estén donde el equipo los busca, y que traigan la sección
+que los hace ejecutables. Un archivo presente no prueba que su contenido sirva.
 
 Uso:
     python tools/check_reparto.py repartos/2026-09-19     # sale 1 si falta algo
+    python tools/check_reparto.py repartos/2026-09-19 repartos/2026-09-20 ...
     python tools/check_reparto.py --self-test
 """
 from __future__ import annotations
@@ -30,6 +36,14 @@ PERSONAS = ("Ender", "Itzan", "Pablo", "Marcelo", "Justin")
 TURNOS = {"PromptDia": "Dia", "PromptNoche": "Noche"}
 FECHA = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 IGNORAR = {".DS_Store", "Thumbs.db"}
+
+# Marcas que tiene que traer todo prompt de tarea. Son el minimo que lo hace ejecutable:
+# sin la seccion de instalacion, quien lo recibe trabaja sin plan, sin evidencia y sin reporte.
+MARCAS_OBLIGATORIAS = (
+    ("instalación OBLIGATORIA", "la seccion 1 de instalacion obligatoria del estandar"),
+    ("skills-router", "la entrada al catalogo de skills"),
+    ("plan_gate.py --self-test", "el comando que verifica que el estandar quedo instalado"),
+)
 
 
 def _subcarpetas(base: Path) -> list[Path]:
@@ -100,8 +114,23 @@ def revisar(raiz: Path) -> list[str]:
                 if not tareas:
                     problemas.append(
                         f"{_rel(lote, raiz)}/: no contiene ningún .md de tarea")
+                for tarea in tareas:
+                    problemas.extend(_revisar_prompt(tarea, raiz))
 
     return problemas
+
+
+def _revisar_prompt(tarea: Path, raiz: Path) -> list[str]:
+    """Exige que el prompt obligue a instalar y cargar el estándar."""
+    try:
+        texto = tarea.read_text(encoding="utf-8")
+    except OSError as exc:
+        return [f"{_rel(tarea, raiz)}: no se pudo leer ({exc})"]
+
+    faltantes = [que for marca, que in MARCAS_OBLIGATORIAS if marca not in texto]
+    if faltantes:
+        return [f"{_rel(tarea, raiz)}: le FALTA {', y '.join(faltantes)}"]
+    return []
 
 
 def _rel(p: Path, raiz: Path) -> str:
@@ -113,6 +142,16 @@ def _rel(p: Path, raiz: Path) -> str:
 
 # ----------------------------------------------------------------- self-test
 
+PROMPT_MINIMO = """# Tarea de prueba
+
+## 1. Antes de escribir una línea — instalación OBLIGATORIA del estándar
+
+Entrá por `skills-router`.
+
+    python .claude/hooks/plan_gate.py --self-test
+"""
+
+
 def _armar_arbol_ok(base: Path, fecha: str = "2026-09-19") -> Path:
     """Construye un reparto mínimo y correcto: un turno, una persona, un lote."""
     raiz = base / fecha
@@ -120,7 +159,8 @@ def _armar_arbol_ok(base: Path, fecha: str = "2026-09-19") -> Path:
     (turno / "Pablo" / "Dia1-Algo.Backend").mkdir(parents=True)
     (turno / f"Daily-Noche-{fecha}.md").write_text("x", encoding="utf-8")
     (turno / "Pablo" / f"Pablo-Daily-Noche-{fecha}.md").write_text("x", encoding="utf-8")
-    (turno / "Pablo" / "Dia1-Algo.Backend" / "Tarea.md").write_text("x", encoding="utf-8")
+    (turno / "Pablo" / "Dia1-Algo.Backend" / "Tarea.md").write_text(
+        PROMPT_MINIMO, encoding="utf-8")
     return raiz
 
 
@@ -194,6 +234,35 @@ def self_test() -> int:
         check("fecha sin turnos se reporta",
               any("ninguna carpeta de turno" in x for x in p))
 
+        # --- la seccion de instalacion del estandar es obligatoria ---
+        raiz = _armar_arbol_ok(base / "sin_seccion_skills")
+        tarea = raiz / "PromptNoche" / "Pablo" / "Dia1-Algo.Backend" / "Tarea.md"
+        tarea.write_text("# Tarea sin el estandar\n\nHace algo.\n", encoding="utf-8")
+        p = revisar(raiz)
+        check("detecta prompt sin la seccion de instalacion", len(p) == 1)
+        check("nombra el prompt y que le falta",
+              "Tarea.md" in p[0] and "FALTA" in p[0])
+
+        raiz = _armar_arbol_ok(base / "sin_skills_router")
+        tarea = raiz / "PromptNoche" / "Pablo" / "Dia1-Algo.Backend" / "Tarea.md"
+        tarea.write_text(
+            PROMPT_MINIMO.replace("`skills-router`", "el catalogo"), encoding="utf-8")
+        p = revisar(raiz)
+        check("detecta prompt sin entrada por skills-router",
+              any("catalogo de skills" in x for x in p))
+
+        raiz = _armar_arbol_ok(base / "sin_verificacion")
+        tarea = raiz / "PromptNoche" / "Pablo" / "Dia1-Algo.Backend" / "Tarea.md"
+        tarea.write_text(
+            PROMPT_MINIMO.replace("plan_gate.py --self-test", "instalalo y listo"),
+            encoding="utf-8")
+        p = revisar(raiz)
+        check("detecta prompt sin comando que verifique la instalacion",
+              any("quedo instalado" in x for x in p))
+
+        check("el daily NO se exige que traiga la seccion (solo los prompts de tarea)",
+              revisar(_armar_arbol_ok(base / "daily_simple")) == [])
+
     fallos = [n for n, ok in casos if not ok]
     for nombre, ok in casos:
         print(f"  [{'PASS' if ok else 'FAIL'}] {nombre}")
@@ -204,27 +273,29 @@ def self_test() -> int:
 def main() -> int:
     ap = argparse.ArgumentParser(
         description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("ruta", nargs="?", help="carpeta de fecha del reparto")
+    ap.add_argument("rutas", nargs="*", help="una o varias carpetas de fecha del reparto")
     ap.add_argument("--self-test", action="store_true", help="corre las pruebas internas")
     args = ap.parse_args()
 
     if args.self_test:
         return self_test()
 
-    if not args.ruta:
+    if not args.rutas:
         ap.error("falta la carpeta de fecha del reparto (o usá --self-test)")
 
-    raiz = Path(args.ruta).resolve()
-    problemas = revisar(raiz)
+    fallo = False
+    for ruta in args.rutas:
+        raiz = Path(ruta).resolve()
+        problemas = revisar(raiz)
+        if problemas:
+            fallo = True
+            print(f"check_reparto: ESTRUCTURA INCOMPLETA en {raiz.name}")
+            for p in problemas:
+                print(f"  - {p}")
+        else:
+            print(f"check_reparto: OK, {raiz.name} cumple la estructura obligatoria")
 
-    if problemas:
-        print(f"check_reparto: ESTRUCTURA INCOMPLETA en {raiz.name}")
-        for p in problemas:
-            print(f"  - {p}")
-        return 1
-
-    print(f"check_reparto: OK, {raiz.name} cumple la estructura obligatoria")
-    return 0
+    return 1 if fallo else 0
 
 
 if __name__ == "__main__":

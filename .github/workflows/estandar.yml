@@ -52,3 +52,14 @@ jobs:
 
       - name: Self-test de check_reparto
         run: python tools/check_reparto.py --self-test
+
+      - name: Self-test de check_skills_citadas
+        run: python tools/check_skills_citadas.py --self-test
+
+      # Los dos candados del reparto, sobre el reparto real. Sin esto solo frenan a quien
+      # se acuerde de correrlos a mano, que es como se entrego el primer reparto sin skills.
+      - name: Estructura del reparto y seccion obligatoria de skills
+        run: python tools/check_reparto.py repartos/*
+
+      - name: Ninguna skill citada que no exista
+        run: python tools/check_skills_citadas.py

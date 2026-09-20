@@ -17,7 +17,96 @@
 | `ALLOWED_INFRA` | Lectura del repo, `git`, herramienta de hash. No necesitás levantar la base para esta tarea |
 | `Escritura permitida` | Solo tu directorio de evidencia. `scheduling.module.ts` y la composición: **reservados para Itzan** |
 
-## 1. Resultado observable
+## 1. Antes de escribir una línea — instalación OBLIGATORIA del estándar
+
+> **Esta sección no es opcional y no es el final del día: es lo primero.** Un prompt ejecutado sin
+> el estándar cargado produce trabajo que después hay que rehacer, porque no va a tener plan,
+> ni evidencia, ni reporte. **Si no podés completar este paso, estás `BLOQUEADO`: avisalo y no sigas.**
+
+### 1.1 Instalar el estándar en tu checkout
+
+```bash
+# 1. Clonar el estandar al lado del repo de producto
+git clone https://github.com/PabloArauzCaballero/AlovidaPromptManager.git ../AlovidaPromptManager
+
+# 2. Copiarlo DENTRO de tu checkout de trabajo (Claude Code solo carga desde ./.claude/)
+cp -r ../AlovidaPromptManager/.claude   ./
+cp    ../AlovidaPromptManager/AGENTS.md ./
+cp -r ../AlovidaPromptManager/.agents   ./   # solo si tu herramienta no lee .claude/
+
+# 3. Verificar que quedo instalado (pega esta salida en tu daily)
+ls .claude/skills | wc -l        # -> 176
+ls .claude/rules/*.md | wc -l    # -> 14
+python .claude/hooks/plan_gate.py --self-test    # -> 11 PASS, 0 FAIL
+```
+
+**Si el `git clone` falla con 404:** el estándar todavía **no está publicado en GitHub** (el push
+quedó bloqueado el 2026-09-19). Pedíselo a Pablo por copia directa y registralo como límite de
+acceso. **Un 404 no demuestra que el repositorio no exista.**
+
+**No commitees `.claude/` dentro del repo de producto sin acordarlo con el equipo.** Instalarlo en
+tu checkout es tuyo; agregarlo al repo compartido es una decisión de todos.
+
+### 1.2 Qué te instala eso
+
+Dos candados que **bloquean de verdad** mientras trabajes con Claude Code:
+
+| Candado | Qué impide |
+|---|---|
+| `plan_gate.py` | Escribir código sin `PLAN.md` en disco. Nunca bloquea `.md` ni nada bajo `docs/`, así que siempre podés crear el plan primero |
+| `report_gate.py` | Cerrar la sesión con trabajo activo y sin `REPORTE.md`, o con un reporte al que le falta alguna de las tres secciones |
+
+**En cualquier otra herramienta (Cursor, Codex, Copilot, Continue, Windsurf, Cline) los candados NO
+corren.** El plan y el reporte siguen siendo igual de obligatorios; lo único que cambia es que nadie
+te va a frenar. Ahí la disciplina la ponés vos y la controla quien revisa el PR.
+
+### 1.3 Skills que tenés que CARGAR para este lote
+
+Son **18**: 11 del proceso, que carga todo el equipo, y 7 propias de
+*Fijar el contrato real del puerto de avisos*. Cargar = abrirlas y leerlas antes de empezar, no tenerlas en disco.
+
+**Del proceso — obligatorias para todos:**
+
+| Skill | Para qué |
+|---|---|
+| `skills-router` | la entrada al catalogo: mapea la situacion concreta a la skill que toca |
+| `factual-discovery` | confirmar el sistema real antes de planificar |
+| `milestone-planning` | descomponer en hitos, subtareas y microtareas con CA y DoD |
+| `anti-hallucination-guard` | localizar lo existente antes de crear; no inventar APIs de terceros |
+| `evidence-and-verification` | que podes afirmar con que evidencia |
+| `scope-discipline` | no tocar nada fuera del alcance declarado |
+| `rationalization-guard` | las excusas tipicas para saltear una verificacion, y su contramedida |
+| `context-thrift` | leer por rangos y busqueda, no archivos enteros |
+| `progress-reporting` | checkpoints visibles en cada apertura y cierre de microtarea |
+| `finish-your-turn` | como se cierra un turno sin dejar nada colgado |
+| `work-report-md` | como se redacta el reporte de cierre |
+
+**De tu lote:**
+
+| Skill | Para qué |
+|---|---|
+| `api-openapi-docs` | que lleva la ficha de un contrato y como se versiona |
+| `error-handling-contract` | el contrato de errores es parte del contrato |
+| `typescript-standards` | los tipos no validan: donde hace falta validacion runtime |
+| `concurrency-and-locking` | idempotencia: alcance y vigencia de la clave |
+| `authz-access-control` | que tiene que transportar el contrato sobre actor y tenant |
+| `terminology-value-sets` | catalogos cerrados como conceptos codificados |
+| `technical-docs-and-adr` | registrar la decision de versionado que vas a tomar |
+
+Entrá siempre por `skills-router`: **no leas el catálogo entero, no sirve.** El router mapea la
+situación concreta ("voy a tocar un endpoint", "voy a diseñar una pantalla") a la skill que
+corresponde, y fija la precedencia cuando dos se pisan.
+
+### 1.4 DoD de esta sección — se verifica como cualquier otra
+
+- [ ] `ls .claude/skills | wc -l` devolvió **176**, y la salida está pegada en tu daily.
+- [ ] `python .claude/hooks/plan_gate.py --self-test` devolvió **11 PASS, 0 FAIL**, salida pegada.
+- [ ] Leíste `skills-router` y las 18 skills de las dos tablas.
+- [ ] Creaste tu `PLAN.md` **antes** del primer `Edit`/`Write` de código.
+
+**Sin estas cuatro casillas, tu lote arranca en `BLOQUEADO`, no en `EN CURSO`.**
+
+## 2. Resultado observable
 
 Al cerrar tu turno, Itzan y Justin pueden construir contra `AgendaNoticePort` **sin abrir el repositorio**:
 tienen la definición congelada con hash y commit, y una tabla que dice, campo por campo, **qué garantiza el
@@ -27,7 +116,7 @@ tipo y qué es solamente un comentario**.
 `delivered` venga en `true`, y si el compilador impide construir un `recipient` con sus dos campos vacíos.
 Si tiene que abrir el `.ts` para contestar, no está hecho.
 
-## 2. Alcance
+## 3. Alcance
 
 **IN:** snapshot del puerto con hash y commit · ficha de contrato de `ARQUITECTURA_Y_CONTRATOS.md` §3 ·
 semántica campo por campo del resultado · separación tipo vs comentario · especificación del validador
@@ -39,7 +128,7 @@ consumidores actuales del puerto · registro de lo que queda `DECISION_REQUIRED`
 composición aislada (es de Itzan) · escribir el adaptador real (es de Justin) · inventar una ventana de
 deduplicación o un TTL que el archivo no declara.
 
-## 3. Plan
+## 4. Plan
 
 ### Hito H1 — El contrato del piloto está fijado, es citable y distingue lo garantizado de lo supuesto
 
@@ -85,7 +174,7 @@ validación runtime con su fuente — sin consultarte y sin abrir el repositorio
 | M13 | Ficha de Efectos posteriores y Compatibilidad | Está declarado si el aviso es obligatorio u opcional **según fuente**, y qué cambios del contrato romperían a los consumidores de M4 | Fichas de §3 completas o con omisiones justificadas. Compatibilidad distingue lectura, escritura y significado (§7) |
 | M14 | Publicar el snapshot como artefacto consumible | Existe un archivo de contrato con su hash que Itzan y Justin pueden referenciar por versión, no por rama | Ruta del artefacto + hash + el commit del que salió. Avisar en el daily. El producto compone **versiones verificadas**, no la rama viva del vecino (`PLAN_SEIS_DIAS.md`) |
 
-## 4. Ambigüedades registradas — **no las resuelvas, anotalas**
+## 5. Ambigüedades registradas — **no las resuelvas, anotalas**
 
 | ID | Ambigüedad | Quién puede resolverla | Qué bloquea |
 |---|---|---|---|
@@ -95,7 +184,7 @@ validación runtime con su fuente — sin consultarte y sin abrir el repositorio
 | Q-06 | Obligatoriedad y durabilidad del aviso: el comentario del puerto y el metaprompt se contradicen | Decisión de negocio / quien encargó | El diseño de intención duradera de Justin y el caso 2 del catálogo del laboratorio |
 | Q-07 | El paquete describe `chatDelivered` "cuando corresponde"; cuándo corresponde no está definido en lo leído | Quien definió el alcance del piloto | El alcance del caso de chat. Registrar, no suponer |
 
-## 5. Definition of Done del hito
+## 6. Definition of Done del hito
 
 - [ ] Las 14 microtareas están en `HECHO` o en `BLOCKED` con motivo y salida del error.
 - [ ] Todo estado de verificación es `PASS`/`FAIL`/`NOT_RUN`/`BLOCKED`. **No hay un solo `PASS` sin comando y exit code pegados.**
@@ -104,7 +193,7 @@ validación runtime con su fuente — sin consultarte y sin abrir el repositorio
 - [ ] Ninguna afirmación excede lo que leíste: si el archivo no lo dice, el documento no lo dice.
 - [ ] Avance reportado como `microtareas HECHO / 14`, no como porcentaje a ojo.
 
-## 6. Handoff
+## 7. Handoff
 
 Al cerrar, avisá por el daily a:
 - **Itzan** → artefacto del contrato con hash (M14) y la ficha de Autorización (M10), que condiciona su composición.

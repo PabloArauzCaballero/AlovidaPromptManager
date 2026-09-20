@@ -1,0 +1,48 @@
+$ python tools/check_reparto.py repartos/*
+check_reparto: OK, 2026-09-19 cumple la estructura obligatoria
+check_reparto: OK, 2026-09-20 cumple la estructura obligatoria
+check_reparto: OK, 2026-09-21 cumple la estructura obligatoria
+check_reparto: OK, 2026-09-22 cumple la estructura obligatoria
+check_reparto: OK, 2026-09-23 cumple la estructura obligatoria
+check_reparto: OK, 2026-09-24 cumple la estructura obligatoria
+exit=0
+
+$ python tools/check_skills_citadas.py
+check_skills_citadas: OK, 73 skill(s) distinta(s) citada(s), 0 inexistentes (de 176 en disco)
+exit=0
+
+$ inventario
+  fechas:            6
+  lotes:             30
+  prompts de tarea:  30
+  dailies:           36
+/usr/bin/bash: line 1: bc: command not found
+  microtareas:       
+
+$ prompts SIN la seccion obligatoria de skills
+0
+  (0 = todos la tienen)
+$ microtareas repartidas, contadas de los dailies personales
+262
+
+$ por fecha
+  2026-09-19  67
+  2026-09-20  42
+  2026-09-21  38
+  2026-09-22  39
+  2026-09-23  36
+  2026-09-24  40
+
+$ KILL-TEST sobre el Dia 5 (no el Dia 1): escondo el lote de Marcelo
+check_reparto: OK, 2026-09-19 cumple la estructura obligatoria
+check_reparto: OK, 2026-09-20 cumple la estructura obligatoria
+check_reparto: OK, 2026-09-21 cumple la estructura obligatoria
+check_reparto: OK, 2026-09-22 cumple la estructura obligatoria
+check_reparto: ESTRUCTURA INCOMPLETA en 2026-09-23
+  - 2026-09-23/PromptNoche/Marcelo/: no tiene ninguna carpeta <NombreCorreccion.Modulo> con su tarea
+check_reparto: OK, 2026-09-24 cumple la estructura obligatoria
+exit=1
+
+$ restauro
+check_reparto: OK, 2026-09-24 cumple la estructura obligatoria
+exit=0

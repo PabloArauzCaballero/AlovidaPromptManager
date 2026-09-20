@@ -1,0 +1,10 @@
+$ los 8 comandos del workflow, corridos en local
+  python tools/sync_agents.py --check                     sync --check: OK, 192 archivo(s) en espejo, sin deriva exit=0
+  python tools/sync_agents.py --self-test                 sync_agents self-test: 12 PASS, 0 FAIL        exit=0
+  python .claude/hooks/plan_gate.py --self-test           plan_gate self-test: 11 PASS, 0 FAIL          exit=0
+  python .claude/hooks/report_gate.py --self-test         report_gate self-test: 14 PASS, 0 FAIL        exit=0
+  python .claude/hooks/plan_status.py --self-test         plan_status self-test: 30 PASS, 0 FAIL        exit=0
+  python tools/check_reparto.py --self-test               check_reparto self-test: 18 PASS, 0 FAIL      exit=0
+  python tools/check_skills_citadas.py --self-test        check_skills_citadas self-test: 7 PASS, 0 FAIL exit=0
+  python tools/check_reparto.py repartos/*                check_reparto: OK, 2026-09-24 cumple la estructura obligatoria exit=0
+  python tools/check_skills_citadas.py                    check_skills_citadas: OK, 73 skill(s) distinta(s) citada(s), 0 inexistentes (de 176 en disco) exit=0

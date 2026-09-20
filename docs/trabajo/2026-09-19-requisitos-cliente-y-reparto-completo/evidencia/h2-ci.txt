@@ -1,0 +1,6 @@
+$ grep -c de los candados nuevos en el workflow
+6
+
+$ YAML valido
+pasos: 11
+exit=0

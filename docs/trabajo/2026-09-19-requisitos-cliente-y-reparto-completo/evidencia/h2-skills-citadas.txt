@@ -1,0 +1,14 @@
+$ python tools/check_skills_citadas.py --self-test
+  [PASS] todas existentes -> sin problemas
+  [PASS] cuenta las citadas
+  [PASS] cuenta las de disco
+  [PASS] detecta una inventada
+  [PASS] nombra la inventada
+  [PASS] ignora menciones en prosa
+  [PASS] raiz sin repartos ni skills no explota
+check_skills_citadas self-test: 7 PASS, 0 FAIL
+exit=0
+
+$ python tools/check_skills_citadas.py
+check_skills_citadas: OK, 45 skill(s) distinta(s) citada(s), 0 inexistentes (de 176 en disco)
+exit=0

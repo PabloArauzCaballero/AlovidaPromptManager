@@ -18,7 +18,96 @@
 | `Escritura permitida` | Solo tu directorio de evidencia. El puerto es de Ender; la composición y el baseline son de Itzan. **No toques ninguno de los dos** |
 | `Dependencia dura` | Tu doble se construye contra el contrato **fijado por Ender** (su M14). Mientras no exista, trabajás contra la definición leída y **marcás todo como provisional** |
 
-## 1. Resultado observable
+## 1. Antes de escribir una línea — instalación OBLIGATORIA del estándar
+
+> **Esta sección no es opcional y no es el final del día: es lo primero.** Un prompt ejecutado sin
+> el estándar cargado produce trabajo que después hay que rehacer, porque no va a tener plan,
+> ni evidencia, ni reporte. **Si no podés completar este paso, estás `BLOQUEADO`: avisalo y no sigas.**
+
+### 1.1 Instalar el estándar en tu checkout
+
+```bash
+# 1. Clonar el estandar al lado del repo de producto
+git clone https://github.com/PabloArauzCaballero/AlovidaPromptManager.git ../AlovidaPromptManager
+
+# 2. Copiarlo DENTRO de tu checkout de trabajo (Claude Code solo carga desde ./.claude/)
+cp -r ../AlovidaPromptManager/.claude   ./
+cp    ../AlovidaPromptManager/AGENTS.md ./
+cp -r ../AlovidaPromptManager/.agents   ./   # solo si tu herramienta no lee .claude/
+
+# 3. Verificar que quedo instalado (pega esta salida en tu daily)
+ls .claude/skills | wc -l        # -> 176
+ls .claude/rules/*.md | wc -l    # -> 14
+python .claude/hooks/plan_gate.py --self-test    # -> 11 PASS, 0 FAIL
+```
+
+**Si el `git clone` falla con 404:** el estándar todavía **no está publicado en GitHub** (el push
+quedó bloqueado el 2026-09-19). Pedíselo a Pablo por copia directa y registralo como límite de
+acceso. **Un 404 no demuestra que el repositorio no exista.**
+
+**No commitees `.claude/` dentro del repo de producto sin acordarlo con el equipo.** Instalarlo en
+tu checkout es tuyo; agregarlo al repo compartido es una decisión de todos.
+
+### 1.2 Qué te instala eso
+
+Dos candados que **bloquean de verdad** mientras trabajes con Claude Code:
+
+| Candado | Qué impide |
+|---|---|
+| `plan_gate.py` | Escribir código sin `PLAN.md` en disco. Nunca bloquea `.md` ni nada bajo `docs/`, así que siempre podés crear el plan primero |
+| `report_gate.py` | Cerrar la sesión con trabajo activo y sin `REPORTE.md`, o con un reporte al que le falta alguna de las tres secciones |
+
+**En cualquier otra herramienta (Cursor, Codex, Copilot, Continue, Windsurf, Cline) los candados NO
+corren.** El plan y el reporte siguen siendo igual de obligatorios; lo único que cambia es que nadie
+te va a frenar. Ahí la disciplina la ponés vos y la controla quien revisa el PR.
+
+### 1.3 Skills que tenés que CARGAR para este lote
+
+Son **18**: 11 del proceso, que carga todo el equipo, y 7 propias de
+*Iniciar la relación agenda → mensajería con dobles estrictos*. Cargar = abrirlas y leerlas antes de empezar, no tenerlas en disco.
+
+**Del proceso — obligatorias para todos:**
+
+| Skill | Para qué |
+|---|---|
+| `skills-router` | la entrada al catalogo: mapea la situacion concreta a la skill que toca |
+| `factual-discovery` | confirmar el sistema real antes de planificar |
+| `milestone-planning` | descomponer en hitos, subtareas y microtareas con CA y DoD |
+| `anti-hallucination-guard` | localizar lo existente antes de crear; no inventar APIs de terceros |
+| `evidence-and-verification` | que podes afirmar con que evidencia |
+| `scope-discipline` | no tocar nada fuera del alcance declarado |
+| `rationalization-guard` | las excusas tipicas para saltear una verificacion, y su contramedida |
+| `context-thrift` | leer por rangos y busqueda, no archivos enteros |
+| `progress-reporting` | checkpoints visibles en cada apertura y cierre de microtarea |
+| `finish-your-turn` | como se cierra un turno sin dejar nada colgado |
+| `work-report-md` | como se redacta el reporte de cierre |
+
+**De tu lote:**
+
+| Skill | Para qué |
+|---|---|
+| `async-messaging-events` | outbox, entrega at-least-once y consumidores idempotentes |
+| `api-testing` | matriz de autorizacion negativa y conformidad de contrato |
+| `integrity-testing` | un test con el ORM mockeado no prueba persistencia |
+| `qa-evidence-reporting` | el formato de registro de un resultado |
+| `e2e-failure-triage` | clasificar un rojo antes de tocar nada |
+| `notifications-delivery` | solicitud persistida, aceptacion y evidencia de entrega |
+| `security-guardrails` | que un doble no pueda bindearse en produccion |
+
+Entrá siempre por `skills-router`: **no leas el catálogo entero, no sirve.** El router mapea la
+situación concreta ("voy a tocar un endpoint", "voy a diseñar una pantalla") a la skill que
+corresponde, y fija la precedencia cuando dos se pisan.
+
+### 1.4 DoD de esta sección — se verifica como cualquier otra
+
+- [ ] `ls .claude/skills | wc -l` devolvió **176**, y la salida está pegada en tu daily.
+- [ ] `python .claude/hooks/plan_gate.py --self-test` devolvió **11 PASS, 0 FAIL**, salida pegada.
+- [ ] Leíste `skills-router` y las 18 skills de las dos tablas.
+- [ ] Creaste tu `PLAN.md` **antes** del primer `Edit`/`Write` de código.
+
+**Sin estas cuatro casillas, tu lote arranca en `BLOQUEADO`, no en `EN CURSO`.**
+
+## 2. Resultado observable
 
 Al cerrar tu turno, existe una especificación de la relación `agenda → mensajería` que cualquiera puede
 implementar mañana: qué valida el doble, qué escenarios cubre, qué hace cuando lo llaman con algo no
@@ -29,7 +118,7 @@ previsto, y **en qué formato se registra cada resultado** — más la lista exp
 atrapa la excepción de una llamada no registrada. Si la respuesta es "el test pasa", no está hecho: el
 cierre del harness tiene que fallar igual.
 
-## 2. Alcance
+## 3. Alcance
 
 **IN:** localización del adaptador real · especificación del doble estricto y sus reglas de fallo · catálogo
 mínimo de escenarios de la operación elegida · formato de registro de checks con todos sus campos ·
@@ -42,7 +131,7 @@ real (espera a los participantes reales) · **declarar la funcionalidad terminad
 decidir la semántica del contrato (es de Ender) · armar la composición ni el baseline (es de Itzan) ·
 inventar una ventana de deduplicación, un TTL o una política de reintento que ninguna fuente define.
 
-## 3. Plan
+## 4. Plan
 
 ### Hito H1 — La relación está fijada y el doble no puede fabricar un verde
 
@@ -83,7 +172,7 @@ registrado como integración verificada.
 | M12 | Escribir la lista de lo que el doble **no** prueba | Están los tres canales con su límite explícito | Registro literal: para in-app, hay que comprobar **filas y acceso del destinatario real**; para correo, distinguir **solicitud persistida / aceptación por transporte / evidencia de entrega** —un sumidero local prueba el transporte hacia ese sumidero, **no certifica un proveedor externo**—; para chat, **un booleano no acredita conversación, membresía ni visibilidad**. Sin esta lista, `ADAPTER_VERIFIED_WITH_DOUBLES` se lee como integración terminada |
 | M13 | Especificar el control que impide un doble en producción y una salida a destinatario real | Está el control, y el caso negativo que lo dispara | Especificación de ADV-07: **bloqueo efectivo antes del envío o del efecto**, con **evidencia de composición y política, no sólo el nombre de una variable de entorno**. Un `if (env !== 'prod')` no es un control: es una intención |
 
-## 4. Ambigüedades registradas — **no las resuelvas, anotalas**
+## 5. Ambigüedades registradas — **no las resuelvas, anotalas**
 
 | ID | Ambigüedad | Quién puede resolverla | Qué bloquea |
 |---|---|---|---|
@@ -93,7 +182,7 @@ registrado como integración verificada.
 | Q-12 | Idempotencia: alcance y vigencia de la clave, y qué responder ante payload repetido o distinto | Ender al fijar la ficha, con decisión de negocio donde falte | Tu caso 6. **Sin definición no hay caso 6**: se registra `DECISION_REQUIRED`, no se fabrica una política |
 | Q-13 | Política de reintentos transitorios, fallos terminales y tratamiento del agotamiento | Decisión de negocio | El comportamiento ante proveedor indisponible. **No inventar backoff ni número de intentos** |
 
-## 5. Definition of Done del hito
+## 6. Definition of Done del hito
 
 - [ ] Las 13 microtareas están en `HECHO` o en `BLOCKED` con motivo y salida del error.
 - [ ] Todo estado de verificación es `PASS`/`FAIL`/`NOT_RUN`/`BLOCKED`. **No hay un solo `PASS` sin comando y exit code pegados.**
@@ -102,7 +191,7 @@ registrado como integración verificada.
 - [ ] Ninguna política de reintento, deduplicación o TTL aparece en el documento sin fuente. Lo que falta está `DECISION_REQUIRED`.
 - [ ] Avance reportado como `microtareas HECHO / 13`, no como porcentaje a ojo.
 
-## 6. Handoff
+## 7. Handoff
 
 Al cerrar, avisá por el daily a:
 - **Ender** → qué campos y qué reglas necesita tu validador que el contrato todavía no define (Q-12, Q-13).

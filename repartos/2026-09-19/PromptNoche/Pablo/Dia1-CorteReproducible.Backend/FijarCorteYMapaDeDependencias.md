@@ -16,19 +16,107 @@
 | `ALLOWED_INFRA` | Lectura del repo, `git`, `yarn`, `node`. PostgreSQL y Docker: **verificar disponibilidad, no asumirla**. |
 | `Escritura permitida` | Solo tu directorio de evidencia. Archivos compartidos del backend: reservados, nadie los toca esta noche. |
 
-## 1. Resultado observable
+## 1. Antes de escribir una línea — instalación OBLIGATORIA del estándar
+
+> **Esta sección no es opcional y no es el final del día: es lo primero.** Un prompt ejecutado sin
+> el estándar cargado produce trabajo que después hay que rehacer, porque no va a tener plan,
+> ni evidencia, ni reporte. **Si no podés completar este paso, estás `BLOQUEADO`: avisalo y no sigas.**
+
+### 1.1 Instalar el estándar en tu checkout
+
+```bash
+# 1. Clonar el estandar al lado del repo de producto
+git clone https://github.com/PabloArauzCaballero/AlovidaPromptManager.git ../AlovidaPromptManager
+
+# 2. Copiarlo DENTRO de tu checkout de trabajo (Claude Code solo carga desde ./.claude/)
+cp -r ../AlovidaPromptManager/.claude   ./
+cp    ../AlovidaPromptManager/AGENTS.md ./
+cp -r ../AlovidaPromptManager/.agents   ./   # solo si tu herramienta no lee .claude/
+
+# 3. Verificar que quedo instalado (pega esta salida en tu daily)
+ls .claude/skills | wc -l        # -> 176
+ls .claude/rules/*.md | wc -l    # -> 14
+python .claude/hooks/plan_gate.py --self-test    # -> 11 PASS, 0 FAIL
+```
+
+**Si el `git clone` falla con 404:** el estándar todavía **no está publicado en GitHub** (el push
+quedó bloqueado el 2026-09-19). Pedíselo a Pablo por copia directa y registralo como límite de
+acceso. **Un 404 no demuestra que el repositorio no exista.**
+
+**No commitees `.claude/` dentro del repo de producto sin acordarlo con el equipo.** Instalarlo en
+tu checkout es tuyo; agregarlo al repo compartido es una decisión de todos.
+
+### 1.2 Qué te instala eso
+
+Dos candados que **bloquean de verdad** mientras trabajes con Claude Code:
+
+| Candado | Qué impide |
+|---|---|
+| `plan_gate.py` | Escribir código sin `PLAN.md` en disco. Nunca bloquea `.md` ni nada bajo `docs/`, así que siempre podés crear el plan primero |
+| `report_gate.py` | Cerrar la sesión con trabajo activo y sin `REPORTE.md`, o con un reporte al que le falta alguna de las tres secciones |
+
+**En cualquier otra herramienta (Cursor, Codex, Copilot, Continue, Windsurf, Cline) los candados NO
+corren.** El plan y el reporte siguen siendo igual de obligatorios; lo único que cambia es que nadie
+te va a frenar. Ahí la disciplina la ponés vos y la controla quien revisa el PR.
+
+### 1.3 Skills que tenés que CARGAR para este lote
+
+Son **17**: 11 del proceso, que carga todo el equipo, y 6 propias de
+*Fijar corte reproducible y mapa de dependencias*. Cargar = abrirlas y leerlas antes de empezar, no tenerlas en disco.
+
+**Del proceso — obligatorias para todos:**
+
+| Skill | Para qué |
+|---|---|
+| `skills-router` | la entrada al catalogo: mapea la situacion concreta a la skill que toca |
+| `factual-discovery` | confirmar el sistema real antes de planificar |
+| `milestone-planning` | descomponer en hitos, subtareas y microtareas con CA y DoD |
+| `anti-hallucination-guard` | localizar lo existente antes de crear; no inventar APIs de terceros |
+| `evidence-and-verification` | que podes afirmar con que evidencia |
+| `scope-discipline` | no tocar nada fuera del alcance declarado |
+| `rationalization-guard` | las excusas tipicas para saltear una verificacion, y su contramedida |
+| `context-thrift` | leer por rangos y busqueda, no archivos enteros |
+| `progress-reporting` | checkpoints visibles en cada apertura y cierre de microtarea |
+| `finish-your-turn` | como se cierra un turno sin dejar nada colgado |
+| `work-report-md` | como se redacta el reporte de cierre |
+
+**De tu lote:**
+
+| Skill | Para qué |
+|---|---|
+| `native-code-patterns` | copiar la forma del codigo vecino en vez de imponer una nueva |
+| `windows-dev-environment` | los comandos que de verdad funcionan en esta maquina |
+| `dependency-management` | distinguir version declarada, resuelta e instalada |
+| `root-cause-debugging` | reproducir antes de diagnosticar cuando algo no arranca |
+| `agent-resource-control` | un build, una suite, un navegador por vez |
+| `technical-docs-and-adr` | dejar la decision registrada donde alguien la encuentre |
+
+Entrá siempre por `skills-router`: **no leas el catálogo entero, no sirve.** El router mapea la
+situación concreta ("voy a tocar un endpoint", "voy a diseñar una pantalla") a la skill que
+corresponde, y fija la precedencia cuando dos se pisan.
+
+### 1.4 DoD de esta sección — se verifica como cualquier otra
+
+- [ ] `ls .claude/skills | wc -l` devolvió **176**, y la salida está pegada en tu daily.
+- [ ] `python .claude/hooks/plan_gate.py --self-test` devolvió **11 PASS, 0 FAIL**, salida pegada.
+- [ ] Leíste `skills-router` y las 17 skills de las dos tablas.
+- [ ] Creaste tu `PLAN.md` **antes** del primer `Edit`/`Write` de código.
+
+**Sin estas cuatro casillas, tu lote arranca en `BLOQUEADO`, no en `EN CURSO`.**
+
+## 2. Resultado observable
 
 Al cerrar tu turno, cualquiera del equipo puede abrir un solo archivo y saber: **qué commit exacto estamos atacando, qué está realmente instalado y corriendo, y qué dependencia concreta bloquea el piloto de avisos de agenda** — sin volver a clonar ni re-explorar.
 
 **Kill-test (lo más barato que demuestra que NO está hecho):** pedile a Itzan el SHA del corte y el motivo por el que `SchedulingModule` arrastra `MessagingModule`. Si tiene que abrir GitHub para responder, no está hecho.
 
-## 2. Alcance
+## 3. Alcance
 
 **IN:** fijar corte, verificar stack instalado vs. lockfile, localizar los archivos y servicios del piloto, mapa de dependencias acotado al piloto, registro de evidencia, registro de límites de acceso.
 
 **OUT:** editar cualquier archivo de Mantra · proponer refactors · inventario enciclopédico del backend entero · ejecutar la suite completa · decidir la semántica del contrato (es de Ender) · armar la composición aislada (es de Itzan).
 
-## 3. Plan
+## 4. Plan
 
 ### Hito H1 — El corte y el bloqueo del piloto están fijados y son reproducibles por otro
 
@@ -66,7 +154,7 @@ Al cerrar tu turno, cualquiera del equipo puede abrir un solo archivo y saber: *
 | M12 | Registrar la tensión de semántica del aviso detectada en el puerto | Queda escrito, sin resolverla, que el comentario del puerto permite descartar un aviso fallido mientras el metaprompt exige durabilidad para efectos obligatorios | Cita literal del comentario del puerto + cita del metaprompt, ambas con localizador. Estado: `DECISION_REQUIRED`. **No elegir una de las dos** |
 | M13 | Entregar la tabla de unidades entregables del lote | Cada fila tiene capacidad, dependencia que bloquea, mecanismo mínimo propuesto, riesgo y prueba de salida | Tabla completa en el documento de corte, sin filas con "TBD" sin dueño ni fecha |
 
-## 4. Ambigüedades registradas — **no las resuelvas, anotalas**
+## 5. Ambigüedades registradas — **no las resuelvas, anotalas**
 
 | ID | Ambigüedad | Quién puede resolverla | Qué bloquea |
 |---|---|---|---|
@@ -75,7 +163,7 @@ Al cerrar tu turno, cualquiera del equipo puede abrir un solo archivo y saber: *
 | Q-03 | `TEAM_CAPACITY` en horas netas no está calculado | Coordinación | Compromiso de alcance. Desconocido **se conserva desconocido** |
 | Q-04 | El registro funcional original no está identificado; solo hay la síntesis del metaprompt | Quien tenga el documento aprobado | La aceptación documental integral (C1). La habilitación técnica **puede continuar** |
 
-## 5. Definition of Done del hito
+## 6. Definition of Done del hito
 
 - [ ] Las 13 microtareas están en `HECHO` o en `BLOCKED` con motivo y salida del error.
 - [ ] Todo estado de verificación es `PASS`/`FAIL`/`NOT_RUN`/`BLOCKED`. **No hay un solo `PASS` sin comando y exit code pegados.**
@@ -83,7 +171,7 @@ Al cerrar tu turno, cualquiera del equipo puede abrir un solo archivo y saber: *
 - [ ] Ninguna afirmación del documento excede lo que ejecutaste. Repasá el cierre del prompt maestro: *"¿algún éxito declarado depende de algo que no ejecutaste?"*
 - [ ] Avance reportado como `microtareas HECHO / 13`, no como porcentaje a ojo.
 
-## 6. Handoff
+## 7. Handoff
 
 Al cerrar, avisá por el daily a:
 - **Ender** → rutas reales del puerto y del adaptador (M9), y la tensión de semántica (M12).

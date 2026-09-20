@@ -1,0 +1,8 @@
+$ KILL-TEST del candado nuevo: le saco la seccion al prompt de Itzan
+check_reparto: ESTRUCTURA INCOMPLETA en 2026-09-19
+  - 2026-09-19/PromptNoche/Itzan/Dia1-ComposicionYBaseline.Backend/DelimitarComposicionYBaseline.md: le FALTA la seccion 1 de instalacion obligatoria del estandar, y la entrada al catalogo de skills, y el comando que verifica que el estandar quedo instalado
+exit=1
+
+$ restauro
+check_reparto: OK, 2026-09-19 cumple la estructura obligatoria
+exit=0

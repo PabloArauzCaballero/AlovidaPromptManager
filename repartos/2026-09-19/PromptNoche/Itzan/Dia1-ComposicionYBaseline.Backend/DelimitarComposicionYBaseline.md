@@ -17,7 +17,97 @@
 | `ALLOWED_INFRA` | Lectura del repo, `git`, `yarn`, `node`. PostgreSQL y Docker: **verificar disponibilidad, no asumirla** — el resultado de Pablo (su M8) es tu insumo |
 | `Escritura permitida` | Solo tu directorio de evidencia. El puerto `agenda-notice.port.ts` es **de Ender**: no lo toques ni lo "arregles" |
 
-## 1. Resultado observable
+## 1. Antes de escribir una línea — instalación OBLIGATORIA del estándar
+
+> **Esta sección no es opcional y no es el final del día: es lo primero.** Un prompt ejecutado sin
+> el estándar cargado produce trabajo que después hay que rehacer, porque no va a tener plan,
+> ni evidencia, ni reporte. **Si no podés completar este paso, estás `BLOQUEADO`: avisalo y no sigas.**
+
+### 1.1 Instalar el estándar en tu checkout
+
+```bash
+# 1. Clonar el estandar al lado del repo de producto
+git clone https://github.com/PabloArauzCaballero/AlovidaPromptManager.git ../AlovidaPromptManager
+
+# 2. Copiarlo DENTRO de tu checkout de trabajo (Claude Code solo carga desde ./.claude/)
+cp -r ../AlovidaPromptManager/.claude   ./
+cp    ../AlovidaPromptManager/AGENTS.md ./
+cp -r ../AlovidaPromptManager/.agents   ./   # solo si tu herramienta no lee .claude/
+
+# 3. Verificar que quedo instalado (pega esta salida en tu daily)
+ls .claude/skills | wc -l        # -> 176
+ls .claude/rules/*.md | wc -l    # -> 14
+python .claude/hooks/plan_gate.py --self-test    # -> 11 PASS, 0 FAIL
+```
+
+**Si el `git clone` falla con 404:** el estándar todavía **no está publicado en GitHub** (el push
+quedó bloqueado el 2026-09-19). Pedíselo a Pablo por copia directa y registralo como límite de
+acceso. **Un 404 no demuestra que el repositorio no exista.**
+
+**No commitees `.claude/` dentro del repo de producto sin acordarlo con el equipo.** Instalarlo en
+tu checkout es tuyo; agregarlo al repo compartido es una decisión de todos.
+
+### 1.2 Qué te instala eso
+
+Dos candados que **bloquean de verdad** mientras trabajes con Claude Code:
+
+| Candado | Qué impide |
+|---|---|
+| `plan_gate.py` | Escribir código sin `PLAN.md` en disco. Nunca bloquea `.md` ni nada bajo `docs/`, así que siempre podés crear el plan primero |
+| `report_gate.py` | Cerrar la sesión con trabajo activo y sin `REPORTE.md`, o con un reporte al que le falta alguna de las tres secciones |
+
+**En cualquier otra herramienta (Cursor, Codex, Copilot, Continue, Windsurf, Cline) los candados NO
+corren.** El plan y el reporte siguen siendo igual de obligatorios; lo único que cambia es que nadie
+te va a frenar. Ahí la disciplina la ponés vos y la controla quien revisa el PR.
+
+### 1.3 Skills que tenés que CARGAR para este lote
+
+Son **19**: 11 del proceso, que carga todo el equipo, y 8 propias de
+*Delimitar la composición de la capacidad y su baseline*. Cargar = abrirlas y leerlas antes de empezar, no tenerlas en disco.
+
+**Del proceso — obligatorias para todos:**
+
+| Skill | Para qué |
+|---|---|
+| `skills-router` | la entrada al catalogo: mapea la situacion concreta a la skill que toca |
+| `factual-discovery` | confirmar el sistema real antes de planificar |
+| `milestone-planning` | descomponer en hitos, subtareas y microtareas con CA y DoD |
+| `anti-hallucination-guard` | localizar lo existente antes de crear; no inventar APIs de terceros |
+| `evidence-and-verification` | que podes afirmar con que evidencia |
+| `scope-discipline` | no tocar nada fuera del alcance declarado |
+| `rationalization-guard` | las excusas tipicas para saltear una verificacion, y su contramedida |
+| `context-thrift` | leer por rangos y busqueda, no archivos enteros |
+| `progress-reporting` | checkpoints visibles en cada apertura y cierre de microtarea |
+| `finish-your-turn` | como se cierra un turno sin dejar nada colgado |
+| `work-report-md` | como se redacta el reporte de cierre |
+
+**De tu lote:**
+
+| Skill | Para qué |
+|---|---|
+| `nestjs-development` | composicion de modulos, DI y contexto standalone |
+| `mikroorm-patterns` | discovery de entidades, metadata, subscribers y transacciones |
+| `model-driven-schema` | direccion unica del cambio de esquema |
+| `database-design` | tablas propias, de referencia y de auditoria |
+| `postgresql-advanced` | por que no se sustituye PostgreSQL por SQLite |
+| `multi-tenancy` | el contexto de organizacion en cada consulta |
+| `data-quality-validation` | verificacion de deriva entre fuente, base y entidades |
+| `test-data-management` | baseline por ejecucion, identificable y limpiable |
+
+Entrá siempre por `skills-router`: **no leas el catálogo entero, no sirve.** El router mapea la
+situación concreta ("voy a tocar un endpoint", "voy a diseñar una pantalla") a la skill que
+corresponde, y fija la precedencia cuando dos se pisan.
+
+### 1.4 DoD de esta sección — se verifica como cualquier otra
+
+- [ ] `ls .claude/skills | wc -l` devolvió **176**, y la salida está pegada en tu daily.
+- [ ] `python .claude/hooks/plan_gate.py --self-test` devolvió **11 PASS, 0 FAIL**, salida pegada.
+- [ ] Leíste `skills-router` y las 19 skills de las dos tablas.
+- [ ] Creaste tu `PLAN.md` **antes** del primer `Edit`/`Write` de código.
+
+**Sin estas cuatro casillas, tu lote arranca en `BLOQUEADO`, no en `EN CURSO`.**
+
+## 2. Resultado observable
 
 Al cerrar tu turno, el equipo puede leer un solo documento y saber **qué carga hoy `SchedulingModule` y por
 qué**, **qué composición mínima se propone para la capacidad del piloto**, y **cómo se levanta una base de
@@ -27,7 +117,7 @@ pruebas aislada e identificable** — sin que nadie tenga que volver a rastrear 
 entidades por glob global y qué hace `HistoryMirrorSubscriber` al arrancar la capacidad sola. Si nadie lo
 sabe sin abrir `orm.config.ts`, no está hecho.
 
-## 2. Alcance
+## 3. Alcance
 
 **IN:** imports reales de la composición de scheduling y su clasificación · ubicación del binding
 `AGENDA_NOTICE_PORT` → adaptador · comportamiento real del descubrimiento de entidades y del subscriber ·
@@ -39,7 +129,7 @@ ausencia** (es Día 2, `PLAN_SEIS_DIAS.md`) · decidir la semántica del contrat
 adaptador real (es de Justin) · crear una abstracción de transacción nueva · crear workspaces o paquetes nuevos
 antes de comprobar que alcanza con puntos de entrada delimitados (`ARQUITECTURA_Y_CONTRATOS.md` §2).
 
-## 3. Plan
+## 4. Plan
 
 ### Hito H1 — Está delimitado qué carga la capacidad y sobre qué base se prueba
 
@@ -84,7 +174,7 @@ falta, tu documento ya decía que iba a faltar.
 | M13 | Separar rol de preparación y rol de runtime | Están los dos roles y qué privilegios tiene cada uno | Definición escrita. El rol de runtime **no** puede tener privilegios que evadan la política que se va a probar: si los tiene, la prueba no prueba nada |
 | M14 | Definir la limpieza con comprobación de identidad y destino | La rutina de limpieza rechaza una base que no sea la del run | Especificación + el caso negativo que la rechaza. **La limpieza no debe poder aceptar una base compartida por un nombre arbitrario** (§4.6). Este es el control que evita borrar la base de un compañero |
 
-## 4. Ambigüedades registradas — **no las resuelvas, anotalas**
+## 5. Ambigüedades registradas — **no las resuelvas, anotalas**
 
 | ID | Ambigüedad | Quién puede resolverla | Qué bloquea |
 |---|---|---|---|
@@ -93,7 +183,7 @@ falta, tu documento ya decía que iba a faltar.
 | Q-08 | Qué operación concreta se aísla: la demora del profesional o la emisión de recordatorio | Quien definió el alcance del piloto | El conjunto de repositorios y entidades mínimas. El paquete dice elegirla **después de leer servicios, repositorios y tests**; si esta noche no alcanza, entregá las dos opciones con su costo |
 | Q-09 | Si el descubrimiento por glob y el subscriber pueden delimitarse sin tocar código compartido | Se resuelve con la prueba de ausencia del Día 2, no por lectura | El grado de aislamiento alcanzable. Hasta entonces: `HYPOTHESIS` |
 
-## 5. Definition of Done del hito
+## 6. Definition of Done del hito
 
 - [ ] Las 14 microtareas están en `HECHO` o en `BLOCKED` con motivo y salida del error.
 - [ ] Todo estado de verificación es `PASS`/`FAIL`/`NOT_RUN`/`BLOCKED`. **No hay un solo `PASS` sin comando y exit code pegados.**
@@ -102,7 +192,7 @@ falta, tu documento ya decía que iba a faltar.
 - [ ] Ningún control se desactivó para que algo arranque, y no hay ningún paquete nuevo llamado `base`, `common` o `shared` creado para esconder una dependencia.
 - [ ] Avance reportado como `microtareas HECHO / 14`, no como porcentaje a ojo.
 
-## 6. Handoff
+## 7. Handoff
 
 Al cerrar, avisá por el daily a:
 - **Pablo** → si tu lectura de los imports difiere de la suya (M1), y el resultado de PostgreSQL/Docker (M10).

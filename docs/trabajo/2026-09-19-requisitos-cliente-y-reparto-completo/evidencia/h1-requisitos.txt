@@ -1,0 +1,22 @@
+$ modulos de primer nivel
+8
+$ cuales
+## MODULO PACIENTE
+## MODULO MEDICO
+## MODULO FARMACIA
+## MODULO LABORATORIO DE SANGRE
+## MODULO ANALISIS MEDICOS (RAYOS X, RESONANCIA, ETC.)
+## MODULO ASEGURADORA DE SALUD
+## MODULO DE REPORTES Y DATA DE TODA LA APP
+## MODULO PASARELA DE PAGOS
+
+$ submodulos anidados (PUNTOS / PROMOCIONES)
+7
+
+$ marcas de estado que declara el cliente, contadas del texto
+  COMPLETO     20
+  INCOMPLETO   54
+  FALTA        28
+
+$ filas de la tabla de correspondencia M-01..M-19
+19

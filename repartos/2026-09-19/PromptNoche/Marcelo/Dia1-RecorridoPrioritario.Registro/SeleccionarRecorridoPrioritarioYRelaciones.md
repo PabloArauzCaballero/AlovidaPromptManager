@@ -17,7 +17,96 @@
 | `ALLOWED_INFRA` | Lectura de ambos repos, `git`. No necesitás levantar nada para esta tarea |
 | `Escritura permitida` | Solo tu directorio de evidencia. Contrato del puerto: de Ender. Composición: de Itzan |
 
-## 1. Resultado observable
+## 1. Antes de escribir una línea — instalación OBLIGATORIA del estándar
+
+> **Esta sección no es opcional y no es el final del día: es lo primero.** Un prompt ejecutado sin
+> el estándar cargado produce trabajo que después hay que rehacer, porque no va a tener plan,
+> ni evidencia, ni reporte. **Si no podés completar este paso, estás `BLOQUEADO`: avisalo y no sigas.**
+
+### 1.1 Instalar el estándar en tu checkout
+
+```bash
+# 1. Clonar el estandar al lado del repo de producto
+git clone https://github.com/PabloArauzCaballero/AlovidaPromptManager.git ../AlovidaPromptManager
+
+# 2. Copiarlo DENTRO de tu checkout de trabajo (Claude Code solo carga desde ./.claude/)
+cp -r ../AlovidaPromptManager/.claude   ./
+cp    ../AlovidaPromptManager/AGENTS.md ./
+cp -r ../AlovidaPromptManager/.agents   ./   # solo si tu herramienta no lee .claude/
+
+# 3. Verificar que quedo instalado (pega esta salida en tu daily)
+ls .claude/skills | wc -l        # -> 176
+ls .claude/rules/*.md | wc -l    # -> 14
+python .claude/hooks/plan_gate.py --self-test    # -> 11 PASS, 0 FAIL
+```
+
+**Si el `git clone` falla con 404:** el estándar todavía **no está publicado en GitHub** (el push
+quedó bloqueado el 2026-09-19). Pedíselo a Pablo por copia directa y registralo como límite de
+acceso. **Un 404 no demuestra que el repositorio no exista.**
+
+**No commitees `.claude/` dentro del repo de producto sin acordarlo con el equipo.** Instalarlo en
+tu checkout es tuyo; agregarlo al repo compartido es una decisión de todos.
+
+### 1.2 Qué te instala eso
+
+Dos candados que **bloquean de verdad** mientras trabajes con Claude Code:
+
+| Candado | Qué impide |
+|---|---|
+| `plan_gate.py` | Escribir código sin `PLAN.md` en disco. Nunca bloquea `.md` ni nada bajo `docs/`, así que siempre podés crear el plan primero |
+| `report_gate.py` | Cerrar la sesión con trabajo activo y sin `REPORTE.md`, o con un reporte al que le falta alguna de las tres secciones |
+
+**En cualquier otra herramienta (Cursor, Codex, Copilot, Continue, Windsurf, Cline) los candados NO
+corren.** El plan y el reporte siguen siendo igual de obligatorios; lo único que cambia es que nadie
+te va a frenar. Ahí la disciplina la ponés vos y la controla quien revisa el PR.
+
+### 1.3 Skills que tenés que CARGAR para este lote
+
+Son **18**: 11 del proceso, que carga todo el equipo, y 7 propias de
+*Seleccionar el recorrido prioritario del registro*. Cargar = abrirlas y leerlas antes de empezar, no tenerlas en disco.
+
+**Del proceso — obligatorias para todos:**
+
+| Skill | Para qué |
+|---|---|
+| `skills-router` | la entrada al catalogo: mapea la situacion concreta a la skill que toca |
+| `factual-discovery` | confirmar el sistema real antes de planificar |
+| `milestone-planning` | descomponer en hitos, subtareas y microtareas con CA y DoD |
+| `anti-hallucination-guard` | localizar lo existente antes de crear; no inventar APIs de terceros |
+| `evidence-and-verification` | que podes afirmar con que evidencia |
+| `scope-discipline` | no tocar nada fuera del alcance declarado |
+| `rationalization-guard` | las excusas tipicas para saltear una verificacion, y su contramedida |
+| `context-thrift` | leer por rangos y busqueda, no archivos enteros |
+| `progress-reporting` | checkpoints visibles en cada apertura y cierre de microtarea |
+| `finish-your-turn` | como se cierra un turno sin dejar nada colgado |
+| `work-report-md` | como se redacta el reporte de cierre |
+
+**De tu lote:**
+
+| Skill | Para qué |
+|---|---|
+| `requirements-and-acceptance` | como se escribe un criterio de aceptacion observable |
+| `vertical-slicing` | cortar por recorrido, no por capa |
+| `outcome-first` | definir el resultado observable antes de abrir un archivo |
+| `qa-strategy` | que se prueba en cada nivel |
+| `uat-acceptance-signoff` | que exige un dictamen de aceptacion |
+| `data-privacy-phi` | gate obligatorio en todo lo que toque datos de personas |
+| `regulatory-compliance-mapping` | que obligaciones caen sobre los recorridos elegidos |
+
+Entrá siempre por `skills-router`: **no leas el catálogo entero, no sirve.** El router mapea la
+situación concreta ("voy a tocar un endpoint", "voy a diseñar una pantalla") a la skill que
+corresponde, y fija la precedencia cuando dos se pisan.
+
+### 1.4 DoD de esta sección — se verifica como cualquier otra
+
+- [ ] `ls .claude/skills | wc -l` devolvió **176**, y la salida está pegada en tu daily.
+- [ ] `python .claude/hooks/plan_gate.py --self-test` devolvió **11 PASS, 0 FAIL**, salida pegada.
+- [ ] Leíste `skills-router` y las 18 skills de las dos tablas.
+- [ ] Creaste tu `PLAN.md` **antes** del primer `Edit`/`Write` de código.
+
+**Sin estas cuatro casillas, tu lote arranca en `BLOQUEADO`, no en `EN CURSO`.**
+
+## 2. Resultado observable
 
 Al cerrar tu turno, el equipo puede abrir un solo documento y saber **qué recorrido funcional atacamos
 primero, por qué ése, qué participantes exige, y con qué localizadores reales se verifica** — más la
@@ -27,7 +116,7 @@ advertencia explícita de si el frontend que se va a usar está corriendo contra
 verificar hoy contra el backend real o si el frontend compila con `mockBackend` activo. Si nadie lo sabe,
 no está hecho — y si alguien contesta sin haber abierto el archivo de entorno que **se compila**, está adivinando.
 
-## 2. Alcance
+## 3. Alcance
 
 **IN:** localización (o registro de ausencia) del registro funcional original · corte de los dos frontends ·
 qué configuración de entorno se compila realmente y qué banderas de demo quedan activas · orden de los
@@ -40,7 +129,7 @@ semántica del contrato de avisos (es de Ender) · armar composición ni baselin
 adaptador (es de Justin) · **inventar reglas, porcentajes, fórmulas o catálogos** que el registro no define ·
 recortar requisitos en silencio para que entren en el plazo.
 
-## 3. Plan
+## 4. Plan
 
 ### Hito H1 — Hay un recorrido prioritario elegido con criterio, con sus participantes y sus relaciones
 
@@ -81,7 +170,7 @@ prioridad y sin que nadie confunda una pantalla de demo con backend funcionando.
 | M12 | Registrar capacidad del equipo en horas netas | Está el número, o está declarado `DESCONOCIDO` con qué falta para calcularlo | Registro. `TEAM_CAPACITY` y el día actual **no están verificados** (Q-02, Q-03): **un desconocido se conserva desconocido**. Inventar un número acá es lo que después se convierte en un compromiso incumplido |
 | M13 | Tabla de demanda contra capacidad, con alternativas y su impacto | Cada lote tiene rango de estimación e incertidumbres listadas; si no cabe, hay alternativas con impacto | Tabla entregada. Si no cabe: **se muestran alternativas para decisión; no se recortan requisitos en silencio ni se presenta un piloto como todo Mantra** |
 
-## 4. Ambigüedades registradas — **no las resuelvas, anotalas**
+## 5. Ambigüedades registradas — **no las resuelvas, anotalas**
 
 | ID | Ambigüedad | Quién puede resolverla | Qué bloquea |
 |---|---|---|---|
@@ -92,7 +181,7 @@ prioridad y sin que nadie confunda una pantalla de demo con backend funcionando.
 | Q-10 | Cláusulas, pólizas, fórmulas, unidades y porcentajes del registro no están todos definidos | Quien apruebe las decisiones de negocio | Sólo los casos que dependan de ellos, que quedan `DECISION_REQUIRED`. **No los completes a ojo**: un porcentaje inventado se propaga a facturación |
 | Q-11 | Qué configuración de frontend se usará en la aceptación | Coordinación | Si es la que tiene banderas de demo activas, el recorrido no acredita backend (tu M4) |
 
-## 5. Definition of Done del hito
+## 6. Definition of Done del hito
 
 - [ ] Las 13 microtareas están en `HECHO` o en `BLOCKED` con motivo y salida del error.
 - [ ] Todo estado de verificación es `PASS`/`FAIL`/`NOT_RUN`/`BLOCKED`. **No hay un solo `PASS` sin comando y exit code pegados.**
@@ -101,7 +190,7 @@ prioridad y sin que nadie confunda una pantalla de demo con backend funcionando.
 - [ ] El documento dice, en su primera pantalla, si lo que se ve en el frontend puede estar viniendo de datos de demostración.
 - [ ] Avance reportado como `microtareas HECHO / 13`, no como porcentaje a ojo.
 
-## 6. Handoff
+## 7. Handoff
 
 Al cerrar, avisá por el daily a:
 - **Justin** → las relaciones de M10 y M11: de ahí sale qué adaptador arranca primero.
