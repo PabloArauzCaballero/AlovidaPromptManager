@@ -1,0 +1,10 @@
+# H3.S1.M2 — verificación de switch/.delivered antes de publicar la matriz
+
+$ grep -rn "switch" src/modules/scheduling --include="*.ts" | grep -v spec
+src/modules/scheduling/services/scheduling-confirmation.service.ts:364:    switch (op) {
+
+$ grep -n ".delivered" en los 4 servicios que llaman al puerto
+src/modules/scheduling/services/scheduling-agenda-notices.service.ts:83:      (resultado) => resultado.delivered,
+src/modules/scheduling/services/scheduling-agenda-notices.service.ts:130:      (resultado) => resultado.delivered,
+src/modules/scheduling/services/scheduling-delay.service.ts:231:    return resultados.filter((resultado) => resultado.delivered).length;
+(bookings y catalog no aparecen: descartan el resultado, no lo leen)
