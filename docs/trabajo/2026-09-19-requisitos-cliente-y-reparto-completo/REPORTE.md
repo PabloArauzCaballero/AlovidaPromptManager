@@ -106,7 +106,7 @@ Inventario final del reparto:
 
 | ID | Estado | Qué lo destraba |
 |---|---|---|
-| Push a GitHub (heredado) | **`BLOQUEADO`** | El clasificador del modo automático de la sesión rechaza `git push` (`Out-of-Place Publication`). Lo destraba que lo corra el usuario con `! git push origin main` |
+| Push a GitHub (heredado) | ~~`BLOQUEADO`~~ → **`HECHO`** | El clasificador del modo automático de la sesión rechaza `git push` (`Out-of-Place Publication`). Lo destraba que lo corra el usuario con `! git push origin main` . **RESUELTO el 2026-09-20:** el usuario ejecutó el push; `main` y `origin/main` en `ef1baf9` y el CI corrió en verde (run `35487274310`). |
 | Ejecutar las 262 microtareas | `TODO` | Es el trabajo del equipo, no de esta sesión |
 | Revisión del contenido de los 30 prompts | `TODO` | Nadie del equipo los leyó todavía |
 

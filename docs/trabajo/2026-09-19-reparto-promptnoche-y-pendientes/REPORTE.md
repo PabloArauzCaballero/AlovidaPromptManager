@@ -71,7 +71,7 @@ para evitar. Lo que no hacía falta, no se hizo, y está justificado por escrito
 
 | ID | Estado | Qué lo destraba |
 |---|---|---|
-| H4.S1.M2 | **`BLOQUEADO`** | El **clasificador del modo automático de la sesión** rechazó `git push origin main` (`Out-of-Place Publication`). No lo rechazó el remoto ni el usuario: el usuario lo había autorizado explícitamente. Lo destraba que lo corra el usuario con `! git push origin main`, o que agregue la regla de permiso de Bash |
+| H4.S1.M2 | ~~`BLOQUEADO`~~ → **`HECHO`** | El **clasificador del modo automático de la sesión** rechazó `git push origin main` (`Out-of-Place Publication`). No lo rechazó el remoto ni el usuario: el usuario lo había autorizado explícitamente. Lo destraba que lo corra el usuario con `! git push origin main`, o que agregue la regla de permiso de Bash . **RESUELTO el 2026-09-20:** el usuario ejecutó el push; `main` y `origin/main` en `ef1baf9` y el CI corrió en verde (run `35487274310`). |
 | Ejecutar las tareas del reparto | `TODO` | Es el turno del equipo, no de esta sesión. Fuera de alcance por diseño |
 | Check requerido en protección de rama | `TODO` | Depende de que el workflow corra en verde al menos una vez |
 | `PromptDia/` del 2026-09-19 | `DESCARTADO` | No se pidió y no hay material que lo respalde. Solo se creó el turno que se llenó |
