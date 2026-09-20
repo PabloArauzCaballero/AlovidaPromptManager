@@ -16,7 +16,7 @@
 | **Ender** | [El contrato del piloto: fijarlo, validarlo y gobernar su evolución](Ender/Noche-PilotoDeAvisos.Contrato/ContratoValidadorYCompatibilidad.md) | A | 6 | 18 | 50 | `NOT_RUN` |
 | **Itzan** | [Composición, prueba de ausencia y baseline de la capacidad](Itzan/Noche-PilotoDeAvisos.Aislamiento/ComposicionAusenciaYBaseline.md) | A | 6 | 18 | 52 | `NOT_RUN` |
 | **Marcelo** | [Recorrido del registro: selección, casos y aceptación](Marcelo/Noche-PilotoDeAvisos.Registro/RecorridoCasosYAceptacion.md) | B | 6 | 18 | 54 | `NOT_RUN` |
-| **Justin** | [La relación agenda → mensajería: dobles, integración y regresión final](Justin/Noche-PilotoDeAvisos.Integracion/DoblesRelacionYRegresionFinal.md) | B | 6 | 18 | 53 | **40/53** |
+| **Justin** | [La relación agenda → mensajería: dobles, integración y regresión final](Justin/Noche-PilotoDeAvisos.Integracion/DoblesRelacionYRegresionFinal.md) | B | 6 | 18 | 53 | **53/53** (40/53 al cerrar el turno; las 13 restantes se cerraron el 20/09, PR #445) |
 | | | | **30** | **90** | **262** | |
 
 **Total del turno: 40 / 262 microtareas** (sólo el carril B reportó). El avance se reporta `HECHO / total`, **nunca a ojo**.
@@ -105,7 +105,7 @@ es el puerto, blob sha1 `4e262747735005c16262a907de3caf09a1268923`.
 | Ender | `NOT_RUN` | 0 / 6 | — | — | [Ender-Daily-Noche-2026-09-19.md](Ender/Ender-Daily-Noche-2026-09-19.md) |
 | Itzan | `NOT_RUN` | 0 / 6 | — | — | [Itzan-Daily-Noche-2026-09-19.md](Itzan/Itzan-Daily-Noche-2026-09-19.md) |
 | Marcelo | `NOT_RUN` | 0 / 6 | — | — | [Marcelo-Daily-Noche-2026-09-19.md](Marcelo/Marcelo-Daily-Noche-2026-09-19.md) |
-| Justin | **40 / 53** | 1 / 6 (H1) | H2, H3, H4, H5, H6 | H2.S1.M1 · H2.S3.M1 · H4.S3.M1-M3 · H5.S1.M2 | [Justin-Daily-Noche-2026-09-19.md](Justin/Justin-Daily-Noche-2026-09-19.md) |
+| Justin | **53 / 53** | 6 / 6 | — | — (las 13 pendientes se cerraron el 20/09; ver §8 de su daily) | [Justin-Daily-Noche-2026-09-19.md](Justin/Justin-Daily-Noche-2026-09-19.md) |
 
 ### Qué NO se puede escribir en este documento
 

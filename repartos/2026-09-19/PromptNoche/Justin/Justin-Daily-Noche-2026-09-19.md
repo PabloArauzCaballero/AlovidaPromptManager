@@ -1,6 +1,8 @@
 # Daily de Justin — turno noche — 2026-09-19
 
 > **Estado:** `CERRADO`. Completado al cerrar el turno, con la evidencia ejecutada.
+> **Continuación (2026-09-20):** las 13 microtareas que este daily dejó abiertas ya están
+> cerradas. El carril B terminó en **53/53**. Ver §8.
 
 - **Persona:** Justin · **Turno:** noche · **Fecha:** 2026-09-19 · **Línea:** B · **Rol:** responsable de relación e integración
 - **Tu prompt:** [La relación agenda → mensajería: dobles, integración y regresión final](Noche-PilotoDeAvisos.Integracion/DoblesRelacionYRegresionFinal.md)
@@ -197,3 +199,55 @@ rebote existe precisamente para el caso de un worker que reintenta un lote, que 
 - [x] Ninguna salida pegada contiene datos reales de pacientes. Los uuid que aparecen son ids de
       canal y de commit, no personas.
 - [x] Mi fila del [daily del equipo](../Daily-Noche-2026-09-19.md) está actualizada.
+
+## 8. Continuación del 2026-09-20 — el carril B cerró 53/53
+
+Este daily cerró el turno en **40/53**, con 13 microtareas esperando respuestas. **Ninguna las
+necesitaba.** Se cerraron el día siguiente, en dos vueltas, y van en el
+**[PR #445](https://github.com/mdavila-2001/mantra-core-health-api/pull/445)**
+(`docs/trabajo/2026-09-20-cerrar-pendientes-carril-b/`).
+
+| Qué destrabó | Cuántas | Cómo |
+|---|---:|---|
+| Aparecieron los artefactos que faltaban (Itzan `v0.1.0-transitional`, laboratorio de Pablo en `dev`) | 3 | H2 dejó de no tener «versiones que combinar» |
+| Medir en vez de esperar la decisión de Q-06 | 3 | Se midió y se registró **como observado**, sin declararlo correcto |
+| Tres microtareas que yo había leído mal | 3 | `H5.S1.M2` pide comprobar el **bloqueo**, no mandar algo; `H6.S1.M4` admite `NOT_RUN` con motivo; `H6.S1.M3` no necesitaba tocar `src/`, necesitaba entorno |
+| Trabajo que simplemente había que hacer | 4 | chat acreditado con filas, `lint` en exit 0, consolidado de los 3 niveles + tabla de gates |
+
+**Lo que más me corrige a mí mismo:** declaré `H6.S1.M3` (el E2E dirigido) como «gate sin sujeto»
+porque la suite daba `3 skipped`. La suite se saltea sin las credenciales P8, y esas credenciales
+las produce `tools/alovida/p8-avisos-agenda.mjs` — que **estaba rota contra `dev`** desde que el
+alta de paciente creció (HALL-11). Corregidas sus dos derivas, el recorrido dio **27/27, exit 0**,
+y la etapa 5 **3 passed, exit 0** contra la API viva, con el front servido en modo `e2e-real` (sin
+el simulador). Un carril sobre `agenda → mensajería` cuyo único registro visual era un `skipped` no
+acreditaba lo que decía acreditar.
+
+### Veredicto del consolidado (los tres niveles, 37 checks)
+
+| Nivel | Obligatorios aplicables | Aprobados | Veredicto |
+|---|---:|---:|---|
+| A — el artefacto (Itzan) | 6 | 2 | **NO APROBADO** |
+| B — la relación (mío) | 23 | 22 | **NO APROBADO** — sólo por `H4.S2.M1` |
+| C — la regresión | 5 | 5 | **APROBADO** |
+
+**El nivel B está a un solo check de aprobar y ese check es HALL-03**: `debounce_key` sigue sin
+índice único, y dos `emit()` en paralelo con la misma clave crean dos filas reportadas como
+exitosas. Es lo único que falta para cerrar el nivel entero.
+
+### Hallazgos nuevos del cierre
+
+| ID | Qué | De quién es |
+|---|---|---|
+| **HALL-08** | El puerto **sí** es transaccional; el negocio lo llama afuera a propósito. ADV-09 es alcanzable sin tocar el puerto | Negocio (Q-06) |
+| **HALL-09** | Un aviso a un destinatario inexistente no deja rastro: ni solicitud, ni entrega, ni cola de muertos | Negocio (Q-06) |
+| **HALL-10** | La guarda anti-SSRF retorna sin mirar nada fuera de producción; lo que aísla es la configuración | Pablo / seguridad |
+| **HALL-11** | El recorrido P8 llevaba roto contra `dev` (alta con seis campos nuevos + cupo que se pisa). **Corregido** | Mío, ya en el PR |
+| **HALL-12** | `seed-dev-data.mjs` no puede asignar especialidades: `dynamic-enums` 404 → `specialties` 422 | Dueño de `profiles` |
+| **HALL-13** | El servicio `api` del compose se declara *healthy* sin poder hablar con Postgres (lee `DB_HOST=localhost` del `.env` del host) | Pablo / infra |
+
+### Lo que sigue sin dueño resuelto
+
+Las 17 preguntas de `PREGUNTAS-EQUIPO-CARRIL-B-2026-09-20.md` siguen **sin contestar**. Tres ya no
+bloquean nada (el contrato de Ender existe: `v1.0.0`, commit `06dc3357`, PR #5), pero **Q-06** y
+**HALL-03** siguen siendo decisiones de otros, y el check `docs` del CI está en rojo para todos por
+**HALL-07** (el patch `v4221` en el init), no por este trabajo.
