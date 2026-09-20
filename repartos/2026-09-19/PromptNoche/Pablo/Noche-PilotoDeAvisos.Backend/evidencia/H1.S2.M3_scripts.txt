@@ -1,0 +1,113 @@
+=== H1.S2.M3 — scripts reales de package.json ===
+Total scripts declarados: 110
+
+build: nest build
+format: prettier --write "src/**/*.ts" "test/**/*.ts"
+start: nest start
+seed:boot: nest start --entryFile seed-cli
+seed:boot:prod: node dist/src/seed-cli.js
+start:dev: nest start --watch
+start:debug: nest start --debug --watch
+start:prod: node dist/src/main.js
+start:worker:billing: node dist/src/worker-billing
+start:worker:billing:dev: nest start --watch --entryFile worker-billing
+start:worker:automation: node dist/src/worker-automation
+start:worker:automation:dev: nest start --watch --entryFile worker-automation
+start:worker:consent: node dist/src/worker-consent
+start:worker:consent:dev: nest start --watch --entryFile worker-consent
+start:worker:cross_store_consistency: node dist/src/worker-cross_store_consistency
+start:worker:cross_store_consistency:dev: nest start --watch --entryFile worker-cross_store_consistency
+start:worker:delegated_access: node dist/src/worker-delegated_access
+start:worker:delegated_access:dev: nest start --watch --entryFile worker-delegated_access
+start:worker:health_context: node dist/src/worker-health_context
+start:worker:health_context:dev: nest start --watch --entryFile worker-health_context
+start:worker:identity_assurance: node dist/src/worker-identity_assurance
+start:worker:identity_assurance:dev: nest start --watch --entryFile worker-identity_assurance
+start:worker:integrations: node dist/src/worker-integrations
+start:worker:integrations:dev: nest start --watch --entryFile worker-integrations
+start:worker:messaging: node dist/src/worker-messaging
+start:worker:messaging:dev: nest start --watch --entryFile worker-messaging
+start:worker:pharmacy_inventory: node dist/src/worker-pharmacy_inventory
+start:worker:pharmacy_inventory:dev: nest start --watch --entryFile worker-pharmacy_inventory
+start:worker:promotions: node dist/src/worker-promotions
+start:worker:promotions:dev: nest start --watch --entryFile worker-promotions
+start:worker:data_catalog: node dist/src/worker-data_catalog
+start:worker:data_catalog:dev: nest start --watch --entryFile worker-data_catalog
+start:worker:qa_lab: node dist/src/worker-qa_lab
+start:worker:qa_lab:dev: nest start --watch --entryFile worker-qa_lab
+start:worker:community: node dist/src/worker-community
+start:worker:community:dev: nest start --watch --entryFile worker-community
+start:worker:read_models: node dist/src/worker-read_models
+start:worker:read_models:dev: nest start --watch --entryFile worker-read_models
+start:worker:reporting: node dist/src/worker-reporting
+start:worker:reporting:dev: nest start --watch --entryFile worker-reporting
+start:worker:scheduling: node dist/src/worker-scheduling
+start:worker:scheduling:dev: nest start --watch --entryFile worker-scheduling
+start:worker:tracking: node dist/src/worker-tracking
+start:worker:tracking:dev: nest start --watch --entryFile worker-tracking
+start:worker:workflow: node dist/src/worker-workflow
+start:worker:workflow:dev: nest start --watch --entryFile worker-workflow
+lint: eslint "{src,apps,libs,test}/**/*.ts"
+lint:fix: eslint "{src,apps,libs,test}/**/*.ts" --fix
+typecheck: tsc --noEmit --incremental false -p tsconfig.json
+test: node --experimental-vm-modules node_modules/jest-cli/bin/jest.js
+test:watch: node --experimental-vm-modules node_modules/jest-cli/bin/jest.js --watch
+test:cov: node --experimental-vm-modules node_modules/jest-cli/bin/jest.js --coverage
+test:integration: cross-env ORM_SCHEMA_SYNC=off RATE_LIMIT_DISABLED=true node --experimental-vm-modules node_modules/jest-cli/bin/jest.js --config ./test/jest-integration.json
+test:integration:cov: cross-env ORM_SCHEMA_SYNC=off RATE_LIMIT_DISABLED=true node --experimental-vm-modules node_modules/jest-cli/bin/jest.js --config ./test/jest-integration.json --coverage
+test:cov:merged: node --experimental-vm-modules node_modules/jest-cli/bin/jest.js --coverage && yarn test:integration:cov && node tools/coverage/merge-coverage.mjs
+seed:dev: node tools/alovida/seed-dev-data.mjs
+seed:vitrina: node tools/alovida/seed-vitrina-publica.mjs
+seed:diagnostic-units: node tools/alovida/seed-diagnostic-units.mjs
+faker: node tools/alovida/faker-worker.mjs
+search:reindex: node tools/search/reindex.mjs
+seed:e2e:reset: node tools/e2e/reset-e2e.mjs
+seed:e2e: node tools/e2e/seed-e2e.mjs
+seed:e2e:verify: node tools/e2e/verify-e2e.mjs --domain
+seed:e2e:verify-auth: node tools/e2e/verify-e2e.mjs --auth
+smoke: cross-env ORM_SCHEMA_SYNC=off RATE_LIMIT_DISABLED=true node --experimental-vm-modules node_modules/jest-cli/bin/jest.js --config ./test/jest-smoke.json
+test:debug: node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/jest-cli/bin/jest.js --runInBand
+test:e2e: jest --config ./test/jest-e2e.json
+orm: mikro-orm
+docs:tsdoc: node tools/documentation/generate-documentation.mjs
+orm:catalog: node tools/catalog/generate-catalog.mjs
+ddl:sources: python ../mantra-core-health-model/salud-db/check_ddl_sources.py
+orm:entities:missing: node tools/catalog/generate-missing-entities.mjs
+orm:audit: node tools/catalog/audit-fidelity.mjs fidelity-audit.json
+orm:schema:dump: cross-env ORM_SCHEMA_SYNC=dry-run node dist/src/main.js
+docker:prune: bash scripts/docker-prune.sh
+docker:up: yarn docker:prune && docker compose up -d
+docker:api:refresh: yarn docker:prune && docker compose build api && docker compose up -d
+jaeger:up: docker compose -f docker-compose.jaeger.yml up -d
+jaeger:down: docker compose -f docker-compose.jaeger.yml down
+jaeger:logs: docker compose -f docker-compose.jaeger.yml logs -f
+jaeger:verify: bash scripts/verify-jaeger.sh
+alovida:guardrails: node tools/alovida/guardrails.mjs
+alovida:personas: node tools/alovida/exercise-clinical-personas.mjs
+alovida:coverage: node tools/alovida/coverage-report.mjs
+google:oauth:get-refresh-token: node tools/google-oauth/get-refresh-token.mjs
+docs:openapi:generate: yarn build && node tools/openapi/generate-openapi.mjs
+docs:openapi:lint: redocly lint openapi/openapi.yaml
+docs:openapi:bundle: redocly bundle openapi/openapi.yaml -o dist-docs/openapi.yaml
+docs:endpoints:generate: node tools/docs/generate-endpoint-markdown.mjs
+docs:modules:sync: node tools/docs/sync-module-docs.mjs
+docs:data:sync: node tools/docs/generate-data-catalog.mjs
+docs:coverage: node tools/docs/check-doc-coverage.mjs
+docs:links: node tools/docs/check-doc-links.mjs
+docs:asyncapi:validate: node tools/asyncapi/validate.mjs asyncapi/asyncapi.yaml
+docs:validate: yarn docs:openapi:lint && yarn docs:asyncapi:validate && yarn docs:coverage && yarn docs:links
+docs:tsdoc:backfill: node tools/documentation/generate-documentation.mjs
+docs:serve: python3 -m mkdocs serve
+docs:build: python3 -m mkdocs build --strict
+postman:generate: python3 tools/postman/generate_postman.py
+postman:verify: python3 tools/postman/verify.py
+postman:verify:actores: python3 tools/postman/verify.py --actores
+postman:bootstrap: node tools/postman/bootstrap-admin.mjs
+db:provision:dev: node scripts/postgres/provision-development-roles.mjs
+db:vendor: bash scripts/db/vendor-ddl.sh
+db:vendor:check: bash scripts/db/vendor-ddl.sh --check
+start:worker:audio-assets: node dist/src/worker-audio-assets
+start:worker:audio-assets:dev: nest start --watch --entryFile worker-audio-assets
+infra:up: docker compose up -d redis opensearch opensearch-init minio mock-provider-server
+infra:down: docker compose --profile "*" down
+infra:purge: docker compose --profile "*" down -v --remove-orphans

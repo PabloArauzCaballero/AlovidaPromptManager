@@ -1,0 +1,18 @@
+=== H1.S1.M4 — Los dos repos que el paquete reportó en 404: docs y modelo canónico ===
+
+--- Repo 1: mantra_core_technologies_health_docs (docs) ---
+Referencia consultada: origin https://github.com/mdavila-2001/mantra_core_technologies_health_docs.git
+Estado en ESTA máquina: existe checkout local, con historial y remoto configurado (evidencia abajo).
+origin	https://github.com/mdavila-2001/mantra_core_technologies_health_docs.git (fetch)
+origin	https://github.com/mdavila-2001/mantra_core_technologies_health_docs.git (push)
+049e2d84f4c3e5234ee1a43b80422913c1d4a875 2026-08-27T11:06:57-04:00 Merge pull request #55 from mdavila-2001/marcelo/v421-pedidos-farmacia
+$ git ls-remote --exit-code origin HEAD (verifica alcanzabilidad real del remoto)
+6097d1ee11a79adade31104e0191f75c687acfa6	HEAD
+exit_code=0
+
+--- Repo 2: mantra-core-health-model (modelo canónico, esperado como checkout hermano ../mantra-core-health-model) ---
+NOT_FOUND localmente: no hay checkout en esta máquina.
+$ git ls-remote --exit-code https://github.com/mdavila-2001/mantra-core-health-model.git HEAD
+remote: Repository not found.
+fatal: repository 'https://github.com/mdavila-2001/mantra-core-health-model.git/' not found
+exit_code=128

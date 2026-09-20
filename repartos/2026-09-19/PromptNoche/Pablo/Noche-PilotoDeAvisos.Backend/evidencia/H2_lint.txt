@@ -1,0 +1,14 @@
+=== lint de los archivos nuevos del laboratorio ===
+
+C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\test\integration\agenda-notice-capability.lab.int-spec.ts
+  118:12  error  Replace `(error·as·AgendaNoticeLabUnconsumedFailuresError).failures` with `⏎······(error·as·AgendaNoticeLabUnconsumedFailuresError).failures,⏎····`                                                                     prettier/prettier
+  122:18  error  Replace `lab.dropSchema('una_base_que_no_es_la_del_run')).rejects.toThrow(⏎······/Limpieza·rechazada/,⏎····` with `⏎······lab.dropSchema('una_base_que_no_es_la_del_run'),⏎····).rejects.toThrow(/Limpieza·rechazada/`  prettier/prettier
+
+C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\test\lab\agenda-notice-capability.lab.ts
+  168:18  error    Replace `notices:·readonly·AgendaNotice[]` with `⏎····notices:·readonly·AgendaNotice[],⏎··`  prettier/prettier
+  171:7   warning  Unused eslint-disable directive (no problems were reported from 'no-await-in-loop')
+
+✖ 4 problems (3 errors, 1 warning)
+  3 errors and 1 warning potentially fixable with the `--fix` option.
+
+exit_code=1

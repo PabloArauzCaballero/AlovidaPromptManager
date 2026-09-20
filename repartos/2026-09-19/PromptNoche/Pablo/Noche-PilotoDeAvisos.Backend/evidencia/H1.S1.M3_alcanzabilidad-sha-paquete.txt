@@ -1,0 +1,28 @@
+=== H1.S1.M3 — Alcanzabilidad del SHA del paquete (32ae939...) ===
+Nota de método: se prueba contra dos referencias distintas, no se elige una por conveniencia.
+
+--- contra dev (5d5007fb, recién actualizado a origin/dev) ---
+$ git merge-base --is-ancestor 32ae939983f0d665e4ed371362858801134d35cd dev; echo $?
+exit_code=0
+$ git rev-list --count 32ae939983f0d665e4ed371362858801134d35cd..dev
+2
+
+--- contra HEAD real del checkout (feat/admin-portal-catalog) ---
+$ git merge-base --is-ancestor 32ae939983f0d665e4ed371362858801134d35cd HEAD; echo $?
+exit_code=1
+$ git rev-list --count 32ae939983f0d665e4ed371362858801134d35cd..HEAD
+0
+=== Aclaración H1.S1.M3 — por qué HEAD real no es descendiente de 32ae939 ===
+$ git merge-base 32ae939983f0d665e4ed371362858801134d35cd HEAD
+98e7fb5a09914de393a6e7138f4ad21c25a10e6f
+$ git log -1 --format='%H %cI %s' HEAD
+98e7fb5a09914de393a6e7138f4ad21c25a10e6f 2026-09-18T13:35:28-04:00 Merge pull request #419 from mdavila-2001/justin/planes-pago-flexibles
+$ git log -1 --format='%H %cI %s' $(git merge-base 32ae939983f0d665e4ed371362858801134d35cd HEAD)
+98e7fb5a09914de393a6e7138f4ad21c25a10e6f 2026-09-18T13:35:28-04:00 Merge pull request #419 from mdavila-2001/justin/planes-pago-flexibles
+$ git rev-list --count $(git merge-base 32ae939983f0d665e4ed371362858801134d35cd HEAD)..HEAD (commits propios de la rama de trabajo)
+0
+=== Verificación cruzada: 98e7fb5a (base real del checkout) vs 32ae939 (TARGET_REF de la ficha) ===
+$ git merge-base --is-ancestor 98e7fb5a09914de393a6e7138f4ad21c25a10e6f 32ae939983f0d665e4ed371362858801134d35cd; echo $?
+exit_code=0
+$ git rev-list --count 98e7fb5a09914de393a6e7138f4ad21c25a10e6f..32ae939983f0d665e4ed371362858801134d35cd
+110

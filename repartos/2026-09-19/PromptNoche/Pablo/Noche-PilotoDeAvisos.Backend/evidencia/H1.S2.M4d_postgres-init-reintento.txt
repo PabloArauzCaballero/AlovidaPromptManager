@@ -1,0 +1,160 @@
+=== Reintento de postgres-init tras copiar el archivo faltante ===
+$ docker compose --profile local-db up postgres-init
+ Container mantra-redesa-postgres-1 Running 
+Attaching to postgres-init-1
+ Container mantra-redesa-postgres-1 Waiting 
+ Container mantra-redesa-postgres-1 Healthy 
+ Container mantra-redesa-postgres-init-1 Starting 
+postgres-init-1  | >>> Esperando a que PostgreSQL acepte conexiones...
+ Container mantra-redesa-postgres-init-1 Started 
+postgres-init-1  | === apply_all: iam.users ya existe — skip
+postgres-init-1  | === apply_deferred: FK cross-schema ya aplicadas — skip
+postgres-init-1  | >>> NoSQL 58: time_series (TimescaleDB)
+postgres-init-1  | psql:/init/NoSQL/58_time_series_timescaledb/time_series.timescaledb.sql:3: NOTICE:  extension "timescaledb" already exists, skipping
+postgres-init-1  | CREATE EXTENSION
+postgres-init-1  | psql:/init/NoSQL/58_time_series_timescaledb/time_series.timescaledb.sql:5: NOTICE:  schema "time_series" already exists, skipping
+postgres-init-1  | CREATE SCHEMA
+postgres-init-1  | psql:/init/NoSQL/58_time_series_timescaledb/time_series.timescaledb.sql:23: NOTICE:  relation "device_raw_reading_series" already exists, skipping
+postgres-init-1  | CREATE TABLE
+postgres-init-1  | CREATE TABLE
+postgres-init-1  | psql:/init/NoSQL/58_time_series_timescaledb/time_series.timescaledb.sql:40: NOTICE:  relation "normalized_vital_series" already exists, skipping
+postgres-init-1  | CREATE TABLE
+postgres-init-1  | psql:/init/NoSQL/58_time_series_timescaledb/time_series.timescaledb.sql:55: NOTICE:  relation "telemetry_event_series" already exists, skipping
+postgres-init-1  | psql:/init/NoSQL/58_time_series_timescaledb/time_series.timescaledb.sql:72: NOTICE:  relation "location_ping_series" already exists, skipping
+postgres-init-1  | CREATE TABLE
+postgres-init-1  | CREATE TABLE
+postgres-init-1  | psql:/init/NoSQL/58_time_series_timescaledb/time_series.timescaledb.sql:87: NOTICE:  relation "application_tracking_series" already exists, skipping
+postgres-init-1  | psql:/init/NoSQL/58_time_series_timescaledb/time_series.timescaledb.sql:105: NOTICE:  relation "ads_delivery_event_series" already exists, skipping
+postgres-init-1  | CREATE TABLE
+postgres-init-1  | psql:/init/NoSQL/58_time_series_timescaledb/time_series.timescaledb.sql:121: NOTICE:  relation "ai_runtime_metric_series" already exists, skipping
+postgres-init-1  | CREATE TABLE
+postgres-init-1  | psql:/init/NoSQL/58_time_series_timescaledb/time_series.timescaledb.sql:136: NOTICE:  relation "payment_gateway_metric_series" already exists, skipping
+postgres-init-1  | CREATE TABLE
+postgres-init-1  | psql:/init/NoSQL/58_time_series_timescaledb/time_series.timescaledb.sql:152: NOTICE:  relation "lab_analyzer_event_series" already exists, skipping
+postgres-init-1  | CREATE TABLE
+postgres-init-1  | CREATE TABLE
+postgres-init-1  | psql:/init/NoSQL/58_time_series_timescaledb/time_series.timescaledb.sql:167: NOTICE:  relation "ingestion_pipeline_metric_series" already exists, skipping
+postgres-init-1  | psql:/init/NoSQL/58_time_series_timescaledb/time_series.timescaledb.sql:183: NOTICE:  relation "service_sli_series" already exists, skipping
+postgres-init-1  | CREATE TABLE
+postgres-init-1  | CREATE TABLE
+postgres-init-1  | psql:/init/NoSQL/58_time_series_timescaledb/time_series.timescaledb.sql:199: NOTICE:  relation "audit_access_metric_series" already exists, skipping
+postgres-init-1  | psql:/init/NoSQL/58_time_series_timescaledb/time_series.timescaledb.sql:204: NOTICE:  table "device_raw_reading_series" is already a hypertable, skipping
+postgres-init-1  |               create_hypertable              
+postgres-init-1  | ---------------------------------------------
+postgres-init-1  |  (5,time_series,device_raw_reading_series,f)
+postgres-init-1  | (1 row)
+postgres-init-1  | 
+postgres-init-1  | psql:/init/NoSQL/58_time_series_timescaledb/time_series.timescaledb.sql:205: NOTICE:  column "tenant_id" is already a dimension, skipping
+postgres-init-1  |                      add_dimension                      
+postgres-init-1  | --------------------------------------------------------
+postgres-init-1  |  (16,time_series,device_raw_reading_series,tenant_id,f)
+postgres-init-1  | (1 row)
+postgres-init-1  | 
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | psql:/init/NoSQL/58_time_series_timescaledb/time_series.timescaledb.sql:206: NOTICE:  relation "order_device_raw" already exists, skipping
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | psql:/init/NoSQL/58_time_series_timescaledb/time_series.timescaledb.sql:207: NOTICE:  relation "uq_device_sequence" already exists, skipping
+postgres-init-1  | psql:/init/NoSQL/58_time_series_timescaledb/time_series.timescaledb.sql:208: NOTICE:  relation "brin_device_time" already exists, skipping
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | psql:/init/NoSQL/58_time_series_timescaledb/time_series.timescaledb.sql:209: NOTICE:  table "normalized_vital_series" is already a hypertable, skipping
+postgres-init-1  |              create_hypertable             
+postgres-init-1  | -------------------------------------------
+postgres-init-1  |  (9,time_series,normalized_vital_series,f)
+postgres-init-1  | (1 row)
+postgres-init-1  | 
+postgres-init-1  | psql:/init/NoSQL/58_time_series_timescaledb/time_series.timescaledb.sql:210: NOTICE:  column "tenant_id" is already a dimension, skipping
+postgres-init-1  |                     add_dimension                     
+postgres-init-1  | ------------------------------------------------------
+postgres-init-1  |  (17,time_series,normalized_vital_series,tenant_id,f)
+postgres-init-1  | (1 row)
+postgres-init-1  | 
+postgres-init-1  | psql:/init/NoSQL/58_time_series_timescaledb/time_series.timescaledb.sql:211: NOTICE:  relation "order_vitals_patient_code" already exists, skipping
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | psql:/init/NoSQL/58_time_series_timescaledb/time_series.timescaledb.sql:212: NOTICE:  relation "ix_vitals_promoted" already exists, skipping
+postgres-init-1  |              create_hypertable             
+postgres-init-1  | -------------------------------------------
+postgres-init-1  |  (12,time_series,telemetry_event_series,f)
+postgres-init-1  | (1 row)
+postgres-init-1  | 
+postgres-init-1  | psql:/init/NoSQL/58_time_series_timescaledb/time_series.timescaledb.sql:213: NOTICE:  table "telemetry_event_series" is already a hypertable, skipping
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | psql:/init/NoSQL/58_time_series_timescaledb/time_series.timescaledb.sql:214: NOTICE:  relation "order_telemetry_user" already exists, skipping
+postgres-init-1  |            create_hypertable            
+postgres-init-1  | ----------------------------------------
+postgres-init-1  |  (8,time_series,location_ping_series,f)
+postgres-init-1  | (1 row)
+postgres-init-1  | 
+postgres-init-1  | psql:/init/NoSQL/58_time_series_timescaledb/time_series.timescaledb.sql:215: NOTICE:  table "location_ping_series" is already a hypertable, skipping
+postgres-init-1  | psql:/init/NoSQL/58_time_series_timescaledb/time_series.timescaledb.sql:216: NOTICE:  relation "order_location_subject" already exists, skipping
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | psql:/init/NoSQL/58_time_series_timescaledb/time_series.timescaledb.sql:217: NOTICE:  table "application_tracking_series" is already a hypertable, skipping
+postgres-init-1  |                create_hypertable               
+postgres-init-1  | -----------------------------------------------
+postgres-init-1  |  (3,time_series,application_tracking_series,f)
+postgres-init-1  | (1 row)
+postgres-init-1  | 
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | psql:/init/NoSQL/58_time_series_timescaledb/time_series.timescaledb.sql:218: NOTICE:  relation "order_tracking_app_event" already exists, skipping
+postgres-init-1  | psql:/init/NoSQL/58_time_series_timescaledb/time_series.timescaledb.sql:219: NOTICE:  table "ads_delivery_event_series" is already a hypertable, skipping
+postgres-init-1  |               create_hypertable              
+postgres-init-1  | ---------------------------------------------
+postgres-init-1  |  (1,time_series,ads_delivery_event_series,f)
+postgres-init-1  | (1 row)
+postgres-init-1  | 
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | psql:/init/NoSQL/58_time_series_timescaledb/time_series.timescaledb.sql:220: NOTICE:  relation "order_ads_campaign_event" already exists, skipping
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | psql:/init/NoSQL/58_time_series_timescaledb/time_series.timescaledb.sql:221: NOTICE:  relation "uq_ads_event" already exists, skipping
+postgres-init-1  | psql:/init/NoSQL/58_time_series_timescaledb/time_series.timescaledb.sql:222: NOTICE:  table "ai_runtime_metric_series" is already a hypertable, skipping
+postgres-init-1  |              create_hypertable              
+postgres-init-1  | --------------------------------------------
+postgres-init-1  |  (2,time_series,ai_runtime_metric_series,f)
+postgres-init-1  | (1 row)
+postgres-init-1  | 
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | psql:/init/NoSQL/58_time_series_timescaledb/time_series.timescaledb.sql:223: NOTICE:  relation "order_ai_agent_metric" already exists, skipping
+postgres-init-1  |                 create_hypertable                 
+postgres-init-1  | --------------------------------------------------
+postgres-init-1  |  (10,time_series,payment_gateway_metric_series,f)
+postgres-init-1  | (1 row)
+postgres-init-1  | 
+postgres-init-1  | psql:/init/NoSQL/58_time_series_timescaledb/time_series.timescaledb.sql:224: NOTICE:  table "payment_gateway_metric_series" is already a hypertable, skipping
+postgres-init-1  | psql:/init/NoSQL/58_time_series_timescaledb/time_series.timescaledb.sql:225: NOTICE:  relation "order_payment_gateway_metric" already exists, skipping
+postgres-init-1  | CREATE INDEX
+postgres-init-1  |               create_hypertable              
+postgres-init-1  | ---------------------------------------------
+postgres-init-1  |  (7,time_series,lab_analyzer_event_series,f)
+postgres-init-1  | (1 row)
+postgres-init-1  | 
+postgres-init-1  | psql:/init/NoSQL/58_time_series_timescaledb/time_series.timescaledb.sql:226: NOTICE:  table "lab_analyzer_event_series" is already a hypertable, skipping
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | psql:/init/NoSQL/58_time_series_timescaledb/time_series.timescaledb.sql:227: NOTICE:  relation "order_lab_accession" already exists, skipping
+postgres-init-1  | psql:/init/NoSQL/58_time_series_timescaledb/time_series.timescaledb.sql:228: NOTICE:  table "ingestion_pipeline_metric_series" is already a hypertable, skipping
+postgres-init-1  |                  create_hypertable                  
+postgres-init-1  | ----------------------------------------------------
+postgres-init-1  |  (6,time_series,ingestion_pipeline_metric_series,f)
+postgres-init-1  | (1 row)
+postgres-init-1  | 
+postgres-init-1  | psql:/init/NoSQL/58_time_series_timescaledb/time_series.timescaledb.sql:229: NOTICE:  relation "order_ingestion_batch_stage" already exists, skipping
+postgres-init-1  | CREATE INDEX
+postgres-init-1  |            create_hypertable           
+postgres-init-1  | ---------------------------------------
+postgres-init-1  |  (11,time_series,service_sli_series,f)
+postgres-init-1  | (1 row)
+postgres-init-1  | 
+postgres-init-1  | psql:/init/NoSQL/58_time_series_timescaledb/time_series.timescaledb.sql:230: NOTICE:  table "service_sli_series" is already a hypertable, skipping
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | psql:/init/NoSQL/58_time_series_timescaledb/time_series.timescaledb.sql:231: NOTICE:  relation "order_sli_service_code" already exists, skipping
+postgres-init-1  | psql:/init/NoSQL/58_time_series_timescaledb/time_series.timescaledb.sql:232: NOTICE:  table "audit_access_metric_series" is already a hypertable, skipping
+postgres-init-1  |               create_hypertable               
+postgres-init-1  | ----------------------------------------------
+postgres-init-1  |  (4,time_series,audit_access_metric_series,f)
+postgres-init-1  | (1 row)
+postgres-init-1  | 
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | psql:/init/NoSQL/58_time_series_timescaledb/time_series.timescaledb.sql:233: NOTICE:  relation "order_audit_metric" already exists, skipping
+postgres-init-1  | >>> NoSQL 59: vector_rag (pgvector)
+postgres-init-1  | psql: error: /init/NoSQL/59_vector_rag_pgvector/vector_rag.pgvector.sql: No such file or directory
+[Kpostgres-init-1 exited with code 1
+exit_code=0

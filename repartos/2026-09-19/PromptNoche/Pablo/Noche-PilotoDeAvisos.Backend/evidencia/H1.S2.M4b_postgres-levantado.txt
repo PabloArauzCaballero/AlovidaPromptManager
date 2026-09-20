@@ -1,0 +1,10 @@
+=== Levantando postgres con el perfil local-db ===
+$ docker compose --profile local-db up -d postgres postgres-init
+ Container mantra-redesa-postgres-1 Running 
+ Container mantra-redesa-postgres-init-1 Recreate 
+ Container mantra-redesa-postgres-init-1 Recreated 
+ Container mantra-redesa-postgres-1 Waiting 
+ Container mantra-redesa-postgres-1 Healthy 
+ Container mantra-redesa-postgres-init-1 Starting 
+ Container mantra-redesa-postgres-init-1 Started 
+exit_code=0

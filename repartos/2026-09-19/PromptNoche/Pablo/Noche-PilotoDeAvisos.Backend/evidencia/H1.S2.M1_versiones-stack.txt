@@ -1,0 +1,35 @@
+=== H1.S2.M1 — Version declarada / resuelta / instalada ===
+
+--- @nestjs/core ---
+Declarada (package.json):
+      "@nestjs/core": "^11.0.1",
+Resuelta (yarn.lock, primeras coincidencias):
+    version: 11.1.28
+Instalada (node_modules/@nestjs/core/package.json):
+  11.1.28
+
+--- typescript ---
+Declarada (package.json):
+      "typescript": "^5.7.3",
+Resuelta (yarn.lock, primeras coincidencias):
+    version: 5.9.3
+    version: 5.9.3
+Instalada (node_modules/typescript/package.json):
+  5.9.3
+
+--- @mikro-orm/core ---
+Declarada (package.json):
+      "@mikro-orm/core": "^7.1.7",
+Resuelta (yarn.lock, primeras coincidencias):
+    version: 7.1.7
+Instalada (node_modules/@mikro-orm/core/package.json):
+  7.1.7
+
+--- jest ---
+Declarada (package.json):
+      "jest": "^30.0.0",
+Resuelta (yarn.lock, primeras coincidencias):
+    version: 30.4.2
+Instalada (node_modules/jest/package.json):
+  30.4.2
+

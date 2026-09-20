@@ -1,0 +1,40 @@
+=== H1.S2.M4 — Disponibilidad de PostgreSQL y Docker ===
+
+--- Docker ---
+$ docker version --format '{{.Server.Version}}'
+
+failed to connect to the docker API at npipe:////./pipe/dockerDesktopLinuxEngine; check if the path is correct and if the daemon is running: open //./pipe/dockerDesktopLinuxEngine: The system cannot find the file specified.
+exit_code=1
+
+$ docker ps
+failed to connect to the docker API at npipe:////./pipe/dockerDesktopLinuxEngine; check if the path is correct and if the daemon is running: open //./pipe/dockerDesktopLinuxEngine: The system cannot find the file specified.
+exit_code=1
+
+--- PostgreSQL ---
+$ docker compose ps (servicios definidos en docker-compose.yml relacionados a postgres)
+8:#     Postgres se siembra con las MISMAS variables que usa la app (DB_*), así
+44:  # de correr: contra Postgres/Mongo gestionados (Neon, Atlas — el `.env`
+50:  # existe; ahí hay que pasar `DB_HOST=postgres DB_PORT=5432` al `up`.
+51:  DB_HOST: ${DB_HOST:-postgres}
+53:  DB_USER: ${DB_USER:-${POSTGRES_USER}}
+54:  DB_PASSWORD: ${DB_PASSWORD:-${POSTGRES_PASSWORD}}
+55:  DB_NAME: ${DB_NAME:-${POSTGRES_DB}}
+56:  # Obligatorio contra un Postgres gestionado: sin esto `orm.env.ts` cae a su
+320:  # Desde 2026-09-05 el entorno de desarrollo apunta a Postgres y Mongo
+324:  #   docker compose --profile local-db up -d postgres postgres-init mongodb mongo-init
+325:  # y apunta el `.env` a ellos (`DB_HOST=postgres` desde un contenedor,
+327:  # `depends_on`): con el perfil activo hay que dejar terminar `postgres-init`
+329:  postgres:
+335:      POSTGRES_DB: ${POSTGRES_DB}
+336:      POSTGRES_USER: ${POSTGRES_USER}
+337:      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+339:      - "${POSTGRES_PORT:-5433}:5432"
+341:      # timescaledb-ha usa PGDATA=/home/postgres/pgdata/data, no la ruta de la
+342:      # imagen oficial de postgres. Montar en /var/lib/postgresql/data dejaba el
+344:      - postgres_data:/home/postgres/pgdata
+
+$ intento de conexion directa a localhost:5432 con pg_isready si existe
+pg_isready no disponible en PATH
+--- Chequeo directo de puerto 5433 (mapeo por defecto de POSTGRES_PORT en docker-compose.yml) via TCP ---
+NO CONECTA a 127.0.0.1:5433 -> ECONNREFUSED
+exit_code=1

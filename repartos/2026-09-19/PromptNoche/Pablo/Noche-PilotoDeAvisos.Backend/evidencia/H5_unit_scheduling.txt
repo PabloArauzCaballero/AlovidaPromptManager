@@ -1,0 +1,17 @@
+=== H5.S1.M1 — regresión de aislamiento, parte 1: unitarios de scheduling ===
+Alcance declarado (Q-22): los 19 .spec.ts bajo src/modules/scheduling/
+(node:28548) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:36012) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:24884) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:24108) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+Test Suites: 19 passed, 19 total
+Tests:       467 passed, 467 total
+Snapshots:   0 total
+Time:        12.057 s
+Ran all test suites matching src/modules/scheduling.
+exit_code=0

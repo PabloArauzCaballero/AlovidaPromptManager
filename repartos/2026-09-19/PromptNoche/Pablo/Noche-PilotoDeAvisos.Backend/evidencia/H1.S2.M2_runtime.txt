@@ -1,0 +1,5 @@
+=== H1.S2.M2 — Runtime real: Node y Yarn ===
+$ node -v
+v22.23.1
+$ yarn -v
+4.14.1
