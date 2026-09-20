@@ -20,12 +20,20 @@ más tarde con una forma distinta, esta ficha se reconcilia contra ella, no al r
 
 | Versión | Hash (blob SHA-1 de git de este archivo, en el commit que lo publica) | Commit de este repo | Estado | Fecha |
 |---|---|---|---|---|
-| `v1.0.0` | blob `8c0289f942f2cb153c64e07fdf68d609d5c822bc` (commit `b3f78f1ccc3b4d916959211f09df2a8ad421b977`, ver `evidencia/h1-s3-m3-commit-y-blob-v1.txt`) | `ender/contrato-agenda-notice-port` | `IMPLEMENTADO` (H1) | 2026-09-20 |
+| `v1.0.0` | commit `06dc3357bf9e38ab6626ac320717cb86257fbc72` (identidad canónica de esta versión) | `ender/contrato-agenda-notice-port` | `IMPLEMENTADO` (H1) | 2026-09-20 |
+
+**Nota sobre auto-referencia.** Un archivo no puede contener el hash de su propio contenido
+final: escribir el hash cambia el contenido y por lo tanto el hash. Por eso la identidad
+inmutable de cada versión es el **commit de git** que la publica (columna "Hash" de esta tabla),
+no un string SHA-256 embebido en la prosa — el mismo principio que usa git para sus propios
+commits (el árbol se hashea aparte del commit que lo referencia). `evidencia/h1-s3-m3-*` documenta
+el camino completo, incluida la vuelta atrás cuando intenté embeber un SHA-256 literal y noté el
+problema.
 
 Regla de esta tabla (ver §14): una fila publicada **no se edita**. Un cambio de contenido agrega
-una fila nueva con su propio commit y su propio hash de blob; la anterior queda intacta y se
-verifica por comparación de hash (H3/H5) contra el commit que la publicó, no contra el archivo
-editable en el working tree.
+una fila nueva con su propio commit; la anterior queda intacta y se verifica por comparación de
+hash de blob (H3/H5) contra el commit que la publicó, no contra el archivo editable en el
+working tree.
 
 ---
 
@@ -341,8 +349,8 @@ producción — aunque un cambio incompatible también los rompería a ellos).
   `ender/contrato-agenda-notice-port` de `AlovidaPromptManager`.
 - **Commit del que sale (Mantra):** `32ae939983f0d665e4ed371362858801134d35cd`.
 - **Hash del contenido del puerto que documenta:** `b462700cd8f382c0c42676cd931a2281198abaf5dca614cb739a47910bfb5877`.
-- **Commit de publicación de este artefacto (AlovidaPromptManager) y hash de blob:** ver
-  `evidencia/h1-s3-m3-commit-y-blob-v1.txt`, pegado inmediatamente después del commit que lo crea.
+- **Commit de publicación de este artefacto (AlovidaPromptManager):** `06dc3357bf9e38ab6626ac320717cb86257fbc72`
+  (ver `evidencia/h1-s3-m3-commit-y-blob-v1.txt` para el historial de cómo se fijó).
 - **Cómo se referencia:** por versión (`v1.0.0` en la tabla de §0 y por el commit de este repo),
   no por rama de Mantra — si `dev` avanza, este documento no cambia solo; un cambio real del
   archivo fuente produce una microtarea nueva de re-verificación, no una edición silenciosa de
