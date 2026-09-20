@@ -1,0 +1,14 @@
+=== fechas del reparto ===
+2026-09-19 
+
+=== regla 20: CA, DoD y Estado en hitos Y subtareas ===
+  Pablo    hitos=6 subs=18 micros=53 | CA=24 DoD=24 Estado=24 -> OK
+  Ender    hitos=6 subs=18 micros=50 | CA=24 DoD=24 Estado=24 -> OK
+  Itzan    hitos=6 subs=18 micros=52 | CA=24 DoD=24 Estado=24 -> OK
+  Marcelo  hitos=6 subs=18 micros=54 | CA=24 DoD=24 Estado=24 -> OK
+  Justin   hitos=6 subs=18 micros=53 | CA=24 DoD=24 Estado=24 -> OK
+
+=== totales ===
+  prompts de tarea: 5
+  microtareas con ID H<n>.S<m>.M<k>: 262
+  (antes de consolidar eran 262 repartidas en 6 fechas)

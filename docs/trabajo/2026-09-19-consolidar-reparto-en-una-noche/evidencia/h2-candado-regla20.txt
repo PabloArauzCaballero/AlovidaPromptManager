@@ -1,0 +1,26 @@
+$ python tools/check_reparto.py --self-test
+  [PASS] detecta prompt sin alcance OUT
+  [PASS] detecta prompt sin capa de hito
+  [PASS] detecta prompt sin capa de subtarea
+  [PASS] detecta prompt sin microtareas con ID de tres capas
+  [PASS] detecta subtarea sin CA propio
+  [PASS] detecta subtarea sin DoD propio
+  [PASS] detecta subtarea sin Estado propio
+  [PASS] detecta subtarea que cuelga de un hito inexistente
+  [PASS] detecta un estado inventado fuera de los seis de la regla 20
+check_reparto self-test: 30 PASS, 0 FAIL
+exit=0
+
+$ KILL-TEST sobre un prompt REAL: le saco el CA a una subtarea de Marcelo
+check_reparto: ESTRUCTURA INCOMPLETA en 2026-09-19
+  - 2026-09-19/PromptNoche/Marcelo/Noche-PilotoDeAvisos.Registro/RecorridoCasosYAceptacion.md: le FALTA `**CA:**` en 1 de las 24 capas (hay 23, hacen falta 24: 6 hitos + 18 subtareas)
+exit=1
+
+$ y con un estado inventado
+check_reparto: ESTRUCTURA INCOMPLETA en 2026-09-19
+  - 2026-09-19/PromptNoche/Marcelo/Noche-PilotoDeAvisos.Registro/RecorridoCasosYAceptacion.md: le FALTA estados inventados: 'CASI LISTO'
+exit=1
+
+$ restauro
+check_reparto: OK, 2026-09-19 cumple la estructura obligatoria
+exit=0

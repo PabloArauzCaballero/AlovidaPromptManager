@@ -1,86 +1,88 @@
 # Daily — turno noche — 2026-09-19
 
-> **Estado de este documento:** `IN_PROGRESS`. Se escribió **al repartir**, antes del turno.
-> Todo lo que dice "resultado" está en `NOT_RUN` a propósito: **nadie ejecutó nada todavía**.
-> Cada persona completa su fila al cerrar su turno, con la salida de su comando, no con una impresión.
+> **Estado:** `IN_PROGRESS`. Se escribió **al repartir**, antes del turno.
+> Todo «resultado» está en `NOT_RUN` a propósito: **nadie ejecutó nada todavía**.
 
-- **Turno:** noche · **Día del plazo:** 1 · **Paquete fuente:** `BACKEND_AUTONOMO_MANTRA`
-- **Repositorio objetivo:** `mantra-core-health-api` (y los dos frontends, sólo para Marcelo)
-- **Modo de todo el turno:** `DIAGNOSE_DESIGN` — **esta noche nadie escribe en `src/` de Mantra.**
-- **Corte:** lo fija Pablo (su M1). Hasta entonces, referencia del paquete `32ae939983f0d665e4ed371362858801134d35cd`.
+- **Turno:** noche · **Fecha:** 2026-09-19 · **Paquete fuente:** `BACKEND_AUTONOMO_MANTRA`
+- **Requisitos del cliente:** [`REQUISITOS-CLIENTE-ALOVIDA.md`](../../../docs/requisitos/REQUISITOS-CLIENTE-ALOVIDA.md)
+- **Verificación contra el código:** [`VERIFICACION-CONTRA-CODIGO-2026-09-19.md`](../../../docs/verificacion/VERIFICACION-CONTRA-CODIGO-2026-09-19.md)
+- **Todo el trabajo está en esta única fecha.** Cada persona tiene **un solo prompt** con sus seis hitos.
 
 ## 1. Quién tiene qué
 
-| Persona | Lote | Línea | Resultado observable que se le pide | Microtareas | Estado |
-|---|---|---|---|---|---|
-| **Pablo** | [Fijar corte y mapa de dependencias](Pablo/Dia1-CorteReproducible.Backend/FijarCorteYMapaDeDependencias.md) | A | Qué commit atacamos, qué está instalado de verdad, qué dependencia bloquea el piloto | 0/13 | `NOT_RUN` |
-| **Ender** | [Fijar el contrato del puerto de avisos](Ender/Dia1-ContratoDelPiloto.Backend/FijarContratoDelPuertoDeAvisos.md) | A | La definición congelada con hash, y qué garantiza el tipo contra qué es sólo un comentario | 0/14 | `NOT_RUN` |
-| **Itzan** | [Delimitar composición y baseline](Itzan/Dia1-ComposicionYBaseline.Backend/DelimitarComposicionYBaseline.md) | A | Qué carga hoy `SchedulingModule`, qué composición mínima se propone, cómo se levanta una base aislada | 0/14 | `NOT_RUN` |
-| **Marcelo** | [Recorrido prioritario y relaciones](Marcelo/Dia1-RecorridoPrioritario.Registro/SeleccionarRecorridoPrioritarioYRelaciones.md) | B | Qué recorrido cierra primero, con qué participantes y localizadores | 0/13 | `NOT_RUN` |
-| **Justin** | [Adaptador con dobles estrictos](Justin/Dia1-AdaptadorAgendaMensajeria.Integracion/IniciarAdaptadorConDoblesEstrictos.md) | B | Cómo se prueba la relación `agenda → mensajería` y qué NO acredita un doble | 0/13 | `NOT_RUN` |
+| Persona | Prompt | Línea | Hitos | Subtareas | Microtareas | Estado |
+|---|---|---|---:|---:|---:|---|
+| **Pablo** | [Corte, laboratorio del piloto y regresión de aislamiento](Pablo/Noche-PilotoDeAvisos.Backend/CorteLaboratorioYRegresion.md) | A | 6 | 18 | 53 | `NOT_RUN` |
+| **Ender** | [El contrato del piloto: fijarlo, validarlo y gobernar su evolución](Ender/Noche-PilotoDeAvisos.Contrato/ContratoValidadorYCompatibilidad.md) | A | 6 | 18 | 50 | `NOT_RUN` |
+| **Itzan** | [Composición, prueba de ausencia y baseline de la capacidad](Itzan/Noche-PilotoDeAvisos.Aislamiento/ComposicionAusenciaYBaseline.md) | A | 6 | 18 | 52 | `NOT_RUN` |
+| **Marcelo** | [Recorrido del registro: selección, casos y aceptación](Marcelo/Noche-PilotoDeAvisos.Registro/RecorridoCasosYAceptacion.md) | B | 6 | 18 | 54 | `NOT_RUN` |
+| **Justin** | [La relación agenda → mensajería: dobles, integración y regresión final](Justin/Noche-PilotoDeAvisos.Integracion/DoblesRelacionYRegresionFinal.md) | B | 6 | 18 | 53 | `NOT_RUN` |
+| | | | **30** | **90** | **262** | |
 
-**Total del turno:** 0 / 67 microtareas. El avance se reporta `HECHO / total`, **nunca como porcentaje a ojo**.
+**Total del turno: 0 / 262 microtareas.** El avance se reporta `HECHO / total`, **nunca a ojo**.
 
-## 2. Dependencias entre lotes — leer antes de empezar
+> ⚠️ **Esto es más de lo que entra en una noche, y está dicho a propósito.** El alcance se entrega
+> completo y ordenado por dependencia. **Lo que no se cierre va `A MEDIAS`**, con qué anda, qué no
+> anda y qué falta exactamente. **Recortar alcance es decisión de coordinación, y se registra.**
 
-El corte de Pablo es el insumo de los otros cuatro. Nadie espera de brazos cruzados: se arranca contra el
-SHA de referencia del paquete y **se marca con qué SHA se trabajó**, para reejecutar lo que haga falta si
-el corte resulta otro.
+## 2. Lo primero, para todos
 
-| Quien espera | Espera de | Qué exactamente | Qué hace mientras tanto |
+Antes de la primera microtarea: instalar el estándar (sección 1 del prompt) y **pegar la salida de
+los dos comandos** en el daily personal. Un turno que arranca sin eso arranca en `BLOQUEADO`.
+
+## 3. Orden de dependencia — quién espera a quién
+
+| Quien espera | De quién | Qué exactamente | Qué hace mientras tanto |
 |---|---|---|---|
-| Ender, Itzan, Marcelo, Justin | Pablo | El SHA del corte (M1) | Trabajar contra `32ae939…` y declararlo |
-| Itzan | Pablo | Imports de `scheduling.module.ts` (M10) y ORM (M11) | **Contrastar, no copiar**: verificar por su cuenta |
-| Justin | Ender | Contrato con hash (M14), semántica (M5–M7), errores (M11) | Especificar el doble como `PROVISIONAL` |
-| Justin, Itzan | Pablo | Comandos reales (M7) y PostgreSQL/Docker (M8) | Verificar por su cuenta y contrastar |
-| Ender | Pablo | La tensión de semántica del aviso (M12) | Preparar la ficha de efectos posteriores |
-| Itzan, Justin | Marcelo | El recorrido elegido y sus relaciones (M6, M10) | Avanzar con la operación candidata del paquete |
+| Todos | **Pablo (H1)** | El SHA del corte | Trabajar contra `32ae939…` y **declararlo** |
+| Justin | **Ender (H1)** | Contrato con hash, semántica de los 8 campos, errores | Especificar su doble como `PROVISIONAL` |
+| Itzan | Pablo (H1) | Imports y ORM | **Contrastar, no copiar**: verificar por su cuenta |
+| Justin, Itzan | Pablo (H1) | Comandos reales y PostgreSQL/Docker | Verificar por su cuenta y contrastar |
+| Itzan (H2) | Pablo (H2) | El laboratorio, para correrlo dentro de la copia descartable | Preparar la copia y el retiro |
+| Todos | Itzan (H2) | **El veredicto de la prueba de ausencia** | Si no hay aislamiento, el resto del plan cambia |
 
-**Regla del turno:** si dos personas miden lo mismo y les da distinto, eso es un **hallazgo**, no un empate
-a resolver charlando. Gana el archivo abierto, y la diferencia se registra.
+**Si dos personas miden lo mismo y les da distinto, eso es un hallazgo, no un empate a resolver
+charlando.** Gana el archivo abierto, y la diferencia se registra.
 
-## 3. Reservas de archivos — para que nadie se pise
+## 4. Reservas de archivos — para que nadie se pise
 
-| Archivo o área | Reservado para | Nadie más lo toca |
-|---|---|---|
-| `src/modules/scheduling/ports/agenda-notice.port.ts` | Ender (lectura) | ✔ |
-| `src/modules/scheduling/scheduling.module.ts`, `src/orm/config/orm.config.ts` | Itzan (lectura) | ✔ |
-| Adaptador de mensajería | Justin (lectura) | ✔ |
-| Cualquier archivo de `src/` de Mantra | **Nadie. Escritura prohibida este turno** | ✔ |
+| Área | Reservada para |
+|---|---|
+| `agenda-notice.port.ts` y los artefactos de contrato | **Ender** |
+| `scheduling.module.ts`, `orm.config.ts`, composición y baseline | **Itzan** |
+| Adaptador de mensajería y registro de checks | **Justin** |
+| Laboratorio, harness y reparaciones acotadas | **Pablo** |
+| Casos de aceptación y evidencia del recorrido | **Marcelo** |
 
-## 4. Ambigüedades abiertas del turno — se arrastran, no se resuelven
+**Dos personas escribiendo el mismo archivo es un defecto del reparto, no un accidente.**
 
-| ID | Ambigüedad | Quién la puede cerrar | Estado |
+## 5. Ambigüedades abiertas — se arrastran, no se resuelven
+
+| ID | Qué | Quién la cierra | Estado |
 |---|---|---|---|
-| Q-01 | El paquete se fecha el 20-09-2026 y hoy es 19-09-2026 | Quien encargó el paquete | `ABIERTA` |
-| Q-02 | `CURRENT_DAY` del plazo original no verificado | Coordinación | `ABIERTA` |
+| Q-C1 | **Seis hitos por persona no entran en una noche** | Coordinación | `ABIERTA` |
+| Q-01 | El paquete se fecha el 20-09 y hoy es 19-09 | Quien encargó el paquete | `ABIERTA` |
 | Q-03 | `TEAM_CAPACITY` en horas netas sin calcular | Coordinación | `ABIERTA` |
-| Q-04 | El registro funcional original no está identificado | Quien tenga el documento aprobado | `ABIERTA` |
-| Q-05 | El puerto no declara versión de contrato | El equipo | `ABIERTA` |
-| Q-06 | Obligatoriedad y durabilidad del aviso (comentario del puerto vs metaprompt) | **Decisión de negocio** | `DECISION_REQUIRED` |
-| Q-07 | Cuándo corresponde el canal de chat | Alcance del piloto | `ABIERTA` |
-| Q-08 | Qué operación concreta se aísla | Alcance del piloto | `ABIERTA` |
-| Q-11 | Qué configuración de frontend se usará en la aceptación | Coordinación | `ABIERTA` |
-| Q-12 / Q-13 | Idempotencia y política de reintentos sin definir | Negocio, vía contrato | `DECISION_REQUIRED` |
+| Q-04 | El registro funcional original no está identificado **como archivo** | Quien lo tenga | `ABIERTA` — hay pista: está numerado (3.4, 3.5, 4.2, 4.3) y cita «TAREA-15» |
+| Q-06 | Durabilidad del aviso: el puerto dice que un aviso fallido se descarta; el metaprompt exige durabilidad | **Negocio** | `DECISION_REQUIRED` |
+| Q-12 / Q-13 | Idempotencia y política de reintentos sin definir | **Negocio** | `DECISION_REQUIRED` |
 
-**Q-06 es la que más trabajo bloquea.** Si alguien puede decidirla mañana, el Día 2 vale bastante más.
+**Q-06 es la que más trabajo bloquea.** Si alguien la decide, el turno rinde bastante más.
 
-## 5. Cierre del turno — completar acá
+## 6. Cierre del turno — completar acá
 
-Cada quien pega su línea al terminar. **Una fila sin comando y exit code no es un cierre**, es una opinión.
-
-| Persona | HECHO / total | `BLOCKED` con motivo | Handoff entregado | Enlace a su daily |
-|---|---|---|---|---|
-| Pablo | `NOT_RUN` | — | — | [Pablo-Daily-Noche-2026-09-19.md](Pablo/Pablo-Daily-Noche-2026-09-19.md) |
-| Ender | `NOT_RUN` | — | — | [Ender-Daily-Noche-2026-09-19.md](Ender/Ender-Daily-Noche-2026-09-19.md) |
-| Itzan | `NOT_RUN` | — | — | [Itzan-Daily-Noche-2026-09-19.md](Itzan/Itzan-Daily-Noche-2026-09-19.md) |
-| Marcelo | `NOT_RUN` | — | — | [Marcelo-Daily-Noche-2026-09-19.md](Marcelo/Marcelo-Daily-Noche-2026-09-19.md) |
-| Justin | `NOT_RUN` | — | — | [Justin-Daily-Noche-2026-09-19.md](Justin/Justin-Daily-Noche-2026-09-19.md) |
+| Persona | HECHO / total | Hitos cerrados | `A MEDIAS` | `BLOCKED` | Su daily |
+|---|---|---|---|---|---|
+| Pablo | `NOT_RUN` | 0 / 6 | — | — | [Pablo-Daily-Noche-2026-09-19.md](Pablo/Pablo-Daily-Noche-2026-09-19.md) |
+| Ender | `NOT_RUN` | 0 / 6 | — | — | [Ender-Daily-Noche-2026-09-19.md](Ender/Ender-Daily-Noche-2026-09-19.md) |
+| Itzan | `NOT_RUN` | 0 / 6 | — | — | [Itzan-Daily-Noche-2026-09-19.md](Itzan/Itzan-Daily-Noche-2026-09-19.md) |
+| Marcelo | `NOT_RUN` | 0 / 6 | — | — | [Marcelo-Daily-Noche-2026-09-19.md](Marcelo/Marcelo-Daily-Noche-2026-09-19.md) |
+| Justin | `NOT_RUN` | 0 / 6 | — | — | [Justin-Daily-Noche-2026-09-19.md](Justin/Justin-Daily-Noche-2026-09-19.md) |
 
 ### Qué NO se puede escribir en este documento
 
 - Un `PASS` sin comando y exit code pegados.
-- La palabra "listo", "funciona" o "implementado" sobre algo que no se ejecutó.
+- «Listo», «funciona» o «implementado» sobre algo que no se ejecutó.
 - Un porcentaje que no salga de `HECHO / total`.
-- Un `BLOCKED` disfrazado de `PASS` porque "igual compila".
-- Datos de pacientes reales en cualquier salida pegada. Si la salida los tenía: **se enmascara y se aclara que se enmascaró**.
+- Un `BLOCKED` disfrazado de `PASS` porque «igual compila».
+- Datos de pacientes reales en cualquier salida pegada.

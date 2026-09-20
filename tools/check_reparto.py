@@ -50,11 +50,10 @@ MARCAS_OBLIGATORIAS = (
 )
 
 # Contenido minimo. No juzga la calidad —un script no puede—, pero si que las piezas que hacen
-# ejecutable un encargo esten: sin microtareas no hay unidad de verificacion; sin kill-test nadie
-# sabe como demostrar que NO esta hecho; sin alcance OUT se toca lo que no se debe; y sin tabla de
-# ambiguedades, las dudas se resuelven por conveniencia en vez de registrarse.
+# ejecutable un encargo esten: sin kill-test nadie sabe como demostrar que NO esta hecho; sin
+# alcance OUT se toca lo que no se debe; y sin tabla de ambiguedades, las dudas se resuelven por
+# conveniencia en vez de registrarse.
 CONTENIDO_MINIMO = (
-    (re.compile(r"^\|\s*M\d+\s*\|", re.M), "la tabla de microtareas (ninguna fila `| M<n> |`)"),
     (re.compile(r"Kill-test", re.I), "el kill-test"),
     (re.compile(r"Ambigüedades registradas", re.I), "la tabla de ambiguedades a registrar"),
     # Ojo: el encabezado de la tabla de microtareas ya dice "Definition of Done", asi que
@@ -62,6 +61,18 @@ CONTENIDO_MINIMO = (
     (re.compile(r"^#+ .*Definition of Done", re.M | re.I), "el Definition of Done del hito"),
     (re.compile(r"\*\*OUT:\*\*", re.I), "el alcance OUT (lo que NO se toca)"),
 )
+
+# Las TRES capas de la regla 20, con CA y DoD en cada una. Este chequeo existe porque un reparto
+# se entrego con 0 de 30 prompts usando identificadores de tres capas y 0 con CA de subtarea:
+# nadie lo noto hasta que se conto. Un plan de hitos sueltos sin microtareas no tiene unidad de
+# verificacion, y "a medias" se vuelve imposible de expresar con honestidad.
+HITO = re.compile(r"^#+ (H\d+) — ", re.M)
+SUBTAREA = re.compile(r"^#+ (H\d+\.S\d+) — ", re.M)
+MICROTAREA = re.compile(r"^\|\s*(H\d+\.S\d+\.M\d+)\s*\|", re.M)
+CA = re.compile(r"^\*\*CA:\*\*", re.M)
+DOD = re.compile(r"^\*\*DoD:\*\*", re.M)
+ESTADO = re.compile(r"^\*\*Estado:\*\*\s*(.+)$", re.M)
+ESTADOS_VALIDOS = {"TODO", "EN CURSO", "HECHO", "A MEDIAS", "BLOQUEADO", "DESCARTADO"}
 
 
 def _subcarpetas(base: Path) -> list[Path]:
@@ -147,9 +158,51 @@ def _revisar_prompt(tarea: Path, raiz: Path) -> list[str]:
 
     faltantes = [que for marca, que in MARCAS_OBLIGATORIAS if marca not in texto]
     faltantes += [que for patron, que in CONTENIDO_MINIMO if not patron.search(texto)]
+    faltantes += _revisar_capas(texto)
     if faltantes:
         return [f"{_rel(tarea, raiz)}: le FALTA {', y '.join(faltantes)}"]
     return []
+
+
+def _revisar_capas(texto: str) -> list[str]:
+    """Las tres capas de la regla 20, cada una con CA, DoD y Estado."""
+    hitos = HITO.findall(texto)
+    subs = SUBTAREA.findall(texto)
+    micros = MICROTAREA.findall(texto)
+    fallas = []
+
+    if not hitos:
+        fallas.append("la capa de hito (ningún encabezado `H<n> — ...`)")
+    if not subs:
+        fallas.append("la capa de subtarea (ningún encabezado `H<n>.S<m> — ...`)")
+    if not micros:
+        fallas.append("microtareas con identificador de tres capas `H<n>.S<m>.M<k>`")
+    if fallas:
+        return fallas
+
+    # Una subtarea que no cuelga de un hito declarado es un plan de capas sueltas.
+    huerfanas = sorted({s.split(".")[0] for s in subs} - set(hitos))
+    if huerfanas:
+        fallas.append(f"el hito de la(s) subtarea(s) que cuelgan de {', '.join(huerfanas)}")
+    sin_micro = sorted(set(subs) - {m.rsplit(".", 1)[0] for m in micros})
+    if sin_micro:
+        fallas.append(f"microtareas en la(s) subtarea(s) {', '.join(sin_micro)}")
+
+    # CA, DoD y Estado se exigen en hito Y subtarea. Las microtareas los llevan en su fila.
+    esperado = len(hitos) + len(subs)
+    for patron, nombre in ((CA, "CA"), (DOD, "DoD"), (ESTADO, "Estado")):
+        hay = len(patron.findall(texto))
+        if hay < esperado:
+            fallas.append(
+                f"`**{nombre}:**` en {esperado - hay} de las {esperado} capas "
+                f"(hay {hay}, hacen falta {esperado}: {len(hitos)} hitos + {len(subs)} subtareas)")
+
+    invalidos = sorted({e.strip() for e in ESTADO.findall(texto)}
+                       - ESTADOS_VALIDOS)
+    if invalidos:
+        fallas.append("estados inventados: " + ", ".join(repr(e) for e in invalidos))
+
+    return fallas
 
 
 def _rel(p: Path, raiz: Path) -> str:
@@ -183,9 +236,21 @@ Algo observable pasa.
 
 ## 4. Plan
 
-| # | Microtarea | Criterio de aceptación | Definition of Done |
-|---|---|---|---|
-| M1 | Hacer algo | Está hecho | `<comando>` |
+### H1 — Un hito
+
+**CA:** Dado algo, cuando pasa algo, entonces algo observable.
+**DoD:** Las microtareas en `HECHO` con su salida pegada.
+**Estado:** TODO
+
+#### H1.S1 — Una subtarea
+
+**CA:** Dado algo, cuando pasa algo, entonces algo observable.
+**DoD:** La microtarea en `HECHO` con su salida.
+**Estado:** TODO
+
+| ID | Microtarea | Criterio de aceptación | Definition of Done | Estado |
+|---|---|---|---|---|
+| H1.S1.M1 | Hacer algo | Está hecho | `<comando>` | TODO |
 
 ## 5. Ambigüedades registradas
 
@@ -312,7 +377,6 @@ def self_test() -> int:
 
         # --- contenido minimo: sin estas piezas el encargo no es ejecutable ---
         for quitar, espera, nombre in (
-            ("| M1 | Hacer algo | Está hecho | `<comando>` |", "tabla de microtareas", "microtareas"),
             ("**Kill-test:** la comprobación más barata que demuestra que NO está hecho.",
              "kill-test", "kill-test"),
             ("## 5. Ambigüedades registradas", "ambiguedades", "ambiguedades"),
@@ -325,6 +389,46 @@ def self_test() -> int:
             p = revisar(raiz)
             check("detecta prompt sin %s" % nombre,
                   any(espera in x for x in p))
+
+        # --- las tres capas de la regla 20 ---
+        for quitar, espera, nombre in (
+            ("### H1 — Un hito", "capa de hito", "capa de hito"),
+            ("#### H1.S1 — Una subtarea", "capa de subtarea", "capa de subtarea"),
+            ("| H1.S1.M1 | Hacer algo | Está hecho | `<comando>` | TODO |",
+             "tres capas", "microtareas con ID de tres capas"),
+        ):
+            raiz = _armar_arbol_ok(base / ("falta_" + nombre.replace(" ", "_")))
+            tarea = raiz / "PromptNoche" / "Pablo" / "Dia1-Algo.Backend" / "Tarea.md"
+            tarea.write_text(PROMPT_MINIMO.replace(quitar, ""), encoding="utf-8")
+            check("detecta prompt sin %s" % nombre,
+                  any(espera in x for x in revisar(raiz)))
+
+        # CA, DoD y Estado se exigen en hito Y subtarea, no solo en las microtareas
+        for patron, nombre in (("**CA:**", "CA"), ("**DoD:**", "DoD"), ("**Estado:**", "Estado")):
+            raiz = _armar_arbol_ok(base / ("sin_%s_de_subtarea" % nombre))
+            tarea = raiz / "PromptNoche" / "Pablo" / "Dia1-Algo.Backend" / "Tarea.md"
+            # quita solo la segunda aparicion: la de la subtarea
+            texto = PROMPT_MINIMO
+            i = texto.index(patron, texto.index(patron) + 1)
+            texto = texto[:i] + texto[texto.index("\n", i) + 1:]
+            tarea.write_text(texto, encoding="utf-8")
+            p = revisar(raiz)
+            check("detecta subtarea sin %s propio" % nombre,
+                  any("`**%s:**` en 1 de las 2 capas" % nombre in x for x in p))
+
+        raiz = _armar_arbol_ok(base / "subtarea_huerfana")
+        tarea = raiz / "PromptNoche" / "Pablo" / "Dia1-Algo.Backend" / "Tarea.md"
+        tarea.write_text(PROMPT_MINIMO.replace("#### H1.S1 —", "#### H9.S1 —"),
+                         encoding="utf-8")
+        check("detecta subtarea que cuelga de un hito inexistente",
+              any("H9" in x for x in revisar(raiz)))
+
+        raiz = _armar_arbol_ok(base / "estado_inventado")
+        tarea = raiz / "PromptNoche" / "Pablo" / "Dia1-Algo.Backend" / "Tarea.md"
+        tarea.write_text(PROMPT_MINIMO.replace("**Estado:** TODO", "**Estado:** CASI LISTO", 1),
+                         encoding="utf-8")
+        check("detecta un estado inventado fuera de los seis de la regla 20",
+              any("estados inventados" in x and "CASI LISTO" in x for x in revisar(raiz)))
 
     fallos = [n for n, ok in casos if not ok]
     for nombre, ok in casos:

@@ -1,94 +1,102 @@
 # Daily de Justin — turno noche — 2026-09-19
 
-> **Estado:** `IN_PROGRESS`. Este archivo se creó **al repartir**, antes del turno.
-> Los resultados están en `NOT_RUN` porque **todavía no ejecutaste nada**. Completalo al cerrar.
+> **Estado:** `IN_PROGRESS`. Se creó **al repartir**, antes del turno.
+> Todo está en `NOT_RUN` porque **todavía no ejecutaste nada**. Completalo al cerrar.
 
-- **Persona:** Justin · **Turno:** noche · **Fecha:** 2026-09-19 · **Día del plazo:** 1 · **Línea:** B
-- **Lote:** [Iniciar la relacion agenda -> mensajeria con dobles estrictos y su registro de checks](Dia1-AdaptadorAgendaMensajeria.Integracion/IniciarAdaptadorConDoblesEstrictos.md)
-- **Modo:** `DIAGNOSE_DESIGN` — **no escribís en `src/` de Mantra este turno.**
+- **Persona:** Justin · **Turno:** noche · **Fecha:** 2026-09-19 · **Línea:** B · **Rol:** responsable de relación e integración
+- **Tu prompt:** [La relación agenda → mensajería: dobles, integración y regresión final](Noche-PilotoDeAvisos.Integracion/DoblesRelacionYRegresionFinal.md)
 - **Daily del equipo:** [Daily-Noche-2026-09-19.md](../Daily-Noche-2026-09-19.md)
+- **6 hitos · 18 subtareas · 53 microtareas**
 
-## 1. Qué se te pidió
+## 1. Instalación del estándar — es lo primero, no lo último
 
-Una especificacion de la relacion que cualquiera puede implementar manana, mas la lista explicita de lo que un doble **jamas** va a acreditar.
+- [ ] `ls .claude/skills | wc -l` → **176**, salida pegada acá abajo.
+- [ ] `python .claude/hooks/plan_gate.py --self-test` → **11 PASS, 0 FAIL**, salida pegada.
+- [ ] Cargaste `skills-router` y las skills de la sección 1 de tu prompt.
+- [ ] Creaste tu `PLAN.md` **antes** del primer `Edit`/`Write` de código.
 
-## 2. Avance
+```text
+(pegar acá la salida de los dos comandos)
+```
 
-**0 / 13 microtareas en `HECHO`.** Se calcula, no se estima. Las microtareas `A MEDIAS` cuentan como **no hechas**.
+**Sin estas cuatro casillas, tu turno arranca en `BLOQUEADO`, no en `EN CURSO`.**
 
-| Estado | Cantidad |
-|---|---|
-| `HECHO` | 0 |
-| `EN CURSO` | 0 |
-| `A MEDIAS` | 0 |
-| `BLOCKED` | 0 |
-| `TODO` | 13 |
+## 2. Avance por hito
 
-### Detalle por microtarea
+**0 / 53 microtareas en `HECHO`.** Se calcula, no se estima. Las `A MEDIAS` cuentan como **no hechas**.
 
-| # | Estado | Comando ejecutado | Exit code | Ruta de la evidencia |
+| Hito | Prioridad | Microtareas | HECHO | Estado |
+|---|---|---:|---:|---|
+| **H1** — Iniciar la relación `agenda → mensajería` con dobles estrictos y su registro de checks | `ALTA` | 13 | 0 | `TODO` |
+| **H2** — Ejercitar la relación con dobles fijados de ambos extremos | `ALTA` | 8 | 0 | `TODO` |
+| **H3** — Integrar la relación con los artefactos que ya estén listos | `MEDIA` | 8 | 0 | `TODO` |
+| **H4** — Probar idempotencia, concurrencia y recuperación de la relación | `ALTA` | 8 | 0 | `TODO` |
+| **H5** — Probar que un doble no puede llegar a producción ni salir a un destinatario real | `ALTA` | 7 | 0 | `TODO` |
+| **H6** — Correr la regresión del candidato final | `ALTA` | 9 | 0 | `TODO` |
+| **TOTAL** | | **53** | **0** | |
+
+> Seis hitos no entran en una noche, y está dicho en tu prompt. **Lo que no cierres va `A MEDIAS`
+> con qué anda, qué no anda y qué falta exactamente.** Disfrazarlo de `HECHO` es lo único prohibido.
+
+## 3. Detalle de las microtareas que tocaste
+
+*(Una fila por microtarea abierta. Las que no abriste quedan en `TODO` y no hace falta listarlas.)*
+
+| ID | Estado | Comando ejecutado | Exit code | Ruta de la evidencia |
 |---|---|---|---|---|
-| M1 | `TODO` | — | — | — |
-| M2 | `TODO` | — | — | — |
-| M3 | `TODO` | — | — | — |
-| M4 | `TODO` | — | — | — |
-| M5 | `TODO` | — | — | — |
-| M6 | `TODO` | — | — | — |
-| M7 | `TODO` | — | — | — |
-| M8 | `TODO` | — | — | — |
-| M9 | `TODO` | — | — | — |
-| M10 | `TODO` | — | — | — |
-| M11 | `TODO` | — | — | — |
-| M12 | `TODO` | — | — | — |
-| M13 | `TODO` | — | — | — |
+| H1.S1.M1 | `TODO` | — | — | — |
 
-> Una fila con estado `HECHO` y la columna de comando vacía **no vale**. `command` y `exit_code` son `null`
-> sólo cuando no hubo ejecución, y en ese caso la causa va escrita en la columna de evidencia.
-
-## 3. Qué esperás de otros
-
-| De quién | Qué exactamente | Recibido |
-|---|---|---|
-| Ender | El contrato fijado con hash (su M14). Mientras no exista, tu doble se marca `PROVISIONAL` | `NO` |
-| Pablo | Comandos reales (su M7) y PostgreSQL/Docker (su M8) | `NO` |
-| Marcelo | Que relacion prioriza (su M10) | `NO` |
+> Una fila `HECHO` con la columna de comando vacía **no vale**. `command` y `exit_code` son `null`
+> sólo cuando no hubo ejecución, y la causa va escrita en la columna de evidencia.
 
 ## 4. Qué entregás vos
 
-| A quién | Qué exactamente | Entregado |
-|---|---|---|
-| Ender | Que reglas necesita tu validador que el contrato todavia no define (Q-12, Q-13) | `NO` |
-| Itzan | La ficha de la relacion (M10) | `NO` |
-| Marcelo | Si su recorrido toca un canal cuyo limite de verificacion esta en tu M12 | `NO` |
-| Pablo | Comandos reales (M8) y disponibilidad de PostgreSQL/Docker (M9) | `NO` |
+| Al cerrar | A quién | Qué exactamente | Entregado |
+|---|---|---|---|
+| **H1** | Ender | Qué reglas necesita tu validador que el contrato no define | `NO` |
+| **H1** | Itzan | La ficha de la relación | `NO` |
+| **H1** | Marcelo | Si su recorrido toca un canal cuyo límite de verificación tenés vos | `NO` |
+| **H1** | Pablo | Comandos reales y disponibilidad de PostgreSQL/Docker | `NO` |
+| **H2** | Marcelo | Qué casos suyos ya se pueden ejercitar y cuáles esperan participantes reales | `NO` |
+| **H2** | Ender | Qué del contrato resultó ambiguo al implementarlo — es la mejor prueba de un contrato | `NO` |
+| **H2** | Itzan | Qué necesita el adaptador de la composición de capacidad | `NO` |
+| **H3** | Marcelo | Qué escenarios suyos ya corren con implementaciones reales | `NO` |
+| **H3** | Itzan | Qué necesitó la relación de la composición | `NO` |
+| **H3** | Ender | Qué ambigüedad del contrato apareció al integrar | `NO` |
+| **H4** | Marcelo | Qué pasos de su recorrido quedan cubiertos por estas propiedades | `NO` |
+| **H4** | Ender | Qué necesita el contrato para cerrar Q-12 y Q-13 | `NO` |
+| **H4** | Itzan | Si la restricción de unicidad exige cambio de esquema | `NO` |
+| **H5** | Marcelo | Qué discrepancias abiertas afectan su dictamen | `NO` |
+| **H5** | Ender | La discrepancia doble vs proveedor real, si la hubo | `NO` |
+| **H5** | Pablo | El registro consolidado para el cierre | `NO` |
+| **H6** | Marcelo | El resultado de la regresión, incluido el rojo, para el dictamen | `NO` |
+| **H6** | Pablo | Qué quedó en rojo y no se pudo reparar | `NO` |
+| **H6** | Todo el equipo | El registro consolidado de la semana | `NO` |
 
 ## 5. Bloqueos
-
-*(Completar. Un bloqueo se registra apenas aparece, no al final del turno.)*
 
 | Qué bloquea | Qué intentaste | Qué lo destraba | De quién depende |
 |---|---|---|---|
 | — | — | — | — |
 
-**Si un bloqueo se confirma, no iteres sobre él:** registrá la causa y pasá a la siguiente microtarea independiente.
+**Un bloqueo se reporta apenas aparece, no al final.** Si se confirma, no iteres: registrá la causa
+y pasá a la siguiente microtarea independiente.
 
 ## 6. Ambigüedades que encontraste
 
-*(Se registran, no se resuelven. Una ambigüedad resuelta por conveniencia es una decisión de negocio tomada por quien no podía tomarla.)*
+*(Se registran, no se resuelven. Una ambigüedad resuelta por conveniencia es una decisión de
+negocio tomada por quien no podía tomarla.)*
 
 | ID | Qué | Supuesto que tomaste | A quién confirmárselo |
 |---|---|---|---|
 | — | — | — | — |
 
-## 7. El riesgo específico de tu lote
+## 7. Antes de cerrar
 
-Un doble que no hace fallar el caso 4 (respuesta incompatible) ni el caso 5 (operacion no registrada) fabrica verdes. El estado maximo alcanzable hoy es `ADAPTER_VERIFIED_WITH_DOUBLES`, nunca integracion verificada.
-
-## 8. Antes de cerrar
-
-- [ ] Todas las microtareas están en `HECHO` o `BLOCKED` con motivo y salida del error. Ninguna quedó en `EN CURSO`.
+- [ ] Ninguna microtarea quedó en `EN CURSO`: todas en `HECHO`, `BLOCKED`, `A MEDIAS` o `TODO`.
 - [ ] Ningún `PASS` sin comando y exit code pegados.
-- [ ] Ninguna afirmación excede lo que ejecutaste. *¿Algún éxito declarado depende de algo que no ejecutaste?*
-- [ ] El handoff de la sección 4 está entregado y avisado en el daily del equipo.
-- [ ] Ninguna salida pegada contiene datos reales de pacientes. Si los tenía: enmascarada, **y aclarado que se enmascaró**.
+- [ ] Cada hito y cada subtarea que tocaste tienen su **Estado** actualizado, no sólo las microtareas.
+- [ ] *¿Algún éxito declarado depende de algo que no ejecutaste?*
+- [ ] Si editaste después de verificar, **esa área volvió a `WRITTEN`** y la reverificaste.
+- [ ] Ninguna salida pegada contiene datos reales de pacientes. Si los tenía: enmascarada **y aclarado**.
 - [ ] Tu fila del [daily del equipo](../Daily-Noche-2026-09-19.md) está actualizada.
