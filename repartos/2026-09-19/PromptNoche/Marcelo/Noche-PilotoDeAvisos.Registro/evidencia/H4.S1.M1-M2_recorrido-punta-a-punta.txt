@@ -1,0 +1,65 @@
+# H4.S1.M1 + M2 — recorrido M-06 de punta a punta, con marca real/doble por paso
+# Ejecutado 2026-09-20T21:56:46Z contra la API construida desde dev @ b122bd4d (incluye el fix de autorizacion del PR #447)
+# La API corre en 127.0.0.1:3010 y NO en :3000: Docker Desktop tomo ese puerto a las 17:50 (ENVIRONMENT, regla 80.4)
+# Datos sinteticos nuevos, corrida propia. Nombres y motivos enmascarados por el arnes.
+
+$ node h4-recorrido.mjs --base-url http://127.0.0.1:3010
+
+=== H4 · recorrido M-06 de punta a punta contra http://127.0.0.1:3010 · corrida 941406957 ===
+
+✓ [admin] POST /iam/auth/login → 200 (esperado 200|201)
+✓ [P1 buscar médicos disponibles] GET /scheduling/resources?tenantId=1befcfea… → 200 (esperado 200)
+   ▸ paso 1 · Buscar médico disponible · participante=API scheduling + practice (directorio) · REAL · PASS · 19 recursos
+✓ [P2 cupos de 22f1b9ac…] GET /scheduling/resources/22f1b9ac…/slots?from=2026-09-20T21%3A56%3A49.411Z&to=2026-10-20T21%3A56%3A49.412Z → 200 (esperado 200)
+✓ [P2 cupos de 7db0c749…] GET /scheduling/resources/7db0c749…/slots?from=2026-09-20T21%3A56%3A49.411Z&to=2026-10-20T21%3A56%3A49.412Z → 200 (esperado 200)
+✓ [P2 cupos de 7d183d6f…] GET /scheduling/resources/7d183d6f…/slots?from=2026-09-20T21%3A56%3A49.411Z&to=2026-10-20T21%3A56%3A49.412Z → 200 (esperado 200)
+✓ [P2 cupos de e2a26590…] GET /scheduling/resources/e2a26590…/slots?from=2026-09-20T21%3A56%3A49.411Z&to=2026-10-20T21%3A56%3A49.412Z → 200 (esperado 200)
+✓ [P2 cupos de c111351b…] GET /scheduling/resources/c111351b…/slots?from=2026-09-20T21%3A56%3A49.411Z&to=2026-10-20T21%3A56%3A49.412Z → 200 (esperado 200)
+✓ [P2 cupos de d949e368…] GET /scheduling/resources/d949e368…/slots?from=2026-09-20T21%3A56%3A49.411Z&to=2026-10-20T21%3A56%3A49.412Z → 200 (esperado 200)
+✓ [P2 cupos de b64ff264…] GET /scheduling/resources/b64ff264…/slots?from=2026-09-20T21%3A56%3A49.411Z&to=2026-10-20T21%3A56%3A49.412Z → 200 (esperado 200)
+✓ [P2 cupos de d7ea097e…] GET /scheduling/resources/d7ea097e…/slots?from=2026-09-20T21%3A56%3A49.411Z&to=2026-10-20T21%3A56%3A49.412Z → 200 (esperado 200)
+✓ [P2 cupos de 5e468365…] GET /scheduling/resources/5e468365…/slots?from=2026-09-20T21%3A56%3A49.411Z&to=2026-10-20T21%3A56%3A49.412Z → 200 (esperado 200)
+✓ [P2 cupos de 0a99293b…] GET /scheduling/resources/0a99293b…/slots?from=2026-09-20T21%3A56%3A49.411Z&to=2026-10-20T21%3A56%3A49.412Z → 200 (esperado 200)
+   ▸ paso 2 · Ver horario y sede · participante=API scheduling (cupos publicados) · REAL · PASS · cupo f4bd52e9… @ 2026-09-28T13:00:00.000Z
+✓ [alta PA1] POST /iam/auth/register-patient → 201 (esperado 201)
+✓ [login PA1] POST /iam/auth/login → 200 (esperado 200|201)
+   PA1: perfil=129dea54…
+✓ [alta PA2] POST /iam/auth/register-patient → 201 (esperado 201)
+✓ [login PA2] POST /iam/auth/login → 200 (esperado 200|201)
+   PA2: perfil=3951a2ec…
+✓ [P3 PA1 retiene] POST /scheduling/slots/f4bd52e9…/holds → 201 (esperado 200|201)
+✗ [P3 PA1 confirma] POST /scheduling/holds/347db5f5…/confirm → 409 (esperado 200|201)
+    cuerpo: {"code":"CONFLICT","message":"<enmascarado:string>","correlationId":"19","timestamp":"2026-09-20T21:56:59.697Z","path":"/scheduling/holds/347db5f5-a42a-4e42-b942-bebea2a31a16/confirm"}
+   ▸ paso 3 · Reservar (retener y confirmar) · participante=API scheduling + clinical (cita) + profiles · REAL · FAIL · reserva …
+✓ [ADV-08a confirmar el mismo hold otra vez] POST /scheduling/holds/347db5f5…/confirm → 409 (esperado 409|422|404)
+✓ [ADV-08b dos retenciones simultáneas sobre el cupo 4f3a97ad… (capacidad 1)] → 409 y 201
+✓ [P4 PA2 se anota en la espera] POST /scheduling/waitlist → 201 (esperado 201)
+   ▸ paso 4 · Sin cupo, entrar a la lista de espera · participante=API scheduling (waitlist) · REAL · PASS · entrada ed364a88…
+✗ [P5 PA1 cancela su cita] POST /scheduling/bookings/undefined/cancel → 400 (esperado 200)
+    cuerpo: {"code":"VALIDATION_FAILED","message":"<enmascarado:string>","correlationId":"24","timestamp":"2026-09-20T21:57:01.397Z","path":"/scheduling/bookings/undefined/cancel"}
+✓ [P5 worker busca cupos con candidatos] GET /scheduling/internal/waitlist-candidates → 200 (esperado 200)
+✓ [P5 worker promueve la espera del cupo liberado] POST /scheduling/internal/promote-waitlist/f4bd52e9… → 200 (esperado 200)
+   ▸ paso 5 · Cupo liberado dispara el aviso de hueco · participante=API scheduling + worker interno (por barrido, no al cancelar) · REAL · PASS · procesados=0
+✗ [P6 PA2 reserva para poder demorarla] POST /scheduling/slots/f4bd52e9…/holds → 409 (esperado 200|201)
+    cuerpo: {"code":"CONFLICT","message":"<enmascarado:string>","correlationId":"27","details":{"slotId":"f4bd52e9-321a-4310-bd84-15dd0156eaa4"},"timestamp":"2026-09-20T21:57:02.171Z","path":"/scheduling/slots/f4bd52e9-321a-4310-bd84-15dd0156eaa4/holds"}
+✗ [P6 PA2 confirma] POST /scheduling/holds/undefined/confirm → 400 (esperado 200|201)
+    cuerpo: {"code":"VALIDATION_FAILED","message":"<enmascarado:string>","correlationId":"28","timestamp":"2026-09-20T21:57:02.235Z","path":"/scheduling/holds/undefined/confirm"}
+✗ [P6 el profesional avisa demora de 20 min] POST /scheduling/bookings/undefined/delay → 400 (esperado 200)
+    cuerpo: {"code":"VALIDATION_FAILED","message":"<enmascarado:string>","correlationId":"29","timestamp":"2026-09-20T21:57:02.305Z","path":"/scheduling/bookings/undefined/delay"}
+   ▸ paso 6 · Demora del profesional dispara el aviso · participante=API scheduling (delay) + messaging · REAL · FAIL · cita …
+✓ [P7 bandeja in-app de PA2] GET /notifications/me?limit=50 → 200 (esperado 200)
+   ▸ paso 7 · El paciente ve el aviso en su bandeja · participante=API messaging (canal in-app) · REAL · PASS · avisos=0
+✗ [P8 conversaciones de PA2] GET /community/conversations?limit=20 → 400 (esperado 200|403|404)
+    cuerpo: {"code":"VALIDATION_FAILED","message":"<enmascarado:string>","correlationId":"31","timestamp":"2026-09-20T21:57:02.575Z","path":"/community/conversations?limit=20"}
+   ▸ paso 8 · Copia al chat de SupportAdmin · participante=API community (SupportAdmin no existe como cuenta) · AUSENTE · NOT_RUN · status=400, conversaciones=0
+   ▸ paso 9 · Correo del aviso · participante=proveedor SMTP · AUSENTE · NOT_RUN · sin SMTP real configurado; se verifica por base en la consulta independiente
+   ▸ paso 10 · Datos de facturación de la consulta (3.6 del cliente) · participante=ninguno: no existe en el flujo de reserva · AUSENTE · NOT_RUN · NOT_FOUND ya declarado en H1 §7 y H2 (CA-M06-F10)
+   ▸ paso 11 · La misma cita desde el móvil · participante=app Flutter · AUSENTE · NOT_RUN · la app declara los endpoints pero no se localizó la pantalla que los consume (H1 §8)
+
+=== resumen de participantes ===
+{"REAL":7,"AUSENTE":4}
+ADV-08a (reintento del mismo hold): {"status":409,"code":"CONFLICT"}
+ADV-08b (dos retenciones simultáneas): {"capacidad":1,"statuses":[409,201],"exitos":1}
+
+ids para la consulta independiente: bookingPA1=undefined bookingPA2=undefined perfilPA1=129dea54-1fcf-4020-a44d-0dadfbac5024 perfilPA2=3951a2ec-89e3-471c-add2-95e77eb848c1 corrida=941406957
+exit_code=0

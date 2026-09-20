@@ -1,0 +1,145 @@
+# H5 y H6 — DoD de sus 17 microtareas, ejecutado el 2026-09-20T22:08:02Z
+
+### H5.S1.M1 — matriz paso x resultado x evidencia con codigo de retorno
+
+$ sed -n '/## §1 —/,/## §2 —/p' entregables/ACEPTACION-M06-2026-09-20.md | grep -cE '^\| [0-9]+ \|'
+11
+exit_code=0   # esperado: = 11 pasos
+
+$ sed -n '/## §1 —/,/## §2 —/p' entregables/ACEPTACION-M06-2026-09-20.md | grep -cE '200|201|403|422'
+11
+exit_code=0   # esperado: >= 8 filas con codigo
+
+### H5.S1.M2 — participante real/doble/ausente, ninguno implicito
+
+$ sed -n '/## §1 —/,/## §2 —/p' entregables/ACEPTACION-M06-2026-09-20.md | grep -cE 'REAL|AUSENTE'
+14
+exit_code=0   # esperado: >= 11
+
+$ grep -c 'sin un solo doble\|no se usó ni un doble\|Sin dobles' entregables/ACEPTACION-M06-2026-09-20.md
+3
+exit_code=0   # esperado: >= 1 declarado
+
+### H5.S1.M3 — los fallos criticos, primero
+
+$ grep -n 'Lo que está en rojo' entregables/ACEPTACION-M06-2026-09-20.md | cut -d: -f1
+5
+exit_code=0   # esperado: linea baja: abre el documento
+
+$ sed -n '/## 🔴/,/^---/p' entregables/ACEPTACION-M06-2026-09-20.md | grep -cE '^\| \*\*R-[0-9]'
+0
+exit_code=1   # esperado: = 4 rojos
+
+### H5.S2.M1 — recorridos exigidos NO ejecutados
+
+$ sed -n '/### H5.S2.M1/,/### H5.S2.M2/p' entregables/ACEPTACION-M06-2026-09-20.md | grep -cE '^\| M-|^\| \*\*M-'
+15
+exit_code=0   # esperado: >= 15 escenarios
+
+### H5.S2.M2 — decisiones de alcance con dueño
+
+$ sed -n '/### H5.S2.M2/,/### H5.S2.M3/p' entregables/ACEPTACION-M06-2026-09-20.md | grep -cE '^\| [0-9] \|'
+6
+exit_code=0   # esperado: = 6 decisiones
+
+$ sed -n '/### H5.S2.M2/,/### H5.S2.M3/p' entregables/ACEPTACION-M06-2026-09-20.md | grep -E '^\| [0-9] \|' | grep -cv 'Claude\|propietario'
+0
+exit_code=1   # esperado: 0 filas sin dueño
+
+### H5.S2.M3 — correspondencia con el cliente actualizada
+
+$ sed -n '/### H5.S2.M3/,/## §4/p' entregables/ACEPTACION-M06-2026-09-20.md | grep -cE 'Cubierto|Parcial|No cubierto'
+11
+exit_code=0   # esperado: >= 10 items con estado
+
+### H5.S3.M1 y M2 — estado de entrega y limites externos
+
+$ grep -c 'PRODUCT_ACCEPTANCE_NOT_VERIFIED' entregables/ACEPTACION-M06-2026-09-20.md
+1
+exit_code=0   # esperado: >= 1 (el estado real, no el aspiracional)
+
+$ sed -n '/### H5.S3.M2/,/## §5/p' entregables/ACEPTACION-M06-2026-09-20.md | grep -cE '^\| '
+6
+exit_code=0   # esperado: >= 5 filas
+
+### H6.S1.M1/M2/M3 — aprobado, a medias, pendiente
+
+$ sed -n '/## §1 —/,/## §2 —/p' entregables/DICTAMEN-M06-2026-09-20.md | grep -cE '^\| '
+12
+exit_code=0   # esperado: >= 11 aprobados con evidencia
+
+$ grep -cE '^- \*\*Qué anda:|^- \*\*Qué no anda:|^- \*\*Qué falta exactamente:|^- \*\*Dónde quedó:' entregables/DICTAMEN-M06-2026-09-20.md
+12
+exit_code=0   # esperado: = 12 (3 items x 4 respuestas)
+
+$ sed -n '/## §3 —/,/## §4 —/p' entregables/DICTAMEN-M06-2026-09-20.md | grep -cE '^\| '
+9
+exit_code=0   # esperado: >= 8 pendientes con dueño
+
+### H6.S2.M1/M2/M3 — limites, no cubierto consolidado, estado
+
+$ sed -n '/## §4 —/,/## §5 —/p' entregables/DICTAMEN-M06-2026-09-20.md | grep -cE '^\| '
+7
+exit_code=0   # esperado: >= 6 proveedores
+
+$ sed -n '/## §5 —/,/## §6 —/p' entregables/DICTAMEN-M06-2026-09-20.md | grep -c '^- '
+9
+exit_code=0   # esperado: >= 8 items consolidados
+
+$ grep -c 'PRODUCT_ACCEPTANCE_NOT_VERIFIED' entregables/DICTAMEN-M06-2026-09-20.md
+1
+exit_code=0   # esperado: >= 1
+
+### H6.S3.M1/M2/M3 — avance calculado, rojos primero, riesgos
+
+$ grep -c '54 / 54' entregables/DICTAMEN-M06-2026-09-20.md
+1
+exit_code=0   # esperado: >= 1 (la formula, no un numero a ojo)
+
+$ head -12 entregables/DICTAMEN-M06-2026-09-20.md | grep -c '🔴'
+0
+exit_code=1   # esperado: >= 1 (el rojo abre el documento)
+
+$ sed -n '/## §8 —/,/## §9 —/p' entregables/DICTAMEN-M06-2026-09-20.md | grep -cE '^\| '
+8
+exit_code=0   # esperado: >= 7 riesgos
+
+### Privacidad: cero PHI en los tres documentos
+
+$ grep -ciE '@(gmail|hotmail|outlook)\.|[0-9]{7,8}-?(SC|LP|CB|OR|PT|TJ|BE|PA|CH)\b' entregables/ACEPTACION-M06-2026-09-20.md entregables/DICTAMEN-M06-2026-09-20.md entregables/RECORRIDO-MULTIMODULO-M06-2026-09-20.md
+entregables/ACEPTACION-M06-2026-09-20.md:0
+entregables/DICTAMEN-M06-2026-09-20.md:0
+entregables/RECORRIDO-MULTIMODULO-M06-2026-09-20.md:0
+exit_code=1   # esperado: 0
+
+## Correccion de tres verificaciones propias (2026-09-20T22:08:30Z)
+Las tres fallaron por el patron, no por el documento: el emoji del titulo rompe el rango de sed/grep en
+este shell, y grep -c con varios archivos imprime "archivo:0" por archivo. Rehechas sin emoji:
+
+$ grep -cE '^\| \*\*R-[0-9]' entregables/ACEPTACION-M06-2026-09-20.md
+4
+exit_code=0   # esperado: = 4 rojos en la cabecera de H5
+
+$ grep -n 'Primero, lo que' entregables/DICTAMEN-M06-2026-09-20.md | cut -d: -f1
+5
+exit_code=0   # esperado: linea <= 12: el rojo abre el dictamen
+
+$ sed -n '1,12p' entregables/DICTAMEN-M06-2026-09-20.md | grep -c 'rojo'
+1
+exit_code=0   # esperado: >= 1 en las primeras 12 lineas
+
+$ grep -ciE '@(gmail|hotmail|outlook)\.' entregables/ACEPTACION-M06-2026-09-20.md
+0
+exit_code=1   # esperado: 0
+
+$ grep -ciE '@(gmail|hotmail|outlook)\.' entregables/DICTAMEN-M06-2026-09-20.md
+0
+exit_code=1   # esperado: 0
+
+$ grep -ciE '[0-9]{7,8}-?(SC|LP|CB|OR|PT|TJ|BE|PA|CH)\b' entregables/ACEPTACION-M06-2026-09-20.md entregables/DICTAMEN-M06-2026-09-20.md entregables/RECORRIDO-MULTIMODULO-M06-2026-09-20.md | tr '\n' ' '
+entregables/ACEPTACION-M06-2026-09-20.md:0 entregables/DICTAMEN-M06-2026-09-20.md:0 entregables/RECORRIDO-MULTIMODULO-M06-2026-09-20.md:0 
+exit_code=0   # esperado: 0 en los tres
+
+$ grep -c 'PRODUCT_ACCEPTANCE_VERIFIED\b' entregables/DICTAMEN-M06-2026-09-20.md
+0
+exit_code=1   # esperado: sale solo dentro de NOT_VERIFIED: no se declara aceptado

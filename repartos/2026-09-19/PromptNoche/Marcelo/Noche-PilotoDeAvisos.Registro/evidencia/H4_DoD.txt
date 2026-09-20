@@ -1,0 +1,73 @@
+# H4 — DoD de las 8 microtareas, ejecutado el 2026-09-20T22:04:56Z sobre entregables/RECORRIDO-MULTIMODULO-M06-2026-09-20.md
+
+## H4.S1.M1 — recorrido ejecutado, salida paso por paso
+
+$ grep -c '▸ paso' evidencia/H4.S1.M1-M2-M3_recorrido-y-adv08.txt
+11
+exit_code=0   # esperado: 11 pasos con su linea
+
+$ grep -c '✓ \[' evidencia/H4.S1.M1-M2-M3_recorrido-y-adv08.txt
+32
+exit_code=0   # esperado: llamadas HTTP reales en verde
+
+## H4.S1.M2 — tabla paso x participante x real/doble, sin dobles ocultos
+
+$ sed -n '/## §1 —/,/## §2 —/p' entregables/RECORRIDO-MULTIMODULO-M06-2026-09-20.md | grep -cE '^\| [0-9]+ \|'
+11
+exit_code=0   # esperado: = 11 filas
+
+$ sed -n '/## §1 —/,/## §2 —/p' entregables/RECORRIDO-MULTIMODULO-M06-2026-09-20.md | grep -cE 'REAL|AUSENTE'
+11
+exit_code=0   # esperado: >= 11 (cada paso clasificado)
+
+$ grep -c 'DOBLE' entregables/RECORRIDO-MULTIMODULO-M06-2026-09-20.md
+0
+exit_code=1   # esperado: 0 dobles: el recorrido corrio contra participantes reales o no corrio
+
+## H4.S1.M3 — ADV-08 con consultas desde conexion independiente
+
+$ grep -c 'conexion INDEPENDIENTE' evidencia/H4.S1.M3_adv08-y-H4.S3.M1_auditoria.txt
+1
+exit_code=0   # esperado: >= 1
+
+$ grep -c 'ADV-08' entregables/RECORRIDO-MULTIMODULO-M06-2026-09-20.md
+4
+exit_code=0   # esperado: >= 2 (a y b)
+
+## H4.S2.M1 — proveedores externos pendientes
+
+$ sed -n '/### H4.S2.M1/,/### H4.S2.M2/p' entregables/RECORRIDO-MULTIMODULO-M06-2026-09-20.md | grep -cE '^\| \*\*'
+4
+exit_code=0   # esperado: >= 4 proveedores
+
+## H4.S2.M2 — pasos NOT_RUN con motivo
+
+$ sed -n '/### H4.S2.M2/,/### H4.S2.M3/p' entregables/RECORRIDO-MULTIMODULO-M06-2026-09-20.md | grep -cE '^\| [0-9]+ ·'
+4
+exit_code=0   # esperado: = 4 pasos
+
+## H4.S2.M3 — correspondencia del recorrido ejecutado contra el cliente
+
+$ sed -n '/### H4.S2.M3/,/## §4/p' entregables/RECORRIDO-MULTIMODULO-M06-2026-09-20.md | grep -cE '^\| [0-9]+ \|'
+11
+exit_code=0   # esperado: = 11 filas
+
+## H4.S3.M1 — rastro de auditoria, consultado
+
+$ grep -c 'data_access_log' evidencia/H4.S1.M3_adv08-y-H4.S3.M1_auditoria.txt
+6
+exit_code=0   # esperado: >= 2 consultas
+
+$ grep -c 'reasonText' entregables/RECORRIDO-MULTIMODULO-M06-2026-09-20.md
+3
+exit_code=0   # esperado: >= 2 (el hallazgo del motivo en el rastro)
+
+## H4.S3.M2 — PHI en logs y URLs
+
+$ grep -c 'grep -c' evidencia/H4.S3.M2_phi-en-logs-y-urls.txt
+12
+exit_code=0   # esperado: >= 6 busquedas
+
+$ grep -A1 'Control sintético del recorrido H4" api-h4b-stdout.log' evidencia/H4.S3.M2_phi-en-logs-y-urls.txt | tail -1
+0
+exit_code=0   # esperado: 0 = el motivo no aparece en el log
