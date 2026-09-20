@@ -1,0 +1,81 @@
+H2.S1.M2 -- Retirar las implementaciones vecinas sustituidas (mensajeria y comunidad)
+
+Retirados en mantra-core-health-api-copia-noche-h2 (NO en el checkout original, NO en
+mantra-core-health-api-copia-noche que guarda el plan):
+  mv src/modules/messaging src/modules/messaging.RETIRED-H2
+  mv src/modules/community src/modules/community.RETIRED-H2
+
+Verificacion de que otro paquete todavia los contiene (grep sobre src/, excluyendo el propio
+modulo retirado y scheduling, que ya se sabia acoplado por H1):
+
+  grep -rln "from '.*modules/messaging" src --include="*.ts" | grep -v "^src/modules/messaging/" | grep -v "^src/modules/scheduling/"
+    -> src/app.module.ts
+       src/common/seed/audio-assets-seed.service.ts
+       src/common/seed/messaging-seed.service.ts
+       src/common/seed/seed.module.ts
+       src/common/storage/storage-lifecycle-concurrency.spec.ts
+       src/common/storage/storage-lifecycle-coordinator.service.spec.ts
+       src/common/storage/storage-lifecycle-coordinator.service.ts
+       src/common/storage/storage-lifecycle.module.ts
+       src/common/storage/storage-worker-publication.service.ts
+
+  grep -rln "from '.*modules/community" src --include="*.ts" | grep -v "^src/modules/community/" | grep -v "^src/modules/scheduling/"
+    -> src/app.module.ts
+       src/common/seed/module-concepts.ts
+
+Lectura de este resultado: `app.module.ts` es la raiz de composicion de TODO el backend (importa
+los 60+ modulos, no es una dependencia especifica de scheduling) y `common/seed/*` /
+`common/storage/*` son infraestructura transversal de la app completa, no de la capacidad
+scheduling. Ninguno de estos 8 archivos vive dentro de scheduling ni es requerido para que
+scheduling compile de forma aislada -- por eso no se cuentan como acoplamiento de la capacidad,
+solo como consumidores generales de messaging/community que existen en cualquier backend
+monolitico. El inventario que SI importa (dentro de scheduling) esta en H2.S1.M3.
+
+H2.S1.M3 -- Bloquear la resolucion desde el checkout original y las caches: probar que un
+import de lo retirado FALLA
+
+Comando literal (typecheck completo, tsconfig.json, node_modules enlazado por junction desde
+mantra-core-health-api-copia-noche/node_modules -- sin instalar nada nuevo, sin tocar el
+checkout original):
+  corepack yarn tsc --noEmit -p tsconfig.json --incremental false
+
+Exit code: 2 (falla)
+
+Errores DENTRO de scheduling (grep "src/modules/scheduling" sobre la salida completa):
+  src/modules/scheduling/adapters/messaging-agenda-notice.adapter.ts(6,38): error TS2307:
+    Cannot find module '../../messaging/services' or its corresponding type declarations.
+  src/modules/scheduling/adapters/support-admin-notice.adapter.ts(9,8): error TS2307:
+    Cannot find module '../../community/services' or its corresponding type declarations.
+  src/modules/scheduling/adapters/support-admin-notice.adapter.ts(10,22): error TS2307:
+    Cannot find module '../../community/community.concepts' or its corresponding type
+    declarations.
+  src/modules/scheduling/scheduling.module.ts(60,33): error TS2307:
+    Cannot find module '../messaging/messaging.module' or its corresponding type declarations.
+  src/modules/scheduling/scheduling.module.ts(64,33): error TS2307:
+    Cannot find module '../community/community.module' or its corresponding type declarations.
+
+Que demuestra: la ausencia de messaging y community SI rompe la resolucion de scheduling, en
+los 2 adapters de notificacion (messaging-agenda-notice.adapter.ts,
+support-admin-notice.adapter.ts) y en el propio scheduling.module.ts. No es solo el binding del
+puerto (AGENDA_NOTICE_PORT) el que depende de messaging: el adapter concreto que hoy resuelve
+ese puerto importa `NotificationsService` de messaging directo, y el segundo adapter (nunca
+enganchado al puerto, ver H1 hallazgo del binding en linea 142) importa servicios y conceptos
+de community directo. La capacidad NO esta hoy aislada de sus dos vecinos nombrados por el
+prompt. Esto coincide con y amplia el hallazgo de H1 (acoplamiento a clinical.AppointmentsRepository):
+scheduling tiene AL MENOS 3 dependencias concretas fuera de su propio directorio que su
+composicion actual no permite sustituir sin codigo: clinical (repositorios), messaging
+(adapter de aviso) y community (adapter de soporte).
+
+No cubierto en esta corrida: no se aislo aun clinical (fuera del alcance literal de esta
+microtarea, que nombra "mensajeria y comunidad"); se declara como dependencia residual en
+H2.S3.M2, no se retira aca para no exceder el alcance de la microtarea.
+
+H2.S1.M4 -- Conservar contratos y baseline autorizado dentro de la copia
+
+Contratos (puertos de la capacidad) siguen presentes en la copia H2, sin tocar:
+  ls src/modules/scheduling/ports/ -> README.md, agenda-notice.port.ts, waitlist.port.ts
+
+Baseline autorizado de H1.S3 (instancia Postgres efimera, fuera de esta copia, compartida por
+diseno entre las dos copias de trabajo -- vive en Docker, no en el filesystem de ningun repo):
+  docker ps --filter "name=night-scheduling-pg" --format "{{.Names}}: {{.Status}}"
+    -> night-scheduling-pg: Up 6 hours

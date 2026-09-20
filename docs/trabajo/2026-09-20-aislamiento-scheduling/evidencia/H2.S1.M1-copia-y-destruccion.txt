@@ -1,0 +1,25 @@
+H2.S1.M1 -- Crear la copia descartable e identificarla
+
+Ruta: mantra-core-health-api-copia-noche-h2
+Origen: clonada LOCAL (`git clone --local --no-hardlinks`) desde
+  mantra-core-health-api-copia-noche (que a su vez es un checkout aparte de
+  mantra-core-health-api, remoto real). El checkout ORIGINAL (mantra-core-health-api/)
+  nunca se tocó.
+
+Comando literal:
+  git clone --local --no-hardlinks "mantra-core-health-api-copia-noche" "mantra-core-health-api-copia-noche-h2"
+  -> "Cloning into 'mantra-core-health-api-copia-noche-h2'... done."
+
+Commit base: 5d5007fb (mismo corte que H1, HEAD de dev con MCH-008.2 #442 fusionado)
+
+Identificacion como descartable:
+  - Remoto `origin` ELIMINADO (`git remote remove origin`) -- no hay forma de hacer push
+    desde esta copia aunque alguien lo intente por error.
+  - Archivo marcador `.NIGHT-DISCARDABLE-H2` en la raiz.
+  - Carpeta con sufijo `-h2`, distinta de `-copia-noche` (que guarda el plan/evidencia de H1).
+
+Como se destruye: `rm -rf mantra-core-health-api-copia-noche-h2` (Windows: eliminar la
+carpeta). No requiere `git worktree remove` ni limpieza especial porque es un clon
+independiente, no un worktree. Antes de destruirla (H2.S3 / cierre de la noche), el
+inventario de lo retirado y el veredicto quedan copiados en
+docs/trabajo/2026-09-20-aislamiento-scheduling/ de copia-noche, que sobrevive.

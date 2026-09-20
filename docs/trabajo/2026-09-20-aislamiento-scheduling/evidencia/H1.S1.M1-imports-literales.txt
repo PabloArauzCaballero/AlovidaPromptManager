@@ -1,0 +1,23 @@
+$ sed -n '1,145p' src/modules/scheduling/scheduling.module.ts
+(archivo completo, corte 5d5007fb — API copia descartable)
+
+Imports de módulo (bloque `imports: [...]` del @Module, líneas 79-92):
+  MikroOrmModule.forFeature([...entities, ...profileEntities])
+  AuditModule
+  DirectoryModule
+  PracticeModule
+  MessagingModule
+  CommunityModule
+  InsuranceModule
+  ProfilesModule
+  CommonModule
+= 8 módulos Nest importados (coincide con lo pre-verificado contra 32ae939...).
+
+Binding AGENDA_NOTICE_PORT (línea 142):
+  { provide: AGENDA_NOTICE_PORT, useExisting: MessagingAgendaNoticeAdapter }
+Es useExisting, no useClass. SupportAdminNoticeAdapter también está declarado como provider
+(línea 133) aunque no se lo asigna al puerto -- segundo adaptador presente, sin usar en el binding actual.
+
+Repositorios "prestados" de otros módulos (no se importa el módulo entero):
+  AppointmentsRepository, EncountersRepository  <- de '../clinical/repositories' (comentario :39-42
+    dice: clase sin estado, EntityManager por parámetro, evita importar ClinicalModule completo)

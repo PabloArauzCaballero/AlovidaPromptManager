@@ -237,7 +237,7 @@ próxima sincronización. La fuente única de verdad es `.claude/`.
 
 Sé honesto sobre esto, porque una falsa sensación de protección es peor que ninguna.
 
-Los candados de [`.claude/hooks/`](.claude/hooks/) (`plan_gate.py`, `report_gate.py`) usan la API
+Los candados de [`.claude/hooks/`](.claude/hooks/) (`plan_gate.py`, `report_gate.py`, `blocker_gate.py`) usan la API
 de hooks de **Claude Code**. Interceptan la escritura y el cierre de sesión, y bloquean de verdad:
 si no existe el plan, la escritura de código **no ocurre**.
 

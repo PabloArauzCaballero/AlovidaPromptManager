@@ -1,0 +1,35 @@
+H1.S3.M2 -- Identidad de la base por ejecución:
+  Contenedor: night-scheduling-pg (nombre fijo por corrida activa, se destruye entre corridas)
+  Etiquetas Docker: night-run-id=<fecha-hora>, night-purpose=scheduling-isolation-baseline
+  Base: night_scheduling_<run_id> (ej. night_scheduling_20260920_014031) -- el run_id va EN el
+  nombre de la base, no solo en el contenedor, por si en algún punto se apunta a un Postgres
+  compartido con varias bases (hoy no es el caso: instancia dedicada por contenedor).
+  Puerto: 15432 (verificado libre antes de usarlo, distinto de 5433 del stack compartido).
+  Usuario runtime: night_runtime (ver H1.S3.M4 -- rol único por ahora, sin separación de
+  preparación/runtime todavía: TODO).
+
+$ docker run -d --name night-scheduling-pg -e POSTGRES_USER=night_runtime \
+    -e POSTGRES_PASSWORD=night_local_only -e POSTGRES_DB=night_scheduling_20260920_014031 \
+    -p 15432:5432 --label night-run-id=20260920-014031 \
+    --label night-purpose=scheduling-isolation-baseline postgres:16-alpine
+(container id) 67276111ed30...
+$ docker exec night-scheduling-pg pg_isready -U night_runtime
+/var/run/postgresql:5432 - accepting connections
+
+H1.S3.M5 -- Limpieza con comprobación de identidad (docs/trabajo/2026-09-20-aislamiento-scheduling/scripts/cleanup-night-instance.sh):
+$ ./cleanup-night-instance.sh mantra-redesa-postgres-1
+RECHAZADO: 'mantra-redesa-postgres-1' no tiene la etiqueta night-purpose=scheduling-isolation-baseline (tiene: '<ninguna>'). No se toca.
+exit=1
+$ ./cleanup-night-instance.sh night-scheduling-pg
+OK: 'night-scheduling-pg' identificado como instancia de esta noche. Bajando...
+night-scheduling-pg
+exit=0
+$ docker ps --filter name=mantra-redesa-postgres-1 --format "{{.Names}}\t{{.Status}}"
+mantra-redesa-postgres-1	Up 9 minutes (healthy)
+-> el caso negativo rechaza la base compartida; el positivo borra solo la propia; la compartida
+   queda intacta después de ambas corridas.
+
+H1.S3.M3 -- DDL versionado mínimo: TODO, depende de H1.S2 (qué entidades registra la composición
+  mínima propuesta) -- no se puede enumerar el DDL de la capacidad sin cerrar antes esa clasificación.
+H1.S3.M4 -- Separación de rol de preparación y runtime: TODO, hoy un solo usuario (night_runtime)
+  con todos los privilegios -- no cumple el DoD todavía, no se declara HECHO.
