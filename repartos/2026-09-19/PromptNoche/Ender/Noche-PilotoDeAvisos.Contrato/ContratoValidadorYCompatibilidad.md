@@ -185,7 +185,7 @@ Los seis estados permitidos son exactamente: `TODO`, `EN CURSO`, `HECHO`, `A MED
 
 **Kill-test del hito:** preguntale a Justin qué significa que `delivered` venga en `true`, y si el compilador impide construir un `recipient` con sus dos campos vacíos. Si tiene que abrir el `.ts` para contestar, no está hecho.
 
-**Estado:** TODO
+**Estado:** A MEDIAS
 
 #### H1.S1 — Contrato congelado (si esto no está fijo, todo lo demás flota)
 
@@ -193,14 +193,14 @@ Los seis estados permitidos son exactamente: `TODO`, `EN CURSO`, `HECHO`, `A MED
 
 **DoD:** Las 4 microtareas en `HECHO`, con la salida de `git cat-file -p <SHA>:<ruta>` y del hash pegadas. Una firma transcrita de memoria no cuenta.
 
-**Estado:** TODO
+**Estado:** HECHO
 
 | ID | Microtarea | CA (binario) | DoD (comando de verificación) | Estado |
 |---|---|---|---|---|
-| H1.S1.M1 | Obtener el archivo del puerto en el corte y fijar su hash | Hay un hash del contenido exacto del archivo, junto al SHA del commit del que salió | Salida literal de `git show <SHA>:src/modules/scheduling/ports/agenda-notice.port.ts` y del hash del contenido, ambas pegadas. Si la ruta no existe en el corte, `NOT_FOUND` con el patrón de búsqueda usado — **no** buscar el archivo en otra rama para "encontrarlo" | TODO |
-| H1.S1.M2 | Pegar la definición literal de `AgendaNoticePort`, `emit`, `emitMany` y `AGENDA_NOTICE_PORT` | Están las firmas completas, copiadas, no reescritas ni "normalizadas" | Bloque literal pegado. **Una firma transcrita de memoria no cuenta**: tiene que salir del archivo | TODO |
-| H1.S1.M3 | Registrar que la definición leída **no trae versión de contrato** y asignarle una identidad propia | Queda escrito que la versión es **asignada por el equipo**, no leída del archivo (`PERFIL_MANTRA_DEV.md` §3.1) | Ficha de Identidad de `ARQUITECTURA_Y_CONTRATOS.md` §3: nombre estable, versión asignada, hash, formato/dialecto y fuente. El campo Estado debe decir `IMPLEMENTADO`, no `OBJETIVO ACORDADO`: estás describiendo lo que hay | TODO |
-| H1.S1.M4 | Inventariar los consumidores actuales del token | Está la lista de archivos que referencian `AGENDA_NOTICE_PORT` o el tipo, con ruta real | Salida del grep pegada. Un cambio de contrato afecta a esta lista: es el insumo de compatibilidad (`ARQUITECTURA_Y_CONTRATOS.md` §7) | TODO |
+| H1.S1.M1 | Obtener el archivo del puerto en el corte y fijar su hash | Hay un hash del contenido exacto del archivo, junto al SHA del commit del que salió | Salida literal de `git show <SHA>:src/modules/scheduling/ports/agenda-notice.port.ts` y del hash del contenido, ambas pegadas. Si la ruta no existe en el corte, `NOT_FOUND` con el patrón de búsqueda usado — **no** buscar el archivo en otra rama para "encontrarlo" | HECHO |
+| H1.S1.M2 | Pegar la definición literal de `AgendaNoticePort`, `emit`, `emitMany` y `AGENDA_NOTICE_PORT` | Están las firmas completas, copiadas, no reescritas ni "normalizadas" | Bloque literal pegado. **Una firma transcrita de memoria no cuenta**: tiene que salir del archivo | HECHO |
+| H1.S1.M3 | Registrar que la definición leída **no trae versión de contrato** y asignarle una identidad propia | Queda escrito que la versión es **asignada por el equipo**, no leída del archivo (`PERFIL_MANTRA_DEV.md` §3.1) | Ficha de Identidad de `ARQUITECTURA_Y_CONTRATOS.md` §3: nombre estable, versión asignada, hash, formato/dialecto y fuente. El campo Estado debe decir `IMPLEMENTADO`, no `OBJETIVO ACORDADO`: estás describiendo lo que hay | HECHO |
+| H1.S1.M4 | Inventariar los consumidores actuales del token | Está la lista de archivos que referencian `AGENDA_NOTICE_PORT` o el tipo, con ruta real | Salida del grep pegada. Un cambio de contrato afecta a esta lista: es el insumo de compatibilidad (`ARQUITECTURA_Y_CONTRATOS.md` §7) | HECHO |
 
 #### H1.S2 — Semántica: qué garantiza el tipo y qué es sólo un comentario
 
@@ -208,17 +208,17 @@ Los seis estados permitidos son exactamente: `TODO`, `EN CURSO`, `HECHO`, `A MED
 
 **DoD:** Las 7 microtareas en `HECHO`. **Los 8 campos** del resultado, no los 6 del paquete. La regla «exactamente uno» especificada como validación runtime con su fuente.
 
-**Estado:** TODO
+**Estado:** HECHO
 
 | ID | Microtarea | CA (binario) | DoD (comando de verificación) | Estado |
 |---|---|---|---|---|
-| H1.S2.M1 | Tabla de semántica del resultado, campo por campo | Cada uno de los campos observados tiene su significado **según la definición leída**, y ninguno tiene significado inventado | Tabla con los **8** campos reales: `delivered`, `inAppNotificationId`, `notificationRequestId`, **`skippedReason`**, `emailRequestId`, `emailSkippedReason`, `chatDelivered` y **`chatSkippedReason`**. ⚠️ `PILOTO_MANTRA.md` paso 2 lista solo **6**: omite `skippedReason` y `chatSkippedReason`. Ya está verificado contra el corte (ver el bloque de arriba): **gana el archivo**, y la discrepancia con el paquete queda registrada | TODO |
-| H1.S2.M2 | Declarar explícitamente qué **no** prueba `delivered` | Está escrito que es resultado de entrega in-app y que **no prueba correo entregado** | Cita del paquete + lo que verificaste en el archivo. Si el archivo no lo aclara, el estado es `HYPOTHESIS`, no hecho | TODO |
-| H1.S2.M3 | La regla «exactamente uno» de `recipient` | Está la cita literal del comentario, y la afirmación explícita de que el tipo **no** la hace cumplir | Comentario pegado con localizador + especificación del validador runtime (dónde cruza el límite de confianza, qué rechaza, con qué error) y **fuente identificada** de la regla. No implementarlo: especificarlo | TODO |
-| H1.S2.M4 | Orden, cardinalidad y errores por elemento de `emitMany` | Para cada uno: lo que el archivo define, o `DECISION_REQUIRED` si no lo define | Fragmentos pegados. Prohibido asumir que el orden de salida sigue al de entrada si la firma no lo dice | TODO |
-| H1.S2.M5 | Significado de `debounceKey` | Está lo que el archivo dice, y marcado como `DECISION_REQUIRED` lo que no dice | Cita + registro. **No inventes ventana de deduplicación ni TTL** (`PILOTO_MANTRA.md` paso 2, textual). Si escribís "por defecto 5 minutos", inventaste | TODO |
-| H1.S2.M6 | Autorización y multi-organización en el contrato | Está declarado qué identifica al actor, al tenant y al titular del recurso en la firma, y qué **no** viaja | Ficha de Autorización de §3. Si el puerto no transporta tenant, eso es un hallazgo de seguridad a registrar, no un detalle | TODO |
-| H1.S2.M7 | Errores: forma, reintentabilidad y efectos que no deben persistir | Cada modo de error tiene forma, significado y si es reintentable, o queda `DECISION_REQUIRED` | Ficha de Errores de §3. Un error sin clasificar de reintentabilidad bloquea el diseño de idempotencia de Justin: marcalo, no lo completes a ojo | TODO |
+| H1.S2.M1 | Tabla de semántica del resultado, campo por campo | Cada uno de los campos observados tiene su significado **según la definición leída**, y ninguno tiene significado inventado | Tabla con los **8** campos reales: `delivered`, `inAppNotificationId`, `notificationRequestId`, **`skippedReason`**, `emailRequestId`, `emailSkippedReason`, `chatDelivered` y **`chatSkippedReason`**. ⚠️ `PILOTO_MANTRA.md` paso 2 lista solo **6**: omite `skippedReason` y `chatSkippedReason`. Ya está verificado contra el corte (ver el bloque de arriba): **gana el archivo**, y la discrepancia con el paquete queda registrada | HECHO |
+| H1.S2.M2 | Declarar explícitamente qué **no** prueba `delivered` | Está escrito que es resultado de entrega in-app y que **no prueba correo entregado** | Cita del paquete + lo que verificaste en el archivo. Si el archivo no lo aclara, el estado es `HYPOTHESIS`, no hecho | HECHO |
+| H1.S2.M3 | La regla «exactamente uno» de `recipient` | Está la cita literal del comentario, y la afirmación explícita de que el tipo **no** la hace cumplir | Comentario pegado con localizador + especificación del validador runtime (dónde cruza el límite de confianza, qué rechaza, con qué error) y **fuente identificada** de la regla. No implementarlo: especificarlo | HECHO |
+| H1.S2.M4 | Orden, cardinalidad y errores por elemento de `emitMany` | Para cada uno: lo que el archivo define, o `DECISION_REQUIRED` si no lo define | Fragmentos pegados. Prohibido asumir que el orden de salida sigue al de entrada si la firma no lo dice | HECHO |
+| H1.S2.M5 | Significado de `debounceKey` | Está lo que el archivo dice, y marcado como `DECISION_REQUIRED` lo que no dice | Cita + registro. **No inventes ventana de deduplicación ni TTL** (`PILOTO_MANTRA.md` paso 2, textual). Si escribís "por defecto 5 minutos", inventaste | HECHO |
+| H1.S2.M6 | Autorización y multi-organización en el contrato | Está declarado qué identifica al actor, al tenant y al titular del recurso en la firma, y qué **no** viaja | Ficha de Autorización de §3. Si el puerto no transporta tenant, eso es un hallazgo de seguridad a registrar, no un detalle | HECHO |
+| H1.S2.M7 | Errores: forma, reintentabilidad y efectos que no deben persistir | Cada modo de error tiene forma, significado y si es reintentable, o queda `DECISION_REQUIRED` | Ficha de Errores de §3. Un error sin clasificar de reintentabilidad bloquea el diseño de idempotencia de Justin: marcalo, no lo completes a ojo | HECHO |
 
 #### H1.S3 — Lo que queda abierto y la entrega
 
@@ -226,13 +226,13 @@ Los seis estados permitidos son exactamente: `TODO`, `EN CURSO`, `HECHO`, `A MED
 
 **DoD:** Las 3 microtareas en `HECHO`. **Elegir un lado de la tensión de durabilidad es incumplir el encargo**, aunque uno parezca obviamente correcto.
 
-**Estado:** TODO
+**Estado:** A MEDIAS
 
 | ID | Microtarea | CA (binario) | DoD (comando de verificación) | Estado |
 |---|---|---|---|---|
-| H1.S3.M1 | Recibir de Pablo la tensión de semántica del aviso y dejarla **sin resolver** | Está la cita del comentario del puerto (un aviso fallido puede descartarse) junto a la del metaprompt (durabilidad exigida para efectos obligatorios), y el estado es `DECISION_REQUIRED` con quién decide | Ambas citas con localizador. **Elegir una de las dos es incumplir el encargo**, aunque una te parezca obviamente correcta | TODO |
-| H1.S3.M2 | Ficha de Efectos posteriores y Compatibilidad | Está declarado si el aviso es obligatorio u opcional **según fuente**, y qué cambios del contrato romperían a los consumidores de M4 | Fichas de §3 completas o con omisiones justificadas. Compatibilidad distingue lectura, escritura y significado (§7) | TODO |
-| H1.S3.M3 | Publicar el snapshot como artefacto consumible | Existe un archivo de contrato con su hash que Itzan y Justin pueden referenciar por versión, no por rama | Ruta del artefacto + hash + el commit del que salió. Avisar en el daily. El producto compone **versiones verificadas**, no la rama viva del vecino (`PLAN_SEIS_DIAS.md`) | TODO |
+| H1.S3.M1 | Recibir de Pablo la tensión de semántica del aviso y dejarla **sin resolver** | Está la cita del comentario del puerto (un aviso fallido puede descartarse) junto a la del metaprompt (durabilidad exigida para efectos obligatorios), y el estado es `DECISION_REQUIRED` con quién decide | Ambas citas con localizador. **Elegir una de las dos es incumplir el encargo**, aunque una te parezca obviamente correcta | A MEDIAS |
+| H1.S3.M2 | Ficha de Efectos posteriores y Compatibilidad | Está declarado si el aviso es obligatorio u opcional **según fuente**, y qué cambios del contrato romperían a los consumidores de M4 | Fichas de §3 completas o con omisiones justificadas. Compatibilidad distingue lectura, escritura y significado (§7) | HECHO |
+| H1.S3.M3 | Publicar el snapshot como artefacto consumible | Existe un archivo de contrato con su hash que Itzan y Justin pueden referenciar por versión, no por rama | Ruta del artefacto + hash + el commit del que salió. Avisar en el daily. El producto compone **versiones verificadas**, no la rama viva del vecino (`PLAN_SEIS_DIAS.md`) | HECHO |
 
 ### H2 — Convertir el contrato en un validador que rechaza lo que debe rechazar
 
@@ -244,7 +244,7 @@ Los seis estados permitidos son exactamente: `TODO`, `EN CURSO`, `HECHO`, `A MED
 
 **Kill-test del hito:** Pasale al validador un `recipient` con sus dos campos vacíos y un monto o tenant incorrecto según la regla aprobada. Si los acepta porque «cumple el esquema», no está hecho.
 
-**Estado:** TODO
+**Estado:** HECHO
 
 #### H2.S1 — El validador
 
@@ -252,13 +252,13 @@ Los seis estados permitidos son exactamente: `TODO`, `EN CURSO`, `HECHO`, `A MED
 
 **DoD:** Las 3 microtareas en `HECHO`, con los dos casos negativos y su salida. El origen del valor esperado, escrito (`L5`).
 
-**Estado:** TODO
+**Estado:** HECHO
 
 | ID | Microtarea | CA (binario) | DoD (comando de verificación) | Estado |
 |---|---|---|---|---|
-| H2.S1.M1 | Implementar la regla «exactamente uno» de `recipient` como validación runtime | Rechaza cero campos y rechaza dos | Los dos casos negativos con su salida. La fuente de la regla, citada | TODO |
-| H2.S1.M2 | Validar la forma completa del resultado contra la definición fijada | Un campo de más o de menos se detecta | Caso ejecutado | TODO |
-| H2.S1.M3 | El oráculo NO usa la función que prueba para calcular lo esperado | Está escrito de dónde sale el valor esperado | Cita de `L5` + el origen del esperado. Es el error que hace que un test pase siempre | TODO |
+| H2.S1.M1 | Implementar la regla «exactamente uno» de `recipient` como validación runtime | Rechaza cero campos y rechaza dos | Los dos casos negativos con su salida. La fuente de la regla, citada | HECHO |
+| H2.S1.M2 | Validar la forma completa del resultado contra la definición fijada | Un campo de más o de menos se detecta | Caso ejecutado | HECHO |
+| H2.S1.M3 | El oráculo NO usa la función que prueba para calcular lo esperado | Está escrito de dónde sale el valor esperado | Cita de `L5` + el origen del esperado. Es el error que hace que un test pase siempre | HECHO |
 
 #### H2.S2 — Los casos que tienen que fallar
 
@@ -266,13 +266,13 @@ Los seis estados permitidos son exactamente: `TODO`, `EN CURSO`, `HECHO`, `A MED
 
 **DoD:** Las 3 microtareas en `HECHO`. ADV-03 ejecutado, y la lista de reglas que el validador **todavía no puede** comprobar.
 
-**Estado:** TODO
+**Estado:** HECHO
 
 | ID | Microtarea | CA (binario) | DoD (comando de verificación) | Estado |
 |---|---|---|---|---|
-| H2.S2.M1 | ADV-03: dato de estructura válida con tenant incorrecto | El validador lo rechaza **por la regla concreta**, no por esquema | Caso + el mensaje de rechazo, que debe nombrar la regla | TODO |
-| H2.S2.M2 | Respuesta incompatible del doble | Se detecta | Caso ejecutado (gate A6) | TODO |
-| H2.S2.M3 | Registrar qué reglas NO puede comprobar el validador todavía | Está la lista con el motivo | Lista. Una regla `DECISION_REQUIRED` no se implementa a ojo | TODO |
+| H2.S2.M1 | ADV-03: dato de estructura válida con tenant incorrecto | El validador lo rechaza **por la regla concreta**, no por esquema | Caso + el mensaje de rechazo, que debe nombrar la regla | HECHO |
+| H2.S2.M2 | Respuesta incompatible del doble | Se detecta | Caso ejecutado (gate A6) | HECHO |
+| H2.S2.M3 | Registrar qué reglas NO puede comprobar el validador todavía | Está la lista con el motivo | Lista. Una regla `DECISION_REQUIRED` no se implementa a ojo | HECHO |
 
 #### H2.S3 — Versión y compatibilidad
 
@@ -280,12 +280,12 @@ Los seis estados permitidos son exactamente: `TODO`, `EN CURSO`, `HECHO`, `A MED
 
 **DoD:** Las 2 microtareas en `HECHO`. Compatibilidad distinguida en lectura, escritura y significado.
 
-**Estado:** TODO
+**Estado:** HECHO
 
 | ID | Microtarea | CA (binario) | DoD (comando de verificación) | Estado |
 |---|---|---|---|---|
-| H2.S3.M1 | Publicar el artefacto de contrato versionado con su hash | Versión inmutable + hash + commit | Artefacto + hash pegados | TODO |
-| H2.S3.M2 | Probar el contrato contra los consumidores inventariados en **H1** | Cada consumidor: compatible o afectado | Tabla. *Añadir un enum o una propiedad puede ser incompatible para un consumidor exhaustivo*: distinguí compatibilidad de lectura, de escritura y de significado | TODO |
+| H2.S3.M1 | Publicar el artefacto de contrato versionado con su hash | Versión inmutable + hash + commit | Artefacto + hash pegados | HECHO |
+| H2.S3.M2 | Probar el contrato contra los consumidores inventariados en **H1** | Cada consumidor: compatible o afectado | Tabla. *Añadir un enum o una propiedad puede ser incompatible para un consumidor exhaustivo*: distinguí compatibilidad de lectura, de escritura y de significado | HECHO |
 
 ### H3 — Gobernar la evolución del contrato sin romper a quien lo consume
 
@@ -297,7 +297,7 @@ Los seis estados permitidos son exactamente: `TODO`, `EN CURSO`, `HECHO`, `A MED
 
 **Kill-test del hito:** Introducí una versión incompatible en una copia temporal. Si los consumidores afectados siguen en verde, la matriz de compatibilidad no vale nada.
 
-**Estado:** TODO
+**Estado:** BLOCKED
 
 #### H3.S1 — La política
 
@@ -305,12 +305,12 @@ Los seis estados permitidos son exactamente: `TODO`, `EN CURSO`, `HECHO`, `A MED
 
 **DoD:** Las 2 microtareas en `HECHO`. Escrito que **agregar un enum o una propiedad puede romper** a un consumidor exhaustivo, con el caso concreto del contrato real.
 
-**Estado:** TODO
+**Estado:** HECHO
 
 | ID | Microtarea | CA (binario) | DoD (comando de verificación) | Estado |
 |---|---|---|---|---|
-| H3.S1.M1 | Escribir qué cambios se admiten sin romper y cuáles no | Cada tipo de cambio tiene su clasificación | Tabla. Distinguí compatibilidad **de lectura, de escritura y de significado** | TODO |
-| H3.S1.M2 | Registrar que agregar un enum o una propiedad puede romper | Está escrito con el caso concreto | Cita de §7 + ejemplo del contrato real | TODO |
+| H3.S1.M1 | Escribir qué cambios se admiten sin romper y cuáles no | Cada tipo de cambio tiene su clasificación | Tabla. Distinguí compatibilidad **de lectura, de escritura y de significado** | HECHO |
+| H3.S1.M2 | Registrar que agregar un enum o una propiedad puede romper | Está escrito con el caso concreto | Cita de §7 + ejemplo del contrato real | HECHO |
 
 #### H3.S2 — La prueba
 
@@ -318,13 +318,13 @@ Los seis estados permitidos son exactamente: `TODO`, `EN CURSO`, `HECHO`, `A MED
 
 **DoD:** Las 3 microtareas en `HECHO`. ADV-06 ejecutado con su salida. **Si los consumidores afectados pasan, la matriz está mal** y el hito no avanza.
 
-**Estado:** TODO
+**Estado:** HECHO
 
 | ID | Microtarea | CA (binario) | DoD (comando de verificación) | Estado |
 |---|---|---|---|---|
-| H3.S2.M1 | ADV-06: introducir una versión incompatible en copia temporal | Los consumidores afectados **fallan** en la nueva combinación | Salida pegada. Si pasan, la matriz está mal | TODO |
-| H3.S2.M2 | Verificar que los artefactos históricos permanecen inmutables | La versión anterior sigue igual y con el mismo hash | Hash comparado y pegado | TODO |
-| H3.S2.M3 | Matriz consumidor × versión | Cada celda: compatible, incompatible o no probada | Matriz completa. **Las celdas «no probadas» se declaran**, no se dejan en blanco | TODO |
+| H3.S2.M1 | ADV-06: introducir una versión incompatible en copia temporal | Los consumidores afectados **fallan** en la nueva combinación | Salida pegada. Si pasan, la matriz está mal | HECHO |
+| H3.S2.M2 | Verificar que los artefactos históricos permanecen inmutables | La versión anterior sigue igual y con el mismo hash | Hash comparado y pegado | HECHO |
+| H3.S2.M3 | Matriz consumidor × versión | Cada celda: compatible, incompatible o no probada | Matriz completa. **Las celdas «no probadas» se declaran**, no se dejan en blanco | HECHO |
 
 #### H3.S3 — El contrato de la segunda capacidad
 
@@ -332,12 +332,12 @@ Los seis estados permitidos son exactamente: `TODO`, `EN CURSO`, `HECHO`, `A MED
 
 **DoD:** Las 2 microtareas en `HECHO`, o `BLOCKED` esperando la elección de la segunda capacidad.
 
-**Estado:** TODO
+**Estado:** BLOCKED
 
 | ID | Microtarea | CA (binario) | DoD (comando de verificación) | Estado |
 |---|---|---|---|---|
-| H3.S3.M1 | Si Pablo ya eligió la segunda capacidad, abrir su ficha de contrato | La ficha existe con sus campos de §3, o queda `BLOCKED` esperando la elección | Ficha o bloqueo con motivo | TODO |
-| H3.S3.M2 | Registrar qué se reusa del primer contrato y qué no | Está la lista | Lista. **No copies el contrato entero para disimular una dependencia** | TODO |
+| H3.S3.M1 | Si Pablo ya eligió la segunda capacidad, abrir su ficha de contrato | La ficha existe con sus campos de §3, o queda `BLOCKED` esperando la elección | Ficha o bloqueo con motivo | BLOCKED |
+| H3.S3.M2 | Registrar qué se reusa del primer contrato y qué no | Está la lista | Lista. **No copies el contrato entero para disimular una dependencia** | BLOCKED |
 
 ### H4 — Congelar la versión estable del contrato y su matriz de consumidores
 
@@ -349,7 +349,7 @@ Los seis estados permitidos son exactamente: `TODO`, `EN CURSO`, `HECHO`, `A MED
 
 **Kill-test del hito:** Buscá en la ficha el campo «Efectos posteriores». Si dice que el aviso es obligatorio o que es opcional sin citar quién lo decidió, alguien resolvió una decisión de negocio por su cuenta.
 
-**Estado:** TODO
+**Estado:** HECHO
 
 #### H4.S1 — La ficha completa
 
@@ -357,12 +357,12 @@ Los seis estados permitidos son exactamente: `TODO`, `EN CURSO`, `HECHO`, `A MED
 
 **DoD:** Las 2 microtareas en `HECHO`. Un campo omitido sin justificar es un campo olvidado.
 
-**Estado:** TODO
+**Estado:** HECHO
 
 | ID | Microtarea | CA (binario) | DoD (comando de verificación) | Estado |
 |---|---|---|---|---|
-| H4.S1.M1 | Completar los campos de la ficha de §3 que correspondan | Cada campo: completo, o omitido **con justificación** | Ficha. Un campo omitido sin justificar es un campo olvidado | TODO |
-| H4.S1.M2 | Marcar el campo Estado correctamente | `IMPLEMENTADO`, `OBJETIVO ACORDADO` o `PROPUESTA`, sin mezclarlos | Ficha. *No confundirlos* es textual del paquete | TODO |
+| H4.S1.M1 | Completar los campos de la ficha de §3 que correspondan | Cada campo: completo, o omitido **con justificación** | Ficha. Un campo omitido sin justificar es un campo olvidado | HECHO |
+| H4.S1.M2 | Marcar el campo Estado correctamente | `IMPLEMENTADO`, `OBJETIVO ACORDADO` o `PROPUESTA`, sin mezclarlos | Ficha. *No confundirlos* es textual del paquete | HECHO |
 
 #### H4.S2 — Congelar
 
@@ -370,13 +370,13 @@ Los seis estados permitidos son exactamente: `TODO`, `EN CURSO`, `HECHO`, `A MED
 
 **DoD:** Las 3 microtareas en `HECHO`, con los hashes comparados y pegados.
 
-**Estado:** TODO
+**Estado:** HECHO
 
 | ID | Microtarea | CA (binario) | DoD (comando de verificación) | Estado |
 |---|---|---|---|---|
-| H4.S2.M1 | Publicar la versión estable con hash | Versión, hash y commit | Los tres pegados | TODO |
-| H4.S2.M2 | Actualizar la matriz consumidor × versión | Todas las celdas con resultado o `NOT_RUN` | Matriz | TODO |
-| H4.S2.M3 | Verificar que las versiones anteriores no cambiaron | Hashes idénticos a los publicados | Comparación pegada | TODO |
+| H4.S2.M1 | Publicar la versión estable con hash | Versión, hash y commit | Los tres pegados | HECHO |
+| H4.S2.M2 | Actualizar la matriz consumidor × versión | Todas las celdas con resultado o `NOT_RUN` | Matriz | HECHO |
+| H4.S2.M3 | Verificar que las versiones anteriores no cambiaron | Hashes idénticos a los publicados | Comparación pegada | HECHO |
 
 #### H4.S3 — Lo que queda abierto
 
@@ -384,12 +384,12 @@ Los seis estados permitidos son exactamente: `TODO`, `EN CURSO`, `HECHO`, `A MED
 
 **DoD:** Las 2 microtareas en `HECHO`. **Sin dueño, una decisión pendiente no avanza nunca.**
 
-**Estado:** TODO
+**Estado:** HECHO
 
 | ID | Microtarea | CA (binario) | DoD (comando de verificación) | Estado |
 |---|---|---|---|---|
-| H4.S3.M1 | Listar lo `DECISION_REQUIRED` con su dueño y qué bloquea | Cada uno con nombre de quién decide | Lista. Sin dueño, una decisión pendiente no avanza nunca | TODO |
-| H4.S3.M2 | Escribir el plan de transición de los cambios previstos | Qué consumidores se tocan y en qué orden | Plan. Un cambio que rompe a otro repo **exige coordinación y orden de despliegue** | TODO |
+| H4.S3.M1 | Listar lo `DECISION_REQUIRED` con su dueño y qué bloquea | Cada uno con nombre de quién decide | Lista. Sin dueño, una decisión pendiente no avanza nunca | HECHO |
+| H4.S3.M2 | Escribir el plan de transición de los cambios previstos | Qué consumidores se tocan y en qué orden | Plan. Un cambio que rompe a otro repo **exige coordinación y orden de despliegue** | HECHO |
 
 ### H5 — Probar que una versión incompatible rompe donde debe y que lo histórico no se toca
 
@@ -401,7 +401,7 @@ Los seis estados permitidos son exactamente: `TODO`, `EN CURSO`, `HECHO`, `A MED
 
 **Kill-test del hito:** Compará el hash de la versión publicada hace tres días contra el de hoy. Si cambió, alguien editó una versión inmutable y toda la trazabilidad se cae.
 
-**Estado:** TODO
+**Estado:** HECHO
 
 #### H5.S1 — La prueba adversa
 
@@ -409,13 +409,13 @@ Los seis estados permitidos son exactamente: `TODO`, `EN CURSO`, `HECHO`, `A MED
 
 **DoD:** Las 3 microtareas en `HECHO`, con la salida y la comparación de hashes históricos pegadas.
 
-**Estado:** TODO
+**Estado:** HECHO
 
 | ID | Microtarea | CA (binario) | DoD (comando de verificación) | Estado |
 |---|---|---|---|---|
-| H5.S1.M1 | ADV-06: introducir una versión incompatible en copia temporal | Los consumidores afectados fallan | Salida pegada. Si pasan, la matriz miente | TODO |
-| H5.S1.M2 | Verificar que los artefactos históricos permanecen inmutables | Hashes idénticos | Comparación pegada | TODO |
-| H5.S1.M3 | Registrar qué consumidor falló y con qué error | Cada uno | Tabla | TODO |
+| H5.S1.M1 | ADV-06: introducir una versión incompatible en copia temporal | Los consumidores afectados fallan | Salida pegada. Si pasan, la matriz miente | HECHO |
+| H5.S1.M2 | Verificar que los artefactos históricos permanecen inmutables | Hashes idénticos | Comparación pegada | HECHO |
+| H5.S1.M3 | Registrar qué consumidor falló y con qué error | Cada uno | Tabla | HECHO |
 
 #### H5.S2 — La matriz final
 
@@ -423,12 +423,12 @@ Los seis estados permitidos son exactamente: `TODO`, `EN CURSO`, `HECHO`, `A MED
 
 **DoD:** Las 2 microtareas en `HECHO`.
 
-**Estado:** TODO
+**Estado:** HECHO
 
 | ID | Microtarea | CA (binario) | DoD (comando de verificación) | Estado |
 |---|---|---|---|---|
-| H5.S2.M1 | Completar la matriz consumidor × versión | Ninguna celda en blanco: resultado o `NOT_RUN` con motivo | Matriz | TODO |
-| H5.S2.M2 | Declarar la estrategia de transición de cada incompatibilidad conocida | Cada una con su plan | Tabla | TODO |
+| H5.S2.M1 | Completar la matriz consumidor × versión | Ninguna celda en blanco: resultado o `NOT_RUN` con motivo | Matriz | HECHO |
+| H5.S2.M2 | Declarar la estrategia de transición de cada incompatibilidad conocida | Cada una con su plan | Tabla | HECHO |
 
 #### H5.S3 — El cierre del contrato
 
@@ -436,12 +436,12 @@ Los seis estados permitidos son exactamente: `TODO`, `EN CURSO`, `HECHO`, `A MED
 
 **DoD:** Las 2 microtareas en `HECHO`. Al llegar a **H5**, una decisión sin dueño es un **riesgo de release** y se declara como tal.
 
-**Estado:** TODO
+**Estado:** HECHO
 
 | ID | Microtarea | CA (binario) | DoD (comando de verificación) | Estado |
 |---|---|---|---|---|
-| H5.S3.M1 | Listar lo que queda `DECISION_REQUIRED` al cierre | Cada uno con dueño y qué bloquea | Lista. Al llegar a **H5**, una decisión sin dueño es un riesgo de release | TODO |
-| H5.S3.M2 | Declarar el estado final del contrato | `IMPLEMENTADO` / `OBJETIVO ACORDADO` / `PROPUESTA`, sin mezclar | Estado | TODO |
+| H5.S3.M1 | Listar lo que queda `DECISION_REQUIRED` al cierre | Cada uno con dueño y qué bloquea | Lista. Al llegar a **H5**, una decisión sin dueño es un riesgo de release | HECHO |
+| H5.S3.M2 | Declarar el estado final del contrato | `IMPLEMENTADO` / `OBJETIVO ACORDADO` / `PROPUESTA`, sin mezclar | Estado | HECHO |
 
 ### H6 — Cerrar el contrato y dejar sus pendientes con dueño
 
@@ -453,7 +453,7 @@ Los seis estados permitidos son exactamente: `TODO`, `EN CURSO`, `HECHO`, `A MED
 
 **Kill-test del hito:** Buscá un pendiente sin dueño. Si existe, ese pendiente no se va a resolver nunca y alguien lo va a descubrir en producción.
 
-**Estado:** TODO
+**Estado:** HECHO
 
 #### H6.S1 — La versión final
 
@@ -461,13 +461,13 @@ Los seis estados permitidos son exactamente: `TODO`, `EN CURSO`, `HECHO`, `A MED
 
 **DoD:** Las 3 microtareas en `HECHO`, con la comparación de hashes pegada.
 
-**Estado:** TODO
+**Estado:** HECHO
 
 | ID | Microtarea | CA (binario) | DoD (comando de verificación) | Estado |
 |---|---|---|---|---|
-| H6.S1.M1 | Publicar la versión final con hash y commit | Los tres | Pegados | TODO |
-| H6.S1.M2 | Completar la ficha de §3 | Cada campo completo u omitido con justificación | Ficha | TODO |
-| H6.S1.M3 | Verificar inmutabilidad de todas las versiones anteriores | Hashes intactos | Comparación pegada | TODO |
+| H6.S1.M1 | Publicar la versión final con hash y commit | Los tres | Pegados | HECHO |
+| H6.S1.M2 | Completar la ficha de §3 | Cada campo completo u omitido con justificación | Ficha | HECHO |
+| H6.S1.M3 | Verificar inmutabilidad de todas las versiones anteriores | Hashes intactos | Comparación pegada | HECHO |
 
 #### H6.S2 — Los pendientes
 
@@ -475,12 +475,12 @@ Los seis estados permitidos son exactamente: `TODO`, `EN CURSO`, `HECHO`, `A MED
 
 **DoD:** Las 2 microtareas en `HECHO`. **Un pendiente sin dueño es un pendiente abandonado.**
 
-**Estado:** TODO
+**Estado:** HECHO
 
 | ID | Microtarea | CA (binario) | DoD (comando de verificación) | Estado |
 |---|---|---|---|---|
-| H6.S2.M1 | Listar cada `DECISION_REQUIRED` con dueño y fecha objetivo | Ninguno sin dueño | Lista. **Un pendiente sin dueño es un pendiente abandonado** | TODO |
-| H6.S2.M2 | Declarar el impacto de cada pendiente si no se decide | Cada uno con su consecuencia | Tabla | TODO |
+| H6.S2.M1 | Listar cada `DECISION_REQUIRED` con dueño y fecha objetivo | Ninguno sin dueño | Lista. **Un pendiente sin dueño es un pendiente abandonado** | HECHO |
+| H6.S2.M2 | Declarar el impacto de cada pendiente si no se decide | Cada uno con su consecuencia | Tabla | HECHO |
 
 #### H6.S3 — Riesgos residuales
 
@@ -488,12 +488,12 @@ Los seis estados permitidos son exactamente: `TODO`, `EN CURSO`, `HECHO`, `A MED
 
 **DoD:** Las 2 microtareas en `HECHO`.
 
-**Estado:** TODO
+**Estado:** HECHO
 
 | ID | Microtarea | CA (binario) | DoD (comando de verificación) | Estado |
 |---|---|---|---|---|
-| H6.S3.M1 | Listar los riesgos residuales del contrato | Cada uno con impacto y mitigación o su ausencia | Tabla | TODO |
-| H6.S3.M2 | Declarar qué consumidores quedan en riesgo por un cambio futuro | Lista | Tabla | TODO |
+| H6.S3.M1 | Listar los riesgos residuales del contrato | Cada uno con impacto y mitigación o su ausencia | Tabla | HECHO |
+| H6.S3.M2 | Declarar qué consumidores quedan en riesgo por un cambio futuro | Lista | Tabla | HECHO |
 
 ## 5. Ambigüedades registradas — **no las resuelvas, anotalas**
 
