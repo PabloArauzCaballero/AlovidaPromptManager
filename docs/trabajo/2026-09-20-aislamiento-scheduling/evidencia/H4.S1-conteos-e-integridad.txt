@@ -1,0 +1,27 @@
+=== H4.S1.M1/M2 · conteos e integridad del baseline aislado ===
+=== 2026-09-20T19:03:15-04:00 · base aislada del entorno de prueba (puerto propio) ===
+
+--- TABLAS (excluye catalogo interno de TimescaleDB) ---
+ tablas 
+--------
+   1201
+(1 row)
+
+--- FK (excluye _timescaledb) y cuantas NO validadas ---
+ fks  | no_validadas 
+------+--------------
+ 6792 |            0
+(1 row)
+
+--- INDICES ---
+ indices 
+---------
+    9236
+(1 row)
+
+--- SCHEMAS ---
+ schemas 
+---------
+      65
+(1 row)
+

@@ -1,0 +1,88 @@
+=== H4.S3.M2 · indices con nombre generado por PostgreSQL (CA: ninguno) ===
+=== 2026-09-20T19:04:50-04:00 ===
+
+--- indices totales y cuantos llevan nombre generado ---
+    (PG genera '<tabla>_<columna(s)>_key' para UNIQUE sin nombre y '<tabla>_pkey' para PK sin nombre)
+ indices_total | unique_sin_nombre | pk_sin_nombre | con_nombre_explicito 
+---------------+-------------------+---------------+----------------------
+          9236 |                17 |             0 |                 8624
+(1 row)
+
+--- muestra de los que NO siguen la convencion ---
+                    indice                     
+-----------------------------------------------
+ accounting.brin_accrual_postings_created_at
+ accounting.brin_asset_postings_created_at
+ accounting.brin_liability_postings_created_at
+ accounting.gin_accrual_objects_search
+ accounting.gin_asset_classes_search
+ accounting.gin_asset_components_search
+ accounting.gin_controlling_areas_search
+ accounting.gin_depreciation_areas_search
+ accounting.gin_functional_areas_search
+ accounting.gin_internal_orders_search
+ accounting.gin_profit_centers_search
+ accounting.gin_segments_search
+ ads.brin_ad_billing_events_recorded_at
+ ads.brin_ad_review_events_occurred_at
+ ads.brin_ad_sync_runs_created_at
+(15 rows)
+
+
+--- los 17 con sufijo '_key' (nombre que genera PostgreSQL solo) ---
+                            indice                             |           tablename            
+---------------------------------------------------------------+--------------------------------
+ ads.uk_ad_sync_checkpoints_connection_object_key              | ad_sync_checkpoints
+ ads.uk_conversion_event_dedup_key                             | conversion_event_deduplication
+ ads.uk_lead_form_questions_form_key                           | lead_form_questions
+ audio_assets.uq_audio_assets_asset_key                        | audio_assets
+ clinical.uq_medication_requests_issue_idempotency_key         | medication_requests
+ community.uk_prestige_awards_idempotency_key                  | prestige_awards
+ health_context.uq_context_collection_runs_idempotency_key     | context_collection_runs
+ integrations.uq_outbound_messages_idempotency_key             | outbound_messages
+ marketing.uq_campaign_dispatch_recipients_idempotency_key     | campaign_dispatch_recipients
+ marketing.uq_campaign_dispatches_idempotency_key              | campaign_dispatches
+ messaging.uq_outbox_messages_idempotency_key                  | outbox_messages
+ messaging.uq_queued_jobs_dedupe_key                           | queued_jobs
+ payments.uq_payment_intents_idempotency_key                   | payment_intents
+ payments.uq_wallet_ledger_entries_idempotency_key             | wallet_ledger_entries
+ promotions.uq_points_ledger_entries_idempotency_key           | points_ledger_entries
+ system_context.uq_system_context_refresh_runs_idempotency_key | system_context_refresh_runs
+ telemetry.uq_analytics_subjects_pseudonymous_subject_key      | analytics_subjects
+(17 rows)
+
+--- familias de prefijo del resto (todas explicitas) ---
+ prefijo | count 
+---------+-------
+ ix_     |  7090
+ pk_     |  1189
+ uq_     |   335
+ brin_   |   274
+ uk_     |   158
+ gin_    |   113
+ gist_   |    39
+ order_  |    12
+ ux_     |    10
+ ft_     |     1
+(10 rows)
+
+
+=== CORRECCION — los 17 NO son nombres generados. CA CUMPLIDA: 0 generados. ===
+
+La consulta anterior usaba `indexname LIKE '%_key'` para detectar el nombre que PostgreSQL
+genera solo (`<tabla>_<columna>_key`). Ese filtro es incorrecto: los 17 que devuelve empiezan
+todos por un prefijo EXPLICITO (`uq_`, `uk_`) y terminan en `_key` sólo porque asi se llama la
+COLUMNA — `idempotency_key`, `asset_key`, `dedupe_key`, `pseudonymous_subject_key`,
+`connection_object_key`, `form_key`.
+
+Ejemplo: `clinical.uq_medication_requests_issue_idempotency_key` es el indice unico parcial
+declarado a proposito en v4.0.9. Un nombre generado por PG seria
+`medication_requests_issue_idempotency_key_key`, sin prefijo.
+
+Veredicto de H4.S3.M2:
+  PK con nombre generado ......... 0
+  UNIQUE con nombre generado ..... 0
+  indices con prefijo explicito ... 9236 / 9236
+
+Familias de prefijo (todas explicitas, ninguna generada):
+  ix_ 7090 · pk_ 1189 · uq_ 335 · brin_ 274 · uk_ 158 · gin_ 113 · gist_ 39 · order_ 12 · ux_ 10 · ft_ 1

@@ -1,0 +1,22 @@
+=== H4.S1.M1 · aplicacion de los patches posteriores a v428, uno por uno ===
+=== base aislada del entorno de prueba (puerto propio) · 2026-09-20T18:56:30-04:00 ===
+=== v428 se OMITE: su autoverificacion exige un estado derogado por v4218 ===
+
+[OMITIDO]  2026-09-08_v428_billing_quotations.sql  (derogado por v4218)
+[OK]       2026-09-09_v427_chat_participant_prefs_and_pin.sql
+[OK]       2026-09-11_v429_chat_auto_replies.sql
+[OK]       2026-09-12_v429_claim_line_adjudications_policy_clause.sql
+[OK]       2026-09-13_v4210_insurance_carriers_contact_channels.sql
+[OK]       2026-09-13_v4211_patient_order_claim_settlement.sql
+[OK]       2026-09-13_v4212_jurisdiction_authorizations_file_id.sql
+[OK]       2026-09-14_v4213_pharmacy_price_version_scope.sql
+[OK]       2026-09-14_v4214_insurance_plans_monthly_premium.sql
+[OK]       2026-09-15_v4215_practice_sites_bank_qr_file_id.sql
+[OK]       2026-09-16_v4216_encounters_content_hash.sql
+[OK]       2026-09-17_v4217_service_requests_duplicate_study.sql
+[OK]       2026-09-18_v4218_quotations_flexible_payment_plan.sql
+[OK]       2026-09-18_v4219_health_export_manifests_content_hash_index.sql
+[FALLA]    2026-09-19_v4221_aseguradoras_codigo_unico.sql
+             ERROR:  v4.2.21: se esperaban 17 aseguradoras canónicas y hay 0
+
+=== RESUMEN: OK=13  FALLA=1  OMITIDOS=1 ===

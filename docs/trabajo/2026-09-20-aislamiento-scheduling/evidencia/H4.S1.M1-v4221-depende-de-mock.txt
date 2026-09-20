@@ -1,0 +1,32 @@
+=== H4.S1.M1 · PRUEBA POSITIVA: v4221 depende de datos de fase MOCK ===
+=== 2026-09-20T18:58:00-04:00 ===
+
+--- fase de las 17 aseguradoras en el paquete ---
+    seedsGenerales/modules/26_insurance.seeds.json
+      boot/records/insurance_carriers -> 0 filas
+      mock/records/insurance_carriers -> 17 filas
+
+--- se carga la fase mock y se reintenta el patch ---
+    - FK huérfana: insurance.insurance_reconciliation_items → iam.users (16 filas)
+    - FK huérfana: insurance.broker_commission_statements → iam.users (16 filas)
+    - FK huérfana: insurance.broker_commission_statements → iam.users (16 filas)
+    - FK huérfana: insurance.coordination_of_benefits → iam.users (16 filas)
+    - FK huérfana: insurance.coordination_of_benefits → profiles.patient_profiles (16 filas)
+    - FK huérfana: insurance.claim_disputes → iam.users (16 filas)
+    - FK huérfana: insurance.claim_disputes → iam.users (16 filas)
+    - FK huérfana: insurance.claim_reversals → iam.users (16 filas)
+
+--- aseguradoras ahora ---
+ total 
+-------
+    17
+(1 row)
+
+--- v4221 reintentado ---
+DELETE 0
+DELETE 0
+DELETE 0
+DELETE 0
+ERROR:  v4.2.21: se esperaba 1 fila no canónica (la demo) y hay 0
+CONTEXT:  PL/pgSQL function inline_code_block line 19 at RAISE
+=== EXIT: 3 ===

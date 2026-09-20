@@ -1,0 +1,24 @@
+=== H4.S1.M1 · v4221 REINTENTADO DESPUES de cargar los seeds ===
+=== hipotesis: falla por ORDEN (patch antes que datos), no por defecto del patch ===
+=== 2026-09-20T18:57:32-04:00 ===
+
+--- cuantas aseguradoras hay ahora ---
+ aseguradoras 
+--------------
+            0
+(1 row)
+
+--- reintento del patch ---
+UPDATE 0
+UPDATE 0
+UPDATE 0
+UPDATE 0
+UPDATE 0
+DELETE 0
+DELETE 0
+DELETE 0
+DELETE 0
+DELETE 0
+ERROR:  v4.2.21: se esperaban 17 aseguradoras canónicas y hay 0
+CONTEXT:  PL/pgSQL function inline_code_block line 15 at RAISE
+=== EXIT: 3 ===

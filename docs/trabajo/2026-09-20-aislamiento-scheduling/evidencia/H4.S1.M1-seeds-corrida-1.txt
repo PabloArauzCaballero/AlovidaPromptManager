@@ -1,0 +1,370 @@
+=== H4.S1.M1 · primera corrida del cargador de seeds (boot) sobre la base aislada ===
+=== 2026-09-20T18:57:07-04:00 · comando: py -3 load_seeds.py --skip-prod --skip-mock --skip-opensearch --skip-redis ===
+
+    AVISO: technical_data_type: 78 valores agregados desde los seeds (placeholders sintéticos — vocabulario canónico §3.2 sigue TODO)
+>>> 03_terminology.seeds · boot (3641 recs)
+>>> 01_iam.seeds · boot (20 recs)
+>>> 04_directory.seeds · boot (29 recs)
+>>> 06_authz.seeds · boot (393 recs)
+>>> 07_consent.seeds · boot (20 recs)
+>>> 08_clinical.seeds · boot (11 recs)
+>>> 09_forms.seeds · boot (90 recs)
+>>> 11_system_ops.seeds · boot (126 recs)
+>>> 12_integrations.seeds · boot (40 recs)
+>>> 14_practice.seeds · boot (60 recs)
+>>> 15_chart.seeds · boot (20 recs)
+>>> 16_accounting.seeds · boot (110 recs)
+>>> 17_billing.seeds · boot (20 recs)
+>>> 18_clinical_ext.seeds · boot (50 recs)
+>>> 19_community.seeds · boot (20 recs)
+>>> 20_diagnostics.seeds · boot (10 recs)
+>>> 27_identity_assurance.seeds · boot (30 recs)
+>>> 28_telemetry.seeds · boot (50 recs)
+>>> 29_delegated_access.seeds · boot (20 recs)
+>>> 30_read_models.seeds · boot (110 recs)
+>>> 31_integration_contracts.seeds · boot (30 recs)
+>>> 32_workflow.seeds · boot (240 recs)
+>>> 35_messaging.seeds · boot (72 recs)
+>>> 36_qa_lab.seeds · boot (60 recs)
+>>> 37_tracking.seeds · boot (20 recs)
+>>> 38_erp.seeds · boot (20 recs)
+>>> 39_reporting.seeds · boot (92 recs)
+>>> 40_auth_providers.seeds · boot (50 recs)
+>>> 41_scheduling.seeds · boot (10 recs)
+>>> 42_payments.seeds · boot (144 recs)
+>>> 43_ads.seeds · boot (40 recs)
+>>> 44_health_context.seeds · boot (30 recs)
+>>> 45_system_context.seeds · boot (749 recs)
+>>> 46_platform_ops.seeds · boot (225 recs)
+>>> 48_automation.seeds · boot (100 recs)
+>>> 49_crm.seeds · boot (40 recs)
+>>> 50_marketing.seeds · boot (40 recs)
+>>> 51_promotions.seeds · boot (70 recs)
+>>> 52_health_data.seeds · boot (100 recs)
+>>> 54_polyglot_storage.seeds · boot (231 recs)
+>>> 59_vector_rag.seeds · boot (40 recs)
+>>> 60_object_storage.seeds · boot (10 recs)
+>>> 61_graph_intelligence.seeds · boot (30 recs)
+>>> 62_cross_store_consistency.seeds · boot (40 recs)
+>>> 63_lakehouse.seeds · boot (100 recs)
+>>> verificando 1307 FKs de 254 tablas cargadas
+    AVISO: FK huérfana: directory.tenant_web_configs → iam.users (3 filas)
+    AVISO: FK huérfana: directory.tenant_web_configs → directory.tenants (6 filas)
+    AVISO: FK huérfana: directory.tenant_web_configs → iam.users (4 filas)
+    AVISO: FK huérfana: authz.ip_access_rules → iam.users (6 filas)
+    AVISO: FK huérfana: authz.ip_access_rules → directory.tenants (6 filas)
+    AVISO: FK huérfana: authz.ip_access_rules → iam.users (1 filas)
+    AVISO: FK huérfana: forms.field_validation_rules → forms.dynamic_field_definitions (7 filas)
+    AVISO: FK huérfana: forms.field_set_members → forms.dynamic_field_definitions (7 filas)
+    AVISO: FK huérfana: forms.field_definition_localizations → forms.dynamic_field_definitions (9 filas)
+    AVISO: FK huérfana: forms.field_value_access_rules → forms.field_assignments (10 filas)
+    AVISO: FK huérfana: forms.field_value_access_rules → forms.dynamic_field_definitions (7 filas)
+    AVISO: FK huérfana: system_ops.partition_specs → iam.users (5 filas)
+    AVISO: FK huérfana: system_ops.partition_specs → system_ops.entity_registry (3 filas)
+    AVISO: FK huérfana: system_ops.partition_specs → system_ops.retention_policies (5 filas)
+    AVISO: FK huérfana: system_ops.partition_specs → iam.users (4 filas)
+    AVISO: FK huérfana: system_ops.encryption_keys → iam.users (5 filas)
+    AVISO: FK huérfana: system_ops.encryption_keys → system_ops.retention_policies (5 filas)
+    AVISO: FK huérfana: system_ops.encryption_keys → iam.users (5 filas)
+    AVISO: FK huérfana: chart.chart_template_assignments → chart.specialty_chart_templates (8 filas)
+    AVISO: FK huérfana: diagnostics.imaging_endpoints → integrations.provider_connections (10 filas)
+    AVISO: FK huérfana: qa_lab.test_cases → integrations.integration_endpoints (6 filas)
+    AVISO: FK huérfana: reporting.report_distributions → reporting.report_schedules (7 filas)
+    AVISO: FK huérfana: payments.subscription_plans → iam.users (3 filas)
+    AVISO: FK huérfana: payments.plan_prices → iam.users (3 filas)
+    AVISO: FK huérfana: payments.plan_features → iam.users (30 filas)
+    AVISO: FK huérfana: payments.plan_features → iam.users (30 filas)
+    AVISO: FK huérfana: payments.plan_quotas → iam.users (12 filas)
+    AVISO: FK huérfana: payments.plan_eligibility_rules → iam.users (3 filas)
+    AVISO: FK huérfana: crm.crm_entitlements → erp.contracts (10 filas)
+    huérfanos totales: 220
+
+══ Resumen de carga ══
+  pg           terminology.terminology_sources            +12      ya:0      
+  pg           terminology.code_systems                   +12      ya:0      
+  pg           terminology.code_system_versions           +48      ya:0      
+  pg           terminology.catalog_concepts               +1458    ya:0      
+  pg           terminology.concept_designations           +1369    ya:0      
+  pg           terminology.concept_properties             +30      ya:0      
+  pg           terminology.value_sets                     +46      ya:0      
+  pg           terminology.value_set_versions             +46      ya:0      
+  pg           terminology.value_set_members              +612     ya:0      
+  pg           terminology.tenant_catalog_policies        +8       ya:0      
+  pg           iam.users                                  +10      ya:0      
+  pg           iam.user_global_roles                      +10      ya:0      
+  pg           directory.tenants                          +11      ya:0      
+  pg           directory.branches                         +10      ya:0      
+  pg           directory.tenant_web_configs               +8       ya:0      
+  pg           authz.permission_categories                +15      ya:0      
+  pg           authz.permissions                          +90      ya:0      
+  pg           authz.roles                                +15      ya:0      
+  pg           authz.role_permissions                     +245     ya:0      
+  pg           authz.field_permissions                    +10      ya:0      
+  pg           authz.access_policies                      +10      ya:0      
+  pg           authz.ip_access_rules                      +8       ya:0      
+  pg           consent.processing_purposes                +10      ya:0      
+  pg           consent.processing_legal_bases             +10      ya:0      
+  pg           clinical.prescription_signature_policies   +11      ya:0      
+  pg           forms.dynamic_field_sections               +10      ya:0      
+  pg           forms.dynamic_field_definitions            +10      ya:0      
+  pg           forms.field_validation_rules               +10      ya:0      
+  pg           forms.field_definition_sets                +10      ya:0      
+  pg           forms.field_definition_set_versions        +10      ya:0      
+  pg           forms.field_set_members                    +10      ya:0      
+  pg           forms.field_definition_localizations       +10      ya:0      
+  pg           forms.field_value_access_rules             +10      ya:0      
+  pg           forms.extension_target_policies            +10      ya:0      
+  pg           system_ops.data_classifications            +10      ya:0      
+  pg           system_ops.data_domains                    +10      ya:0      
+  pg           system_ops.entity_registry                 +10      ya:0      
+  pg           system_ops.field_registry                  +10      ya:0      
+  pg           system_ops.write_policies                  +10      ya:0      
+  pg           system_ops.retention_policies              +10      ya:0      
+  pg           system_ops.anonymization_rules             +10      ya:0      
+  pg           system_ops.data_residency_policies         +10      ya:0      
+  pg           system_ops.backup_policies                 +10      ya:0      
+  pg           system_ops.operational_frameworks          +10      ya:0      
+  pg           system_ops.operational_framework_controls  +10      ya:0      
+  pg           system_ops.partition_specs                 +8       ya:0      
+  pg           system_ops.encryption_keys                 +8       ya:0      
+  pg           integrations.external_providers            +10      ya:0      
+  pg           integrations.integration_endpoints         +10      ya:0      
+  pg           integrations.webhook_subscriptions         +10      ya:0      
+  pg           integrations.integration_field_mappings    +10      ya:0      
+  pg           practice.practices                         +10      ya:0      
+  pg           practice.practice_sites                    +10      ya:0      
+  pg           practice.clinical_units                    +10      ya:0      
+  pg           practice.care_spaces                       +10      ya:0      
+  pg           practice.healthcare_services               +10      ya:0      
+  pg           practice.practice_settings                 +10      ya:0      
+  pg           chart.specialty_chart_templates            +10      ya:0      
+  pg           chart.chart_template_assignments           +10      ya:0      
+  pg           accounting.account_groups                  +10      ya:0      
+  pg           accounting.accounts                        +20      ya:0      
+  pg           accounting.cost_centers                    +10      ya:0      
+  pg           accounting.controlling_areas               +10      ya:0      
+  pg           accounting.segments                        +10      ya:0      
+  pg           accounting.functional_areas                +10      ya:0      
+  pg           accounting.profit_centers                  +10      ya:0      
+  pg           accounting.account_determination_rules     +10      ya:0      
+  pg           accounting.asset_classes                   +10      ya:0      
+  pg           accounting.depreciation_areas              +10      ya:0      
+  pg           billing.service_catalog                    +10      ya:0      
+  pg           billing.tax_codes                          +10      ya:0      
+  pg           clinical_ext.cds_rules                     +10      ya:0      
+  pg           clinical_ext.reference_ranges              +10      ya:0      
+  pg           clinical_ext.order_sets                    +10      ya:0      
+  pg           clinical_ext.order_set_items               +10      ya:0      
+  pg           clinical_ext.immunization_schedules        +10      ya:0      
+  pg           community.topics                           +10      ya:0      
+  pg           community.verified_badges                  +10      ya:0      
+  pg           diagnostics.imaging_endpoints              +10      ya:0      
+  pg           identity_assurance.identity_authorities    +10      ya:0      
+  pg           identity_assurance.identity_authority_endpoints +10      ya:0      
+  pg           identity_assurance.identity_verification_policies +10      ya:0      
+  pg           telemetry.tracking_purpose_definitions     +10      ya:0      
+  pg           telemetry.activity_event_schema_definitions +10      ya:0      
+  pg           telemetry.tracking_disclosure_versions     +10      ya:0      
+  pg           telemetry.funnel_definitions               +10      ya:0      
+  pg           telemetry.funnel_steps                     +10      ya:0      
+  pg           delegated_access.delegated_permission_sets +10      ya:0      
+  pg           delegated_access.delegated_permission_set_items +10      ya:0      
+  pg           read_models.portal_surfaces                +10      ya:0      
+  pg           read_models.frontend_routes                +10      ya:0      
+  pg           read_models.read_model_definitions         +10      ya:0      
+  pg           read_models.read_model_dependencies        +10      ya:0      
+  pg           read_models.frontend_page_views            +10      ya:0      
+  pg           read_models.frontend_view_fields           +10      ya:0      
+  pg           read_models.frontend_view_filters          +10      ya:0      
+  pg           read_models.frontend_view_sort_options     +10      ya:0      
+  pg           read_models.frontend_view_actions          +10      ya:0      
+  pg           read_models.frontend_view_kpis             +10      ya:0      
+  pg           read_models.frontend_view_states           +10      ya:0      
+  pg           integration_contracts.integration_contracts +10      ya:0      
+  pg           integration_contracts.integration_contract_versions +10      ya:0      
+  pg           integration_contracts.integration_auth_profiles +10      ya:0      
+  pg           workflow.state_machine_definitions         +11      ya:0      
+  pg           workflow.state_definitions                 +99      ya:0      
+  pg           workflow.state_transition_definitions      +110     ya:0      
+  pg           workflow.transition_guards                 +10      ya:0      
+  pg           workflow.transition_side_effects           +10      ya:0      
+  pg           messaging.event_subscriptions              +8       ya:0      
+  pg           messaging.message_queues                   +10      ya:0      
+  pg           messaging.message_channels                 +10      ya:0      
+  pg           messaging.messaging_providers              +12      ya:0      
+  pg           messaging.provider_channel_configs         +12      ya:0      
+  pg           messaging.message_templates                +10      ya:0      
+  pg           messaging.recipient_preferences            +10      ya:0      
+  pg           qa_lab.test_environments                   +10      ya:0      
+  pg           qa_lab.test_suites                         +10      ya:0      
+  pg           qa_lab.test_cases                          +10      ya:0      
+  pg           qa_lab.test_assertions                     +10      ya:0      
+  pg           qa_lab.test_fixtures                       +10      ya:0      
+  pg           qa_lab.test_schedules                      +10      ya:0      
+  pg           tracking.milestone_definitions             +10      ya:0      
+  pg           tracking.tracking_carriers                 +10      ya:0      
+  pg           erp.departments                            +10      ya:0      
+  pg           erp.positions                              +10      ya:0      
+  pg           reporting.report_data_sources              +10      ya:0      
+  pg           reporting.report_definitions               +12      ya:0      
+  pg           reporting.report_versions                  +10      ya:0      
+  pg           reporting.report_parameters                +10      ya:0      
+  pg           reporting.report_columns                   +10      ya:0      
+  pg           reporting.report_schedules                 +10      ya:0      
+  pg           reporting.report_distributions             +10      ya:0      
+  pg           reporting.dashboards                       +10      ya:0      
+  pg           reporting.dashboard_widgets                +10      ya:0      
+  pg           auth_providers.identity_providers          +10      ya:0      
+  pg           auth_providers.provider_protocol_configs   +10      ya:0      
+  pg           auth_providers.provider_tenant_bindings    +10      ya:0      
+  pg           auth_providers.provider_attribute_mappings +10      ya:0      
+  pg           auth_providers.provisioning_rules          +10      ya:0      
+  pg           scheduling.booking_policies                +10      ya:0      
+  pg           payments.payment_gateways                  +10      ya:0      
+  pg           payments.gateway_connections               +10      ya:0      
+  pg           payments.payment_methods                   +10      ya:0      
+  pg           payments.fee_schedules                     +10      ya:0      
+  pg           payments.subscription_plans                +13      ya:0      
+  pg           payments.payment_channel_catalog           +10      ya:0      
+  pg           payments.gateway_payment_channel_mappings  +10      ya:0      
+  pg           payments.provider_api_operations           +10      ya:0      
+  pg           payments.provider_callback_endpoints       +10      ya:0      
+  pg           payments.plan_prices                       +6       ya:0      
+  pg           payments.plan_features                     +30      ya:0      
+  pg           payments.plan_quotas                       +12      ya:0      
+  pg           payments.plan_eligibility_rules            +3       ya:0      
+  pg           ads.insight_metric_definitions             +10      ya:0      
+  pg           ads.insight_breakdown_definitions          +10      ya:0      
+  pg           ads.ad_event_data_policies                 +10      ya:0      
+  pg           ads.ad_event_field_rules                   +10      ya:0      
+  pg           health_context.context_agents              +10      ya:0      
+  pg           health_context.country_context_schedules   +10      ya:0      
+  pg           health_context.health_context_sources      +10      ya:0      
+  pg           system_context.system_contexts             +10      ya:0      
+  pg           system_context.system_context_bindings     +10      ya:0      
+  pg           system_context.dynamic_enum_definitions    +48      ya:0      
+  pg           system_context.dynamic_enum_versions       +46      ya:0      
+  pg           system_context.dynamic_enum_options        +590     ya:0      
+  pg           system_context.dynamic_enum_bindings       +45      ya:0      
+  pg           platform_ops.service_components            +64      ya:0      
+  pg           platform_ops.tool_registry                 +11      ya:0      
+  pg           platform_ops.component_tools               +10      ya:0      
+  pg           platform_ops.health_checks                 +10      ya:0      
+  pg           platform_ops.operational_teams             +10      ya:0      
+  pg           platform_ops.service_ownerships            +10      ya:0      
+  pg           platform_ops.service_dependencies          +10      ya:0      
+  pg           platform_ops.on_call_schedules             +10      ya:0      
+  pg           platform_ops.escalation_policies           +10      ya:0      
+  pg           platform_ops.escalation_policy_steps       +10      ya:0      
+  pg           platform_ops.service_level_indicators      +10      ya:0      
+  pg           platform_ops.service_level_objectives      +10      ya:0      
+  pg           platform_ops.error_budget_policies         +10      ya:0      
+  pg           platform_ops.runbooks                      +10      ya:0      
+  pg           platform_ops.runbook_versions              +10      ya:0      
+  pg           platform_ops.recovery_objectives           +10      ya:0      
+  pg           platform_ops.capacity_plans                +10      ya:0      
+  pg           automation.agents                          +10      ya:0      
+  pg           automation.agent_versions                  +10      ya:0      
+  pg           automation.agent_tools                     +10      ya:0      
+  pg           automation.agent_tool_bindings             +10      ya:0      
+  pg           automation.guardrail_policies              +10      ya:0      
+  pg           automation.agent_guardrails                +10      ya:0      
+  pg           automation.workflows                       +10      ya:0      
+  pg           automation.workflow_steps                  +10      ya:0      
+  pg           automation.automation_triggers             +10      ya:0      
+  pg           automation.knowledge_sources               +10      ya:0      
+  pg           crm.pipelines                              +10      ya:0      
+  pg           crm.pipeline_stages                        +10      ya:0      
+  pg           crm.crm_recurrence_rules                   +10      ya:0      
+  pg           crm.crm_entitlements                       +10      ya:0      
+  pg           marketing.segments                         +10      ya:0      
+  pg           marketing.content_templates                +10      ya:0      
+  pg           marketing.journeys                         +10      ya:0      
+  pg           marketing.journey_steps                    +10      ya:0      
+  pg           promotions.loyalty_programs                +10      ya:0      
+  pg           promotions.loyalty_tiers                   +10      ya:0      
+  pg           promotions.earning_rules                   +10      ya:0      
+  pg           promotions.promotions                      +10      ya:0      
+  pg           promotions.discount_rules                  +10      ya:0      
+  pg           promotions.coupons                         +10      ya:0      
+  pg           promotions.referral_programs               +10      ya:0      
+  pg           health_data.health_source_systems          +10      ya:0      
+  pg           health_data.fhir_profile_definitions       +10      ya:0      
+  pg           health_data.fhir_profile_versions          +10      ya:0      
+  pg           health_data.health_data_quality_rule_sets  +10      ya:0      
+  pg           health_data.health_data_quality_rules      +10      ya:0      
+  pg           health_data.health_terminology_mapping_sets +10      ya:0      
+  pg           health_data.health_terminology_mapping_rules +10      ya:0      
+  pg           health_data.health_deidentification_profiles +10      ya:0      
+  pg           health_data.omop_mapping_sets              +10      ya:0      
+  pg           health_data.omop_mapping_rules             +10      ya:0      
+  pg           polyglot_storage.storage_backends          +12      ya:0      
+  pg           polyglot_storage.storage_backend_regions   +10      ya:0      
+  pg           polyglot_storage.storage_capabilities      +99      ya:0      
+  pg           polyglot_storage.data_classifications      +10      ya:0      
+  pg           polyglot_storage.dataset_definitions       +10      ya:0      
+  pg           polyglot_storage.collection_definitions    +10      ya:0      
+  pg           polyglot_storage.encryption_profiles       +10      ya:0      
+  pg           polyglot_storage.key_rotation_policies     +10      ya:0      
+  pg           polyglot_storage.retention_policies        +10      ya:0      
+  pg           polyglot_storage.replication_policies      +10      ya:0      
+  pg           polyglot_storage.consistency_policies      +10      ya:0      
+  pg           polyglot_storage.residency_policies        +10      ya:0      
+  pg           polyglot_storage.data_access_policies      +10      ya:0      
+  pg           polyglot_storage.storage_integrity_policies +10      ya:0      
+  pg           vector_rag.vector_collections              +10      ya:0      
+  pg           vector_rag.embedding_model_versions        +10      ya:0      
+  pg           vector_rag.rag_access_policies             +10      ya:0      
+  pg           vector_rag.vector_tenant_bindings          +10      ya:0      
+  pg           object_storage.object_namespaces           +10      ya:0      
+  pg           graph_intelligence.graph_access_scopes     +10      ya:0      
+  pg           graph_intelligence.graph_projection_definitions +10      ya:0      
+  pg           graph_intelligence.graph_rule_definitions  +10      ya:0      
+  pg           cross_store_consistency.projection_definitions +10      ya:0      
+  pg           cross_store_consistency.projection_subscriptions +10      ya:0      
+  pg           cross_store_consistency.projection_consumers +10      ya:0      
+  pg           cross_store_consistency.store_consistency_slos +10      ya:0      
+  pg           lakehouse.data_lake_zones                  +10      ya:0      
+  pg           lakehouse.lakehouse_catalogs               +10      ya:0      
+  pg           lakehouse.data_products                    +10      ya:0      
+  pg           lakehouse.data_product_versions            +10      ya:0      
+  pg           lakehouse.lakehouse_datasets               +10      ya:0      
+  pg           lakehouse.lakehouse_schema_versions        +10      ya:0      
+  pg           lakehouse.transformation_definitions       +10      ya:0      
+  pg           lakehouse.lakehouse_quality_rules          +10      ya:0      
+  pg           lakehouse.research_projects                +10      ya:0      
+  pg           lakehouse.cohort_definitions               +10      ya:0      
+  TOTAL insertados: 7453 · ya existentes: 0
+
+  Avisos (30):
+    - technical_data_type: 78 valores agregados desde los seeds (placeholders sintéticos — vocabulario canónico §3.2 sigue TODO)
+    - FK huérfana: directory.tenant_web_configs → iam.users (3 filas)
+    - FK huérfana: directory.tenant_web_configs → directory.tenants (6 filas)
+    - FK huérfana: directory.tenant_web_configs → iam.users (4 filas)
+    - FK huérfana: authz.ip_access_rules → iam.users (6 filas)
+    - FK huérfana: authz.ip_access_rules → directory.tenants (6 filas)
+    - FK huérfana: authz.ip_access_rules → iam.users (1 filas)
+    - FK huérfana: forms.field_validation_rules → forms.dynamic_field_definitions (7 filas)
+    - FK huérfana: forms.field_set_members → forms.dynamic_field_definitions (7 filas)
+    - FK huérfana: forms.field_definition_localizations → forms.dynamic_field_definitions (9 filas)
+    - FK huérfana: forms.field_value_access_rules → forms.field_assignments (10 filas)
+    - FK huérfana: forms.field_value_access_rules → forms.dynamic_field_definitions (7 filas)
+    - FK huérfana: system_ops.partition_specs → iam.users (5 filas)
+    - FK huérfana: system_ops.partition_specs → system_ops.entity_registry (3 filas)
+    - FK huérfana: system_ops.partition_specs → system_ops.retention_policies (5 filas)
+    - FK huérfana: system_ops.partition_specs → iam.users (4 filas)
+    - FK huérfana: system_ops.encryption_keys → iam.users (5 filas)
+    - FK huérfana: system_ops.encryption_keys → system_ops.retention_policies (5 filas)
+    - FK huérfana: system_ops.encryption_keys → iam.users (5 filas)
+    - FK huérfana: chart.chart_template_assignments → chart.specialty_chart_templates (8 filas)
+    - FK huérfana: diagnostics.imaging_endpoints → integrations.provider_connections (10 filas)
+    - FK huérfana: qa_lab.test_cases → integrations.integration_endpoints (6 filas)
+    - FK huérfana: reporting.report_distributions → reporting.report_schedules (7 filas)
+    - FK huérfana: payments.subscription_plans → iam.users (3 filas)
+    - FK huérfana: payments.plan_prices → iam.users (3 filas)
+    - FK huérfana: payments.plan_features → iam.users (30 filas)
+    - FK huérfana: payments.plan_features → iam.users (30 filas)
+    - FK huérfana: payments.plan_quotas → iam.users (12 filas)
+    - FK huérfana: payments.plan_eligibility_rules → iam.users (3 filas)
+    - FK huérfana: crm.crm_entitlements → erp.contracts (10 filas)
+=== EXIT CODE: 0 ===
