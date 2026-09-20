@@ -1,0 +1,9 @@
+$ GET branches/main/protection  (lectura independiente)
+  contexts:        ["Espejo sin deriva y candados en verde"]
+  strict:          false
+  enforce_admins:  false
+  force_pushes:    false
+  deletions:       false
+
+$ la rama figura protegida
+  protected: true

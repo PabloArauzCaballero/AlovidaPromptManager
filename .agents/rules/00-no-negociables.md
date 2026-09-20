@@ -98,3 +98,5 @@ El `CLAUDE.md` del proyecto manda sobre cualquier skill. Esta regla manda sobre 
 
 Skills relacionadas: `anti-hallucination-guard`, `scope-discipline`, `evidence-and-verification`,
 `data-privacy-phi`, `seed-data-catalogs`.
+
+<!-- DERIVA DELIBERADA nº2: ahora con la rama protegida. Debe BLOQUEAR, no solo marcar rojo. -->
