@@ -254,3 +254,6 @@ acceso falló. Es un límite de acceso concreto, con ruta esperada.
 - **El resto del reparto** (recorridos del registro, módulos de farmacia, laboratorio, aseguradora)
   **no se verificó contra código**: esta verificación cubre el piloto de avisos de agenda, que es lo
   que los prompts afirman.
+
+> Nota operativa (2026-09-20): la rama `main` exige el check `Espejo sin deriva y candados en verde`.
+> Un PR con el check en rojo **no se puede mergear**. Ver `docs/trabajo/2026-09-20-candado-de-rama-que-bloquea/REPORTE.md`.
