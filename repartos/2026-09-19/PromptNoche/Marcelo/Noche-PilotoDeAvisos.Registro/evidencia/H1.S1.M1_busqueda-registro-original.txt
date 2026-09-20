@@ -1,0 +1,219 @@
+=== H1.S1.M1 — búsqueda del registro funcional original · consulta 2026-09-20T15:56:23Z · cwd=D:/Trabajos Secundarios/Mantra Core Technologies
+
+$ ls -la gdoc_procesos.txt "REGISTRO DE PROCESOS POR MODULO.md"
+-rw-r--r-- 1 Usuario 197609 50788 sep.  8 13:14 gdoc_procesos.txt
+-rw-r--r-- 1 Usuario 197609 54453 sep.  5 00:33 REGISTRO DE PROCESOS POR MODULO.md
+exit_code=0
+
+$ file gdoc_procesos.txt "REGISTRO DE PROCESOS POR MODULO.md" BITCAORA.md
+gdoc_procesos.txt:                  Unicode text, UTF-8 (with BOM) text, with very long lines (539), with CRLF line terminators
+REGISTRO DE PROCESOS POR MODULO.md: Unicode text, UTF-8 text, with very long lines (541)
+BITCAORA.md:                        Unicode text, UTF-16, little-endian text, with very long lines (3776)
+
+$ head -1 "REGISTRO DE PROCESOS POR MODULO.md"
+# Diagnóstico de fidelidad — corte 2026-09-05
+
+$ ls "C:/Users/Usuario/Downloads/Entrypoint-GitHUb/alovida" | head -2   # ruta del workspace de Pablo (CORTE §1)
+ls: cannot access 'C:/Users/Usuario/Downloads/Entrypoint-GitHUb/alovida': No such file or directory
+exit_code=2
+
+$ find . \( -name node_modules -o -name .git -o -name .angular -o -name dist \) -prune -o \( -iname "REGISTRO DE PROCESOS*.docx" -o -iname "*metaprompt*" -o -iname "PERFIL_MANTRA_DEV*" -o -iname "*BACKEND_AUTONOMO*" \) -print
+./AlovidaPromptManager/repartos/2026-09-19/PromptNoche/Pablo/Noche-PilotoDeAvisos.Backend/evidencia/H1.S3.M4b_metaprompt-no-localizado.txt
+./RealDataSeeds/REGISTRO DE PROCESOS POR MODULO.docx
+resultados=2
+
+$ sed "s/\r$//" gdoc_procesos.txt | grep -nE "^(MODULO|[0-9]+\. )"   # niveles 0 y 1 (módulo e ítem)
+2:1. Registro en la App (si es que inicia el por su propia cuenta)
+43:2. Registro en la App (con el link que envié el medico) (FORMALIZAR Y ACABAR)
+58:3. Agendar Hora para Consultas Medicas (I
+69:4. Agendar Hora para Laboratorios, Análisis clínicos (INCOMPLETO)
+72:5. Recepción del link de Requerimientos del médico después de la consulta medica
+168:MODULO MEDICO
+169:1. Registro en la App (Medico nuevo)
+206:2. Registro de sus datos de Facturación
+220:3. Detalle de sus horarios disponibles para consultas medica
+223:4. Revisión de su Calendario de Citas para consultas Medicas
+227:5. Recepción del paciente 
+240:6. Consulta, elaboración de la ficha medica 
+250:7. Facturación y/o pago por la consulta medica
+284:MODULO FARMACIA
+285:1. Registro en la App Datos Legales de la empresa
+311:2. Recepción de la Orden de medicamentos
+331:3. COMPRAS DE SUPERMERCADOS
+336:4. MODULO DE PUNTOS 
+342:5. MODULO DE PROMOCIONES
+347:MODULO LABORATORIO DE SANGRE
+348:1. Registro en la App Datos Legales de la empresa
+374:2. Recepción de la Orden de Laboratorio
+393:3. MODULO DE PUNTOS 
+401:4. MODULO DE PROMOCIONES
+411:MODULO ANALISIS MEDICOS (RAYOS X, RESONANCIA, ETC.) 
+412:1. Registro en la App Datos Legales de la empresa
+438:2. Recepción del Ordenes de medicamentos
+459:3. MODULO DE PUNTOS 
+469:4. MODULO DE PROMOCIONES
+479:MODULO ASEGURADORA DE SALUD 
+480:1. Registro en la App Datos Legales de la empresa
+505:2. Recepción de solicitudes de ordenes de Aprobación 
+513:3. MODULO DE REPORTES Y DATA DE TODA LA APP
+526:4. MODULO DE PROMOCIONES
+531:MODULO PASARELA DE PAGOS 
+532:1. Registro en la App de todas las empresas que trabajaran con nuestra pasarela de pagos 
+533:2. Contrato legal con todas las empresas con las que se trabajaran 
+534:3. Acuerdo de los % de comisiones que se cobrara por hacer uso de nuestra pasarela de pagos
+535:4. Toda transacción de compra y venta se realizarán mediante nuestra pasarela de pagos
+536:5. Nuestra propia pasarela realiza la emisión de pagos por QR para el paciente o usuario
+537:6. Mediante nuestra pasarela de pagos brindamos seguridad a nuestros propios socios aliados de ALOVIDA
+538:7. Todo medico podrá programar los pagos a sus obligaciones mensuales, como alquiler, secretarias, servicios básicos sin tener que preocuparse por eso mes a mes
+539:8. Todos nuestros proveedores podrán programar los pagos de comisiones a ALOVIDA según los acuerdos comerciales que se pacten
+540:9. Se ofrecerá una comisión menor a todos los socios comerciales para que trabajen de manera directa con nuestra pasarela de pagos propia, ayudando a disminuir el costo mensual a nuestros socios comerciales 
+
+$ sed "s/\r$//" gdoc_procesos.txt | awk "(NR>=58 && NR<=66) || (NR>=223 && NR<=227) {print NR\": \"\$0}"   # Paciente ítem 3 y Médico ítem 4 con sub-ítems
+58: 3. Agendar Hora para Consultas Medicas (I
+59:    1. Desde la APP puede revisar todos los médicos que están disponibles con seguro y sin seguro
+60:    2. Desde la APP pueden revisar cuales son los médicos que trabajan con cada aseguradora
+61:    3. Ingresa al medico que requieres y revisa su horario y lugar donde atiende y se encuentra disponible para que puedas agendar un horario de consulta 
+62:    4. Si no encuentras cita en el día que necesitas y confirmas para otra fecha PUEDES RECIBIR UNA NOTIFICACION DE LA APP DONDE TE INFORME QUE UN PACIENTE DESCONFIRMO Y EXISTE UN HORARIO DISPONIBLE (ayudando con esto al paciente a poder tener una opción rápida y directa)
+63:    5. SI EL MEDICO SE DEMORARÁ PUEDES RECIBIR UNA NOTIFICACION DE LA APP CON LA INFORMACION DE LA DEMORA DEL MEDICO
+64:    6. Datos de la facturación para recibir de todas las instituciones
+65:       1. Nombre o Razón social 
+66:       2. Numero de NIT
+223: 4. Revisión de su Calendario de Citas para consultas Medicas
+224:    1. El medico puede revisar de manera online su Calendario de Citas con horarios, nombre completo del paciente de forma diaria, semanal y mensual (INCOMPLETO: hay vista diaria y mensual con el nombre; falta la semanal; el listado de `/schedule` no muestra el nombre)
+225:    2. Mediante la APP el medico puede informar al paciente o los pacientes que se va demorar en el horario de cita agendado para no perjudicarlos (EL PACIENTE RECIBIRA UNA NOTIFICACION DEL COMUNICADO DEL MEDICO) (COMPLETO por código; no probado en la app: el botón aparece solo con agenda propia. Solo aviso dentro de la app, sin push ni SMS)
+226:    3. Si el medico tiene un paciente que se le desmarca en el horario ya confirmado, la APP de manera AUTOMATICA enviara una NOTIFICACION a los PACIENTES que estuvieron revisando horarios para ese mismo día y no consiguieron horario (ayudando con esto al medico a que no pierda el paciente y También al PACIENTE a poder contar con la cita que requería).  (INCOMPLETO: hay lista de espera con aviso, pero el paciente debe anotarse y el aviso sale por barrido del worker, no al desmarcar; no es «quienes buscaron ese día»; sin UI del médico)
+227: 5. Recepción del paciente 
+
+$ grep -nE "registro del cliente|TAREA-15|3\.4|4\.2" mantra-core-health-api/src/modules/scheduling/ports/agenda-notice.port.ts
+32:/** Los cuatro avisos que el registro del cliente pide (3.4, 3.5, 4.2 y 4.3). */
+34:  /** Se liberó un cupo y hay alguien esperándolo (3.4 / 4.3). */
+36:  /** El profesional informó que se demora (3.5 / 4.2). */
+111:   * Si el aviso llegó también al chat de `SupportAdmin` (TAREA-15, punto 1 y
+
+$ sed -n "17,23p" mantra-core-health-api/src/modules/scheduling/ports/agenda-notice.port.ts   # semántica del puerto (para Ender)
+ * ## Reglas que el puerto impone a cualquier implementación
+ *
+ * 1. **Emitir no puede romper la agenda.** Un aviso que falla se registra y se
+ *    descarta; jamás revierte la reserva, la cancelación ni la promoción que lo
+ *    originó. Por eso los servicios lo invocan *después* de confirmar su
+ *    transacción y nunca dentro de ella.
+ * 2. **El aviso es navegable.** Todo aviso lleva el recurso relacionado
+
+$ sed -n "8,16p" "Mantra Core Health Vault/SALUD/📋 Registro de procesos por módulo.md"
+
+Transcripción **fiel** de `REGISTRO DE PROCESOS POR MODULO.docx`, el documento con el que
+el stakeholder de **AloVida** describe, módulo por módulo, cómo tiene que funcionar el
+producto. Es la **fuente de verdad del flujo de proceso**: lo que está acá manda sobre
+cualquier suposición de diseño.
+
+> **Fuente:** `REGISTRO DE PROCESOS POR MODULO.docx` (raíz del workspace `alovida`) ·
+> `sha256:467a2bb1e2745ebd…` · **428 párrafos**, 7 módulos, 38 procesos de primer nivel.
+> El original no se toca: esta nota lo estructura, no lo reescribe.
+
+$ sed -n "9,14p" "Mantra Core Health Vault/SALUD/📋 AloVida — Procesos del stakeholder.md"
+enlazado nota por nota al modelo canónico. Es la primera fuente integral de procesos
+comerciales que recibimos: hasta ahora el modelo se construyó desde un modelo clínico
+canónico y desde las reglas ALOVIDA, no desde acá.
+
+> **Fuente:** [[📋 Registro de procesos por módulo]] — la transcripción fiel del
+> `REGISTRO DE PROCESOS POR MODULO.docx`, ya dentro del vault desde el **2026-08-22**, con un
+
+$ sed -n "1,22p" docs/tareas/TAREA-15-notificaciones-de-agenda.md
+# TAREA 15 — Correcciones adicionales sobre agenda (notificaciones)
+
+| | |
+|---|---|
+| **Módulo** | Agenda / `scheduling` + Mensajería / `messaging` (M35) (la bitácora decía «Doctor») |
+| **Prioridad** | Alta |
+| **Predecesora** | [TAREA 13](TAREA-13-solicitudes-de-consulta.md) |
+| **Responsable** | Justin Saldías |
+| **Estado** | Pendiente |
+| **Rutas** | La bitácora no declara rutas (`NaN`). Las superficies afectadas son la campana / centro de notificaciones (`http://localhost:4200/notifications`), los chats (`http://localhost:4200/messages`) y los enlaces que lleguen por correo. Usar `localhost:4200`, **nunca** el devtunnel `2ptbhqtv-4200.brs.devtunnels.ms` |
+
+## 1. Qué pide el propietario
+
+La bitácora trae el pedido como tres frases sueltas, sin clave JSON envolvente. Normalizadas, sin
+completar ni mejorar:
+
+1. **Las solicitudes de consulta generan una notificación que se manda también por mensaje de
+   `SupportAdmin`, que es un chat de la empresa.** Le dice: *«Tienes una nueva solicitud de consulta
+   en tal horario en tal lugar»*, **con un botón integrado de aceptar o rechazar**.
+2. **Las solicitudes de consulta generan un correo electrónico al paciente y al profesional que
+   atenderá la consulta**, con el detalle de la solicitud y **un botón integrado de aceptar o
+   rechazar**.
+
+$ grep -n "PERFIL_MANTRA_DEV\|Q-R3\|Documento original" AlovidaPromptManager/docs/requisitos/REQUISITOS-CLIENTE-ALOVIDA.md | head -6
+18:| Documento original | **No identificado como archivo.** Ver Q-R3 abajo |
+38:| Q-R3 | Este documento **coincide punto por punto** con los escenarios `M-01`…`M-19` que `PERFIL_MANTRA_DEV.md` §5 resume, y que `FUENTES_Y_LIMITES.md` declara **no identificados** (ambigüedad `Q-04` del reparto). Ver la tabla de coincidencias al final | Es **hipótesis fuerte**, no hecho: que el contenido coincida no prueba que sea el mismo archivo aprobado. `Q-04` **no se cierra** por esta transcripción | Quien encargó el paquete |
+596:`PERFIL_MANTRA_DEV.md` §5 lista 19 escenarios con IDs auxiliares, y aclara que **no son IDs
+
+=== H1.S1.M1 (bis) — el .docx original SÍ está en este workspace · 2026-09-20T15:57:53Z
+$ ls -la RealDataSeeds/ | head -20
+total 2296
+drwxr-xr-x 1 Usuario 197609      0 sep. 19 10:23 .
+drwxr-xr-x 1 Usuario 197609      0 sep. 20 11:11 ..
+-rw-r--r-- 1 Usuario 197609 229666 ago. 23 19:17 Alianza_Medicos_Habilitados.md
+-rw-r--r-- 1 Usuario 197609  46819 ago. 23 19:04 Alianza_Medicos_Habilitados.xlsx
+-rw-r--r-- 1 Usuario 197609  20853 ago. 25 16:04 AloVida Marco Gobernanza Datos Producto.docx
+-rw-r--r-- 1 Usuario 197609  20630 ago. 25 16:06 AloVida Marco Gobernanza Datos Producto.md
+-rw-r--r-- 1 Usuario 197609 810878 ago. 23 19:19 Arancel_Honorarios_Medicos_Santa_Cruz_2025_3_columnas.md
+-rw-r--r-- 1 Usuario 197609 275388 ago. 23 19:04 Arancel_Honorarios_Medicos_Santa_Cruz_2025_3_columnas.xlsx
+-rw-r--r-- 1 Usuario 197609   7796 sep. 19 10:23 LISTA DE ASEGURADORAS.md
+-rw-r--r-- 1 Usuario 197609  11310 sep. 19 10:20 LISTA DE ASEGURADORAS.xlsx
+-rw-r--r-- 1 Usuario 197609   5598 ago. 23 19:19 LISTA DE CLINICAS PRIVADAS.md
+-rw-r--r-- 1 Usuario 197609  12655 ago. 23 18:56 LISTA DE CLINICAS PRIVADAS.xlsx
+-rw-r--r-- 1 Usuario 197609   1110 ago. 25 16:09 LISTA DE ESPECIALIDADES ODONTOLOGICAS.md
+-rw-r--r-- 1 Usuario 197609   9421 ago. 25 16:04 LISTA DE ESPECIALIDADES ODONTOLOGICAS.xlsx
+-rw-r--r-- 1 Usuario 197609   5912 ago. 24 18:47 LISTA DE FARMACIAS, LABORATORIOS Y ANALISIS MEDICOS.md
+-rw-r--r-- 1 Usuario 197609  14866 ago. 24 18:38 LISTA DE FARMACIAS, LABORATORIOS Y ANALISIS MEDICOS.xlsx
+-rw-r--r-- 1 Usuario 197609  74916 ago. 23 19:29 LISTA DE HOSPITAL DE PRIMER NIVEL SANTA CRUZ.md
+-rw-r--r-- 1 Usuario 197609  30959 ago. 23 18:57 LISTA DE HOSPITAL DE PRIMER NIVEL SANTA CRUZ.xlsx
+-rw-r--r-- 1 Usuario 197609   4768 ago. 24 08:38 LISTA DE HOSPITAL DE TERCER, SEGUNDO NIVEL Y CAJAS.md
+
+$ sha256sum "RealDataSeeds/REGISTRO DE PROCESOS POR MODULO.docx"
+467a2bb1e2745ebd544d9e7df0ae9821f80f1cf5a3df452f12fc7622998331cd *RealDataSeeds/REGISTRO DE PROCESOS POR MODULO.docx
+
+$ grep -n "sha256" "Mantra Core Health Vault/SALUD/📋 Registro de procesos por módulo.md" | head -3   # el que declara la bóveda (truncado a 13 hex)
+15:> `sha256:467a2bb1e2745ebd…` · **428 párrafos**, 7 módulos, 38 procesos de primer nivel.
+
+# Cotejo del prefijo declarado 467a2bb1e2745ebd contra el real:
+real[1-16]  = 467a2bb1e2745ebd
+vault[1-16] = 467a2bb1e2745ebd
+COTEJO: COINCIDE — es el mismo archivo que transcribió la bóveda
+
+$ python -c "extraer word/document.xml y contar párrafos"
+parrafos totales = 479
+parrafos no vacios = 428
+la boveda declara  = 428 parrafos, 7 modulos, 38 procesos de primer nivel
+lineas que empiezan con MODULO = 15
+    MODULO PACIENTE
+    MODULO MEDICO
+    MODULO FARMACIA
+    MODULO DE PUNTOS
+    MODULO DE PROMOCIONES
+    MODULO LABORATORIO DE SANGRE
+    MODULO DE PUNTOS
+    MODULO DE PROMOCIONES
+    MODULO ANALISIS MEDICOS (RAYOS X, RESONANCIA, ETC.)
+    MODULO DE PUNTOS
+    MODULO DE PROMOCIONES
+    MODULO ASEGURADORA DE SALUD
+    MODULO DE REPORTES Y DATA DE TODA LA APP
+    MODULO DE PROMOCIONES
+    MODULO PASARELA DE PAGOS
+--- primeros 6 parrafos no vacios:
+    MODULO PACIENTE
+    Registro en la App (si es que inicia el por su propia cuenta)
+    Detalla su nombre completo
+    Tiene que existir 3 espacios para guardar nombres y otros que indique Apellido paterno y apellido ma
+    Detalla su CI como exigencia
+    la app tiene que tener como opciones para que el paciente elija la terminaci�n del CI, como SC, LP, 
+--- marcas de estado del equipo dentro del .docx:
+   (COMPLETO) = 0 | (INCOMPLETO = 0 | (FALTA = 0
+exit_code=0
+
+# Comparación con gdoc_procesos.txt (la copia anotada en la raíz):
+$ grep -c "(COMPLETO\|(INCOMPLETO\|(FALTA" gdoc_procesos.txt
+102
+$ wc -l gdoc_procesos.txt
+541 gdoc_procesos.txt

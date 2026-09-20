@@ -1,0 +1,24 @@
+# H3.0 — Gate de arranque de la API (ejecutado 2026-09-20T18:43:25Z)
+Checkout: mantra-core-health-api @ a5753dc7 · Node v26.4.0 · yarn 4.14.1 · máquina: la de Marcelo (no la de Pablo, que tiene Node 22)
+
+$ yarn build
+exit_code=0   # 18:36:27Z → 18:39:31Z; dist/src/main.js regenerado (sep. 20 14:39 hora local)
+
+$ Start-Process node dist/src/main.js  (env: RATE_LIMIT_DISABLED=true, ORM_SCHEMA_SYNC=off; stdout/stderr al scratchpad de la sesión, NO al repo)
+PID=29640  iniciado 2026-09-20T14:40:16-04:00
+Espera por condición (Test-NetConnection 127.0.0.1:3000 cada 5 s, tope 60 intentos): puerto3000_abierto=True  intentos=18  proceso_vivo=True
+$ GET http://127.0.0.1:3000/health
+200 {"status":"ok"}
+
+Base de datos según .env (valores no secretos): DB_HOST=<…>.sa-east-1.aws.neon.tech · DB_NAME=alovida · RLS_ENFORCE=false · ORM_SCHEMA_SYNC=off · PORT=3000
+stderr del proceso: 0 bytes
+
+--- líneas literales del stdout (filtradas por arranque/seeds; sin PII) ---
+{"level":30,"time":1789929710653,"pid":29640,"hostname":"Marcelo","context":"SchemaBootstrapService","msg":"ORM_SCHEMA_SYNC=off: la estructura de la base no se toca en el arranque"}
+{"level":30,"time":1789929734961,"pid":29640,"hostname":"Marcelo","context":"SeedBootstrapService","event":"seed.summary","ok":21,"failed":0,"inserted":0,"tookMs":24304,"steps":[…]}
+{"level":30,"time":1789929734963,"pid":29640,"hostname":"Marcelo","context":"NestApplication","msg":"Nest application successfully started"}
+
+--- conteo de rutas mapeadas ---
+Mapped routes: 1308
+
+VEREDICTO H3.0: PASS — la API arranca contra la base del .env sin MetadataError; H3.S1.M1/M2 y H3.S2.M2 quedan DESBLOQUEADAS.

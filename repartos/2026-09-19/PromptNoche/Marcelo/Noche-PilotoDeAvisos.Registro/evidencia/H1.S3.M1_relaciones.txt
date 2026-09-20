@@ -1,0 +1,38 @@
+=== H1.S3.M1 — relaciones que el recorrido exige · consulta 2026-09-20T17:37:49Z
+
+$ grep -n "MessagingModule\|CommunityModule\|ProfilesModule\|DirectoryModule" src/modules/scheduling/scheduling.module.ts
+34:import { DirectoryModule } from '../directory/directory.module';
+55:import { ProfilesModule } from '../profiles/profiles.module';
+60:import { MessagingModule } from '../messaging/messaging.module';
+64:import { CommunityModule } from '../community/community.module';
+88:    DirectoryModule,
+90:    MessagingModule,
+91:    CommunityModule,
+96:    ProfilesModule,
+
+$ git show origin/dev:docs/trabajo/2026-09-19-relacion-agenda-mensajeria/H1-ficha-relacion.md | sed -n "1,20p"
+# H1.S3 — La ficha de la relación, y lo que el doble no acredita
+
+## H1.S3.M1 — Ficha de la relación `agenda → mensajería` (gate B1) · `HECHO`
+
+**Fija versiones, no ramas.** El producto compone versiones verificadas compatibles, no la última
+rama incompleta de cada persona.
+
+### Artefactos
+
+| Rol | Artefacto | Versión fijada |
+|---|---|---|
+| **Consumidor** | `scheduling` (4 servicios que inyectan `AGENDA_NOTICE_PORT`) | `mantra-core-health-api@5d5007fbdb7916b124010bbfbb560b7bb3aabc06` |
+| **Contrato** | `src/modules/scheduling/ports/agenda-notice.port.ts` | mismo commit · **sha1 del archivo: `git rev-parse HEAD:<ruta>`** (ver evidencia) |
+| **Proveedor** | `MessagingAgendaNoticeAdapter` | mismo commit |
+| **Proveedor transitivo** | `messaging` (`NotificationsService`) | mismo commit |
+| **Proveedor transitivo** | `SupportAdminNoticeAdapter` (chat) | mismo commit |
+| **Base** | `mantra_redesa_health` en `localhost:5433` | 1 184 tablas · 6 664 FKs |
+
+### Por qué el corte es `5d5007f` y no `32ae939`
+
+
+$ git show origin/dev:docs/trabajo/2026-09-19-relacion-agenda-mensajeria/REPORTE.md | grep -n "VERIFIED\|ADAPTER_VERIFIED" | head -10
+6:- **Peldaño de evidencia alcanzado:** `VERIFIED` para la relación con dobles y para la observación
+7:  contra la base. **No** `REGRESSION_VERIFIED`: el lint global queda en rojo por deuda ajena y hay
+87:| H2.S2.M3 | Estado registrado: `ADAPTER_VERIFIED_WITH_DOUBLES` | — | PASS |

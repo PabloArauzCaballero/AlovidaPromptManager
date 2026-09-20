@@ -1,0 +1,9 @@
+# H3.S1.M3 matriz rol x recurso x accion — DoD ejecutado el 2026-09-20T20:09:46Z sobre PERMISOS-ESTADOS-DINERO-M06-2026-09-20.md
+
+$ grep -c 'NOT_RUN' evidencia/H3.S1.M3_matriz-autorizacion.txt
+6
+exit_code=0   # esperado: >= 1 (celdas no ejercitadas declaradas)
+
+$ grep -c 'FAIL' evidencia/H3.S1.M3_matriz-autorizacion.txt
+7
+exit_code=0   # esperado: >= 1

@@ -1,0 +1,160 @@
+# H3.prep — preparación de datos sintéticos contra la API viva (registros de cada paso del arnés h3-recorrido.mjs, enmascarados; 2026-09-20T18:59:06Z)
+# Corrida U=930081576 · org A = tenant por defecto 1befcfea… (19 recursos ya sembrados en Neon por corridas previas de seed-dev-data.mjs) · org B = alta pública SINT_ORG_B_<U> · pacientes SINT<U>1..3 con correo @example.test, sexAtBirth UNKNOWN, departamento geo:bo:department:SC, municipio SC-SANTA_CRUZ_DE_LA_SIERRA
+# Contratos que difieren de los arneses de referencia (P8 / fx14): register-organization exige countryConceptId+jurisdictionConceptId para HOSPITAL (422 missing); register-patient exige email, phone, birthDate, sexAtBirth, issuerAdministrativeAreaConceptId (miembro de VS_BO_DEPARTMENT, NO el concepto 'SC' de vs_administrative_area: 422 valueSet) y residenceMunicipalityConceptId.
+
+== paso discover ==
+✓ [admin login] POST /iam/auth/login -> 200
+✓ [recursos del tenant A] GET /scheduling/resources?tenantId=1befcfea… -> 200
+
+== paso orgB ==
+✓ [alta organización B] POST /iam/auth/register-organization -> 201
+✓ [login owner B] POST /iam/auth/login -> 200
+
+== paso patients ==
+✓ [alta paciente PA1] POST /iam/auth/register-patient -> 201 (esperado 201)
+✓ [login PA1] POST /iam/auth/login -> 200 (esperado 200|201)
+✓ [alta paciente PA2] POST /iam/auth/register-patient -> 201 (esperado 201)
+✓ [login PA2] POST /iam/auth/login -> 200 (esperado 200|201)
+✓ [alta paciente PB1] POST /iam/auth/register-patient -> 201 (esperado 201)
+✓ [login PB1] POST /iam/auth/login -> 200 (esperado 200|201)
+
+== paso memberB ==
+✓ [admin incorpora a PB1 en B] POST /tenants/60519703…/memberships -> 201 (esperado 200|201)
+✓ [re-login PB1] POST /iam/auth/login -> 200 (esperado 200|201)
+
+== paso bookA ==
+✓ [recursos de A] GET /scheduling/resources?tenantId=1befcfea… -> 200 (esperado 200)
+✓ [cupos de recurso 22f1b9ac…] GET /scheduling/resources/22f1b9ac…/slots?from=2026-09-20T18%3A58%3A05.456Z&to=2026-10-20T18%3A58%3A05.457Z -> 200 (esperado 200)
+✓ [PA1 retiene cupo] POST /scheduling/slots/b7ded3db…/holds -> 201 (esperado 200|201)
+✓ [PA1 confirma] POST /scheduling/holds/a79e8ebb…/confirm -> 201 (esperado 200|201)
+
+== estado resultante (sin tokens) ==
+{
+ "admin": {
+  "token": "<token omitido>",
+  "tenants": [
+   "1befcfea…"
+  ],
+  "roles": [
+   "SECURITY_ADMIN",
+   "SUPERADMIN"
+  ]
+ },
+ "discover": {
+  "tenant": "1befcfea…",
+  "resources": [
+   {
+    "id": "22f1b9ac…",
+    "resourceRefId": "a49924a5…"
+   },
+   {
+    "id": "7db0c749…",
+    "resourceRefId": "26d91aff…"
+   },
+   {
+    "id": "7d183d6f…",
+    "resourceRefId": "dc0cb15b…"
+   },
+   {
+    "id": "e2a26590…",
+    "resourceRefId": "46de4506…"
+   },
+   {
+    "id": "c111351b…",
+    "resourceRefId": "ae5415ad…"
+   }
+  ]
+ },
+ "U": "930081576",
+ "ownerB": {
+  "token": "<token omitido>",
+  "tenants": [
+   "60519703…"
+  ],
+  "roles": [
+   "USER"
+  ],
+  "sub": "72b802dd…"
+ },
+ "tenantA": "1befcfea…",
+ "tenantB": "60519703…",
+ "recursoA": {
+  "id": "22f1b9ac…",
+  "resourceRefType": "practice_sites",
+  "resourceRefId": "a49924a5…"
+ },
+ "cuposA": [
+  {
+   "id": "b7ded3db…",
+   "startAt": "2026-09-20T22:00:00.000Z",
+   "remainingCapacity": 1
+  },
+  {
+   "id": "9fff6bc1…",
+   "startAt": "2026-09-20T22:30:00.000Z",
+   "remainingCapacity": 1
+  },
+  {
+   "id": "d6cc5b4b…",
+   "startAt": "2026-09-20T23:00:00.000Z",
+   "remainingCapacity": 1
+  }
+ ],
+ "bookingA": {
+  "id": "d4e31932…",
+  "estado": null,
+  "slotId": "b7ded3db…",
+  "claves": [
+   "id",
+   "bookableSlotId",
+   "statusConceptId",
+   "remindersScheduled"
+  ]
+ },
+ "concepts": {
+  "ADMIN_AREA_SC": "16fe92e8…",
+  "MUNICIPALITY_SCZ": "10106b53…"
+ },
+ "pacientes": {
+  "PA1": {
+   "nationalId": "SINT<U>…",
+   "userId": "4e297639…",
+   "patientProfileId": "84eb5b98…",
+   "token": "<token omitido>",
+   "tenants": [
+    "1befcfea…"
+   ],
+   "roles": [
+    "USER",
+    "PATIENT"
+   ]
+  },
+  "PA2": {
+   "nationalId": "SINT<U>…",
+   "userId": "e2068010…",
+   "patientProfileId": "a6c6a22e…",
+   "token": "<token omitido>",
+   "tenants": [
+    "1befcfea…"
+   ],
+   "roles": [
+    "USER",
+    "PATIENT"
+   ]
+  },
+  "PB1": {
+   "nationalId": "SINT<U>…",
+   "userId": "19dfdc7a…",
+   "patientProfileId": "4970530a…",
+   "token": "<token omitido>",
+   "tenants": [
+    "1befcfea…",
+    "60519703…"
+   ],
+   "roles": [
+    "USER",
+    "PATIENT"
+   ]
+  }
+ }
+}

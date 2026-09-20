@@ -1,0 +1,21 @@
+# H3.S1.M2 — ADV-04 escritura + consulta posterior desde el dueño — ejecutado 2026-09-20T18:58:55Z contra la API viva en 127.0.0.1:3000 (PID 29640, base del .env = Neon/alovida, RLS_ENFORCE=false)
+# Actores sintéticos: PA1/PA2/PB1 = pacientes SINT<U>n (rol PATIENT, tenant por defecto = org A 1befcfea…); PB1 además miembro STAFF de org B 60519703…; ownerB = rol global USER. bookingA = cita CONFIRMADA de PA1 en A. Los uuid se acortan; los nombres y motivos van enmascarados.
+# Esperado = lo que exige la REGLA (90.1.3 / 90.1.9), no lo que hace el sistema. ✗ = desvío observado, conservado tal cual.
+$ node h3-recorrido.mjs --step idorWrite
+✓ [W0 estado previo (PA1)] GET /scheduling/bookings/d4e31932… → 200 (esperado 200)
+✓ [W0 bandeja previa de PA1] GET /notifications/me?limit=50 → 200 (esperado 200)
+✗ [W1 PA2 cancela la cita de PA1] POST /scheduling/bookings/d4e31932…/cancel → 200 (esperado 403|404)
+    cuerpo: {"bookingId":"d4e31932-b38e-4ce5-b5d7-9bc7a1277fe0","capacityReleased":true}
+✗ [W2 PB1 (contexto B) cancela la cita de PA1] POST /scheduling/bookings/d4e31932…/cancel → 409 (esperado 403|404)
+    cuerpo: {"code":"CONFLICT","message":"<enmascarado:string>","correlationId":"73","details":{"bookingId":"d4e31932-b38e-4ce5-b5d7-9bc7a1277fe0"},"timestamp":"2026-09-20T18:58:57.678Z","path":"/scheduling/bookings/d4e31932-b38e-4ce5-b5d7-9bc7a1277fe0/cancel"}
+✗ [W3 PA2 reprograma la cita de PA1] POST /scheduling/bookings/d4e31932…/reschedule → 422 (esperado 403|404)
+    cuerpo: {"code":"PRECONDITION_FAILED","message":"<enmascarado:string>","correlationId":"74","details":{"bookingId":"d4e31932-b38e-4ce5-b5d7-9bc7a1277fe0"},"timestamp":"2026-09-20T18:58:57.905Z","path":"/scheduling/bookings/d4e31932-b38e-4ce5-b5d7-9bc7a1277fe0/reschedule"}
+✓ [W4 PA2 anota a PA1 en la espera] POST /scheduling/waitlist → 403 (esperado 403)
+✓ [W5 owner de B avisa demora sobre la agenda de A] POST /scheduling/resources/22f1b9ac…/delay → 403 (esperado 403|404)
+✓ [W6 PB1 (contexto B) avisa demora sobre la agenda de A] POST /scheduling/resources/22f1b9ac…/delay → 403 (esperado 403|404)
+✓ [W9 consulta posterior: PA1 lee su cita] GET /scheduling/bookings/d4e31932… → 200 (esperado 200)
+✓ [W9 consulta posterior: espera de PA1] GET /scheduling/waitlist?patientProfileId=84eb5b98… → 200 (esperado 200)
+✓ [W9 consulta posterior: bandeja de PA1] GET /notifications/me?limit=50 → 200 (esperado 200)
+✓ [W9 consulta posterior: cupo destino sigue libre] GET /scheduling/resources/22f1b9ac…/slots?from=2026-09-20T22%3A30%3A00.000Z&to=2026-09-20T22%3A31%3A00.000Z → 200 (esperado 200)
+  resumen escritura: {"estadoAntes":"bf910452-1485-58ca-88dc-184b8b4b2935","estadoDespues":"3fbee3a4-f674-5520-a805-32098f7b019c","sinCambio":false,"esperasPA1":0,"bandejaAntes":0,"bandejaDespues":0,"kindsDespues":[],"cupo2RemainingCapacity":1}
+exit_code=1   # 1 = al menos un desvío respecto de la regla

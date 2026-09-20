@@ -1,0 +1,21 @@
+=== H1.S2.M4 — qué queda fuera por el cobro · consulta 2026-09-20T17:32:36Z
+
+$ ls mantra-core-health-api/src/modules | tr "\n" " "
+accounting ads audio_assets audit auth_providers authz automation billing chart clinical clinical_ext common community consent content_packs crm cross_store_consistency delegated_access diagnostic_units diagnostics directory document_store education erp forms geo graph_intelligence health_context health_data iam identity_assurance insurance integration_contracts integrations lakehouse marketing medical_groups messaging object_storage organization_extensions payments pharma_lab pharmacy pharmacy_inventory platform_ops polyglot_storage practice procedures_perioperative profiles promotions qa_lab quotations read_models README.md redis_runtime reporting scheduling search_platform surveys system_context system_ops telemetry terminology time_series tracking vector_rag workflow 
+
+$ grep -rln "paymentDemo\|campaignsDemo\|loyaltyDemo" mantra-core-health/src/app --include=*.ts
+mantra-core-health/src/app/app.routes.server.ts
+mantra-core-health/src/app/core/data-access/pharmacy-campaigns/pharmacy-campaigns.client.ts
+mantra-core-health/src/app/features/account/pharmacy-orders/order-payment/order-payment.spec.ts
+mantra-core-health/src/app/features/account/pharmacy-orders/order-payment/order-payment.ts
+mantra-core-health/src/app/features/account/promotions/promotions.spec.ts
+mantra-core-health/src/app/features/account/promotions/promotions.ts
+
+$ sed -n "64,66p" gdoc_procesos.txt   # 3.6 datos de facturacion en el flujo de reserva
+   6. Datos de la facturación para recibir de todas las instituciones
+      1. Nombre o Razón social 
+      2. Numero de NIT
+
+$ grep -rn "billing\|invoice\|factura" mantra-core-health-api/src/modules/scheduling --include=*.ts -l
+mantra-core-health-api/src/modules/scheduling/services/scheduling-bookings.service.ts
+(vacio => NOT_FOUND: el flujo de reserva de scheduling no toca facturacion directamente)

@@ -1,0 +1,87 @@
+=== H1.S2.M3 — participantes exigidos · consulta 2026-09-20T17:31:32Z · cwd=D:/Trabajos Secundarios/Mantra Core Technologies/mantra-core-health-api
+
+$ ls src/modules/scheduling/
+adapters
+controllers
+dto
+entities
+notices
+policies
+ports
+README.md
+repositories
+scheduling.concepts.ts
+scheduling.module.ts
+scheduling.persistence.ts
+scheduling.tokens.ts
+scheduling-time.spec.ts
+scheduling-time.ts
+services
+state
+
+$ grep -n "imports" -A 15 src/modules/scheduling/scheduling.module.ts | head -20
+79:  imports: [
+80-    MikroOrmModule.forFeature([
+81-      ...Object.values(entities),
+82-      ...Object.values(profileEntities),
+83-    ]),
+84-    AuditModule,
+85-    // TP-5: quién pertenece a cada organización lo decide `directory`, y de
+86-    // ahí sale el permiso para leer su agenda. No hay ciclo: `directory` no
+87-    // depende de `scheduling`.
+88-    DirectoryModule,
+89-    PracticeModule,
+90-    MessagingModule,
+91-    CommunityModule,
+92-    // ALV-021: la lista de consultas dice «Particular» o el nombre de la
+93-    // aseguradora. `CoverageRepository` es de sólo lectura y ya lo consumen
+94-    // `iam` y `profiles` desde afuera con el mismo patrón.
+
+$ grep -rln "AGENDA_NOTICE_PORT" src/modules
+src/modules/scheduling/adapters/messaging-agenda-notice.adapter.ts
+src/modules/scheduling/ports/agenda-notice.port.ts
+src/modules/scheduling/scheduling.module.ts
+src/modules/scheduling/services/scheduling-agenda-notices.service.ts
+src/modules/scheduling/services/scheduling-bookings.service.ts
+src/modules/scheduling/services/scheduling-catalog.service.ts
+src/modules/scheduling/services/scheduling-delay.service.ts
+
+$ grep -n "IN_APP\|EMAIL\|PUSH" src/modules/messaging/services/notifications.service.ts | head -10
+447:        channel?.channelTypeConceptId === CONCEPTS.CHANNEL_TYPE_IN_APP
+467:            channelConceptId: CONCEPTS.CHANNEL_TYPE_IN_APP,
+692:   * `IN_APP_DIRECT`: la auditoría de mensajería sigue contando la misma
+857:      CONCEPTS.CHANNEL_TYPE_IN_APP,
+914:        CONCEPTS.CHANNEL_TYPE_IN_APP,
+1181:      CONCEPTS.CHANNEL_TYPE_IN_APP,
+1346:      channelConceptId: CONCEPTS.CHANNEL_TYPE_IN_APP,
+
+$ grep -n "mock-provider-server" docker-compose.yml
+239:  # Emulador standalone (`../mock-provider-server`) de los proveedores
+244:  # `mock-provider-server/README.md`.
+245:  MOCK_PROVIDER_BASE_URL: ${MOCK_PROVIDER_BASE_URL:-http://mock-provider-server:4100}
+556:  # independiente en `../mock-provider-server`, sin código ni dependencias
+563:  mock-provider-server:
+564:    image: mantra-redesa-mock-provider-server:local
+566:      context: ./mock-provider-server
+783:      mock-provider-server:
+917:      mock-provider-server:
+1138:      mock-provider-server:
+
+$ grep -oE "^[A-Z_]+" .env.example | sort -u | grep -iE "smtp|mail|push|sms|whatsapp|twilio"
+GOOGLE_SENDER_EMAIL
+
+$ grep -rn "SupportAdminNoticeAdapter" src/modules/scheduling/scheduling.module.ts
+72:import { SupportAdminNoticeAdapter } from './adapters/support-admin-notice.adapter';
+140:    SupportAdminNoticeAdapter,
+
+$ ls src/modules/community/ | head -15
+community.concepts.ts
+community.module.spec.ts
+community.module.ts
+controllers
+dto
+entities
+gateways
+README.md
+repositories
+services

@@ -191,3 +191,15 @@ de lo que mi propio prompt enumera. Queda registrado como hallazgo transversal p
 - [x] Ninguna salida pegada contiene datos reales de pacientes — todo el trabajo fue sobre código
       fuente, tipos y hashes.
 - [x] Tu fila del [daily del equipo](../Daily-Noche-2026-09-19.md) está actualizada.
+
+## 8. Seguimiento posterior al cierre — no reabre nada
+
+**El turno está cerrado.** Esta sección sólo deja el puntero a un hallazgo puntual verificado después,
+sobre el **adaptador real** de Mantra, que quedó **fuera** del carril entregado por la frontera que el
+propio contrato declara (§5: el validador corre en el laboratorio, no dentro del adaptador).
+
+| Hallazgo | Clasificación | Dónde | Decide |
+|---|---|---|---|
+| Con `recipient` vacío, `emit` devuelve `skippedReason: 'El destinatario no tiene cuenta de portal'`, aunque no se indicó ningún destinatario; y con **los dos** campos presentes se elige `userId` **en silencio**, sin señalar la violación de `EXACTLY_ONE_RECIPIENT_FIELD` | **`PRODUCTION_ADAPTER_GAP`** | [`docs/trabajo/2026-09-20-hallazgo-adapter-gap-recipient/`](../../../../docs/trabajo/2026-09-20-hallazgo-adapter-gap-recipient/REPORTE.md) | **Pablo** y **Justin** |
+
+**No propone solución, no reabre H2 y no cambia ninguna microtarea de este daily.**

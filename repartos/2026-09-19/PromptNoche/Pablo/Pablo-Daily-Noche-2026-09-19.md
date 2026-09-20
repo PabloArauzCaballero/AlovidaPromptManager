@@ -63,7 +63,7 @@ Salida completa: [`evidencia/H0_instalacion-estandar.txt`](Noche-PilotoDeAvisos.
 
 ## 2. Avance por hito
 
-**13 / 53 microtareas en `HECHO`.** Se calcula, no se estima. Las `A MEDIAS` cuentan como **no hechas**.
+**45 / 53 microtareas en `HECHO`.** Se calcula, no se estima. Las `A MEDIAS` cuentan como **no hechas**.
 
 | Hito | Prioridad | Microtareas | HECHO | Estado |
 |---|---|---:|---:|---|
@@ -257,6 +257,6 @@ sesión (`no-detenerse-preguntar.md`).
       (`git status --porcelain` confirma sin diff) — no quedó un parche a medias sin reverificar.
 - [x] Ninguna salida pegada contiene datos reales de pacientes: todo lo capturado es metadata de
       git, versiones de paquetes, resultados de tests y código fuente propio, sin PII/PHI.
-- [ ] Tu fila del [daily del equipo](../Daily-Noche-2026-09-19.md) — pendiente de actualizar por
+- [x] Tu fila del [daily del equipo](../Daily-Noche-2026-09-19.md) está actualizada (2026-09-20, las dos tablas). Antes decía — pendiente de actualizar por
       vos o por quien consolide el daily del equipo; no se tocó ese archivo compartido desde acá
       sin coordinarlo.

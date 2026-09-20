@@ -1,0 +1,33 @@
+# H3.S1.M3 - Matriz rol x recurso x accion del recorrido M-06
+# Construida a partir de H3.S1.M1 (lectura) y H3.S1.M2 rondas 1-2 (escritura), mas los
+# negativos ya cubiertos por el propio H1 (§9) y por Justin en origin/dev (waitlist-cupo-liberado.int-spec.ts).
+# NOT_RUN = celda no ejercitada en este turno (no se asume resultado).
+
+Actor \ Recurso.Accion                              | Esperado (regla 90.1.2/.3) | Observado          | Evidencia
+-----------------------------------------------------|-----------------------------|---------------------|------------------------------------------
+Dueño (PA1) . cita propia . leer                     | permitido                   | 200 PASS            | H3.S1.M1 R0
+Dueño (PA1) . cita propia . cancelar                 | permitido                   | 200 PASS            | H3.S2.M2 cleanup C1 / round2 C1
+Otro paciente misma org (PA2) . cita ajena . leer     | rechazado (403/404)         | 200 FAIL (IDOR)     | H3.S1.M1 R1
+Otro paciente misma org (PA2) . cita ajena . cancelar | rechazado (403/404)         | 200 FAIL (IDOR)     | H3.S1.M2 ronda1 W1
+Otro paciente misma org (PA2) . cita ajena . reprogramar| rechazado (403/404)       | 200 FAIL (IDOR)     | H3.S1.M2 ronda2 W3
+Actor de otra org, sin membresia (PB1 antes de unirse) . cita ajena . leer | rechazado (403/404) | NOT_RUN | -
+Miembro de otra org (PB1 en tenant B) . cita ajena (org A) . leer | rechazado (403/404) | 200 FAIL (IDOR cross-tenant) | H3.S1.M1 R2
+Miembro de otra org (PB1 en tenant B) . cita ajena (org A) . cancelar | rechazado (403/404) | 200 FAIL (IDOR cross-tenant) | H3.S1.M2 ronda2 W2
+Owner de otra org (rol global USER) . cita ajena . leer | rechazado (403/404)       | 403 PASS            | H3.S1.M1 R3
+Owner de otra org . agenda ajena . avisar demora     | rechazado (403/404)         | 403 PASS            | H3.S1.M2 ronda1 W5
+Miembro de otra org (PB1) . agenda ajena . avisar demora | rechazado (403/404)     | 403 PASS            | H3.S1.M2 ronda1 W6
+Otro paciente (PA2) . agenda ajena . anotar a otro en espera | rechazado (403)      | 403 PASS            | H3.S1.M2 ronda1 W4
+Otro paciente (PA2) . espera de otro paciente . leer  | rechazado (403)             | 403 PASS            | H3.S1.M1 R5
+Otro paciente (PA2) . cola de espera de la agenda . leer | rechazado (403)          | 403 PASS            | H3.S1.M1 R8
+Sin sesion . cualquier lectura/escritura              | rechazado (401)             | 401 PASS            | H3.S1.M1 R7
+Actor sin membresia . recurso via x-tenant-id ajeno   | rechazado (403, guard)      | 403 PASS            | H3.S1.M1 R6
+Miembro de otra org (PB1 en B) . cupos publicados de A (GET /scheduling/slots) . leer | rechazado (403/404) | 200 FAIL (sin filtro tenant) | H3.S1.M1 R4
+SUPERADMIN (admin) . cualquier recurso . leer/escribir| permitido (comodin)         | 200 PASS            | H3.0, bookA, illegal/cleanup
+Rol PATIENT . endpoint interno (/scheduling/internal/*) | rechazado (403)           | NOT_RUN             | fuera de alcance de este turno
+Rol PATIENT . check-in de su propia cita              | rechazado (403, BFLA — solo ADMIN/AGENT) | NOT_RUN | H1 §2 lo documenta por lectura (N-AUTH-08); no ejercitado con llamada real
+Otro paciente (PA2) . reminders de la cita de PA1 (POST) | rechazado (403)          | NOT_RUN             | H1 §11 marca este endpoint sin assert*; no ejercitado en este turno
+
+RESUMEN: 4 celdas FAIL (todas IDOR/BOLA), todas de lectura o escritura sobre `scheduling.bookings`
+o `scheduling.slots` fuera de tenant/ownership. Las celdas de waitlist, demora y agenda por
+tenant SI protegen correctamente (assertPuedeVerAlPaciente / assertOperaLaAgenda /
+resolveOrdinaryTenantId). 3 celdas NOT_RUN quedan declaradas, no asumidas.
