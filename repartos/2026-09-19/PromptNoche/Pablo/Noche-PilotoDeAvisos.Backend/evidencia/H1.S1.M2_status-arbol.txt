@@ -1,0 +1,55 @@
+=== H1.S1.M2 — Estado del árbol de trabajo (checkout real) ===
+$ git status --porcelain=v1 -b
+## feat/admin-portal-catalog
+ M docker-compose.yml
+ M docs/adr/index.md
+ M package.json
+ M src/app.module.ts
+ M src/modules/qa_lab/README.md
+ M src/modules/qa_lab/controllers/index.ts
+ M src/modules/qa_lab/qa_lab.module.ts
+ M src/modules/qa_lab/services/index.ts
+ M src/modules/qa_lab/services/qa-runs.service.spec.ts
+ M src/modules/qa_lab/services/qa-runs.service.ts
+ M src/modules/telemetry/README.md
+ M src/modules/telemetry/controllers/index.ts
+ M src/modules/telemetry/repositories/index.ts
+ M src/modules/telemetry/services/index.ts
+ M src/modules/telemetry/telemetry.module.ts
+ M src/orm/catalog/foreign-keys/index.ts
+ M src/orm/catalog/indexes/index.ts
+ M src/orm/catalog/schemas.catalog.ts
+ M src/worker/jobs/qa_lab/qa_lab.worker-module.ts
+ M test/integration/README.md
+?? .agents/
+?? AGENTS.md
+?? database/SQL/patches/2026-09-18_v4219_data_catalog.sql
+?? database/SQL/patches/2026-09-18_v4220_qa_execution.sql
+?? docs/admin-portal/
+?? docs/adr/ADR-0024-portal-admin-catalogo-de-datos.md
+?? docs/adr/ADR-0025-qa-runner-en-servidor.md
+?? src/common/constants/concept-code.spec.ts
+?? src/common/constants/concept-code.ts
+?? src/modules/data_catalog/
+?? src/modules/ops_console/
+?? src/modules/qa_execution/
+?? src/modules/qa_lab/controllers/qa-lab-read.controller.ts
+?? src/modules/qa_lab/domain/
+?? src/modules/qa_lab/services/qa-lab-read.service.ts
+?? src/modules/telemetry/controllers/telemetry-analytics.controller.spec.ts
+?? src/modules/telemetry/controllers/telemetry-analytics.controller.ts
+?? src/modules/telemetry/domain/analytics-window.spec.ts
+?? src/modules/telemetry/domain/analytics-window.ts
+?? src/modules/telemetry/repositories/telemetry-analytics.repository.ts
+?? src/modules/telemetry/services/telemetry-analytics.service.ts
+?? src/orm/catalog/foreign-keys/data_catalog.fk.ts
+?? src/orm/catalog/foreign-keys/qa_execution.fk.ts
+?? src/orm/catalog/indexes/data_catalog.idx.ts
+?? src/orm/catalog/indexes/qa_execution.idx.ts
+?? src/worker-data_catalog.ts
+?? src/worker/jobs/data_catalog/
+?? src/worker/jobs/qa_lab/plan-run-tick.job.ts
+?? test/integration/data-catalog.int-spec.ts
+?? test/integration/ops-console.int-spec.ts
+?? test/integration/qa-execution.int-spec.ts
+?? test/integration/telemetry-analytics.int-spec.ts

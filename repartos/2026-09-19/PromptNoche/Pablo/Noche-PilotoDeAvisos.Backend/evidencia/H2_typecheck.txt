@@ -1,0 +1,2 @@
+=== typecheck de los archivos nuevos del laboratorio (dentro del typecheck completo) ===
+exit_code=0

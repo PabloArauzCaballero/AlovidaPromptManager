@@ -1,0 +1,738 @@
+=== postgres-init tras la reparación del patch v4.2.8 ===
+ Container mantra-redesa-postgres-1 Running 
+Attaching to postgres-init-1
+ Container mantra-redesa-postgres-1 Waiting 
+ Container mantra-redesa-postgres-1 Healthy 
+ Container mantra-redesa-postgres-init-1 Starting 
+ Container mantra-redesa-postgres-init-1 Started 
+postgres-init-1  | >>> Esperando a que PostgreSQL acepte conexiones...
+postgres-init-1  | === apply_all: iam.users ya existe — skip
+postgres-init-1  | === apply_deferred: FK cross-schema ya aplicadas — skip
+postgres-init-1  | >>> NoSQL 58: time_series (TimescaleDB)
+postgres-init-1  | CREATE EXTENSION
+postgres-init-1  | psql:/init/NoSQL/58_time_series_timescaledb/time_series.timescaledb.sql:3: NOTICE:  extension "timescaledb" already exists, skipping
+postgres-init-1  | CREATE SCHEMA
+postgres-init-1  | psql:/init/NoSQL/58_time_series_timescaledb/time_series.timescaledb.sql:5: NOTICE:  schema "time_series" already exists, skipping
+postgres-init-1  | psql:/init/NoSQL/58_time_series_timescaledb/time_series.timescaledb.sql:23: NOTICE:  relation "device_raw_reading_series" already exists, skipping
+postgres-init-1  | CREATE TABLE
+postgres-init-1  | CREATE TABLE
+postgres-init-1  | psql:/init/NoSQL/58_time_series_timescaledb/time_series.timescaledb.sql:40: NOTICE:  relation "normalized_vital_series" already exists, skipping
+postgres-init-1  | psql:/init/NoSQL/58_time_series_timescaledb/time_series.timescaledb.sql:55: NOTICE:  relation "telemetry_event_series" already exists, skipping
+postgres-init-1  | CREATE TABLE
+postgres-init-1  | CREATE TABLE
+postgres-init-1  | psql:/init/NoSQL/58_time_series_timescaledb/time_series.timescaledb.sql:72: NOTICE:  relation "location_ping_series" already exists, skipping
+postgres-init-1  | psql:/init/NoSQL/58_time_series_timescaledb/time_series.timescaledb.sql:87: NOTICE:  relation "application_tracking_series" already exists, skipping
+postgres-init-1  | CREATE TABLE
+postgres-init-1  | CREATE TABLE
+postgres-init-1  | psql:/init/NoSQL/58_time_series_timescaledb/time_series.timescaledb.sql:105: NOTICE:  relation "ads_delivery_event_series" already exists, skipping
+postgres-init-1  | psql:/init/NoSQL/58_time_series_timescaledb/time_series.timescaledb.sql:121: NOTICE:  relation "ai_runtime_metric_series" already exists, skipping
+postgres-init-1  | CREATE TABLE
+postgres-init-1  | psql:/init/NoSQL/58_time_series_timescaledb/time_series.timescaledb.sql:136: NOTICE:  relation "payment_gateway_metric_series" already exists, skipping
+postgres-init-1  | CREATE TABLE
+postgres-init-1  | psql:/init/NoSQL/58_time_series_timescaledb/time_series.timescaledb.sql:152: NOTICE:  relation "lab_analyzer_event_series" already exists, skipping
+postgres-init-1  | CREATE TABLE
+postgres-init-1  | CREATE TABLE
+postgres-init-1  | psql:/init/NoSQL/58_time_series_timescaledb/time_series.timescaledb.sql:167: NOTICE:  relation "ingestion_pipeline_metric_series" already exists, skipping
+postgres-init-1  | psql:/init/NoSQL/58_time_series_timescaledb/time_series.timescaledb.sql:183: NOTICE:  relation "service_sli_series" already exists, skipping
+postgres-init-1  | CREATE TABLE
+postgres-init-1  | CREATE TABLE
+postgres-init-1  | psql:/init/NoSQL/58_time_series_timescaledb/time_series.timescaledb.sql:199: NOTICE:  relation "audit_access_metric_series" already exists, skipping
+postgres-init-1  | psql:/init/NoSQL/58_time_series_timescaledb/time_series.timescaledb.sql:204: NOTICE:  table "device_raw_reading_series" is already a hypertable, skipping
+postgres-init-1  |               create_hypertable              
+postgres-init-1  | ---------------------------------------------
+postgres-init-1  |  (5,time_series,device_raw_reading_series,f)
+postgres-init-1  | (1 row)
+postgres-init-1  | 
+postgres-init-1  | psql:/init/NoSQL/58_time_series_timescaledb/time_series.timescaledb.sql:205: NOTICE:  column "tenant_id" is already a dimension, skipping
+postgres-init-1  |                      add_dimension                      
+postgres-init-1  | --------------------------------------------------------
+postgres-init-1  |  (16,time_series,device_raw_reading_series,tenant_id,f)
+postgres-init-1  | (1 row)
+postgres-init-1  | 
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | psql:/init/NoSQL/58_time_series_timescaledb/time_series.timescaledb.sql:206: NOTICE:  relation "order_device_raw" already exists, skipping
+postgres-init-1  | psql:/init/NoSQL/58_time_series_timescaledb/time_series.timescaledb.sql:207: NOTICE:  relation "uq_device_sequence" already exists, skipping
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | psql:/init/NoSQL/58_time_series_timescaledb/time_series.timescaledb.sql:208: NOTICE:  relation "brin_device_time" already exists, skipping
+postgres-init-1  |              create_hypertable             
+postgres-init-1  | -------------------------------------------
+postgres-init-1  |  (9,time_series,normalized_vital_series,f)
+postgres-init-1  | (1 row)
+postgres-init-1  | 
+postgres-init-1  | psql:/init/NoSQL/58_time_series_timescaledb/time_series.timescaledb.sql:209: NOTICE:  table "normalized_vital_series" is already a hypertable, skipping
+postgres-init-1  |                     add_dimension                     
+postgres-init-1  | ------------------------------------------------------
+postgres-init-1  |  (17,time_series,normalized_vital_series,tenant_id,f)
+postgres-init-1  | (1 row)
+postgres-init-1  | 
+postgres-init-1  | psql:/init/NoSQL/58_time_series_timescaledb/time_series.timescaledb.sql:210: NOTICE:  column "tenant_id" is already a dimension, skipping
+postgres-init-1  | psql:/init/NoSQL/58_time_series_timescaledb/time_series.timescaledb.sql:211: NOTICE:  relation "order_vitals_patient_code" already exists, skipping
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | psql:/init/NoSQL/58_time_series_timescaledb/time_series.timescaledb.sql:212: NOTICE:  relation "ix_vitals_promoted" already exists, skipping
+postgres-init-1  | psql:/init/NoSQL/58_time_series_timescaledb/time_series.timescaledb.sql:213: NOTICE:  table "telemetry_event_series" is already a hypertable, skipping
+postgres-init-1  |              create_hypertable             
+postgres-init-1  | -------------------------------------------
+postgres-init-1  |  (12,time_series,telemetry_event_series,f)
+postgres-init-1  | (1 row)
+postgres-init-1  | 
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | psql:/init/NoSQL/58_time_series_timescaledb/time_series.timescaledb.sql:214: NOTICE:  relation "order_telemetry_user" already exists, skipping
+postgres-init-1  |            create_hypertable            
+postgres-init-1  | ----------------------------------------
+postgres-init-1  |  (8,time_series,location_ping_series,f)
+postgres-init-1  | (1 row)
+postgres-init-1  | 
+postgres-init-1  | psql:/init/NoSQL/58_time_series_timescaledb/time_series.timescaledb.sql:215: NOTICE:  table "location_ping_series" is already a hypertable, skipping
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | psql:/init/NoSQL/58_time_series_timescaledb/time_series.timescaledb.sql:216: NOTICE:  relation "order_location_subject" already exists, skipping
+postgres-init-1  | psql:/init/NoSQL/58_time_series_timescaledb/time_series.timescaledb.sql:217: NOTICE:  table "application_tracking_series" is already a hypertable, skipping
+postgres-init-1  |                create_hypertable               
+postgres-init-1  | -----------------------------------------------
+postgres-init-1  |  (3,time_series,application_tracking_series,f)
+postgres-init-1  | (1 row)
+postgres-init-1  | 
+postgres-init-1  | psql:/init/NoSQL/58_time_series_timescaledb/time_series.timescaledb.sql:218: NOTICE:  relation "order_tracking_app_event" already exists, skipping
+postgres-init-1  | CREATE INDEX
+postgres-init-1  |               create_hypertable              
+postgres-init-1  | ---------------------------------------------
+postgres-init-1  |  (1,time_series,ads_delivery_event_series,f)
+postgres-init-1  | (1 row)
+postgres-init-1  | 
+postgres-init-1  | psql:/init/NoSQL/58_time_series_timescaledb/time_series.timescaledb.sql:219: NOTICE:  table "ads_delivery_event_series" is already a hypertable, skipping
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | psql:/init/NoSQL/58_time_series_timescaledb/time_series.timescaledb.sql:220: NOTICE:  relation "order_ads_campaign_event" already exists, skipping
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | psql:/init/NoSQL/58_time_series_timescaledb/time_series.timescaledb.sql:221: NOTICE:  relation "uq_ads_event" already exists, skipping
+postgres-init-1  |              create_hypertable              
+postgres-init-1  | --------------------------------------------
+postgres-init-1  |  (2,time_series,ai_runtime_metric_series,f)
+postgres-init-1  | (1 row)
+postgres-init-1  | 
+postgres-init-1  | psql:/init/NoSQL/58_time_series_timescaledb/time_series.timescaledb.sql:222: NOTICE:  table "ai_runtime_metric_series" is already a hypertable, skipping
+postgres-init-1  | psql:/init/NoSQL/58_time_series_timescaledb/time_series.timescaledb.sql:223: NOTICE:  relation "order_ai_agent_metric" already exists, skipping
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | psql:/init/NoSQL/58_time_series_timescaledb/time_series.timescaledb.sql:224: NOTICE:  table "payment_gateway_metric_series" is already a hypertable, skipping
+postgres-init-1  |                 create_hypertable                 
+postgres-init-1  | --------------------------------------------------
+postgres-init-1  |  (10,time_series,payment_gateway_metric_series,f)
+postgres-init-1  | (1 row)
+postgres-init-1  | 
+postgres-init-1  | psql:/init/NoSQL/58_time_series_timescaledb/time_series.timescaledb.sql:225: NOTICE:  relation "order_payment_gateway_metric" already exists, skipping
+postgres-init-1  | CREATE INDEX
+postgres-init-1  |               create_hypertable              
+postgres-init-1  | ---------------------------------------------
+postgres-init-1  |  (7,time_series,lab_analyzer_event_series,f)
+postgres-init-1  | (1 row)
+postgres-init-1  | 
+postgres-init-1  | psql:/init/NoSQL/58_time_series_timescaledb/time_series.timescaledb.sql:226: NOTICE:  table "lab_analyzer_event_series" is already a hypertable, skipping
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | psql:/init/NoSQL/58_time_series_timescaledb/time_series.timescaledb.sql:227: NOTICE:  relation "order_lab_accession" already exists, skipping
+postgres-init-1  | psql:/init/NoSQL/58_time_series_timescaledb/time_series.timescaledb.sql:228: NOTICE:  table "ingestion_pipeline_metric_series" is already a hypertable, skipping
+postgres-init-1  |                  create_hypertable                  
+postgres-init-1  | ----------------------------------------------------
+postgres-init-1  |  (6,time_series,ingestion_pipeline_metric_series,f)
+postgres-init-1  | (1 row)
+postgres-init-1  | 
+postgres-init-1  | psql:/init/NoSQL/58_time_series_timescaledb/time_series.timescaledb.sql:229: NOTICE:  relation "order_ingestion_batch_stage" already exists, skipping
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | psql:/init/NoSQL/58_time_series_timescaledb/time_series.timescaledb.sql:230: NOTICE:  table "service_sli_series" is already a hypertable, skipping
+postgres-init-1  |            create_hypertable           
+postgres-init-1  | ---------------------------------------
+postgres-init-1  |  (11,time_series,service_sli_series,f)
+postgres-init-1  | (1 row)
+postgres-init-1  | 
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | psql:/init/NoSQL/58_time_series_timescaledb/time_series.timescaledb.sql:231: NOTICE:  relation "order_sli_service_code" already exists, skipping
+postgres-init-1  |               create_hypertable               
+postgres-init-1  | ----------------------------------------------
+postgres-init-1  |  (4,time_series,audit_access_metric_series,f)
+postgres-init-1  | (1 row)
+postgres-init-1  | 
+postgres-init-1  | psql:/init/NoSQL/58_time_series_timescaledb/time_series.timescaledb.sql:232: NOTICE:  table "audit_access_metric_series" is already a hypertable, skipping
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | psql:/init/NoSQL/58_time_series_timescaledb/time_series.timescaledb.sql:233: NOTICE:  relation "order_audit_metric" already exists, skipping
+postgres-init-1  | >>> NoSQL 59: vector_rag (pgvector)
+postgres-init-1  | CREATE EXTENSION
+postgres-init-1  | psql:/init/NoSQL/59_vector_rag_pgvector/vector_rag.pgvector.sql:3: NOTICE:  extension "vector" already exists, skipping
+postgres-init-1  | psql:/init/NoSQL/59_vector_rag_pgvector/vector_rag.pgvector.sql:5: NOTICE:  schema "vector_rag" already exists, skipping
+postgres-init-1  | CREATE SCHEMA
+postgres-init-1  | psql:/init/NoSQL/59_vector_rag_pgvector/vector_rag.pgvector.sql:20: NOTICE:  relation "vector_collections" already exists, skipping
+postgres-init-1  | CREATE TABLE
+postgres-init-1  | CREATE TABLE
+postgres-init-1  | psql:/init/NoSQL/59_vector_rag_pgvector/vector_rag.pgvector.sql:38: NOTICE:  relation "vector_documents" already exists, skipping
+postgres-init-1  | psql:/init/NoSQL/59_vector_rag_pgvector/vector_rag.pgvector.sql:51: NOTICE:  relation "vector_chunks" already exists, skipping
+postgres-init-1  | CREATE TABLE
+postgres-init-1  | psql:/init/NoSQL/59_vector_rag_pgvector/vector_rag.pgvector.sql:62: NOTICE:  relation "vector_embeddings" already exists, skipping
+postgres-init-1  | CREATE TABLE
+postgres-init-1  | CREATE TABLE
+postgres-init-1  | psql:/init/NoSQL/59_vector_rag_pgvector/vector_rag.pgvector.sql:76: NOTICE:  relation "embedding_model_versions" already exists, skipping
+postgres-init-1  | psql:/init/NoSQL/59_vector_rag_pgvector/vector_rag.pgvector.sql:92: NOTICE:  relation "embedding_jobs" already exists, skipping
+postgres-init-1  | CREATE TABLE
+postgres-init-1  | CREATE TABLE
+postgres-init-1  | psql:/init/NoSQL/59_vector_rag_pgvector/vector_rag.pgvector.sql:106: NOTICE:  relation "rag_access_policies" already exists, skipping
+postgres-init-1  | CREATE TABLE
+postgres-init-1  | psql:/init/NoSQL/59_vector_rag_pgvector/vector_rag.pgvector.sql:116: NOTICE:  relation "vector_tenant_bindings" already exists, skipping
+postgres-init-1  | psql:/init/NoSQL/59_vector_rag_pgvector/vector_rag.pgvector.sql:132: NOTICE:  relation "retrieval_sessions" already exists, skipping
+postgres-init-1  | CREATE TABLE
+postgres-init-1  | psql:/init/NoSQL/59_vector_rag_pgvector/vector_rag.pgvector.sql:145: NOTICE:  relation "retrieval_candidates" already exists, skipping
+postgres-init-1  | CREATE TABLE
+postgres-init-1  | psql:/init/NoSQL/59_vector_rag_pgvector/vector_rag.pgvector.sql:157: NOTICE:  relation "retrieval_evidence" already exists, skipping
+postgres-init-1  | CREATE TABLE
+postgres-init-1  | CREATE TABLE
+postgres-init-1  | psql:/init/NoSQL/59_vector_rag_pgvector/vector_rag.pgvector.sql:169: NOTICE:  relation "retrieval_feedback_events" already exists, skipping
+postgres-init-1  | psql:/init/NoSQL/59_vector_rag_pgvector/vector_rag.pgvector.sql:181: NOTICE:  relation "vector_deletion_jobs" already exists, skipping
+postgres-init-1  | CREATE TABLE
+postgres-init-1  | psql:/init/NoSQL/59_vector_rag_pgvector/vector_rag.pgvector.sql:196: NOTICE:  relation "vector_reconciliation_runs" already exists, skipping
+postgres-init-1  | CREATE TABLE
+postgres-init-1  | psql:/init/NoSQL/59_vector_rag_pgvector/vector_rag.pgvector.sql:201: NOTICE:  relation "uq_vector_collection_tenant_code" already exists, skipping
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | psql:/init/NoSQL/59_vector_rag_pgvector/vector_rag.pgvector.sql:202: NOTICE:  relation "ix_vector_collection_state" already exists, skipping
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | psql:/init/NoSQL/59_vector_rag_pgvector/vector_rag.pgvector.sql:203: NOTICE:  relation "uq_vector_doc_source_version" already exists, skipping
+postgres-init-1  | psql:/init/NoSQL/59_vector_rag_pgvector/vector_rag.pgvector.sql:204: NOTICE:  relation "ix_vector_doc_patient" already exists, skipping
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | psql:/init/NoSQL/59_vector_rag_pgvector/vector_rag.pgvector.sql:205: NOTICE:  relation "gin_vector_doc_labels" already exists, skipping
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | psql:/init/NoSQL/59_vector_rag_pgvector/vector_rag.pgvector.sql:206: NOTICE:  relation "uq_vector_chunk_number" already exists, skipping
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | psql:/init/NoSQL/59_vector_rag_pgvector/vector_rag.pgvector.sql:207: NOTICE:  relation "uq_vector_chunk_hash" already exists, skipping
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | psql:/init/NoSQL/59_vector_rag_pgvector/vector_rag.pgvector.sql:208: NOTICE:  relation "gin_vector_chunk_metadata" already exists, skipping
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | psql:/init/NoSQL/59_vector_rag_pgvector/vector_rag.pgvector.sql:209: NOTICE:  relation "uq_vector_embedding_chunk_model" already exists, skipping
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | psql:/init/NoSQL/59_vector_rag_pgvector/vector_rag.pgvector.sql:210: NOTICE:  relation "hnsw_vector_embedding" already exists, skipping
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | psql:/init/NoSQL/59_vector_rag_pgvector/vector_rag.pgvector.sql:211: NOTICE:  relation "ix_vector_embedding_state" already exists, skipping
+postgres-init-1  | psql:/init/NoSQL/59_vector_rag_pgvector/vector_rag.pgvector.sql:212: NOTICE:  relation "uq_embedding_model_version" already exists, skipping
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | psql:/init/NoSQL/59_vector_rag_pgvector/vector_rag.pgvector.sql:213: NOTICE:  relation "ix_embedding_model_approval" already exists, skipping
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | psql:/init/NoSQL/59_vector_rag_pgvector/vector_rag.pgvector.sql:214: NOTICE:  relation "ix_embedding_jobs_tenant_status" already exists, skipping
+postgres-init-1  | psql:/init/NoSQL/59_vector_rag_pgvector/vector_rag.pgvector.sql:215: NOTICE:  relation "ix_embedding_jobs_collection" already exists, skipping
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | psql:/init/NoSQL/59_vector_rag_pgvector/vector_rag.pgvector.sql:216: NOTICE:  relation "uq_rag_policy_tenant_code" already exists, skipping
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | psql:/init/NoSQL/59_vector_rag_pgvector/vector_rag.pgvector.sql:217: NOTICE:  relation "gin_rag_policy_purposes" already exists, skipping
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | psql:/init/NoSQL/59_vector_rag_pgvector/vector_rag.pgvector.sql:218: NOTICE:  relation "gin_rag_policy_labels" already exists, skipping
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | psql:/init/NoSQL/59_vector_rag_pgvector/vector_rag.pgvector.sql:219: NOTICE:  relation "uq_vector_binding_tenant_collection" already exists, skipping
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | psql:/init/NoSQL/59_vector_rag_pgvector/vector_rag.pgvector.sql:220: NOTICE:  relation "uq_vector_binding_namespace" already exists, skipping
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | psql:/init/NoSQL/59_vector_rag_pgvector/vector_rag.pgvector.sql:221: NOTICE:  relation "ix_retrieval_session_principal" already exists, skipping
+postgres-init-1  | psql:/init/NoSQL/59_vector_rag_pgvector/vector_rag.pgvector.sql:222: NOTICE:  relation "ix_retrieval_session_patient" already exists, skipping
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | psql:/init/NoSQL/59_vector_rag_pgvector/vector_rag.pgvector.sql:223: NOTICE:  relation "ix_retrieval_session_hash" already exists, skipping
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | psql:/init/NoSQL/59_vector_rag_pgvector/vector_rag.pgvector.sql:224: NOTICE:  relation "uq_retrieval_candidate_rank" already exists, skipping
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | psql:/init/NoSQL/59_vector_rag_pgvector/vector_rag.pgvector.sql:225: NOTICE:  relation "uq_retrieval_candidate_chunk" already exists, skipping
+postgres-init-1  | psql:/init/NoSQL/59_vector_rag_pgvector/vector_rag.pgvector.sql:226: NOTICE:  relation "ix_retrieval_candidate_selected" already exists, skipping
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | psql:/init/NoSQL/59_vector_rag_pgvector/vector_rag.pgvector.sql:227: NOTICE:  relation "uq_retrieval_evidence_citation" already exists, skipping
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | psql:/init/NoSQL/59_vector_rag_pgvector/vector_rag.pgvector.sql:228: NOTICE:  relation "uq_retrieval_evidence_hash" already exists, skipping
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | psql:/init/NoSQL/59_vector_rag_pgvector/vector_rag.pgvector.sql:229: NOTICE:  relation "ix_retrieval_feedback_session" already exists, skipping
+postgres-init-1  | psql:/init/NoSQL/59_vector_rag_pgvector/vector_rag.pgvector.sql:230: NOTICE:  relation "ix_retrieval_feedback_safety" already exists, skipping
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | psql:/init/NoSQL/59_vector_rag_pgvector/vector_rag.pgvector.sql:231: NOTICE:  relation "ix_vector_delete_tenant_status" already exists, skipping
+postgres-init-1  | psql:/init/NoSQL/59_vector_rag_pgvector/vector_rag.pgvector.sql:232: NOTICE:  relation "ix_vector_delete_patient" already exists, skipping
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | psql:/init/NoSQL/59_vector_rag_pgvector/vector_rag.pgvector.sql:233: NOTICE:  relation "ix_vector_reconcile_collection_time" already exists, skipping
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | psql:/init/NoSQL/59_vector_rag_pgvector/vector_rag.pgvector.sql:234: NOTICE:  relation "ix_vector_reconcile_status" already exists, skipping
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | >>> Catálogo de terminología: sembrado (base viva)
+postgres-init-1  | >>> patches: 46 archivos
+postgres-init-1  | >>> patches/2026-07-24_v402-v407_alter_columns.sql
+postgres-init-1  | psql:/init/SQL/patches/2026-07-24_v402-v407_alter_columns.sql:17: NOTICE:  column "partition_spec_id" of relation "entity_registry" already exists, skipping
+postgres-init-1  | ALTER TABLE
+postgres-init-1  | psql:/init/SQL/patches/2026-07-24_v402-v407_alter_columns.sql:22: NOTICE:  column "account_holder_name" of relation "company_bank_accounts" already exists, skipping
+postgres-init-1  | psql:/init/SQL/patches/2026-07-24_v402-v407_alter_columns.sql:22: NOTICE:  column "account_holder_tax_id" of relation "company_bank_accounts" already exists, skipping
+postgres-init-1  | ALTER TABLE
+postgres-init-1  | psql:/init/SQL/patches/2026-07-24_v402-v407_alter_columns.sql:26: NOTICE:  column "account_holder_name" of relation "business_partner_bank_accounts" already exists, skipping
+postgres-init-1  | psql:/init/SQL/patches/2026-07-24_v402-v407_alter_columns.sql:26: NOTICE:  column "account_holder_tax_id" of relation "business_partner_bank_accounts" already exists, skipping
+postgres-init-1  | ALTER TABLE
+postgres-init-1  | psql:/init/SQL/patches/2026-07-24_v402-v407_alter_columns.sql:32: NOTICE:  column "tier_concept_id" of relation "subscription_plans" already exists, skipping
+postgres-init-1  | psql:/init/SQL/patches/2026-07-24_v402-v407_alter_columns.sql:32: NOTICE:  column "is_default" of relation "subscription_plans" already exists, skipping
+postgres-init-1  | psql:/init/SQL/patches/2026-07-24_v402-v407_alter_columns.sql:32: NOTICE:  column "is_public" of relation "subscription_plans" already exists, skipping
+postgres-init-1  | ALTER TABLE
+postgres-init-1  | BEGIN
+postgres-init-1  | DO
+postgres-init-1  | COMMIT
+postgres-init-1  | >>> patches/2026-07-25_v407_nullable_embedding_model_versions.sql
+postgres-init-1  | ALTER TABLE
+postgres-init-1  | UPDATE 0
+postgres-init-1  | >>> patches/2026-08-05_tenant_rls.sql
+postgres-init-1  | DO
+postgres-init-1  | DO
+postgres-init-1  | psql:/init/SQL/patches/2026-08-05_tenant_rls.sql:152: WARNING:  RLS: 12 tabla(s) con tenant_id se quedaron SIN aislamiento por fila (limitación de TimescaleDB): time_series.ads_delivery_event_series, time_series.ai_runtime_metric_series, time_series.application_tracking_series, time_series.audit_access_metric_series, time_series.device_raw_reading_series, time_series.ingestion_pipeline_metric_series, time_series.lab_analyzer_event_series, time_series.location_ping_series, time_series.normalized_vital_series, time_series.payment_gateway_metric_series, time_series.service_sli_series, time_series.telemetry_event_series
+postgres-init-1  | DO
+postgres-init-1  | >>> patches/2026-08-05_v409_promocion_iam_tokens.sql
+postgres-init-1  | psql:/init/SQL/patches/2026-08-05_v409_promocion_iam_tokens.sql:39: NOTICE:  relation "email_verifications" already exists, skipping
+postgres-init-1  | CREATE TABLE
+postgres-init-1  | CREATE TABLE
+postgres-init-1  | psql:/init/SQL/patches/2026-08-05_v409_promocion_iam_tokens.sql:57: NOTICE:  relation "password_resets" already exists, skipping
+postgres-init-1  | psql:/init/SQL/patches/2026-08-05_v409_promocion_iam_tokens.sql:61: NOTICE:  column "issue_idempotency_key" of relation "medication_requests" already exists, skipping
+postgres-init-1  | ALTER TABLE
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | psql:/init/SQL/patches/2026-08-05_v409_promocion_iam_tokens.sql:65: NOTICE:  relation "ux_email_verifications_token_hash" already exists, skipping
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | psql:/init/SQL/patches/2026-08-05_v409_promocion_iam_tokens.sql:67: NOTICE:  relation "ix_email_verifications_user" already exists, skipping
+postgres-init-1  | psql:/init/SQL/patches/2026-08-05_v409_promocion_iam_tokens.sql:70: NOTICE:  relation "ux_password_resets_token_hash" already exists, skipping
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | psql:/init/SQL/patches/2026-08-05_v409_promocion_iam_tokens.sql:72: NOTICE:  relation "ix_password_resets_user_state" already exists, skipping
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | psql:/init/SQL/patches/2026-08-05_v409_promocion_iam_tokens.sql:78: NOTICE:  relation "uq_medication_requests_issue_idempotency_key" already exists, skipping
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | psql:/init/SQL/patches/2026-08-05_v409_promocion_iam_tokens.sql:98: NOTICE:  relation "ux_authentication_credentials_live_password_subject" already exists, skipping
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | DO
+postgres-init-1  | >>> patches/2026-08-06_v4010_rename_long_identifiers.sql
+postgres-init-1  | DO
+postgres-init-1  | psql:/init/SQL/patches/2026-08-06_v4010_rename_long_identifiers.sql:309: NOTICE:  relation "ix_adapter_tracking_capabilities_canonical_event_type_concept_i" does not exist, skipping
+postgres-init-1  | ALTER INDEX
+postgres-init-1  | >>> patches/2026-08-10_v4011_person_name_components.sql
+postgres-init-1  | psql:/init/SQL/patches/2026-08-10_v4011_person_name_components.sql:32: NOTICE:  column "name" of relation "persons" already exists, skipping
+postgres-init-1  | psql:/init/SQL/patches/2026-08-10_v4011_person_name_components.sql:32: NOTICE:  column "middle_name" of relation "persons" already exists, skipping
+postgres-init-1  | psql:/init/SQL/patches/2026-08-10_v4011_person_name_components.sql:32: NOTICE:  column "last_name" of relation "persons" already exists, skipping
+postgres-init-1  | psql:/init/SQL/patches/2026-08-10_v4011_person_name_components.sql:32: NOTICE:  column "mother_last_name" of relation "persons" already exists, skipping
+postgres-init-1  | ALTER TABLE
+postgres-init-1  | >>> patches/2026-08-12_v4011_persons_photo_file_id.sql
+postgres-init-1  | psql:/init/SQL/patches/2026-08-12_v4011_persons_photo_file_id.sql:24: NOTICE:  column "photo_file_id" of relation "persons" already exists, skipping
+postgres-init-1  | ALTER TABLE
+postgres-init-1  | DO
+postgres-init-1  | psql:/init/SQL/patches/2026-08-12_v4011_persons_photo_file_id.sql:32: NOTICE:  relation "ix_persons_photo_file_id" already exists, skipping
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | >>> patches/2026-08-17_v410_profiles_practitioner_affiliations.sql
+postgres-init-1  | psql:/init/SQL/patches/2026-08-17_v410_profiles_practitioner_affiliations.sql:63: NOTICE:  relation "practitioner_affiliations" already exists, skipping
+postgres-init-1  | CREATE TABLE
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | psql:/init/SQL/patches/2026-08-17_v410_profiles_practitioner_affiliations.sql:66: NOTICE:  relation "ix_practitioner_affiliations_practitioner_profile_id" already exists, skipping
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | psql:/init/SQL/patches/2026-08-17_v410_profiles_practitioner_affiliations.sql:67: NOTICE:  relation "ix_practitioner_affiliations_practice_site_id" already exists, skipping
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | psql:/init/SQL/patches/2026-08-17_v410_profiles_practitioner_affiliations.sql:68: NOTICE:  relation "ix_practitioner_affiliations_affiliation_type_concept_id" already exists, skipping
+postgres-init-1  | psql:/init/SQL/patches/2026-08-17_v410_profiles_practitioner_affiliations.sql:69: NOTICE:  relation "ix_practitioner_affiliations_status_concept_id" already exists, skipping
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | psql:/init/SQL/patches/2026-08-17_v410_profiles_practitioner_affiliations.sql:70: NOTICE:  relation "ix_practitioner_affiliations_created_by_user_id" already exists, skipping
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | psql:/init/SQL/patches/2026-08-17_v410_profiles_practitioner_affiliations.sql:71: NOTICE:  relation "ix_practitioner_affiliations_updated_by_user_id" already exists, skipping
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | DO
+postgres-init-1  | DO
+postgres-init-1  | DO
+postgres-init-1  | DO
+postgres-init-1  | DO
+postgres-init-1  | DO
+postgres-init-1  | >>> patches/2026-08-18_v4011_surveys_promocion_modulo_65.sql
+postgres-init-1  | CREATE SCHEMA
+postgres-init-1  | psql:/init/SQL/patches/2026-08-18_v4011_surveys_promocion_modulo_65.sql:35: NOTICE:  schema "surveys" already exists, skipping
+postgres-init-1  | psql:/init/SQL/patches/2026-08-18_v4011_surveys_promocion_modulo_65.sql:53: NOTICE:  relation "survey_templates" already exists, skipping
+postgres-init-1  | CREATE TABLE
+postgres-init-1  | CREATE TABLE
+postgres-init-1  | psql:/init/SQL/patches/2026-08-18_v4011_surveys_promocion_modulo_65.sql:70: NOTICE:  relation "survey_versions" already exists, skipping
+postgres-init-1  | psql:/init/SQL/patches/2026-08-18_v4011_surveys_promocion_modulo_65.sql:88: NOTICE:  relation "survey_questions" already exists, skipping
+postgres-init-1  | CREATE TABLE
+postgres-init-1  | psql:/init/SQL/patches/2026-08-18_v4011_surveys_promocion_modulo_65.sql:103: NOTICE:  relation "survey_assignments" already exists, skipping
+postgres-init-1  | CREATE TABLE
+postgres-init-1  | psql:/init/SQL/patches/2026-08-18_v4011_surveys_promocion_modulo_65.sql:122: NOTICE:  relation "survey_invitations" already exists, skipping
+postgres-init-1  | CREATE TABLE
+postgres-init-1  | psql:/init/SQL/patches/2026-08-18_v4011_surveys_promocion_modulo_65.sql:137: NOTICE:  relation "survey_responses" already exists, skipping
+postgres-init-1  | CREATE TABLE
+postgres-init-1  | psql:/init/SQL/patches/2026-08-18_v4011_surveys_promocion_modulo_65.sql:153: NOTICE:  relation "survey_answers" already exists, skipping
+postgres-init-1  | CREATE TABLE
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | psql:/init/SQL/patches/2026-08-18_v4011_surveys_promocion_modulo_65.sql:158: NOTICE:  relation "ix_survey_templates_owner" already exists, skipping
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | psql:/init/SQL/patches/2026-08-18_v4011_surveys_promocion_modulo_65.sql:160: NOTICE:  relation "ix_survey_templates_tenant_id" already exists, skipping
+postgres-init-1  | psql:/init/SQL/patches/2026-08-18_v4011_surveys_promocion_modulo_65.sql:162: NOTICE:  relation "ix_survey_versions_template_number" already exists, skipping
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | psql:/init/SQL/patches/2026-08-18_v4011_surveys_promocion_modulo_65.sql:164: NOTICE:  relation "ix_survey_questions_version_position" already exists, skipping
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | psql:/init/SQL/patches/2026-08-18_v4011_surveys_promocion_modulo_65.sql:166: NOTICE:  relation "ix_survey_assignments_tenant_target" already exists, skipping
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | psql:/init/SQL/patches/2026-08-18_v4011_surveys_promocion_modulo_65.sql:168: NOTICE:  relation "ix_survey_assignments_version" already exists, skipping
+postgres-init-1  | psql:/init/SQL/patches/2026-08-18_v4011_surveys_promocion_modulo_65.sql:170: NOTICE:  relation "ix_survey_invitations_patient_issued" already exists, skipping
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | psql:/init/SQL/patches/2026-08-18_v4011_surveys_promocion_modulo_65.sql:172: NOTICE:  relation "ix_survey_invitations_booking" already exists, skipping
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | psql:/init/SQL/patches/2026-08-18_v4011_surveys_promocion_modulo_65.sql:174: NOTICE:  relation "ix_survey_invitations_version" already exists, skipping
+postgres-init-1  | psql:/init/SQL/patches/2026-08-18_v4011_surveys_promocion_modulo_65.sql:176: NOTICE:  relation "ix_survey_invitations_assignment" already exists, skipping
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | psql:/init/SQL/patches/2026-08-18_v4011_surveys_promocion_modulo_65.sql:178: NOTICE:  relation "ix_survey_invitations_tenant_id" already exists, skipping
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | psql:/init/SQL/patches/2026-08-18_v4011_surveys_promocion_modulo_65.sql:180: NOTICE:  relation "ix_survey_responses_invitation" already exists, skipping
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | psql:/init/SQL/patches/2026-08-18_v4011_surveys_promocion_modulo_65.sql:182: NOTICE:  relation "ix_survey_responses_patient_submitted" already exists, skipping
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | psql:/init/SQL/patches/2026-08-18_v4011_surveys_promocion_modulo_65.sql:184: NOTICE:  relation "ix_survey_responses_version" already exists, skipping
+postgres-init-1  | psql:/init/SQL/patches/2026-08-18_v4011_surveys_promocion_modulo_65.sql:186: NOTICE:  relation "ix_survey_responses_tenant_id" already exists, skipping
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | psql:/init/SQL/patches/2026-08-18_v4011_surveys_promocion_modulo_65.sql:188: NOTICE:  relation "ix_survey_answers_response" already exists, skipping
+postgres-init-1  | psql:/init/SQL/patches/2026-08-18_v4011_surveys_promocion_modulo_65.sql:190: NOTICE:  relation "ix_survey_answers_question" already exists, skipping
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | DO
+postgres-init-1  | DO
+postgres-init-1  | DO
+postgres-init-1  | DO
+postgres-init-1  | DO
+postgres-init-1  | DO
+postgres-init-1  | DO
+postgres-init-1  | DO
+postgres-init-1  | DO
+postgres-init-1  | DO
+postgres-init-1  | DO
+postgres-init-1  | DO
+postgres-init-1  | DO
+postgres-init-1  | DO
+postgres-init-1  | DO
+postgres-init-1  | DO
+postgres-init-1  | DO
+postgres-init-1  | DO
+postgres-init-1  | DO
+postgres-init-1  | DO
+postgres-init-1  | DO
+postgres-init-1  | DO
+postgres-init-1  | DO
+postgres-init-1  | DO
+postgres-init-1  | DO
+postgres-init-1  | DO
+postgres-init-1  | DO
+postgres-init-1  | DO
+postgres-init-1  | DO
+postgres-init-1  | DO
+postgres-init-1  | DO
+postgres-init-1  | DO
+postgres-init-1  | DO
+postgres-init-1  | DO
+postgres-init-1  | DO
+postgres-init-1  | DO
+postgres-init-1  | >>> patches/2026-08-20_v412_conditions_clinical_course.sql
+postgres-init-1  | psql:/init/SQL/patches/2026-08-20_v412_conditions_clinical_course.sql:40: NOTICE:  column "clinical_course_concept_id" of relation "conditions" already exists, skipping
+postgres-init-1  | ALTER TABLE
+postgres-init-1  | psql:/init/SQL/patches/2026-08-20_v412_conditions_clinical_course.sql:43: NOTICE:  relation "ix_conditions_clinical_course_concept_id" already exists, skipping
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | DO
+postgres-init-1  | >>> patches/2026-08-20_v413_clinical_notes_and_expected_resolution.sql
+postgres-init-1  | psql:/init/SQL/patches/2026-08-20_v413_clinical_notes_and_expected_resolution.sql:38: NOTICE:  column "expected_resolution_at" of relation "conditions" already exists, skipping
+postgres-init-1  | ALTER TABLE
+postgres-init-1  | psql:/init/SQL/patches/2026-08-20_v413_clinical_notes_and_expected_resolution.sql:41: NOTICE:  column "note_text" of relation "conditions" already exists, skipping
+postgres-init-1  | ALTER TABLE
+postgres-init-1  | psql:/init/SQL/patches/2026-08-20_v413_clinical_notes_and_expected_resolution.sql:44: NOTICE:  column "patient_instructions_text" of relation "medication_requests" already exists, skipping
+postgres-init-1  | ALTER TABLE
+postgres-init-1  | >>> patches/2026-08-20_v414_identifiers_issuing_administrative_area.sql
+postgres-init-1  | psql:/init/SQL/patches/2026-08-20_v414_identifiers_issuing_administrative_area.sql:32: NOTICE:  column "issuing_administrative_area_concept_id" of relation "identifiers" already exists, skipping
+postgres-init-1  | ALTER TABLE
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | DO
+postgres-init-1  | >>> patches/2026-08-21_v415_common_issuer_area_rename_and_municipality.sql
+postgres-init-1  | DO
+postgres-init-1  | DO
+postgres-init-1  | DO
+postgres-init-1  | psql:/init/SQL/patches/2026-08-21_v415_common_issuer_area_rename_and_municipality.sql:117: NOTICE:  column "issuer_administrative_area_concept_id" of relation "identifiers" already exists, skipping
+postgres-init-1  | ALTER TABLE
+postgres-init-1  | psql:/init/SQL/patches/2026-08-21_v415_common_issuer_area_rename_and_municipality.sql:120: NOTICE:  relation "ix_identifiers_issuer_administrative_area_concept_id" already exists, skipping
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | DO
+postgres-init-1  | psql:/init/SQL/patches/2026-08-21_v415_common_issuer_area_rename_and_municipality.sql:132: NOTICE:  column "municipality_concept_id" of relation "addresses" already exists, skipping
+postgres-init-1  | ALTER TABLE
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | psql:/init/SQL/patches/2026-08-21_v415_common_issuer_area_rename_and_municipality.sql:135: NOTICE:  relation "ix_addresses_municipality_concept_id" already exists, skipping
+postgres-init-1  | DO
+postgres-init-1  | >>> patches/2026-08-21_v416_medication_requests_indication_condition.sql
+postgres-init-1  | psql:/init/SQL/patches/2026-08-21_v416_medication_requests_indication_condition.sql:37: NOTICE:  column "indication_condition_id" of relation "medication_requests" already exists, skipping
+postgres-init-1  | ALTER TABLE
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | psql:/init/SQL/patches/2026-08-21_v416_medication_requests_indication_condition.sql:40: NOTICE:  relation "ix_medication_requests_indication_condition_id" already exists, skipping
+postgres-init-1  | DO
+postgres-init-1  | >>> patches/2026-08-21_v417_prescription_favorites.sql
+postgres-init-1  | psql:/init/SQL/patches/2026-08-21_v417_prescription_favorites.sql:57: NOTICE:  relation "prescription_favorites" already exists, skipping
+postgres-init-1  | CREATE TABLE
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | psql:/init/SQL/patches/2026-08-21_v417_prescription_favorites.sql:59: NOTICE:  relation "ix_prescription_favorites_practitioner_profile_id" already exists, skipping
+postgres-init-1  | psql:/init/SQL/patches/2026-08-21_v417_prescription_favorites.sql:61: NOTICE:  relation "ix_prescription_favorites_medication_concept_id" already exists, skipping
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | psql:/init/SQL/patches/2026-08-21_v417_prescription_favorites.sql:63: NOTICE:  relation "ix_prescription_favorites_substance_atc_concept_id" already exists, skipping
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | psql:/init/SQL/patches/2026-08-21_v417_prescription_favorites.sql:65: NOTICE:  relation "ix_prescription_favorites_route_concept_id" already exists, skipping
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | psql:/init/SQL/patches/2026-08-21_v417_prescription_favorites.sql:67: NOTICE:  relation "ix_prescription_favorites_unit_concept_id" already exists, skipping
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | psql:/init/SQL/patches/2026-08-21_v417_prescription_favorites.sql:69: NOTICE:  relation "ix_prescription_favorites_created_by_user_id" already exists, skipping
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | psql:/init/SQL/patches/2026-08-21_v417_prescription_favorites.sql:71: NOTICE:  relation "ix_prescription_favorites_updated_by_user_id" already exists, skipping
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | psql:/init/SQL/patches/2026-08-21_v417_prescription_favorites.sql:73: NOTICE:  relation "uq_prescription_favorites_practitioner_name" already exists, skipping
+postgres-init-1  | DO
+postgres-init-1  | DO
+postgres-init-1  | DO
+postgres-init-1  | DO
+postgres-init-1  | DO
+postgres-init-1  | DO
+postgres-init-1  | DO
+postgres-init-1  | >>> patches/2026-08-22_v418_persons_occupation_and_carrier_sigla.sql
+postgres-init-1  | psql:/init/SQL/patches/2026-08-22_v418_persons_occupation_and_carrier_sigla.sql:53: NOTICE:  column "occupation_concept_id" of relation "persons" already exists, skipping
+postgres-init-1  | ALTER TABLE
+postgres-init-1  | psql:/init/SQL/patches/2026-08-22_v418_persons_occupation_and_carrier_sigla.sql:56: NOTICE:  column "occupation_free_text" of relation "persons" already exists, skipping
+postgres-init-1  | ALTER TABLE
+postgres-init-1  | psql:/init/SQL/patches/2026-08-22_v418_persons_occupation_and_carrier_sigla.sql:59: NOTICE:  relation "ix_persons_occupation_concept_id" already exists, skipping
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | DO
+postgres-init-1  | psql:/init/SQL/patches/2026-08-22_v418_persons_occupation_and_carrier_sigla.sql:72: NOTICE:  column "sigla" of relation "insurance_carriers" already exists, skipping
+postgres-init-1  | ALTER TABLE
+postgres-init-1  | psql:/init/SQL/patches/2026-08-22_v418_persons_occupation_and_carrier_sigla.sql:75: NOTICE:  column "address" of relation "insurance_carriers" already exists, skipping
+postgres-init-1  | ALTER TABLE
+postgres-init-1  | DO
+postgres-init-1  | >>> patches/2026-08-23_v418_diagnostic_units_unicidad_tenant_codigo.sql
+postgres-init-1  | BEGIN
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | psql:/init/SQL/patches/2026-08-23_v418_diagnostic_units_unicidad_tenant_codigo.sql:49: NOTICE:  relation "uq_diagnostic_units_tenant_id_code" already exists, skipping
+postgres-init-1  | psql:/init/SQL/patches/2026-08-23_v418_diagnostic_units_unicidad_tenant_codigo.sql:51: NOTICE:  index "uq_diagnostic_units_tenant_id" does not exist, skipping
+postgres-init-1  | DROP INDEX
+postgres-init-1  | DROP INDEX
+postgres-init-1  | psql:/init/SQL/patches/2026-08-23_v418_diagnostic_units_unicidad_tenant_codigo.sql:52: NOTICE:  index "uq_diagnostic_units_code" does not exist, skipping
+postgres-init-1  | COMMIT
+postgres-init-1  | >>> patches/2026-08-25_v419_practitioner_affiliations_declared_link.sql
+postgres-init-1  | psql:/init/SQL/patches/2026-08-25_v419_practitioner_affiliations_declared_link.sql:103: NOTICE:  column "health_facility_concept_id" of relation "practitioner_affiliations" already exists, skipping
+postgres-init-1  | ALTER TABLE
+postgres-init-1  | psql:/init/SQL/patches/2026-08-25_v419_practitioner_affiliations_declared_link.sql:106: NOTICE:  column "decision_reason_text" of relation "practitioner_affiliations" already exists, skipping
+postgres-init-1  | ALTER TABLE
+postgres-init-1  | psql:/init/SQL/patches/2026-08-25_v419_practitioner_affiliations_declared_link.sql:109: NOTICE:  relation "ix_practitioner_affiliations_health_facility_concept_id" already exists, skipping
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | DO
+postgres-init-1  | BEGIN
+postgres-init-1  | psql:/init/SQL/patches/2026-08-25_v419_practitioner_affiliations_declared_link.sql:126: NOTICE:  relation "ux_practitioner_affiliations_same_health_facility" already exists, skipping
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | psql:/init/SQL/patches/2026-08-25_v419_practitioner_affiliations_declared_link.sql:130: NOTICE:  relation "ux_practitioner_affiliations_same_organization_name" already exists, skipping
+postgres-init-1  | DROP INDEX
+postgres-init-1  | COMMIT
+postgres-init-1  | psql:/init/SQL/patches/2026-08-25_v419_practitioner_affiliations_declared_link.sql:193: NOTICE:  patch v4.1.9 · C: 0 filas en estados previos - nada que migrar
+postgres-init-1  | DO
+postgres-init-1  | DO
+postgres-init-1  | psql:/init/SQL/patches/2026-08-25_v419_practitioner_affiliations_declared_link.sql:259: NOTICE:  patch v4.1.9 · D: escalera reordenada (0..3) y cache_token = 3fed0da7eba48af7
+postgres-init-1  | DO
+postgres-init-1  | psql:/init/SQL/patches/2026-08-25_v419_practitioner_affiliations_declared_link.sql:311: NOTICE:  patch v4.1.9 · E: esquema completo y sin filas en estados previos
+postgres-init-1  | >>> patches/2026-08-26_v420_backfill_membresias_asistenciales.sql
+postgres-init-1  | BEGIN
+postgres-init-1  | DO
+postgres-init-1  | psql:/init/SQL/patches/2026-08-26_v420_backfill_membresias_asistenciales.sql:130: NOTICE:  patch v4.2.0: 0 membresías asistenciales legacy pendientes; backfill omitido
+postgres-init-1  | INSERT 0 0
+postgres-init-1  | COMMIT
+postgres-init-1  | >>> patches/2026-08-27_v421_pharmacy_patient_orders.sql
+postgres-init-1  | psql:/init/SQL/patches/2026-08-27_v421_pharmacy_patient_orders.sql:66: NOTICE:  column "delivery_mode_concept_id" of relation "inventory_reservations" already exists, skipping
+postgres-init-1  | ALTER TABLE
+postgres-init-1  | psql:/init/SQL/patches/2026-08-27_v421_pharmacy_patient_orders.sql:69: NOTICE:  column "delivery_address_id" of relation "inventory_reservations" already exists, skipping
+postgres-init-1  | ALTER TABLE
+postgres-init-1  | psql:/init/SQL/patches/2026-08-27_v421_pharmacy_patient_orders.sql:72: NOTICE:  column "total_amount" of relation "inventory_reservations" already exists, skipping
+postgres-init-1  | ALTER TABLE
+postgres-init-1  | psql:/init/SQL/patches/2026-08-27_v421_pharmacy_patient_orders.sql:75: NOTICE:  column "currency_concept_id" of relation "inventory_reservations" already exists, skipping
+postgres-init-1  | ALTER TABLE
+postgres-init-1  | psql:/init/SQL/patches/2026-08-27_v421_pharmacy_patient_orders.sql:78: NOTICE:  column "pickup_code" of relation "inventory_reservations" already exists, skipping
+postgres-init-1  | ALTER TABLE
+postgres-init-1  | psql:/init/SQL/patches/2026-08-27_v421_pharmacy_patient_orders.sql:81: NOTICE:  column "rejection_reason_text" of relation "inventory_reservations" already exists, skipping
+postgres-init-1  | ALTER TABLE
+postgres-init-1  | psql:/init/SQL/patches/2026-08-27_v421_pharmacy_patient_orders.sql:84: NOTICE:  column "unit_price_amount" of relation "inventory_reservation_lines" already exists, skipping
+postgres-init-1  | ALTER TABLE
+postgres-init-1  | psql:/init/SQL/patches/2026-08-27_v421_pharmacy_patient_orders.sql:87: NOTICE:  column "currency_concept_id" of relation "inventory_reservation_lines" already exists, skipping
+postgres-init-1  | ALTER TABLE
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | psql:/init/SQL/patches/2026-08-27_v421_pharmacy_patient_orders.sql:89: NOTICE:  relation "ix_inventory_reservations_delivery_mode_concept_id" already exists, skipping
+postgres-init-1  | psql:/init/SQL/patches/2026-08-27_v421_pharmacy_patient_orders.sql:91: NOTICE:  relation "ix_inventory_reservations_delivery_address_id" already exists, skipping
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | psql:/init/SQL/patches/2026-08-27_v421_pharmacy_patient_orders.sql:93: NOTICE:  relation "ix_inventory_reservations_currency_concept_id" already exists, skipping
+postgres-init-1  | psql:/init/SQL/patches/2026-08-27_v421_pharmacy_patient_orders.sql:95: NOTICE:  relation "ix_inventory_reservation_lines_currency_concept_id" already exists, skipping
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | DO
+postgres-init-1  | DO
+postgres-init-1  | DO
+postgres-init-1  | DO
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | psql:/init/SQL/patches/2026-08-27_v421_pharmacy_patient_orders.sql:169: NOTICE:  relation "pharmacy_order_substitutions" already exists, skipping
+postgres-init-1  | CREATE TABLE
+postgres-init-1  | psql:/init/SQL/patches/2026-08-27_v421_pharmacy_patient_orders.sql:171: NOTICE:  relation "ix_pharmacy_order_substitutions_inventory_reservation_id" already exists, skipping
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | psql:/init/SQL/patches/2026-08-27_v421_pharmacy_patient_orders.sql:173: NOTICE:  relation "ix_pharmacy_order_substitutions_inventory_reservation_line_id" already exists, skipping
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | psql:/init/SQL/patches/2026-08-27_v421_pharmacy_patient_orders.sql:175: NOTICE:  relation "ix_pharmacy_order_substitutions_original_pharmacy_product_id" already exists, skipping
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | psql:/init/SQL/patches/2026-08-27_v421_pharmacy_patient_orders.sql:177: NOTICE:  relation "ix_pharmacy_order_substitutions_proposed_pharmacy_product_id" already exists, skipping
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | psql:/init/SQL/patches/2026-08-27_v421_pharmacy_patient_orders.sql:179: NOTICE:  relation "ix_pharmacy_order_substitutions_currency_concept_id" already exists, skipping
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | psql:/init/SQL/patches/2026-08-27_v421_pharmacy_patient_orders.sql:181: NOTICE:  relation "ix_pharmacy_order_substitutions_status_concept_id" already exists, skipping
+postgres-init-1  | psql:/init/SQL/patches/2026-08-27_v421_pharmacy_patient_orders.sql:183: NOTICE:  relation "ix_pharmacy_order_substitutions_created_by_user_id" already exists, skipping
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | psql:/init/SQL/patches/2026-08-27_v421_pharmacy_patient_orders.sql:185: NOTICE:  relation "ix_pharmacy_order_substitutions_updated_by_user_id" already exists, skipping
+postgres-init-1  | DO
+postgres-init-1  | DO
+postgres-init-1  | DO
+postgres-init-1  | DO
+postgres-init-1  | DO
+postgres-init-1  | DO
+postgres-init-1  | DO
+postgres-init-1  | DO
+postgres-init-1  | psql:/init/SQL/patches/2026-08-27_v421_pharmacy_patient_orders.sql:313: NOTICE:  patch v4.2.1 · D: esquema completo (1 tabla · 8 columnas · 14 índices · 12 FK)
+postgres-init-1  | DO
+postgres-init-1  | >>> patches/2026-08-27_v422_agenda_gap_y_codigo_por_sede.sql
+postgres-init-1  | psql:/init/SQL/patches/2026-08-27_v422_agenda_gap_y_codigo_por_sede.sql:63: NOTICE:  column "gap_minutes" of relation "schedule_rules" already exists, skipping
+postgres-init-1  | ALTER TABLE
+postgres-init-1  | BEGIN
+postgres-init-1  | psql:/init/SQL/patches/2026-08-27_v422_agenda_gap_y_codigo_por_sede.sql:80: NOTICE:  relation "ux_inventory_reservations_pharmacy_site_pickup_code" already exists, skipping
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | DROP INDEX
+postgres-init-1  | COMMIT
+postgres-init-1  | psql:/init/SQL/patches/2026-08-27_v422_agenda_gap_y_codigo_por_sede.sql:136: NOTICE:  patch v4.2.2 · C: esquema completo (1 columna · swap de único a por-sede)
+postgres-init-1  | DO
+postgres-init-1  | >>> patches/2026-08-29_v422_identifiers_holder_name.sql
+postgres-init-1  | psql:/init/SQL/patches/2026-08-29_v422_identifiers_holder_name.sql:20: NOTICE:  column "holder_name" of relation "identifiers" already exists, skipping
+postgres-init-1  | ALTER TABLE
+postgres-init-1  | >>> patches/2026-09-02_t07_identifiers_search_index.sql
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | psql:/init/SQL/patches/2026-09-02_t07_identifiers_search_index.sql:20: NOTICE:  relation "ix_identifiers_type_concept_id_value" already exists, skipping
+postgres-init-1  | >>> patches/2026-09-02_v423_appointments_exclude_doble_reserva.sql
+postgres-init-1  | CREATE EXTENSION
+postgres-init-1  | psql:/init/SQL/patches/2026-09-02_v423_appointments_exclude_doble_reserva.sql:47: NOTICE:  extension "btree_gist" already exists, skipping
+postgres-init-1  | DO
+postgres-init-1  | >>> patches/2026-09-02_v424_appointment_payment_states.sql
+postgres-init-1  | BEGIN
+postgres-init-1  | psql:/init/SQL/patches/2026-09-02_v424_appointment_payment_states.sql:72: NOTICE:  relation "appointment_payment_states" already exists, skipping
+postgres-init-1  | CREATE TABLE
+postgres-init-1  | psql:/init/SQL/patches/2026-09-02_v424_appointment_payment_states.sql:76: NOTICE:  relation "ux_appointment_payment_states_booking" already exists, skipping
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | psql:/init/SQL/patches/2026-09-02_v424_appointment_payment_states.sql:81: NOTICE:  relation "ix_appointment_payment_states_tenant_status" already exists, skipping
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | psql:/init/SQL/patches/2026-09-02_v424_appointment_payment_states.sql:84: NOTICE:  relation "ix_appointment_payment_states_status_concept_id" already exists, skipping
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | psql:/init/SQL/patches/2026-09-02_v424_appointment_payment_states.sql:87: NOTICE:  relation "ix_appointment_payment_states_marked_by_user_id" already exists, skipping
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | DO
+postgres-init-1  | COMMIT
+postgres-init-1  | >>> patches/2026-09-04_t01_comment_media.sql
+postgres-init-1  | psql:/init/SQL/patches/2026-09-04_t01_comment_media.sql:43: NOTICE:  relation "comment_media" already exists, skipping
+postgres-init-1  | CREATE TABLE
+postgres-init-1  | DO
+postgres-init-1  | DO
+postgres-init-1  | DO
+postgres-init-1  | DO
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | psql:/init/SQL/patches/2026-09-04_t01_comment_media.sql:71: NOTICE:  relation "ix_comment_media_comment_id" already exists, skipping
+postgres-init-1  | psql:/init/SQL/patches/2026-09-04_t01_comment_media.sql:72: NOTICE:  relation "ix_comment_media_file_id" already exists, skipping
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | psql:/init/SQL/patches/2026-09-04_t01_comment_media.sql:73: NOTICE:  relation "ix_comment_media_media_role_concept_id" already exists, skipping
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | psql:/init/SQL/patches/2026-09-04_t01_comment_media.sql:74: NOTICE:  relation "ix_comment_media_created_by_user_id" already exists, skipping
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | >>> patches/2026-09-04_v425_service_catalog_description_image.sql
+postgres-init-1  | BEGIN
+postgres-init-1  | psql:/init/SQL/patches/2026-09-04_v425_service_catalog_description_image.sql:62: NOTICE:  column "description_text" of relation "service_catalog" already exists, skipping
+postgres-init-1  | ALTER TABLE
+postgres-init-1  | psql:/init/SQL/patches/2026-09-04_v425_service_catalog_description_image.sql:65: NOTICE:  column "image_file_id" of relation "service_catalog" already exists, skipping
+postgres-init-1  | ALTER TABLE
+postgres-init-1  | psql:/init/SQL/patches/2026-09-04_v425_service_catalog_description_image.sql:69: NOTICE:  relation "ix_service_catalog_image_file_id" already exists, skipping
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | DO
+postgres-init-1  | psql:/init/SQL/patches/2026-09-04_v425_service_catalog_description_image.sql:119: NOTICE:  v4.2.5 aplicado: 2 columnas, 1 FK validada, 1 índice.
+postgres-init-1  | DO
+postgres-init-1  | COMMIT
+postgres-init-1  | >>> patches/2026-09-04_v426_medical_groups.sql
+postgres-init-1  | BEGIN
+postgres-init-1  | psql:/init/SQL/patches/2026-09-04_v426_medical_groups.sql:53: NOTICE:  schema "medical_groups" already exists, skipping
+postgres-init-1  | CREATE SCHEMA
+postgres-init-1  | psql:/init/SQL/patches/2026-09-04_v426_medical_groups.sql:91: NOTICE:  relation "groups" already exists, skipping
+postgres-init-1  | CREATE TABLE
+postgres-init-1  | CREATE TABLE
+postgres-init-1  | psql:/init/SQL/patches/2026-09-04_v426_medical_groups.sql:118: NOTICE:  relation "group_members" already exists, skipping
+postgres-init-1  | DO
+postgres-init-1  | DO
+postgres-init-1  | DO
+postgres-init-1  | DO
+postgres-init-1  | DO
+postgres-init-1  | DO
+postgres-init-1  | DO
+postgres-init-1  | DO
+postgres-init-1  | DO
+postgres-init-1  | DO
+postgres-init-1  | DO
+postgres-init-1  | DO
+postgres-init-1  | DO
+postgres-init-1  | DO
+postgres-init-1  | psql:/init/SQL/patches/2026-09-04_v426_medical_groups.sql:229: NOTICE:  relation "ix_medical_groups_groups_tenant_id" already exists, skipping
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | psql:/init/SQL/patches/2026-09-04_v426_medical_groups.sql:231: NOTICE:  relation "ix_medical_groups_groups_requesting_practitioner_id" already exists, skipping
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | psql:/init/SQL/patches/2026-09-04_v426_medical_groups.sql:233: NOTICE:  relation "ix_medical_groups_groups_patient_profile_id" already exists, skipping
+postgres-init-1  | psql:/init/SQL/patches/2026-09-04_v426_medical_groups.sql:235: NOTICE:  relation "ix_medical_groups_groups_service_catalog_id" already exists, skipping
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | psql:/init/SQL/patches/2026-09-04_v426_medical_groups.sql:237: NOTICE:  relation "ix_medical_groups_groups_status" already exists, skipping
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | psql:/init/SQL/patches/2026-09-04_v426_medical_groups.sql:239: NOTICE:  relation "ix_medical_groups_groups_scheduled_at" already exists, skipping
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | psql:/init/SQL/patches/2026-09-04_v426_medical_groups.sql:241: NOTICE:  relation "ix_medical_groups_group_members_group_id" already exists, skipping
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | psql:/init/SQL/patches/2026-09-04_v426_medical_groups.sql:243: NOTICE:  relation "ix_medical_groups_group_members_practitioner_profile_id" already exists, skipping
+postgres-init-1  | psql:/init/SQL/patches/2026-09-04_v426_medical_groups.sql:245: NOTICE:  relation "ix_medical_groups_group_members_invitation_status" already exists, skipping
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | COMMIT
+postgres-init-1  | psql:/init/SQL/patches/2026-09-04_v426_medical_groups.sql:327: NOTICE:  patch v4.2.6 · medical_groups: esquema completo (2 tablas · 13 FK · 9 índices)
+postgres-init-1  | DO
+postgres-init-1  | >>> patches/2026-09-05_t26_assets_liabilities_automation.sql
+postgres-init-1  | BEGIN
+postgres-init-1  | psql:/init/SQL/patches/2026-09-05_t26_assets_liabilities_automation.sql:40: NOTICE:  column "automated" of relation "assets" already exists, skipping
+postgres-init-1  | ALTER TABLE
+postgres-init-1  | psql:/init/SQL/patches/2026-09-05_t26_assets_liabilities_automation.sql:43: NOTICE:  column "automated" of relation "liabilities" already exists, skipping
+postgres-init-1  | ALTER TABLE
+postgres-init-1  | psql:/init/SQL/patches/2026-09-05_t26_assets_liabilities_automation.sql:70: NOTICE:  t26 aplicado: 2 columnas (assets.automated, liabilities.automated).
+postgres-init-1  | DO
+postgres-init-1  | COMMIT
+postgres-init-1  | >>> patches/2026-09-05_v426_practitioner_affiliations_role_title_nullable.sql
+postgres-init-1  | ALTER TABLE
+postgres-init-1  | >>> patches/2026-09-06_v427_persons_work_employer.sql
+postgres-init-1  | BEGIN
+postgres-init-1  | psql:/init/SQL/patches/2026-09-06_v427_persons_work_employer.sql:47: NOTICE:  column "work_employer_concept_id" of relation "persons" already exists, skipping
+postgres-init-1  | ALTER TABLE
+postgres-init-1  | ALTER TABLE
+postgres-init-1  | psql:/init/SQL/patches/2026-09-06_v427_persons_work_employer.sql:50: NOTICE:  column "work_employer_free_text" of relation "persons" already exists, skipping
+postgres-init-1  | CREATE INDEX
+postgres-init-1  | psql:/init/SQL/patches/2026-09-06_v427_persons_work_employer.sql:54: NOTICE:  relation "ix_persons_work_employer_concept_id" already exists, skipping
+postgres-init-1  | DO
+postgres-init-1  | DO
+postgres-init-1  | psql:/init/SQL/patches/2026-09-06_v427_persons_work_employer.sql:104: NOTICE:  v4.2.7 aplicado: 2 columnas, 1 FK validada, 1 índice.
+postgres-init-1  | COMMIT
+postgres-init-1  | >>> patches/2026-09-08_v428_billing_quotations.sql
+postgres-init-1  | BEGIN
+postgres-init-1  | psql:/init/SQL/patches/2026-09-08_v428_billing_quotations.sql:85: NOTICE:  relation "quotations" already exists, skipping
+postgres-init-1  | CREATE TABLE
+postgres-init-1  | CREATE TABLE
+postgres-init-1  | psql:/init/SQL/patches/2026-09-08_v428_billing_quotations.sql:99: NOTICE:  relation "quotation_installments" already exists, skipping
+postgres-init-1  | psql:/init/SQL/patches/2026-09-08_v428_billing_quotations.sql:112: ERROR:  column "interest_calculation_method" does not exist
+postgres-init-1  | CONTEXT:  SQL statement "ALTER TABLE "billing"."quotations"
+postgres-init-1  |         ADD CONSTRAINT "ck_quotations_interest_calculation_method"
+postgres-init-1  |         CHECK ("interest_calculation_method" IN ('FLAT', 'FRENCH'))"
+postgres-init-1  | PL/pgSQL function inline_code_block line 2 at SQL statement
+[Kpostgres-init-1 exited with code 3
+exit_code=0

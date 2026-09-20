@@ -1,0 +1,1540 @@
+Jest: importing JSON without an import attribute is deprecated and will be a hard error in the next major. Update the import of "/app/src/common/seed/data/clinical-forms/transversal/anamnesis-historia-clinica-general.json" (from /app/src/common/seed/data/clinical-forms/catalog.ts): use `with { type: 'json' }` for static imports, or pass `{ with: { type: 'json' } }` as the second argument to dynamic `import()`.
+Jest: importing JSON without an import attribute is deprecated and will be a hard error in the next major. Update the import of "/app/src/common/seed/data/clinical-forms/transversal/examen-fisico-general.json" (from /app/src/common/seed/data/clinical-forms/catalog.ts): use `with { type: 'json' }` for static imports, or pass `{ with: { type: 'json' } }` as the second argument to dynamic `import()`.
+Jest: importing JSON without an import attribute is deprecated and will be a hard error in the next major. Update the import of "/app/src/common/seed/data/clinical-forms/transversal/consentimiento-informado.json" (from /app/src/common/seed/data/clinical-forms/catalog.ts): use `with { type: 'json' }` for static imports, or pass `{ with: { type: 'json' } }` as the second argument to dynamic `import()`.
+Jest: importing JSON without an import attribute is deprecated and will be a hard error in the next major. Update the import of "/app/src/common/seed/data/clinical-forms/transversal/epicrisis-resumen-de-egreso.json" (from /app/src/common/seed/data/clinical-forms/catalog.ts): use `with { type: 'json' }` for static imports, or pass `{ with: { type: 'json' } }` as the second argument to dynamic `import()`.
+Jest: importing JSON without an import attribute is deprecated and will be a hard error in the next major. Update the import of "/app/src/common/seed/data/clinical-forms/cardiologia/ficha-cardiologica-base.json" (from /app/src/common/seed/data/clinical-forms/catalog.ts): use `with { type: 'json' }` for static imports, or pass `{ with: { type: 'json' } }` as the second argument to dynamic `import()`.
+Jest: importing JSON without an import attribute is deprecated and will be a hard error in the next major. Update the import of "/app/src/common/seed/data/clinical-forms/cardiologia/riesgo-cardiovascular-oms.json" (from /app/src/common/seed/data/clinical-forms/catalog.ts): use `with { type: 'json' }` for static imports, or pass `{ with: { type: 'json' } }` as the second argument to dynamic `import()`.
+Jest: importing JSON without an import attribute is deprecated and will be a hard error in the next major. Update the import of "/app/src/common/seed/data/clinical-forms/pediatria/control-de-nino-sano.json" (from /app/src/common/seed/data/clinical-forms/catalog.ts): use `with { type: 'json' }` for static imports, or pass `{ with: { type: 'json' } }` as the second argument to dynamic `import()`.
+Jest: importing JSON without an import attribute is deprecated and will be a hard error in the next major. Update the import of "/app/src/common/seed/data/clinical-forms/pediatria/curvas-de-crecimiento-oms.json" (from /app/src/common/seed/data/clinical-forms/catalog.ts): use `with { type: 'json' }` for static imports, or pass `{ with: { type: 'json' } }` as the second argument to dynamic `import()`.
+Jest: importing JSON without an import attribute is deprecated and will be a hard error in the next major. Update the import of "/app/src/common/seed/data/clinical-forms/ginecologia-obstetricia/control-prenatal-hcp.json" (from /app/src/common/seed/data/clinical-forms/catalog.ts): use `with { type: 'json' }` for static imports, or pass `{ with: { type: 'json' } }` as the second argument to dynamic `import()`.
+Jest: importing JSON without an import attribute is deprecated and will be a hard error in the next major. Update the import of "/app/src/common/seed/data/clinical-forms/traumatologia/evaluacion-musculoesqueletica.json" (from /app/src/common/seed/data/clinical-forms/catalog.ts): use `with { type: 'json' }` for static imports, or pass `{ with: { type: 'json' } }` as the second argument to dynamic `import()`.
+Jest: importing JSON without an import attribute is deprecated and will be a hard error in the next major. Update the import of "/app/src/common/seed/data/clinical-forms/oftalmologia/examen-oftalmologico-basico.json" (from /app/src/common/seed/data/clinical-forms/catalog.ts): use `with { type: 'json' }` for static imports, or pass `{ with: { type: 'json' } }` as the second argument to dynamic `import()`.
+Jest: importing JSON without an import attribute is deprecated and will be a hard error in the next major. Update the import of "/app/src/common/seed/data/clinical-forms/odontologia/odontograma-oms.json" (from /app/src/common/seed/data/clinical-forms/catalog.ts): use `with { type: 'json' }` for static imports, or pass `{ with: { type: 'json' } }` as the second argument to dynamic `import()`.
+Jest: importing JSON without an import attribute is deprecated and will be a hard error in the next major. Update the import of "/app/src/common/seed/data/clinical-forms/psiquiatria/evaluacion-de-salud-mental.json" (from /app/src/common/seed/data/clinical-forms/catalog.ts): use `with { type: 'json' }` for static imports, or pass `{ with: { type: 'json' } }` as the second argument to dynamic `import()`.
+Jest: importing JSON without an import attribute is deprecated and will be a hard error in the next major. Update the import of "/app/src/common/seed/data/clinical-forms/dermatologia/examen-dermatologico.json" (from /app/src/common/seed/data/clinical-forms/catalog.ts): use `with { type: 'json' }` for static imports, or pass `{ with: { type: 'json' } }` as the second argument to dynamic `import()`.
+Jest: importing JSON without an import attribute is deprecated and will be a hard error in the next major. Update the import of "/app/src/common/seed/data/clinical-forms/medicina-interna/evaluacion-de-medicina-interna.json" (from /app/src/common/seed/data/clinical-forms/catalog.ts): use `with { type: 'json' }` for static imports, or pass `{ with: { type: 'json' } }` as the second argument to dynamic `import()`.
+Jest: importing JSON without an import attribute is deprecated and will be a hard error in the next major. Update the import of "/app/src/common/seed/data/clinical-forms/medicina-general/consulta-de-medicina-general.json" (from /app/src/common/seed/data/clinical-forms/catalog.ts): use `with { type: 'json' }` for static imports, or pass `{ with: { type: 'json' } }` as the second argument to dynamic `import()`.
+Jest: importing JSON without an import attribute is deprecated and will be a hard error in the next major. Update the import of "/app/src/common/seed/data/clinical-forms/medicina-familiar/consulta-de-medicina-familiar.json" (from /app/src/common/seed/data/clinical-forms/catalog.ts): use `with { type: 'json' }` for static imports, or pass `{ with: { type: 'json' } }` as the second argument to dynamic `import()`.
+Jest: importing JSON without an import attribute is deprecated and will be a hard error in the next major. Update the import of "/app/src/common/seed/data/clinical-forms/neurologia/evaluacion-neurologica.json" (from /app/src/common/seed/data/clinical-forms/catalog.ts): use `with { type: 'json' }` for static imports, or pass `{ with: { type: 'json' } }` as the second argument to dynamic `import()`.
+Jest: importing JSON without an import attribute is deprecated and will be a hard error in the next major. Update the import of "/app/src/common/seed/data/clinical-forms/endocrinologia/evaluacion-endocrinologica.json" (from /app/src/common/seed/data/clinical-forms/catalog.ts): use `with { type: 'json' }` for static imports, or pass `{ with: { type: 'json' } }` as the second argument to dynamic `import()`.
+Jest: importing JSON without an import attribute is deprecated and will be a hard error in the next major. Update the import of "/app/src/common/seed/data/clinical-forms/gastroenterologia/evaluacion-gastroenterologica.json" (from /app/src/common/seed/data/clinical-forms/catalog.ts): use `with { type: 'json' }` for static imports, or pass `{ with: { type: 'json' } }` as the second argument to dynamic `import()`.
+Jest: importing JSON without an import attribute is deprecated and will be a hard error in the next major. Update the import of "/app/src/common/seed/data/clinical-forms/neumologia/evaluacion-neumologica.json" (from /app/src/common/seed/data/clinical-forms/catalog.ts): use `with { type: 'json' }` for static imports, or pass `{ with: { type: 'json' } }` as the second argument to dynamic `import()`.
+Jest: importing JSON without an import attribute is deprecated and will be a hard error in the next major. Update the import of "/app/src/common/seed/data/clinical-forms/nefrologia/evaluacion-nefrologica.json" (from /app/src/common/seed/data/clinical-forms/catalog.ts): use `with { type: 'json' }` for static imports, or pass `{ with: { type: 'json' } }` as the second argument to dynamic `import()`.
+Jest: importing JSON without an import attribute is deprecated and will be a hard error in the next major. Update the import of "/app/src/common/seed/data/clinical-forms/reumatologia/evaluacion-reumatologica.json" (from /app/src/common/seed/data/clinical-forms/catalog.ts): use `with { type: 'json' }` for static imports, or pass `{ with: { type: 'json' } }` as the second argument to dynamic `import()`.
+Jest: importing JSON without an import attribute is deprecated and will be a hard error in the next major. Update the import of "/app/src/common/seed/data/clinical-forms/infectologia/evaluacion-infectologica.json" (from /app/src/common/seed/data/clinical-forms/catalog.ts): use `with { type: 'json' }` for static imports, or pass `{ with: { type: 'json' } }` as the second argument to dynamic `import()`.
+Jest: importing JSON without an import attribute is deprecated and will be a hard error in the next major. Update the import of "/app/src/common/seed/data/clinical-forms/geriatria/valoracion-geriatrica.json" (from /app/src/common/seed/data/clinical-forms/catalog.ts): use `with { type: 'json' }` for static imports, or pass `{ with: { type: 'json' } }` as the second argument to dynamic `import()`.
+Jest: importing JSON without an import attribute is deprecated and will be a hard error in the next major. Update the import of "/app/src/common/seed/data/clinical-forms/oncologia/evaluacion-oncologica.json" (from /app/src/common/seed/data/clinical-forms/catalog.ts): use `with { type: 'json' }` for static imports, or pass `{ with: { type: 'json' } }` as the second argument to dynamic `import()`.
+Jest: importing JSON without an import attribute is deprecated and will be a hard error in the next major. Update the import of "/app/src/common/seed/data/clinical-forms/hematologia/evaluacion-hematologica.json" (from /app/src/common/seed/data/clinical-forms/catalog.ts): use `with { type: 'json' }` for static imports, or pass `{ with: { type: 'json' } }` as the second argument to dynamic `import()`.
+Jest: importing JSON without an import attribute is deprecated and will be a hard error in the next major. Update the import of "/app/src/common/seed/data/clinical-forms/medicina-intensiva/evaluacion-en-medicina-intensiva.json" (from /app/src/common/seed/data/clinical-forms/catalog.ts): use `with { type: 'json' }` for static imports, or pass `{ with: { type: 'json' } }` as the second argument to dynamic `import()`.
+Jest: importing JSON without an import attribute is deprecated and will be a hard error in the next major. Update the import of "/app/src/common/seed/data/clinical-forms/medicina-emergencia/atencion-en-emergencia.json" (from /app/src/common/seed/data/clinical-forms/catalog.ts): use `with { type: 'json' }` for static imports, or pass `{ with: { type: 'json' } }` as the second argument to dynamic `import()`.
+Jest: importing JSON without an import attribute is deprecated and will be a hard error in the next major. Update the import of "/app/src/common/seed/data/clinical-forms/cirugia-general/evaluacion-de-cirugia-general.json" (from /app/src/common/seed/data/clinical-forms/catalog.ts): use `with { type: 'json' }` for static imports, or pass `{ with: { type: 'json' } }` as the second argument to dynamic `import()`.
+Jest: importing JSON without an import attribute is deprecated and will be a hard error in the next major. Update the import of "/app/src/common/seed/data/clinical-forms/urologia/evaluacion-urologica.json" (from /app/src/common/seed/data/clinical-forms/catalog.ts): use `with { type: 'json' }` for static imports, or pass `{ with: { type: 'json' } }` as the second argument to dynamic `import()`.
+Jest: importing JSON without an import attribute is deprecated and will be a hard error in the next major. Update the import of "/app/src/common/seed/data/clinical-forms/otorrinolaringologia/evaluacion-otorrinolaringologica.json" (from /app/src/common/seed/data/clinical-forms/catalog.ts): use `with { type: 'json' }` for static imports, or pass `{ with: { type: 'json' } }` as the second argument to dynamic `import()`.
+Jest: importing JSON without an import attribute is deprecated and will be a hard error in the next major. Update the import of "/app/src/common/seed/data/clinical-forms/anestesiologia/valoracion-preanestesica.json" (from /app/src/common/seed/data/clinical-forms/catalog.ts): use `with { type: 'json' }` for static imports, or pass `{ with: { type: 'json' } }` as the second argument to dynamic `import()`.
+Jest: importing JSON without an import attribute is deprecated and will be a hard error in the next major. Update the import of "/app/src/common/seed/data/clinical-forms/radiologia/informe-de-estudio-por-imagenes.json" (from /app/src/common/seed/data/clinical-forms/catalog.ts): use `with { type: 'json' }` for static imports, or pass `{ with: { type: 'json' } }` as the second argument to dynamic `import()`.
+Jest: importing JSON without an import attribute is deprecated and will be a hard error in the next major. Update the import of "/app/src/common/seed/data/clinical-forms/patologia-clinica/informe-de-patologia.json" (from /app/src/common/seed/data/clinical-forms/catalog.ts): use `with { type: 'json' }` for static imports, or pass `{ with: { type: 'json' } }` as the second argument to dynamic `import()`.
+Jest: importing JSON without an import attribute is deprecated and will be a hard error in the next major. Update the import of "/app/src/common/seed/data/clinical-forms/bioquimica-clinica/informe-de-laboratorio.json" (from /app/src/common/seed/data/clinical-forms/catalog.ts): use `with { type: 'json' }` for static imports, or pass `{ with: { type: 'json' } }` as the second argument to dynamic `import()`.
+Jest: importing JSON without an import attribute is deprecated and will be a hard error in the next major. Update the import of "/app/src/common/seed/data/clinical-forms/medicina-deportiva/evaluacion-de-medicina-deportiva.json" (from /app/src/common/seed/data/clinical-forms/catalog.ts): use `with { type: 'json' }` for static imports, or pass `{ with: { type: 'json' } }` as the second argument to dynamic `import()`.
+Jest: importing JSON without an import attribute is deprecated and will be a hard error in the next major. Update the import of "/app/src/common/seed/data/clinical-forms/psicologia-clinica/evaluacion-psicologica.json" (from /app/src/common/seed/data/clinical-forms/catalog.ts): use `with { type: 'json' }` for static imports, or pass `{ with: { type: 'json' } }` as the second argument to dynamic `import()`.
+Jest: importing JSON without an import attribute is deprecated and will be a hard error in the next major. Update the import of "/app/src/common/seed/data/clinical-forms/nutricion/evaluacion-nutricional.json" (from /app/src/common/seed/data/clinical-forms/catalog.ts): use `with { type: 'json' }` for static imports, or pass `{ with: { type: 'json' } }` as the second argument to dynamic `import()`.
+Jest: importing JSON without an import attribute is deprecated and will be a hard error in the next major. Update the import of "/app/src/common/seed/data/clinical-forms/fisioterapia/evaluacion-kinesiologica.json" (from /app/src/common/seed/data/clinical-forms/catalog.ts): use `with { type: 'json' }` for static imports, or pass `{ with: { type: 'json' } }` as the second argument to dynamic `import()`.
+Jest: importing JSON without an import attribute is deprecated and will be a hard error in the next major. Update the import of "/app/src/common/seed/data/clinical-forms/enfermeria/valoracion-de-enfermeria.json" (from /app/src/common/seed/data/clinical-forms/catalog.ts): use `with { type: 'json' }` for static imports, or pass `{ with: { type: 'json' } }` as the second argument to dynamic `import()`.
+Jest: importing JSON without an import attribute is deprecated and will be a hard error in the next major. Update the import of "/app/src/common/seed/data/clinical-forms/obstetricia/control-obstetrico.json" (from /app/src/common/seed/data/clinical-forms/catalog.ts): use `with { type: 'json' }` for static imports, or pass `{ with: { type: 'json' } }` as the second argument to dynamic `import()`.
+Jest: importing JSON without an import attribute is deprecated and will be a hard error in the next major. Update the import of "/app/src/common/seed/data/clinical-forms/odontologia/anamnesis-odontologica.json" (from /app/src/common/seed/data/clinical-forms/catalog.ts): use `with { type: 'json' }` for static imports, or pass `{ with: { type: 'json' } }` as the second argument to dynamic `import()`.
+Jest: importing JSON without an import attribute is deprecated and will be a hard error in the next major. Update the import of "/app/src/common/seed/data/vademecum/vademecum.dataset.json" (from /app/src/common/seed/vademecum-seed.service.ts): use `with { type: 'json' }` for static imports, or pass `{ with: { type: 'json' } }` as the second argument to dynamic `import()`.
+Jest: importing JSON without an import attribute is deprecated and will be a hard error in the next major. Update the import of "/app/src/common/seed/data/bolivia/insurance-carriers.dataset.json" (from /app/src/common/seed/bolivia-insurance.catalog.ts): use `with { type: 'json' }` for static imports, or pass `{ with: { type: 'json' } }` as the second argument to dynamic `import()`.
+Jest: importing JSON without an import attribute is deprecated and will be a hard error in the next major. Update the import of "/app/src/common/seed/data/bolivia/insurance-carrier-contact-channels.dataset.json" (from /app/src/common/seed/bolivia-insurance.catalog.ts): use `with { type: 'json' }` for static imports, or pass `{ with: { type: 'json' } }` as the second argument to dynamic `import()`.
+Jest: importing JSON without an import attribute is deprecated and will be a hard error in the next major. Update the import of "/app/src/common/seed/data/bolivia/fee-schedule.dataset.json" (from /app/src/common/seed/bolivia-fee-schedule.catalog.ts): use `with { type: 'json' }` for static imports, or pass `{ with: { type: 'json' } }` as the second argument to dynamic `import()`.
+Jest: importing JSON without an import attribute is deprecated and will be a hard error in the next major. Update the import of "/app/src/common/seed/data/bolivia/health-facilities.dataset.json" (from /app/src/common/seed/bolivia-facilities.catalog.ts): use `with { type: 'json' }` for static imports, or pass `{ with: { type: 'json' } }` as the second argument to dynamic `import()`.
+(node:51) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+{"level":30,"time":1789910888474,"pid":51,"hostname":"c8dc021a7af5","context":"PersistenceModule","msg":"Persistencia: «postgres-write» y «postgres-read» son equivalentes; comparten un único pool (postgresql://mantra@mantra-redesa-postgres-1:5432/mantra_redesa_health?ssl=off)."}
+FAIL test/integration/fx3-agenda-respiro-y-avisos.int-spec.ts (305.025 s)
+  ● FX-3 · el respiro y los avisos de la agenda, contra la base › el respiro separa los turnos sin alargarlos (#277) › publica una plantilla declarando el respiro
+
+    MetadataError: Metadata for entity ChatAutoReplies not found
+
+      171 |     });
+      172 |   }
+    > 173 |   const moduleRef = await builder.compile();
+          |                     ^
+      174 |
+      175 |   const app = moduleRef.createNestApplication({ bufferLogs: true });
+      176 |   // Mismo logger que producción (nestjs-pino). El filtro global de excepciones ya
+
+      at MetadataError.missingMetadata (node_modules/@mikro-orm/core/errors.js:196:16)
+      at MetadataStorage.get (node_modules/@mikro-orm/core/metadata/MetadataStorage.js:59:33)
+      at PostgreSqlEntityManager.getRepository (node_modules/@mikro-orm/core/EntityManager.js:97:36)
+      at PostgreSqlEntityManager.getRepository (node_modules/@mikro-orm/sql/SqlEntityManager.js:109:22)
+      at InstanceWrapper.useFactory [as metatype] (node_modules/@mikro-orm/nestjs/mikro-orm.providers.js:108:34)
+      at TestingInjector.instantiateClass (node_modules/@nestjs/core/injector/injector.js:435:55)
+      at callback (node_modules/@nestjs/core/injector/injector.js:72:45)
+      at TestingInjector.resolveConstructorParams (node_modules/@nestjs/core/injector/injector.js:180:24)
+      at TestingInjector.loadInstance (node_modules/@nestjs/core/injector/injector.js:77:13)
+      at TestingInjector.loadProvider (node_modules/@nestjs/core/injector/injector.js:111:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:56:13
+          at async Promise.all (index 4)
+      at TestingInstanceLoader.createInstancesOfProviders (node_modules/@nestjs/core/injector/instance-loader.js:55:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:40:13
+          at async Promise.all (index 38)
+      at TestingInstanceLoader.createInstances (node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-module.builder.js:119:9)
+      at TestingModuleBuilder.compile (node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at bootstrapTestApp (test/integration/harness.ts:173:21)
+      at Object.<anonymous> (test/integration/fx3-agenda-respiro-y-avisos.int-spec.ts:95:11)
+
+  ● FX-3 · el respiro y los avisos de la agenda, contra la base › el respiro separa los turnos sin alargarlos (#277) › la columna guardó el respiro tal como vino
+
+    MetadataError: Metadata for entity ChatAutoReplies not found
+
+      171 |     });
+      172 |   }
+    > 173 |   const moduleRef = await builder.compile();
+          |                     ^
+      174 |
+      175 |   const app = moduleRef.createNestApplication({ bufferLogs: true });
+      176 |   // Mismo logger que producción (nestjs-pino). El filtro global de excepciones ya
+
+      at MetadataError.missingMetadata (node_modules/@mikro-orm/core/errors.js:196:16)
+      at MetadataStorage.get (node_modules/@mikro-orm/core/metadata/MetadataStorage.js:59:33)
+      at PostgreSqlEntityManager.getRepository (node_modules/@mikro-orm/core/EntityManager.js:97:36)
+      at PostgreSqlEntityManager.getRepository (node_modules/@mikro-orm/sql/SqlEntityManager.js:109:22)
+      at InstanceWrapper.useFactory [as metatype] (node_modules/@mikro-orm/nestjs/mikro-orm.providers.js:108:34)
+      at TestingInjector.instantiateClass (node_modules/@nestjs/core/injector/injector.js:435:55)
+      at callback (node_modules/@nestjs/core/injector/injector.js:72:45)
+      at TestingInjector.resolveConstructorParams (node_modules/@nestjs/core/injector/injector.js:180:24)
+      at TestingInjector.loadInstance (node_modules/@nestjs/core/injector/injector.js:77:13)
+      at TestingInjector.loadProvider (node_modules/@nestjs/core/injector/injector.js:111:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:56:13
+          at async Promise.all (index 4)
+      at TestingInstanceLoader.createInstancesOfProviders (node_modules/@nestjs/core/injector/instance-loader.js:55:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:40:13
+          at async Promise.all (index 38)
+      at TestingInstanceLoader.createInstances (node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-module.builder.js:119:9)
+      at TestingModuleBuilder.compile (node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at bootstrapTestApp (test/integration/harness.ts:173:21)
+      at Object.<anonymous> (test/integration/fx3-agenda-respiro-y-avisos.int-spec.ts:95:11)
+
+  ● FX-3 · el respiro y los avisos de la agenda, contra la base › el respiro separa los turnos sin alargarlos (#277) › el generador materializa con paso slot + gap y duración slot
+
+    MetadataError: Metadata for entity ChatAutoReplies not found
+
+      171 |     });
+      172 |   }
+    > 173 |   const moduleRef = await builder.compile();
+          |                     ^
+      174 |
+      175 |   const app = moduleRef.createNestApplication({ bufferLogs: true });
+      176 |   // Mismo logger que producción (nestjs-pino). El filtro global de excepciones ya
+
+      at MetadataError.missingMetadata (node_modules/@mikro-orm/core/errors.js:196:16)
+      at MetadataStorage.get (node_modules/@mikro-orm/core/metadata/MetadataStorage.js:59:33)
+      at PostgreSqlEntityManager.getRepository (node_modules/@mikro-orm/core/EntityManager.js:97:36)
+      at PostgreSqlEntityManager.getRepository (node_modules/@mikro-orm/sql/SqlEntityManager.js:109:22)
+      at InstanceWrapper.useFactory [as metatype] (node_modules/@mikro-orm/nestjs/mikro-orm.providers.js:108:34)
+      at TestingInjector.instantiateClass (node_modules/@nestjs/core/injector/injector.js:435:55)
+      at callback (node_modules/@nestjs/core/injector/injector.js:72:45)
+      at TestingInjector.resolveConstructorParams (node_modules/@nestjs/core/injector/injector.js:180:24)
+      at TestingInjector.loadInstance (node_modules/@nestjs/core/injector/injector.js:77:13)
+      at TestingInjector.loadProvider (node_modules/@nestjs/core/injector/injector.js:111:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:56:13
+          at async Promise.all (index 4)
+      at TestingInstanceLoader.createInstancesOfProviders (node_modules/@nestjs/core/injector/instance-loader.js:55:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:40:13
+          at async Promise.all (index 38)
+      at TestingInstanceLoader.createInstances (node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-module.builder.js:119:9)
+      at TestingModuleBuilder.compile (node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at bootstrapTestApp (test/integration/harness.ts:173:21)
+      at Object.<anonymous> (test/integration/fx3-agenda-respiro-y-avisos.int-spec.ts:95:11)
+
+  ● FX-3 · el respiro y los avisos de la agenda, contra la base › pedir un turno avisa a las dos partes, por dos canales (#275, #276) › el paciente retiene un cupo y solicita el turno
+
+    MetadataError: Metadata for entity ChatAutoReplies not found
+
+      171 |     });
+      172 |   }
+    > 173 |   const moduleRef = await builder.compile();
+          |                     ^
+      174 |
+      175 |   const app = moduleRef.createNestApplication({ bufferLogs: true });
+      176 |   // Mismo logger que producción (nestjs-pino). El filtro global de excepciones ya
+
+      at MetadataError.missingMetadata (node_modules/@mikro-orm/core/errors.js:196:16)
+      at MetadataStorage.get (node_modules/@mikro-orm/core/metadata/MetadataStorage.js:59:33)
+      at PostgreSqlEntityManager.getRepository (node_modules/@mikro-orm/core/EntityManager.js:97:36)
+      at PostgreSqlEntityManager.getRepository (node_modules/@mikro-orm/sql/SqlEntityManager.js:109:22)
+      at InstanceWrapper.useFactory [as metatype] (node_modules/@mikro-orm/nestjs/mikro-orm.providers.js:108:34)
+      at TestingInjector.instantiateClass (node_modules/@nestjs/core/injector/injector.js:435:55)
+      at callback (node_modules/@nestjs/core/injector/injector.js:72:45)
+      at TestingInjector.resolveConstructorParams (node_modules/@nestjs/core/injector/injector.js:180:24)
+      at TestingInjector.loadInstance (node_modules/@nestjs/core/injector/injector.js:77:13)
+      at TestingInjector.loadProvider (node_modules/@nestjs/core/injector/injector.js:111:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:56:13
+          at async Promise.all (index 4)
+      at TestingInstanceLoader.createInstancesOfProviders (node_modules/@nestjs/core/injector/instance-loader.js:55:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:40:13
+          at async Promise.all (index 38)
+      at TestingInstanceLoader.createInstances (node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-module.builder.js:119:9)
+      at TestingModuleBuilder.compile (node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at bootstrapTestApp (test/integration/harness.ts:173:21)
+      at Object.<anonymous> (test/integration/fx3-agenda-respiro-y-avisos.int-spec.ts:95:11)
+
+  ● FX-3 · el respiro y los avisos de la agenda, contra la base › pedir un turno avisa a las dos partes, por dos canales (#275, #276) › deja cuatro solicitudes: dos destinatarios por dos canales
+
+    MetadataError: Metadata for entity ChatAutoReplies not found
+
+      171 |     });
+      172 |   }
+    > 173 |   const moduleRef = await builder.compile();
+          |                     ^
+      174 |
+      175 |   const app = moduleRef.createNestApplication({ bufferLogs: true });
+      176 |   // Mismo logger que producción (nestjs-pino). El filtro global de excepciones ya
+
+      at MetadataError.missingMetadata (node_modules/@mikro-orm/core/errors.js:196:16)
+      at MetadataStorage.get (node_modules/@mikro-orm/core/metadata/MetadataStorage.js:59:33)
+      at PostgreSqlEntityManager.getRepository (node_modules/@mikro-orm/core/EntityManager.js:97:36)
+      at PostgreSqlEntityManager.getRepository (node_modules/@mikro-orm/sql/SqlEntityManager.js:109:22)
+      at InstanceWrapper.useFactory [as metatype] (node_modules/@mikro-orm/nestjs/mikro-orm.providers.js:108:34)
+      at TestingInjector.instantiateClass (node_modules/@nestjs/core/injector/injector.js:435:55)
+      at callback (node_modules/@nestjs/core/injector/injector.js:72:45)
+      at TestingInjector.resolveConstructorParams (node_modules/@nestjs/core/injector/injector.js:180:24)
+      at TestingInjector.loadInstance (node_modules/@nestjs/core/injector/injector.js:77:13)
+      at TestingInjector.loadProvider (node_modules/@nestjs/core/injector/injector.js:111:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:56:13
+          at async Promise.all (index 4)
+      at TestingInstanceLoader.createInstancesOfProviders (node_modules/@nestjs/core/injector/instance-loader.js:55:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:40:13
+          at async Promise.all (index 38)
+      at TestingInstanceLoader.createInstances (node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-module.builder.js:119:9)
+      at TestingModuleBuilder.compile (node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at bootstrapTestApp (test/integration/harness.ts:173:21)
+      at Object.<anonymous> (test/integration/fx3-agenda-respiro-y-avisos.int-spec.ts:95:11)
+
+  ● FX-3 · el respiro y los avisos de la agenda, contra la base › pedir un turno avisa a las dos partes, por dos canales (#275, #276) › las de correo llevan la dirección de la cuenta, resuelta por el adaptador
+
+    MetadataError: Metadata for entity ChatAutoReplies not found
+
+      171 |     });
+      172 |   }
+    > 173 |   const moduleRef = await builder.compile();
+          |                     ^
+      174 |
+      175 |   const app = moduleRef.createNestApplication({ bufferLogs: true });
+      176 |   // Mismo logger que producción (nestjs-pino). El filtro global de excepciones ya
+
+      at MetadataError.missingMetadata (node_modules/@mikro-orm/core/errors.js:196:16)
+      at MetadataStorage.get (node_modules/@mikro-orm/core/metadata/MetadataStorage.js:59:33)
+      at PostgreSqlEntityManager.getRepository (node_modules/@mikro-orm/core/EntityManager.js:97:36)
+      at PostgreSqlEntityManager.getRepository (node_modules/@mikro-orm/sql/SqlEntityManager.js:109:22)
+      at InstanceWrapper.useFactory [as metatype] (node_modules/@mikro-orm/nestjs/mikro-orm.providers.js:108:34)
+      at TestingInjector.instantiateClass (node_modules/@nestjs/core/injector/injector.js:435:55)
+      at callback (node_modules/@nestjs/core/injector/injector.js:72:45)
+      at TestingInjector.resolveConstructorParams (node_modules/@nestjs/core/injector/injector.js:180:24)
+      at TestingInjector.loadInstance (node_modules/@nestjs/core/injector/injector.js:77:13)
+      at TestingInjector.loadProvider (node_modules/@nestjs/core/injector/injector.js:111:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:56:13
+          at async Promise.all (index 4)
+      at TestingInstanceLoader.createInstancesOfProviders (node_modules/@nestjs/core/injector/instance-loader.js:55:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:40:13
+          at async Promise.all (index 38)
+      at TestingInstanceLoader.createInstances (node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-module.builder.js:119:9)
+      at TestingModuleBuilder.compile (node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at bootstrapTestApp (test/integration/harness.ts:173:21)
+      at Object.<anonymous> (test/integration/fx3-agenda-respiro-y-avisos.int-spec.ts:95:11)
+
+  ● FX-3 · el respiro y los avisos de la agenda, contra la base › pedir un turno avisa a las dos partes, por dos canales (#275, #276) › las cuatro claves de rebote son distintas
+
+    MetadataError: Metadata for entity ChatAutoReplies not found
+
+      171 |     });
+      172 |   }
+    > 173 |   const moduleRef = await builder.compile();
+          |                     ^
+      174 |
+      175 |   const app = moduleRef.createNestApplication({ bufferLogs: true });
+      176 |   // Mismo logger que producción (nestjs-pino). El filtro global de excepciones ya
+
+      at MetadataError.missingMetadata (node_modules/@mikro-orm/core/errors.js:196:16)
+      at MetadataStorage.get (node_modules/@mikro-orm/core/metadata/MetadataStorage.js:59:33)
+      at PostgreSqlEntityManager.getRepository (node_modules/@mikro-orm/core/EntityManager.js:97:36)
+      at PostgreSqlEntityManager.getRepository (node_modules/@mikro-orm/sql/SqlEntityManager.js:109:22)
+      at InstanceWrapper.useFactory [as metatype] (node_modules/@mikro-orm/nestjs/mikro-orm.providers.js:108:34)
+      at TestingInjector.instantiateClass (node_modules/@nestjs/core/injector/injector.js:435:55)
+      at callback (node_modules/@nestjs/core/injector/injector.js:72:45)
+      at TestingInjector.resolveConstructorParams (node_modules/@nestjs/core/injector/injector.js:180:24)
+      at TestingInjector.loadInstance (node_modules/@nestjs/core/injector/injector.js:77:13)
+      at TestingInjector.loadProvider (node_modules/@nestjs/core/injector/injector.js:111:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:56:13
+          at async Promise.all (index 4)
+      at TestingInstanceLoader.createInstancesOfProviders (node_modules/@nestjs/core/injector/instance-loader.js:55:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:40:13
+          at async Promise.all (index 38)
+      at TestingInstanceLoader.createInstances (node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-module.builder.js:119:9)
+      at TestingModuleBuilder.compile (node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at bootstrapTestApp (test/integration/harness.ts:173:21)
+      at Object.<anonymous> (test/integration/fx3-agenda-respiro-y-avisos.int-spec.ts:95:11)
+
+  ● FX-3 · el respiro y los avisos de la agenda, contra la base › pedir un turno avisa a las dos partes, por dos canales (#275, #276) › ninguna solicitud de correo lleva el motivo de consulta
+
+    MetadataError: Metadata for entity ChatAutoReplies not found
+
+      171 |     });
+      172 |   }
+    > 173 |   const moduleRef = await builder.compile();
+          |                     ^
+      174 |
+      175 |   const app = moduleRef.createNestApplication({ bufferLogs: true });
+      176 |   // Mismo logger que producción (nestjs-pino). El filtro global de excepciones ya
+
+      at MetadataError.missingMetadata (node_modules/@mikro-orm/core/errors.js:196:16)
+      at MetadataStorage.get (node_modules/@mikro-orm/core/metadata/MetadataStorage.js:59:33)
+      at PostgreSqlEntityManager.getRepository (node_modules/@mikro-orm/core/EntityManager.js:97:36)
+      at PostgreSqlEntityManager.getRepository (node_modules/@mikro-orm/sql/SqlEntityManager.js:109:22)
+      at InstanceWrapper.useFactory [as metatype] (node_modules/@mikro-orm/nestjs/mikro-orm.providers.js:108:34)
+      at TestingInjector.instantiateClass (node_modules/@nestjs/core/injector/injector.js:435:55)
+      at callback (node_modules/@nestjs/core/injector/injector.js:72:45)
+      at TestingInjector.resolveConstructorParams (node_modules/@nestjs/core/injector/injector.js:180:24)
+      at TestingInjector.loadInstance (node_modules/@nestjs/core/injector/injector.js:77:13)
+      at TestingInjector.loadProvider (node_modules/@nestjs/core/injector/injector.js:111:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:56:13
+          at async Promise.all (index 4)
+      at TestingInstanceLoader.createInstancesOfProviders (node_modules/@nestjs/core/injector/instance-loader.js:55:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:40:13
+          at async Promise.all (index 38)
+      at TestingInstanceLoader.createInstances (node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-module.builder.js:119:9)
+      at TestingModuleBuilder.compile (node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at bootstrapTestApp (test/integration/harness.ts:173:21)
+      at Object.<anonymous> (test/integration/fx3-agenda-respiro-y-avisos.int-spec.ts:95:11)
+
+  ● FX-3 · el respiro y los avisos de la agenda, contra la base › la tipología viaja cuando existe, y se omite cuando no (#278) › una solicitud sin aceptar todavía no tiene contraparte clínica
+
+    MetadataError: Metadata for entity ChatAutoReplies not found
+
+      171 |     });
+      172 |   }
+    > 173 |   const moduleRef = await builder.compile();
+          |                     ^
+      174 |
+      175 |   const app = moduleRef.createNestApplication({ bufferLogs: true });
+      176 |   // Mismo logger que producción (nestjs-pino). El filtro global de excepciones ya
+
+      at MetadataError.missingMetadata (node_modules/@mikro-orm/core/errors.js:196:16)
+      at MetadataStorage.get (node_modules/@mikro-orm/core/metadata/MetadataStorage.js:59:33)
+      at PostgreSqlEntityManager.getRepository (node_modules/@mikro-orm/core/EntityManager.js:97:36)
+      at PostgreSqlEntityManager.getRepository (node_modules/@mikro-orm/sql/SqlEntityManager.js:109:22)
+      at InstanceWrapper.useFactory [as metatype] (node_modules/@mikro-orm/nestjs/mikro-orm.providers.js:108:34)
+      at TestingInjector.instantiateClass (node_modules/@nestjs/core/injector/injector.js:435:55)
+      at callback (node_modules/@nestjs/core/injector/injector.js:72:45)
+      at TestingInjector.resolveConstructorParams (node_modules/@nestjs/core/injector/injector.js:180:24)
+      at TestingInjector.loadInstance (node_modules/@nestjs/core/injector/injector.js:77:13)
+      at TestingInjector.loadProvider (node_modules/@nestjs/core/injector/injector.js:111:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:56:13
+          at async Promise.all (index 4)
+      at TestingInstanceLoader.createInstancesOfProviders (node_modules/@nestjs/core/injector/instance-loader.js:55:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:40:13
+          at async Promise.all (index 38)
+      at TestingInstanceLoader.createInstances (node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-module.builder.js:119:9)
+      at TestingModuleBuilder.compile (node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at bootstrapTestApp (test/integration/harness.ts:173:21)
+      at Object.<anonymous> (test/integration/fx3-agenda-respiro-y-avisos.int-spec.ts:95:11)
+
+  ● FX-3 · el respiro y los avisos de la agenda, contra la base › la tipología viaja cuando existe, y se omite cuando no (#278) › al aceptarla, la lectura devuelve la tipología de la cita clínica
+
+    MetadataError: Metadata for entity ChatAutoReplies not found
+
+      171 |     });
+      172 |   }
+    > 173 |   const moduleRef = await builder.compile();
+          |                     ^
+      174 |
+      175 |   const app = moduleRef.createNestApplication({ bufferLogs: true });
+      176 |   // Mismo logger que producción (nestjs-pino). El filtro global de excepciones ya
+
+      at MetadataError.missingMetadata (node_modules/@mikro-orm/core/errors.js:196:16)
+      at MetadataStorage.get (node_modules/@mikro-orm/core/metadata/MetadataStorage.js:59:33)
+      at PostgreSqlEntityManager.getRepository (node_modules/@mikro-orm/core/EntityManager.js:97:36)
+      at PostgreSqlEntityManager.getRepository (node_modules/@mikro-orm/sql/SqlEntityManager.js:109:22)
+      at InstanceWrapper.useFactory [as metatype] (node_modules/@mikro-orm/nestjs/mikro-orm.providers.js:108:34)
+      at TestingInjector.instantiateClass (node_modules/@nestjs/core/injector/injector.js:435:55)
+      at callback (node_modules/@nestjs/core/injector/injector.js:72:45)
+      at TestingInjector.resolveConstructorParams (node_modules/@nestjs/core/injector/injector.js:180:24)
+      at TestingInjector.loadInstance (node_modules/@nestjs/core/injector/injector.js:77:13)
+      at TestingInjector.loadProvider (node_modules/@nestjs/core/injector/injector.js:111:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:56:13
+          at async Promise.all (index 4)
+      at TestingInstanceLoader.createInstancesOfProviders (node_modules/@nestjs/core/injector/instance-loader.js:55:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:40:13
+          at async Promise.all (index 38)
+      at TestingInstanceLoader.createInstances (node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-module.builder.js:119:9)
+      at TestingModuleBuilder.compile (node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at bootstrapTestApp (test/integration/harness.ts:173:21)
+      at Object.<anonymous> (test/integration/fx3-agenda-respiro-y-avisos.int-spec.ts:95:11)
+
+
+  ● Test suite failed to run
+
+    TypeError: Cannot read properties of undefined (reading 'app')
+
+      155 |
+      156 |   afterAll(async () => {
+    > 157 |     await ctx.app.close();
+          |               ^
+      158 |   });
+      159 |
+      160 |   /* ======================================================================
+
+      at Object.app (test/integration/fx3-agenda-respiro-y-avisos.int-spec.ts:157:15)
+
+{"level":30,"time":1789910944001,"pid":51,"hostname":"c8dc021a7af5","context":"PersistenceModule","msg":"Persistencia: «postgres-write» y «postgres-read» son equivalentes; comparten un único pool (postgresql://mantra@mantra-redesa-postgres-1:5432/mantra_redesa_health?ssl=off)."}
+FAIL test/integration/fx9-carreras-de-la-agenda.int-spec.ts (55.36 s)
+  ● FX-9 · las carreras de la agenda (H-1) › AC-14-10 · dos citas puntuales que se pisan dejan UNA fila
+
+    MetadataError: Metadata for entity ChatAutoReplies not found
+
+      171 |     });
+      172 |   }
+    > 173 |   const moduleRef = await builder.compile();
+          |                     ^
+      174 |
+      175 |   const app = moduleRef.createNestApplication({ bufferLogs: true });
+      176 |   // Mismo logger que producción (nestjs-pino). El filtro global de excepciones ya
+
+      at MetadataError.missingMetadata (node_modules/@mikro-orm/core/errors.js:196:16)
+      at MetadataStorage.get (node_modules/@mikro-orm/core/metadata/MetadataStorage.js:59:33)
+      at PostgreSqlEntityManager.getRepository (node_modules/@mikro-orm/core/EntityManager.js:97:36)
+      at PostgreSqlEntityManager.getRepository (node_modules/@mikro-orm/sql/SqlEntityManager.js:109:22)
+      at InstanceWrapper.useFactory [as metatype] (node_modules/@mikro-orm/nestjs/mikro-orm.providers.js:108:34)
+      at TestingInjector.instantiateClass (node_modules/@nestjs/core/injector/injector.js:435:55)
+      at callback (node_modules/@nestjs/core/injector/injector.js:72:45)
+      at TestingInjector.resolveConstructorParams (node_modules/@nestjs/core/injector/injector.js:180:24)
+      at TestingInjector.loadInstance (node_modules/@nestjs/core/injector/injector.js:77:13)
+      at TestingInjector.loadProvider (node_modules/@nestjs/core/injector/injector.js:111:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:56:13
+          at async Promise.all (index 4)
+      at TestingInstanceLoader.createInstancesOfProviders (node_modules/@nestjs/core/injector/instance-loader.js:55:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:40:13
+          at async Promise.all (index 38)
+      at TestingInstanceLoader.createInstances (node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-module.builder.js:119:9)
+      at TestingModuleBuilder.compile (node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at bootstrapTestApp (test/integration/harness.ts:173:21)
+      at Object.<anonymous> (test/integration/fx9-carreras-de-la-agenda.int-spec.ts:138:11)
+
+  ● FX-9 · las carreras de la agenda (H-1) › AC-13-6 · dos aceptaciones que se pisan dejan UNA confirmada
+
+    MetadataError: Metadata for entity ChatAutoReplies not found
+
+      171 |     });
+      172 |   }
+    > 173 |   const moduleRef = await builder.compile();
+          |                     ^
+      174 |
+      175 |   const app = moduleRef.createNestApplication({ bufferLogs: true });
+      176 |   // Mismo logger que producción (nestjs-pino). El filtro global de excepciones ya
+
+      at MetadataError.missingMetadata (node_modules/@mikro-orm/core/errors.js:196:16)
+      at MetadataStorage.get (node_modules/@mikro-orm/core/metadata/MetadataStorage.js:59:33)
+      at PostgreSqlEntityManager.getRepository (node_modules/@mikro-orm/core/EntityManager.js:97:36)
+      at PostgreSqlEntityManager.getRepository (node_modules/@mikro-orm/sql/SqlEntityManager.js:109:22)
+      at InstanceWrapper.useFactory [as metatype] (node_modules/@mikro-orm/nestjs/mikro-orm.providers.js:108:34)
+      at TestingInjector.instantiateClass (node_modules/@nestjs/core/injector/injector.js:435:55)
+      at callback (node_modules/@nestjs/core/injector/injector.js:72:45)
+      at TestingInjector.resolveConstructorParams (node_modules/@nestjs/core/injector/injector.js:180:24)
+      at TestingInjector.loadInstance (node_modules/@nestjs/core/injector/injector.js:77:13)
+      at TestingInjector.loadProvider (node_modules/@nestjs/core/injector/injector.js:111:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:56:13
+          at async Promise.all (index 4)
+      at TestingInstanceLoader.createInstancesOfProviders (node_modules/@nestjs/core/injector/instance-loader.js:55:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:40:13
+          at async Promise.all (index 38)
+      at TestingInstanceLoader.createInstances (node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-module.builder.js:119:9)
+      at TestingModuleBuilder.compile (node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at bootstrapTestApp (test/integration/harness.ts:173:21)
+      at Object.<anonymous> (test/integration/fx9-carreras-de-la-agenda.int-spec.ts:138:11)
+
+  ● FX-9 · las carreras de la agenda (H-1) › AC-12-9 · mover el horario mientras alguien toma el destino
+
+    MetadataError: Metadata for entity ChatAutoReplies not found
+
+      171 |     });
+      172 |   }
+    > 173 |   const moduleRef = await builder.compile();
+          |                     ^
+      174 |
+      175 |   const app = moduleRef.createNestApplication({ bufferLogs: true });
+      176 |   // Mismo logger que producción (nestjs-pino). El filtro global de excepciones ya
+
+      at MetadataError.missingMetadata (node_modules/@mikro-orm/core/errors.js:196:16)
+      at MetadataStorage.get (node_modules/@mikro-orm/core/metadata/MetadataStorage.js:59:33)
+      at PostgreSqlEntityManager.getRepository (node_modules/@mikro-orm/core/EntityManager.js:97:36)
+      at PostgreSqlEntityManager.getRepository (node_modules/@mikro-orm/sql/SqlEntityManager.js:109:22)
+      at InstanceWrapper.useFactory [as metatype] (node_modules/@mikro-orm/nestjs/mikro-orm.providers.js:108:34)
+      at TestingInjector.instantiateClass (node_modules/@nestjs/core/injector/injector.js:435:55)
+      at callback (node_modules/@nestjs/core/injector/injector.js:72:45)
+      at TestingInjector.resolveConstructorParams (node_modules/@nestjs/core/injector/injector.js:180:24)
+      at TestingInjector.loadInstance (node_modules/@nestjs/core/injector/injector.js:77:13)
+      at TestingInjector.loadProvider (node_modules/@nestjs/core/injector/injector.js:111:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:56:13
+          at async Promise.all (index 4)
+      at TestingInstanceLoader.createInstancesOfProviders (node_modules/@nestjs/core/injector/instance-loader.js:55:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:40:13
+          at async Promise.all (index 38)
+      at TestingInstanceLoader.createInstances (node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-module.builder.js:119:9)
+      at TestingModuleBuilder.compile (node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at bootstrapTestApp (test/integration/harness.ts:173:21)
+      at Object.<anonymous> (test/integration/fx9-carreras-de-la-agenda.int-spec.ts:138:11)
+
+
+  ● Test suite failed to run
+
+    TypeError: Cannot read properties of undefined (reading 'app')
+
+      186 |
+      187 |   afterAll(async () => {
+    > 188 |     await ctx.app.close();
+          |               ^
+      189 |   });
+      190 |
+      191 |   it('AC-14-10 · dos citas puntuales que se pisan dejan UNA fila', async () => {
+
+      at Object.app (test/integration/fx9-carreras-de-la-agenda.int-spec.ts:188:15)
+
+{"level":30,"time":1789911031112,"pid":51,"hostname":"c8dc021a7af5","context":"PersistenceModule","msg":"Persistencia: «postgres-write» y «postgres-read» son equivalentes; comparten un único pool (postgresql://mantra@mantra-redesa-postgres-1:5432/mantra_redesa_health?ssl=off)."}
+FAIL test/integration/fx2-medico-multisede-publica-agenda.int-spec.ts (87.174 s)
+  ● FX-2 · aprobar el vínculo habilita la agenda multi-sede › antes de aprobar › el médico no tiene a la institución entre sus organizaciones
+
+    MetadataError: Metadata for entity ChatAutoReplies not found
+
+      171 |     });
+      172 |   }
+    > 173 |   const moduleRef = await builder.compile();
+          |                     ^
+      174 |
+      175 |   const app = moduleRef.createNestApplication({ bufferLogs: true });
+      176 |   // Mismo logger que producción (nestjs-pino). El filtro global de excepciones ya
+
+      at MetadataError.missingMetadata (node_modules/@mikro-orm/core/errors.js:196:16)
+      at MetadataStorage.get (node_modules/@mikro-orm/core/metadata/MetadataStorage.js:59:33)
+      at PostgreSqlEntityManager.getRepository (node_modules/@mikro-orm/core/EntityManager.js:97:36)
+      at PostgreSqlEntityManager.getRepository (node_modules/@mikro-orm/sql/SqlEntityManager.js:109:22)
+      at InstanceWrapper.useFactory [as metatype] (node_modules/@mikro-orm/nestjs/mikro-orm.providers.js:108:34)
+      at TestingInjector.instantiateClass (node_modules/@nestjs/core/injector/injector.js:435:55)
+      at callback (node_modules/@nestjs/core/injector/injector.js:72:45)
+      at TestingInjector.resolveConstructorParams (node_modules/@nestjs/core/injector/injector.js:180:24)
+      at TestingInjector.loadInstance (node_modules/@nestjs/core/injector/injector.js:77:13)
+      at TestingInjector.loadProvider (node_modules/@nestjs/core/injector/injector.js:111:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:56:13
+          at async Promise.all (index 4)
+      at TestingInstanceLoader.createInstancesOfProviders (node_modules/@nestjs/core/injector/instance-loader.js:55:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:40:13
+          at async Promise.all (index 38)
+      at TestingInstanceLoader.createInstances (node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-module.builder.js:119:9)
+      at TestingModuleBuilder.compile (node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at bootstrapTestApp (test/integration/harness.ts:173:21)
+      at Object.<anonymous> (test/integration/fx2-medico-multisede-publica-agenda.int-spec.ts:88:11)
+
+  ● FX-2 · aprobar el vínculo habilita la agenda multi-sede › antes de aprobar › publicar agenda en la institución se rechaza
+
+    MetadataError: Metadata for entity ChatAutoReplies not found
+
+      171 |     });
+      172 |   }
+    > 173 |   const moduleRef = await builder.compile();
+          |                     ^
+      174 |
+      175 |   const app = moduleRef.createNestApplication({ bufferLogs: true });
+      176 |   // Mismo logger que producción (nestjs-pino). El filtro global de excepciones ya
+
+      at MetadataError.missingMetadata (node_modules/@mikro-orm/core/errors.js:196:16)
+      at MetadataStorage.get (node_modules/@mikro-orm/core/metadata/MetadataStorage.js:59:33)
+      at PostgreSqlEntityManager.getRepository (node_modules/@mikro-orm/core/EntityManager.js:97:36)
+      at PostgreSqlEntityManager.getRepository (node_modules/@mikro-orm/sql/SqlEntityManager.js:109:22)
+      at InstanceWrapper.useFactory [as metatype] (node_modules/@mikro-orm/nestjs/mikro-orm.providers.js:108:34)
+      at TestingInjector.instantiateClass (node_modules/@nestjs/core/injector/injector.js:435:55)
+      at callback (node_modules/@nestjs/core/injector/injector.js:72:45)
+      at TestingInjector.resolveConstructorParams (node_modules/@nestjs/core/injector/injector.js:180:24)
+      at TestingInjector.loadInstance (node_modules/@nestjs/core/injector/injector.js:77:13)
+      at TestingInjector.loadProvider (node_modules/@nestjs/core/injector/injector.js:111:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:56:13
+          at async Promise.all (index 4)
+      at TestingInstanceLoader.createInstancesOfProviders (node_modules/@nestjs/core/injector/instance-loader.js:55:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:40:13
+          at async Promise.all (index 38)
+      at TestingInstanceLoader.createInstances (node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-module.builder.js:119:9)
+      at TestingModuleBuilder.compile (node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at bootstrapTestApp (test/integration/harness.ts:173:21)
+      at Object.<anonymous> (test/integration/fx2-medico-multisede-publica-agenda.int-spec.ts:88:11)
+
+  ● FX-2 · aprobar el vínculo habilita la agenda multi-sede › antes de aprobar › en su propio consultorio publica sin problema
+
+    MetadataError: Metadata for entity ChatAutoReplies not found
+
+      171 |     });
+      172 |   }
+    > 173 |   const moduleRef = await builder.compile();
+          |                     ^
+      174 |
+      175 |   const app = moduleRef.createNestApplication({ bufferLogs: true });
+      176 |   // Mismo logger que producción (nestjs-pino). El filtro global de excepciones ya
+
+      at MetadataError.missingMetadata (node_modules/@mikro-orm/core/errors.js:196:16)
+      at MetadataStorage.get (node_modules/@mikro-orm/core/metadata/MetadataStorage.js:59:33)
+      at PostgreSqlEntityManager.getRepository (node_modules/@mikro-orm/core/EntityManager.js:97:36)
+      at PostgreSqlEntityManager.getRepository (node_modules/@mikro-orm/sql/SqlEntityManager.js:109:22)
+      at InstanceWrapper.useFactory [as metatype] (node_modules/@mikro-orm/nestjs/mikro-orm.providers.js:108:34)
+      at TestingInjector.instantiateClass (node_modules/@nestjs/core/injector/injector.js:435:55)
+      at callback (node_modules/@nestjs/core/injector/injector.js:72:45)
+      at TestingInjector.resolveConstructorParams (node_modules/@nestjs/core/injector/injector.js:180:24)
+      at TestingInjector.loadInstance (node_modules/@nestjs/core/injector/injector.js:77:13)
+      at TestingInjector.loadProvider (node_modules/@nestjs/core/injector/injector.js:111:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:56:13
+          at async Promise.all (index 4)
+      at TestingInstanceLoader.createInstancesOfProviders (node_modules/@nestjs/core/injector/instance-loader.js:55:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:40:13
+          at async Promise.all (index 38)
+      at TestingInstanceLoader.createInstances (node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-module.builder.js:119:9)
+      at TestingModuleBuilder.compile (node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at bootstrapTestApp (test/integration/harness.ts:173:21)
+      at Object.<anonymous> (test/integration/fx2-medico-multisede-publica-agenda.int-spec.ts:88:11)
+
+  ● FX-2 · aprobar el vínculo habilita la agenda multi-sede › el trámite › el médico pide el vínculo y queda pendiente, no aprobado solo
+
+    MetadataError: Metadata for entity ChatAutoReplies not found
+
+      171 |     });
+      172 |   }
+    > 173 |   const moduleRef = await builder.compile();
+          |                     ^
+      174 |
+      175 |   const app = moduleRef.createNestApplication({ bufferLogs: true });
+      176 |   // Mismo logger que producción (nestjs-pino). El filtro global de excepciones ya
+
+      at MetadataError.missingMetadata (node_modules/@mikro-orm/core/errors.js:196:16)
+      at MetadataStorage.get (node_modules/@mikro-orm/core/metadata/MetadataStorage.js:59:33)
+      at PostgreSqlEntityManager.getRepository (node_modules/@mikro-orm/core/EntityManager.js:97:36)
+      at PostgreSqlEntityManager.getRepository (node_modules/@mikro-orm/sql/SqlEntityManager.js:109:22)
+      at InstanceWrapper.useFactory [as metatype] (node_modules/@mikro-orm/nestjs/mikro-orm.providers.js:108:34)
+      at TestingInjector.instantiateClass (node_modules/@nestjs/core/injector/injector.js:435:55)
+      at callback (node_modules/@nestjs/core/injector/injector.js:72:45)
+      at TestingInjector.resolveConstructorParams (node_modules/@nestjs/core/injector/injector.js:180:24)
+      at TestingInjector.loadInstance (node_modules/@nestjs/core/injector/injector.js:77:13)
+      at TestingInjector.loadProvider (node_modules/@nestjs/core/injector/injector.js:111:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:56:13
+          at async Promise.all (index 4)
+      at TestingInstanceLoader.createInstancesOfProviders (node_modules/@nestjs/core/injector/instance-loader.js:55:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:40:13
+          at async Promise.all (index 38)
+      at TestingInstanceLoader.createInstances (node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-module.builder.js:119:9)
+      at TestingModuleBuilder.compile (node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at bootstrapTestApp (test/integration/harness.ts:173:21)
+      at Object.<anonymous> (test/integration/fx2-medico-multisede-publica-agenda.int-spec.ts:88:11)
+
+  ● FX-2 · aprobar el vínculo habilita la agenda multi-sede › el trámite › el pedido aparece en la bandeja de la institución, identificado
+
+    MetadataError: Metadata for entity ChatAutoReplies not found
+
+      171 |     });
+      172 |   }
+    > 173 |   const moduleRef = await builder.compile();
+          |                     ^
+      174 |
+      175 |   const app = moduleRef.createNestApplication({ bufferLogs: true });
+      176 |   // Mismo logger que producción (nestjs-pino). El filtro global de excepciones ya
+
+      at MetadataError.missingMetadata (node_modules/@mikro-orm/core/errors.js:196:16)
+      at MetadataStorage.get (node_modules/@mikro-orm/core/metadata/MetadataStorage.js:59:33)
+      at PostgreSqlEntityManager.getRepository (node_modules/@mikro-orm/core/EntityManager.js:97:36)
+      at PostgreSqlEntityManager.getRepository (node_modules/@mikro-orm/sql/SqlEntityManager.js:109:22)
+      at InstanceWrapper.useFactory [as metatype] (node_modules/@mikro-orm/nestjs/mikro-orm.providers.js:108:34)
+      at TestingInjector.instantiateClass (node_modules/@nestjs/core/injector/injector.js:435:55)
+      at callback (node_modules/@nestjs/core/injector/injector.js:72:45)
+      at TestingInjector.resolveConstructorParams (node_modules/@nestjs/core/injector/injector.js:180:24)
+      at TestingInjector.loadInstance (node_modules/@nestjs/core/injector/injector.js:77:13)
+      at TestingInjector.loadProvider (node_modules/@nestjs/core/injector/injector.js:111:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:56:13
+          at async Promise.all (index 4)
+      at TestingInstanceLoader.createInstancesOfProviders (node_modules/@nestjs/core/injector/instance-loader.js:55:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:40:13
+          at async Promise.all (index 38)
+      at TestingInstanceLoader.createInstances (node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-module.builder.js:119:9)
+      at TestingModuleBuilder.compile (node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at bootstrapTestApp (test/integration/harness.ts:173:21)
+      at Object.<anonymous> (test/integration/fx2-medico-multisede-publica-agenda.int-spec.ts:88:11)
+
+  ● FX-2 · aprobar el vínculo habilita la agenda multi-sede › el trámite › la institución aprueba
+
+    MetadataError: Metadata for entity ChatAutoReplies not found
+
+      171 |     });
+      172 |   }
+    > 173 |   const moduleRef = await builder.compile();
+          |                     ^
+      174 |
+      175 |   const app = moduleRef.createNestApplication({ bufferLogs: true });
+      176 |   // Mismo logger que producción (nestjs-pino). El filtro global de excepciones ya
+
+      at MetadataError.missingMetadata (node_modules/@mikro-orm/core/errors.js:196:16)
+      at MetadataStorage.get (node_modules/@mikro-orm/core/metadata/MetadataStorage.js:59:33)
+      at PostgreSqlEntityManager.getRepository (node_modules/@mikro-orm/core/EntityManager.js:97:36)
+      at PostgreSqlEntityManager.getRepository (node_modules/@mikro-orm/sql/SqlEntityManager.js:109:22)
+      at InstanceWrapper.useFactory [as metatype] (node_modules/@mikro-orm/nestjs/mikro-orm.providers.js:108:34)
+      at TestingInjector.instantiateClass (node_modules/@nestjs/core/injector/injector.js:435:55)
+      at callback (node_modules/@nestjs/core/injector/injector.js:72:45)
+      at TestingInjector.resolveConstructorParams (node_modules/@nestjs/core/injector/injector.js:180:24)
+      at TestingInjector.loadInstance (node_modules/@nestjs/core/injector/injector.js:77:13)
+      at TestingInjector.loadProvider (node_modules/@nestjs/core/injector/injector.js:111:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:56:13
+          at async Promise.all (index 4)
+      at TestingInstanceLoader.createInstancesOfProviders (node_modules/@nestjs/core/injector/instance-loader.js:55:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:40:13
+          at async Promise.all (index 38)
+      at TestingInstanceLoader.createInstances (node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-module.builder.js:119:9)
+      at TestingModuleBuilder.compile (node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at bootstrapTestApp (test/integration/harness.ts:173:21)
+      at Object.<anonymous> (test/integration/fx2-medico-multisede-publica-agenda.int-spec.ts:88:11)
+
+  ● FX-2 · aprobar el vínculo habilita la agenda multi-sede › el trámite › aprobar de nuevo ya no procede
+
+    MetadataError: Metadata for entity ChatAutoReplies not found
+
+      171 |     });
+      172 |   }
+    > 173 |   const moduleRef = await builder.compile();
+          |                     ^
+      174 |
+      175 |   const app = moduleRef.createNestApplication({ bufferLogs: true });
+      176 |   // Mismo logger que producción (nestjs-pino). El filtro global de excepciones ya
+
+      at MetadataError.missingMetadata (node_modules/@mikro-orm/core/errors.js:196:16)
+      at MetadataStorage.get (node_modules/@mikro-orm/core/metadata/MetadataStorage.js:59:33)
+      at PostgreSqlEntityManager.getRepository (node_modules/@mikro-orm/core/EntityManager.js:97:36)
+      at PostgreSqlEntityManager.getRepository (node_modules/@mikro-orm/sql/SqlEntityManager.js:109:22)
+      at InstanceWrapper.useFactory [as metatype] (node_modules/@mikro-orm/nestjs/mikro-orm.providers.js:108:34)
+      at TestingInjector.instantiateClass (node_modules/@nestjs/core/injector/injector.js:435:55)
+      at callback (node_modules/@nestjs/core/injector/injector.js:72:45)
+      at TestingInjector.resolveConstructorParams (node_modules/@nestjs/core/injector/injector.js:180:24)
+      at TestingInjector.loadInstance (node_modules/@nestjs/core/injector/injector.js:77:13)
+      at TestingInjector.loadProvider (node_modules/@nestjs/core/injector/injector.js:111:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:56:13
+          at async Promise.all (index 4)
+      at TestingInstanceLoader.createInstancesOfProviders (node_modules/@nestjs/core/injector/instance-loader.js:55:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:40:13
+          at async Promise.all (index 38)
+      at TestingInstanceLoader.createInstances (node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-module.builder.js:119:9)
+      at TestingModuleBuilder.compile (node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at bootstrapTestApp (test/integration/harness.ts:173:21)
+      at Object.<anonymous> (test/integration/fx2-medico-multisede-publica-agenda.int-spec.ts:88:11)
+
+  ● FX-2 · aprobar el vínculo habilita la agenda multi-sede › después de aprobar › la aprobación le dio membresía en la institución
+
+    MetadataError: Metadata for entity ChatAutoReplies not found
+
+      171 |     });
+      172 |   }
+    > 173 |   const moduleRef = await builder.compile();
+          |                     ^
+      174 |
+      175 |   const app = moduleRef.createNestApplication({ bufferLogs: true });
+      176 |   // Mismo logger que producción (nestjs-pino). El filtro global de excepciones ya
+
+      at MetadataError.missingMetadata (node_modules/@mikro-orm/core/errors.js:196:16)
+      at MetadataStorage.get (node_modules/@mikro-orm/core/metadata/MetadataStorage.js:59:33)
+      at PostgreSqlEntityManager.getRepository (node_modules/@mikro-orm/core/EntityManager.js:97:36)
+      at PostgreSqlEntityManager.getRepository (node_modules/@mikro-orm/sql/SqlEntityManager.js:109:22)
+      at InstanceWrapper.useFactory [as metatype] (node_modules/@mikro-orm/nestjs/mikro-orm.providers.js:108:34)
+      at TestingInjector.instantiateClass (node_modules/@nestjs/core/injector/injector.js:435:55)
+      at callback (node_modules/@nestjs/core/injector/injector.js:72:45)
+      at TestingInjector.resolveConstructorParams (node_modules/@nestjs/core/injector/injector.js:180:24)
+      at TestingInjector.loadInstance (node_modules/@nestjs/core/injector/injector.js:77:13)
+      at TestingInjector.loadProvider (node_modules/@nestjs/core/injector/injector.js:111:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:56:13
+          at async Promise.all (index 4)
+      at TestingInstanceLoader.createInstancesOfProviders (node_modules/@nestjs/core/injector/instance-loader.js:55:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:40:13
+          at async Promise.all (index 38)
+      at TestingInstanceLoader.createInstances (node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-module.builder.js:119:9)
+      at TestingModuleBuilder.compile (node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at bootstrapTestApp (test/integration/harness.ts:173:21)
+      at Object.<anonymous> (test/integration/fx2-medico-multisede-publica-agenda.int-spec.ts:88:11)
+
+  ● FX-2 · aprobar el vínculo habilita la agenda multi-sede › después de aprobar › el token emitido antes de la aprobación sigue sin alcanzar
+
+    MetadataError: Metadata for entity ChatAutoReplies not found
+
+      171 |     });
+      172 |   }
+    > 173 |   const moduleRef = await builder.compile();
+          |                     ^
+      174 |
+      175 |   const app = moduleRef.createNestApplication({ bufferLogs: true });
+      176 |   // Mismo logger que producción (nestjs-pino). El filtro global de excepciones ya
+
+      at MetadataError.missingMetadata (node_modules/@mikro-orm/core/errors.js:196:16)
+      at MetadataStorage.get (node_modules/@mikro-orm/core/metadata/MetadataStorage.js:59:33)
+      at PostgreSqlEntityManager.getRepository (node_modules/@mikro-orm/core/EntityManager.js:97:36)
+      at PostgreSqlEntityManager.getRepository (node_modules/@mikro-orm/sql/SqlEntityManager.js:109:22)
+      at InstanceWrapper.useFactory [as metatype] (node_modules/@mikro-orm/nestjs/mikro-orm.providers.js:108:34)
+      at TestingInjector.instantiateClass (node_modules/@nestjs/core/injector/injector.js:435:55)
+      at callback (node_modules/@nestjs/core/injector/injector.js:72:45)
+      at TestingInjector.resolveConstructorParams (node_modules/@nestjs/core/injector/injector.js:180:24)
+      at TestingInjector.loadInstance (node_modules/@nestjs/core/injector/injector.js:77:13)
+      at TestingInjector.loadProvider (node_modules/@nestjs/core/injector/injector.js:111:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:56:13
+          at async Promise.all (index 4)
+      at TestingInstanceLoader.createInstancesOfProviders (node_modules/@nestjs/core/injector/instance-loader.js:55:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:40:13
+          at async Promise.all (index 38)
+      at TestingInstanceLoader.createInstances (node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-module.builder.js:119:9)
+      at TestingModuleBuilder.compile (node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at bootstrapTestApp (test/integration/harness.ts:173:21)
+      at Object.<anonymous> (test/integration/fx2-medico-multisede-publica-agenda.int-spec.ts:88:11)
+
+  ● FX-2 · aprobar el vínculo habilita la agenda multi-sede › después de aprobar › al volver a entrar, la institución está entre sus organizaciones
+
+    MetadataError: Metadata for entity ChatAutoReplies not found
+
+      171 |     });
+      172 |   }
+    > 173 |   const moduleRef = await builder.compile();
+          |                     ^
+      174 |
+      175 |   const app = moduleRef.createNestApplication({ bufferLogs: true });
+      176 |   // Mismo logger que producción (nestjs-pino). El filtro global de excepciones ya
+
+      at MetadataError.missingMetadata (node_modules/@mikro-orm/core/errors.js:196:16)
+      at MetadataStorage.get (node_modules/@mikro-orm/core/metadata/MetadataStorage.js:59:33)
+      at PostgreSqlEntityManager.getRepository (node_modules/@mikro-orm/core/EntityManager.js:97:36)
+      at PostgreSqlEntityManager.getRepository (node_modules/@mikro-orm/sql/SqlEntityManager.js:109:22)
+      at InstanceWrapper.useFactory [as metatype] (node_modules/@mikro-orm/nestjs/mikro-orm.providers.js:108:34)
+      at TestingInjector.instantiateClass (node_modules/@nestjs/core/injector/injector.js:435:55)
+      at callback (node_modules/@nestjs/core/injector/injector.js:72:45)
+      at TestingInjector.resolveConstructorParams (node_modules/@nestjs/core/injector/injector.js:180:24)
+      at TestingInjector.loadInstance (node_modules/@nestjs/core/injector/injector.js:77:13)
+      at TestingInjector.loadProvider (node_modules/@nestjs/core/injector/injector.js:111:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:56:13
+          at async Promise.all (index 4)
+      at TestingInstanceLoader.createInstancesOfProviders (node_modules/@nestjs/core/injector/instance-loader.js:55:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:40:13
+          at async Promise.all (index 38)
+      at TestingInstanceLoader.createInstances (node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-module.builder.js:119:9)
+      at TestingModuleBuilder.compile (node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at bootstrapTestApp (test/integration/harness.ts:173:21)
+      at Object.<anonymous> (test/integration/fx2-medico-multisede-publica-agenda.int-spec.ts:88:11)
+
+  ● FX-2 · aprobar el vínculo habilita la agenda multi-sede › después de aprobar › ahora sí publica agenda en la institución
+
+    MetadataError: Metadata for entity ChatAutoReplies not found
+
+      171 |     });
+      172 |   }
+    > 173 |   const moduleRef = await builder.compile();
+          |                     ^
+      174 |
+      175 |   const app = moduleRef.createNestApplication({ bufferLogs: true });
+      176 |   // Mismo logger que producción (nestjs-pino). El filtro global de excepciones ya
+
+      at MetadataError.missingMetadata (node_modules/@mikro-orm/core/errors.js:196:16)
+      at MetadataStorage.get (node_modules/@mikro-orm/core/metadata/MetadataStorage.js:59:33)
+      at PostgreSqlEntityManager.getRepository (node_modules/@mikro-orm/core/EntityManager.js:97:36)
+      at PostgreSqlEntityManager.getRepository (node_modules/@mikro-orm/sql/SqlEntityManager.js:109:22)
+      at InstanceWrapper.useFactory [as metatype] (node_modules/@mikro-orm/nestjs/mikro-orm.providers.js:108:34)
+      at TestingInjector.instantiateClass (node_modules/@nestjs/core/injector/injector.js:435:55)
+      at callback (node_modules/@nestjs/core/injector/injector.js:72:45)
+      at TestingInjector.resolveConstructorParams (node_modules/@nestjs/core/injector/injector.js:180:24)
+      at TestingInjector.loadInstance (node_modules/@nestjs/core/injector/injector.js:77:13)
+      at TestingInjector.loadProvider (node_modules/@nestjs/core/injector/injector.js:111:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:56:13
+          at async Promise.all (index 4)
+      at TestingInstanceLoader.createInstancesOfProviders (node_modules/@nestjs/core/injector/instance-loader.js:55:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:40:13
+          at async Promise.all (index 38)
+      at TestingInstanceLoader.createInstances (node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-module.builder.js:119:9)
+      at TestingModuleBuilder.compile (node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at bootstrapTestApp (test/integration/harness.ts:173:21)
+      at Object.<anonymous> (test/integration/fx2-medico-multisede-publica-agenda.int-spec.ts:88:11)
+
+  ● FX-2 · aprobar el vínculo habilita la agenda multi-sede › después de aprobar › y sigue publicando en su propio consultorio
+
+    MetadataError: Metadata for entity ChatAutoReplies not found
+
+      171 |     });
+      172 |   }
+    > 173 |   const moduleRef = await builder.compile();
+          |                     ^
+      174 |
+      175 |   const app = moduleRef.createNestApplication({ bufferLogs: true });
+      176 |   // Mismo logger que producción (nestjs-pino). El filtro global de excepciones ya
+
+      at MetadataError.missingMetadata (node_modules/@mikro-orm/core/errors.js:196:16)
+      at MetadataStorage.get (node_modules/@mikro-orm/core/metadata/MetadataStorage.js:59:33)
+      at PostgreSqlEntityManager.getRepository (node_modules/@mikro-orm/core/EntityManager.js:97:36)
+      at PostgreSqlEntityManager.getRepository (node_modules/@mikro-orm/sql/SqlEntityManager.js:109:22)
+      at InstanceWrapper.useFactory [as metatype] (node_modules/@mikro-orm/nestjs/mikro-orm.providers.js:108:34)
+      at TestingInjector.instantiateClass (node_modules/@nestjs/core/injector/injector.js:435:55)
+      at callback (node_modules/@nestjs/core/injector/injector.js:72:45)
+      at TestingInjector.resolveConstructorParams (node_modules/@nestjs/core/injector/injector.js:180:24)
+      at TestingInjector.loadInstance (node_modules/@nestjs/core/injector/injector.js:77:13)
+      at TestingInjector.loadProvider (node_modules/@nestjs/core/injector/injector.js:111:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:56:13
+          at async Promise.all (index 4)
+      at TestingInstanceLoader.createInstancesOfProviders (node_modules/@nestjs/core/injector/instance-loader.js:55:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:40:13
+          at async Promise.all (index 38)
+      at TestingInstanceLoader.createInstances (node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-module.builder.js:119:9)
+      at TestingModuleBuilder.compile (node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at bootstrapTestApp (test/integration/harness.ts:173:21)
+      at Object.<anonymous> (test/integration/fx2-medico-multisede-publica-agenda.int-spec.ts:88:11)
+
+  ● FX-2 · aprobar el vínculo habilita la agenda multi-sede › después de aprobar › la membresía no lo vuelve administrador de la institución
+
+    MetadataError: Metadata for entity ChatAutoReplies not found
+
+      171 |     });
+      172 |   }
+    > 173 |   const moduleRef = await builder.compile();
+          |                     ^
+      174 |
+      175 |   const app = moduleRef.createNestApplication({ bufferLogs: true });
+      176 |   // Mismo logger que producción (nestjs-pino). El filtro global de excepciones ya
+
+      at MetadataError.missingMetadata (node_modules/@mikro-orm/core/errors.js:196:16)
+      at MetadataStorage.get (node_modules/@mikro-orm/core/metadata/MetadataStorage.js:59:33)
+      at PostgreSqlEntityManager.getRepository (node_modules/@mikro-orm/core/EntityManager.js:97:36)
+      at PostgreSqlEntityManager.getRepository (node_modules/@mikro-orm/sql/SqlEntityManager.js:109:22)
+      at InstanceWrapper.useFactory [as metatype] (node_modules/@mikro-orm/nestjs/mikro-orm.providers.js:108:34)
+      at TestingInjector.instantiateClass (node_modules/@nestjs/core/injector/injector.js:435:55)
+      at callback (node_modules/@nestjs/core/injector/injector.js:72:45)
+      at TestingInjector.resolveConstructorParams (node_modules/@nestjs/core/injector/injector.js:180:24)
+      at TestingInjector.loadInstance (node_modules/@nestjs/core/injector/injector.js:77:13)
+      at TestingInjector.loadProvider (node_modules/@nestjs/core/injector/injector.js:111:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:56:13
+          at async Promise.all (index 4)
+      at TestingInstanceLoader.createInstancesOfProviders (node_modules/@nestjs/core/injector/instance-loader.js:55:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:40:13
+          at async Promise.all (index 38)
+      at TestingInstanceLoader.createInstances (node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-module.builder.js:119:9)
+      at TestingModuleBuilder.compile (node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at bootstrapTestApp (test/integration/harness.ts:173:21)
+      at Object.<anonymous> (test/integration/fx2-medico-multisede-publica-agenda.int-spec.ts:88:11)
+
+
+  ● Test suite failed to run
+
+    TypeError: Cannot read properties of undefined (reading 'app')
+
+      162 |
+      163 |   afterAll(async () => {
+    > 164 |     await ctx.app.close();
+          |               ^
+      165 |   });
+      166 |
+      167 |   describe('antes de aprobar', () => {
+
+      at Object.app (test/integration/fx2-medico-multisede-publica-agenda.int-spec.ts:164:15)
+
+{"level":30,"time":1789911118846,"pid":51,"hostname":"c8dc021a7af5","context":"PersistenceModule","msg":"Persistencia: «postgres-write» y «postgres-read» son equivalentes; comparten un único pool (postgresql://mantra@mantra-redesa-postgres-1:5432/mantra_redesa_health?ssl=off)."}
+FAIL test/integration/fx8-recorrido-de-la-agenda.int-spec.ts (87.642 s)
+  ● FX-8 · el recorrido de la agenda, de punta a punta › 1 · publica su agenda y su horario
+
+    MetadataError: Metadata for entity ChatAutoReplies not found
+
+      171 |     });
+      172 |   }
+    > 173 |   const moduleRef = await builder.compile();
+          |                     ^
+      174 |
+      175 |   const app = moduleRef.createNestApplication({ bufferLogs: true });
+      176 |   // Mismo logger que producción (nestjs-pino). El filtro global de excepciones ya
+
+      at MetadataError.missingMetadata (node_modules/@mikro-orm/core/errors.js:196:16)
+      at MetadataStorage.get (node_modules/@mikro-orm/core/metadata/MetadataStorage.js:59:33)
+      at PostgreSqlEntityManager.getRepository (node_modules/@mikro-orm/core/EntityManager.js:97:36)
+      at PostgreSqlEntityManager.getRepository (node_modules/@mikro-orm/sql/SqlEntityManager.js:109:22)
+      at InstanceWrapper.useFactory [as metatype] (node_modules/@mikro-orm/nestjs/mikro-orm.providers.js:108:34)
+      at TestingInjector.instantiateClass (node_modules/@nestjs/core/injector/injector.js:435:55)
+      at callback (node_modules/@nestjs/core/injector/injector.js:72:45)
+      at TestingInjector.resolveConstructorParams (node_modules/@nestjs/core/injector/injector.js:180:24)
+      at TestingInjector.loadInstance (node_modules/@nestjs/core/injector/injector.js:77:13)
+      at TestingInjector.loadProvider (node_modules/@nestjs/core/injector/injector.js:111:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:56:13
+          at async Promise.all (index 4)
+      at TestingInstanceLoader.createInstancesOfProviders (node_modules/@nestjs/core/injector/instance-loader.js:55:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:40:13
+          at async Promise.all (index 38)
+      at TestingInstanceLoader.createInstances (node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-module.builder.js:119:9)
+      at TestingModuleBuilder.compile (node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at bootstrapTestApp (test/integration/harness.ts:173:21)
+      at Object.<anonymous> (test/integration/fx8-recorrido-de-la-agenda.int-spec.ts:60:11)
+
+  ● FX-8 · el recorrido de la agenda, de punta a punta › 2 · generar cupos crea los OCHO que el horario promete
+
+    MetadataError: Metadata for entity ChatAutoReplies not found
+
+      171 |     });
+      172 |   }
+    > 173 |   const moduleRef = await builder.compile();
+          |                     ^
+      174 |
+      175 |   const app = moduleRef.createNestApplication({ bufferLogs: true });
+      176 |   // Mismo logger que producción (nestjs-pino). El filtro global de excepciones ya
+
+      at MetadataError.missingMetadata (node_modules/@mikro-orm/core/errors.js:196:16)
+      at MetadataStorage.get (node_modules/@mikro-orm/core/metadata/MetadataStorage.js:59:33)
+      at PostgreSqlEntityManager.getRepository (node_modules/@mikro-orm/core/EntityManager.js:97:36)
+      at PostgreSqlEntityManager.getRepository (node_modules/@mikro-orm/sql/SqlEntityManager.js:109:22)
+      at InstanceWrapper.useFactory [as metatype] (node_modules/@mikro-orm/nestjs/mikro-orm.providers.js:108:34)
+      at TestingInjector.instantiateClass (node_modules/@nestjs/core/injector/injector.js:435:55)
+      at callback (node_modules/@nestjs/core/injector/injector.js:72:45)
+      at TestingInjector.resolveConstructorParams (node_modules/@nestjs/core/injector/injector.js:180:24)
+      at TestingInjector.loadInstance (node_modules/@nestjs/core/injector/injector.js:77:13)
+      at TestingInjector.loadProvider (node_modules/@nestjs/core/injector/injector.js:111:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:56:13
+          at async Promise.all (index 4)
+      at TestingInstanceLoader.createInstancesOfProviders (node_modules/@nestjs/core/injector/instance-loader.js:55:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:40:13
+          at async Promise.all (index 38)
+      at TestingInstanceLoader.createInstances (node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-module.builder.js:119:9)
+      at TestingModuleBuilder.compile (node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at bootstrapTestApp (test/integration/harness.ts:173:21)
+      at Object.<anonymous> (test/integration/fx8-recorrido-de-la-agenda.int-spec.ts:60:11)
+
+  ● FX-8 · el recorrido de la agenda, de punta a punta › 3 · el catálogo de tipologías está publicado y no usa el tono de error
+
+    MetadataError: Metadata for entity ChatAutoReplies not found
+
+      171 |     });
+      172 |   }
+    > 173 |   const moduleRef = await builder.compile();
+          |                     ^
+      174 |
+      175 |   const app = moduleRef.createNestApplication({ bufferLogs: true });
+      176 |   // Mismo logger que producción (nestjs-pino). El filtro global de excepciones ya
+
+      at MetadataError.missingMetadata (node_modules/@mikro-orm/core/errors.js:196:16)
+      at MetadataStorage.get (node_modules/@mikro-orm/core/metadata/MetadataStorage.js:59:33)
+      at PostgreSqlEntityManager.getRepository (node_modules/@mikro-orm/core/EntityManager.js:97:36)
+      at PostgreSqlEntityManager.getRepository (node_modules/@mikro-orm/sql/SqlEntityManager.js:109:22)
+      at InstanceWrapper.useFactory [as metatype] (node_modules/@mikro-orm/nestjs/mikro-orm.providers.js:108:34)
+      at TestingInjector.instantiateClass (node_modules/@nestjs/core/injector/injector.js:435:55)
+      at callback (node_modules/@nestjs/core/injector/injector.js:72:45)
+      at TestingInjector.resolveConstructorParams (node_modules/@nestjs/core/injector/injector.js:180:24)
+      at TestingInjector.loadInstance (node_modules/@nestjs/core/injector/injector.js:77:13)
+      at TestingInjector.loadProvider (node_modules/@nestjs/core/injector/injector.js:111:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:56:13
+          at async Promise.all (index 4)
+      at TestingInstanceLoader.createInstancesOfProviders (node_modules/@nestjs/core/injector/instance-loader.js:55:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:40:13
+          at async Promise.all (index 38)
+      at TestingInstanceLoader.createInstances (node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-module.builder.js:119:9)
+      at TestingModuleBuilder.compile (node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at bootstrapTestApp (test/integration/harness.ts:173:21)
+      at Object.<anonymous> (test/integration/fx8-recorrido-de-la-agenda.int-spec.ts:60:11)
+
+  ● FX-8 · el recorrido de la agenda, de punta a punta › 4 · mover el horario 20 minutos corre los cupos de verdad
+
+    MetadataError: Metadata for entity ChatAutoReplies not found
+
+      171 |     });
+      172 |   }
+    > 173 |   const moduleRef = await builder.compile();
+          |                     ^
+      174 |
+      175 |   const app = moduleRef.createNestApplication({ bufferLogs: true });
+      176 |   // Mismo logger que producción (nestjs-pino). El filtro global de excepciones ya
+
+      at MetadataError.missingMetadata (node_modules/@mikro-orm/core/errors.js:196:16)
+      at MetadataStorage.get (node_modules/@mikro-orm/core/metadata/MetadataStorage.js:59:33)
+      at PostgreSqlEntityManager.getRepository (node_modules/@mikro-orm/core/EntityManager.js:97:36)
+      at PostgreSqlEntityManager.getRepository (node_modules/@mikro-orm/sql/SqlEntityManager.js:109:22)
+      at InstanceWrapper.useFactory [as metatype] (node_modules/@mikro-orm/nestjs/mikro-orm.providers.js:108:34)
+      at TestingInjector.instantiateClass (node_modules/@nestjs/core/injector/injector.js:435:55)
+      at callback (node_modules/@nestjs/core/injector/injector.js:72:45)
+      at TestingInjector.resolveConstructorParams (node_modules/@nestjs/core/injector/injector.js:180:24)
+      at TestingInjector.loadInstance (node_modules/@nestjs/core/injector/injector.js:77:13)
+      at TestingInjector.loadProvider (node_modules/@nestjs/core/injector/injector.js:111:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:56:13
+          at async Promise.all (index 4)
+      at TestingInstanceLoader.createInstancesOfProviders (node_modules/@nestjs/core/injector/instance-loader.js:55:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:40:13
+          at async Promise.all (index 38)
+      at TestingInstanceLoader.createInstances (node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-module.builder.js:119:9)
+      at TestingModuleBuilder.compile (node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at bootstrapTestApp (test/integration/harness.ts:173:21)
+      at Object.<anonymous> (test/integration/fx8-recorrido-de-la-agenda.int-spec.ts:60:11)
+
+  ● FX-8 · el recorrido de la agenda, de punta a punta › 5 · mover cero minutos se rechaza en vez de responder «listo»
+
+    MetadataError: Metadata for entity ChatAutoReplies not found
+
+      171 |     });
+      172 |   }
+    > 173 |   const moduleRef = await builder.compile();
+          |                     ^
+      174 |
+      175 |   const app = moduleRef.createNestApplication({ bufferLogs: true });
+      176 |   // Mismo logger que producción (nestjs-pino). El filtro global de excepciones ya
+
+      at MetadataError.missingMetadata (node_modules/@mikro-orm/core/errors.js:196:16)
+      at MetadataStorage.get (node_modules/@mikro-orm/core/metadata/MetadataStorage.js:59:33)
+      at PostgreSqlEntityManager.getRepository (node_modules/@mikro-orm/core/EntityManager.js:97:36)
+      at PostgreSqlEntityManager.getRepository (node_modules/@mikro-orm/sql/SqlEntityManager.js:109:22)
+      at InstanceWrapper.useFactory [as metatype] (node_modules/@mikro-orm/nestjs/mikro-orm.providers.js:108:34)
+      at TestingInjector.instantiateClass (node_modules/@nestjs/core/injector/injector.js:435:55)
+      at callback (node_modules/@nestjs/core/injector/injector.js:72:45)
+      at TestingInjector.resolveConstructorParams (node_modules/@nestjs/core/injector/injector.js:180:24)
+      at TestingInjector.loadInstance (node_modules/@nestjs/core/injector/injector.js:77:13)
+      at TestingInjector.loadProvider (node_modules/@nestjs/core/injector/injector.js:111:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:56:13
+          at async Promise.all (index 4)
+      at TestingInstanceLoader.createInstancesOfProviders (node_modules/@nestjs/core/injector/instance-loader.js:55:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:40:13
+          at async Promise.all (index 38)
+      at TestingInstanceLoader.createInstances (node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-module.builder.js:119:9)
+      at TestingModuleBuilder.compile (node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at bootstrapTestApp (test/integration/harness.ts:173:21)
+      at Object.<anonymous> (test/integration/fx8-recorrido-de-la-agenda.int-spec.ts:60:11)
+
+  ● FX-8 · el recorrido de la agenda, de punta a punta › 6 · cerrar un rato deja el bloqueo que impide que vuelva
+
+    MetadataError: Metadata for entity ChatAutoReplies not found
+
+      171 |     });
+      172 |   }
+    > 173 |   const moduleRef = await builder.compile();
+          |                     ^
+      174 |
+      175 |   const app = moduleRef.createNestApplication({ bufferLogs: true });
+      176 |   // Mismo logger que producción (nestjs-pino). El filtro global de excepciones ya
+
+      at MetadataError.missingMetadata (node_modules/@mikro-orm/core/errors.js:196:16)
+      at MetadataStorage.get (node_modules/@mikro-orm/core/metadata/MetadataStorage.js:59:33)
+      at PostgreSqlEntityManager.getRepository (node_modules/@mikro-orm/core/EntityManager.js:97:36)
+      at PostgreSqlEntityManager.getRepository (node_modules/@mikro-orm/sql/SqlEntityManager.js:109:22)
+      at InstanceWrapper.useFactory [as metatype] (node_modules/@mikro-orm/nestjs/mikro-orm.providers.js:108:34)
+      at TestingInjector.instantiateClass (node_modules/@nestjs/core/injector/injector.js:435:55)
+      at callback (node_modules/@nestjs/core/injector/injector.js:72:45)
+      at TestingInjector.resolveConstructorParams (node_modules/@nestjs/core/injector/injector.js:180:24)
+      at TestingInjector.loadInstance (node_modules/@nestjs/core/injector/injector.js:77:13)
+      at TestingInjector.loadProvider (node_modules/@nestjs/core/injector/injector.js:111:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:56:13
+          at async Promise.all (index 4)
+      at TestingInstanceLoader.createInstancesOfProviders (node_modules/@nestjs/core/injector/instance-loader.js:55:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:40:13
+          at async Promise.all (index 38)
+      at TestingInstanceLoader.createInstances (node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-module.builder.js:119:9)
+      at TestingModuleBuilder.compile (node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at bootstrapTestApp (test/integration/harness.ts:173:21)
+      at Object.<anonymous> (test/integration/fx8-recorrido-de-la-agenda.int-spec.ts:60:11)
+
+  ● FX-8 · el recorrido de la agenda, de punta a punta › 7 · bloquear con motivo catalogado, y el motivo viaja con su etiqueta
+
+    MetadataError: Metadata for entity ChatAutoReplies not found
+
+      171 |     });
+      172 |   }
+    > 173 |   const moduleRef = await builder.compile();
+          |                     ^
+      174 |
+      175 |   const app = moduleRef.createNestApplication({ bufferLogs: true });
+      176 |   // Mismo logger que producción (nestjs-pino). El filtro global de excepciones ya
+
+      at MetadataError.missingMetadata (node_modules/@mikro-orm/core/errors.js:196:16)
+      at MetadataStorage.get (node_modules/@mikro-orm/core/metadata/MetadataStorage.js:59:33)
+      at PostgreSqlEntityManager.getRepository (node_modules/@mikro-orm/core/EntityManager.js:97:36)
+      at PostgreSqlEntityManager.getRepository (node_modules/@mikro-orm/sql/SqlEntityManager.js:109:22)
+      at InstanceWrapper.useFactory [as metatype] (node_modules/@mikro-orm/nestjs/mikro-orm.providers.js:108:34)
+      at TestingInjector.instantiateClass (node_modules/@nestjs/core/injector/injector.js:435:55)
+      at callback (node_modules/@nestjs/core/injector/injector.js:72:45)
+      at TestingInjector.resolveConstructorParams (node_modules/@nestjs/core/injector/injector.js:180:24)
+      at TestingInjector.loadInstance (node_modules/@nestjs/core/injector/injector.js:77:13)
+      at TestingInjector.loadProvider (node_modules/@nestjs/core/injector/injector.js:111:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:56:13
+          at async Promise.all (index 4)
+      at TestingInstanceLoader.createInstancesOfProviders (node_modules/@nestjs/core/injector/instance-loader.js:55:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:40:13
+          at async Promise.all (index 38)
+      at TestingInstanceLoader.createInstances (node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-module.builder.js:119:9)
+      at TestingModuleBuilder.compile (node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at bootstrapTestApp (test/integration/harness.ts:173:21)
+      at Object.<anonymous> (test/integration/fx8-recorrido-de-la-agenda.int-spec.ts:60:11)
+
+  ● FX-8 · el recorrido de la agenda, de punta a punta › 8 · corregir el bloqueo conserva el id y NO reabre al achicar
+
+    MetadataError: Metadata for entity ChatAutoReplies not found
+
+      171 |     });
+      172 |   }
+    > 173 |   const moduleRef = await builder.compile();
+          |                     ^
+      174 |
+      175 |   const app = moduleRef.createNestApplication({ bufferLogs: true });
+      176 |   // Mismo logger que producción (nestjs-pino). El filtro global de excepciones ya
+
+      at MetadataError.missingMetadata (node_modules/@mikro-orm/core/errors.js:196:16)
+      at MetadataStorage.get (node_modules/@mikro-orm/core/metadata/MetadataStorage.js:59:33)
+      at PostgreSqlEntityManager.getRepository (node_modules/@mikro-orm/core/EntityManager.js:97:36)
+      at PostgreSqlEntityManager.getRepository (node_modules/@mikro-orm/sql/SqlEntityManager.js:109:22)
+      at InstanceWrapper.useFactory [as metatype] (node_modules/@mikro-orm/nestjs/mikro-orm.providers.js:108:34)
+      at TestingInjector.instantiateClass (node_modules/@nestjs/core/injector/injector.js:435:55)
+      at callback (node_modules/@nestjs/core/injector/injector.js:72:45)
+      at TestingInjector.resolveConstructorParams (node_modules/@nestjs/core/injector/injector.js:180:24)
+      at TestingInjector.loadInstance (node_modules/@nestjs/core/injector/injector.js:77:13)
+      at TestingInjector.loadProvider (node_modules/@nestjs/core/injector/injector.js:111:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:56:13
+          at async Promise.all (index 4)
+      at TestingInstanceLoader.createInstancesOfProviders (node_modules/@nestjs/core/injector/instance-loader.js:55:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:40:13
+          at async Promise.all (index 38)
+      at TestingInstanceLoader.createInstances (node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-module.builder.js:119:9)
+      at TestingModuleBuilder.compile (node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at bootstrapTestApp (test/integration/harness.ts:173:21)
+      at Object.<anonymous> (test/integration/fx8-recorrido-de-la-agenda.int-spec.ts:60:11)
+
+  ● FX-8 · el recorrido de la agenda, de punta a punta › 9 · retirar el horario y volver a activarlo: el ciclo del viaje
+
+    MetadataError: Metadata for entity ChatAutoReplies not found
+
+      171 |     });
+      172 |   }
+    > 173 |   const moduleRef = await builder.compile();
+          |                     ^
+      174 |
+      175 |   const app = moduleRef.createNestApplication({ bufferLogs: true });
+      176 |   // Mismo logger que producción (nestjs-pino). El filtro global de excepciones ya
+
+      at MetadataError.missingMetadata (node_modules/@mikro-orm/core/errors.js:196:16)
+      at MetadataStorage.get (node_modules/@mikro-orm/core/metadata/MetadataStorage.js:59:33)
+      at PostgreSqlEntityManager.getRepository (node_modules/@mikro-orm/core/EntityManager.js:97:36)
+      at PostgreSqlEntityManager.getRepository (node_modules/@mikro-orm/sql/SqlEntityManager.js:109:22)
+      at InstanceWrapper.useFactory [as metatype] (node_modules/@mikro-orm/nestjs/mikro-orm.providers.js:108:34)
+      at TestingInjector.instantiateClass (node_modules/@nestjs/core/injector/injector.js:435:55)
+      at callback (node_modules/@nestjs/core/injector/injector.js:72:45)
+      at TestingInjector.resolveConstructorParams (node_modules/@nestjs/core/injector/injector.js:180:24)
+      at TestingInjector.loadInstance (node_modules/@nestjs/core/injector/injector.js:77:13)
+      at TestingInjector.loadProvider (node_modules/@nestjs/core/injector/injector.js:111:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:56:13
+          at async Promise.all (index 4)
+      at TestingInstanceLoader.createInstancesOfProviders (node_modules/@nestjs/core/injector/instance-loader.js:55:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:40:13
+          at async Promise.all (index 38)
+      at TestingInstanceLoader.createInstances (node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-module.builder.js:119:9)
+      at TestingModuleBuilder.compile (node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at bootstrapTestApp (test/integration/harness.ts:173:21)
+      at Object.<anonymous> (test/integration/fx8-recorrido-de-la-agenda.int-spec.ts:60:11)
+
+  ● FX-8 · el recorrido de la agenda, de punta a punta › 10 · la agenda de otro profesional no se toca
+
+    MetadataError: Metadata for entity ChatAutoReplies not found
+
+      171 |     });
+      172 |   }
+    > 173 |   const moduleRef = await builder.compile();
+          |                     ^
+      174 |
+      175 |   const app = moduleRef.createNestApplication({ bufferLogs: true });
+      176 |   // Mismo logger que producción (nestjs-pino). El filtro global de excepciones ya
+
+      at MetadataError.missingMetadata (node_modules/@mikro-orm/core/errors.js:196:16)
+      at MetadataStorage.get (node_modules/@mikro-orm/core/metadata/MetadataStorage.js:59:33)
+      at PostgreSqlEntityManager.getRepository (node_modules/@mikro-orm/core/EntityManager.js:97:36)
+      at PostgreSqlEntityManager.getRepository (node_modules/@mikro-orm/sql/SqlEntityManager.js:109:22)
+      at InstanceWrapper.useFactory [as metatype] (node_modules/@mikro-orm/nestjs/mikro-orm.providers.js:108:34)
+      at TestingInjector.instantiateClass (node_modules/@nestjs/core/injector/injector.js:435:55)
+      at callback (node_modules/@nestjs/core/injector/injector.js:72:45)
+      at TestingInjector.resolveConstructorParams (node_modules/@nestjs/core/injector/injector.js:180:24)
+      at TestingInjector.loadInstance (node_modules/@nestjs/core/injector/injector.js:77:13)
+      at TestingInjector.loadProvider (node_modules/@nestjs/core/injector/injector.js:111:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:56:13
+          at async Promise.all (index 4)
+      at TestingInstanceLoader.createInstancesOfProviders (node_modules/@nestjs/core/injector/instance-loader.js:55:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:40:13
+          at async Promise.all (index 38)
+      at TestingInstanceLoader.createInstances (node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-module.builder.js:119:9)
+      at TestingModuleBuilder.compile (node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at bootstrapTestApp (test/integration/harness.ts:173:21)
+      at Object.<anonymous> (test/integration/fx8-recorrido-de-la-agenda.int-spec.ts:60:11)
+
+
+  ● Test suite failed to run
+
+    TypeError: Cannot read properties of undefined (reading 'app')
+
+      82 |
+      83 |   afterAll(async () => {
+    > 84 |     await ctx.app.close();
+         |               ^
+      85 |   });
+      86 |
+      87 |   it('1 · publica su agenda y su horario', async () => {
+
+      at Object.app (test/integration/fx8-recorrido-de-la-agenda.int-spec.ts:84:15)
+
+{"level":30,"time":1789911187931,"pid":51,"hostname":"c8dc021a7af5","context":"PersistenceModule","msg":"Persistencia: «postgres-write» y «postgres-read» son equivalentes; comparten un único pool (postgresql://mantra@mantra-redesa-postgres-1:5432/mantra_redesa_health?ssl=off)."}
+FAIL test/integration/fx1-doctor-publica-agenda.int-spec.ts (69.048 s)
+  ● FX-1 · la sesión del doctor nuevo habilita publicar su agenda › el alta devuelve el perfil profesional que la agenda va a necesitar
+
+    MetadataError: Metadata for entity ChatAutoReplies not found
+
+      171 |     });
+      172 |   }
+    > 173 |   const moduleRef = await builder.compile();
+          |                     ^
+      174 |
+      175 |   const app = moduleRef.createNestApplication({ bufferLogs: true });
+      176 |   // Mismo logger que producción (nestjs-pino). El filtro global de excepciones ya
+
+      at MetadataError.missingMetadata (node_modules/@mikro-orm/core/errors.js:196:16)
+      at MetadataStorage.get (node_modules/@mikro-orm/core/metadata/MetadataStorage.js:59:33)
+      at PostgreSqlEntityManager.getRepository (node_modules/@mikro-orm/core/EntityManager.js:97:36)
+      at PostgreSqlEntityManager.getRepository (node_modules/@mikro-orm/sql/SqlEntityManager.js:109:22)
+      at InstanceWrapper.useFactory [as metatype] (node_modules/@mikro-orm/nestjs/mikro-orm.providers.js:108:34)
+      at TestingInjector.instantiateClass (node_modules/@nestjs/core/injector/injector.js:435:55)
+      at callback (node_modules/@nestjs/core/injector/injector.js:72:45)
+      at TestingInjector.resolveConstructorParams (node_modules/@nestjs/core/injector/injector.js:180:24)
+      at TestingInjector.loadInstance (node_modules/@nestjs/core/injector/injector.js:77:13)
+      at TestingInjector.loadProvider (node_modules/@nestjs/core/injector/injector.js:111:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:56:13
+          at async Promise.all (index 4)
+      at TestingInstanceLoader.createInstancesOfProviders (node_modules/@nestjs/core/injector/instance-loader.js:55:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:40:13
+          at async Promise.all (index 38)
+      at TestingInstanceLoader.createInstances (node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-module.builder.js:119:9)
+      at TestingModuleBuilder.compile (node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at bootstrapTestApp (test/integration/harness.ts:173:21)
+      at Object.<anonymous> (test/integration/fx1-doctor-publica-agenda.int-spec.ts:25:11)
+
+  ● FX-1 · la sesión del doctor nuevo habilita publicar su agenda › la sesión trae el rol PRACTITIONER
+
+    MetadataError: Metadata for entity ChatAutoReplies not found
+
+      171 |     });
+      172 |   }
+    > 173 |   const moduleRef = await builder.compile();
+          |                     ^
+      174 |
+      175 |   const app = moduleRef.createNestApplication({ bufferLogs: true });
+      176 |   // Mismo logger que producción (nestjs-pino). El filtro global de excepciones ya
+
+      at MetadataError.missingMetadata (node_modules/@mikro-orm/core/errors.js:196:16)
+      at MetadataStorage.get (node_modules/@mikro-orm/core/metadata/MetadataStorage.js:59:33)
+      at PostgreSqlEntityManager.getRepository (node_modules/@mikro-orm/core/EntityManager.js:97:36)
+      at PostgreSqlEntityManager.getRepository (node_modules/@mikro-orm/sql/SqlEntityManager.js:109:22)
+      at InstanceWrapper.useFactory [as metatype] (node_modules/@mikro-orm/nestjs/mikro-orm.providers.js:108:34)
+      at TestingInjector.instantiateClass (node_modules/@nestjs/core/injector/injector.js:435:55)
+      at callback (node_modules/@nestjs/core/injector/injector.js:72:45)
+      at TestingInjector.resolveConstructorParams (node_modules/@nestjs/core/injector/injector.js:180:24)
+      at TestingInjector.loadInstance (node_modules/@nestjs/core/injector/injector.js:77:13)
+      at TestingInjector.loadProvider (node_modules/@nestjs/core/injector/injector.js:111:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:56:13
+          at async Promise.all (index 4)
+      at TestingInstanceLoader.createInstancesOfProviders (node_modules/@nestjs/core/injector/instance-loader.js:55:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:40:13
+          at async Promise.all (index 38)
+      at TestingInstanceLoader.createInstances (node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-module.builder.js:119:9)
+      at TestingModuleBuilder.compile (node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at bootstrapTestApp (test/integration/harness.ts:173:21)
+      at Object.<anonymous> (test/integration/fx1-doctor-publica-agenda.int-spec.ts:25:11)
+
+  ● FX-1 · la sesión del doctor nuevo habilita publicar su agenda › la sesión trae el perfil profesional en el claim `hpid`
+
+    MetadataError: Metadata for entity ChatAutoReplies not found
+
+      171 |     });
+      172 |   }
+    > 173 |   const moduleRef = await builder.compile();
+          |                     ^
+      174 |
+      175 |   const app = moduleRef.createNestApplication({ bufferLogs: true });
+      176 |   // Mismo logger que producción (nestjs-pino). El filtro global de excepciones ya
+
+      at MetadataError.missingMetadata (node_modules/@mikro-orm/core/errors.js:196:16)
+      at MetadataStorage.get (node_modules/@mikro-orm/core/metadata/MetadataStorage.js:59:33)
+      at PostgreSqlEntityManager.getRepository (node_modules/@mikro-orm/core/EntityManager.js:97:36)
+      at PostgreSqlEntityManager.getRepository (node_modules/@mikro-orm/sql/SqlEntityManager.js:109:22)
+      at InstanceWrapper.useFactory [as metatype] (node_modules/@mikro-orm/nestjs/mikro-orm.providers.js:108:34)
+      at TestingInjector.instantiateClass (node_modules/@nestjs/core/injector/injector.js:435:55)
+      at callback (node_modules/@nestjs/core/injector/injector.js:72:45)
+      at TestingInjector.resolveConstructorParams (node_modules/@nestjs/core/injector/injector.js:180:24)
+      at TestingInjector.loadInstance (node_modules/@nestjs/core/injector/injector.js:77:13)
+      at TestingInjector.loadProvider (node_modules/@nestjs/core/injector/injector.js:111:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:56:13
+          at async Promise.all (index 4)
+      at TestingInstanceLoader.createInstancesOfProviders (node_modules/@nestjs/core/injector/instance-loader.js:55:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:40:13
+          at async Promise.all (index 38)
+      at TestingInstanceLoader.createInstances (node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-module.builder.js:119:9)
+      at TestingModuleBuilder.compile (node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at bootstrapTestApp (test/integration/harness.ts:173:21)
+      at Object.<anonymous> (test/integration/fx1-doctor-publica-agenda.int-spec.ts:25:11)
+
+  ● FX-1 · la sesión del doctor nuevo habilita publicar su agenda › puede publicar su propia agenda de punta a punta, sin datos técnicos ajenos
+
+    MetadataError: Metadata for entity ChatAutoReplies not found
+
+      171 |     });
+      172 |   }
+    > 173 |   const moduleRef = await builder.compile();
+          |                     ^
+      174 |
+      175 |   const app = moduleRef.createNestApplication({ bufferLogs: true });
+      176 |   // Mismo logger que producción (nestjs-pino). El filtro global de excepciones ya
+
+      at MetadataError.missingMetadata (node_modules/@mikro-orm/core/errors.js:196:16)
+      at MetadataStorage.get (node_modules/@mikro-orm/core/metadata/MetadataStorage.js:59:33)
+      at PostgreSqlEntityManager.getRepository (node_modules/@mikro-orm/core/EntityManager.js:97:36)
+      at PostgreSqlEntityManager.getRepository (node_modules/@mikro-orm/sql/SqlEntityManager.js:109:22)
+      at InstanceWrapper.useFactory [as metatype] (node_modules/@mikro-orm/nestjs/mikro-orm.providers.js:108:34)
+      at TestingInjector.instantiateClass (node_modules/@nestjs/core/injector/injector.js:435:55)
+      at callback (node_modules/@nestjs/core/injector/injector.js:72:45)
+      at TestingInjector.resolveConstructorParams (node_modules/@nestjs/core/injector/injector.js:180:24)
+      at TestingInjector.loadInstance (node_modules/@nestjs/core/injector/injector.js:77:13)
+      at TestingInjector.loadProvider (node_modules/@nestjs/core/injector/injector.js:111:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:56:13
+          at async Promise.all (index 4)
+      at TestingInstanceLoader.createInstancesOfProviders (node_modules/@nestjs/core/injector/instance-loader.js:55:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:40:13
+          at async Promise.all (index 38)
+      at TestingInstanceLoader.createInstances (node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-module.builder.js:119:9)
+      at TestingModuleBuilder.compile (node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at bootstrapTestApp (test/integration/harness.ts:173:21)
+      at Object.<anonymous> (test/integration/fx1-doctor-publica-agenda.int-spec.ts:25:11)
+
+
+  ● Test suite failed to run
+
+    TypeError: Cannot read properties of undefined (reading 'app')
+
+      50 |
+      51 |   afterAll(async () => {
+    > 52 |     await ctx.app.close();
+         |               ^
+      53 |   });
+      54 |
+      55 |   /** Los claims del token, sin verificar la firma: acá interesa el contenido. */
+
+      at Object.app (test/integration/fx1-doctor-publica-agenda.int-spec.ts:52:15)
+
+Test Suites: 5 failed, 5 total
+Tests:       40 failed, 40 total
+Snapshots:   0 total
+Time:        604.86 s
+Ran all test suites matching fx1-doctor-publica-agenda|fx2-medico-multisede-publica-agenda|fx3-agenda-respiro-y-avisos|fx8-recorrido-de-la-agenda|fx9-carreras-de-la-agenda.

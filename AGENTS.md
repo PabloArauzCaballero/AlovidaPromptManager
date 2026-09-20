@@ -1,6 +1,6 @@
 # AGENTS.md — Estándar de trabajo de la empresa
 
-Este repo es el **estándar de ingeniería, diseño y operación de la casa**: 176 skills, 13 reglas y
+Este repo es el **estándar de ingeniería, diseño y operación de la casa**: 176 skills, 14 reglas y
 los candados que las hacen cumplir. Si sos un agente de IA trabajando en cualquier repo de la
 empresa —o un programador usando uno—, esto es lo que tenés que respetar, sin importar qué
 herramienta uses.
@@ -217,7 +217,7 @@ sesión.
 
 | Qué | Dónde |
 |---|---|
-| **Las 13 reglas completas** | [`.claude/rules/`](.claude/rules/) — empezá por [`README.md`](.claude/rules/README.md) |
+| **Las 14 reglas completas** | [`.claude/rules/`](.claude/rules/) — empezá por [`README.md`](.claude/rules/README.md) |
 | **Catálogo de 176 skills** | [`.claude/skills/`](.claude/skills/) |
 | **Índice de skills** | [`.claude/skills/skills-router/SKILL.md`](.claude/skills/skills-router/SKILL.md) |
 | **Espejo cross-tool** | [`.agents/skills/`](.agents/skills/) y [`.agents/rules/`](.agents/rules/) |

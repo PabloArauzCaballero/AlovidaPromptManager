@@ -1,0 +1,1577 @@
+=== H5.S1.M1 — reintento tras yarn install (pdfkit resuelto) ===
+Jest: importing JSON without an import attribute is deprecated and will be a hard error in the next major. Update the import of "C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\src\common\seed\data\vademecum\vademecum.dataset.json" (from C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\src\common\seed\vademecum-seed.service.ts): use `with { type: 'json' }` for static imports, or pass `{ with: { type: 'json' } }` as the second argument to dynamic `import()`.
+Jest: importing JSON without an import attribute is deprecated and will be a hard error in the next major. Update the import of "C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\src\common\seed\data\bolivia\health-facilities.dataset.json" (from C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\src\common\seed\bolivia-facilities.catalog.ts): use `with { type: 'json' }` for static imports, or pass `{ with: { type: 'json' } }` as the second argument to dynamic `import()`.
+Jest: importing JSON without an import attribute is deprecated and will be a hard error in the next major. Update the import of "C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\src\common\seed\data\bolivia\fee-schedule.dataset.json" (from C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\src\common\seed\bolivia-fee-schedule.catalog.ts): use `with { type: 'json' }` for static imports, or pass `{ with: { type: 'json' } }` as the second argument to dynamic `import()`.
+Jest: importing JSON without an import attribute is deprecated and will be a hard error in the next major. Update the import of "C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\src\common\seed\data\bolivia\insurance-carriers.dataset.json" (from C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\src\common\seed\bolivia-insurance.catalog.ts): use `with { type: 'json' }` for static imports, or pass `{ with: { type: 'json' } }` as the second argument to dynamic `import()`.
+Jest: importing JSON without an import attribute is deprecated and will be a hard error in the next major. Update the import of "C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\src\common\seed\data\bolivia\insurance-carrier-contact-channels.dataset.json" (from C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\src\common\seed\bolivia-insurance.catalog.ts): use `with { type: 'json' }` for static imports, or pass `{ with: { type: 'json' } }` as the second argument to dynamic `import()`.
+Jest: importing JSON without an import attribute is deprecated and will be a hard error in the next major. Update the import of "C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\src\common\seed\data\clinical-forms\transversal\anamnesis-historia-clinica-general.json" (from C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\src\common\seed\data\clinical-forms\catalog.ts): use `with { type: 'json' }` for static imports, or pass `{ with: { type: 'json' } }` as the second argument to dynamic `import()`.
+Jest: importing JSON without an import attribute is deprecated and will be a hard error in the next major. Update the import of "C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\src\common\seed\data\clinical-forms\transversal\examen-fisico-general.json" (from C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\src\common\seed\data\clinical-forms\catalog.ts): use `with { type: 'json' }` for static imports, or pass `{ with: { type: 'json' } }` as the second argument to dynamic `import()`.
+Jest: importing JSON without an import attribute is deprecated and will be a hard error in the next major. Update the import of "C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\src\common\seed\data\clinical-forms\transversal\consentimiento-informado.json" (from C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\src\common\seed\data\clinical-forms\catalog.ts): use `with { type: 'json' }` for static imports, or pass `{ with: { type: 'json' } }` as the second argument to dynamic `import()`.
+Jest: importing JSON without an import attribute is deprecated and will be a hard error in the next major. Update the import of "C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\src\common\seed\data\clinical-forms\transversal\epicrisis-resumen-de-egreso.json" (from C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\src\common\seed\data\clinical-forms\catalog.ts): use `with { type: 'json' }` for static imports, or pass `{ with: { type: 'json' } }` as the second argument to dynamic `import()`.
+Jest: importing JSON without an import attribute is deprecated and will be a hard error in the next major. Update the import of "C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\src\common\seed\data\clinical-forms\cardiologia\ficha-cardiologica-base.json" (from C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\src\common\seed\data\clinical-forms\catalog.ts): use `with { type: 'json' }` for static imports, or pass `{ with: { type: 'json' } }` as the second argument to dynamic `import()`.
+Jest: importing JSON without an import attribute is deprecated and will be a hard error in the next major. Update the import of "C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\src\common\seed\data\clinical-forms\cardiologia\riesgo-cardiovascular-oms.json" (from C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\src\common\seed\data\clinical-forms\catalog.ts): use `with { type: 'json' }` for static imports, or pass `{ with: { type: 'json' } }` as the second argument to dynamic `import()`.
+Jest: importing JSON without an import attribute is deprecated and will be a hard error in the next major. Update the import of "C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\src\common\seed\data\clinical-forms\pediatria\control-de-nino-sano.json" (from C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\src\common\seed\data\clinical-forms\catalog.ts): use `with { type: 'json' }` for static imports, or pass `{ with: { type: 'json' } }` as the second argument to dynamic `import()`.
+Jest: importing JSON without an import attribute is deprecated and will be a hard error in the next major. Update the import of "C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\src\common\seed\data\clinical-forms\pediatria\curvas-de-crecimiento-oms.json" (from C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\src\common\seed\data\clinical-forms\catalog.ts): use `with { type: 'json' }` for static imports, or pass `{ with: { type: 'json' } }` as the second argument to dynamic `import()`.
+Jest: importing JSON without an import attribute is deprecated and will be a hard error in the next major. Update the import of "C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\src\common\seed\data\clinical-forms\ginecologia-obstetricia\control-prenatal-hcp.json" (from C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\src\common\seed\data\clinical-forms\catalog.ts): use `with { type: 'json' }` for static imports, or pass `{ with: { type: 'json' } }` as the second argument to dynamic `import()`.
+Jest: importing JSON without an import attribute is deprecated and will be a hard error in the next major. Update the import of "C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\src\common\seed\data\clinical-forms\traumatologia\evaluacion-musculoesqueletica.json" (from C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\src\common\seed\data\clinical-forms\catalog.ts): use `with { type: 'json' }` for static imports, or pass `{ with: { type: 'json' } }` as the second argument to dynamic `import()`.
+Jest: importing JSON without an import attribute is deprecated and will be a hard error in the next major. Update the import of "C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\src\common\seed\data\clinical-forms\oftalmologia\examen-oftalmologico-basico.json" (from C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\src\common\seed\data\clinical-forms\catalog.ts): use `with { type: 'json' }` for static imports, or pass `{ with: { type: 'json' } }` as the second argument to dynamic `import()`.
+Jest: importing JSON without an import attribute is deprecated and will be a hard error in the next major. Update the import of "C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\src\common\seed\data\clinical-forms\odontologia\odontograma-oms.json" (from C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\src\common\seed\data\clinical-forms\catalog.ts): use `with { type: 'json' }` for static imports, or pass `{ with: { type: 'json' } }` as the second argument to dynamic `import()`.
+Jest: importing JSON without an import attribute is deprecated and will be a hard error in the next major. Update the import of "C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\src\common\seed\data\clinical-forms\psiquiatria\evaluacion-de-salud-mental.json" (from C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\src\common\seed\data\clinical-forms\catalog.ts): use `with { type: 'json' }` for static imports, or pass `{ with: { type: 'json' } }` as the second argument to dynamic `import()`.
+Jest: importing JSON without an import attribute is deprecated and will be a hard error in the next major. Update the import of "C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\src\common\seed\data\clinical-forms\dermatologia\examen-dermatologico.json" (from C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\src\common\seed\data\clinical-forms\catalog.ts): use `with { type: 'json' }` for static imports, or pass `{ with: { type: 'json' } }` as the second argument to dynamic `import()`.
+Jest: importing JSON without an import attribute is deprecated and will be a hard error in the next major. Update the import of "C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\src\common\seed\data\clinical-forms\medicina-interna\evaluacion-de-medicina-interna.json" (from C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\src\common\seed\data\clinical-forms\catalog.ts): use `with { type: 'json' }` for static imports, or pass `{ with: { type: 'json' } }` as the second argument to dynamic `import()`.
+Jest: importing JSON without an import attribute is deprecated and will be a hard error in the next major. Update the import of "C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\src\common\seed\data\clinical-forms\medicina-general\consulta-de-medicina-general.json" (from C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\src\common\seed\data\clinical-forms\catalog.ts): use `with { type: 'json' }` for static imports, or pass `{ with: { type: 'json' } }` as the second argument to dynamic `import()`.
+Jest: importing JSON without an import attribute is deprecated and will be a hard error in the next major. Update the import of "C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\src\common\seed\data\clinical-forms\medicina-familiar\consulta-de-medicina-familiar.json" (from C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\src\common\seed\data\clinical-forms\catalog.ts): use `with { type: 'json' }` for static imports, or pass `{ with: { type: 'json' } }` as the second argument to dynamic `import()`.
+Jest: importing JSON without an import attribute is deprecated and will be a hard error in the next major. Update the import of "C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\src\common\seed\data\clinical-forms\neurologia\evaluacion-neurologica.json" (from C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\src\common\seed\data\clinical-forms\catalog.ts): use `with { type: 'json' }` for static imports, or pass `{ with: { type: 'json' } }` as the second argument to dynamic `import()`.
+Jest: importing JSON without an import attribute is deprecated and will be a hard error in the next major. Update the import of "C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\src\common\seed\data\clinical-forms\endocrinologia\evaluacion-endocrinologica.json" (from C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\src\common\seed\data\clinical-forms\catalog.ts): use `with { type: 'json' }` for static imports, or pass `{ with: { type: 'json' } }` as the second argument to dynamic `import()`.
+Jest: importing JSON without an import attribute is deprecated and will be a hard error in the next major. Update the import of "C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\src\common\seed\data\clinical-forms\gastroenterologia\evaluacion-gastroenterologica.json" (from C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\src\common\seed\data\clinical-forms\catalog.ts): use `with { type: 'json' }` for static imports, or pass `{ with: { type: 'json' } }` as the second argument to dynamic `import()`.
+Jest: importing JSON without an import attribute is deprecated and will be a hard error in the next major. Update the import of "C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\src\common\seed\data\clinical-forms\neumologia\evaluacion-neumologica.json" (from C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\src\common\seed\data\clinical-forms\catalog.ts): use `with { type: 'json' }` for static imports, or pass `{ with: { type: 'json' } }` as the second argument to dynamic `import()`.
+Jest: importing JSON without an import attribute is deprecated and will be a hard error in the next major. Update the import of "C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\src\common\seed\data\clinical-forms\nefrologia\evaluacion-nefrologica.json" (from C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\src\common\seed\data\clinical-forms\catalog.ts): use `with { type: 'json' }` for static imports, or pass `{ with: { type: 'json' } }` as the second argument to dynamic `import()`.
+Jest: importing JSON without an import attribute is deprecated and will be a hard error in the next major. Update the import of "C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\src\common\seed\data\clinical-forms\reumatologia\evaluacion-reumatologica.json" (from C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\src\common\seed\data\clinical-forms\catalog.ts): use `with { type: 'json' }` for static imports, or pass `{ with: { type: 'json' } }` as the second argument to dynamic `import()`.
+Jest: importing JSON without an import attribute is deprecated and will be a hard error in the next major. Update the import of "C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\src\common\seed\data\clinical-forms\infectologia\evaluacion-infectologica.json" (from C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\src\common\seed\data\clinical-forms\catalog.ts): use `with { type: 'json' }` for static imports, or pass `{ with: { type: 'json' } }` as the second argument to dynamic `import()`.
+Jest: importing JSON without an import attribute is deprecated and will be a hard error in the next major. Update the import of "C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\src\common\seed\data\clinical-forms\geriatria\valoracion-geriatrica.json" (from C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\src\common\seed\data\clinical-forms\catalog.ts): use `with { type: 'json' }` for static imports, or pass `{ with: { type: 'json' } }` as the second argument to dynamic `import()`.
+Jest: importing JSON without an import attribute is deprecated and will be a hard error in the next major. Update the import of "C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\src\common\seed\data\clinical-forms\oncologia\evaluacion-oncologica.json" (from C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\src\common\seed\data\clinical-forms\catalog.ts): use `with { type: 'json' }` for static imports, or pass `{ with: { type: 'json' } }` as the second argument to dynamic `import()`.
+Jest: importing JSON without an import attribute is deprecated and will be a hard error in the next major. Update the import of "C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\src\common\seed\data\clinical-forms\hematologia\evaluacion-hematologica.json" (from C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\src\common\seed\data\clinical-forms\catalog.ts): use `with { type: 'json' }` for static imports, or pass `{ with: { type: 'json' } }` as the second argument to dynamic `import()`.
+Jest: importing JSON without an import attribute is deprecated and will be a hard error in the next major. Update the import of "C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\src\common\seed\data\clinical-forms\medicina-intensiva\evaluacion-en-medicina-intensiva.json" (from C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\src\common\seed\data\clinical-forms\catalog.ts): use `with { type: 'json' }` for static imports, or pass `{ with: { type: 'json' } }` as the second argument to dynamic `import()`.
+Jest: importing JSON without an import attribute is deprecated and will be a hard error in the next major. Update the import of "C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\src\common\seed\data\clinical-forms\medicina-emergencia\atencion-en-emergencia.json" (from C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\src\common\seed\data\clinical-forms\catalog.ts): use `with { type: 'json' }` for static imports, or pass `{ with: { type: 'json' } }` as the second argument to dynamic `import()`.
+Jest: importing JSON without an import attribute is deprecated and will be a hard error in the next major. Update the import of "C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\src\common\seed\data\clinical-forms\cirugia-general\evaluacion-de-cirugia-general.json" (from C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\src\common\seed\data\clinical-forms\catalog.ts): use `with { type: 'json' }` for static imports, or pass `{ with: { type: 'json' } }` as the second argument to dynamic `import()`.
+Jest: importing JSON without an import attribute is deprecated and will be a hard error in the next major. Update the import of "C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\src\common\seed\data\clinical-forms\urologia\evaluacion-urologica.json" (from C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\src\common\seed\data\clinical-forms\catalog.ts): use `with { type: 'json' }` for static imports, or pass `{ with: { type: 'json' } }` as the second argument to dynamic `import()`.
+Jest: importing JSON without an import attribute is deprecated and will be a hard error in the next major. Update the import of "C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\src\common\seed\data\clinical-forms\otorrinolaringologia\evaluacion-otorrinolaringologica.json" (from C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\src\common\seed\data\clinical-forms\catalog.ts): use `with { type: 'json' }` for static imports, or pass `{ with: { type: 'json' } }` as the second argument to dynamic `import()`.
+Jest: importing JSON without an import attribute is deprecated and will be a hard error in the next major. Update the import of "C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\src\common\seed\data\clinical-forms\anestesiologia\valoracion-preanestesica.json" (from C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\src\common\seed\data\clinical-forms\catalog.ts): use `with { type: 'json' }` for static imports, or pass `{ with: { type: 'json' } }` as the second argument to dynamic `import()`.
+Jest: importing JSON without an import attribute is deprecated and will be a hard error in the next major. Update the import of "C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\src\common\seed\data\clinical-forms\radiologia\informe-de-estudio-por-imagenes.json" (from C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\src\common\seed\data\clinical-forms\catalog.ts): use `with { type: 'json' }` for static imports, or pass `{ with: { type: 'json' } }` as the second argument to dynamic `import()`.
+Jest: importing JSON without an import attribute is deprecated and will be a hard error in the next major. Update the import of "C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\src\common\seed\data\clinical-forms\patologia-clinica\informe-de-patologia.json" (from C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\src\common\seed\data\clinical-forms\catalog.ts): use `with { type: 'json' }` for static imports, or pass `{ with: { type: 'json' } }` as the second argument to dynamic `import()`.
+Jest: importing JSON without an import attribute is deprecated and will be a hard error in the next major. Update the import of "C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\src\common\seed\data\clinical-forms\bioquimica-clinica\informe-de-laboratorio.json" (from C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\src\common\seed\data\clinical-forms\catalog.ts): use `with { type: 'json' }` for static imports, or pass `{ with: { type: 'json' } }` as the second argument to dynamic `import()`.
+Jest: importing JSON without an import attribute is deprecated and will be a hard error in the next major. Update the import of "C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\src\common\seed\data\clinical-forms\medicina-deportiva\evaluacion-de-medicina-deportiva.json" (from C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\src\common\seed\data\clinical-forms\catalog.ts): use `with { type: 'json' }` for static imports, or pass `{ with: { type: 'json' } }` as the second argument to dynamic `import()`.
+Jest: importing JSON without an import attribute is deprecated and will be a hard error in the next major. Update the import of "C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\src\common\seed\data\clinical-forms\psicologia-clinica\evaluacion-psicologica.json" (from C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\src\common\seed\data\clinical-forms\catalog.ts): use `with { type: 'json' }` for static imports, or pass `{ with: { type: 'json' } }` as the second argument to dynamic `import()`.
+Jest: importing JSON without an import attribute is deprecated and will be a hard error in the next major. Update the import of "C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\src\common\seed\data\clinical-forms\nutricion\evaluacion-nutricional.json" (from C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\src\common\seed\data\clinical-forms\catalog.ts): use `with { type: 'json' }` for static imports, or pass `{ with: { type: 'json' } }` as the second argument to dynamic `import()`.
+Jest: importing JSON without an import attribute is deprecated and will be a hard error in the next major. Update the import of "C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\src\common\seed\data\clinical-forms\fisioterapia\evaluacion-kinesiologica.json" (from C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\src\common\seed\data\clinical-forms\catalog.ts): use `with { type: 'json' }` for static imports, or pass `{ with: { type: 'json' } }` as the second argument to dynamic `import()`.
+Jest: importing JSON without an import attribute is deprecated and will be a hard error in the next major. Update the import of "C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\src\common\seed\data\clinical-forms\enfermeria\valoracion-de-enfermeria.json" (from C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\src\common\seed\data\clinical-forms\catalog.ts): use `with { type: 'json' }` for static imports, or pass `{ with: { type: 'json' } }` as the second argument to dynamic `import()`.
+Jest: importing JSON without an import attribute is deprecated and will be a hard error in the next major. Update the import of "C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\src\common\seed\data\clinical-forms\obstetricia\control-obstetrico.json" (from C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\src\common\seed\data\clinical-forms\catalog.ts): use `with { type: 'json' }` for static imports, or pass `{ with: { type: 'json' } }` as the second argument to dynamic `import()`.
+Jest: importing JSON without an import attribute is deprecated and will be a hard error in the next major. Update the import of "C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\src\common\seed\data\clinical-forms\odontologia\anamnesis-odontologica.json" (from C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\src\common\seed\data\clinical-forms\catalog.ts): use `with { type: 'json' }` for static imports, or pass `{ with: { type: 'json' } }` as the second argument to dynamic `import()`.
+(node:25532) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+FAIL test/integration/fx9-carreras-de-la-agenda.int-spec.ts (18.097 s)
+  ● FX-9 · las carreras de la agenda (H-1) › AC-14-10 · dos citas puntuales que se pisan dejan UNA fila
+
+    Must use import to load ES Module: C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\node_modules\@mikro-orm\decorators\legacy\index.js
+    Jest's require(ESM) requires Node v24.9+ for synchronous vm module APIs; the current Node version does not expose them.
+
+    [0m[31m[1m>[22m[39m[90m 1 |[39m [36mimport[39m { [33mEntity[39m[33m,[39m [33mPrimaryKey[39m[33m,[39m [33mProperty[39m } [36mfrom[39m [32m'@mikro-orm/decorators/legacy'[39m[33m;[39m
+     [90m   |[39m [31m[1m^[22m[39m
+     [90m 2 |[39m [36mimport[39m { randomUUID } [36mfrom[39m [32m'node:crypto'[39m[33m;[39m
+     [90m 3 |[39m
+     [90m 4 |[39m [90m/**[39m[0m
+
+      at CjsLoader.requireModule (node_modules/jest-runtime/build/index.js:257:23)
+      at Object.<anonymous> (src/modules/accounting/entities/accounting_document_links.entity.ts:1:1)
+      at getEntityClassOrSchema (node_modules/@mikro-orm/core/metadata/discover-entities.js:8:21)
+      at discoverEntities (node_modules/@mikro-orm/core/metadata/discover-entities.js:47:9)
+      at MetadataDiscovery.findEntities (node_modules/@mikro-orm/core/metadata/MetadataDiscovery.js:206:32)
+      at MetadataDiscovery.discover (node_modules/@mikro-orm/core/metadata/MetadataDiscovery.js:42:9)
+      at Function.init (node_modules/@mikro-orm/core/MikroORM.js:97:25)
+      at TestingInjector.instantiateClass (node_modules/@nestjs/core/injector/injector.js:436:37)
+      at callback (node_modules/@nestjs/core/injector/injector.js:72:34)
+      at TestingInjector.resolveConstructorParams (node_modules/@nestjs/core/injector/injector.js:180:24)
+      at TestingInjector.loadInstance (node_modules/@nestjs/core/injector/injector.js:77:13)
+      at TestingInjector.loadProvider (node_modules/@nestjs/core/injector/injector.js:111:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:56:13
+          at async Promise.all (index 4)
+      at TestingInstanceLoader.createInstancesOfProviders (node_modules/@nestjs/core/injector/instance-loader.js:55:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:40:13
+          at async Promise.all (index 16)
+      at TestingInstanceLoader.createInstances (node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-module.builder.js:119:9)
+      at TestingModuleBuilder.compile (node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at bootstrapTestApp (test/integration/harness.ts:173:21)
+      at Object.<anonymous> (test/integration/fx9-carreras-de-la-agenda.int-spec.ts:138:11)
+
+  ● FX-9 · las carreras de la agenda (H-1) › AC-13-6 · dos aceptaciones que se pisan dejan UNA confirmada
+
+    Must use import to load ES Module: C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\node_modules\@mikro-orm\decorators\legacy\index.js
+    Jest's require(ESM) requires Node v24.9+ for synchronous vm module APIs; the current Node version does not expose them.
+
+    [0m[31m[1m>[22m[39m[90m 1 |[39m [36mimport[39m { [33mEntity[39m[33m,[39m [33mPrimaryKey[39m[33m,[39m [33mProperty[39m } [36mfrom[39m [32m'@mikro-orm/decorators/legacy'[39m[33m;[39m
+     [90m   |[39m [31m[1m^[22m[39m
+     [90m 2 |[39m [36mimport[39m { randomUUID } [36mfrom[39m [32m'node:crypto'[39m[33m;[39m
+     [90m 3 |[39m
+     [90m 4 |[39m [90m/**[39m[0m
+
+      at CjsLoader.requireModule (node_modules/jest-runtime/build/index.js:257:23)
+      at Object.<anonymous> (src/modules/accounting/entities/accounting_document_links.entity.ts:1:1)
+      at getEntityClassOrSchema (node_modules/@mikro-orm/core/metadata/discover-entities.js:8:21)
+      at discoverEntities (node_modules/@mikro-orm/core/metadata/discover-entities.js:47:9)
+      at MetadataDiscovery.findEntities (node_modules/@mikro-orm/core/metadata/MetadataDiscovery.js:206:32)
+      at MetadataDiscovery.discover (node_modules/@mikro-orm/core/metadata/MetadataDiscovery.js:42:9)
+      at Function.init (node_modules/@mikro-orm/core/MikroORM.js:97:25)
+      at TestingInjector.instantiateClass (node_modules/@nestjs/core/injector/injector.js:436:37)
+      at callback (node_modules/@nestjs/core/injector/injector.js:72:34)
+      at TestingInjector.resolveConstructorParams (node_modules/@nestjs/core/injector/injector.js:180:24)
+      at TestingInjector.loadInstance (node_modules/@nestjs/core/injector/injector.js:77:13)
+      at TestingInjector.loadProvider (node_modules/@nestjs/core/injector/injector.js:111:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:56:13
+          at async Promise.all (index 4)
+      at TestingInstanceLoader.createInstancesOfProviders (node_modules/@nestjs/core/injector/instance-loader.js:55:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:40:13
+          at async Promise.all (index 16)
+      at TestingInstanceLoader.createInstances (node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-module.builder.js:119:9)
+      at TestingModuleBuilder.compile (node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at bootstrapTestApp (test/integration/harness.ts:173:21)
+      at Object.<anonymous> (test/integration/fx9-carreras-de-la-agenda.int-spec.ts:138:11)
+
+  ● FX-9 · las carreras de la agenda (H-1) › AC-12-9 · mover el horario mientras alguien toma el destino
+
+    Must use import to load ES Module: C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\node_modules\@mikro-orm\decorators\legacy\index.js
+    Jest's require(ESM) requires Node v24.9+ for synchronous vm module APIs; the current Node version does not expose them.
+
+    [0m[31m[1m>[22m[39m[90m 1 |[39m [36mimport[39m { [33mEntity[39m[33m,[39m [33mPrimaryKey[39m[33m,[39m [33mProperty[39m } [36mfrom[39m [32m'@mikro-orm/decorators/legacy'[39m[33m;[39m
+     [90m   |[39m [31m[1m^[22m[39m
+     [90m 2 |[39m [36mimport[39m { randomUUID } [36mfrom[39m [32m'node:crypto'[39m[33m;[39m
+     [90m 3 |[39m
+     [90m 4 |[39m [90m/**[39m[0m
+
+      at CjsLoader.requireModule (node_modules/jest-runtime/build/index.js:257:23)
+      at Object.<anonymous> (src/modules/accounting/entities/accounting_document_links.entity.ts:1:1)
+      at getEntityClassOrSchema (node_modules/@mikro-orm/core/metadata/discover-entities.js:8:21)
+      at discoverEntities (node_modules/@mikro-orm/core/metadata/discover-entities.js:47:9)
+      at MetadataDiscovery.findEntities (node_modules/@mikro-orm/core/metadata/MetadataDiscovery.js:206:32)
+      at MetadataDiscovery.discover (node_modules/@mikro-orm/core/metadata/MetadataDiscovery.js:42:9)
+      at Function.init (node_modules/@mikro-orm/core/MikroORM.js:97:25)
+      at TestingInjector.instantiateClass (node_modules/@nestjs/core/injector/injector.js:436:37)
+      at callback (node_modules/@nestjs/core/injector/injector.js:72:34)
+      at TestingInjector.resolveConstructorParams (node_modules/@nestjs/core/injector/injector.js:180:24)
+      at TestingInjector.loadInstance (node_modules/@nestjs/core/injector/injector.js:77:13)
+      at TestingInjector.loadProvider (node_modules/@nestjs/core/injector/injector.js:111:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:56:13
+          at async Promise.all (index 4)
+      at TestingInstanceLoader.createInstancesOfProviders (node_modules/@nestjs/core/injector/instance-loader.js:55:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:40:13
+          at async Promise.all (index 16)
+      at TestingInstanceLoader.createInstances (node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-module.builder.js:119:9)
+      at TestingModuleBuilder.compile (node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at bootstrapTestApp (test/integration/harness.ts:173:21)
+      at Object.<anonymous> (test/integration/fx9-carreras-de-la-agenda.int-spec.ts:138:11)
+
+
+  ● Test suite failed to run
+
+    TypeError: Cannot read properties of undefined (reading 'app')
+
+    [0m [90m 186 |[39m
+     [90m 187 |[39m   afterAll([36masync[39m () [33m=>[39m {
+    [31m[1m>[22m[39m[90m 188 |[39m     [36mawait[39m ctx[33m.[39mapp[33m.[39mclose()[33m;[39m
+     [90m     |[39m               [31m[1m^[22m[39m
+     [90m 189 |[39m   })[33m;[39m
+     [90m 190 |[39m
+     [90m 191 |[39m   it([32m'AC-14-10 · dos citas puntuales que se pisan dejan UNA fila'[39m[33m,[39m [36masync[39m () [33m=>[39m {[0m
+
+      at Object.app (test/integration/fx9-carreras-de-la-agenda.int-spec.ts:188:15)
+
+FAIL test/integration/fx8-recorrido-de-la-agenda.int-spec.ts (11.334 s)
+  ● FX-8 · el recorrido de la agenda, de punta a punta › 1 · publica su agenda y su horario
+
+    Must use import to load ES Module: C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\node_modules\@mikro-orm\decorators\legacy\index.js
+    Jest's require(ESM) requires Node v24.9+ for synchronous vm module APIs; the current Node version does not expose them.
+
+    [0m[31m[1m>[22m[39m[90m 1 |[39m [36mimport[39m { [33mEntity[39m[33m,[39m [33mPrimaryKey[39m[33m,[39m [33mProperty[39m } [36mfrom[39m [32m'@mikro-orm/decorators/legacy'[39m[33m;[39m
+     [90m   |[39m [31m[1m^[22m[39m
+     [90m 2 |[39m [36mimport[39m { randomUUID } [36mfrom[39m [32m'node:crypto'[39m[33m;[39m
+     [90m 3 |[39m
+     [90m 4 |[39m [90m/**[39m[0m
+
+      at CjsLoader.requireModule (node_modules/jest-runtime/build/index.js:257:23)
+      at Object.<anonymous> (src/modules/accounting/entities/accounting_document_links.entity.ts:1:1)
+      at getEntityClassOrSchema (node_modules/@mikro-orm/core/metadata/discover-entities.js:8:21)
+      at discoverEntities (node_modules/@mikro-orm/core/metadata/discover-entities.js:47:9)
+      at MetadataDiscovery.findEntities (node_modules/@mikro-orm/core/metadata/MetadataDiscovery.js:206:32)
+      at MetadataDiscovery.discover (node_modules/@mikro-orm/core/metadata/MetadataDiscovery.js:42:9)
+      at Function.init (node_modules/@mikro-orm/core/MikroORM.js:97:25)
+      at TestingInjector.instantiateClass (node_modules/@nestjs/core/injector/injector.js:436:37)
+      at callback (node_modules/@nestjs/core/injector/injector.js:72:34)
+      at TestingInjector.resolveConstructorParams (node_modules/@nestjs/core/injector/injector.js:180:24)
+      at TestingInjector.loadInstance (node_modules/@nestjs/core/injector/injector.js:77:13)
+      at TestingInjector.loadProvider (node_modules/@nestjs/core/injector/injector.js:111:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:56:13
+          at async Promise.all (index 4)
+      at TestingInstanceLoader.createInstancesOfProviders (node_modules/@nestjs/core/injector/instance-loader.js:55:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:40:13
+          at async Promise.all (index 16)
+      at TestingInstanceLoader.createInstances (node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-module.builder.js:119:9)
+      at TestingModuleBuilder.compile (node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at bootstrapTestApp (test/integration/harness.ts:173:21)
+      at Object.<anonymous> (test/integration/fx8-recorrido-de-la-agenda.int-spec.ts:60:11)
+
+  ● FX-8 · el recorrido de la agenda, de punta a punta › 2 · generar cupos crea los OCHO que el horario promete
+
+    Must use import to load ES Module: C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\node_modules\@mikro-orm\decorators\legacy\index.js
+    Jest's require(ESM) requires Node v24.9+ for synchronous vm module APIs; the current Node version does not expose them.
+
+    [0m[31m[1m>[22m[39m[90m 1 |[39m [36mimport[39m { [33mEntity[39m[33m,[39m [33mPrimaryKey[39m[33m,[39m [33mProperty[39m } [36mfrom[39m [32m'@mikro-orm/decorators/legacy'[39m[33m;[39m
+     [90m   |[39m [31m[1m^[22m[39m
+     [90m 2 |[39m [36mimport[39m { randomUUID } [36mfrom[39m [32m'node:crypto'[39m[33m;[39m
+     [90m 3 |[39m
+     [90m 4 |[39m [90m/**[39m[0m
+
+      at CjsLoader.requireModule (node_modules/jest-runtime/build/index.js:257:23)
+      at Object.<anonymous> (src/modules/accounting/entities/accounting_document_links.entity.ts:1:1)
+      at getEntityClassOrSchema (node_modules/@mikro-orm/core/metadata/discover-entities.js:8:21)
+      at discoverEntities (node_modules/@mikro-orm/core/metadata/discover-entities.js:47:9)
+      at MetadataDiscovery.findEntities (node_modules/@mikro-orm/core/metadata/MetadataDiscovery.js:206:32)
+      at MetadataDiscovery.discover (node_modules/@mikro-orm/core/metadata/MetadataDiscovery.js:42:9)
+      at Function.init (node_modules/@mikro-orm/core/MikroORM.js:97:25)
+      at TestingInjector.instantiateClass (node_modules/@nestjs/core/injector/injector.js:436:37)
+      at callback (node_modules/@nestjs/core/injector/injector.js:72:34)
+      at TestingInjector.resolveConstructorParams (node_modules/@nestjs/core/injector/injector.js:180:24)
+      at TestingInjector.loadInstance (node_modules/@nestjs/core/injector/injector.js:77:13)
+      at TestingInjector.loadProvider (node_modules/@nestjs/core/injector/injector.js:111:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:56:13
+          at async Promise.all (index 4)
+      at TestingInstanceLoader.createInstancesOfProviders (node_modules/@nestjs/core/injector/instance-loader.js:55:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:40:13
+          at async Promise.all (index 16)
+      at TestingInstanceLoader.createInstances (node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-module.builder.js:119:9)
+      at TestingModuleBuilder.compile (node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at bootstrapTestApp (test/integration/harness.ts:173:21)
+      at Object.<anonymous> (test/integration/fx8-recorrido-de-la-agenda.int-spec.ts:60:11)
+
+  ● FX-8 · el recorrido de la agenda, de punta a punta › 3 · el catálogo de tipologías está publicado y no usa el tono de error
+
+    Must use import to load ES Module: C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\node_modules\@mikro-orm\decorators\legacy\index.js
+    Jest's require(ESM) requires Node v24.9+ for synchronous vm module APIs; the current Node version does not expose them.
+
+    [0m[31m[1m>[22m[39m[90m 1 |[39m [36mimport[39m { [33mEntity[39m[33m,[39m [33mPrimaryKey[39m[33m,[39m [33mProperty[39m } [36mfrom[39m [32m'@mikro-orm/decorators/legacy'[39m[33m;[39m
+     [90m   |[39m [31m[1m^[22m[39m
+     [90m 2 |[39m [36mimport[39m { randomUUID } [36mfrom[39m [32m'node:crypto'[39m[33m;[39m
+     [90m 3 |[39m
+     [90m 4 |[39m [90m/**[39m[0m
+
+      at CjsLoader.requireModule (node_modules/jest-runtime/build/index.js:257:23)
+      at Object.<anonymous> (src/modules/accounting/entities/accounting_document_links.entity.ts:1:1)
+      at getEntityClassOrSchema (node_modules/@mikro-orm/core/metadata/discover-entities.js:8:21)
+      at discoverEntities (node_modules/@mikro-orm/core/metadata/discover-entities.js:47:9)
+      at MetadataDiscovery.findEntities (node_modules/@mikro-orm/core/metadata/MetadataDiscovery.js:206:32)
+      at MetadataDiscovery.discover (node_modules/@mikro-orm/core/metadata/MetadataDiscovery.js:42:9)
+      at Function.init (node_modules/@mikro-orm/core/MikroORM.js:97:25)
+      at TestingInjector.instantiateClass (node_modules/@nestjs/core/injector/injector.js:436:37)
+      at callback (node_modules/@nestjs/core/injector/injector.js:72:34)
+      at TestingInjector.resolveConstructorParams (node_modules/@nestjs/core/injector/injector.js:180:24)
+      at TestingInjector.loadInstance (node_modules/@nestjs/core/injector/injector.js:77:13)
+      at TestingInjector.loadProvider (node_modules/@nestjs/core/injector/injector.js:111:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:56:13
+          at async Promise.all (index 4)
+      at TestingInstanceLoader.createInstancesOfProviders (node_modules/@nestjs/core/injector/instance-loader.js:55:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:40:13
+          at async Promise.all (index 16)
+      at TestingInstanceLoader.createInstances (node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-module.builder.js:119:9)
+      at TestingModuleBuilder.compile (node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at bootstrapTestApp (test/integration/harness.ts:173:21)
+      at Object.<anonymous> (test/integration/fx8-recorrido-de-la-agenda.int-spec.ts:60:11)
+
+  ● FX-8 · el recorrido de la agenda, de punta a punta › 4 · mover el horario 20 minutos corre los cupos de verdad
+
+    Must use import to load ES Module: C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\node_modules\@mikro-orm\decorators\legacy\index.js
+    Jest's require(ESM) requires Node v24.9+ for synchronous vm module APIs; the current Node version does not expose them.
+
+    [0m[31m[1m>[22m[39m[90m 1 |[39m [36mimport[39m { [33mEntity[39m[33m,[39m [33mPrimaryKey[39m[33m,[39m [33mProperty[39m } [36mfrom[39m [32m'@mikro-orm/decorators/legacy'[39m[33m;[39m
+     [90m   |[39m [31m[1m^[22m[39m
+     [90m 2 |[39m [36mimport[39m { randomUUID } [36mfrom[39m [32m'node:crypto'[39m[33m;[39m
+     [90m 3 |[39m
+     [90m 4 |[39m [90m/**[39m[0m
+
+      at CjsLoader.requireModule (node_modules/jest-runtime/build/index.js:257:23)
+      at Object.<anonymous> (src/modules/accounting/entities/accounting_document_links.entity.ts:1:1)
+      at getEntityClassOrSchema (node_modules/@mikro-orm/core/metadata/discover-entities.js:8:21)
+      at discoverEntities (node_modules/@mikro-orm/core/metadata/discover-entities.js:47:9)
+      at MetadataDiscovery.findEntities (node_modules/@mikro-orm/core/metadata/MetadataDiscovery.js:206:32)
+      at MetadataDiscovery.discover (node_modules/@mikro-orm/core/metadata/MetadataDiscovery.js:42:9)
+      at Function.init (node_modules/@mikro-orm/core/MikroORM.js:97:25)
+      at TestingInjector.instantiateClass (node_modules/@nestjs/core/injector/injector.js:436:37)
+      at callback (node_modules/@nestjs/core/injector/injector.js:72:34)
+      at TestingInjector.resolveConstructorParams (node_modules/@nestjs/core/injector/injector.js:180:24)
+      at TestingInjector.loadInstance (node_modules/@nestjs/core/injector/injector.js:77:13)
+      at TestingInjector.loadProvider (node_modules/@nestjs/core/injector/injector.js:111:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:56:13
+          at async Promise.all (index 4)
+      at TestingInstanceLoader.createInstancesOfProviders (node_modules/@nestjs/core/injector/instance-loader.js:55:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:40:13
+          at async Promise.all (index 16)
+      at TestingInstanceLoader.createInstances (node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-module.builder.js:119:9)
+      at TestingModuleBuilder.compile (node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at bootstrapTestApp (test/integration/harness.ts:173:21)
+      at Object.<anonymous> (test/integration/fx8-recorrido-de-la-agenda.int-spec.ts:60:11)
+
+  ● FX-8 · el recorrido de la agenda, de punta a punta › 5 · mover cero minutos se rechaza en vez de responder «listo»
+
+    Must use import to load ES Module: C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\node_modules\@mikro-orm\decorators\legacy\index.js
+    Jest's require(ESM) requires Node v24.9+ for synchronous vm module APIs; the current Node version does not expose them.
+
+    [0m[31m[1m>[22m[39m[90m 1 |[39m [36mimport[39m { [33mEntity[39m[33m,[39m [33mPrimaryKey[39m[33m,[39m [33mProperty[39m } [36mfrom[39m [32m'@mikro-orm/decorators/legacy'[39m[33m;[39m
+     [90m   |[39m [31m[1m^[22m[39m
+     [90m 2 |[39m [36mimport[39m { randomUUID } [36mfrom[39m [32m'node:crypto'[39m[33m;[39m
+     [90m 3 |[39m
+     [90m 4 |[39m [90m/**[39m[0m
+
+      at CjsLoader.requireModule (node_modules/jest-runtime/build/index.js:257:23)
+      at Object.<anonymous> (src/modules/accounting/entities/accounting_document_links.entity.ts:1:1)
+      at getEntityClassOrSchema (node_modules/@mikro-orm/core/metadata/discover-entities.js:8:21)
+      at discoverEntities (node_modules/@mikro-orm/core/metadata/discover-entities.js:47:9)
+      at MetadataDiscovery.findEntities (node_modules/@mikro-orm/core/metadata/MetadataDiscovery.js:206:32)
+      at MetadataDiscovery.discover (node_modules/@mikro-orm/core/metadata/MetadataDiscovery.js:42:9)
+      at Function.init (node_modules/@mikro-orm/core/MikroORM.js:97:25)
+      at TestingInjector.instantiateClass (node_modules/@nestjs/core/injector/injector.js:436:37)
+      at callback (node_modules/@nestjs/core/injector/injector.js:72:34)
+      at TestingInjector.resolveConstructorParams (node_modules/@nestjs/core/injector/injector.js:180:24)
+      at TestingInjector.loadInstance (node_modules/@nestjs/core/injector/injector.js:77:13)
+      at TestingInjector.loadProvider (node_modules/@nestjs/core/injector/injector.js:111:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:56:13
+          at async Promise.all (index 4)
+      at TestingInstanceLoader.createInstancesOfProviders (node_modules/@nestjs/core/injector/instance-loader.js:55:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:40:13
+          at async Promise.all (index 16)
+      at TestingInstanceLoader.createInstances (node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-module.builder.js:119:9)
+      at TestingModuleBuilder.compile (node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at bootstrapTestApp (test/integration/harness.ts:173:21)
+      at Object.<anonymous> (test/integration/fx8-recorrido-de-la-agenda.int-spec.ts:60:11)
+
+  ● FX-8 · el recorrido de la agenda, de punta a punta › 6 · cerrar un rato deja el bloqueo que impide que vuelva
+
+    Must use import to load ES Module: C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\node_modules\@mikro-orm\decorators\legacy\index.js
+    Jest's require(ESM) requires Node v24.9+ for synchronous vm module APIs; the current Node version does not expose them.
+
+    [0m[31m[1m>[22m[39m[90m 1 |[39m [36mimport[39m { [33mEntity[39m[33m,[39m [33mPrimaryKey[39m[33m,[39m [33mProperty[39m } [36mfrom[39m [32m'@mikro-orm/decorators/legacy'[39m[33m;[39m
+     [90m   |[39m [31m[1m^[22m[39m
+     [90m 2 |[39m [36mimport[39m { randomUUID } [36mfrom[39m [32m'node:crypto'[39m[33m;[39m
+     [90m 3 |[39m
+     [90m 4 |[39m [90m/**[39m[0m
+
+      at CjsLoader.requireModule (node_modules/jest-runtime/build/index.js:257:23)
+      at Object.<anonymous> (src/modules/accounting/entities/accounting_document_links.entity.ts:1:1)
+      at getEntityClassOrSchema (node_modules/@mikro-orm/core/metadata/discover-entities.js:8:21)
+      at discoverEntities (node_modules/@mikro-orm/core/metadata/discover-entities.js:47:9)
+      at MetadataDiscovery.findEntities (node_modules/@mikro-orm/core/metadata/MetadataDiscovery.js:206:32)
+      at MetadataDiscovery.discover (node_modules/@mikro-orm/core/metadata/MetadataDiscovery.js:42:9)
+      at Function.init (node_modules/@mikro-orm/core/MikroORM.js:97:25)
+      at TestingInjector.instantiateClass (node_modules/@nestjs/core/injector/injector.js:436:37)
+      at callback (node_modules/@nestjs/core/injector/injector.js:72:34)
+      at TestingInjector.resolveConstructorParams (node_modules/@nestjs/core/injector/injector.js:180:24)
+      at TestingInjector.loadInstance (node_modules/@nestjs/core/injector/injector.js:77:13)
+      at TestingInjector.loadProvider (node_modules/@nestjs/core/injector/injector.js:111:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:56:13
+          at async Promise.all (index 4)
+      at TestingInstanceLoader.createInstancesOfProviders (node_modules/@nestjs/core/injector/instance-loader.js:55:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:40:13
+          at async Promise.all (index 16)
+      at TestingInstanceLoader.createInstances (node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-module.builder.js:119:9)
+      at TestingModuleBuilder.compile (node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at bootstrapTestApp (test/integration/harness.ts:173:21)
+      at Object.<anonymous> (test/integration/fx8-recorrido-de-la-agenda.int-spec.ts:60:11)
+
+  ● FX-8 · el recorrido de la agenda, de punta a punta › 7 · bloquear con motivo catalogado, y el motivo viaja con su etiqueta
+
+    Must use import to load ES Module: C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\node_modules\@mikro-orm\decorators\legacy\index.js
+    Jest's require(ESM) requires Node v24.9+ for synchronous vm module APIs; the current Node version does not expose them.
+
+    [0m[31m[1m>[22m[39m[90m 1 |[39m [36mimport[39m { [33mEntity[39m[33m,[39m [33mPrimaryKey[39m[33m,[39m [33mProperty[39m } [36mfrom[39m [32m'@mikro-orm/decorators/legacy'[39m[33m;[39m
+     [90m   |[39m [31m[1m^[22m[39m
+     [90m 2 |[39m [36mimport[39m { randomUUID } [36mfrom[39m [32m'node:crypto'[39m[33m;[39m
+     [90m 3 |[39m
+     [90m 4 |[39m [90m/**[39m[0m
+
+      at CjsLoader.requireModule (node_modules/jest-runtime/build/index.js:257:23)
+      at Object.<anonymous> (src/modules/accounting/entities/accounting_document_links.entity.ts:1:1)
+      at getEntityClassOrSchema (node_modules/@mikro-orm/core/metadata/discover-entities.js:8:21)
+      at discoverEntities (node_modules/@mikro-orm/core/metadata/discover-entities.js:47:9)
+      at MetadataDiscovery.findEntities (node_modules/@mikro-orm/core/metadata/MetadataDiscovery.js:206:32)
+      at MetadataDiscovery.discover (node_modules/@mikro-orm/core/metadata/MetadataDiscovery.js:42:9)
+      at Function.init (node_modules/@mikro-orm/core/MikroORM.js:97:25)
+      at TestingInjector.instantiateClass (node_modules/@nestjs/core/injector/injector.js:436:37)
+      at callback (node_modules/@nestjs/core/injector/injector.js:72:34)
+      at TestingInjector.resolveConstructorParams (node_modules/@nestjs/core/injector/injector.js:180:24)
+      at TestingInjector.loadInstance (node_modules/@nestjs/core/injector/injector.js:77:13)
+      at TestingInjector.loadProvider (node_modules/@nestjs/core/injector/injector.js:111:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:56:13
+          at async Promise.all (index 4)
+      at TestingInstanceLoader.createInstancesOfProviders (node_modules/@nestjs/core/injector/instance-loader.js:55:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:40:13
+          at async Promise.all (index 16)
+      at TestingInstanceLoader.createInstances (node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-module.builder.js:119:9)
+      at TestingModuleBuilder.compile (node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at bootstrapTestApp (test/integration/harness.ts:173:21)
+      at Object.<anonymous> (test/integration/fx8-recorrido-de-la-agenda.int-spec.ts:60:11)
+
+  ● FX-8 · el recorrido de la agenda, de punta a punta › 8 · corregir el bloqueo conserva el id y NO reabre al achicar
+
+    Must use import to load ES Module: C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\node_modules\@mikro-orm\decorators\legacy\index.js
+    Jest's require(ESM) requires Node v24.9+ for synchronous vm module APIs; the current Node version does not expose them.
+
+    [0m[31m[1m>[22m[39m[90m 1 |[39m [36mimport[39m { [33mEntity[39m[33m,[39m [33mPrimaryKey[39m[33m,[39m [33mProperty[39m } [36mfrom[39m [32m'@mikro-orm/decorators/legacy'[39m[33m;[39m
+     [90m   |[39m [31m[1m^[22m[39m
+     [90m 2 |[39m [36mimport[39m { randomUUID } [36mfrom[39m [32m'node:crypto'[39m[33m;[39m
+     [90m 3 |[39m
+     [90m 4 |[39m [90m/**[39m[0m
+
+      at CjsLoader.requireModule (node_modules/jest-runtime/build/index.js:257:23)
+      at Object.<anonymous> (src/modules/accounting/entities/accounting_document_links.entity.ts:1:1)
+      at getEntityClassOrSchema (node_modules/@mikro-orm/core/metadata/discover-entities.js:8:21)
+      at discoverEntities (node_modules/@mikro-orm/core/metadata/discover-entities.js:47:9)
+      at MetadataDiscovery.findEntities (node_modules/@mikro-orm/core/metadata/MetadataDiscovery.js:206:32)
+      at MetadataDiscovery.discover (node_modules/@mikro-orm/core/metadata/MetadataDiscovery.js:42:9)
+      at Function.init (node_modules/@mikro-orm/core/MikroORM.js:97:25)
+      at TestingInjector.instantiateClass (node_modules/@nestjs/core/injector/injector.js:436:37)
+      at callback (node_modules/@nestjs/core/injector/injector.js:72:34)
+      at TestingInjector.resolveConstructorParams (node_modules/@nestjs/core/injector/injector.js:180:24)
+      at TestingInjector.loadInstance (node_modules/@nestjs/core/injector/injector.js:77:13)
+      at TestingInjector.loadProvider (node_modules/@nestjs/core/injector/injector.js:111:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:56:13
+          at async Promise.all (index 4)
+      at TestingInstanceLoader.createInstancesOfProviders (node_modules/@nestjs/core/injector/instance-loader.js:55:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:40:13
+          at async Promise.all (index 16)
+      at TestingInstanceLoader.createInstances (node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-module.builder.js:119:9)
+      at TestingModuleBuilder.compile (node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at bootstrapTestApp (test/integration/harness.ts:173:21)
+      at Object.<anonymous> (test/integration/fx8-recorrido-de-la-agenda.int-spec.ts:60:11)
+
+  ● FX-8 · el recorrido de la agenda, de punta a punta › 9 · retirar el horario y volver a activarlo: el ciclo del viaje
+
+    Must use import to load ES Module: C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\node_modules\@mikro-orm\decorators\legacy\index.js
+    Jest's require(ESM) requires Node v24.9+ for synchronous vm module APIs; the current Node version does not expose them.
+
+    [0m[31m[1m>[22m[39m[90m 1 |[39m [36mimport[39m { [33mEntity[39m[33m,[39m [33mPrimaryKey[39m[33m,[39m [33mProperty[39m } [36mfrom[39m [32m'@mikro-orm/decorators/legacy'[39m[33m;[39m
+     [90m   |[39m [31m[1m^[22m[39m
+     [90m 2 |[39m [36mimport[39m { randomUUID } [36mfrom[39m [32m'node:crypto'[39m[33m;[39m
+     [90m 3 |[39m
+     [90m 4 |[39m [90m/**[39m[0m
+
+      at CjsLoader.requireModule (node_modules/jest-runtime/build/index.js:257:23)
+      at Object.<anonymous> (src/modules/accounting/entities/accounting_document_links.entity.ts:1:1)
+      at getEntityClassOrSchema (node_modules/@mikro-orm/core/metadata/discover-entities.js:8:21)
+      at discoverEntities (node_modules/@mikro-orm/core/metadata/discover-entities.js:47:9)
+      at MetadataDiscovery.findEntities (node_modules/@mikro-orm/core/metadata/MetadataDiscovery.js:206:32)
+      at MetadataDiscovery.discover (node_modules/@mikro-orm/core/metadata/MetadataDiscovery.js:42:9)
+      at Function.init (node_modules/@mikro-orm/core/MikroORM.js:97:25)
+      at TestingInjector.instantiateClass (node_modules/@nestjs/core/injector/injector.js:436:37)
+      at callback (node_modules/@nestjs/core/injector/injector.js:72:34)
+      at TestingInjector.resolveConstructorParams (node_modules/@nestjs/core/injector/injector.js:180:24)
+      at TestingInjector.loadInstance (node_modules/@nestjs/core/injector/injector.js:77:13)
+      at TestingInjector.loadProvider (node_modules/@nestjs/core/injector/injector.js:111:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:56:13
+          at async Promise.all (index 4)
+      at TestingInstanceLoader.createInstancesOfProviders (node_modules/@nestjs/core/injector/instance-loader.js:55:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:40:13
+          at async Promise.all (index 16)
+      at TestingInstanceLoader.createInstances (node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-module.builder.js:119:9)
+      at TestingModuleBuilder.compile (node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at bootstrapTestApp (test/integration/harness.ts:173:21)
+      at Object.<anonymous> (test/integration/fx8-recorrido-de-la-agenda.int-spec.ts:60:11)
+
+  ● FX-8 · el recorrido de la agenda, de punta a punta › 10 · la agenda de otro profesional no se toca
+
+    Must use import to load ES Module: C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\node_modules\@mikro-orm\decorators\legacy\index.js
+    Jest's require(ESM) requires Node v24.9+ for synchronous vm module APIs; the current Node version does not expose them.
+
+    [0m[31m[1m>[22m[39m[90m 1 |[39m [36mimport[39m { [33mEntity[39m[33m,[39m [33mPrimaryKey[39m[33m,[39m [33mProperty[39m } [36mfrom[39m [32m'@mikro-orm/decorators/legacy'[39m[33m;[39m
+     [90m   |[39m [31m[1m^[22m[39m
+     [90m 2 |[39m [36mimport[39m { randomUUID } [36mfrom[39m [32m'node:crypto'[39m[33m;[39m
+     [90m 3 |[39m
+     [90m 4 |[39m [90m/**[39m[0m
+
+      at CjsLoader.requireModule (node_modules/jest-runtime/build/index.js:257:23)
+      at Object.<anonymous> (src/modules/accounting/entities/accounting_document_links.entity.ts:1:1)
+      at getEntityClassOrSchema (node_modules/@mikro-orm/core/metadata/discover-entities.js:8:21)
+      at discoverEntities (node_modules/@mikro-orm/core/metadata/discover-entities.js:47:9)
+      at MetadataDiscovery.findEntities (node_modules/@mikro-orm/core/metadata/MetadataDiscovery.js:206:32)
+      at MetadataDiscovery.discover (node_modules/@mikro-orm/core/metadata/MetadataDiscovery.js:42:9)
+      at Function.init (node_modules/@mikro-orm/core/MikroORM.js:97:25)
+      at TestingInjector.instantiateClass (node_modules/@nestjs/core/injector/injector.js:436:37)
+      at callback (node_modules/@nestjs/core/injector/injector.js:72:34)
+      at TestingInjector.resolveConstructorParams (node_modules/@nestjs/core/injector/injector.js:180:24)
+      at TestingInjector.loadInstance (node_modules/@nestjs/core/injector/injector.js:77:13)
+      at TestingInjector.loadProvider (node_modules/@nestjs/core/injector/injector.js:111:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:56:13
+          at async Promise.all (index 4)
+      at TestingInstanceLoader.createInstancesOfProviders (node_modules/@nestjs/core/injector/instance-loader.js:55:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:40:13
+          at async Promise.all (index 16)
+      at TestingInstanceLoader.createInstances (node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-module.builder.js:119:9)
+      at TestingModuleBuilder.compile (node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at bootstrapTestApp (test/integration/harness.ts:173:21)
+      at Object.<anonymous> (test/integration/fx8-recorrido-de-la-agenda.int-spec.ts:60:11)
+
+
+  ● Test suite failed to run
+
+    TypeError: Cannot read properties of undefined (reading 'app')
+
+    [0m [90m 82 |[39m
+     [90m 83 |[39m   afterAll([36masync[39m () [33m=>[39m {
+    [31m[1m>[22m[39m[90m 84 |[39m     [36mawait[39m ctx[33m.[39mapp[33m.[39mclose()[33m;[39m
+     [90m    |[39m               [31m[1m^[22m[39m
+     [90m 85 |[39m   })[33m;[39m
+     [90m 86 |[39m
+     [90m 87 |[39m   it([32m'1 · publica su agenda y su horario'[39m[33m,[39m [36masync[39m () [33m=>[39m {[0m
+
+      at Object.app (test/integration/fx8-recorrido-de-la-agenda.int-spec.ts:84:15)
+
+FAIL test/integration/fx3-agenda-respiro-y-avisos.int-spec.ts (11.097 s)
+  ● FX-3 · el respiro y los avisos de la agenda, contra la base › el respiro separa los turnos sin alargarlos (#277) › publica una plantilla declarando el respiro
+
+    Must use import to load ES Module: C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\node_modules\@mikro-orm\decorators\legacy\index.js
+    Jest's require(ESM) requires Node v24.9+ for synchronous vm module APIs; the current Node version does not expose them.
+
+    [0m[31m[1m>[22m[39m[90m 1 |[39m [36mimport[39m { [33mEntity[39m[33m,[39m [33mPrimaryKey[39m[33m,[39m [33mProperty[39m } [36mfrom[39m [32m'@mikro-orm/decorators/legacy'[39m[33m;[39m
+     [90m   |[39m [31m[1m^[22m[39m
+     [90m 2 |[39m [36mimport[39m { randomUUID } [36mfrom[39m [32m'node:crypto'[39m[33m;[39m
+     [90m 3 |[39m
+     [90m 4 |[39m [90m/**[39m[0m
+
+      at CjsLoader.requireModule (node_modules/jest-runtime/build/index.js:257:23)
+      at Object.<anonymous> (src/modules/accounting/entities/accounting_document_links.entity.ts:1:1)
+      at getEntityClassOrSchema (node_modules/@mikro-orm/core/metadata/discover-entities.js:8:21)
+      at discoverEntities (node_modules/@mikro-orm/core/metadata/discover-entities.js:47:9)
+      at MetadataDiscovery.findEntities (node_modules/@mikro-orm/core/metadata/MetadataDiscovery.js:206:32)
+      at MetadataDiscovery.discover (node_modules/@mikro-orm/core/metadata/MetadataDiscovery.js:42:9)
+      at Function.init (node_modules/@mikro-orm/core/MikroORM.js:97:25)
+      at TestingInjector.instantiateClass (node_modules/@nestjs/core/injector/injector.js:436:37)
+      at callback (node_modules/@nestjs/core/injector/injector.js:72:34)
+      at TestingInjector.resolveConstructorParams (node_modules/@nestjs/core/injector/injector.js:180:24)
+      at TestingInjector.loadInstance (node_modules/@nestjs/core/injector/injector.js:77:13)
+      at TestingInjector.loadProvider (node_modules/@nestjs/core/injector/injector.js:111:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:56:13
+          at async Promise.all (index 4)
+      at TestingInstanceLoader.createInstancesOfProviders (node_modules/@nestjs/core/injector/instance-loader.js:55:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:40:13
+          at async Promise.all (index 16)
+      at TestingInstanceLoader.createInstances (node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-module.builder.js:119:9)
+      at TestingModuleBuilder.compile (node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at bootstrapTestApp (test/integration/harness.ts:173:21)
+      at Object.<anonymous> (test/integration/fx3-agenda-respiro-y-avisos.int-spec.ts:95:11)
+
+  ● FX-3 · el respiro y los avisos de la agenda, contra la base › el respiro separa los turnos sin alargarlos (#277) › la columna guardó el respiro tal como vino
+
+    Must use import to load ES Module: C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\node_modules\@mikro-orm\decorators\legacy\index.js
+    Jest's require(ESM) requires Node v24.9+ for synchronous vm module APIs; the current Node version does not expose them.
+
+    [0m[31m[1m>[22m[39m[90m 1 |[39m [36mimport[39m { [33mEntity[39m[33m,[39m [33mPrimaryKey[39m[33m,[39m [33mProperty[39m } [36mfrom[39m [32m'@mikro-orm/decorators/legacy'[39m[33m;[39m
+     [90m   |[39m [31m[1m^[22m[39m
+     [90m 2 |[39m [36mimport[39m { randomUUID } [36mfrom[39m [32m'node:crypto'[39m[33m;[39m
+     [90m 3 |[39m
+     [90m 4 |[39m [90m/**[39m[0m
+
+      at CjsLoader.requireModule (node_modules/jest-runtime/build/index.js:257:23)
+      at Object.<anonymous> (src/modules/accounting/entities/accounting_document_links.entity.ts:1:1)
+      at getEntityClassOrSchema (node_modules/@mikro-orm/core/metadata/discover-entities.js:8:21)
+      at discoverEntities (node_modules/@mikro-orm/core/metadata/discover-entities.js:47:9)
+      at MetadataDiscovery.findEntities (node_modules/@mikro-orm/core/metadata/MetadataDiscovery.js:206:32)
+      at MetadataDiscovery.discover (node_modules/@mikro-orm/core/metadata/MetadataDiscovery.js:42:9)
+      at Function.init (node_modules/@mikro-orm/core/MikroORM.js:97:25)
+      at TestingInjector.instantiateClass (node_modules/@nestjs/core/injector/injector.js:436:37)
+      at callback (node_modules/@nestjs/core/injector/injector.js:72:34)
+      at TestingInjector.resolveConstructorParams (node_modules/@nestjs/core/injector/injector.js:180:24)
+      at TestingInjector.loadInstance (node_modules/@nestjs/core/injector/injector.js:77:13)
+      at TestingInjector.loadProvider (node_modules/@nestjs/core/injector/injector.js:111:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:56:13
+          at async Promise.all (index 4)
+      at TestingInstanceLoader.createInstancesOfProviders (node_modules/@nestjs/core/injector/instance-loader.js:55:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:40:13
+          at async Promise.all (index 16)
+      at TestingInstanceLoader.createInstances (node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-module.builder.js:119:9)
+      at TestingModuleBuilder.compile (node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at bootstrapTestApp (test/integration/harness.ts:173:21)
+      at Object.<anonymous> (test/integration/fx3-agenda-respiro-y-avisos.int-spec.ts:95:11)
+
+  ● FX-3 · el respiro y los avisos de la agenda, contra la base › el respiro separa los turnos sin alargarlos (#277) › el generador materializa con paso slot + gap y duración slot
+
+    Must use import to load ES Module: C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\node_modules\@mikro-orm\decorators\legacy\index.js
+    Jest's require(ESM) requires Node v24.9+ for synchronous vm module APIs; the current Node version does not expose them.
+
+    [0m[31m[1m>[22m[39m[90m 1 |[39m [36mimport[39m { [33mEntity[39m[33m,[39m [33mPrimaryKey[39m[33m,[39m [33mProperty[39m } [36mfrom[39m [32m'@mikro-orm/decorators/legacy'[39m[33m;[39m
+     [90m   |[39m [31m[1m^[22m[39m
+     [90m 2 |[39m [36mimport[39m { randomUUID } [36mfrom[39m [32m'node:crypto'[39m[33m;[39m
+     [90m 3 |[39m
+     [90m 4 |[39m [90m/**[39m[0m
+
+      at CjsLoader.requireModule (node_modules/jest-runtime/build/index.js:257:23)
+      at Object.<anonymous> (src/modules/accounting/entities/accounting_document_links.entity.ts:1:1)
+      at getEntityClassOrSchema (node_modules/@mikro-orm/core/metadata/discover-entities.js:8:21)
+      at discoverEntities (node_modules/@mikro-orm/core/metadata/discover-entities.js:47:9)
+      at MetadataDiscovery.findEntities (node_modules/@mikro-orm/core/metadata/MetadataDiscovery.js:206:32)
+      at MetadataDiscovery.discover (node_modules/@mikro-orm/core/metadata/MetadataDiscovery.js:42:9)
+      at Function.init (node_modules/@mikro-orm/core/MikroORM.js:97:25)
+      at TestingInjector.instantiateClass (node_modules/@nestjs/core/injector/injector.js:436:37)
+      at callback (node_modules/@nestjs/core/injector/injector.js:72:34)
+      at TestingInjector.resolveConstructorParams (node_modules/@nestjs/core/injector/injector.js:180:24)
+      at TestingInjector.loadInstance (node_modules/@nestjs/core/injector/injector.js:77:13)
+      at TestingInjector.loadProvider (node_modules/@nestjs/core/injector/injector.js:111:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:56:13
+          at async Promise.all (index 4)
+      at TestingInstanceLoader.createInstancesOfProviders (node_modules/@nestjs/core/injector/instance-loader.js:55:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:40:13
+          at async Promise.all (index 16)
+      at TestingInstanceLoader.createInstances (node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-module.builder.js:119:9)
+      at TestingModuleBuilder.compile (node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at bootstrapTestApp (test/integration/harness.ts:173:21)
+      at Object.<anonymous> (test/integration/fx3-agenda-respiro-y-avisos.int-spec.ts:95:11)
+
+  ● FX-3 · el respiro y los avisos de la agenda, contra la base › pedir un turno avisa a las dos partes, por dos canales (#275, #276) › el paciente retiene un cupo y solicita el turno
+
+    Must use import to load ES Module: C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\node_modules\@mikro-orm\decorators\legacy\index.js
+    Jest's require(ESM) requires Node v24.9+ for synchronous vm module APIs; the current Node version does not expose them.
+
+    [0m[31m[1m>[22m[39m[90m 1 |[39m [36mimport[39m { [33mEntity[39m[33m,[39m [33mPrimaryKey[39m[33m,[39m [33mProperty[39m } [36mfrom[39m [32m'@mikro-orm/decorators/legacy'[39m[33m;[39m
+     [90m   |[39m [31m[1m^[22m[39m
+     [90m 2 |[39m [36mimport[39m { randomUUID } [36mfrom[39m [32m'node:crypto'[39m[33m;[39m
+     [90m 3 |[39m
+     [90m 4 |[39m [90m/**[39m[0m
+
+      at CjsLoader.requireModule (node_modules/jest-runtime/build/index.js:257:23)
+      at Object.<anonymous> (src/modules/accounting/entities/accounting_document_links.entity.ts:1:1)
+      at getEntityClassOrSchema (node_modules/@mikro-orm/core/metadata/discover-entities.js:8:21)
+      at discoverEntities (node_modules/@mikro-orm/core/metadata/discover-entities.js:47:9)
+      at MetadataDiscovery.findEntities (node_modules/@mikro-orm/core/metadata/MetadataDiscovery.js:206:32)
+      at MetadataDiscovery.discover (node_modules/@mikro-orm/core/metadata/MetadataDiscovery.js:42:9)
+      at Function.init (node_modules/@mikro-orm/core/MikroORM.js:97:25)
+      at TestingInjector.instantiateClass (node_modules/@nestjs/core/injector/injector.js:436:37)
+      at callback (node_modules/@nestjs/core/injector/injector.js:72:34)
+      at TestingInjector.resolveConstructorParams (node_modules/@nestjs/core/injector/injector.js:180:24)
+      at TestingInjector.loadInstance (node_modules/@nestjs/core/injector/injector.js:77:13)
+      at TestingInjector.loadProvider (node_modules/@nestjs/core/injector/injector.js:111:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:56:13
+          at async Promise.all (index 4)
+      at TestingInstanceLoader.createInstancesOfProviders (node_modules/@nestjs/core/injector/instance-loader.js:55:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:40:13
+          at async Promise.all (index 16)
+      at TestingInstanceLoader.createInstances (node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-module.builder.js:119:9)
+      at TestingModuleBuilder.compile (node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at bootstrapTestApp (test/integration/harness.ts:173:21)
+      at Object.<anonymous> (test/integration/fx3-agenda-respiro-y-avisos.int-spec.ts:95:11)
+
+  ● FX-3 · el respiro y los avisos de la agenda, contra la base › pedir un turno avisa a las dos partes, por dos canales (#275, #276) › deja cuatro solicitudes: dos destinatarios por dos canales
+
+    Must use import to load ES Module: C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\node_modules\@mikro-orm\decorators\legacy\index.js
+    Jest's require(ESM) requires Node v24.9+ for synchronous vm module APIs; the current Node version does not expose them.
+
+    [0m[31m[1m>[22m[39m[90m 1 |[39m [36mimport[39m { [33mEntity[39m[33m,[39m [33mPrimaryKey[39m[33m,[39m [33mProperty[39m } [36mfrom[39m [32m'@mikro-orm/decorators/legacy'[39m[33m;[39m
+     [90m   |[39m [31m[1m^[22m[39m
+     [90m 2 |[39m [36mimport[39m { randomUUID } [36mfrom[39m [32m'node:crypto'[39m[33m;[39m
+     [90m 3 |[39m
+     [90m 4 |[39m [90m/**[39m[0m
+
+      at CjsLoader.requireModule (node_modules/jest-runtime/build/index.js:257:23)
+      at Object.<anonymous> (src/modules/accounting/entities/accounting_document_links.entity.ts:1:1)
+      at getEntityClassOrSchema (node_modules/@mikro-orm/core/metadata/discover-entities.js:8:21)
+      at discoverEntities (node_modules/@mikro-orm/core/metadata/discover-entities.js:47:9)
+      at MetadataDiscovery.findEntities (node_modules/@mikro-orm/core/metadata/MetadataDiscovery.js:206:32)
+      at MetadataDiscovery.discover (node_modules/@mikro-orm/core/metadata/MetadataDiscovery.js:42:9)
+      at Function.init (node_modules/@mikro-orm/core/MikroORM.js:97:25)
+      at TestingInjector.instantiateClass (node_modules/@nestjs/core/injector/injector.js:436:37)
+      at callback (node_modules/@nestjs/core/injector/injector.js:72:34)
+      at TestingInjector.resolveConstructorParams (node_modules/@nestjs/core/injector/injector.js:180:24)
+      at TestingInjector.loadInstance (node_modules/@nestjs/core/injector/injector.js:77:13)
+      at TestingInjector.loadProvider (node_modules/@nestjs/core/injector/injector.js:111:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:56:13
+          at async Promise.all (index 4)
+      at TestingInstanceLoader.createInstancesOfProviders (node_modules/@nestjs/core/injector/instance-loader.js:55:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:40:13
+          at async Promise.all (index 16)
+      at TestingInstanceLoader.createInstances (node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-module.builder.js:119:9)
+      at TestingModuleBuilder.compile (node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at bootstrapTestApp (test/integration/harness.ts:173:21)
+      at Object.<anonymous> (test/integration/fx3-agenda-respiro-y-avisos.int-spec.ts:95:11)
+
+  ● FX-3 · el respiro y los avisos de la agenda, contra la base › pedir un turno avisa a las dos partes, por dos canales (#275, #276) › las de correo llevan la dirección de la cuenta, resuelta por el adaptador
+
+    Must use import to load ES Module: C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\node_modules\@mikro-orm\decorators\legacy\index.js
+    Jest's require(ESM) requires Node v24.9+ for synchronous vm module APIs; the current Node version does not expose them.
+
+    [0m[31m[1m>[22m[39m[90m 1 |[39m [36mimport[39m { [33mEntity[39m[33m,[39m [33mPrimaryKey[39m[33m,[39m [33mProperty[39m } [36mfrom[39m [32m'@mikro-orm/decorators/legacy'[39m[33m;[39m
+     [90m   |[39m [31m[1m^[22m[39m
+     [90m 2 |[39m [36mimport[39m { randomUUID } [36mfrom[39m [32m'node:crypto'[39m[33m;[39m
+     [90m 3 |[39m
+     [90m 4 |[39m [90m/**[39m[0m
+
+      at CjsLoader.requireModule (node_modules/jest-runtime/build/index.js:257:23)
+      at Object.<anonymous> (src/modules/accounting/entities/accounting_document_links.entity.ts:1:1)
+      at getEntityClassOrSchema (node_modules/@mikro-orm/core/metadata/discover-entities.js:8:21)
+      at discoverEntities (node_modules/@mikro-orm/core/metadata/discover-entities.js:47:9)
+      at MetadataDiscovery.findEntities (node_modules/@mikro-orm/core/metadata/MetadataDiscovery.js:206:32)
+      at MetadataDiscovery.discover (node_modules/@mikro-orm/core/metadata/MetadataDiscovery.js:42:9)
+      at Function.init (node_modules/@mikro-orm/core/MikroORM.js:97:25)
+      at TestingInjector.instantiateClass (node_modules/@nestjs/core/injector/injector.js:436:37)
+      at callback (node_modules/@nestjs/core/injector/injector.js:72:34)
+      at TestingInjector.resolveConstructorParams (node_modules/@nestjs/core/injector/injector.js:180:24)
+      at TestingInjector.loadInstance (node_modules/@nestjs/core/injector/injector.js:77:13)
+      at TestingInjector.loadProvider (node_modules/@nestjs/core/injector/injector.js:111:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:56:13
+          at async Promise.all (index 4)
+      at TestingInstanceLoader.createInstancesOfProviders (node_modules/@nestjs/core/injector/instance-loader.js:55:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:40:13
+          at async Promise.all (index 16)
+      at TestingInstanceLoader.createInstances (node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-module.builder.js:119:9)
+      at TestingModuleBuilder.compile (node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at bootstrapTestApp (test/integration/harness.ts:173:21)
+      at Object.<anonymous> (test/integration/fx3-agenda-respiro-y-avisos.int-spec.ts:95:11)
+
+  ● FX-3 · el respiro y los avisos de la agenda, contra la base › pedir un turno avisa a las dos partes, por dos canales (#275, #276) › las cuatro claves de rebote son distintas
+
+    Must use import to load ES Module: C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\node_modules\@mikro-orm\decorators\legacy\index.js
+    Jest's require(ESM) requires Node v24.9+ for synchronous vm module APIs; the current Node version does not expose them.
+
+    [0m[31m[1m>[22m[39m[90m 1 |[39m [36mimport[39m { [33mEntity[39m[33m,[39m [33mPrimaryKey[39m[33m,[39m [33mProperty[39m } [36mfrom[39m [32m'@mikro-orm/decorators/legacy'[39m[33m;[39m
+     [90m   |[39m [31m[1m^[22m[39m
+     [90m 2 |[39m [36mimport[39m { randomUUID } [36mfrom[39m [32m'node:crypto'[39m[33m;[39m
+     [90m 3 |[39m
+     [90m 4 |[39m [90m/**[39m[0m
+
+      at CjsLoader.requireModule (node_modules/jest-runtime/build/index.js:257:23)
+      at Object.<anonymous> (src/modules/accounting/entities/accounting_document_links.entity.ts:1:1)
+      at getEntityClassOrSchema (node_modules/@mikro-orm/core/metadata/discover-entities.js:8:21)
+      at discoverEntities (node_modules/@mikro-orm/core/metadata/discover-entities.js:47:9)
+      at MetadataDiscovery.findEntities (node_modules/@mikro-orm/core/metadata/MetadataDiscovery.js:206:32)
+      at MetadataDiscovery.discover (node_modules/@mikro-orm/core/metadata/MetadataDiscovery.js:42:9)
+      at Function.init (node_modules/@mikro-orm/core/MikroORM.js:97:25)
+      at TestingInjector.instantiateClass (node_modules/@nestjs/core/injector/injector.js:436:37)
+      at callback (node_modules/@nestjs/core/injector/injector.js:72:34)
+      at TestingInjector.resolveConstructorParams (node_modules/@nestjs/core/injector/injector.js:180:24)
+      at TestingInjector.loadInstance (node_modules/@nestjs/core/injector/injector.js:77:13)
+      at TestingInjector.loadProvider (node_modules/@nestjs/core/injector/injector.js:111:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:56:13
+          at async Promise.all (index 4)
+      at TestingInstanceLoader.createInstancesOfProviders (node_modules/@nestjs/core/injector/instance-loader.js:55:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:40:13
+          at async Promise.all (index 16)
+      at TestingInstanceLoader.createInstances (node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-module.builder.js:119:9)
+      at TestingModuleBuilder.compile (node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at bootstrapTestApp (test/integration/harness.ts:173:21)
+      at Object.<anonymous> (test/integration/fx3-agenda-respiro-y-avisos.int-spec.ts:95:11)
+
+  ● FX-3 · el respiro y los avisos de la agenda, contra la base › pedir un turno avisa a las dos partes, por dos canales (#275, #276) › ninguna solicitud de correo lleva el motivo de consulta
+
+    Must use import to load ES Module: C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\node_modules\@mikro-orm\decorators\legacy\index.js
+    Jest's require(ESM) requires Node v24.9+ for synchronous vm module APIs; the current Node version does not expose them.
+
+    [0m[31m[1m>[22m[39m[90m 1 |[39m [36mimport[39m { [33mEntity[39m[33m,[39m [33mPrimaryKey[39m[33m,[39m [33mProperty[39m } [36mfrom[39m [32m'@mikro-orm/decorators/legacy'[39m[33m;[39m
+     [90m   |[39m [31m[1m^[22m[39m
+     [90m 2 |[39m [36mimport[39m { randomUUID } [36mfrom[39m [32m'node:crypto'[39m[33m;[39m
+     [90m 3 |[39m
+     [90m 4 |[39m [90m/**[39m[0m
+
+      at CjsLoader.requireModule (node_modules/jest-runtime/build/index.js:257:23)
+      at Object.<anonymous> (src/modules/accounting/entities/accounting_document_links.entity.ts:1:1)
+      at getEntityClassOrSchema (node_modules/@mikro-orm/core/metadata/discover-entities.js:8:21)
+      at discoverEntities (node_modules/@mikro-orm/core/metadata/discover-entities.js:47:9)
+      at MetadataDiscovery.findEntities (node_modules/@mikro-orm/core/metadata/MetadataDiscovery.js:206:32)
+      at MetadataDiscovery.discover (node_modules/@mikro-orm/core/metadata/MetadataDiscovery.js:42:9)
+      at Function.init (node_modules/@mikro-orm/core/MikroORM.js:97:25)
+      at TestingInjector.instantiateClass (node_modules/@nestjs/core/injector/injector.js:436:37)
+      at callback (node_modules/@nestjs/core/injector/injector.js:72:34)
+      at TestingInjector.resolveConstructorParams (node_modules/@nestjs/core/injector/injector.js:180:24)
+      at TestingInjector.loadInstance (node_modules/@nestjs/core/injector/injector.js:77:13)
+      at TestingInjector.loadProvider (node_modules/@nestjs/core/injector/injector.js:111:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:56:13
+          at async Promise.all (index 4)
+      at TestingInstanceLoader.createInstancesOfProviders (node_modules/@nestjs/core/injector/instance-loader.js:55:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:40:13
+          at async Promise.all (index 16)
+      at TestingInstanceLoader.createInstances (node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-module.builder.js:119:9)
+      at TestingModuleBuilder.compile (node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at bootstrapTestApp (test/integration/harness.ts:173:21)
+      at Object.<anonymous> (test/integration/fx3-agenda-respiro-y-avisos.int-spec.ts:95:11)
+
+  ● FX-3 · el respiro y los avisos de la agenda, contra la base › la tipología viaja cuando existe, y se omite cuando no (#278) › una solicitud sin aceptar todavía no tiene contraparte clínica
+
+    Must use import to load ES Module: C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\node_modules\@mikro-orm\decorators\legacy\index.js
+    Jest's require(ESM) requires Node v24.9+ for synchronous vm module APIs; the current Node version does not expose them.
+
+    [0m[31m[1m>[22m[39m[90m 1 |[39m [36mimport[39m { [33mEntity[39m[33m,[39m [33mPrimaryKey[39m[33m,[39m [33mProperty[39m } [36mfrom[39m [32m'@mikro-orm/decorators/legacy'[39m[33m;[39m
+     [90m   |[39m [31m[1m^[22m[39m
+     [90m 2 |[39m [36mimport[39m { randomUUID } [36mfrom[39m [32m'node:crypto'[39m[33m;[39m
+     [90m 3 |[39m
+     [90m 4 |[39m [90m/**[39m[0m
+
+      at CjsLoader.requireModule (node_modules/jest-runtime/build/index.js:257:23)
+      at Object.<anonymous> (src/modules/accounting/entities/accounting_document_links.entity.ts:1:1)
+      at getEntityClassOrSchema (node_modules/@mikro-orm/core/metadata/discover-entities.js:8:21)
+      at discoverEntities (node_modules/@mikro-orm/core/metadata/discover-entities.js:47:9)
+      at MetadataDiscovery.findEntities (node_modules/@mikro-orm/core/metadata/MetadataDiscovery.js:206:32)
+      at MetadataDiscovery.discover (node_modules/@mikro-orm/core/metadata/MetadataDiscovery.js:42:9)
+      at Function.init (node_modules/@mikro-orm/core/MikroORM.js:97:25)
+      at TestingInjector.instantiateClass (node_modules/@nestjs/core/injector/injector.js:436:37)
+      at callback (node_modules/@nestjs/core/injector/injector.js:72:34)
+      at TestingInjector.resolveConstructorParams (node_modules/@nestjs/core/injector/injector.js:180:24)
+      at TestingInjector.loadInstance (node_modules/@nestjs/core/injector/injector.js:77:13)
+      at TestingInjector.loadProvider (node_modules/@nestjs/core/injector/injector.js:111:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:56:13
+          at async Promise.all (index 4)
+      at TestingInstanceLoader.createInstancesOfProviders (node_modules/@nestjs/core/injector/instance-loader.js:55:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:40:13
+          at async Promise.all (index 16)
+      at TestingInstanceLoader.createInstances (node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-module.builder.js:119:9)
+      at TestingModuleBuilder.compile (node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at bootstrapTestApp (test/integration/harness.ts:173:21)
+      at Object.<anonymous> (test/integration/fx3-agenda-respiro-y-avisos.int-spec.ts:95:11)
+
+  ● FX-3 · el respiro y los avisos de la agenda, contra la base › la tipología viaja cuando existe, y se omite cuando no (#278) › al aceptarla, la lectura devuelve la tipología de la cita clínica
+
+    Must use import to load ES Module: C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\node_modules\@mikro-orm\decorators\legacy\index.js
+    Jest's require(ESM) requires Node v24.9+ for synchronous vm module APIs; the current Node version does not expose them.
+
+    [0m[31m[1m>[22m[39m[90m 1 |[39m [36mimport[39m { [33mEntity[39m[33m,[39m [33mPrimaryKey[39m[33m,[39m [33mProperty[39m } [36mfrom[39m [32m'@mikro-orm/decorators/legacy'[39m[33m;[39m
+     [90m   |[39m [31m[1m^[22m[39m
+     [90m 2 |[39m [36mimport[39m { randomUUID } [36mfrom[39m [32m'node:crypto'[39m[33m;[39m
+     [90m 3 |[39m
+     [90m 4 |[39m [90m/**[39m[0m
+
+      at CjsLoader.requireModule (node_modules/jest-runtime/build/index.js:257:23)
+      at Object.<anonymous> (src/modules/accounting/entities/accounting_document_links.entity.ts:1:1)
+      at getEntityClassOrSchema (node_modules/@mikro-orm/core/metadata/discover-entities.js:8:21)
+      at discoverEntities (node_modules/@mikro-orm/core/metadata/discover-entities.js:47:9)
+      at MetadataDiscovery.findEntities (node_modules/@mikro-orm/core/metadata/MetadataDiscovery.js:206:32)
+      at MetadataDiscovery.discover (node_modules/@mikro-orm/core/metadata/MetadataDiscovery.js:42:9)
+      at Function.init (node_modules/@mikro-orm/core/MikroORM.js:97:25)
+      at TestingInjector.instantiateClass (node_modules/@nestjs/core/injector/injector.js:436:37)
+      at callback (node_modules/@nestjs/core/injector/injector.js:72:34)
+      at TestingInjector.resolveConstructorParams (node_modules/@nestjs/core/injector/injector.js:180:24)
+      at TestingInjector.loadInstance (node_modules/@nestjs/core/injector/injector.js:77:13)
+      at TestingInjector.loadProvider (node_modules/@nestjs/core/injector/injector.js:111:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:56:13
+          at async Promise.all (index 4)
+      at TestingInstanceLoader.createInstancesOfProviders (node_modules/@nestjs/core/injector/instance-loader.js:55:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:40:13
+          at async Promise.all (index 16)
+      at TestingInstanceLoader.createInstances (node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-module.builder.js:119:9)
+      at TestingModuleBuilder.compile (node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at bootstrapTestApp (test/integration/harness.ts:173:21)
+      at Object.<anonymous> (test/integration/fx3-agenda-respiro-y-avisos.int-spec.ts:95:11)
+
+
+  ● Test suite failed to run
+
+    TypeError: Cannot read properties of undefined (reading 'app')
+
+    [0m [90m 155 |[39m
+     [90m 156 |[39m   afterAll([36masync[39m () [33m=>[39m {
+    [31m[1m>[22m[39m[90m 157 |[39m     [36mawait[39m ctx[33m.[39mapp[33m.[39mclose()[33m;[39m
+     [90m     |[39m               [31m[1m^[22m[39m
+     [90m 158 |[39m   })[33m;[39m
+     [90m 159 |[39m
+     [90m 160 |[39m   [90m/* ======================================================================[39m[0m
+
+      at Object.app (test/integration/fx3-agenda-respiro-y-avisos.int-spec.ts:157:15)
+
+FAIL test/integration/fx2-medico-multisede-publica-agenda.int-spec.ts (10.811 s)
+  ● FX-2 · aprobar el vínculo habilita la agenda multi-sede › antes de aprobar › el médico no tiene a la institución entre sus organizaciones
+
+    Must use import to load ES Module: C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\node_modules\@mikro-orm\decorators\legacy\index.js
+    Jest's require(ESM) requires Node v24.9+ for synchronous vm module APIs; the current Node version does not expose them.
+
+    [0m[31m[1m>[22m[39m[90m 1 |[39m [36mimport[39m { [33mEntity[39m[33m,[39m [33mPrimaryKey[39m[33m,[39m [33mProperty[39m } [36mfrom[39m [32m'@mikro-orm/decorators/legacy'[39m[33m;[39m
+     [90m   |[39m [31m[1m^[22m[39m
+     [90m 2 |[39m [36mimport[39m { randomUUID } [36mfrom[39m [32m'node:crypto'[39m[33m;[39m
+     [90m 3 |[39m
+     [90m 4 |[39m [90m/**[39m[0m
+
+      at CjsLoader.requireModule (node_modules/jest-runtime/build/index.js:257:23)
+      at Object.<anonymous> (src/modules/accounting/entities/accounting_document_links.entity.ts:1:1)
+      at getEntityClassOrSchema (node_modules/@mikro-orm/core/metadata/discover-entities.js:8:21)
+      at discoverEntities (node_modules/@mikro-orm/core/metadata/discover-entities.js:47:9)
+      at MetadataDiscovery.findEntities (node_modules/@mikro-orm/core/metadata/MetadataDiscovery.js:206:32)
+      at MetadataDiscovery.discover (node_modules/@mikro-orm/core/metadata/MetadataDiscovery.js:42:9)
+      at Function.init (node_modules/@mikro-orm/core/MikroORM.js:97:25)
+      at TestingInjector.instantiateClass (node_modules/@nestjs/core/injector/injector.js:436:37)
+      at callback (node_modules/@nestjs/core/injector/injector.js:72:34)
+      at TestingInjector.resolveConstructorParams (node_modules/@nestjs/core/injector/injector.js:180:24)
+      at TestingInjector.loadInstance (node_modules/@nestjs/core/injector/injector.js:77:13)
+      at TestingInjector.loadProvider (node_modules/@nestjs/core/injector/injector.js:111:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:56:13
+          at async Promise.all (index 4)
+      at TestingInstanceLoader.createInstancesOfProviders (node_modules/@nestjs/core/injector/instance-loader.js:55:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:40:13
+          at async Promise.all (index 16)
+      at TestingInstanceLoader.createInstances (node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-module.builder.js:119:9)
+      at TestingModuleBuilder.compile (node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at bootstrapTestApp (test/integration/harness.ts:173:21)
+      at Object.<anonymous> (test/integration/fx2-medico-multisede-publica-agenda.int-spec.ts:88:11)
+
+  ● FX-2 · aprobar el vínculo habilita la agenda multi-sede › antes de aprobar › publicar agenda en la institución se rechaza
+
+    Must use import to load ES Module: C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\node_modules\@mikro-orm\decorators\legacy\index.js
+    Jest's require(ESM) requires Node v24.9+ for synchronous vm module APIs; the current Node version does not expose them.
+
+    [0m[31m[1m>[22m[39m[90m 1 |[39m [36mimport[39m { [33mEntity[39m[33m,[39m [33mPrimaryKey[39m[33m,[39m [33mProperty[39m } [36mfrom[39m [32m'@mikro-orm/decorators/legacy'[39m[33m;[39m
+     [90m   |[39m [31m[1m^[22m[39m
+     [90m 2 |[39m [36mimport[39m { randomUUID } [36mfrom[39m [32m'node:crypto'[39m[33m;[39m
+     [90m 3 |[39m
+     [90m 4 |[39m [90m/**[39m[0m
+
+      at CjsLoader.requireModule (node_modules/jest-runtime/build/index.js:257:23)
+      at Object.<anonymous> (src/modules/accounting/entities/accounting_document_links.entity.ts:1:1)
+      at getEntityClassOrSchema (node_modules/@mikro-orm/core/metadata/discover-entities.js:8:21)
+      at discoverEntities (node_modules/@mikro-orm/core/metadata/discover-entities.js:47:9)
+      at MetadataDiscovery.findEntities (node_modules/@mikro-orm/core/metadata/MetadataDiscovery.js:206:32)
+      at MetadataDiscovery.discover (node_modules/@mikro-orm/core/metadata/MetadataDiscovery.js:42:9)
+      at Function.init (node_modules/@mikro-orm/core/MikroORM.js:97:25)
+      at TestingInjector.instantiateClass (node_modules/@nestjs/core/injector/injector.js:436:37)
+      at callback (node_modules/@nestjs/core/injector/injector.js:72:34)
+      at TestingInjector.resolveConstructorParams (node_modules/@nestjs/core/injector/injector.js:180:24)
+      at TestingInjector.loadInstance (node_modules/@nestjs/core/injector/injector.js:77:13)
+      at TestingInjector.loadProvider (node_modules/@nestjs/core/injector/injector.js:111:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:56:13
+          at async Promise.all (index 4)
+      at TestingInstanceLoader.createInstancesOfProviders (node_modules/@nestjs/core/injector/instance-loader.js:55:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:40:13
+          at async Promise.all (index 16)
+      at TestingInstanceLoader.createInstances (node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-module.builder.js:119:9)
+      at TestingModuleBuilder.compile (node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at bootstrapTestApp (test/integration/harness.ts:173:21)
+      at Object.<anonymous> (test/integration/fx2-medico-multisede-publica-agenda.int-spec.ts:88:11)
+
+  ● FX-2 · aprobar el vínculo habilita la agenda multi-sede › antes de aprobar › en su propio consultorio publica sin problema
+
+    Must use import to load ES Module: C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\node_modules\@mikro-orm\decorators\legacy\index.js
+    Jest's require(ESM) requires Node v24.9+ for synchronous vm module APIs; the current Node version does not expose them.
+
+    [0m[31m[1m>[22m[39m[90m 1 |[39m [36mimport[39m { [33mEntity[39m[33m,[39m [33mPrimaryKey[39m[33m,[39m [33mProperty[39m } [36mfrom[39m [32m'@mikro-orm/decorators/legacy'[39m[33m;[39m
+     [90m   |[39m [31m[1m^[22m[39m
+     [90m 2 |[39m [36mimport[39m { randomUUID } [36mfrom[39m [32m'node:crypto'[39m[33m;[39m
+     [90m 3 |[39m
+     [90m 4 |[39m [90m/**[39m[0m
+
+      at CjsLoader.requireModule (node_modules/jest-runtime/build/index.js:257:23)
+      at Object.<anonymous> (src/modules/accounting/entities/accounting_document_links.entity.ts:1:1)
+      at getEntityClassOrSchema (node_modules/@mikro-orm/core/metadata/discover-entities.js:8:21)
+      at discoverEntities (node_modules/@mikro-orm/core/metadata/discover-entities.js:47:9)
+      at MetadataDiscovery.findEntities (node_modules/@mikro-orm/core/metadata/MetadataDiscovery.js:206:32)
+      at MetadataDiscovery.discover (node_modules/@mikro-orm/core/metadata/MetadataDiscovery.js:42:9)
+      at Function.init (node_modules/@mikro-orm/core/MikroORM.js:97:25)
+      at TestingInjector.instantiateClass (node_modules/@nestjs/core/injector/injector.js:436:37)
+      at callback (node_modules/@nestjs/core/injector/injector.js:72:34)
+      at TestingInjector.resolveConstructorParams (node_modules/@nestjs/core/injector/injector.js:180:24)
+      at TestingInjector.loadInstance (node_modules/@nestjs/core/injector/injector.js:77:13)
+      at TestingInjector.loadProvider (node_modules/@nestjs/core/injector/injector.js:111:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:56:13
+          at async Promise.all (index 4)
+      at TestingInstanceLoader.createInstancesOfProviders (node_modules/@nestjs/core/injector/instance-loader.js:55:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:40:13
+          at async Promise.all (index 16)
+      at TestingInstanceLoader.createInstances (node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-module.builder.js:119:9)
+      at TestingModuleBuilder.compile (node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at bootstrapTestApp (test/integration/harness.ts:173:21)
+      at Object.<anonymous> (test/integration/fx2-medico-multisede-publica-agenda.int-spec.ts:88:11)
+
+  ● FX-2 · aprobar el vínculo habilita la agenda multi-sede › el trámite › el médico pide el vínculo y queda pendiente, no aprobado solo
+
+    Must use import to load ES Module: C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\node_modules\@mikro-orm\decorators\legacy\index.js
+    Jest's require(ESM) requires Node v24.9+ for synchronous vm module APIs; the current Node version does not expose them.
+
+    [0m[31m[1m>[22m[39m[90m 1 |[39m [36mimport[39m { [33mEntity[39m[33m,[39m [33mPrimaryKey[39m[33m,[39m [33mProperty[39m } [36mfrom[39m [32m'@mikro-orm/decorators/legacy'[39m[33m;[39m
+     [90m   |[39m [31m[1m^[22m[39m
+     [90m 2 |[39m [36mimport[39m { randomUUID } [36mfrom[39m [32m'node:crypto'[39m[33m;[39m
+     [90m 3 |[39m
+     [90m 4 |[39m [90m/**[39m[0m
+
+      at CjsLoader.requireModule (node_modules/jest-runtime/build/index.js:257:23)
+      at Object.<anonymous> (src/modules/accounting/entities/accounting_document_links.entity.ts:1:1)
+      at getEntityClassOrSchema (node_modules/@mikro-orm/core/metadata/discover-entities.js:8:21)
+      at discoverEntities (node_modules/@mikro-orm/core/metadata/discover-entities.js:47:9)
+      at MetadataDiscovery.findEntities (node_modules/@mikro-orm/core/metadata/MetadataDiscovery.js:206:32)
+      at MetadataDiscovery.discover (node_modules/@mikro-orm/core/metadata/MetadataDiscovery.js:42:9)
+      at Function.init (node_modules/@mikro-orm/core/MikroORM.js:97:25)
+      at TestingInjector.instantiateClass (node_modules/@nestjs/core/injector/injector.js:436:37)
+      at callback (node_modules/@nestjs/core/injector/injector.js:72:34)
+      at TestingInjector.resolveConstructorParams (node_modules/@nestjs/core/injector/injector.js:180:24)
+      at TestingInjector.loadInstance (node_modules/@nestjs/core/injector/injector.js:77:13)
+      at TestingInjector.loadProvider (node_modules/@nestjs/core/injector/injector.js:111:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:56:13
+          at async Promise.all (index 4)
+      at TestingInstanceLoader.createInstancesOfProviders (node_modules/@nestjs/core/injector/instance-loader.js:55:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:40:13
+          at async Promise.all (index 16)
+      at TestingInstanceLoader.createInstances (node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-module.builder.js:119:9)
+      at TestingModuleBuilder.compile (node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at bootstrapTestApp (test/integration/harness.ts:173:21)
+      at Object.<anonymous> (test/integration/fx2-medico-multisede-publica-agenda.int-spec.ts:88:11)
+
+  ● FX-2 · aprobar el vínculo habilita la agenda multi-sede › el trámite › el pedido aparece en la bandeja de la institución, identificado
+
+    Must use import to load ES Module: C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\node_modules\@mikro-orm\decorators\legacy\index.js
+    Jest's require(ESM) requires Node v24.9+ for synchronous vm module APIs; the current Node version does not expose them.
+
+    [0m[31m[1m>[22m[39m[90m 1 |[39m [36mimport[39m { [33mEntity[39m[33m,[39m [33mPrimaryKey[39m[33m,[39m [33mProperty[39m } [36mfrom[39m [32m'@mikro-orm/decorators/legacy'[39m[33m;[39m
+     [90m   |[39m [31m[1m^[22m[39m
+     [90m 2 |[39m [36mimport[39m { randomUUID } [36mfrom[39m [32m'node:crypto'[39m[33m;[39m
+     [90m 3 |[39m
+     [90m 4 |[39m [90m/**[39m[0m
+
+      at CjsLoader.requireModule (node_modules/jest-runtime/build/index.js:257:23)
+      at Object.<anonymous> (src/modules/accounting/entities/accounting_document_links.entity.ts:1:1)
+      at getEntityClassOrSchema (node_modules/@mikro-orm/core/metadata/discover-entities.js:8:21)
+      at discoverEntities (node_modules/@mikro-orm/core/metadata/discover-entities.js:47:9)
+      at MetadataDiscovery.findEntities (node_modules/@mikro-orm/core/metadata/MetadataDiscovery.js:206:32)
+      at MetadataDiscovery.discover (node_modules/@mikro-orm/core/metadata/MetadataDiscovery.js:42:9)
+      at Function.init (node_modules/@mikro-orm/core/MikroORM.js:97:25)
+      at TestingInjector.instantiateClass (node_modules/@nestjs/core/injector/injector.js:436:37)
+      at callback (node_modules/@nestjs/core/injector/injector.js:72:34)
+      at TestingInjector.resolveConstructorParams (node_modules/@nestjs/core/injector/injector.js:180:24)
+      at TestingInjector.loadInstance (node_modules/@nestjs/core/injector/injector.js:77:13)
+      at TestingInjector.loadProvider (node_modules/@nestjs/core/injector/injector.js:111:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:56:13
+          at async Promise.all (index 4)
+      at TestingInstanceLoader.createInstancesOfProviders (node_modules/@nestjs/core/injector/instance-loader.js:55:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:40:13
+          at async Promise.all (index 16)
+      at TestingInstanceLoader.createInstances (node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-module.builder.js:119:9)
+      at TestingModuleBuilder.compile (node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at bootstrapTestApp (test/integration/harness.ts:173:21)
+      at Object.<anonymous> (test/integration/fx2-medico-multisede-publica-agenda.int-spec.ts:88:11)
+
+  ● FX-2 · aprobar el vínculo habilita la agenda multi-sede › el trámite › la institución aprueba
+
+    Must use import to load ES Module: C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\node_modules\@mikro-orm\decorators\legacy\index.js
+    Jest's require(ESM) requires Node v24.9+ for synchronous vm module APIs; the current Node version does not expose them.
+
+    [0m[31m[1m>[22m[39m[90m 1 |[39m [36mimport[39m { [33mEntity[39m[33m,[39m [33mPrimaryKey[39m[33m,[39m [33mProperty[39m } [36mfrom[39m [32m'@mikro-orm/decorators/legacy'[39m[33m;[39m
+     [90m   |[39m [31m[1m^[22m[39m
+     [90m 2 |[39m [36mimport[39m { randomUUID } [36mfrom[39m [32m'node:crypto'[39m[33m;[39m
+     [90m 3 |[39m
+     [90m 4 |[39m [90m/**[39m[0m
+
+      at CjsLoader.requireModule (node_modules/jest-runtime/build/index.js:257:23)
+      at Object.<anonymous> (src/modules/accounting/entities/accounting_document_links.entity.ts:1:1)
+      at getEntityClassOrSchema (node_modules/@mikro-orm/core/metadata/discover-entities.js:8:21)
+      at discoverEntities (node_modules/@mikro-orm/core/metadata/discover-entities.js:47:9)
+      at MetadataDiscovery.findEntities (node_modules/@mikro-orm/core/metadata/MetadataDiscovery.js:206:32)
+      at MetadataDiscovery.discover (node_modules/@mikro-orm/core/metadata/MetadataDiscovery.js:42:9)
+      at Function.init (node_modules/@mikro-orm/core/MikroORM.js:97:25)
+      at TestingInjector.instantiateClass (node_modules/@nestjs/core/injector/injector.js:436:37)
+      at callback (node_modules/@nestjs/core/injector/injector.js:72:34)
+      at TestingInjector.resolveConstructorParams (node_modules/@nestjs/core/injector/injector.js:180:24)
+      at TestingInjector.loadInstance (node_modules/@nestjs/core/injector/injector.js:77:13)
+      at TestingInjector.loadProvider (node_modules/@nestjs/core/injector/injector.js:111:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:56:13
+          at async Promise.all (index 4)
+      at TestingInstanceLoader.createInstancesOfProviders (node_modules/@nestjs/core/injector/instance-loader.js:55:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:40:13
+          at async Promise.all (index 16)
+      at TestingInstanceLoader.createInstances (node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-module.builder.js:119:9)
+      at TestingModuleBuilder.compile (node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at bootstrapTestApp (test/integration/harness.ts:173:21)
+      at Object.<anonymous> (test/integration/fx2-medico-multisede-publica-agenda.int-spec.ts:88:11)
+
+  ● FX-2 · aprobar el vínculo habilita la agenda multi-sede › el trámite › aprobar de nuevo ya no procede
+
+    Must use import to load ES Module: C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\node_modules\@mikro-orm\decorators\legacy\index.js
+    Jest's require(ESM) requires Node v24.9+ for synchronous vm module APIs; the current Node version does not expose them.
+
+    [0m[31m[1m>[22m[39m[90m 1 |[39m [36mimport[39m { [33mEntity[39m[33m,[39m [33mPrimaryKey[39m[33m,[39m [33mProperty[39m } [36mfrom[39m [32m'@mikro-orm/decorators/legacy'[39m[33m;[39m
+     [90m   |[39m [31m[1m^[22m[39m
+     [90m 2 |[39m [36mimport[39m { randomUUID } [36mfrom[39m [32m'node:crypto'[39m[33m;[39m
+     [90m 3 |[39m
+     [90m 4 |[39m [90m/**[39m[0m
+
+      at CjsLoader.requireModule (node_modules/jest-runtime/build/index.js:257:23)
+      at Object.<anonymous> (src/modules/accounting/entities/accounting_document_links.entity.ts:1:1)
+      at getEntityClassOrSchema (node_modules/@mikro-orm/core/metadata/discover-entities.js:8:21)
+      at discoverEntities (node_modules/@mikro-orm/core/metadata/discover-entities.js:47:9)
+      at MetadataDiscovery.findEntities (node_modules/@mikro-orm/core/metadata/MetadataDiscovery.js:206:32)
+      at MetadataDiscovery.discover (node_modules/@mikro-orm/core/metadata/MetadataDiscovery.js:42:9)
+      at Function.init (node_modules/@mikro-orm/core/MikroORM.js:97:25)
+      at TestingInjector.instantiateClass (node_modules/@nestjs/core/injector/injector.js:436:37)
+      at callback (node_modules/@nestjs/core/injector/injector.js:72:34)
+      at TestingInjector.resolveConstructorParams (node_modules/@nestjs/core/injector/injector.js:180:24)
+      at TestingInjector.loadInstance (node_modules/@nestjs/core/injector/injector.js:77:13)
+      at TestingInjector.loadProvider (node_modules/@nestjs/core/injector/injector.js:111:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:56:13
+          at async Promise.all (index 4)
+      at TestingInstanceLoader.createInstancesOfProviders (node_modules/@nestjs/core/injector/instance-loader.js:55:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:40:13
+          at async Promise.all (index 16)
+      at TestingInstanceLoader.createInstances (node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-module.builder.js:119:9)
+      at TestingModuleBuilder.compile (node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at bootstrapTestApp (test/integration/harness.ts:173:21)
+      at Object.<anonymous> (test/integration/fx2-medico-multisede-publica-agenda.int-spec.ts:88:11)
+
+  ● FX-2 · aprobar el vínculo habilita la agenda multi-sede › después de aprobar › la aprobación le dio membresía en la institución
+
+    Must use import to load ES Module: C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\node_modules\@mikro-orm\decorators\legacy\index.js
+    Jest's require(ESM) requires Node v24.9+ for synchronous vm module APIs; the current Node version does not expose them.
+
+    [0m[31m[1m>[22m[39m[90m 1 |[39m [36mimport[39m { [33mEntity[39m[33m,[39m [33mPrimaryKey[39m[33m,[39m [33mProperty[39m } [36mfrom[39m [32m'@mikro-orm/decorators/legacy'[39m[33m;[39m
+     [90m   |[39m [31m[1m^[22m[39m
+     [90m 2 |[39m [36mimport[39m { randomUUID } [36mfrom[39m [32m'node:crypto'[39m[33m;[39m
+     [90m 3 |[39m
+     [90m 4 |[39m [90m/**[39m[0m
+
+      at CjsLoader.requireModule (node_modules/jest-runtime/build/index.js:257:23)
+      at Object.<anonymous> (src/modules/accounting/entities/accounting_document_links.entity.ts:1:1)
+      at getEntityClassOrSchema (node_modules/@mikro-orm/core/metadata/discover-entities.js:8:21)
+      at discoverEntities (node_modules/@mikro-orm/core/metadata/discover-entities.js:47:9)
+      at MetadataDiscovery.findEntities (node_modules/@mikro-orm/core/metadata/MetadataDiscovery.js:206:32)
+      at MetadataDiscovery.discover (node_modules/@mikro-orm/core/metadata/MetadataDiscovery.js:42:9)
+      at Function.init (node_modules/@mikro-orm/core/MikroORM.js:97:25)
+      at TestingInjector.instantiateClass (node_modules/@nestjs/core/injector/injector.js:436:37)
+      at callback (node_modules/@nestjs/core/injector/injector.js:72:34)
+      at TestingInjector.resolveConstructorParams (node_modules/@nestjs/core/injector/injector.js:180:24)
+      at TestingInjector.loadInstance (node_modules/@nestjs/core/injector/injector.js:77:13)
+      at TestingInjector.loadProvider (node_modules/@nestjs/core/injector/injector.js:111:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:56:13
+          at async Promise.all (index 4)
+      at TestingInstanceLoader.createInstancesOfProviders (node_modules/@nestjs/core/injector/instance-loader.js:55:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:40:13
+          at async Promise.all (index 16)
+      at TestingInstanceLoader.createInstances (node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-module.builder.js:119:9)
+      at TestingModuleBuilder.compile (node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at bootstrapTestApp (test/integration/harness.ts:173:21)
+      at Object.<anonymous> (test/integration/fx2-medico-multisede-publica-agenda.int-spec.ts:88:11)
+
+  ● FX-2 · aprobar el vínculo habilita la agenda multi-sede › después de aprobar › el token emitido antes de la aprobación sigue sin alcanzar
+
+    Must use import to load ES Module: C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\node_modules\@mikro-orm\decorators\legacy\index.js
+    Jest's require(ESM) requires Node v24.9+ for synchronous vm module APIs; the current Node version does not expose them.
+
+    [0m[31m[1m>[22m[39m[90m 1 |[39m [36mimport[39m { [33mEntity[39m[33m,[39m [33mPrimaryKey[39m[33m,[39m [33mProperty[39m } [36mfrom[39m [32m'@mikro-orm/decorators/legacy'[39m[33m;[39m
+     [90m   |[39m [31m[1m^[22m[39m
+     [90m 2 |[39m [36mimport[39m { randomUUID } [36mfrom[39m [32m'node:crypto'[39m[33m;[39m
+     [90m 3 |[39m
+     [90m 4 |[39m [90m/**[39m[0m
+
+      at CjsLoader.requireModule (node_modules/jest-runtime/build/index.js:257:23)
+      at Object.<anonymous> (src/modules/accounting/entities/accounting_document_links.entity.ts:1:1)
+      at getEntityClassOrSchema (node_modules/@mikro-orm/core/metadata/discover-entities.js:8:21)
+      at discoverEntities (node_modules/@mikro-orm/core/metadata/discover-entities.js:47:9)
+      at MetadataDiscovery.findEntities (node_modules/@mikro-orm/core/metadata/MetadataDiscovery.js:206:32)
+      at MetadataDiscovery.discover (node_modules/@mikro-orm/core/metadata/MetadataDiscovery.js:42:9)
+      at Function.init (node_modules/@mikro-orm/core/MikroORM.js:97:25)
+      at TestingInjector.instantiateClass (node_modules/@nestjs/core/injector/injector.js:436:37)
+      at callback (node_modules/@nestjs/core/injector/injector.js:72:34)
+      at TestingInjector.resolveConstructorParams (node_modules/@nestjs/core/injector/injector.js:180:24)
+      at TestingInjector.loadInstance (node_modules/@nestjs/core/injector/injector.js:77:13)
+      at TestingInjector.loadProvider (node_modules/@nestjs/core/injector/injector.js:111:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:56:13
+          at async Promise.all (index 4)
+      at TestingInstanceLoader.createInstancesOfProviders (node_modules/@nestjs/core/injector/instance-loader.js:55:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:40:13
+          at async Promise.all (index 16)
+      at TestingInstanceLoader.createInstances (node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-module.builder.js:119:9)
+      at TestingModuleBuilder.compile (node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at bootstrapTestApp (test/integration/harness.ts:173:21)
+      at Object.<anonymous> (test/integration/fx2-medico-multisede-publica-agenda.int-spec.ts:88:11)
+
+  ● FX-2 · aprobar el vínculo habilita la agenda multi-sede › después de aprobar › al volver a entrar, la institución está entre sus organizaciones
+
+    Must use import to load ES Module: C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\node_modules\@mikro-orm\decorators\legacy\index.js
+    Jest's require(ESM) requires Node v24.9+ for synchronous vm module APIs; the current Node version does not expose them.
+
+    [0m[31m[1m>[22m[39m[90m 1 |[39m [36mimport[39m { [33mEntity[39m[33m,[39m [33mPrimaryKey[39m[33m,[39m [33mProperty[39m } [36mfrom[39m [32m'@mikro-orm/decorators/legacy'[39m[33m;[39m
+     [90m   |[39m [31m[1m^[22m[39m
+     [90m 2 |[39m [36mimport[39m { randomUUID } [36mfrom[39m [32m'node:crypto'[39m[33m;[39m
+     [90m 3 |[39m
+     [90m 4 |[39m [90m/**[39m[0m
+
+      at CjsLoader.requireModule (node_modules/jest-runtime/build/index.js:257:23)
+      at Object.<anonymous> (src/modules/accounting/entities/accounting_document_links.entity.ts:1:1)
+      at getEntityClassOrSchema (node_modules/@mikro-orm/core/metadata/discover-entities.js:8:21)
+      at discoverEntities (node_modules/@mikro-orm/core/metadata/discover-entities.js:47:9)
+      at MetadataDiscovery.findEntities (node_modules/@mikro-orm/core/metadata/MetadataDiscovery.js:206:32)
+      at MetadataDiscovery.discover (node_modules/@mikro-orm/core/metadata/MetadataDiscovery.js:42:9)
+      at Function.init (node_modules/@mikro-orm/core/MikroORM.js:97:25)
+      at TestingInjector.instantiateClass (node_modules/@nestjs/core/injector/injector.js:436:37)
+      at callback (node_modules/@nestjs/core/injector/injector.js:72:34)
+      at TestingInjector.resolveConstructorParams (node_modules/@nestjs/core/injector/injector.js:180:24)
+      at TestingInjector.loadInstance (node_modules/@nestjs/core/injector/injector.js:77:13)
+      at TestingInjector.loadProvider (node_modules/@nestjs/core/injector/injector.js:111:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:56:13
+          at async Promise.all (index 4)
+      at TestingInstanceLoader.createInstancesOfProviders (node_modules/@nestjs/core/injector/instance-loader.js:55:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:40:13
+          at async Promise.all (index 16)
+      at TestingInstanceLoader.createInstances (node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-module.builder.js:119:9)
+      at TestingModuleBuilder.compile (node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at bootstrapTestApp (test/integration/harness.ts:173:21)
+      at Object.<anonymous> (test/integration/fx2-medico-multisede-publica-agenda.int-spec.ts:88:11)
+
+  ● FX-2 · aprobar el vínculo habilita la agenda multi-sede › después de aprobar › ahora sí publica agenda en la institución
+
+    Must use import to load ES Module: C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\node_modules\@mikro-orm\decorators\legacy\index.js
+    Jest's require(ESM) requires Node v24.9+ for synchronous vm module APIs; the current Node version does not expose them.
+
+    [0m[31m[1m>[22m[39m[90m 1 |[39m [36mimport[39m { [33mEntity[39m[33m,[39m [33mPrimaryKey[39m[33m,[39m [33mProperty[39m } [36mfrom[39m [32m'@mikro-orm/decorators/legacy'[39m[33m;[39m
+     [90m   |[39m [31m[1m^[22m[39m
+     [90m 2 |[39m [36mimport[39m { randomUUID } [36mfrom[39m [32m'node:crypto'[39m[33m;[39m
+     [90m 3 |[39m
+     [90m 4 |[39m [90m/**[39m[0m
+
+      at CjsLoader.requireModule (node_modules/jest-runtime/build/index.js:257:23)
+      at Object.<anonymous> (src/modules/accounting/entities/accounting_document_links.entity.ts:1:1)
+      at getEntityClassOrSchema (node_modules/@mikro-orm/core/metadata/discover-entities.js:8:21)
+      at discoverEntities (node_modules/@mikro-orm/core/metadata/discover-entities.js:47:9)
+      at MetadataDiscovery.findEntities (node_modules/@mikro-orm/core/metadata/MetadataDiscovery.js:206:32)
+      at MetadataDiscovery.discover (node_modules/@mikro-orm/core/metadata/MetadataDiscovery.js:42:9)
+      at Function.init (node_modules/@mikro-orm/core/MikroORM.js:97:25)
+      at TestingInjector.instantiateClass (node_modules/@nestjs/core/injector/injector.js:436:37)
+      at callback (node_modules/@nestjs/core/injector/injector.js:72:34)
+      at TestingInjector.resolveConstructorParams (node_modules/@nestjs/core/injector/injector.js:180:24)
+      at TestingInjector.loadInstance (node_modules/@nestjs/core/injector/injector.js:77:13)
+      at TestingInjector.loadProvider (node_modules/@nestjs/core/injector/injector.js:111:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:56:13
+          at async Promise.all (index 4)
+      at TestingInstanceLoader.createInstancesOfProviders (node_modules/@nestjs/core/injector/instance-loader.js:55:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:40:13
+          at async Promise.all (index 16)
+      at TestingInstanceLoader.createInstances (node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-module.builder.js:119:9)
+      at TestingModuleBuilder.compile (node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at bootstrapTestApp (test/integration/harness.ts:173:21)
+      at Object.<anonymous> (test/integration/fx2-medico-multisede-publica-agenda.int-spec.ts:88:11)
+
+  ● FX-2 · aprobar el vínculo habilita la agenda multi-sede › después de aprobar › y sigue publicando en su propio consultorio
+
+    Must use import to load ES Module: C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\node_modules\@mikro-orm\decorators\legacy\index.js
+    Jest's require(ESM) requires Node v24.9+ for synchronous vm module APIs; the current Node version does not expose them.
+
+    [0m[31m[1m>[22m[39m[90m 1 |[39m [36mimport[39m { [33mEntity[39m[33m,[39m [33mPrimaryKey[39m[33m,[39m [33mProperty[39m } [36mfrom[39m [32m'@mikro-orm/decorators/legacy'[39m[33m;[39m
+     [90m   |[39m [31m[1m^[22m[39m
+     [90m 2 |[39m [36mimport[39m { randomUUID } [36mfrom[39m [32m'node:crypto'[39m[33m;[39m
+     [90m 3 |[39m
+     [90m 4 |[39m [90m/**[39m[0m
+
+      at CjsLoader.requireModule (node_modules/jest-runtime/build/index.js:257:23)
+      at Object.<anonymous> (src/modules/accounting/entities/accounting_document_links.entity.ts:1:1)
+      at getEntityClassOrSchema (node_modules/@mikro-orm/core/metadata/discover-entities.js:8:21)
+      at discoverEntities (node_modules/@mikro-orm/core/metadata/discover-entities.js:47:9)
+      at MetadataDiscovery.findEntities (node_modules/@mikro-orm/core/metadata/MetadataDiscovery.js:206:32)
+      at MetadataDiscovery.discover (node_modules/@mikro-orm/core/metadata/MetadataDiscovery.js:42:9)
+      at Function.init (node_modules/@mikro-orm/core/MikroORM.js:97:25)
+      at TestingInjector.instantiateClass (node_modules/@nestjs/core/injector/injector.js:436:37)
+      at callback (node_modules/@nestjs/core/injector/injector.js:72:34)
+      at TestingInjector.resolveConstructorParams (node_modules/@nestjs/core/injector/injector.js:180:24)
+      at TestingInjector.loadInstance (node_modules/@nestjs/core/injector/injector.js:77:13)
+      at TestingInjector.loadProvider (node_modules/@nestjs/core/injector/injector.js:111:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:56:13
+          at async Promise.all (index 4)
+      at TestingInstanceLoader.createInstancesOfProviders (node_modules/@nestjs/core/injector/instance-loader.js:55:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:40:13
+          at async Promise.all (index 16)
+      at TestingInstanceLoader.createInstances (node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-module.builder.js:119:9)
+      at TestingModuleBuilder.compile (node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at bootstrapTestApp (test/integration/harness.ts:173:21)
+      at Object.<anonymous> (test/integration/fx2-medico-multisede-publica-agenda.int-spec.ts:88:11)
+
+  ● FX-2 · aprobar el vínculo habilita la agenda multi-sede › después de aprobar › la membresía no lo vuelve administrador de la institución
+
+    Must use import to load ES Module: C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\node_modules\@mikro-orm\decorators\legacy\index.js
+    Jest's require(ESM) requires Node v24.9+ for synchronous vm module APIs; the current Node version does not expose them.
+
+    [0m[31m[1m>[22m[39m[90m 1 |[39m [36mimport[39m { [33mEntity[39m[33m,[39m [33mPrimaryKey[39m[33m,[39m [33mProperty[39m } [36mfrom[39m [32m'@mikro-orm/decorators/legacy'[39m[33m;[39m
+     [90m   |[39m [31m[1m^[22m[39m
+     [90m 2 |[39m [36mimport[39m { randomUUID } [36mfrom[39m [32m'node:crypto'[39m[33m;[39m
+     [90m 3 |[39m
+     [90m 4 |[39m [90m/**[39m[0m
+
+      at CjsLoader.requireModule (node_modules/jest-runtime/build/index.js:257:23)
+      at Object.<anonymous> (src/modules/accounting/entities/accounting_document_links.entity.ts:1:1)
+      at getEntityClassOrSchema (node_modules/@mikro-orm/core/metadata/discover-entities.js:8:21)
+      at discoverEntities (node_modules/@mikro-orm/core/metadata/discover-entities.js:47:9)
+      at MetadataDiscovery.findEntities (node_modules/@mikro-orm/core/metadata/MetadataDiscovery.js:206:32)
+      at MetadataDiscovery.discover (node_modules/@mikro-orm/core/metadata/MetadataDiscovery.js:42:9)
+      at Function.init (node_modules/@mikro-orm/core/MikroORM.js:97:25)
+      at TestingInjector.instantiateClass (node_modules/@nestjs/core/injector/injector.js:436:37)
+      at callback (node_modules/@nestjs/core/injector/injector.js:72:34)
+      at TestingInjector.resolveConstructorParams (node_modules/@nestjs/core/injector/injector.js:180:24)
+      at TestingInjector.loadInstance (node_modules/@nestjs/core/injector/injector.js:77:13)
+      at TestingInjector.loadProvider (node_modules/@nestjs/core/injector/injector.js:111:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:56:13
+          at async Promise.all (index 4)
+      at TestingInstanceLoader.createInstancesOfProviders (node_modules/@nestjs/core/injector/instance-loader.js:55:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:40:13
+          at async Promise.all (index 16)
+      at TestingInstanceLoader.createInstances (node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-module.builder.js:119:9)
+      at TestingModuleBuilder.compile (node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at bootstrapTestApp (test/integration/harness.ts:173:21)
+      at Object.<anonymous> (test/integration/fx2-medico-multisede-publica-agenda.int-spec.ts:88:11)
+
+
+  ● Test suite failed to run
+
+    TypeError: Cannot read properties of undefined (reading 'app')
+
+    [0m [90m 162 |[39m
+     [90m 163 |[39m   afterAll([36masync[39m () [33m=>[39m {
+    [31m[1m>[22m[39m[90m 164 |[39m     [36mawait[39m ctx[33m.[39mapp[33m.[39mclose()[33m;[39m
+     [90m     |[39m               [31m[1m^[22m[39m
+     [90m 165 |[39m   })[33m;[39m
+     [90m 166 |[39m
+     [90m 167 |[39m   describe([32m'antes de aprobar'[39m[33m,[39m () [33m=>[39m {[0m
+
+      at Object.app (test/integration/fx2-medico-multisede-publica-agenda.int-spec.ts:164:15)
+
+FAIL test/integration/fx1-doctor-publica-agenda.int-spec.ts (11.065 s)
+  ● FX-1 · la sesión del doctor nuevo habilita publicar su agenda › el alta devuelve el perfil profesional que la agenda va a necesitar
+
+    Must use import to load ES Module: C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\node_modules\@mikro-orm\decorators\legacy\index.js
+    Jest's require(ESM) requires Node v24.9+ for synchronous vm module APIs; the current Node version does not expose them.
+
+    [0m[31m[1m>[22m[39m[90m 1 |[39m [36mimport[39m { [33mEntity[39m[33m,[39m [33mPrimaryKey[39m[33m,[39m [33mProperty[39m } [36mfrom[39m [32m'@mikro-orm/decorators/legacy'[39m[33m;[39m
+     [90m   |[39m [31m[1m^[22m[39m
+     [90m 2 |[39m [36mimport[39m { randomUUID } [36mfrom[39m [32m'node:crypto'[39m[33m;[39m
+     [90m 3 |[39m
+     [90m 4 |[39m [90m/**[39m[0m
+
+      at CjsLoader.requireModule (node_modules/jest-runtime/build/index.js:257:23)
+      at Object.<anonymous> (src/modules/accounting/entities/accounting_document_links.entity.ts:1:1)
+      at getEntityClassOrSchema (node_modules/@mikro-orm/core/metadata/discover-entities.js:8:21)
+      at discoverEntities (node_modules/@mikro-orm/core/metadata/discover-entities.js:47:9)
+      at MetadataDiscovery.findEntities (node_modules/@mikro-orm/core/metadata/MetadataDiscovery.js:206:32)
+      at MetadataDiscovery.discover (node_modules/@mikro-orm/core/metadata/MetadataDiscovery.js:42:9)
+      at Function.init (node_modules/@mikro-orm/core/MikroORM.js:97:25)
+      at TestingInjector.instantiateClass (node_modules/@nestjs/core/injector/injector.js:436:37)
+      at callback (node_modules/@nestjs/core/injector/injector.js:72:34)
+      at TestingInjector.resolveConstructorParams (node_modules/@nestjs/core/injector/injector.js:180:24)
+      at TestingInjector.loadInstance (node_modules/@nestjs/core/injector/injector.js:77:13)
+      at TestingInjector.loadProvider (node_modules/@nestjs/core/injector/injector.js:111:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:56:13
+          at async Promise.all (index 4)
+      at TestingInstanceLoader.createInstancesOfProviders (node_modules/@nestjs/core/injector/instance-loader.js:55:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:40:13
+          at async Promise.all (index 16)
+      at TestingInstanceLoader.createInstances (node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-module.builder.js:119:9)
+      at TestingModuleBuilder.compile (node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at bootstrapTestApp (test/integration/harness.ts:173:21)
+      at Object.<anonymous> (test/integration/fx1-doctor-publica-agenda.int-spec.ts:25:11)
+
+  ● FX-1 · la sesión del doctor nuevo habilita publicar su agenda › la sesión trae el rol PRACTITIONER
+
+    Must use import to load ES Module: C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\node_modules\@mikro-orm\decorators\legacy\index.js
+    Jest's require(ESM) requires Node v24.9+ for synchronous vm module APIs; the current Node version does not expose them.
+
+    [0m[31m[1m>[22m[39m[90m 1 |[39m [36mimport[39m { [33mEntity[39m[33m,[39m [33mPrimaryKey[39m[33m,[39m [33mProperty[39m } [36mfrom[39m [32m'@mikro-orm/decorators/legacy'[39m[33m;[39m
+     [90m   |[39m [31m[1m^[22m[39m
+     [90m 2 |[39m [36mimport[39m { randomUUID } [36mfrom[39m [32m'node:crypto'[39m[33m;[39m
+     [90m 3 |[39m
+     [90m 4 |[39m [90m/**[39m[0m
+
+      at CjsLoader.requireModule (node_modules/jest-runtime/build/index.js:257:23)
+      at Object.<anonymous> (src/modules/accounting/entities/accounting_document_links.entity.ts:1:1)
+      at getEntityClassOrSchema (node_modules/@mikro-orm/core/metadata/discover-entities.js:8:21)
+      at discoverEntities (node_modules/@mikro-orm/core/metadata/discover-entities.js:47:9)
+      at MetadataDiscovery.findEntities (node_modules/@mikro-orm/core/metadata/MetadataDiscovery.js:206:32)
+      at MetadataDiscovery.discover (node_modules/@mikro-orm/core/metadata/MetadataDiscovery.js:42:9)
+      at Function.init (node_modules/@mikro-orm/core/MikroORM.js:97:25)
+      at TestingInjector.instantiateClass (node_modules/@nestjs/core/injector/injector.js:436:37)
+      at callback (node_modules/@nestjs/core/injector/injector.js:72:34)
+      at TestingInjector.resolveConstructorParams (node_modules/@nestjs/core/injector/injector.js:180:24)
+      at TestingInjector.loadInstance (node_modules/@nestjs/core/injector/injector.js:77:13)
+      at TestingInjector.loadProvider (node_modules/@nestjs/core/injector/injector.js:111:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:56:13
+          at async Promise.all (index 4)
+      at TestingInstanceLoader.createInstancesOfProviders (node_modules/@nestjs/core/injector/instance-loader.js:55:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:40:13
+          at async Promise.all (index 16)
+      at TestingInstanceLoader.createInstances (node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-module.builder.js:119:9)
+      at TestingModuleBuilder.compile (node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at bootstrapTestApp (test/integration/harness.ts:173:21)
+      at Object.<anonymous> (test/integration/fx1-doctor-publica-agenda.int-spec.ts:25:11)
+
+  ● FX-1 · la sesión del doctor nuevo habilita publicar su agenda › la sesión trae el perfil profesional en el claim `hpid`
+
+    Must use import to load ES Module: C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\node_modules\@mikro-orm\decorators\legacy\index.js
+    Jest's require(ESM) requires Node v24.9+ for synchronous vm module APIs; the current Node version does not expose them.
+
+    [0m[31m[1m>[22m[39m[90m 1 |[39m [36mimport[39m { [33mEntity[39m[33m,[39m [33mPrimaryKey[39m[33m,[39m [33mProperty[39m } [36mfrom[39m [32m'@mikro-orm/decorators/legacy'[39m[33m;[39m
+     [90m   |[39m [31m[1m^[22m[39m
+     [90m 2 |[39m [36mimport[39m { randomUUID } [36mfrom[39m [32m'node:crypto'[39m[33m;[39m
+     [90m 3 |[39m
+     [90m 4 |[39m [90m/**[39m[0m
+
+      at CjsLoader.requireModule (node_modules/jest-runtime/build/index.js:257:23)
+      at Object.<anonymous> (src/modules/accounting/entities/accounting_document_links.entity.ts:1:1)
+      at getEntityClassOrSchema (node_modules/@mikro-orm/core/metadata/discover-entities.js:8:21)
+      at discoverEntities (node_modules/@mikro-orm/core/metadata/discover-entities.js:47:9)
+      at MetadataDiscovery.findEntities (node_modules/@mikro-orm/core/metadata/MetadataDiscovery.js:206:32)
+      at MetadataDiscovery.discover (node_modules/@mikro-orm/core/metadata/MetadataDiscovery.js:42:9)
+      at Function.init (node_modules/@mikro-orm/core/MikroORM.js:97:25)
+      at TestingInjector.instantiateClass (node_modules/@nestjs/core/injector/injector.js:436:37)
+      at callback (node_modules/@nestjs/core/injector/injector.js:72:34)
+      at TestingInjector.resolveConstructorParams (node_modules/@nestjs/core/injector/injector.js:180:24)
+      at TestingInjector.loadInstance (node_modules/@nestjs/core/injector/injector.js:77:13)
+      at TestingInjector.loadProvider (node_modules/@nestjs/core/injector/injector.js:111:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:56:13
+          at async Promise.all (index 4)
+      at TestingInstanceLoader.createInstancesOfProviders (node_modules/@nestjs/core/injector/instance-loader.js:55:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:40:13
+          at async Promise.all (index 16)
+      at TestingInstanceLoader.createInstances (node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-module.builder.js:119:9)
+      at TestingModuleBuilder.compile (node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at bootstrapTestApp (test/integration/harness.ts:173:21)
+      at Object.<anonymous> (test/integration/fx1-doctor-publica-agenda.int-spec.ts:25:11)
+
+  ● FX-1 · la sesión del doctor nuevo habilita publicar su agenda › puede publicar su propia agenda de punta a punta, sin datos técnicos ajenos
+
+    Must use import to load ES Module: C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mantra-core-health-api\node_modules\@mikro-orm\decorators\legacy\index.js
+    Jest's require(ESM) requires Node v24.9+ for synchronous vm module APIs; the current Node version does not expose them.
+
+    [0m[31m[1m>[22m[39m[90m 1 |[39m [36mimport[39m { [33mEntity[39m[33m,[39m [33mPrimaryKey[39m[33m,[39m [33mProperty[39m } [36mfrom[39m [32m'@mikro-orm/decorators/legacy'[39m[33m;[39m
+     [90m   |[39m [31m[1m^[22m[39m
+     [90m 2 |[39m [36mimport[39m { randomUUID } [36mfrom[39m [32m'node:crypto'[39m[33m;[39m
+     [90m 3 |[39m
+     [90m 4 |[39m [90m/**[39m[0m
+
+      at CjsLoader.requireModule (node_modules/jest-runtime/build/index.js:257:23)
+      at Object.<anonymous> (src/modules/accounting/entities/accounting_document_links.entity.ts:1:1)
+      at getEntityClassOrSchema (node_modules/@mikro-orm/core/metadata/discover-entities.js:8:21)
+      at discoverEntities (node_modules/@mikro-orm/core/metadata/discover-entities.js:47:9)
+      at MetadataDiscovery.findEntities (node_modules/@mikro-orm/core/metadata/MetadataDiscovery.js:206:32)
+      at MetadataDiscovery.discover (node_modules/@mikro-orm/core/metadata/MetadataDiscovery.js:42:9)
+      at Function.init (node_modules/@mikro-orm/core/MikroORM.js:97:25)
+      at TestingInjector.instantiateClass (node_modules/@nestjs/core/injector/injector.js:436:37)
+      at callback (node_modules/@nestjs/core/injector/injector.js:72:34)
+      at TestingInjector.resolveConstructorParams (node_modules/@nestjs/core/injector/injector.js:180:24)
+      at TestingInjector.loadInstance (node_modules/@nestjs/core/injector/injector.js:77:13)
+      at TestingInjector.loadProvider (node_modules/@nestjs/core/injector/injector.js:111:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:56:13
+          at async Promise.all (index 4)
+      at TestingInstanceLoader.createInstancesOfProviders (node_modules/@nestjs/core/injector/instance-loader.js:55:9)
+      at node_modules/@nestjs/core/injector/instance-loader.js:40:13
+          at async Promise.all (index 16)
+      at TestingInstanceLoader.createInstances (node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (node_modules/@nestjs/testing/testing-module.builder.js:119:9)
+      at TestingModuleBuilder.compile (node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at bootstrapTestApp (test/integration/harness.ts:173:21)
+      at Object.<anonymous> (test/integration/fx1-doctor-publica-agenda.int-spec.ts:25:11)
+
+
+  ● Test suite failed to run
+
+    TypeError: Cannot read properties of undefined (reading 'app')
+
+    [0m [90m 50 |[39m
+     [90m 51 |[39m   afterAll([36masync[39m () [33m=>[39m {
+    [31m[1m>[22m[39m[90m 52 |[39m     [36mawait[39m ctx[33m.[39mapp[33m.[39mclose()[33m;[39m
+     [90m    |[39m               [31m[1m^[22m[39m
+     [90m 53 |[39m   })[33m;[39m
+     [90m 54 |[39m
+     [90m 55 |[39m   [90m/** Los claims del token, sin verificar la firma: acá interesa el contenido. */[39m[0m
+
+      at Object.app (test/integration/fx1-doctor-publica-agenda.int-spec.ts:52:15)
+
+Test Suites: 5 failed, 5 total
+Tests:       40 failed, 40 total
+Snapshots:   0 total
+Time:        62.615 s
+Ran all test suites matching fx1-doctor-publica-agenda|fx2-medico-multisede-publica-agenda|fx3-agenda-respiro-y-avisos|fx8-recorrido-de-la-agenda|fx9-carreras-de-la-agenda.
+exit_code=1

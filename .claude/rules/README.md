@@ -31,6 +31,7 @@ registrala como ambigüedad (regla 00) y dejala anotada para corregir la fuente 
 | **`40-reporte-obligatorio.md`** | **`REPORTE.md` con completado / a medias / pendiente. Candado: `report_gate.py`** |
 | `50-progreso-visible.md` | Checkpoints y frecuencia; el porcentaje sale de `plan_status.py` |
 | `60-guardia-de-racionalizacion.md` | Autoengaños típicos y su contramedida |
+| `65-aislar-y-simular-para-no-bloquearse.md` | Qué hacer cuando falta el insumo de otro: aislar el contrato y simular en tres niveles, en vez de detenerse a esperarlo |
 | `70-control-de-recursos.md` | Concurrencia, subagentes, procesos |
 | `80-testing.md` | Pirámide de cierre y política de tests |
 | `90-seguridad-y-datos-sensibles.md` | Controles obligatorios y datos de salud |
