@@ -1,0 +1,3 @@
+$ H1.S1.M1 — cambio legitimo, sin deriva
+sync --check: OK, 192 archivo(s) en espejo, sin deriva
+  exit=0
