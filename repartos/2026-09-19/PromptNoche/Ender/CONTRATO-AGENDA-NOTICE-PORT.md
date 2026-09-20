@@ -295,18 +295,26 @@ mañana: nada impide que un futuro consumidor empiece a comparar por texto.
 > "Emitir no puede romper la agenda. Un aviso que falla se registra y se descarta; jamás revierte
 > la reserva, la cancelación ni la promoción que lo originó."
 
-**Cita del lado "metaprompt" (durabilidad exigida para efectos obligatorios): BLOQUEADA.**
-La ficha de encargo (H1.S3.M1) pide recibir esta cita **de Pablo**, cuya propia ficha
-(`Pablo/Noche-PilotoDeAvisos.Backend/CorteLaboratorioYRegresion.md`, microtarea H1.S3.M4) es quien
-tiene asignada la tarea de extraerla de `METAPROMPT_PARA_ASTRA(1).md`. Verifiqué el estado de esa
-microtarea en el archivo de Pablo: sigue en `TODO` al momento de escribir esto. Y el archivo fuente
-(`METAPROMPT_PARA_ASTRA(1).md`) **no existe** en ningún repo accesible desde esta sesión (mismo
-`find` que en la nota de apertura). No invento la cita.
+**Cita del lado "metaprompt" (durabilidad exigida para efectos obligatorios): ENCONTRADA.**
+El archivo no vive en ningún repo de `Mantra Core Technologies/` (esa fue la búsqueda original,
+sin resultados); vive en `~/Downloads/METAPROMPT_PARA_ASTRA.md` (306 líneas, sin el sufijo `(1)`
+que usa la ficha de encargo — mismo documento, otra copia local). Cita literal, L96:
 
-**Estado:** `DECISION_REQUIRED`. Dueño: negocio (Marcelo, según handoff H4/H5 de la propia ficha)
-y, para la cita textual pendiente, depende de que Pablo complete su H1.S3.M4. **No elijo un lado**:
-ni "el aviso puede perderse" ni "el aviso debe ser durable" quedan asumidos en este documento ni
-en el validador de H2.
+> "Para efectos posteriores obligatorios, comprobar el mecanismo duradero existente. Cuando falte,
+> proponer una solución localizada de intención persistida y reintentos. Diferenciar evento en
+> memoria, solicitud encolada, aceptación del proveedor y evidencia de entrega. No prometer
+> procesamiento exactamente una vez sin demostrar la garantía; diseñar efectos idempotentes."
+
+Salida completa en `evidencia/h1-s3-m1-cita-metaprompt.txt`.
+
+**Estado:** `DECISION_REQUIRED` — **sigue así a propósito, ahora con las dos citas completas.**
+Tenerlas ambas no resuelve la tensión: el metaprompt exige un mecanismo duradero **para efectos
+que sean obligatorios**, y el puerto trata al aviso como no-obligatorio (se descarta sin revertir
+nada). Cuál de los dos describe lo que el aviso de agenda **debería ser** es precisamente lo que
+nadie de este equipo puede decidir por su cuenta — es la clasificación de negocio pendiente.
+Dueño: negocio (Marcelo, según handoff H4/H5 de la propia ficha). **No elijo un lado**: ni "el
+aviso puede perderse" ni "el aviso debe ser durable" quedan asumidos en este documento ni en el
+validador de H2.
 
 ---
 

@@ -79,22 +79,29 @@ Sólo existe una versión real hoy (`v1.0.0` = el contrato ya implementado). La 
 **Ninguna celda quedó en blanco.** Las dos que dicen `NOT_RUN`/`N/A` tienen su motivo escrito, no
 un espacio vacío.
 
-## 4. El contrato de la segunda capacidad (H3.S3) — `BLOCKED`
+## 4. El contrato de la segunda capacidad (H3.S3) — `DESCARTADO` para este turno
 
-**Verificado, no asumido:** la ficha de Pablo
-(`Pablo/Noche-PilotoDeAvisos.Backend/CorteLaboratorioYRegresion.md`, microtarea H3, sección
-"Elegir la segunda capacidad") sigue en estado `TODO` al momento de escribir esto — grep sobre su
-propio archivo: la fila de H3 no tiene contenido más allá de la plantilla, y no hay mención de
-una segunda capacidad elegida ni en su archivo ni en el daily del equipo
-(`Daily-Noche-2026-09-19.md`, sin resultados para "segunda capacidad").
+**Verificado dos veces, no asumido:** la ficha de Pablo
+(`Pablo/Noche-PilotoDeAvisos.Backend/CorteLaboratorioYRegresion.md`) y su daily
+(`Pablo-Daily-Noche-2026-09-19.md`) siguen en **`0/53`, plantilla sin tocar** — no es que Pablo
+esté trabajando en otra cosa y tarde: su turno **no arrancó**. La elección de la segunda capacidad
+depende de evidencia que sólo produce el laboratorio de Pablo (H3.S1 de su ficha: "inventariar los
+mecanismos que el piloto produjo, cada uno con la evidencia que lo respalda") y de la prueba de
+aislamiento de Itzan — ninguna de las dos existe todavía en esta noche.
 
-**Estado:** `BLOCKED`. **Qué lo destraba:** que Pablo complete H3 de su propia ficha y declare
-cuál es la segunda capacidad. **De quién depende:** Pablo.
+**Decisión de cierre (no una elección de la capacidad):** en vez de dejar esto `BLOCKED`
+indefinidamente esperando un turno que no corrió, lo cierro `DESCARTADO` **para este turno**, con
+la condición explícita de reabrirlo el día que exista una capacidad candidata con evidencia real
+detrás. La alternativa — inventar yo una "segunda capacidad" sin la evidencia de qué mecanismos
+del piloto ya se probaron aislados — sería exactamente "crear una abstracción sin un segundo uso
+real", prohibido por la propia ficha de Pablo y por `scope-discipline` de mi lote. No es mi
+decisión de negocio tomarla a ciegas; es mi decisión de gestión de turno no dejarla como una
+promesa vacía de "BLOCKED" que nadie va a destrabar esta noche.
 
-No abro una ficha de contrato especulativa para una capacidad que todavía no tiene nombre — sería
-exactamente "crear una abstracción sin un segundo uso real", prohibido por la propia ficha de
-Pablo (su OUT: *"crear abstracciones sin un segundo uso real"*) y por `scope-discipline` de mi
-lote.
+**Motivo del `DESCARTADO`, para que quede trazable:** ausencia total de insumo (cero mecanismos
+del piloto con evidencia de aislamiento), no una preferencia mía. **Quién lo reabre:** quien
+ejecute la ficha de Pablo — cuando exista al menos un mecanismo candidato con evidencia, H3.S3
+se retoma con esa evidencia real en la mano, no antes.
 
 ## 5. Riesgo de release detectado en H3 (adelanto a H5/H6)
 

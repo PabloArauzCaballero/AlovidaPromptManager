@@ -185,7 +185,7 @@ Los seis estados permitidos son exactamente: `TODO`, `EN CURSO`, `HECHO`, `A MED
 
 **Kill-test del hito:** preguntale a Justin qué significa que `delivered` venga en `true`, y si el compilador impide construir un `recipient` con sus dos campos vacíos. Si tiene que abrir el `.ts` para contestar, no está hecho.
 
-**Estado:** A MEDIAS
+**Estado:** HECHO
 
 #### H1.S1 — Contrato congelado (si esto no está fijo, todo lo demás flota)
 
@@ -226,11 +226,11 @@ Los seis estados permitidos son exactamente: `TODO`, `EN CURSO`, `HECHO`, `A MED
 
 **DoD:** Las 3 microtareas en `HECHO`. **Elegir un lado de la tensión de durabilidad es incumplir el encargo**, aunque uno parezca obviamente correcto.
 
-**Estado:** A MEDIAS
+**Estado:** HECHO
 
 | ID | Microtarea | CA (binario) | DoD (comando de verificación) | Estado |
 |---|---|---|---|---|
-| H1.S3.M1 | Recibir de Pablo la tensión de semántica del aviso y dejarla **sin resolver** | Está la cita del comentario del puerto (un aviso fallido puede descartarse) junto a la del metaprompt (durabilidad exigida para efectos obligatorios), y el estado es `DECISION_REQUIRED` con quién decide | Ambas citas con localizador. **Elegir una de las dos es incumplir el encargo**, aunque una te parezca obviamente correcta | A MEDIAS |
+| H1.S3.M1 | Recibir de Pablo la tensión de semántica del aviso y dejarla **sin resolver** | Está la cita del comentario del puerto (un aviso fallido puede descartarse) junto a la del metaprompt (durabilidad exigida para efectos obligatorios), y el estado es `DECISION_REQUIRED` con quién decide | Ambas citas con localizador. **Elegir una de las dos es incumplir el encargo**, aunque una te parezca obviamente correcta | HECHO |
 | H1.S3.M2 | Ficha de Efectos posteriores y Compatibilidad | Está declarado si el aviso es obligatorio u opcional **según fuente**, y qué cambios del contrato romperían a los consumidores de M4 | Fichas de §3 completas o con omisiones justificadas. Compatibilidad distingue lectura, escritura y significado (§7) | HECHO |
 | H1.S3.M3 | Publicar el snapshot como artefacto consumible | Existe un archivo de contrato con su hash que Itzan y Justin pueden referenciar por versión, no por rama | Ruta del artefacto + hash + el commit del que salió. Avisar en el daily. El producto compone **versiones verificadas**, no la rama viva del vecino (`PLAN_SEIS_DIAS.md`) | HECHO |
 
@@ -297,7 +297,7 @@ Los seis estados permitidos son exactamente: `TODO`, `EN CURSO`, `HECHO`, `A MED
 
 **Kill-test del hito:** Introducí una versión incompatible en una copia temporal. Si los consumidores afectados siguen en verde, la matriz de compatibilidad no vale nada.
 
-**Estado:** BLOCKED
+**Estado:** HECHO
 
 #### H3.S1 — La política
 
@@ -332,12 +332,12 @@ Los seis estados permitidos son exactamente: `TODO`, `EN CURSO`, `HECHO`, `A MED
 
 **DoD:** Las 2 microtareas en `HECHO`, o `BLOCKED` esperando la elección de la segunda capacidad.
 
-**Estado:** BLOCKED
+**Estado:** DESCARTADO
 
 | ID | Microtarea | CA (binario) | DoD (comando de verificación) | Estado |
 |---|---|---|---|---|
-| H3.S3.M1 | Si Pablo ya eligió la segunda capacidad, abrir su ficha de contrato | La ficha existe con sus campos de §3, o queda `BLOCKED` esperando la elección | Ficha o bloqueo con motivo | BLOCKED |
-| H3.S3.M2 | Registrar qué se reusa del primer contrato y qué no | Está la lista | Lista. **No copies el contrato entero para disimular una dependencia** | BLOCKED |
+| H3.S3.M1 | Si Pablo ya eligió la segunda capacidad, abrir su ficha de contrato | La ficha existe con sus campos de §3, o queda `BLOCKED` esperando la elección | Ficha o bloqueo con motivo | DESCARTADO |
+| H3.S3.M2 | Registrar qué se reusa del primer contrato y qué no | Está la lista | Lista. **No copies el contrato entero para disimular una dependencia** | DESCARTADO |
 
 ### H4 — Congelar la versión estable del contrato y su matriz de consumidores
 

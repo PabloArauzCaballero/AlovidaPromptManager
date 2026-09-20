@@ -1,0 +1,25 @@
+# H1.S3.M1 — cita del lado metaprompt de Q-06, encontrada (re-búsqueda ampliada)
+
+Búsqueda original (turno anterior): find sobre toda 'Mantra Core Technologies/' — sin
+resultados. Búsqueda ampliada (a pedido explícito del usuario de no dejar nada pendiente):
+
+$ find / -iname "METAPROMPT_PARA_ASTRA*" -not -path "*/node_modules/*"
+/Users/josejeremias/Downloads/METAPROMPT_PARA_ASTRA.md
+/System/Volumes/Data/Users/josejeremias/Downloads/METAPROMPT_PARA_ASTRA.md
+
+Archivo real: /Users/josejeremias/Downloads/METAPROMPT_PARA_ASTRA.md (306 líneas)
+
+$ sed -n "85,97p" /Users/josejeremias/Downloads/METAPROMPT_PARA_ASTRA.md
+
+## 5. Fronteras, datos y comunicación
+
+Descubrir capacidades de negocio y dependencias reales. No asumir que los apartados Paciente y Médico del documento requieren duplicar recetas, identidades o reglas.
+
+Cada módulo tendrá responsabilidad, API pública pequeña, dependencias declaradas, dueño de sus escrituras y pruebas. Prohibir nuevas dependencias a entidades, repositorios o servicios privados ajenos. Evitar un shared que concentre toda la lógica o DTOs que filtren EntityManager, QueryBuilder y entidades mutables como contratos de negocio.
+
+La integración conecta puertos requeridos y operaciones públicas mediante adaptadores por relación; la composición final registra proveedores. Los coordinadores gestionan procesos compartidos explícitos, sin convertirse en un servicio universal ni duplicar reglas internas.
+
+Preferir llamadas en proceso para respuestas inmediatas. Conservar transacciones conjuntas cuando el negocio necesite atomicidad. No convertir escrituras atómicas en transacciones separadas o eventos sólo para aparentar independencia.
+
+Para efectos posteriores obligatorios, comprobar el mecanismo duradero existente. Cuando falte, proponer una solución localizada de intención persistida y reintentos. Diferenciar evento en memoria, solicitud encolada, aceptación del proveedor y evidencia de entrega. No prometer procesamiento exactamente una vez sin demostrar la garantía; diseñar efectos idempotentes.
+
