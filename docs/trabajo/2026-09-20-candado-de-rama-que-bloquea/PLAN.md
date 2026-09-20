@@ -114,18 +114,18 @@ corre `sync_agents --check`, entonces **no** reporta deriva.
 
 **CA:** Dado quien retome, cuando lee el reporte, entonces sabe qué bloquea ahora y qué no.
 **DoD:** `REPORTE.md` completo + árbol limpio + `main` publicado.
-**Estado:** TODO
+**Estado:** HECHO
 
 ### H3.S1 — Cierre
 
 **CA:** El reporte dice qué se configuró, con qué evidencia, y qué decisiones quedaron sin tomar.
 **DoD:** `plan_status.py` → `REPORTE.md: completo`.
-**Estado:** TODO
+**Estado:** HECHO
 
 | ID | Microtarea | CA (binario) | DoD (comando de verificación) | Estado |
 |---|---|---|---|---|
-| H3.S1.M1 | `REPORTE.md` completo | Las tres secciones | `plan_status.py` → `completo` | TODO |
-| H3.S1.M2 | Commit y push | `main` y `origin/main` coinciden | `git rev-parse main origin/main` → iguales | TODO |
+| H3.S1.M1 | `REPORTE.md` completo | Las tres secciones | `plan_status.py` → `completo` | HECHO |
+| H3.S1.M2 | Commit y push | `main` y `origin/main` coinciden | `git rev-parse main origin/main` → iguales | HECHO |
 
 ## Riesgos y bloqueos previstos
 
