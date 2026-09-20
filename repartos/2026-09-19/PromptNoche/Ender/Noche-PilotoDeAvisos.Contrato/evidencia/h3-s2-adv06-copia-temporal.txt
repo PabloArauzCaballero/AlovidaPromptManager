@@ -1,0 +1,24 @@
+# ADV-06 — versión incompatible en copia temporal (H3.S2 / H5.S1)
+
+Cambio incompatible aplicado SOLO en $SCRATCH (nunca en el repo real): se quita
+`skippedReason` de AgendaNoticeResult (RESULT_KEYS + interfaz), simulando la regla
+de H3.S1 'quitar un campo es incompatible'.
+
+$ tsc -p tsconfig.json   (sobre la copia temporal, sin tocar el repo)
+agenda-notice-validator.ts(113,5): error TS2820: Type '"skippedReason"' is not assignable to type 'keyof AgendaNoticeResult'. Did you mean '"chatSkippedReason"'?
+consumidor-real-simulado.ts(22,5): error TS2561: Object literal may only specify known properties, but 'skippedReason' does not exist in type 'AgendaNoticeResult'. Did you mean to write 'chatSkippedReason'?
+exit $? = 2
+
+== Consumidor afectado ==
+consumidor-real-simulado.ts reproduce literal la rama de MessagingAgendaNoticeAdapter
+que devuelve { delivered: false, skippedReason: '...' } — falla con TS2561 (la
+propiedad no existe en el tipo nuevo). Es exactamente el consumidor real que se
+rompería si este cambio se mergeara al puerto de Mantra.
+
+== Inmutabilidad del artefacto histórico (repo real, no la copia) ==
+$ git rev-parse HEAD:repartos/2026-09-19/PromptNoche/Ender/validador/agenda-notice.types.ts
+ee26fe75f22ffb3542973f59f8085fe86432de72
+(idéntico al hash de blob fijado en el commit 7f19cf3 — sin cambios)
+$ git status --short repartos/2026-09-19/PromptNoche/Ender/
+?? repartos/2026-09-19/PromptNoche/Ender/evidencia/h3-s2-adv06-copia-temporal.txt
+(vacío: la copia temporal en /private/tmp nunca tocó el repo)

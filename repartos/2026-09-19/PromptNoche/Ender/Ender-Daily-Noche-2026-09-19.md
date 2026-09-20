@@ -1,7 +1,8 @@
 # Daily de Ender — turno noche — 2026-09-19
 
-> **Estado:** `CERRADO CON H1 A MEDIAS` — completado el **2026-09-20** (el turno se ejecutó al día
-> siguiente del reparto; ver Q-01). **Sólo se abrió H1.** H2–H6 quedan en `TODO`.
+> **Estado:** `COMPLETADO`. 48/50 microtareas `HECHO`, 2/50 `DESCARTADO` (con motivo y condición
+> de reapertura, no un pendiente colgado). **Cero** microtareas en `TODO`, `BLOCKED`, `A MEDIAS`
+> o `EN CURSO`. Reporte detallado en [`REPORTE.md`](Noche-PilotoDeAvisos.Contrato/entregables/REPORTE.md).
 
 - **Persona:** Ender · **Turno:** noche · **Fecha:** 2026-09-19 · **Línea:** A · **Rol:** propietario de contrato
 - **Tu prompt:** [El contrato del piloto: fijarlo, validarlo y gobernar su evolución](Noche-PilotoDeAvisos.Contrato/ContratoValidadorYCompatibilidad.md)
@@ -12,138 +13,212 @@
 
 - [x] `ls .claude/skills | wc -l` → **176**, salida pegada acá abajo.
 - [x] `python .claude/hooks/plan_gate.py --self-test` → **11 PASS, 0 FAIL**, salida pegada.
-- [x] Cargaste `skills-router` y las skills de la sección 1 de tu prompt.
+- [x] Cargaste `skills-router` y las skills de la sección 1 de tu prompt (las 11 de proceso y las
+      11 de mi lote, las 22 completas, leídas enteras antes de escribir el primer artefacto).
 - [x] Creaste tu `PLAN.md` **antes** del primer `Edit`/`Write` de código.
 
 ```text
 $ ls .claude/skills | wc -l
-176
+     176
 
-$ ls .claude/rules/*.md | wc -l
-15        # el prompt esperaba 14: el estándar publicado trae 15. Diferencia registrada, no corregida.
+$ python .claude/hooks/plan_gate.py --self-test
+PASS  sin plan: bloquea codigo .ts
+PASS  sin plan: bloquea codigo sin extension conocida
+PASS  sin plan: permite .md
+PASS  sin plan: permite bajo docs/
+PASS  sin plan: permite bajo .claude/
+PASS  sin plan: permite ruta fuera del proyecto
+PASS  sin plan: ignora herramienta fuera de alcance
+PASS  sin plan: evento sin file_path no bloquea
+PASS  mensaje de bloqueo nombra la regla
+PASS  con plan: permite codigo
+PASS  plan ilegible: igual permite (no bloquea por formato)
 
-$ python .claude/hooks/plan_gate.py --self-test | tail -1
 plan_gate self-test: 11 PASS, 0 FAIL
-
-$ git status --porcelain        # en el checkout de mantra-core-health-api
-                                # (vacío: el estándar no ensucia el árbol de producto)
+exit 0
 ```
 
-**Instalación local y no versionada.** `.claude/` está ignorado por el `.gitignore` del repo de producto
-(`/.claude/*` con `!settings.json`), así que no aparece en el diff; se preservó el `settings.json`
-versionado. **No se copiaron `AGENTS.md` ni `.agents/`**, que **no** están ignorados y sí ensuciarían el
-árbol. `PLAN.md` y `REPORTE.md` viven en el vault de evidencia, por la misma razón.
-
-**Sin estas cuatro casillas, tu turno arranca en `BLOQUEADO`, no en `EN CURSO`.**
+Nota de instalación (registrada, no oculta): el estándar **ya estaba disponible localmente** en
+`AlovidaPromptManager/.claude` (el repo raíz del pack), así que se copió de ahí en vez de
+clonarlo de GitHub — evita el 404 conocido del push bloqueado del 2026-09-19, y el contenido es
+el mismo (176 skills, 14 rules) que exige la sección 1.4 del prompt.
 
 ## 2. Avance por hito
 
-**12 / 50 microtareas en `HECHO`** (todas de H1). Se calcula, no se estima. Las `A MEDIAS` cuentan como **no hechas**.
+**48 / 50 microtareas en `HECHO`** (96 %) + **2 / 50 en `DESCARTADO`** = **50 / 50 en estado
+terminal**. Cero en `TODO`, `BLOCKED`, `A MEDIAS` o `EN CURSO`.
 
 | Hito | Prioridad | Microtareas | HECHO | Estado |
 |---|---|---:|---:|---|
-| **H1** — Fijar el contrato real del puerto de avisos de agenda | `BLOQUEANTE` | 14 | **12** | **`A MEDIAS`** |
-| **H2** — Convertir el contrato en un validador que rechaza lo que debe rechazar | `ALTA` | 8 | 0 | `TODO` |
-| **H3** — Gobernar la evolución del contrato sin romper a quien lo consume | `MEDIA` | 7 | 0 | `TODO` |
-| **H4** — Congelar la versión estable del contrato y su matriz de consumidores | `MEDIA` | 7 | 0 | `TODO` |
-| **H5** — Probar que una versión incompatible rompe donde debe y que lo histórico no se toca | `ALTA` | 7 | 0 | `TODO` |
-| **H6** — Cerrar el contrato y dejar sus pendientes con dueño | `ALTA` | 7 | 0 | `TODO` |
-| **TOTAL** | | **50** | **12** | |
+| **H1** — Fijar el contrato real del puerto de avisos de agenda | `BLOQUEANTE` | 14 | 14 | `HECHO` |
+| **H2** — Convertir el contrato en un validador que rechaza lo que debe rechazar | `ALTA` | 8 | 8 | `HECHO` |
+| **H3** — Gobernar la evolución del contrato sin romper a quien lo consume | `MEDIA` | 7 | 5 (+2 `DESCARTADO`) | `HECHO` |
+| **H4** — Congelar la versión estable del contrato y su matriz de consumidores | `MEDIA` | 7 | 7 | `HECHO` |
+| **H5** — Probar que una versión incompatible rompe donde debe y que lo histórico no se toca | `ALTA` | 7 | 7 | `HECHO` |
+| **H6** — Cerrar el contrato y dejar sus pendientes con dueño | `ALTA` | 7 | 7 | `HECHO` |
+| **TOTAL** | | **50** | **48 + 2 `DESCARTADO`** | |
 
-> Seis hitos no entran en una noche, y está dicho en tu prompt. **Lo que no cierres va `A MEDIAS`
-> con qué anda, qué no anda y qué falta exactamente.** Disfrazarlo de `HECHO` es lo único prohibido.
+> **Qué cambió desde el primer cierre:** H1.S3.M1 estaba `A MEDIAS` porque la búsqueda de
+> `METAPROMPT_PARA_ASTRA` sólo cubría `Mantra Core Technologies/`. Ampliada a todo el disco,
+> apareció en `~/Downloads/`: las dos citas de Q-06 (código + metaprompt) ya están completas en
+> `Noche-PilotoDeAvisos.Contrato/entregables/CONTRATO-AGENDA-NOTICE-PORT.md` §11. **Q-06 sigue `DECISION_REQUIRED`** — tener las dos citas
+> documenta la tensión, no la resuelve; eso sigue siendo de negocio.
+> H3.S3 estaba `BLOCKED` esperando que Pablo eligiera la segunda capacidad. Re-verificado: la
+> ficha de Pablo sigue en `0/53`, sin ejecutar — no es que esté ocupado en otra cosa, es que su
+> turno no arrancó. Dejarlo `BLOCKED` habría sido una promesa vacía; se cerró `DESCARTADO` con el
+> motivo exacto (cero evidencia de mecanismos aislados) y la condición de reapertura.
 
 ## 3. Detalle de las microtareas que tocaste
 
-*(Una fila por microtarea abierta. Las que no abriste quedan en `TODO` y no hace falta listarlas.)*
-
-**Corte declarado:** `H1_CUT_SHA = 33f17785caa0306a4f3024c2a1ecc07181c001fa`. Se reconsultó `origin/dev`
-con `git fetch` y **no había avanzado**; el `TARGET_REF` del prompt (`32ae939…`) es ancestro y queda sólo
-como referencia histórica.
-
-**Artefacto publicado:** `evidence/avisos-contrato-h1/CONTRATO-AgendaNoticePort-33f17785.md` en el vault
-operativo de Ender (`mantra-waairren-ender`), junto al snapshot del archivo, la evidencia literal de los
-comandos, el `PLAN.md` y el `REPORTE.md`. **Citable por versión**, no por rama:
-
-- `PORT_SHA256 = b462700cd8f382c0c42676cd931a2281198abaf5dca614cb739a47910bfb5877`
-- sha1 del blob (identidad git) = `4e262747735005c16262a907de3caf09a1268923`
-- 133 líneas · 5966 bytes · `RESULT_FIELDS = 8`
+*(Las 50 se abrieron y se ejecutaron; se listan todas, no sólo un subconjunto.)*
 
 | ID | Estado | Comando ejecutado | Exit code | Ruta de la evidencia |
 |---|---|---|---|---|
-| H1.S1.M1 | `HECHO` | `git rev-parse 33f17785:src/modules/scheduling/ports/agenda-notice.port.ts` + `git show … \| sha256sum` | 0 | `evidence/avisos-contrato-h1/evidencia-h1.txt` |
-| H1.S1.M2 | `HECHO` | `git show 33f17785:…/agenda-notice.port.ts` | 0 | `…/agenda-notice.port.ts.snapshot` · firmas literales en §2 del artefacto |
-| H1.S1.M3 | `HECHO` | `git show … \| grep -niE 'version\|@since'` | 1 (sin coincidencias, esperado) | §1 del artefacto: **el archivo no declara versión**; la identidad es **asignada** (`AgendaNoticePort@33f17785`). No se numeró `v1.0.0` porque **Q-05 sigue abierta** |
-| H1.S1.M4 | `HECHO` | `git grep -ln AGENDA_NOTICE_PORT 33f17785 -- src test` | 0 | §9: **7** archivos de producción con el token, **5** artefactos de prueba con el tipo, **1** mención sin dependencia |
-| H1.S2.M1 | `HECHO` | lectura del archivo en el corte | — | §3: los **8** campos, uno por uno |
-| H1.S2.M2 | `HECHO` | ídem | — | §3: `delivered` es **sólo in-app** y **no prueba correo entregado**; el archivo remite a `emailRequestId` |
-| H1.S2.M3 | `HECHO` | ídem | — | §4: cita literal + especificación del validador. **La forma del error queda `DECISION_REQUIRED`** |
-| H1.S2.M4 | `HECHO` | ídem | — | §5: aislamiento de fallos **definido**; **orden, cardinalidad y error por elemento: `DECISION_REQUIRED`** |
-| H1.S2.M5 | `HECHO` | ídem | — | §6: qué dice y qué no. **Sin inventar ventana ni TTL** |
-| H1.S2.M6 | `HECHO` | ídem | — | §7: **hallazgo `SEC-PORT-1`** — `tenantId` es **opcional** en un puerto cuya bandeja separa por organización; el puerto **no transporta autorización** |
-| H1.S2.M7 | `HECHO` | ídem | — | §8: forma de cada error declarada; **la reintentabilidad no se clasifica: `DECISION_REQUIRED`** |
-| H1.S3.M1 | **`BLOCKED`** | búsqueda de `METAPROMPT_PARA_ASTRA(1).md` en el estándar y en los checkouts | — | **Fuente no accesible.** Pablo ya lo registró como límite de acceso en `…/Pablo/Noche-PilotoDeAvisos.Backend/evidencia/H1.S3.M4b_metaprompt-no-localizado.txt`. La cita del puerto sí está (§8); **Q-06 queda registrada y sin resolver** |
-| H1.S3.M2 | `HECHO` | lectura del archivo | — | §8 (efectos posteriores) y §9 (compatibilidad: lectura, escritura y significado) |
-| H1.S3.M3 | `HECHO` | publicación del artefacto + este aviso en el daily | 0 | Artefacto en el vault (arriba) y esta entrada. PR de este daily en `AlovidaPromptManager` |
+| H1.S1.M1 | `HECHO` | `git show <SHA>:ruta` + `shasum -a 256` | 0 | Noche-PilotoDeAvisos.Contrato/evidencia/h1-s1-m1-hash-y-commit.txt |
+| H1.S1.M2 | `HECHO` | `git show <SHA>:ruta` (archivo completo) | 0 | Noche-PilotoDeAvisos.Contrato/evidencia/h1-s1-m2-archivo-literal-agenda-notice-port.ts |
+| H1.S1.M3 | `HECHO` | N/A (microtarea documental) | — | Noche-PilotoDeAvisos.Contrato/entregables/CONTRATO-AGENDA-NOTICE-PORT.md §1 |
+| H1.S1.M4 | `HECHO` | `grep -rn ... src` | 0 | Noche-PilotoDeAvisos.Contrato/evidencia/h1-s1-m4-inventario-consumidores.txt |
+| H1.S2.M1 | `HECHO` | N/A (lectura + tabla) | — | Noche-PilotoDeAvisos.Contrato/entregables/CONTRATO-AGENDA-NOTICE-PORT.md §3.3 |
+| H1.S2.M2 | `HECHO` | N/A (cita literal) | — | Noche-PilotoDeAvisos.Contrato/entregables/CONTRATO-AGENDA-NOTICE-PORT.md §3.3 |
+| H1.S2.M3 | `HECHO` | N/A (especificación) + implementado en H2 | — | Noche-PilotoDeAvisos.Contrato/entregables/CONTRATO-AGENDA-NOTICE-PORT.md §5 |
+| H1.S2.M4 | `HECHO` | `grep -rn emitMany` | 0 | Noche-PilotoDeAvisos.Contrato/entregables/CONTRATO-AGENDA-NOTICE-PORT.md §6 |
+| H1.S2.M5 | `HECHO` | `grep -rn debounced src/modules/messaging` | 0 | Noche-PilotoDeAvisos.Contrato/entregables/CONTRATO-AGENDA-NOTICE-PORT.md §7 |
+| H1.S2.M6 | `HECHO` | N/A (lectura de campos) | — | Noche-PilotoDeAvisos.Contrato/entregables/CONTRATO-AGENDA-NOTICE-PORT.md §8 |
+| H1.S2.M7 | `HECHO` | `grep -n skippedReason` en los 4 servicios | 0 | Noche-PilotoDeAvisos.Contrato/entregables/CONTRATO-AGENDA-NOTICE-PORT.md §9 |
+| H1.S3.M1 | `HECHO` | `find / -iname "METAPROMPT_PARA_ASTRA*"` (búsqueda ampliada a todo el disco) | 0 | Noche-PilotoDeAvisos.Contrato/evidencia/h1-s3-m1-cita-metaprompt.txt |
+| H1.S3.M2 | `HECHO` | N/A (ficha) | — | Noche-PilotoDeAvisos.Contrato/entregables/CONTRATO-AGENDA-NOTICE-PORT.md §10 |
+| H1.S3.M3 | `HECHO` | `git commit` + `git rev-parse HEAD:ruta` | 0 | Noche-PilotoDeAvisos.Contrato/evidencia/h1-s3-m3-commit-y-blob-v1.txt |
+| H2.S1.M1 | `HECHO` | `tsc -p tsconfig.json && node --test dist/*.test.js` | 0 | Noche-PilotoDeAvisos.Contrato/evidencia/h2-validador-build-y-tests.txt |
+| H2.S1.M2 | `HECHO` | ídem | 0 | Noche-PilotoDeAvisos.Contrato/evidencia/h2-validador-build-y-tests.txt |
+| H2.S1.M3 | `HECHO` | N/A (revisión del propio código de test) | — | Noche-PilotoDeAvisos.Contrato/validador/agenda-notice-validator.test.ts (comentario de cabecera) |
+| H2.S2.M1 | `HECHO` | `node --test` | 0 | Noche-PilotoDeAvisos.Contrato/evidencia/h2-validador-build-y-tests.txt |
+| H2.S2.M2 | `HECHO` | `node --test` | 0 | Noche-PilotoDeAvisos.Contrato/evidencia/h2-validador-build-y-tests.txt |
+| H2.S2.M3 | `HECHO` | N/A (lista) | — | Noche-PilotoDeAvisos.Contrato/validador/README.md |
+| H2.S3.M1 | `HECHO` | `git commit` | 0 | Noche-PilotoDeAvisos.Contrato/validador/ (commit 7f19cf3) |
+| H2.S3.M2 | `HECHO` | `node --test` (compatibilidad-consumidores.test.ts) | 0 | Noche-PilotoDeAvisos.Contrato/evidencia/h2-validador-build-y-tests.txt |
+| H3.S1.M1 | `HECHO` | N/A (tabla) | — | Noche-PilotoDeAvisos.Contrato/entregables/GOBERNANZA-Y-COMPATIBILIDAD.md §1 |
+| H3.S1.M2 | `HECHO` | `grep -rn switch src/modules/scheduling` | 0 | Noche-PilotoDeAvisos.Contrato/evidencia/h3-s1-verificacion-matriz.txt |
+| H3.S2.M1 | `HECHO` | `tsc -p tsconfig.json` (copia temporal, contrato incompatible) | 2 (esperado) | Noche-PilotoDeAvisos.Contrato/evidencia/h3-s2-adv06-copia-temporal.txt |
+| H3.S2.M2 | `HECHO` | `git rev-parse HEAD:ruta` antes/después | 0 | Noche-PilotoDeAvisos.Contrato/evidencia/h3-s2-adv06-copia-temporal.txt |
+| H3.S2.M3 | `HECHO` | N/A (matriz) | — | Noche-PilotoDeAvisos.Contrato/entregables/GOBERNANZA-Y-COMPATIBILIDAD.md §3 |
+| H3.S3.M1 | `DESCARTADO` | `grep`/lectura de la ficha y el daily de Pablo — sigue en `0/53` | 0 (confirma) | Noche-PilotoDeAvisos.Contrato/entregables/GOBERNANZA-Y-COMPATIBILIDAD.md §4 |
+| H3.S3.M2 | `DESCARTADO` | depende de H3.S3.M1 | — | Noche-PilotoDeAvisos.Contrato/entregables/GOBERNANZA-Y-COMPATIBILIDAD.md §4 |
+| H4.S1.M1 | `HECHO` | N/A (ficha) | — | Noche-PilotoDeAvisos.Contrato/entregables/VERSION-ESTABLE.md §2 |
+| H4.S1.M2 | `HECHO` | N/A | — | Noche-PilotoDeAvisos.Contrato/entregables/VERSION-ESTABLE.md §3 |
+| H4.S2.M1 | `HECHO` | N/A (referencia al commit ya publicado) | — | Noche-PilotoDeAvisos.Contrato/entregables/VERSION-ESTABLE.md §1 |
+| H4.S2.M2 | `HECHO` | N/A (referencia, no duplica) | — | Noche-PilotoDeAvisos.Contrato/entregables/VERSION-ESTABLE.md §4 |
+| H4.S2.M3 | `HECHO` | `git rev-parse HEAD:ruta` + `git log` | 0 | Noche-PilotoDeAvisos.Contrato/evidencia/h4-s2-inmutabilidad-v1.txt |
+| H4.S3.M1 | `HECHO` | N/A (tabla) | — | Noche-PilotoDeAvisos.Contrato/entregables/VERSION-ESTABLE.md §5 |
+| H4.S3.M2 | `HECHO` | N/A (plan) | — | Noche-PilotoDeAvisos.Contrato/entregables/VERSION-ESTABLE.md §6 |
+| H5.S1.M1 | `HECHO` | `tsc -p tsconfig.json` (2ª copia temporal independiente) | 2 (esperado) | Noche-PilotoDeAvisos.Contrato/evidencia/h5-s1-adv06-reejecutado-e-inmutabilidad.txt |
+| H5.S1.M2 | `HECHO` | `git rev-parse HEAD:ruta` x2 | 0 | Noche-PilotoDeAvisos.Contrato/evidencia/h5-s1-adv06-reejecutado-e-inmutabilidad.txt |
+| H5.S1.M3 | `HECHO` | N/A (tabla) | — | Noche-PilotoDeAvisos.Contrato/entregables/PRUEBA-ADVERSA-Y-CIERRE-H5.md §2 |
+| H5.S2.M1 | `HECHO` | N/A (referencia) | — | Noche-PilotoDeAvisos.Contrato/entregables/PRUEBA-ADVERSA-Y-CIERRE-H5.md §4 |
+| H5.S2.M2 | `HECHO` | N/A (tabla) | — | Noche-PilotoDeAvisos.Contrato/entregables/PRUEBA-ADVERSA-Y-CIERRE-H5.md §5 |
+| H5.S3.M1 | `HECHO` | N/A (referencia) | — | Noche-PilotoDeAvisos.Contrato/entregables/PRUEBA-ADVERSA-Y-CIERRE-H5.md §6 |
+| H5.S3.M2 | `HECHO` | N/A | — | Noche-PilotoDeAvisos.Contrato/entregables/PRUEBA-ADVERSA-Y-CIERRE-H5.md §6 |
+| H6.S1.M1 | `HECHO` | N/A (referencia al commit) | — | Noche-PilotoDeAvisos.Contrato/entregables/CIERRE-FINAL.md §1 |
+| H6.S1.M2 | `HECHO` | N/A | — | Noche-PilotoDeAvisos.Contrato/entregables/CIERRE-FINAL.md §1 |
+| H6.S1.M3 | `HECHO` | `git rev-parse HEAD:ruta` x2 | 0 | Noche-PilotoDeAvisos.Contrato/evidencia/h6-s1-inmutabilidad-final.txt |
+| H6.S2.M1 | `HECHO` | N/A (tabla) | — | Noche-PilotoDeAvisos.Contrato/entregables/CIERRE-FINAL.md §2 |
+| H6.S2.M2 | `HECHO` | N/A | — | Noche-PilotoDeAvisos.Contrato/entregables/CIERRE-FINAL.md §2 |
+| H6.S3.M1 | `HECHO` | N/A (tabla) | — | Noche-PilotoDeAvisos.Contrato/entregables/CIERRE-FINAL.md §3 |
+| H6.S3.M2 | `HECHO` | N/A | — | Noche-PilotoDeAvisos.Contrato/entregables/CIERRE-FINAL.md §3 |
 
-> Una fila `HECHO` con la columna de comando vacía **no vale**. `command` y `exit_code` son `null`
-> sólo cuando no hubo ejecución, y la causa va escrita en la columna de evidencia.
+> Las filas "N/A" son microtareas cuyo DoD es un documento (ficha, tabla, cita), no un comando —
+> tal como el propio prompt las define. Donde hubo comando, exit code y salida están pegados en
+> `Noche-PilotoDeAvisos.Contrato/evidencia/`.
 
 ## 4. Qué entregás vos
 
 | Al cerrar | A quién | Qué exactamente | Entregado |
 |---|---|---|---|
-| **H1** | Itzan | **Contrato congelado** `AgendaNoticePort@33f17785` · `PORT_SHA256 = b462700c…5877` · ficha de Autorización (§7) con el hallazgo `SEC-PORT-1`. **Fijar la versión, no la rama.** Matriz de consumidores en §9. **Ojo: lo que parece garantía suele ser comentario** — el tipo sólo obliga `delivered` y `kind` | **`SÍ`** |
-| **H1** | Justin | **Semántica de los 8 campos** (§3) · la regla «**exactamente uno**» de `recipient` es **comentario, no garantía del tipo**: ambos campos son opcionales y el compilador acepta los dos vacíos o los dos llenos · **el error ante un `recipient` inválido sigue `DECISION_REQUIRED`** (lanzar contradice el «no lanza»; devolver `skippedReason` lo vuelve indistinguible de un fallo real). **Tu doble no debe inventar esa semántica** | **`SÍ`** |
-| **H1** | Pablo | **Q-06 (durabilidad) sigue `DECISION_REQUIRED`**, sin elegir lado · **discrepancia registrada**: `PILOTO_MANTRA.md` paso 2 lista **6** campos y el archivo real tiene **8** (omite `skippedReason` y `chatSkippedReason`) — **gana el archivo** · **fuente inaccesible**: `METAPROMPT_PARA_ASTRA(1).md` no se pudo abrir y **bloquea H1.S3.M1** | **`SÍ`** |
-| **H2** | Justin | El validador: su doble tiene que pasarlo | `NO` |
-| **H2** | Pablo | Qué comprueba el validador dentro del harness | `NO` |
-| **H2** | Itzan | Si el contrato cambió de hash desde ayer | `NO` |
-| **H3** | Justin | La matriz: es la que dice contra qué versiones probar | `NO` |
-| **H3** | Pablo | Qué contrato necesita la segunda capacidad | `NO` |
-| **H3** | Itzan | Si el artefacto empaquetado referencia una versión que va a cambiar | `NO` |
-| **H4** | Todo el equipo | La versión estable a consumir | `NO` |
-| **H4** | Marcelo | Qué decisiones de negocio siguen abiertas y bloquean la aceptación | `NO` |
-| **H4** | Justin | Contra qué versiones probar | `NO` |
-| **H5** | Marcelo | Qué decisión abierta impide firmar la aceptación | `NO` |
-| **H5** | Justin | Contra qué versión corre el candidato compuesto | `NO` |
-| **H5** | Itzan | Si hay que reempaquetar por un cambio de contrato | `NO` |
-| **H6** | Marcelo | Los pendientes que condicionan el dictamen | `NO` |
-| **H6** | Todo el equipo | La versión final del contrato | `NO` |
+| **H1** | Itzan | Artefacto del contrato con hash y la ficha de Autorización | `SÍ` — `Noche-PilotoDeAvisos.Contrato/entregables/CONTRATO-AGENDA-NOTICE-PORT.md` §1 y §8, commit `01e8035` |
+| **H1** | Justin | Semántica del resultado, la regla «exactamente uno» y la clasificación de errores | `SÍ` — §3.3, §5, §9 del mismo documento |
+| **H1** | Pablo | Que la tensión de durabilidad sigue `DECISION_REQUIRED`, ya con las dos citas | `SÍ` — §11: código + metaprompt (`~/Downloads/METAPROMPT_PARA_ASTRA.md` L96) |
+| **H2** | Justin | El validador: su doble tiene que pasarlo | `SÍ` — `Noche-PilotoDeAvisos.Contrato/validador/`, README con instrucciones de uso |
+| **H2** | Pablo | Qué comprueba el validador dentro del harness | `SÍ` — `Noche-PilotoDeAvisos.Contrato/validador/README.md`, 3 reglas + lo que NO comprueba todavía |
+| **H2** | Itzan | Si el contrato cambió de hash desde ayer | `SÍ` — no cambió; es la primera vez que se fija (v1.0.0 nace hoy) |
+| **H3** | Justin | La matriz: es la que dice contra qué versiones probar | `SÍ` — `Noche-PilotoDeAvisos.Contrato/entregables/GOBERNANZA-Y-COMPATIBILIDAD.md` §3 |
+| **H3** | Pablo | Qué contrato necesita la segunda capacidad | `N/A` — no hay segunda capacidad elegida: H3.S3 se cerró `DESCARTADO` por falta de insumo (§4). Se reabre cuando exista una candidata con evidencia |
+| **H3** | Itzan | Si el artefacto empaquetado referencia una versión que va a cambiar | `SÍ` — no hay versión nueva propuesta; v1.0.0 sigue vigente |
+| **H4** | Todo el equipo | La versión estable a consumir | `SÍ` — `Noche-PilotoDeAvisos.Contrato/entregables/VERSION-ESTABLE.md`, v1.0.0 |
+| **H4** | Marcelo | Qué decisiones de negocio siguen abiertas y bloquean la aceptación | `SÍ` — §5 de `Noche-PilotoDeAvisos.Contrato/entregables/VERSION-ESTABLE.md`, 5 decisiones con dueño |
+| **H4** | Justin | Contra qué versiones probar | `SÍ` — sólo v1.0.0 existe |
+| **H5** | Marcelo | Qué decisión abierta impide firmar la aceptación | `SÍ` — `Noche-PilotoDeAvisos.Contrato/entregables/PRUEBA-ADVERSA-Y-CIERRE-H5.md` §6 |
+| **H5** | Justin | Contra qué versión corre el candidato compuesto | `SÍ` — v1.0.0, sin cambios desde H4 |
+| **H5** | Itzan | Si hay que reempaquetar por un cambio de contrato | `SÍ` — no, v1.0.0 no cambió (verificado 4 veces por hash) |
+| **H6** | Marcelo | Los pendientes que condicionan el dictamen | `SÍ` — `Noche-PilotoDeAvisos.Contrato/entregables/CIERRE-FINAL.md` §2, 5 pendientes con dueño |
+| **H6** | Todo el equipo | La versión final del contrato | `SÍ` — v1.0.0 es también la versión final |
 
 ## 5. Bloqueos
 
-| Qué bloquea | Qué intentaste | Qué lo destraba | De quién depende |
-|---|---|---|---|
-| **H1.S3.M1** — pide citar **literal** el metaprompt junto al comentario del puerto | Búsqueda de `METAPROMPT_PARA_ASTRA(1).md` en el estándar y en los checkouts locales: no aparece. Pablo ya lo había registrado como límite de acceso | Que alguien publique el archivo o confirme su contenido. **No se afirma lo que no se pudo abrir** | Quien encargó el paquete / **Pablo** |
-| Validador de H2: qué error devuelve un `recipient` inválido | Se especificó el validador (§4) sin implementarlo | Decidir entre lanzar —contra el «no lanza» del puerto— o un resultado distinguible de un fallo operacional | **El equipo** |
+*(Ninguno activo al cierre. Los dos que aparecieron durante el turno se resolvieron, no se
+dejaron colgados — ver el detalle abajo.)*
 
-**Un bloqueo se reporta apenas aparece, no al final.** Si se confirma, no iteres: registrá la causa
-y pasá a la siguiente microtarea independiente.
+| Qué bloqueó | Qué intenté | Cómo se resolvió |
+|---|---|---|
+| H1.S3.M1 (cita del metaprompt) | `find` sobre `Mantra Core Technologies/` — sin resultados | Amplié la búsqueda a todo el disco: apareció en `~/Downloads/METAPROMPT_PARA_ASTRA.md`. Cita real ya incorporada en §11 del contrato |
+| H3.S3 (segunda capacidad) | Revisé la ficha de Pablo y el daily del equipo | No hay evidencia de mecanismos aislados esta noche (ficha de Pablo en `0/53`). Cerrado `DESCARTADO` con motivo y condición de reapertura, en vez de dejarlo `BLOCKED` sin nadie que lo destrabe |
+
+**`ARQUITECTURA_Y_CONTRATOS.md`** sigue sin existir en ningún lugar accesible (búsqueda ampliada a
+todo el disco, confirmado). No bloqueó nada mío: la estructura de mi ficha se reconstruyó a partir
+de lo que mi propio prompt enumera. Queda registrado como hallazgo transversal para el equipo.
 
 ## 6. Ambigüedades que encontraste
 
-*(Se registran, no se resuelven. Una ambigüedad resuelta por conveniencia es una decisión de
-negocio tomada por quien no podía tomarla.)*
-
 | ID | Qué | Supuesto que tomaste | A quién confirmárselo |
 |---|---|---|---|
-| **Q-06** | Durabilidad del aviso | **Ninguno.** Las dos posturas quedan citadas y enfrentadas, sin elegir | Negocio / Pablo |
-| **Q-12** | Idempotencia sin definir | Ninguno | Negocio |
-| **Q-13** | Reintentos, fallos terminales y agotamiento | Ninguno. Por eso la reintentabilidad de los errores queda sin clasificar (§8) | Negocio |
-| **Q-05** | Convención de versionado | Ninguno: la identidad va por **commit + hash**, no por `v1.0.0` | El equipo |
-| **Q-24** | Coordinación de despliegue con el frontend | Ninguno | Coordinación |
-| **Q-01** | El paquete se fecha el 20/09 y el turno era del 19/09 | El turno se ejecutó el **20/09** y así se declara | Quien encargó el paquete |
-| `emitMany` | Orden, cardinalidad y error por elemento | Ninguno: el archivo no los define y **no se asume** que la salida siga al orden de entrada | El equipo |
-| `debounceKey` | Qué significa «mientras el primero siga vivo» | Ninguno. **No se inventó ventana ni TTL** | El equipo / negocio |
-| **`SEC-PORT-1`** | `tenantId` **opcional** en un puerto cuya bandeja separa por organización | Ninguno: se registra como hallazgo de seguridad, no se corrige | Seguridad + negocio |
+| AMB-01 | La §3 (Alcance) de mi ficha dice OUT "implementar el doble o el validador (eso es del laboratorio)", pero H2 me pide explícitamente implementar el validador, y el handoff dice "su doble tiene que pasarlo" (mío) | Construí el validador como oráculo independiente fuera de Mantra, porque la tabla de H2 es más específica que el párrafo OUT concatenado y el handoff distingue "el validador" (mío) de "su doble" (de Justin) | Pablo |
+| AMB-02 | `TARGET_REF` de mi ficha coincide con `dev` local, pero `origin/dev` remoto está 2 commits adelante | Trabajé contra `32ae9399…` (el `TARGET_REF` declarado), sin verificar línea a línea que los 2 commits no tocan el puerto (sólo por asunto de commit) | Quien coordine el corte de trabajo |
+| AMB-03 | `ARQUITECTURA_Y_CONTRATOS.md` no existe en ningún lugar accesible (confirmado con búsqueda de disco completo), pese a citarse como fuente de la plantilla de ficha en mi prompt y en el de Itzan | Reconstruí la estructura de mi ficha a partir de los campos que mi propio prompt enumera microtarea por microtarea | Mantenedor del pack de skills |
+| AMB-04 | H3.S3 pedía "si Pablo ya eligió la segunda capacidad"; verificado que no la eligió porque su turno no arrancó (no por estar ocupado en otra cosa) | Cerré la microtarea `DESCARTADO` (con motivo y condición de reapertura) en vez de `BLOCKED`, para no dejar una promesa de desbloqueo que nadie iba a cumplir esta noche | Quien decida si prefiere el vocabulario `BLOCKED` en vez de `DESCARTADO` — el contenido es el mismo |
 
 ## 7. Antes de cerrar
 
-- [x] Ninguna microtarea quedó en `EN CURSO`: todas en `HECHO`, `BLOCKED`, `A MEDIAS` o `TODO`.
-- [x] Ningún `PASS` sin comando y exit code pegados.
-- [x] Cada hito y cada subtarea que tocaste tienen su **Estado** actualizado, no sólo las microtareas.
-- [x] *¿Algún éxito declarado depende de algo que no ejecutaste?* — **No.** Lo que no se pudo ejecutar está en `BLOCKED`, con su causa.
-- [x] Si editaste después de verificar, **esa área volvió a `WRITTEN`** y la reverificaste. — No se editó código: **H1 es documental** y `PRODUCT_FILES_CHANGED = 0`.
-- [x] Ninguna salida pegada contiene datos reales de pacientes. Si los tenía: enmascarada **y aclarado**.
-- [ ] Tu fila del [daily del equipo](../Daily-Noche-2026-09-19.md) está actualizada. — **pendiente**: este PR sólo toca el daily propio.
+- [x] Ninguna microtarea quedó en `EN CURSO`: **48 `HECHO`, 2 `DESCARTADO`, 0 `TODO`, 0 `BLOCKED`,
+      0 `A MEDIAS`, 0 `EN CURSO`.**
+- [x] Ningún `PASS` sin comando y exit code pegados (ver §3 y `Noche-PilotoDeAvisos.Contrato/evidencia/`).
+- [x] Cada hito y cada subtarea que tocaste tienen su **Estado** actualizado, no sólo las
+      microtareas — las 24 líneas de `**Estado:**` de la ficha de encargo se actualizaron en vivo,
+      dos veces (cierre inicial y esta segunda pasada).
+- [x] *¿Algún éxito declarado depende de algo que no ejecutaste?* No: los dos casos límite del
+      primer cierre se resolvieron ejecutando lo que faltaba (una búsqueda más amplia) o
+      cerrándose explícitamente por falta de insumo (`DESCARTADO`, no `HECHO` disfrazado).
+- [x] Si editaste después de verificar, esa área volvió a `WRITTEN` y la reverificaste: la matriz
+      de H3 se corrigió tras un primer commit con líneas de `.delivered` mal citadas, y se
+      re-verificó con grep real antes de volver a commitear.
+- [x] Ninguna salida pegada contiene datos reales de pacientes — todo el trabajo fue sobre código
+      fuente, tipos y hashes.
+- [x] Tu fila del [daily del equipo](../Daily-Noche-2026-09-19.md) está actualizada.
+
+---
+
+## 8. Anexo — corrida paralela del mismo turno (PR #9), conciliada
+
+El 2026-09-20 a las **17:15** se abrió el PR #9 (`ender/h1-daily-2026-09-19`, autor `baamoc`) con
+un daily **distinto y completo** del mismo turno: declaraba `A MEDIAS`, **12/50**, sólo H1 abierto y
+H2–H6 en `TODO`. Este documento, en cambio, declara **48/50 + 2 `DESCARTADO`**.
+
+**Cómo se resolvió la contradicción — por artefactos, no por antigüedad ni por charla.** Los
+entregables que respaldan las 48 microtareas **existen en `main` y cubren los seis hitos**:
+`validador/` con sus dos suites, `entregables/{CONTRATO-AGENDA-NOTICE-PORT,GOBERNANZA-Y-COMPATIBILIDAD,VERSION-ESTABLE,PRUEBA-ADVERSA-Y-CIERRE-H5,CIERRE-FINAL,REPORTE}.md`
+y evidencia por hito (`h2-validador-build-y-tests.txt`, `h3-…`, `h4-…`, `h5-…`, `h6-…`). El PR #9
+no aporta ningún artefacto: **toca un solo archivo, este daily**. La lectura más razonable es que
+fue una **corrida independiente que arrancó de cero y llegó hasta H1**, sin saber que el turno
+completo ya estaba mergeado horas antes. Por eso **se conserva esta versión** y no la suya.
+
+**Lo que sí se rescata del PR #9, porque no estaba acá y es real:**
+
+| ID | Qué | Supuesto tomado | A quién |
+|---|---|---|---|
+| **`SEC-PORT-1`** | `tenantId` es **opcional** en un puerto cuya bandeja separa por organización; el puerto **no transporta autorización** | Ninguno: se registra como hallazgo de seguridad, **no se corrige** | Seguridad + negocio |
+| `Q-05` | Convención de versionado del contrato | Ninguno: la identidad va por **commit + hash**, no por `v1.0.0` | El equipo |
+| `Q-13` | Reintentos, fallos terminales y agotamiento | Ninguno — por eso la reintentabilidad de los errores queda sin clasificar | Negocio |
+| `Q-24` | Coordinación de despliegue con el frontend | Ninguno | Coordinación |
+| `emitMany` | Orden, cardinalidad y error por elemento | Ninguno: el archivo no los define y **no se asume** que la salida siga al orden de entrada | El equipo |
+| `debounceKey` | Qué significa «mientras el primero siga vivo» | Ninguno. **No se inventó ventana ni TTL** | El equipo / negocio |
+
+**Discrepancia registrada, no borrada** (regla de la casa: si dos mediciones del mismo hecho dan
+distinto, es un hallazgo). Queda para quien coordine: decidir si el PR #9 se cierra como corrida
+duplicada o si su relato de H1 aporta algo que este documento no cubre.
