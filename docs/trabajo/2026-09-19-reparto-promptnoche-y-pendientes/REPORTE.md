@@ -7,7 +7,7 @@
   punteros de herramientas en `WRITTEN` (ninguna herramienta los cargó).
   El peldaño del trabajo es **el más bajo de sus áreas**, y la razón de que no sea `VERIFIED` está
   en "No cubierto".
-- Avance: **15 / 17 microtareas HECHO (88.2%)** — calculado con
+- Avance: **16 / 17 microtareas HECHO (94.1%)** — calculado con
   `python .claude/hooks/plan_status.py`, no estimado.
 
 ## Completado
@@ -27,6 +27,12 @@
 
 El reparto quedó con **67 microtareas repartidas entre 5 personas**, ninguna marcada como avanzada:
 el turno todavía no ocurrió y el documento no finge lo contrario.
+
+### H4 — El trabajo está commiteado
+
+| ID | Qué se logró | Comando | Resultado |
+|---|---|---|---|
+| H4.S1.M1 | Commit `c5c4a6f` con las 22 rutas nuevas de este trabajo, nada fuera de alcance | `git status --short` | **sin salida** (árbol limpio) |
 
 ### H3 — Las herramientas que el equipo usa encuentran el estándar
 
@@ -65,8 +71,7 @@ para evitar. Lo que no hacía falta, no se hizo, y está justificado por escrito
 
 | ID | Estado | Qué lo destraba |
 |---|---|---|
-| H4.S1.M1 | `TODO` | Nada: commit de este trabajo, se hace a continuación |
-| H4.S1.M2 | `TODO` | Nada: push autorizado explícitamente por el usuario en esta sesión |
+| H4.S1.M2 | **`BLOQUEADO`** | El **clasificador del modo automático de la sesión** rechazó `git push origin main` (`Out-of-Place Publication`). No lo rechazó el remoto ni el usuario: el usuario lo había autorizado explícitamente. Lo destraba que lo corra el usuario con `! git push origin main`, o que agregue la regla de permiso de Bash |
 | Ejecutar las tareas del reparto | `TODO` | Es el turno del equipo, no de esta sesión. Fuera de alcance por diseño |
 | Check requerido en protección de rama | `TODO` | Depende de que el workflow corra en verde al menos una vez |
 | `PromptDia/` del 2026-09-19 | `DESCARTADO` | No se pidió y no hay material que lo respalde. Solo se creó el turno que se llenó |
@@ -76,8 +81,11 @@ para evitar. Lo que no hacía falta, no se hizo, y está justificado por escrito
 
 ```text
 $ python .claude/hooks/plan_status.py --path docs/trabajo/2026-09-19-reparto-promptnoche-y-pendientes/PLAN.md
-  Avance: 15/17 microtareas HECHO  (88.2%)
-  Estados: TODO=2  HECHO=15
+  Avance: 16/17 microtareas HECHO  (94.1%)
+  Estados: HECHO=16  BLOQUEADO=1
+  Sin cerrar:
+    - H4.S1.M2: BLOQUEADO
+  REPORTE.md: completo
 
 $ python tools/check_reparto.py --self-test
 check_reparto self-test: 13 PASS, 0 FAIL
@@ -112,6 +120,18 @@ Ender=14  Itzan=14  Justin=13  Marcelo=13  Pablo=13   (total 67)
 
 $ ocurrencias de continue-on-error como clave (no en comentario)
 0
+
+$ git commit -F <mensaje>  &&  git status --short
+c5c4a6f feat: reparto PromptNoche 2026-09-19, candado de CI y puntero para Continue
+(git status sin salida: arbol limpio)
+
+$ git push origin main
+DENEGADO por el clasificador del modo automatico de la sesion: [Out-of-Place Publication]
+(no es un rechazo del remoto; el commit sigue solo en local)
+
+$ git rev-parse --short main ; git rev-parse --short origin/main
+c5c4a6f
+fatal: Needed a single revision     <- origin/main no existe localmente: nunca se pusheo
 ```
 
 Índice de `evidencia/`:
@@ -130,6 +150,8 @@ $ ocurrencias de continue-on-error como clave (no en comentario)
 
 Se hizo, pero **no se verificó**:
 
+- **Nada de esto está en GitHub todavía.** El push quedó bloqueado, así que el commit `c5c4a6f`
+  vive solo en esta máquina. Todo lo que sigue depende de que el push ocurra.
 - **El workflow nunca corrió en GitHub Actions.** Es la limitación más importante de este trabajo:
   como candado automático, **todavía no existe**. Solo existe como archivo.
 - **Nadie provocó deriva contra el workflow.** El kill-test de `sync_agents --check` es del trabajo

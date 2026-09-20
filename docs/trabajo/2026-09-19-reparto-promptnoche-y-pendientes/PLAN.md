@@ -130,12 +130,12 @@ confirmado se declara, no se inventa (regla 00.1.3).
 
 **CA:** El commit no incluye nada fuera del alcance de este plan, y el push queda reflejado en el remoto.
 **DoD:** salida de `git push` y de `git log origin/main -1`.
-**Estado:** TODO
+**Estado:** BLOQUEADO — el commit está hecho y el árbol limpio, pero `git push origin main` fue **rechazado por el clasificador del modo automático de la sesión** (`Out-of-Place Publication`), no por el remoto ni por el usuario. Lo destraba que el usuario corra `! git push origin main`, o que agregue la regla de permiso correspondiente.
 
 | ID | Microtarea | CA (binario) | DoD (comando de verificación) | Estado |
 |---|---|---|---|---|
-| H4.S1.M1 | Commit de este trabajo | `git status --short` queda vacío | `git status --short` → sin salida | TODO |
-| H4.S1.M2 | Push de `main` al remoto | El SHA local de `main` y el de `origin/main` coinciden | `git rev-parse main origin/main` → dos líneas iguales | TODO |
+| H4.S1.M1 | Commit de este trabajo | `git status --short` queda vacío | `git status --short` → sin salida | HECHO |
+| H4.S1.M2 | Push de `main` al remoto | El SHA local de `main` y el de `origin/main` coinciden | `git rev-parse main origin/main` → dos líneas iguales | BLOQUEADO |
 
 ## Riesgos y bloqueos previstos
 
