@@ -23,8 +23,8 @@ terminal**.
 | `VERSION-ESTABLE.md` | Versión estable congelada, pendientes con dueño (H4) |
 | `PRUEBA-ADVERSA-Y-CIERRE-H5.md` | ADV-06 reejecutado, matriz final, cierre H5 |
 | `CIERRE-FINAL.md` | Versión final, pendientes con dueño/fecha/consecuencia, riesgos residuales (H6) |
-| `validador/` | Oráculo runtime independiente: 3 reglas, 15 tests, README (H2) |
-| `evidencia/` | 14 archivos con salida literal de cada comando ejecutado |
+| `../validador/` | Oráculo runtime independiente: 3 reglas, 15 tests, README (H2) |
+| `../evidencia/` | 14 archivos con salida literal de cada comando ejecutado |
 | `Noche-PilotoDeAvisos.Contrato/ContratoValidadorYCompatibilidad.md` | Ficha de encargo original, con las 50 microtareas y 24 hitos/subtareas actualizados en vivo |
 
 Todo commiteado en `AlovidaPromptManager`, rama `ender/contrato-agenda-notice-port` (16 commits),
@@ -34,10 +34,10 @@ sin push (no se pidió publicar).
 
 | ID | Qué se logró | Comando | Resultado |
 |---|---|---|---|
-| H1.S1.M1 | Hash y commit del puerto congelados | `git show <SHA>:...` + `shasum -a 256` | PASS — `evidencia/h1-s1-m1-hash-y-commit.txt` |
-| H1.S1.M2 | Firmas literales de `AgendaNoticePort`/`emit`/`emitMany`/`AGENDA_NOTICE_PORT` pegadas | `git show` del archivo completo | PASS — `evidencia/h1-s1-m2-archivo-literal-agenda-notice-port.ts` |
+| H1.S1.M1 | Hash y commit del puerto congelados | `git show <SHA>:...` + `shasum -a 256` | PASS — `../evidencia/h1-s1-m1-hash-y-commit.txt` |
+| H1.S1.M2 | Firmas literales de `AgendaNoticePort`/`emit`/`emitMany`/`AGENDA_NOTICE_PORT` pegadas | `git show` del archivo completo | PASS — `../evidencia/h1-s1-m2-archivo-literal-agenda-notice-port.ts` |
 | H1.S1.M3 | Identidad de versión asignada (`v1.0.0`), no leída del archivo | Ficha §1 de `CONTRATO-AGENDA-NOTICE-PORT.md` | PASS — Estado `IMPLEMENTADO` explícito |
-| H1.S1.M4 | Inventario de 9 archivos consumidores | `grep -rn` sobre el corte | PASS — `evidencia/h1-s1-m4-inventario-consumidores.txt` |
+| H1.S1.M4 | Inventario de 9 archivos consumidores | `grep -rn` sobre el corte | PASS — `../evidencia/h1-s1-m4-inventario-consumidores.txt` |
 | H1.S2.M1 | Tabla de 8 campos reales de `AgendaNoticeResult` | Lectura literal + contraste contra el paquete (que listaba 6) | PASS — §3.3 del contrato |
 | H1.S2.M2 | `delivered` documentado como sólo-in-app, con cita | Cita literal L89-91 | PASS — §3.3 |
 | H1.S2.M3 | Regla exactamente-uno especificada como validación runtime | §5 del contrato + implementada en H2 | PASS |
@@ -45,30 +45,30 @@ sin push (no se pidió publicar).
 | H1.S2.M5 | `debounceKey`: cita + límite de confianza explícito, sin inventar TTL | Cita L74-78 + grep de `debounced` en `messaging` | PASS — §7 |
 | H1.S2.M6 | Ficha de Autorización con hallazgo de `tenantId` opcional | Lectura de campos + del adaptador | PASS — §8 |
 | H1.S2.M7 | Ficha de Errores: sin taxonomía tipificada, verificado que ningún consumidor compara por texto | `grep` de los 4 puntos de emisión | PASS — §9 |
-| **H1.S3.M1** | **Las dos citas de Q-06 completas**: código (L19-22 del puerto) + metaprompt (`~/Downloads/METAPROMPT_PARA_ASTRA.md` L96, encontrado en la segunda pasada). `DECISION_REQUIRED` sostenido, sin elegir un lado | `find` ampliado a todo el disco + `sed -n` del archivo real | PASS — `evidencia/h1-s3-m1-cita-metaprompt.txt`, §11 del contrato |
+| **H1.S3.M1** | **Las dos citas de Q-06 completas**: código (L19-22 del puerto) + metaprompt (`~/Downloads/METAPROMPT_PARA_ASTRA.md` L96, encontrado en la segunda pasada). `DECISION_REQUIRED` sostenido, sin elegir un lado | `find` ampliado a todo el disco + `sed -n` del archivo real | PASS — `../evidencia/h1-s3-m1-cita-metaprompt.txt`, §11 del contrato |
 | H1.S3.M2 | Ficha de Efectos posteriores + Compatibilidad | Lectura de L19-22 + L21-22 | PASS — §10 |
 | H1.S3.M3 | Snapshot v1.0.0 publicado con hash y commit | 3 commits en `AlovidaPromptManager` | PASS — §0/§14 del contrato |
-| H2.S1.M1 | `EXACTLY_ONE_RECIPIENT_FIELD` rechaza 0 y 2 campos | `node --test` | PASS — 2/2 casos, `evidencia/h2-validador-build-y-tests.txt` |
+| H2.S1.M1 | `EXACTLY_ONE_RECIPIENT_FIELD` rechaza 0 y 2 campos | `node --test` | PASS — 2/2 casos, `../evidencia/h2-validador-build-y-tests.txt` |
 | H2.S1.M2 | `RESULT_SHAPE_EXACT` detecta campo de más/de menos/tipo incorrecto | `node --test` | PASS — 4 casos |
 | H2.S1.M3 | Oráculo no se prueba a sí mismo (valores esperados tipeados a mano) | Revisión del propio test + comentario explícito | PASS |
 | H2.S2.M1 | Caso "estructura válida, semántica inválida" (ADV-03 sustituido por regla real, documentado por qué) | `node --test` | PASS — 2 casos |
 | H2.S2.M2 | "Respuesta incompatible del doble" combinando las 3 reglas | `node --test` | PASS — 2 casos |
-| H2.S2.M3 | Reglas que el validador NO puede comprobar, listadas con motivo | `validador/README.md` | PASS |
+| H2.S2.M3 | Reglas que el validador NO puede comprobar, listadas con motivo | `../validador/README.md` | PASS |
 | H2.S3.M1 | Artefacto de contrato versionado con hash publicado | commits en `AlovidaPromptManager` | PASS |
 | H2.S3.M2 | Compatibilidad de lectura probada contra 6 formas reales de `recipient` de los consumidores de H1 | `node --test` | PASS — 1 caso, 6 sub-verificaciones |
 | H3.S1.M1 | Clasificación lectura/escritura/significado con tabla | `GOBERNANZA-Y-COMPATIBILIDAD.md` §1 | PASS |
-| H3.S1.M2 | Caso real de "agregar/quitar valor de kind" citado y verificado (grep de switch) | `evidencia/h3-s1-verificacion-matriz.txt` | PASS |
-| H3.S2.M1 | ADV-06 en copia temporal: `tsc` falla exit 2 | `evidencia/h3-s2-adv06-copia-temporal.txt` | PASS |
+| H3.S1.M2 | Caso real de "agregar/quitar valor de kind" citado y verificado (grep de switch) | `../evidencia/h3-s1-verificacion-matriz.txt` | PASS |
+| H3.S2.M1 | ADV-06 en copia temporal: `tsc` falla exit 2 | `../evidencia/h3-s2-adv06-copia-temporal.txt` | PASS |
 | H3.S2.M2 | Artefactos históricos verificados idénticos (hash de blob) | `git rev-parse` antes/después | PASS |
 | H3.S2.M3 | Matriz consumidor × versión completa, sin celdas en blanco | `GOBERNANZA-Y-COMPATIBILIDAD.md` §3 | PASS |
 | H4.S1.M1 | Ficha completa, sin campos olvidados | `VERSION-ESTABLE.md` §2 | PASS |
 | H4.S1.M2 | Estado `IMPLEMENTADO` sin mezclar con `OBJETIVO ACORDADO` | `VERSION-ESTABLE.md` §3 | PASS |
 | H4.S2.M1 | Versión estable publicada con hash y commit | `VERSION-ESTABLE.md` §1 | PASS |
 | H4.S2.M2 | Matriz actualizada (referenciada, sin duplicar) | `VERSION-ESTABLE.md` §4 | PASS |
-| H4.S2.M3 | Versiones anteriores verificadas sin cambios | `evidencia/h4-s2-inmutabilidad-v1.txt` | PASS |
+| H4.S2.M3 | Versiones anteriores verificadas sin cambios | `../evidencia/h4-s2-inmutabilidad-v1.txt` | PASS |
 | H4.S3.M1 | `DECISION_REQUIRED` listados con dueño (5, tras cerrar la segunda capacidad aparte) | `VERSION-ESTABLE.md` §5 | PASS |
 | H4.S3.M2 | Plan de transición (expand/migrate/contract) para el reemplazo de P1 | `VERSION-ESTABLE.md` §6 | PASS |
-| H5.S1.M1 | ADV-06 reejecutado independientemente, mismo resultado | `evidencia/h5-s1-adv06-reejecutado-e-inmutabilidad.txt` | PASS |
+| H5.S1.M1 | ADV-06 reejecutado independientemente, mismo resultado | `../evidencia/h5-s1-adv06-reejecutado-e-inmutabilidad.txt` | PASS |
 | H5.S1.M2 | Inmutabilidad reverificada | mismo archivo | PASS |
 | H5.S1.M3 | Consumidor que falla y su error, tabulado | `PRUEBA-ADVERSA-Y-CIERRE-H5.md` §2 | PASS |
 | H5.S2.M1 | Matriz final, sin celdas en blanco | `PRUEBA-ADVERSA-Y-CIERRE-H5.md` §4 | PASS |
@@ -77,7 +77,7 @@ sin push (no se pidió publicar).
 | H5.S3.M2 | Estado final declarado sin mezclar categorías | `PRUEBA-ADVERSA-Y-CIERRE-H5.md` §6 | PASS |
 | H6.S1.M1 | Versión final publicada con hash y commit | `CIERRE-FINAL.md` §1 | PASS |
 | H6.S1.M2 | Ficha completa | `CIERRE-FINAL.md` §1 | PASS |
-| H6.S1.M3 | Inmutabilidad verificada una cuarta vez | `evidencia/h6-s1-inmutabilidad-final.txt` | PASS |
+| H6.S1.M3 | Inmutabilidad verificada una cuarta vez | `../evidencia/h6-s1-inmutabilidad-final.txt` | PASS |
 | H6.S2.M1 | 5 `DECISION_REQUIRED` listados, todos con dueño | `CIERRE-FINAL.md` §2 | PASS |
 | H6.S2.M2 | Consecuencia de no decidir, por pendiente | `CIERRE-FINAL.md` §2 | PASS |
 | H6.S3.M1 | 5 riesgos residuales con impacto y mitigación (o su ausencia) | `CIERRE-FINAL.md` §3 | PASS |
@@ -100,7 +100,7 @@ cerrado por ahora, reabrible con la evidencia correcta, no perdido.
 1. **Sustitución del caso "ADV-03: tenant incorrecto"** por `CHAT_FIELDS_ONLY_FOR_BOOKING_STATE_CHANGED`
    (H2.S2.M1). Motivo: el contrato no define qué hace a un tenant "correcto" a este nivel;
    inventar esa regla está prohibido por la propia ficha de encargo. Documentado en
-   `validador/README.md` y en el propio código del validador.
+   `../validador/README.md` y en el propio código del validador.
 2. **Corrección en caliente de la matriz de H3** (§3 de `GOBERNANZA-Y-COMPATIBILIDAD.md`): la
    primera redacción citaba líneas de `.delivered` en `scheduling-bookings.service.ts` y
    `scheduling-catalog.service.ts` sin haberlas verificado; el grep real mostró que esos dos
@@ -122,7 +122,7 @@ consumidores expuestos).
 
 ## Decisiones y ambigüedades
 
-1. **OUT vs H2 (validador/doble):** registrada y resuelta con evidencia en `PLAN.md`.
+1. **OUT vs H2 (../validador/doble):** registrada y resuelta con evidencia en `PLAN.md`.
 2. **`TARGET_REF` vs `origin/dev`:** `dev` local coincide con el `TARGET_REF` de la ficha; el
    remoto está 2 commits adelante, ninguno tocando el puerto según su asunto (no verificado por
    diff completo). Sigue siendo de quien coordine fijar cuál es el corte de trabajo definitivo,

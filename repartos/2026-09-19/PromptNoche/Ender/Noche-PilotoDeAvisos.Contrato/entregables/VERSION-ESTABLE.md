@@ -10,7 +10,7 @@ momento: es la misma ficha (`CONTRATO-AGENDA-NOTICE-PORT.md`), el mismo commit
 **Verificación de que no cambió** (H4.S2.M3): `git rev-parse HEAD:repartos/2026-09-19/PromptNoche/Ender/CONTRATO-AGENDA-NOTICE-PORT.md`
 = `de23711979b33e813d792ea53e501c6d24496197`, y `git log` sobre ese archivo muestra los 3
 commits de H1 (`b3f78f1`, `06dc335`, `01e8035`) y **ninguno posterior** — H2 y H3 no lo tocaron.
-Salida en `evidencia/h4-s2-inmutabilidad-v1.txt`.
+Salida en `../evidencia/h4-s2-inmutabilidad-v1.txt`.
 
 ## 2. Ficha completa — campos u omisión justificada (H4.S1.M1)
 

@@ -19,26 +19,26 @@ MEDIAS`/`EN CURSO`).
 
 ### Qué se avanzó
 
-- **Contrato v1.0.0 congelado** — [`CONTRATO-AGENDA-NOTICE-PORT.md`](repartos/2026-09-19/PromptNoche/Ender/CONTRATO-AGENDA-NOTICE-PORT.md):
+- **Contrato v1.0.0 congelado** — [`CONTRATO-AGENDA-NOTICE-PORT.md`](repartos/2026-09-19/PromptNoche/Ender/Noche-PilotoDeAvisos.Contrato/entregables/CONTRATO-AGENDA-NOTICE-PORT.md):
   hash y commit del puerto real (`agenda-notice.port.ts`, corte `32ae9399…`), semántica de los 8
   campos reales de `AgendaNoticeResult` (el paquete de origen omitía 2), separación explícita de
   qué garantiza el tipo TypeScript vs. qué es sólo un comentario JSDoc, y varios hallazgos:
   `tenantId` opcional sin enforcement, errores sin taxonomía tipificada, orden de `emitMany` no
   garantizado por la firma.
-- **Validador runtime independiente** — [`validador/`](repartos/2026-09-19/PromptNoche/Ender/validador/):
+- **Validador runtime independiente** — [`validador/`](repartos/2026-09-19/PromptNoche/Ender/Noche-PilotoDeAvisos.Contrato/validador/):
   oráculo en TypeScript/Node (sin dependencias de Mantra) que hace cumplir en runtime la regla
   "exactamente uno" de `recipient` que el tipo no impone, más dos reglas más. 15/15 tests reales
   en verde (`tsc` estricto + `node --test`).
-- **Gobernanza y compatibilidad** — [`GOBERNANZA-Y-COMPATIBILIDAD.md`](repartos/2026-09-19/PromptNoche/Ender/GOBERNANZA-Y-COMPATIBILIDAD.md):
+- **Gobernanza y compatibilidad** — [`GOBERNANZA-Y-COMPATIBILIDAD.md`](repartos/2026-09-19/PromptNoche/Ender/Noche-PilotoDeAvisos.Contrato/entregables/GOBERNANZA-Y-COMPATIBILIDAD.md):
   política de compatibilidad en 3 dimensiones (lectura/escritura/significado), prueba adversa
   ADV-06 ejecutada dos veces en copias temporales descartables (falló exactamente donde debía:
   `tsc` exit 2), inmutabilidad del artefacto histórico verificada 4 veces por hash de blob.
-- **Versión estable y cierre final** — [`VERSION-ESTABLE.md`](repartos/2026-09-19/PromptNoche/Ender/VERSION-ESTABLE.md),
-  [`PRUEBA-ADVERSA-Y-CIERRE-H5.md`](repartos/2026-09-19/PromptNoche/Ender/PRUEBA-ADVERSA-Y-CIERRE-H5.md),
-  [`CIERRE-FINAL.md`](repartos/2026-09-19/PromptNoche/Ender/CIERRE-FINAL.md): v1.0.0 promovida a
+- **Versión estable y cierre final** — [`VERSION-ESTABLE.md`](repartos/2026-09-19/PromptNoche/Ender/Noche-PilotoDeAvisos.Contrato/entregables/VERSION-ESTABLE.md),
+  [`PRUEBA-ADVERSA-Y-CIERRE-H5.md`](repartos/2026-09-19/PromptNoche/Ender/Noche-PilotoDeAvisos.Contrato/entregables/PRUEBA-ADVERSA-Y-CIERRE-H5.md),
+  [`CIERRE-FINAL.md`](repartos/2026-09-19/PromptNoche/Ender/Noche-PilotoDeAvisos.Contrato/entregables/CIERRE-FINAL.md): v1.0.0 promovida a
   estable y final, 5 decisiones de negocio pendientes con dueño y consecuencia, 5 riesgos
   residuales con impacto y consumidores expuestos.
-- **Reporte completo** — [`REPORTE.md`](repartos/2026-09-19/PromptNoche/Ender/REPORTE.md).
+- **Reporte completo** — [`REPORTE.md`](repartos/2026-09-19/PromptNoche/Ender/Noche-PilotoDeAvisos.Contrato/entregables/REPORTE.md).
 
 ### Dos hallazgos que salieron de una búsqueda incompleta, corregidos en la misma sesión
 

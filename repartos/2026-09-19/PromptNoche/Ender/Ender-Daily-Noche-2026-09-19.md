@@ -2,7 +2,7 @@
 
 > **Estado:** `COMPLETADO`. 48/50 microtareas `HECHO`, 2/50 `DESCARTADO` (con motivo y condición
 > de reapertura, no un pendiente colgado). **Cero** microtareas en `TODO`, `BLOCKED`, `A MEDIAS`
-> o `EN CURSO`. Reporte detallado en [`REPORTE.md`](Noche-PilotoDeAvisos.Contrato/REPORTE.md).
+> o `EN CURSO`. Reporte detallado en [`REPORTE.md`](Noche-PilotoDeAvisos.Contrato/entregables/REPORTE.md).
 
 - **Persona:** Ender · **Turno:** noche · **Fecha:** 2026-09-19 · **Línea:** A · **Rol:** propietario de contrato
 - **Tu prompt:** [El contrato del piloto: fijarlo, validarlo y gobernar su evolución](Noche-PilotoDeAvisos.Contrato/ContratoValidadorYCompatibilidad.md)
@@ -61,7 +61,7 @@ terminal**. Cero en `TODO`, `BLOCKED`, `A MEDIAS` o `EN CURSO`.
 > **Qué cambió desde el primer cierre:** H1.S3.M1 estaba `A MEDIAS` porque la búsqueda de
 > `METAPROMPT_PARA_ASTRA` sólo cubría `Mantra Core Technologies/`. Ampliada a todo el disco,
 > apareció en `~/Downloads/`: las dos citas de Q-06 (código + metaprompt) ya están completas en
-> `Noche-PilotoDeAvisos.Contrato/CONTRATO-AGENDA-NOTICE-PORT.md` §11. **Q-06 sigue `DECISION_REQUIRED`** — tener las dos citas
+> `Noche-PilotoDeAvisos.Contrato/entregables/CONTRATO-AGENDA-NOTICE-PORT.md` §11. **Q-06 sigue `DECISION_REQUIRED`** — tener las dos citas
 > documenta la tensión, no la resuelve; eso sigue siendo de negocio.
 > H3.S3 estaba `BLOCKED` esperando que Pablo eligiera la segunda capacidad. Re-verificado: la
 > ficha de Pablo sigue en `0/53`, sin ejecutar — no es que esté ocupado en otra cosa, es que su
@@ -76,17 +76,17 @@ terminal**. Cero en `TODO`, `BLOCKED`, `A MEDIAS` o `EN CURSO`.
 |---|---|---|---|---|
 | H1.S1.M1 | `HECHO` | `git show <SHA>:ruta` + `shasum -a 256` | 0 | Noche-PilotoDeAvisos.Contrato/evidencia/h1-s1-m1-hash-y-commit.txt |
 | H1.S1.M2 | `HECHO` | `git show <SHA>:ruta` (archivo completo) | 0 | Noche-PilotoDeAvisos.Contrato/evidencia/h1-s1-m2-archivo-literal-agenda-notice-port.ts |
-| H1.S1.M3 | `HECHO` | N/A (microtarea documental) | — | Noche-PilotoDeAvisos.Contrato/CONTRATO-AGENDA-NOTICE-PORT.md §1 |
+| H1.S1.M3 | `HECHO` | N/A (microtarea documental) | — | Noche-PilotoDeAvisos.Contrato/entregables/CONTRATO-AGENDA-NOTICE-PORT.md §1 |
 | H1.S1.M4 | `HECHO` | `grep -rn ... src` | 0 | Noche-PilotoDeAvisos.Contrato/evidencia/h1-s1-m4-inventario-consumidores.txt |
-| H1.S2.M1 | `HECHO` | N/A (lectura + tabla) | — | Noche-PilotoDeAvisos.Contrato/CONTRATO-AGENDA-NOTICE-PORT.md §3.3 |
-| H1.S2.M2 | `HECHO` | N/A (cita literal) | — | Noche-PilotoDeAvisos.Contrato/CONTRATO-AGENDA-NOTICE-PORT.md §3.3 |
-| H1.S2.M3 | `HECHO` | N/A (especificación) + implementado en H2 | — | Noche-PilotoDeAvisos.Contrato/CONTRATO-AGENDA-NOTICE-PORT.md §5 |
-| H1.S2.M4 | `HECHO` | `grep -rn emitMany` | 0 | Noche-PilotoDeAvisos.Contrato/CONTRATO-AGENDA-NOTICE-PORT.md §6 |
-| H1.S2.M5 | `HECHO` | `grep -rn debounced src/modules/messaging` | 0 | Noche-PilotoDeAvisos.Contrato/CONTRATO-AGENDA-NOTICE-PORT.md §7 |
-| H1.S2.M6 | `HECHO` | N/A (lectura de campos) | — | Noche-PilotoDeAvisos.Contrato/CONTRATO-AGENDA-NOTICE-PORT.md §8 |
-| H1.S2.M7 | `HECHO` | `grep -n skippedReason` en los 4 servicios | 0 | Noche-PilotoDeAvisos.Contrato/CONTRATO-AGENDA-NOTICE-PORT.md §9 |
+| H1.S2.M1 | `HECHO` | N/A (lectura + tabla) | — | Noche-PilotoDeAvisos.Contrato/entregables/CONTRATO-AGENDA-NOTICE-PORT.md §3.3 |
+| H1.S2.M2 | `HECHO` | N/A (cita literal) | — | Noche-PilotoDeAvisos.Contrato/entregables/CONTRATO-AGENDA-NOTICE-PORT.md §3.3 |
+| H1.S2.M3 | `HECHO` | N/A (especificación) + implementado en H2 | — | Noche-PilotoDeAvisos.Contrato/entregables/CONTRATO-AGENDA-NOTICE-PORT.md §5 |
+| H1.S2.M4 | `HECHO` | `grep -rn emitMany` | 0 | Noche-PilotoDeAvisos.Contrato/entregables/CONTRATO-AGENDA-NOTICE-PORT.md §6 |
+| H1.S2.M5 | `HECHO` | `grep -rn debounced src/modules/messaging` | 0 | Noche-PilotoDeAvisos.Contrato/entregables/CONTRATO-AGENDA-NOTICE-PORT.md §7 |
+| H1.S2.M6 | `HECHO` | N/A (lectura de campos) | — | Noche-PilotoDeAvisos.Contrato/entregables/CONTRATO-AGENDA-NOTICE-PORT.md §8 |
+| H1.S2.M7 | `HECHO` | `grep -n skippedReason` en los 4 servicios | 0 | Noche-PilotoDeAvisos.Contrato/entregables/CONTRATO-AGENDA-NOTICE-PORT.md §9 |
 | H1.S3.M1 | `HECHO` | `find / -iname "METAPROMPT_PARA_ASTRA*"` (búsqueda ampliada a todo el disco) | 0 | Noche-PilotoDeAvisos.Contrato/evidencia/h1-s3-m1-cita-metaprompt.txt |
-| H1.S3.M2 | `HECHO` | N/A (ficha) | — | Noche-PilotoDeAvisos.Contrato/CONTRATO-AGENDA-NOTICE-PORT.md §10 |
+| H1.S3.M2 | `HECHO` | N/A (ficha) | — | Noche-PilotoDeAvisos.Contrato/entregables/CONTRATO-AGENDA-NOTICE-PORT.md §10 |
 | H1.S3.M3 | `HECHO` | `git commit` + `git rev-parse HEAD:ruta` | 0 | Noche-PilotoDeAvisos.Contrato/evidencia/h1-s3-m3-commit-y-blob-v1.txt |
 | H2.S1.M1 | `HECHO` | `tsc -p tsconfig.json && node --test dist/*.test.js` | 0 | Noche-PilotoDeAvisos.Contrato/evidencia/h2-validador-build-y-tests.txt |
 | H2.S1.M2 | `HECHO` | ídem | 0 | Noche-PilotoDeAvisos.Contrato/evidencia/h2-validador-build-y-tests.txt |
@@ -96,34 +96,34 @@ terminal**. Cero en `TODO`, `BLOCKED`, `A MEDIAS` o `EN CURSO`.
 | H2.S2.M3 | `HECHO` | N/A (lista) | — | Noche-PilotoDeAvisos.Contrato/validador/README.md |
 | H2.S3.M1 | `HECHO` | `git commit` | 0 | Noche-PilotoDeAvisos.Contrato/validador/ (commit 7f19cf3) |
 | H2.S3.M2 | `HECHO` | `node --test` (compatibilidad-consumidores.test.ts) | 0 | Noche-PilotoDeAvisos.Contrato/evidencia/h2-validador-build-y-tests.txt |
-| H3.S1.M1 | `HECHO` | N/A (tabla) | — | Noche-PilotoDeAvisos.Contrato/GOBERNANZA-Y-COMPATIBILIDAD.md §1 |
+| H3.S1.M1 | `HECHO` | N/A (tabla) | — | Noche-PilotoDeAvisos.Contrato/entregables/GOBERNANZA-Y-COMPATIBILIDAD.md §1 |
 | H3.S1.M2 | `HECHO` | `grep -rn switch src/modules/scheduling` | 0 | Noche-PilotoDeAvisos.Contrato/evidencia/h3-s1-verificacion-matriz.txt |
 | H3.S2.M1 | `HECHO` | `tsc -p tsconfig.json` (copia temporal, contrato incompatible) | 2 (esperado) | Noche-PilotoDeAvisos.Contrato/evidencia/h3-s2-adv06-copia-temporal.txt |
 | H3.S2.M2 | `HECHO` | `git rev-parse HEAD:ruta` antes/después | 0 | Noche-PilotoDeAvisos.Contrato/evidencia/h3-s2-adv06-copia-temporal.txt |
-| H3.S2.M3 | `HECHO` | N/A (matriz) | — | Noche-PilotoDeAvisos.Contrato/GOBERNANZA-Y-COMPATIBILIDAD.md §3 |
-| H3.S3.M1 | `DESCARTADO` | `grep`/lectura de la ficha y el daily de Pablo — sigue en `0/53` | 0 (confirma) | Noche-PilotoDeAvisos.Contrato/GOBERNANZA-Y-COMPATIBILIDAD.md §4 |
-| H3.S3.M2 | `DESCARTADO` | depende de H3.S3.M1 | — | Noche-PilotoDeAvisos.Contrato/GOBERNANZA-Y-COMPATIBILIDAD.md §4 |
-| H4.S1.M1 | `HECHO` | N/A (ficha) | — | Noche-PilotoDeAvisos.Contrato/VERSION-ESTABLE.md §2 |
-| H4.S1.M2 | `HECHO` | N/A | — | Noche-PilotoDeAvisos.Contrato/VERSION-ESTABLE.md §3 |
-| H4.S2.M1 | `HECHO` | N/A (referencia al commit ya publicado) | — | Noche-PilotoDeAvisos.Contrato/VERSION-ESTABLE.md §1 |
-| H4.S2.M2 | `HECHO` | N/A (referencia, no duplica) | — | Noche-PilotoDeAvisos.Contrato/VERSION-ESTABLE.md §4 |
+| H3.S2.M3 | `HECHO` | N/A (matriz) | — | Noche-PilotoDeAvisos.Contrato/entregables/GOBERNANZA-Y-COMPATIBILIDAD.md §3 |
+| H3.S3.M1 | `DESCARTADO` | `grep`/lectura de la ficha y el daily de Pablo — sigue en `0/53` | 0 (confirma) | Noche-PilotoDeAvisos.Contrato/entregables/GOBERNANZA-Y-COMPATIBILIDAD.md §4 |
+| H3.S3.M2 | `DESCARTADO` | depende de H3.S3.M1 | — | Noche-PilotoDeAvisos.Contrato/entregables/GOBERNANZA-Y-COMPATIBILIDAD.md §4 |
+| H4.S1.M1 | `HECHO` | N/A (ficha) | — | Noche-PilotoDeAvisos.Contrato/entregables/VERSION-ESTABLE.md §2 |
+| H4.S1.M2 | `HECHO` | N/A | — | Noche-PilotoDeAvisos.Contrato/entregables/VERSION-ESTABLE.md §3 |
+| H4.S2.M1 | `HECHO` | N/A (referencia al commit ya publicado) | — | Noche-PilotoDeAvisos.Contrato/entregables/VERSION-ESTABLE.md §1 |
+| H4.S2.M2 | `HECHO` | N/A (referencia, no duplica) | — | Noche-PilotoDeAvisos.Contrato/entregables/VERSION-ESTABLE.md §4 |
 | H4.S2.M3 | `HECHO` | `git rev-parse HEAD:ruta` + `git log` | 0 | Noche-PilotoDeAvisos.Contrato/evidencia/h4-s2-inmutabilidad-v1.txt |
-| H4.S3.M1 | `HECHO` | N/A (tabla) | — | Noche-PilotoDeAvisos.Contrato/VERSION-ESTABLE.md §5 |
-| H4.S3.M2 | `HECHO` | N/A (plan) | — | Noche-PilotoDeAvisos.Contrato/VERSION-ESTABLE.md §6 |
+| H4.S3.M1 | `HECHO` | N/A (tabla) | — | Noche-PilotoDeAvisos.Contrato/entregables/VERSION-ESTABLE.md §5 |
+| H4.S3.M2 | `HECHO` | N/A (plan) | — | Noche-PilotoDeAvisos.Contrato/entregables/VERSION-ESTABLE.md §6 |
 | H5.S1.M1 | `HECHO` | `tsc -p tsconfig.json` (2ª copia temporal independiente) | 2 (esperado) | Noche-PilotoDeAvisos.Contrato/evidencia/h5-s1-adv06-reejecutado-e-inmutabilidad.txt |
 | H5.S1.M2 | `HECHO` | `git rev-parse HEAD:ruta` x2 | 0 | Noche-PilotoDeAvisos.Contrato/evidencia/h5-s1-adv06-reejecutado-e-inmutabilidad.txt |
-| H5.S1.M3 | `HECHO` | N/A (tabla) | — | Noche-PilotoDeAvisos.Contrato/PRUEBA-ADVERSA-Y-CIERRE-H5.md §2 |
-| H5.S2.M1 | `HECHO` | N/A (referencia) | — | Noche-PilotoDeAvisos.Contrato/PRUEBA-ADVERSA-Y-CIERRE-H5.md §4 |
-| H5.S2.M2 | `HECHO` | N/A (tabla) | — | Noche-PilotoDeAvisos.Contrato/PRUEBA-ADVERSA-Y-CIERRE-H5.md §5 |
-| H5.S3.M1 | `HECHO` | N/A (referencia) | — | Noche-PilotoDeAvisos.Contrato/PRUEBA-ADVERSA-Y-CIERRE-H5.md §6 |
-| H5.S3.M2 | `HECHO` | N/A | — | Noche-PilotoDeAvisos.Contrato/PRUEBA-ADVERSA-Y-CIERRE-H5.md §6 |
-| H6.S1.M1 | `HECHO` | N/A (referencia al commit) | — | Noche-PilotoDeAvisos.Contrato/CIERRE-FINAL.md §1 |
-| H6.S1.M2 | `HECHO` | N/A | — | Noche-PilotoDeAvisos.Contrato/CIERRE-FINAL.md §1 |
+| H5.S1.M3 | `HECHO` | N/A (tabla) | — | Noche-PilotoDeAvisos.Contrato/entregables/PRUEBA-ADVERSA-Y-CIERRE-H5.md §2 |
+| H5.S2.M1 | `HECHO` | N/A (referencia) | — | Noche-PilotoDeAvisos.Contrato/entregables/PRUEBA-ADVERSA-Y-CIERRE-H5.md §4 |
+| H5.S2.M2 | `HECHO` | N/A (tabla) | — | Noche-PilotoDeAvisos.Contrato/entregables/PRUEBA-ADVERSA-Y-CIERRE-H5.md §5 |
+| H5.S3.M1 | `HECHO` | N/A (referencia) | — | Noche-PilotoDeAvisos.Contrato/entregables/PRUEBA-ADVERSA-Y-CIERRE-H5.md §6 |
+| H5.S3.M2 | `HECHO` | N/A | — | Noche-PilotoDeAvisos.Contrato/entregables/PRUEBA-ADVERSA-Y-CIERRE-H5.md §6 |
+| H6.S1.M1 | `HECHO` | N/A (referencia al commit) | — | Noche-PilotoDeAvisos.Contrato/entregables/CIERRE-FINAL.md §1 |
+| H6.S1.M2 | `HECHO` | N/A | — | Noche-PilotoDeAvisos.Contrato/entregables/CIERRE-FINAL.md §1 |
 | H6.S1.M3 | `HECHO` | `git rev-parse HEAD:ruta` x2 | 0 | Noche-PilotoDeAvisos.Contrato/evidencia/h6-s1-inmutabilidad-final.txt |
-| H6.S2.M1 | `HECHO` | N/A (tabla) | — | Noche-PilotoDeAvisos.Contrato/CIERRE-FINAL.md §2 |
-| H6.S2.M2 | `HECHO` | N/A | — | Noche-PilotoDeAvisos.Contrato/CIERRE-FINAL.md §2 |
-| H6.S3.M1 | `HECHO` | N/A (tabla) | — | Noche-PilotoDeAvisos.Contrato/CIERRE-FINAL.md §3 |
-| H6.S3.M2 | `HECHO` | N/A | — | Noche-PilotoDeAvisos.Contrato/CIERRE-FINAL.md §3 |
+| H6.S2.M1 | `HECHO` | N/A (tabla) | — | Noche-PilotoDeAvisos.Contrato/entregables/CIERRE-FINAL.md §2 |
+| H6.S2.M2 | `HECHO` | N/A | — | Noche-PilotoDeAvisos.Contrato/entregables/CIERRE-FINAL.md §2 |
+| H6.S3.M1 | `HECHO` | N/A (tabla) | — | Noche-PilotoDeAvisos.Contrato/entregables/CIERRE-FINAL.md §3 |
+| H6.S3.M2 | `HECHO` | N/A | — | Noche-PilotoDeAvisos.Contrato/entregables/CIERRE-FINAL.md §3 |
 
 > Las filas "N/A" son microtareas cuyo DoD es un documento (ficha, tabla, cita), no un comando —
 > tal como el propio prompt las define. Donde hubo comando, exit code y salida están pegados en
@@ -133,22 +133,22 @@ terminal**. Cero en `TODO`, `BLOCKED`, `A MEDIAS` o `EN CURSO`.
 
 | Al cerrar | A quién | Qué exactamente | Entregado |
 |---|---|---|---|
-| **H1** | Itzan | Artefacto del contrato con hash y la ficha de Autorización | `SÍ` — `Noche-PilotoDeAvisos.Contrato/CONTRATO-AGENDA-NOTICE-PORT.md` §1 y §8, commit `01e8035` |
+| **H1** | Itzan | Artefacto del contrato con hash y la ficha de Autorización | `SÍ` — `Noche-PilotoDeAvisos.Contrato/entregables/CONTRATO-AGENDA-NOTICE-PORT.md` §1 y §8, commit `01e8035` |
 | **H1** | Justin | Semántica del resultado, la regla «exactamente uno» y la clasificación de errores | `SÍ` — §3.3, §5, §9 del mismo documento |
 | **H1** | Pablo | Que la tensión de durabilidad sigue `DECISION_REQUIRED`, ya con las dos citas | `SÍ` — §11: código + metaprompt (`~/Downloads/METAPROMPT_PARA_ASTRA.md` L96) |
 | **H2** | Justin | El validador: su doble tiene que pasarlo | `SÍ` — `Noche-PilotoDeAvisos.Contrato/validador/`, README con instrucciones de uso |
 | **H2** | Pablo | Qué comprueba el validador dentro del harness | `SÍ` — `Noche-PilotoDeAvisos.Contrato/validador/README.md`, 3 reglas + lo que NO comprueba todavía |
 | **H2** | Itzan | Si el contrato cambió de hash desde ayer | `SÍ` — no cambió; es la primera vez que se fija (v1.0.0 nace hoy) |
-| **H3** | Justin | La matriz: es la que dice contra qué versiones probar | `SÍ` — `Noche-PilotoDeAvisos.Contrato/GOBERNANZA-Y-COMPATIBILIDAD.md` §3 |
+| **H3** | Justin | La matriz: es la que dice contra qué versiones probar | `SÍ` — `Noche-PilotoDeAvisos.Contrato/entregables/GOBERNANZA-Y-COMPATIBILIDAD.md` §3 |
 | **H3** | Pablo | Qué contrato necesita la segunda capacidad | `N/A` — no hay segunda capacidad elegida: H3.S3 se cerró `DESCARTADO` por falta de insumo (§4). Se reabre cuando exista una candidata con evidencia |
 | **H3** | Itzan | Si el artefacto empaquetado referencia una versión que va a cambiar | `SÍ` — no hay versión nueva propuesta; v1.0.0 sigue vigente |
-| **H4** | Todo el equipo | La versión estable a consumir | `SÍ` — `Noche-PilotoDeAvisos.Contrato/VERSION-ESTABLE.md`, v1.0.0 |
-| **H4** | Marcelo | Qué decisiones de negocio siguen abiertas y bloquean la aceptación | `SÍ` — §5 de `Noche-PilotoDeAvisos.Contrato/VERSION-ESTABLE.md`, 5 decisiones con dueño |
+| **H4** | Todo el equipo | La versión estable a consumir | `SÍ` — `Noche-PilotoDeAvisos.Contrato/entregables/VERSION-ESTABLE.md`, v1.0.0 |
+| **H4** | Marcelo | Qué decisiones de negocio siguen abiertas y bloquean la aceptación | `SÍ` — §5 de `Noche-PilotoDeAvisos.Contrato/entregables/VERSION-ESTABLE.md`, 5 decisiones con dueño |
 | **H4** | Justin | Contra qué versiones probar | `SÍ` — sólo v1.0.0 existe |
-| **H5** | Marcelo | Qué decisión abierta impide firmar la aceptación | `SÍ` — `Noche-PilotoDeAvisos.Contrato/PRUEBA-ADVERSA-Y-CIERRE-H5.md` §6 |
+| **H5** | Marcelo | Qué decisión abierta impide firmar la aceptación | `SÍ` — `Noche-PilotoDeAvisos.Contrato/entregables/PRUEBA-ADVERSA-Y-CIERRE-H5.md` §6 |
 | **H5** | Justin | Contra qué versión corre el candidato compuesto | `SÍ` — v1.0.0, sin cambios desde H4 |
 | **H5** | Itzan | Si hay que reempaquetar por un cambio de contrato | `SÍ` — no, v1.0.0 no cambió (verificado 4 veces por hash) |
-| **H6** | Marcelo | Los pendientes que condicionan el dictamen | `SÍ` — `Noche-PilotoDeAvisos.Contrato/CIERRE-FINAL.md` §2, 5 pendientes con dueño |
+| **H6** | Marcelo | Los pendientes que condicionan el dictamen | `SÍ` — `Noche-PilotoDeAvisos.Contrato/entregables/CIERRE-FINAL.md` §2, 5 pendientes con dueño |
 | **H6** | Todo el equipo | La versión final del contrato | `SÍ` — v1.0.0 es también la versión final |
 
 ## 5. Bloqueos

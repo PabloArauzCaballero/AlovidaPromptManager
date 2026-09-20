@@ -22,7 +22,7 @@ $ git rev-parse HEAD:repartos/2026-09-19/PromptNoche/Ender/CONTRATO-AGENDA-NOTIC
 de23711979b33e813d792ea53e501c6d24496197
 ```
 
-(ver `evidencia/h6-s1-inmutabilidad-final.txt`)
+(ver `../evidencia/h6-s1-inmutabilidad-final.txt`)
 
 ## 2. Pendientes, con dueño, fecha objetivo y consecuencia (H6.S2)
 

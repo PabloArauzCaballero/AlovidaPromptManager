@@ -51,7 +51,7 @@ consumidor-real-simulado.ts(22,5): error TS2561: Object literal may only specify
 exit 2
 ```
 
-Salida completa en `evidencia/h3-s2-adv06-copia-temporal.txt`.
+Salida completa en `../evidencia/h3-s2-adv06-copia-temporal.txt`.
 
 **Verificación de inmutabilidad histórica:** el hash de blob del artefacto real
 (`agenda-notice.types.ts` en el commit `7f19cf3…`) es idéntico antes y después de correr ADV-06

@@ -14,14 +14,14 @@ en vivo (la ficha original queda como fuente de la especificación, no del avanc
 - Repos: `mantra-core-health-api` (solo lectura, worktree propio) · `AlovidaPromptManager`
   (escritura: mi evidencia y artefactos, rama `ender/contrato-agenda-notice-port`).
 - Archivos previstos a crear: todo bajo `repartos/2026-09-19/PromptNoche/Ender/`
-  (`PLAN.md`, `evidencia/`, `CONTRATO-AGENDA-NOTICE-PORT.md`, `validador/`, `REPORTE.md`) +
+  (`PLAN.md`, `../evidencia/`, `CONTRATO-AGENDA-NOTICE-PORT.md`, `../validador/`, `REPORTE.md`) +
   actualización del daily propio y checkboxes de mi ficha.
 - Comportamiento observable esperado: los seis resultados de la sección 2 de la ficha.
 
 **OUT** (igual que §3 de la ficha, resumido)
 - Cualquier edición dentro de `mantra-core-health-api/src/` (o cualquier archivo de Mantra).
 - Implementar el adaptador real (Justin), el doble/mock (Justin/laboratorio), la composición
-  aislada (Itzan). El **validador/oráculo** de H2 sí es mío (lo pide la CA del hito, lo confirma
+  aislada (Itzan). El **../validador/oráculo** de H2 sí es mío (lo pide la CA del hito, lo confirma
   el handoff «H2 → Justin: el validador, su doble tiene que pasarlo») y vive en mi carpeta de
   evidencia, nunca dentro de `mantra-core-health-api`.
 - Resolver Q-06 (durabilidad), Q-12, Q-13, Q-05, Q-24: se registran, no se deciden.
@@ -42,7 +42,7 @@ tiene que pasarlo"*.
   corrida; el handoff nombra "su doble" (de Justin) contra "el validador" (mío) como cosas
   separadas — si el validador fuera ajeno, no tendría sentido que su doble deba "pasarlo".
 - **Decisión:** tomo (a). Construyo el validador como **oráculo independiente**, en TypeScript
-  puro sin dependencias de Mantra, en `validador/` de esta carpeta — nunca dentro de
+  puro sin dependencias de Mantra, en `../validador/` de esta carpeta — nunca dentro de
   `mantra-core-health-api/src`. Reversible: si Pablo confirma la lectura (b), el validador queda
   igual de válido como especificación ejecutable y se descarta sólo su ubicación como "mío".
 - **A quién confirmárselo:** Pablo (dueño del backend/harness, según el handoff de H2).
@@ -53,12 +53,12 @@ tiene que pasarlo"*.
 
 | Repo | Ruta real | Uso | Aislamiento |
 |---|---|---|---|
-| `mantra-core-health-api` | `Mantra Core Health/wt-contrato-avisos-agenda/` | Sólo lectura (`git show`, `grep`, `git log`) contra el corte fijo | Worktree propio, detached en `32ae939983f0d665e4ed371362858801134d35cd` (el checkout compartido tenía señales de otra sesión — `check-exclusive-checkout.py` exit 1) |
+| **`mantra-core-health-api`** | `Mantra Core Health/wt-contrato-avisos-agenda/` | Sólo lectura (`git show`, `grep`, `git log`) contra el corte fijo | Worktree propio, detached en `32ae939983f0d665e4ed371362858801134d35cd` (el checkout compartido tenía señales de otra sesión — `check-exclusive-checkout.py` exit 1) |
 | `AlovidaPromptManager` | `GymSheet/AlovidaPromptManager/` | Escritura de mi evidencia y artefactos | Rama propia `ender/contrato-agenda-notice-port`, sin push (no se pidió publicar) |
 
 ## Orden de ejecución (por dependencia real, no por número de hito)
 
-1. **H1.S1** — congelar el archivo, su hash y el inventario de consumidores. *(hecho antes de este plan; ver `evidencia/h1-s1-*`)*
+1. **H1.S1** — congelar el archivo, su hash y el inventario de consumidores. *(hecho antes de este plan; ver `../evidencia/h1-s1-*`)*
 2. **H1.S2** — semántica campo por campo, exactamente-uno, emitMany, debounceKey, autorización, errores.
 3. **H1.S3** — tensión Q-06 sin resolver, ficha de Efectos/Compatibilidad, publicar el snapshot v1.
 4. **H2** — validador runtime (oráculo independiente) + casos ADV-03 + versión/compatibilidad contra los consumidores de H1.
@@ -84,7 +84,7 @@ archivo:línea del corte congelado.
 
 ## Gates que aplican (skills-router §4)
 
-- `evidence-and-verification` — cada afirmación de este carril sube peldaño con salida pegada en `evidencia/`.
+- `evidence-and-verification` — cada afirmación de este carril sube peldaño con salida pegada en `../evidencia/`.
 - `terminology-value-sets` — `AgendaNoticeKind` es un catálogo cerrado: se documenta como tal, no como "enum más".
 - `authz-access-control` — el puerto no es un endpoint HTTP, pero transporta datos de personas (`patientProfileId`); se audita igual qué identifica al actor/titular.
 - `state-machines-workflows` — no aplica directo (el puerto no es una máquina de estados), pero `AgendaNoticeKind` sí es un catálogo cerrado con reglas de pertenencia — se cruza con `terminology-value-sets`.

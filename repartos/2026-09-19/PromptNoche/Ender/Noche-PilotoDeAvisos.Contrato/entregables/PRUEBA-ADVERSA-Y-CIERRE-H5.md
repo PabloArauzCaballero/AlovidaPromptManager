@@ -9,7 +9,7 @@ de Pablo que aplico acá por prudencia aunque no sea mi ficha).
 
 **Resultado:** idéntico a H3 — `tsc` falla con `exit 2`, mismos dos errores (`TS2820` en el
 validador, `TS2561` en el consumidor simulado). Salida completa en
-`evidencia/h5-s1-adv06-reejecutado-e-inmutabilidad.txt`.
+`../evidencia/h5-s1-adv06-reejecutado-e-inmutabilidad.txt`.
 
 ## 2. Consumidor que falla, y con qué error (H5.S1.M3)
 

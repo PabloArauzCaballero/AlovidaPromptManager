@@ -1,7 +1,7 @@
 # Laboratorio de validación — `AgendaNoticePort` v1.0.0 (H2)
 
 Oráculo independiente. No es parte de `mantra-core-health-api`, no se instala ahí y no
-reemplaza al adaptador real. Ver `../PLAN.md` §"Ambigüedad registrada" para por qué este
+reemplaza al adaptador real. Ver `../entregables/PLAN.md` §"Ambigüedad registrada" para por qué este
 laboratorio lo construye Ender (propietario de contrato) y no "el laboratorio" en el sentido de
 la ficha genérica.
 

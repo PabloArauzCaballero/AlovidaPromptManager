@@ -26,7 +26,7 @@ más tarde con una forma distinta, esta ficha se reconcilia contra ella, no al r
 final: escribir el hash cambia el contenido y por lo tanto el hash. Por eso la identidad
 inmutable de cada versión es el **commit de git** que la publica (columna "Hash" de esta tabla),
 no un string SHA-256 embebido en la prosa — el mismo principio que usa git para sus propios
-commits (el árbol se hashea aparte del commit que lo referencia). `evidencia/h1-s3-m3-*` documenta
+commits (el árbol se hashea aparte del commit que lo referencia). `../evidencia/h1-s3-m3-*` documenta
 el camino completo, incluida la vuelta atrás cuando intenté embeber un SHA-256 literal y noté el
 problema.
 
@@ -45,7 +45,7 @@ working tree.
 | Versión del contrato | `v1.0.0` (asignada por este equipo — **el archivo fuente no trae versión**, ver nota abajo) |
 | Formato / dialecto | Interfaz TypeScript in-process (puerto de dominio, patrón hexagonal). **No es HTTP ni OpenAPI**: no hay request/response, no hay status code, no hay JSON sobre la red — es una llamada de método dentro del mismo proceso Node |
 | Fuente | `src/modules/scheduling/ports/agenda-notice.port.ts`, corte `32ae939983f0d665e4ed371362858801134d35cd` |
-| Hash del contenido exacto | `b462700cd8f382c0c42676cd931a2281198abaf5dca614cb739a47910bfb5877` (SHA-256, ver `evidencia/h1-s1-m1-hash-y-commit.txt`) |
+| Hash del contenido exacto | `b462700cd8f382c0c42676cd931a2281198abaf5dca614cb739a47910bfb5877` (SHA-256, ver `../evidencia/h1-s1-m1-hash-y-commit.txt`) |
 | Commit de origen del archivo | `df2bcd685334e9a16b7f9dde0560f309bdb5706e` (`feat(scheduling): correo con enlace real y chat de SupportAdmin en avisos de agenda`, 2026-09-05) |
 | Estado | `IMPLEMENTADO` — describe lo que hay, no un objetivo acordado. Toda excepción está marcada `TARGET_CONTRACT` o `HYPOTHESIS` explícitamente (§13) |
 
@@ -69,7 +69,7 @@ verificación previa del 2026-09-19); esta ficha trabaja contra `32ae9399…`.
 
 ## 2. El archivo, literal
 
-Bloque completo pegado en `evidencia/h1-s1-m2-archivo-literal-agenda-notice-port.ts` (133 líneas,
+Bloque completo pegado en `../evidencia/h1-s1-m2-archivo-literal-agenda-notice-port.ts` (133 líneas,
 extraído con `git show 32ae9399…:src/modules/scheduling/ports/agenda-notice.port.ts`, no
 transcrito de memoria). Los fragmentos citados abajo llevan número de línea de ese mismo archivo.
 
@@ -106,14 +106,14 @@ prosa; hacerla cumplir es el objeto de H2 (validación runtime).
 
 | Campo | Línea | Tipo TS | ¿Obligatorio para el compilador? | Semántica |
 |---|---|---|---|---|
-| `kind` | L57 | `AgendaNoticeKind` | Sí | Uno de los 4 valores del catálogo cerrado (§4) |
-| `recipient` | L58 | `AgendaNoticeRecipient` | Sí (el objeto; sus campos internos no) | Ver §3.1 |
+| **`kind`** | L57 | `AgendaNoticeKind` | Sí | Uno de los 4 valores del catálogo cerrado (§4) |
+| **`recipient`** | L58 | `AgendaNoticeRecipient` | Sí (el objeto; sus campos internos no) | Ver §3.1 |
 | `tenantId` | L60 | `string?` | No | Organización del aviso; **la bandeja in-app la separa por tenant** — ver hallazgo de autorización en §7 |
-| `subject` | L62 | `string` | Sí | Título corto, visible sin abrir el aviso |
+| **`subject`** | L62 | `string` | Sí | Título corto, visible sin abrir el aviso |
 | `bodyText` | L64 | `string` | Sí | Cuerpo con los datos concretos |
 | `relatedResourceType` | L66 | `string` | Sí | Nombre de tabla del recurso al que lleva el aviso — **`string` libre, no un value set ni un tipo de marca** (hallazgo, ver §4) |
 | `relatedResourceId` | L68 | `string?` | No | Id de ese recurso |
-| `payload` | L73 | `Readonly<Record<string, unknown>>?` | No | Datos estructurados, incluido `payload.route` (el destino navegable) — **`unknown`, sin schema declarado**: el tipo no garantiza que `route` exista ni su forma |
+| **`payload`** | L73 | `Readonly<Record<string, unknown>>?` | No | Datos estructurados, incluido `payload.route` (el destino navegable) — **`unknown`, sin schema declarado**: el tipo no garantiza que `route` exista ni su forma |
 | `debounceKey` | L79 | `string?` | No | Ver §6 |
 | `actorUserId` | L81 | `string?` | No | Ver §7 |
 
@@ -125,7 +125,7 @@ prosa; hacerla cumplir es el objeto de H2 (validación runtime).
 
 | Campo | Línea | Tipo TS | Obligatorio | Qué prueba y qué NO prueba |
 |---|---|---|---|---|
-| `delivered` | L93 | `boolean` | Sí | **Sólo** que llegó a la bandeja in-app. No prueba correo entregado (`emailRequestId` es un campo aparte y "encolado" ≠ "entregado" — cita literal L103-105: *"acá no hay «entregado»: hay «encolado». La evidencia de que salió es la fila de `messaging.notification_deliveries`"*), no prueba chat entregado (`chatDelivered` es independiente) |
+| **`delivered`** | L93 | `boolean` | Sí | **Sólo** que llegó a la bandeja in-app. No prueba correo entregado (`emailRequestId` es un campo aparte y "encolado" ≠ "entregado" — cita literal L103-105: *"acá no hay «entregado»: hay «encolado». La evidencia de que salió es la fila de `messaging.notification_deliveries`"*), no prueba chat entregado (`chatDelivered` es independiente) |
 | `inAppNotificationId` | L95 | `string?` | No | Fila de la bandeja, sólo si se entregó |
 | `notificationRequestId` | L97 | `string?` | No | Se crea **se haya entregado o no** — no implica éxito |
 | `skippedReason` | L99 | `string?` | No | Motivo de no-entrega in-app. **Texto libre, no un código estable**: comparar por contenido de este string es una comparación frágil (ver §9) |
@@ -167,7 +167,7 @@ de auditoría de avisos), ese sí sería el punto donde debería convertirse en 
 **Lo que el tipo NO hace cumplir** (§3.1): nada impide `{}`, ni `{ patientProfileId, userId }`
 juntos.
 
-**Especificación del validador** (implementación en H2, `validador/`):
+**Especificación del validador** (implementación en H2, `../validador/`):
 
 ```text
 Regla:      EXACTLY_ONE_RECIPIENT_FIELD
@@ -182,7 +182,7 @@ Frontera:   este validador corre en el LABORATORIO (contra un doble), no dentro 
 ```
 
 No implemento la regla en Mantra: la especifico acá y la implemento como oráculo independiente en
-`validador/` para H2.
+`../validador/` para H2.
 
 ---
 
@@ -305,7 +305,7 @@ que usa la ficha de encargo — mismo documento, otra copia local). Cita literal
 > memoria, solicitud encolada, aceptación del proveedor y evidencia de entrega. No prometer
 > procesamiento exactamente una vez sin demostrar la garantía; diseñar efectos idempotentes."
 
-Salida completa en `evidencia/h1-s3-m1-cita-metaprompt.txt`.
+Salida completa en `../evidencia/h1-s3-m1-cita-metaprompt.txt`.
 
 **Estado:** `DECISION_REQUIRED` — **sigue así a propósito, ahora con las dos citas completas.**
 Tenerlas ambas no resuelve la tensión: el metaprompt exige un mecanismo duradero **para efectos
@@ -320,7 +320,7 @@ validador de H2.
 
 ## 12. Inventario de consumidores actuales (corte `32ae9399…`)
 
-Ver `evidencia/h1-s1-m4-inventario-consumidores.txt` para el grep completo. Resumen:
+Ver `../evidencia/h1-s1-m4-inventario-consumidores.txt` para el grep completo. Resumen:
 
 | Archivo | Qué usa | Cómo |
 |---|---|---|
@@ -358,7 +358,7 @@ producción — aunque un cambio incompatible también los rompería a ellos).
 - **Commit del que sale (Mantra):** `32ae939983f0d665e4ed371362858801134d35cd`.
 - **Hash del contenido del puerto que documenta:** `b462700cd8f382c0c42676cd931a2281198abaf5dca614cb739a47910bfb5877`.
 - **Commit de publicación de este artefacto (AlovidaPromptManager):** `06dc3357bf9e38ab6626ac320717cb86257fbc72`
-  (ver `evidencia/h1-s3-m3-commit-y-blob-v1.txt` para el historial de cómo se fijó).
+  (ver `../evidencia/h1-s3-m3-commit-y-blob-v1.txt` para el historial de cómo se fijó).
 - **Cómo se referencia:** por versión (`v1.0.0` en la tabla de §0 y por el commit de este repo),
   no por rama de Mantra — si `dev` avanza, este documento no cambia solo; un cambio real del
   archivo fuente produce una microtarea nueva de re-verificación, no una edición silenciosa de
