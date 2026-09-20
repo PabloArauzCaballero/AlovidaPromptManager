@@ -43,32 +43,43 @@ exit=0
 
 ## 2. Avance por hito
 
-**36 / 53 microtareas en `HECHO`** (68 %, calculado). Las `A MEDIAS` cuentan como **no hechas**.
+**40 / 53 microtareas en `HECHO`** (75 %, calculado). Las `A MEDIAS` cuentan como **no hechas**.
 
 | Hito | Prioridad | Microtareas | HECHO | Estado |
 |---|---|---:|---:|---|
 | **H1** — Iniciar la relación con dobles estrictos y su registro de checks | `ALTA` | 13 | **13** | `HECHO` |
 | **H2** — Ejercitar la relación con dobles fijados de ambos extremos | `ALTA` | 8 | **5** | `A MEDIAS` |
-| **H3** — Integrar la relación con los artefactos que ya estén listos | `MEDIA` | 8 | **6** | `A MEDIAS` |
-| **H4** — Probar idempotencia, concurrencia y recuperación | `ALTA` | 8 | **2** | `A MEDIAS` |
+| **H3** — Integrar la relación con los artefactos que ya estén listos | `MEDIA` | 8 | **7** | `A MEDIAS` |
+| **H4** — Probar idempotencia, concurrencia y recuperación | `ALTA` | 8 | **5** | `A MEDIAS` |
 | **H5** — Probar que un doble no puede llegar a producción | `ALTA` | 7 | **6** | `A MEDIAS` |
 | **H6** — Correr la regresión del candidato final | `ALTA` | 9 | **4** | `A MEDIAS` |
-| **TOTAL** | | **53** | **36** | |
+| **TOTAL** | | **53** | **40** | |
 
 ### Lo que hay que leer aunque no se lea nada más
 
-**La relación `agenda → mensajería` no entrega ni un solo aviso contra la base de desarrollo
-poblada, y falla en silencio.** Observado, no deducido:
+Durante casi todo el turno el hallazgo grande fue **«la relación no entrega ni un aviso»**. Era
+cierto de lo observado y era **el diagnóstico equivocado**: la base de desarrollo estaba cargada con
+un paquete de seeds viejo. El propio `gen_seeds.py` ya documentaba el bug y lo había arreglado
+(v4.0.11 bis). Tras el ciclo limpio la relación **funciona**:
 
 ```text
-[H3.S1.M2] resultado real: {"delivered":false,"skippedReason":"La emisión del aviso falló; la operación no se revierte"}
-{"context":"MessagingAgendaNoticeAdapter","err":{"type":"ResourceNotFoundException","message":"Canal no encontrado"}}
+[H3.S1.M2] resultado real: {"delivered":true,"notificationRequestId":"781499ce-…",
+  "inAppNotificationId":"7a91758e-…","chatDelivered":true}
 ```
 
-El adaptador direcciona el canal in-app por `MESSAGING_SEED.inAppChannelId` (`d0240273-…`); la base
-lo tiene con `ed1b78a4-…`, sembrado por el paquete. **El seed del backend ya sabía de esa
-divergencia y la esquiva buscando por código; el adaptador no.** Los 4 avisos de agenda son
-no-operativos, y como el puerto promete no lanzar, nadie se entera. Es **HALL-02**.
+Y `fx3-agenda-respiro-y-avisos.int-spec.ts` —la regresión del propio proyecto, que con la base vieja
+daba `Expected 4, Received 0`— pasa **10/10**.
+
+**El hallazgo que sí queda, y que sólo apareció al poder medir:**
+
+```text
+[H4.S2.M1] filas creadas con la misma clave de rebote en paralelo: 2 · resultados: [null,null]
+```
+
+**Dos emisiones simultáneas con la misma clave de rebote crean DOS filas**, ambas reportadas como
+exitosas. Medido **6 veces: 5 dan dos**. La deduplicación de avisos **no aguanta concurrencia** —
+`debounce_key` no tiene índice único y `createRequest` es un read-then-write. Es **HALL-03**, y el
+rebote existe precisamente para el caso de un worker que reintenta un lote, que es concurrente.
 
 ## 3. Detalle de las microtareas que tocaste
 
@@ -95,20 +106,20 @@ no-operativos, y como el puerto promete no lanzar, nadie se entera. Es **HALL-02
 | H2.S2.M3 | `HECHO` | — | null · es una declaración de estado | `registro-de-checks.json` |
 | H2.S3.M1 | `BLOQUEADO` | — | null · no hay versiones que combinar | `H2-H5-ejecucion-de-la-relacion.md` |
 | H2.S3.M2 | `HECHO` | — | null · es el registro | `registro-de-checks.json` |
-| H3.S1.M1 | `HECHO` | `yarn test:integration --testPathPatterns=agenda-mensajeria-persistencia` | 0 | `evidencia/h3-h4-persistencia.txt` |
-| H3.S1.M2 | `HECHO` (check) · **FAIL del producto** | ídem | 0 | ídem |
-| H3.S1.M3 | `HECHO` | ídem (conexión independiente: 0 filas) | 0 | ídem |
-| H3.S2.M1 | `A MEDIAS` | ídem | 0 | ídem |
+| H3.S1.M1 | `HECHO` | `yarn test:integration --testPathPatterns=agenda-mensajeria --verbose` | 0 | `evidencia/h3-h4-tras-rebuild.txt` |
+| H3.S1.M2 | `HECHO` | ídem — `delivered:true` con fila real | 0 | ídem |
+| H3.S1.M3 | `HECHO` | ídem (conexión independiente: fila presente) | 0 | ídem |
+| H3.S2.M1 | `HECHO` | ídem — fila de bandeja, destinatario, asunto y `read_at` nulo | 0 | ídem |
 | H3.S2.M2 | `HECHO` | ídem | 0 | ídem |
-| H3.S2.M3 | `NOT_RUN` | — | null · el in-app falla antes del chat | ídem |
+| H3.S2.M3 | `A MEDIAS` | ídem — `chatDelivered:true`, pero un booleano no acredita conversación ni membresía | 0 | ídem |
 | H3.S3.M1 | `HECHO` | — | null · declaración por relación | `registro-de-checks.json` |
 | H3.S3.M2 | `HECHO` | — | null · tabla del reporte | `REPORTE.md` |
-| H4.S1.M1 | `NOT_RUN` | `yarn test:integration --testPathPatterns=agenda-mensajeria-persistencia` | 0 | `evidencia/h3-h4-persistencia.txt` |
-| H4.S1.M2 | `NOT_RUN` | ídem | 0 | ídem |
+| H4.S1.M1 | `HECHO` | ídem — **idempotencia verificada: 2 emisiones → 1 fila** | 0 | `evidencia/h3-h4-tras-rebuild.txt` |
+| H4.S1.M2 | `HECHO` | ídem — gana la primera, la segunda no persiste y nadie se entera | 0 | ídem |
 | H4.S1.M3 | `HECHO` | ídem + `grep -rn debounce SQL/` | 0 | ídem |
-| H4.S2.M1 | `NOT_RUN` | ídem | 0 | ídem |
+| H4.S2.M1 | `HECHO` | ídem ×6 — **2 filas en paralelo: la carrera existe** | 0 | `evidencia/h4-carrera-medida.txt` |
 | H4.S2.M2 | `HECHO` | lectura de `notifications.service.ts:167-181` | null · es lectura del código | `H2-H5-ejecucion-de-la-relacion.md` |
-| H4.S3.M1 | `BLOQUEADO` | — | null · HALL-02 + Q-06 sin decidir | `REPORTE.md` |
+| H4.S3.M1 | `BLOQUEADO` | — | null · Q-06 sin decidir: sin oráculo de negocio | `REPORTE.md` |
 | H4.S3.M2 | `BLOQUEADO` | — | null · ídem | ídem |
 | H4.S3.M3 | `BLOQUEADO` | — | null · ídem | ídem |
 | H5.S1.M1 | `HECHO` | `yarn test:integration --testPathPatterns=agenda-mensajeria-relacion` | 0 | `evidencia/h2-relacion-dobles.txt` |
