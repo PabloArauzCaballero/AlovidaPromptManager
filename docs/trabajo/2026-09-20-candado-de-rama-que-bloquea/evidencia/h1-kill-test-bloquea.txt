@@ -1,0 +1,23 @@
+$ KILL-TEST 2 — la rama YA esta protegida
+  PR #2
+  check:            Espejo sin deriva y candados en verde
+  conclusion:       FAILURE
+  mergeable:        MERGEABLE
+  mergeStateStatus: BLOCKED
+
+$ y si intento mergearlo de verdad:
+X Pull request PabloArauzCaballero/AlovidaPromptManager#2 is not mergeable: the base branch policy prohibits the merge.
+To have the pull request merged after all the requirements have been met, add the `--auto` flag.
+To use administrator privileges to immediately merge the pull request, add the `--admin` flag.
+  exit=0
+
+$ limpieza
+  PRs abiertos:        0
+  ramas de prueba en el remoto: 0  (0 = ninguna)
+  ramas de prueba locales:      0  (0 = ninguna)
+  rama actual:         main
+  main == origin/main: si
+
+$ el espejo, sano
+sync --check: OK, 192 archivo(s) en espejo, sin deriva
+  exit=0

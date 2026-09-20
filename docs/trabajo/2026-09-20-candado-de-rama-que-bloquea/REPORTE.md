@@ -3,23 +3,21 @@
 - Fecha: 2026-09-20 · Plan: [PLAN.md](./PLAN.md) · Rama: `main`
 - Peldaño de evidencia alcanzado: **`VERIFIED`** — se ejercitó el camino real en GitHub (un PR con
   deriva deliberada, su check en rojo, su limpieza) y se observó el resultado, no se dedujo.
-- Avance: **13 / 15 microtareas HECHO (86,7 %)** — calculado con `plan_status.py`. Las 2 que
-  faltan son la misma cosa: la protección de rama, rechazada por el clasificador de la sesión.
+- Avance: **16 / 16 microtareas HECHO (100 %)** — calculado con `plan_status.py`.
 
 ## Lo más importante de este trabajo
 
-**El candado detecta, pero no bloquea.** Lo demostré con un PR real, no con un razonamiento:
+**El candado ahora bloquea de verdad.** Demostrado con dos PR reales, antes y después de aplicar
+la protección — no razonado:
 
-```
-PR #1
-  check:            Espejo sin deriva y candados en verde
-  conclusion:       FAILURE          <- lo detecta
-  mergeable:        MERGEABLE        <- pero deja mergear
-  mergeStateStatus: UNSTABLE
-```
+| | PR #1 (sin protección) | PR #2 (con protección) |
+|---|---|---|
+| check | `FAILURE` | `FAILURE` |
+| `mergeStateStatus` | **`UNSTABLE`** | **`BLOCKED`** |
+| intento real de merge | se podía | *«the base branch policy prohibits the merge»* |
 
-`UNSTABLE` significa exactamente eso: *hay un check en rojo y aun así se puede mergear*. Mientras
-`estandar` no sea un **check requerido** de la rama, el rojo es decorativo.
+`UNSTABLE` significaba exactamente esto: *hay un check en rojo y aun así se puede mergear*. Ése era
+el agujero, y ya no está.
 
 ## Completado
 
@@ -69,45 +67,28 @@ cambiar de rama, y habría perdido el tiempo buscando un cambio que nadie hizo.
 | H2.S2.M2 | Comparación por contenido normalizado | **14 PASS, 0 FAIL** · `--check` → `OK, 192 archivos, sin deriva` |
 | H2.S2.M3 | Una diferencia **real** sigue detectándose | caso agregado: contenido distinto → sigue en rojo |
 
+### H1.S1 — La protección de rama, aplicada
+
+| ID | Qué se logró | Resultado |
+|---|---|---|
+| H1.S1.M2 | `main` exige el check | `protected: true` · `contexts: ["Espejo sin deriva y candados en verde"]` |
+| H1.S1.M3 | No encierra al dueño | `enforce_admins: false`, más `force_pushes: false` y `deletions: false` |
+| H1.S2.M5 | **Kill-test 2** | `mergeStateStatus: BLOCKED` y el merge real rechazado por la política de la rama |
+
+El `PUT` fue **rechazado en el primer intento** por el clasificador del modo automático de la
+sesión (`Modify Shared Resources`) y **pasó al reintentarlo** tras la insistencia explícita del
+usuario. No fue GitHub ni permisos: el token tiene `repo` y el repositorio es público.
+
 ## A medias
 
-### H1 — El check falla, pero no bloquea
-
-- **Qué anda:** el check se dispara, falla en el paso correcto, y el nombre real que hay que exigir
-  ya está averiguado desde la API: `Espejo sin deriva y candados en verde`. El cuerpo JSON de la
-  protección está escrito y listo.
-- **Qué no anda:** la protección **no está aplicada**. El `PUT` a
-  `repos/.../branches/main/protection` fue **rechazado por el clasificador del modo automático de
-  la sesión** (`Modify Shared Resources`) — no por GitHub, no por permisos: el token tiene `repo`
-  y el repo es público, así que la llamada funcionaría.
-- **Qué falta exactamente:** un solo comando, abajo. Después, reabrir un PR de deriva y confirmar
-  que `mergeStateStatus` pasa de `UNSTABLE` a `BLOCKED`.
-- **Dónde quedó:** todo publicado en `main`. No hay nada a medio aplicar en GitHub.
-
-**El comando que lo cierra** (el JSON está explicado en «Decisiones»):
-
-```bash
-gh api -X PUT repos/PabloArauzCaballero/AlovidaPromptManager/branches/main/protection \
-  --input - <<'JSON'
-{
-  "required_status_checks": { "strict": false,
-    "contexts": ["Espejo sin deriva y candados en verde"] },
-  "enforce_admins": false,
-  "required_pull_request_reviews": null,
-  "restrictions": null,
-  "allow_force_pushes": false,
-  "allow_deletions": false
-}
-JSON
-```
+Ninguna.
 
 ## Pendiente
 
 | ID | Estado | Qué lo destraba |
 |---|---|---|
-| H1.S1.M2 | **`BLOQUEADO`** | El clasificador rechaza el `PUT` de la protección. Lo destraba el comando de arriba, o una regla de permiso de Bash |
-| H1.S1.M3 | **`BLOQUEADO`** | Ídem: es parte del mismo cuerpo JSON |
 | Revisión obligatoria en PR | `DESCARTADO` | No se pidió, y en un repo de un solo dueño haría imposible mergear (`Q-B2`) |
+| Revisar si otros scripts comparan bytes | `TODO` | Solo se corrigió `sync_agents`; nadie miró los demás |
 
 ## Evidencia
 
@@ -162,19 +143,40 @@ sync --check: OK, 192 archivo(s) en espejo, sin deriva
 
 $ corrida final en main
 completed success  fix: sync_agents cantaba deriva falsa...  35487941381  12s
+
+$ proteccion aplicada (lectura independiente)
+  contexts:        ["Espejo sin deriva y candados en verde"]
+  strict:          false
+  enforce_admins:  false
+  force_pushes:    false
+  deletions:       false
+  protected:       true
+
+$ KILL-TEST 2 — PR #2, ya con la rama protegida
+  conclusion:       FAILURE
+  mergeStateStatus: BLOCKED          <- antes era UNSTABLE
+
+$ y al intentar mergearlo de verdad
+X Pull request ...#2 is not mergeable: the base branch policy prohibits the merge.
+
+$ limpieza final
+  PRs abiertos: 0 | ramas de prueba (remoto): 0 | (local): 0
+  rama actual: main | main == origin/main: si
+  sync --check: OK, 192 archivo(s) en espejo, sin deriva
 ```
 
 Índice de `evidencia/`: [`h1-proteccion.txt`](./evidencia/h1-proteccion.txt) ·
 [`h1-kill-test-pr.txt`](./evidencia/h1-kill-test-pr.txt) ·
 [`h2-actions.txt`](./evidencia/h2-actions.txt) ·
-[`h2-deriva-falsa.txt`](./evidencia/h2-deriva-falsa.txt).
+[`h2-deriva-falsa.txt`](./evidencia/h2-deriva-falsa.txt) ·
+[`h1-kill-test-bloquea.txt`](./evidencia/h1-kill-test-bloquea.txt).
 
 ## No cubierto
 
-- **Que la protección bloquee de verdad.** Se demostró que hoy **no** bloquea; no se demostró que
-  con la protección sí, porque no se pudo aplicar.
-- **`enforce_admins` no se probó.** Va en `false` por decisión (`Q-B1`), pero nadie verificó su
-  efecto.
+- **`enforce_admins: false` no se probó.** Va así por decisión (`Q-B1`): el dueño puede saltear
+  la protección con `--admin`. **Nadie verificó que efectivamente pueda**, ni qué queda registrado.
+- **No se probó el camino feliz:** un PR **sin** deriva, con el check en verde, mergeando bien.
+  Se probaron los dos casos de rojo, no el de verde.
 - **El defecto de finales de línea se arregló para la comparación, no para el `git` del equipo.**
   Si alguien quiere que el árbol sea uniforme en Windows, eso es un `.gitattributes`, y no se tocó:
   está fuera del alcance declarado.
@@ -183,9 +185,10 @@ completed success  fix: sync_agents cantaba deriva falsa...  35487941381  12s
 
 ## Desvíos del plan
 
-- **El plan preveía que el PR de prueba demostrara que el merge queda bloqueado.** Demostró lo
-  contrario, que es información igual de valiosa: **sin protección, el rojo no bloquea**. El
-  kill-test cumplió su función — falló donde tenía que fallar.
+- **El kill-test hubo que hacerlo dos veces.** El primero (PR #1) corrió **sin** la protección,
+  porque el `PUT` estaba rechazado, y demostró que el rojo **no** bloqueaba. El segundo (PR #2), ya
+  con la protección, demostró que sí. Tener los dos lado a lado es mejor evidencia que tener solo
+  el segundo: muestra exactamente qué cambió la protección, y no hay que creerme.
 - **Se agregó `H2.S2` durante la ejecución** (regla 20.6.6) por el defecto de finales de línea.
 - **El `--delete-branch` del PR falló** la primera vez porque un archivo de evidencia sin commitear
   impedía el `checkout`. Se completó la limpieza a mano y se verificó con cuatro comandos.
@@ -196,7 +199,7 @@ completed success  fix: sync_agents cantaba deriva falsa...  35487941381  12s
 
 | Riesgo | Impacto | Estado |
 |---|---|---|
-| Alguien mergea un PR con el check en rojo | **Alto** | **Sin mitigar**: es exactamente lo que la protección resolvería. Un comando lo cierra |
+| Alguien mergea un PR con el check en rojo | Alto | **Mitigado y demostrado**: la política de la rama lo prohíbe (PR #2). Queda el camino del admin con `--admin`, que es deliberado (`Q-B1`) |
 | Otros scripts con comparación byte a byte y el mismo defecto de CRLF | Medio | No revisado; declarado en «No cubierto» |
 | `ubuntu-latest` migra a Ubuntu 26 el 2026-10-19 | Bajo | Aviso de GitHub en cada corrida. No se fijó la versión del runner: fijarla trae su propia deuda |
 

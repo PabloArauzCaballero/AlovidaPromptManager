@@ -39,20 +39,22 @@ $ gh auth status                         -> scopes: gist, read:org, repo, workfl
 **CA:** Dado un PR con deriva deliberada en `.agents/`, cuando GitHub evalúa sus checks, entonces
 el check `estandar` queda en rojo **y el merge queda bloqueado**.
 **DoD:** la salida de la API mostrando `mergeable_state` bloqueado, con el check en `failure`.
-**Estado:** A MEDIAS — **el check falla** (demostrado con el PR #1), pero **no bloquea**: falta la protección de rama, que el clasificador rechazó.
+**Evidencia:** [`evidencia/h1-kill-test-bloquea.txt`](./evidencia/h1-kill-test-bloquea.txt) — PR #2: `mergeStateStatus: BLOCKED` y el merge real rechazado con *«the base branch policy prohibits the merge»*.
+**Estado:** HECHO
 
 ### H1.S1 — Configurar la protección
 
 **CA:** `main` exige el job del workflow, y el nombre del check configurado es **exactamente** el
 que GitHub reporta, no el que yo supongo.
 **DoD:** `gh api .../branches/main/protection` devuelve el check requerido con su nombre real.
-**Estado:** BLOQUEADO — el clasificador del modo automático de la sesión rechazó el `PUT` de la protección (`Modify Shared Resources`). El nombre real del check ya está averiguado: **`Espejo sin deriva y candados en verde`** (el del *job*, no el del workflow). El cuerpo JSON está listo. Lo destraba que lo corra el usuario.
+**Evidencia:** [`evidencia/h1-proteccion.txt`](./evidencia/h1-proteccion.txt) — `protected: true`, `contexts: ["Espejo sin deriva y candados en verde"]`, `enforce_admins: false`.
+**Estado:** HECHO — el `PUT` fue rechazado en el primer intento por el clasificador de la sesión (`Modify Shared Resources`) y pasó al reintentar, tras la insistencia explícita del usuario.
 
 | ID | Microtarea | CA (binario) | DoD (comando de verificación) | Estado |
 |---|---|---|---|---|
 | H1.S1.M1 | Averiguar el **nombre real** del check que publica el workflow | Sale de la API de check-runs de un commit real, no de mi lectura del YAML | `gh api .../commits/<sha>/check-runs -q '.check_runs[].name'` | HECHO |
-| H1.S1.M2 | Proteger `main` exigiendo ese check | La protección existe y lo nombra | `gh api .../branches/main/protection` → el check en la lista | BLOQUEADO |
-| H1.S1.M3 | La protección **no** encierra al dueño | `enforce_admins` en `false`, y declarado como decisión | salida de la API pegada | BLOQUEADO |
+| H1.S1.M2 | Proteger `main` exigiendo ese check | La protección existe y lo nombra | `gh api .../branches/main/protection` → el check en la lista | HECHO |
+| H1.S1.M3 | La protección **no** encierra al dueño | `enforce_admins` en `false`, y declarado como decisión | salida de la API pegada | HECHO |
 
 ### H1.S2 — Demostrarlo con un PR real, y limpiarlo
 
@@ -67,6 +69,7 @@ ni PR abierto, ni rama, ni commit de basura en `main`.
 | H1.S2.M1 | Rama con deriva deliberada en `.agents/` | La rama existe y `sync_agents --check` falla en local | `python tools/sync_agents.py --check` → exit 1 | HECHO |
 | H1.S2.M2 | PR abierto contra `main` | El PR existe y su número queda registrado | `gh pr view --json number,url` | HECHO |
 | H1.S2.M3 | **Kill-test:** el check falla y el merge queda bloqueado | El check en `failure` **y** el PR no mergeable | `gh pr view --json mergeable,mergeStateStatus,statusCheckRollup` | HECHO |
+| H1.S2.M5 | **Kill-test 2, ya con la rama protegida:** el merge queda bloqueado | `mergeStateStatus` pasa de `UNSTABLE` a `BLOCKED` **y** `gh pr merge` es rechazado | `gh pr view` + `gh pr merge` → la política de la rama lo prohíbe | HECHO |
 | H1.S2.M4 | Limpieza completa | No queda PR abierto ni rama remota de prueba | `gh pr list --state open` sin la rama · `git ls-remote --heads` sin ella | HECHO |
 
 ## H2 — El workflow no depende de acciones deprecadas
