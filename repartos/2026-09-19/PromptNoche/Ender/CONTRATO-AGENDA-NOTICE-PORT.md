@@ -20,7 +20,7 @@ más tarde con una forma distinta, esta ficha se reconcilia contra ella, no al r
 
 | Versión | Hash (blob SHA-1 de git de este archivo, en el commit que lo publica) | Commit de este repo | Estado | Fecha |
 |---|---|---|---|---|
-| `v1.0.0` | *(se completa en §14 tras el commit de publicación — el hash de un archivo que todavía no se commiteó no es estable: cualquier edición posterior lo cambia)* | `ender/contrato-agenda-notice-port` | `IMPLEMENTADO` (H1) | 2026-09-20 |
+| `v1.0.0` | blob `8c0289f942f2cb153c64e07fdf68d609d5c822bc` (commit `b3f78f1ccc3b4d916959211f09df2a8ad421b977`, ver `evidencia/h1-s3-m3-commit-y-blob-v1.txt`) | `ender/contrato-agenda-notice-port` | `IMPLEMENTADO` (H1) | 2026-09-20 |
 
 Regla de esta tabla (ver §14): una fila publicada **no se edita**. Un cambio de contenido agrega
 una fila nueva con su propio commit y su propio hash de blob; la anterior queda intacta y se
