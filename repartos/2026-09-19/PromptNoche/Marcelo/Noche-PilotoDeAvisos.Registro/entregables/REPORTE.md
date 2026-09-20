@@ -1,12 +1,18 @@
-# Reporte — H1 + H2 + H3 + el arreglo: recorrido prioritario, casos de aceptación, permisos/estados/dinero
+# Reporte — los seis hitos del recorrido del registro, más el arreglo
+
+> **Estado final del carril: 54 / 54 microtareas en `HECHO`.** Los seis hitos cerraron. El dictamen de aceptación está en [`DICTAMEN-M06-2026-09-20.md`](./DICTAMEN-M06-2026-09-20.md) y **no declara el producto aceptado**: `PRODUCT_ACCEPTANCE_NOT_VERIFIED`, con cuatro rojos abiertos y cuatro participantes del recorrido que todavía no existen. El 100 % es de las microtareas del prompt, no del producto — son dos cosas distintas y el dictamen las separa.
+>
+> **Lo que H4 agregó, ejecutándolo:** el recorrido M-06 corrió de punta a punta contra la API y la base reales, **sin un solo doble** — 7 pasos en verde, 4 ausentes declarados — y el paciente terminó con **2 avisos reales** en su bandeja. La atomicidad (ADV-08) aguantó el reintento y la concurrencia, comprobado desde una **conexión independiente**. Detalle en [`RECORRIDO-MULTIMODULO-M06-2026-09-20.md`](./RECORRIDO-MULTIMODULO-M06-2026-09-20.md).
+>
+> **Dos rojos nuevos, de privacidad del rastro:** ninguna lectura de datos de paciente queda registrada (`audit.data_access_log` sólo tiene filas de semilla), y el rastro de escrituras **guarda el motivo de consulta en claro**. Ninguno se tocó: son del sistema, no del recorrido.
 
 > **Lo primero, porque cambió después de escribirse el resto:** el `PRODUCT_BUG` de autorización que H3 destapó **está corregido y verificado en runtime** — PR [mantra-core-health-api#447](https://github.com/mdavila-2001/mantra-core-health-api/pull/447), rama `marcelo/fix-authz-citas-ajenas`, commit `9ff1542d` sobre `origin/dev` @ `33f17785`. Leer una cita ajena, cancelarla o reprogramarla devuelven **403**; el titular sigue haciendo lo suyo con **200**. Suite de `scheduling` **483/483**, y **4 de las 7 pruebas nuevas fallan sin el arreglo**. Detalle en §7 de `PERMISOS-ESTADOS-DINERO-M06-2026-09-20.md` y en `evidencia/H3.FIX_reverificacion-contra-api-viva.txt`.
 >
 > **Una corrección al propio hallazgo:** de los 4 `FAIL` que este reporte declaraba, **3 eran bugs reales y están arreglados**; el cuarto (`R4`, disponibilidad de cupos entre organizaciones) **se reclasificó a `DECISION_REQUIRED`** al ir a corregirlo: no devuelve ningún dato de persona y el documento del cliente pide explícitamente poder «revisar todos los médicos que están disponibles», así que restringirlo rompería el recorrido en vez de protegerlo. Es pregunta de producto, no defecto.
 
 - Fecha: 2026-09-20 · Plan: [plan de la sesión, aprobado en modo plan] · Ramas: sin cambios en repos de código; único directorio tocado: `AlovidaPromptManager/repartos/2026-09-19/PromptNoche/Marcelo/Noche-PilotoDeAvisos.Registro/` en `marcelo/features-a-trabajar`
-- Peldaño de evidencia alcanzado, **por área** (regla 30.5 — el peldaño del trabajo es el más bajo, no el más alto): H1 en `DISCOVERED` (sólo lectura). H2 en `WRITTEN`/`DISCOVERED` (diseño de casos; ninguno se ejecutó — ejecutarlos era H3-H5). **H3 en `VERIFIED`** para H3.S1 y H3.S2 (comportamiento observado en runtime, contra la API real, con persistencia real inspeccionada por consulta posterior); H3.S3 en `DISCOVERED` salvo las dos consultas SQL, que son `VERIFIED` como hecho de esquema. **El peldaño global del turno es el más bajo de sus áreas: `DISCOVERED`**, porque H1 sigue siendo pura lectura — pero H3 sí alcanza `VERIFIED` en su propio alcance, y así se declara.
-- Avance: **29 / 29 microtareas abiertas este turno en `HECHO`** (H1: 13/13, H2: 8/8, H3: 8/8). H4, H5 y H6 de la ficha maestra quedan en `TODO` explícito — no se abrieron (ver «Pendiente»).
+- Peldaño de evidencia alcanzado, **por área** (regla 30.5 — el peldaño del trabajo es el más bajo, no el más alto): H1 en `DISCOVERED` (sólo lectura). H2 en `WRITTEN`/`DISCOVERED` (diseño de casos; ninguno se ejecutó — ejecutarlos era H3-H5). **H3 en `VERIFIED`** para H3.S1 y H3.S2 (comportamiento observado en runtime, contra la API real, con persistencia real inspeccionada por consulta posterior); H3.S3 en `DISCOVERED` salvo las dos consultas SQL, que son `VERIFIED` como hecho de esquema. **H4 en `VERIFIED`** para los 7 pasos ejercitados y para ADV-08, con la persistencia comprobada desde una conexión independiente. H5 y H6 son consolidación: su peldaño es el de lo que consolidan. **El peldaño global del turno es el más bajo de sus áreas: `DISCOVERED`**, porque H1 sigue siendo pura lectura y hay cuatro participantes que nunca se pudieron ejercitar — pero H3 y H4 sí alcanzan `VERIFIED` en su propio alcance, y así se declara.
+- Avance: **54 / 54 microtareas en `HECHO`** (H1 13/13 · H2 8/8 · H3 8/8 · H4 8/8 · H5 8/8 · H6 9/9). Cálculo en `evidencia/H6.S3.M1_avance-calculado.txt`.
 
 ## Completado
 
@@ -63,19 +69,69 @@ Documento: [`PERMISOS-ESTADOS-DINERO-M06-2026-09-20.md`](./PERMISOS-ESTADOS-DINE
 
 **Hallazgo que domina el turno:** el kill-test de H3 (*"cambiá el identificador de la URL por el de otro paciente"*) **falla**. `GET /scheduling/bookings/:id`, `GET /scheduling/slots`, `POST .../cancel` y `POST .../reschedule` no verifican que el actor sea el dueño del recurso — el único control es el rol global (`@Roles('PATIENT',…)`), sin comparación de `patientProfileId` ni de tenant. Causa raíz localizada con precisión: el método privado que hace esa comparación (`assertPuedeActuarPorElPaciente`) **ya existe y se usa** en otros cuatro puntos del mismo archivo (`placeHold`, confirmación de hold, `searchBookings`, `enroll` de lista de espera) pero **nunca se agregó** a `cancel()` ni a `reschedule()` cuando se les dio el rol `PATIENT`. Es BOLA/IDOR de escritura (OWASP API1/API3, regla 90.1.2/.3), no un defecto de la máquina de estados (que sí rechaza correctamente sus dos transiciones ilegales probadas).
 
+### H4 — El recorrido cruzando varios módulos, ejercitado (8/8)
+
+Documento: [`RECORRIDO-MULTIMODULO-M06-2026-09-20.md`](./RECORRIDO-MULTIMODULO-M06-2026-09-20.md). El recorrido corrió de punta a punta contra la API construida desde `dev` (con el arreglo dentro) y la base real. **7 pasos REALES, 0 dobles, 4 ausentes declarados.**
+
+| ID | Qué se logró | Comando (DoD) | Resultado |
+|---|---|---|---|
+| H4.S1.M1 | Recorrido completo ejecutado, paso por paso | 32 llamadas HTTP reales; 11 pasos con su línea | PASS — `evidencia/H4.S1.M1-M2-M3_recorrido-y-adv08.txt` |
+| H4.S1.M2 | Cada paso con su participante real/doble/ausente | 11 filas clasificadas; `grep -c 'DOBLE'` → **0** | PASS — mismo archivo |
+| H4.S1.M3 | ADV-08 desde **conexión independiente** | Reintento: 1 sola cancelación, `row_version 2`. Concurrencia: 1 ganador, capacidad nunca negativa | PASS — `evidencia/H4.S1.M3_adv08-y-H4.S3.M1_auditoria.txt` |
+| H4.S2.M1 | Proveedores externos pendientes | 4 proveedores con qué acredita y qué falta | PASS — documento §3 |
+| H4.S2.M2 | Pasos `NOT_RUN` con motivo | 4 pasos, cada uno con su línea | PASS — documento §3 |
+| H4.S2.M3 | Correspondencia del recorrido **ejecutado** contra el cliente | 11 filas; 7 ejecutados, 4 no | PASS — documento §3 |
+| H4.S3.M1 | ¿Las lecturas dejan rastro? | **0 filas** en `audit.data_access_log`; las 16 existentes son de semilla. Y el rastro de escrituras guarda `reasonText` | **FAIL de producto, capturado** — `evidencia/H4.S1.M3_…txt` |
+| H4.S3.M2 | ¿Hay PHI en logs y URLs? | 6 nombres, correos, documentos, teléfonos y el motivo: **0 apariciones** en 1 976 líneas, con control positivo | PASS — `evidencia/H4.S3.M2_phi-en-logs-y-urls.txt` |
+
+### H5 — La aceptación con los participantes reales disponibles (8/8)
+
+Documento: [`ACEPTACION-M06-2026-09-20.md`](./ACEPTACION-M06-2026-09-20.md). Abre con los cuatro rojos, antes de cualquier resumen.
+
+| ID | Qué se logró | Comando (DoD) | Resultado |
+|---|---|---|---|
+| H5.S1.M1 | Matriz paso × resultado × evidencia, con código | 11 pasos, todos con su código | PASS — `evidencia/H5-H6_DoD.txt` |
+| H5.S1.M2 | Participante real/doble/ausente por paso | 14 marcas; ningún vacío | PASS — ídem |
+| H5.S1.M3 | Fallos críticos primero | Los 4 rojos abren el documento (línea 5) | PASS — ídem |
+| H5.S2.M1 | Recorridos exigidos NO ejecutados | 15 filas: **1 de 19** ejercitado, cada uno con motivo | PASS — ídem |
+| H5.S2.M2 | Decisiones de alcance con dueño | 6 decisiones, **0 filas sin dueño** (4 mías, marcadas como tales) | PASS — ídem |
+| H5.S2.M3 | Correspondencia con el cliente | 11 ítems: 2 cubiertos, 2 parciales, 6 no cubiertos | PASS — ídem |
+| H5.S3.M1 | Estado de entrega | `PRODUCT_ACCEPTANCE_NOT_VERIFIED`, con el porqué | PASS — ídem |
+| H5.S3.M2 | Límites externos | 6 piezas, cada una con qué acredita hoy | PASS — ídem |
+
+### H6 — El dictamen (9/9)
+
+Documento: [`DICTAMEN-M06-2026-09-20.md`](./DICTAMEN-M06-2026-09-20.md). Escrito para alguien que no vio el turno: abre diciendo qué está en rojo, sigue con qué se puede usar y qué no.
+
+| ID | Qué se logró | Comando (DoD) | Resultado |
+|---|---|---|---|
+| H6.S1.M1 | Aprobado, con evidencia | 12 filas, cada una con su archivo de evidencia | PASS — `evidencia/H5-H6_DoD.txt` |
+| H6.S1.M2 | A medias, con las cuatro respuestas | 3 ítems × 4 respuestas = **12** | PASS — ídem |
+| H6.S1.M3 | Pendiente y bloqueado | 9 filas con qué lo destraba y de quién depende | PASS — ídem |
+| H6.S2.M1 | Proveedores externos no verificados | 7 filas | PASS — ídem |
+| H6.S2.M2 | «No cubierto» consolidado, arriba | 9 ítems de los cuatro documentos anidados | PASS — ídem |
+| H6.S2.M3 | Estado de entrega con su peldaño | `PRODUCT_ACCEPTANCE_NOT_VERIFIED`; `VERIFIED` sólo por área | PASS — ídem |
+| H6.S3.M1 | Avance calculado | `54 / 54 = 100.0 %`, con la fórmula pegada | PASS — `evidencia/H6.S3.M1_avance-calculado.txt` |
+| H6.S3.M2 | Fallos críticos en la primera línea | El rojo abre el documento (línea 5) | PASS — `evidencia/H5-H6_DoD.txt` |
+| H6.S3.M3 | Riesgos residuales con impacto | 8 riesgos, cada uno con impacto y mitigación | PASS — ídem |
+
 ## A medias
 
 *Ninguna.* Las 29 microtareas abiertas este turno (H1+H2+H3) cerraron con su DoD ejecutado y su evidencia pegada. Dentro de H3.S1.M2 hubo una corrida contaminada (ronda 1) que se declaró como tal y se repitió limpia (ronda 2) — no es trabajo a medias, es método de verificación documentado (regla 80.4: TEST_BUG del arnés, no del hallazgo).
 
 ## Pendiente
 
-| Hito | Estado | Qué lo destraba |
-|---|---|---|
-| H4 — Ejercitar el recorrido multi-módulo | `TODO`, no abierto | Decisión de alcance de Q-C1 (seis hitos no entran en una noche); depende de que H3 hoy ya reveló un `PRODUCT_BUG` que probablemente cambia lo que H4 tenía sentido ejercitar (¿de qué vale medir el recorrido de punta a punta si la primera lectura ya es insegura?) — decisión de coordinación, no mía |
-| H5 — Aceptación con participantes reales | `TODO`, no abierto | Depende de H4 |
-| H6 — Dictamen final | `TODO`, no abierto | Depende de H4 y H5 |
+**Ningún hito queda sin abrir.** Lo que queda pendiente no es trabajo de este carril, sino decisiones y piezas de otros:
 
-**Lo que era una recomendación ya se ejecutó.** Este reporte decía que convenía corregir el hueco de autorización antes de abrir H4/H5/H6. El propietario del trabajo pidió hacerlo, y se hizo: PR #447, con su verificación en runtime. H4/H5/H6 siguen en `TODO`, pero ahora sobre un recorrido cuyas lecturas y escrituras **sí** están protegidas, que era la condición que volvía dudoso medirlas.
+| Qué | Qué lo destraba | De quién depende |
+|---|---|---|
+| Rastro de lecturas de datos de paciente (`R-1`) | Instrumentar `audit.data_access_log` en las lecturas | Equipo de la API |
+| El motivo de consulta guardado en el rastro (`R-2`) | Excluirlo del snapshot o protegerlo con otra política | Equipo de la API + privacidad |
+| Datos de facturación de la consulta (`R-3`) | Definir dónde se capturan | Negocio, después la API |
+| Confirmación de entrega del correo (`R-4`) | Elegir y homologar proveedor | Coordinación (Q-21) |
+| Los 18 escenarios restantes del catálogo | Decidir el orden; H1 los dejó priorizados con motivo | Coordinación |
+| Q-06: ¿el aviso debe llegar sí o sí? | Una decisión de negocio | **Negocio** — es la que más trabajo destraba |
+| `TEAM_CAPACITY` | Calcularlo | Coordinación (Q-02, Q-03) |
 
 ## Evidencia
 
