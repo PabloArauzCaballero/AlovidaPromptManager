@@ -11,8 +11,8 @@
 
 - **Persona:** Pablo · **Turno:** noche · **Fecha:** 2026-09-19 · **Línea:** A · **Rol:** habilitación de autonomía
 - **Tu prompt:** [Corte, laboratorio del piloto y regresión de aislamiento](Noche-PilotoDeAvisos.Backend/CorteLaboratorioYRegresion.md)
-- **Documento de corte (H1):** [CORTE-2026-09-19.md](Noche-PilotoDeAvisos.Backend/CORTE-2026-09-19.md)
-- **Action log (qué se subió, qué no, y el plan para lo que quedó abierto):** [ACTIONLOG.md](Noche-PilotoDeAvisos.Backend/ACTIONLOG.md)
+- **Documento de corte (H1):** [CORTE-2026-09-19.md](Noche-PilotoDeAvisos.Backend/entregables/CORTE-2026-09-19.md)
+- **Action log (qué se subió, qué no, y el plan para lo que quedó abierto):** [ACTIONLOG.md](Noche-PilotoDeAvisos.Backend/entregables/ACTIONLOG.md)
 - **PR abierto:** [mantra-core-health-api#444](https://github.com/mdavila-2001/mantra-core-health-api/pull/444) — laboratorio de H2 contra `dev`
 - **Daily del equipo:** [Daily-Noche-2026-09-19.md](../Daily-Noche-2026-09-19.md)
 - **6 hitos · 18 subtareas · 53 microtareas**
