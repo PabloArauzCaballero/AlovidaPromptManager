@@ -1,0 +1,17 @@
+=== Estado de los contenedores ===
+NAME                       IMAGE                           COMMAND                  SERVICE    CREATED        STATUS                    PORTS
+mantra-redesa-postgres-1   timescale/timescaledb-ha:pg18   "/docker-entrypoint.…"   postgres   34 hours ago   Up 32 seconds (healthy)   0.0.0.0:5434->5432/tcp, [::]:5434->5432/tcp
+
+=== Logs de postgres-init (últimas 40 líneas) ===
+postgres-init-1  | >>> Esperando a que PostgreSQL acepte conexiones...
+postgres-init-1  | === apply_all: iam.users ya existe — skip
+postgres-init-1  | === apply_deferred: FK cross-schema ya aplicadas — skip
+postgres-init-1  | >>> NoSQL 58: time_series (TimescaleDB)
+postgres-init-1  | psql: error: /init/NoSQL/58_time_series_timescaledb/time_series.timescaledb.sql: No such file or directory
+
+=== Chequeo TCP directo a 127.0.0.1:5433 ===
+NO CONECTA -> ECONNREFUSED
+exit_code=1
+=== Chequeo TCP directo a 127.0.0.1:5434 (puerto real mapeado) ===
+CONECTA a 127.0.0.1:5434
+exit_code=0

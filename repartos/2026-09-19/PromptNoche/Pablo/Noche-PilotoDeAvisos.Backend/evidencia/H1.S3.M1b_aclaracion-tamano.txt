@@ -1,0 +1,16 @@
+=== Aclaración de tamaño: 76 líneas (paquete/corte 32ae939) vs 299 (working tree) ===
+$ git cat-file -p 32ae939983f0d665e4ed371362858801134d35cd:src/modules/scheduling/services/scheduling-delay.service.ts | wc -l
+299
+$ git cat-file -p dev:src/modules/scheduling/services/scheduling-delay.service.ts | wc -l
+299
+$ git diff dev -- src/modules/scheduling/services/scheduling-delay.service.ts | head -5
+(archivo NO está en la lista de 'M'/'??' de git status: el cambio de tamaño es respecto al corte del paquete, no de esta sesión)
+=== Corrección: '76' era la línea de la declaración de clase, no el total de líneas del archivo ===
+$ grep -n 'class SchedulingDelayService' src/modules/scheduling/services/scheduling-delay.service.ts
+76:export class SchedulingDelayService {
+$ grep -n 'class SchedulingAgendaNoticesService' src/modules/scheduling/services/scheduling-agenda-notices.service.ts
+36:export class SchedulingAgendaNoticesService {
+$ grep -n 'class MessagingAgendaNoticeAdapter' src/modules/scheduling/adapters/messaging-agenda-notice.adapter.ts
+117:export class MessagingAgendaNoticeAdapter implements AgendaNoticePort {
+$ grep -n 'class SupportAdminNoticeAdapter' src/modules/scheduling/adapters/support-admin-notice.adapter.ts
+43:export class SupportAdminNoticeAdapter {

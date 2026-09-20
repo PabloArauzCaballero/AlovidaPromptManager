@@ -1,0 +1,17 @@
+=== H4 — simulacro de la prueba de ausencia (MessagingModule quitado de SchedulingModule) ===
+$ yarn test --testPathPatterns=src/modules/scheduling
+(node:7096) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:2748) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:36456) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:8396) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+Test Suites: 19 passed, 19 total
+Tests:       467 passed, 467 total
+Snapshots:   0 total
+Time:        14.575 s
+Ran all test suites matching src/modules/scheduling.
+exit_code=0

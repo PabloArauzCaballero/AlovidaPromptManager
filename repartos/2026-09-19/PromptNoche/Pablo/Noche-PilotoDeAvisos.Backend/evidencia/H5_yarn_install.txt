@@ -1,0 +1,10 @@
+=== yarn install para completar node_modules (pdfkit, sharp faltaban) ===
+➤ YN0000: · Yarn 4.14.1
+➤ YN0000: ┌ Resolution step
+➤ YN0000: └ Completed
+➤ YN0000: ┌ Fetch step
+➤ YN0000: └ Completed in 0s 766ms
+➤ YN0000: ┌ Link step
+➤ YN0000: └ Completed in 1s 152ms
+➤ YN0000: · Done in 2s 279ms
+exit_code=0

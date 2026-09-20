@@ -1,0 +1,9 @@
+=== H2.S1/H2.S2 — corrida real del laboratorio contra Postgres ===
+(node:33180) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+Test Suites: 1 passed, 1 total
+Tests:       5 passed, 5 total
+Snapshots:   0 total
+Time:        1.169 s
+Ran all test suites matching agenda-notice-capability.lab.
+exit_code=0

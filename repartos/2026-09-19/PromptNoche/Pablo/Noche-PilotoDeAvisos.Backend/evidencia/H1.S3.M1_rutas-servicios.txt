@@ -1,0 +1,12 @@
+=== H1.S3.M1 — Localizar rutas reales de los tres servicios/adaptadores ===
+$ git ls-tree -r --name-only dev | grep -E 'scheduling-delay.service.ts|scheduling-agenda-notices.service.ts|messaging-agenda-notice.adapter.ts|support-admin-notice.adapter.ts'
+src/modules/scheduling/adapters/messaging-agenda-notice.adapter.ts
+src/modules/scheduling/adapters/support-admin-notice.adapter.ts
+src/modules/scheduling/services/scheduling-agenda-notices.service.ts
+src/modules/scheduling/services/scheduling-delay.service.ts
+
+Confirmación de existencia en el checkout real (working tree, feat/admin-portal-catalog, comparte estos archivos con dev):
+EXISTE: src/modules/scheduling/services/scheduling-delay.service.ts (299 líneas)
+EXISTE: src/modules/scheduling/services/scheduling-agenda-notices.service.ts (143 líneas)
+EXISTE: src/modules/scheduling/adapters/messaging-agenda-notice.adapter.ts (440 líneas)
+EXISTE: src/modules/scheduling/adapters/support-admin-notice.adapter.ts (165 líneas)

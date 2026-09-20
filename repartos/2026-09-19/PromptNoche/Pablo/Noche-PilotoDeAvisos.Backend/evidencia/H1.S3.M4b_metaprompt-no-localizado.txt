@@ -1,0 +1,22 @@
+=== H1.S3.M4 — Búsqueda de METAPROMPT_PARA_ASTRA(1).md ===
+$ find /c/Users/Usuario/Downloads/Entrypoint-GitHUb -iname "*metaprompt*" -o -iname "*ASTRA*"
+(sin resultados)
+
+No se localizó el archivo METAPROMPT_PARA_ASTRA(1).md en ningún repo accesible desde esta máquina
+(ni en AlovidaPromptManager, ni en mantra-core-health-api, ni en el resto de checkouts bajo
+Entrypoint-GitHUb). PROCESS_SOURCE de la ficha lo cita como fuente, pero no es alcanzable desde
+acá. Se registra como LÍMITE DE ACCESO, no como "el metaprompt no exige durabilidad": no se puede
+afirmar el contenido de un documento que no se pudo abrir.
+
+Lo que SÍ se pudo verificar de forma independiente (VERIFICACION-CONTRA-CODIGO-2026-09-19.md,
+sección 2.4, ya citada con localizador real) es que el comentario del puerto real dice, literal:
+
+  "Emitir no puede romper la agenda. Un aviso que falla se registra y se descarta; jamás revierte
+  la reserva, la cancelación ni la promoción que lo originó."
+  -- src/modules/scheduling/ports/agenda-notice.port.ts, líneas 19-22
+
+Y que esa misma verificación reporta la tensión contra "la exigencia de durabilidad para efectos
+obligatorios del metaprompt" sin citarlo literal tampoco. Ambas fuentes (este documento y la
+verificación previa) coinciden en que la tensión existe, pero ninguna pudo citar el texto exacto
+del metaprompt. Estado: DECISION_REQUIRED, y además BLOQUEADO por acceso al documento fuente.
+A quién confirmárselo: Ender (semántica del contrato) y quien tenga el metaprompt real.
