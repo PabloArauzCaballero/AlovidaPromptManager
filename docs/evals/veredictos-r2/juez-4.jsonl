@@ -1,0 +1,59 @@
+{"id":"requirements-and-acceptance-directo","elegidas":["requirements-and-acceptance"],"confianza":"alta"}
+{"id":"prompt-governance-versioning-directo","elegidas":["prompt-governance-versioning"],"confianza":"alta"}
+{"id":"prompt-engineering-directo","elegidas":["prompt-engineering"],"confianza":"alta"}
+{"id":"github-releases-versioning-oblicuo","elegidas":["github-multirepo-coordination","api-openapi-docs","github-releases-versioning"],"confianza":"media","nota":"dude entre coordinacion cross-repo de un contrato roto, deteccion de breaking change en el spec OpenAPI, y el versionado semver del cambio"}
+{"id":"coolify-databases-backups-directo","elegidas":["coolify-databases-backups"],"confianza":"alta"}
+{"id":"angular-testing-directo","elegidas":["angular-testing"],"confianza":"alta"}
+{"id":"test-plan-authoring-oblicuo","elegidas":["test-plan-authoring"],"confianza":"alta"}
+{"id":"environment-secrets-config-directo","elegidas":["environment-secrets-config"],"confianza":"alta"}
+{"id":"deployment-verification-smoke-directo","elegidas":["deployment-verification-smoke"],"confianza":"alta"}
+{"id":"frontend-security-oblicuo","elegidas":["frontend-security"],"confianza":"alta"}
+{"id":"angular-ssr-hydration-oblicuo","elegidas":["angular-ssr-hydration"],"confianza":"alta"}
+{"id":"ui-quality-review-directo","elegidas":["ui-quality-review"],"confianza":"alta"}
+{"id":"code-quality-gates-oblicuo","elegidas":["code-quality-gates","ci-cd-pipeline"],"confianza":"alta"}
+{"id":"dashboard-data-ui-directo","elegidas":["dashboard-data-ui"],"confianza":"alta"}
+{"id":"mobile-release-security-oblicuo","elegidas":["mobile-release-security"],"confianza":"alta"}
+{"id":"exploratory-testing-oblicuo","elegidas":["exploratory-testing"],"confianza":"alta"}
+{"id":"qa-orchestration-oblicuo","elegidas":["qa-orchestration"],"confianza":"alta"}
+{"id":"nestjs-development-oblicuo","elegidas":["backend-development","nestjs-development"],"confianza":"media","nota":"controller gordo con logica y queries adentro apunta a backend-development, pero el body sin validar es territorio de DTOs/ValidationPipe de nestjs-development"}
+{"id":"auth-session-pentest-directo","elegidas":["auth-session-pentest"],"confianza":"alta"}
+{"id":"coolify-operations-oblicuo","elegidas":["coolify-operations"],"confianza":"alta"}
+{"id":"mobile-release-security-directo","elegidas":["mobile-release-security"],"confianza":"alta"}
+{"id":"accounting-double-entry-directo","elegidas":["accounting-double-entry"],"confianza":"alta"}
+{"id":"angular-forms-directo","elegidas":["angular-forms"],"confianza":"alta"}
+{"id":"seed-data-catalogs-oblicuo","elegidas":["seed-data-catalogs"],"confianza":"alta"}
+{"id":"github-repo-standards-oblicuo","elegidas":["github-branch-protection-rulesets","github-repo-standards"],"confianza":"media","nota":"CODEOWNERS existe pero no exige review: eso es branch-protection-rulesets, aunque repo-standards tambien cubre el contenido del archivo"}
+{"id":"github-actions-ci-directo","elegidas":["github-actions-ci"],"confianza":"alta"}
+{"id":"windows-dev-environment-directo","elegidas":["windows-dev-environment"],"confianza":"alta"}
+{"id":"docker-local-stack-directo","elegidas":["docker-local-stack"],"confianza":"alta"}
+{"id":"frontend-beautiful-ui-directo","elegidas":["frontend-beautiful-ui"],"confianza":"alta"}
+{"id":"frontend-ui-design-oblicuo","elegidas":["visual-hierarchy-composition","ux-clarity-usability"],"confianza":"media","nota":"doce botones al mismo nivel sin que ninguno resalte es el disparador textual de visual-hierarchy-composition, pero se solapa con la falta de accion primaria de ux-clarity-usability"}
+{"id":"native-code-patterns-oblicuo","elegidas":["native-code-patterns"],"confianza":"alta"}
+{"id":"terminology-value-sets-oblicuo","elegidas":["terminology-value-sets"],"confianza":"alta"}
+{"id":"release-and-rollback-directo","elegidas":["release-and-rollback"],"confianza":"alta"}
+{"id":"realtime-websockets-oblicuo","elegidas":["realtime-websockets"],"confianza":"alta"}
+{"id":"frontend-responsive-layout-directo","elegidas":["frontend-responsive-layout"],"confianza":"alta"}
+{"id":"atomic-design-components-oblicuo","elegidas":["atomic-design-components"],"confianza":"alta"}
+{"id":"frontend-i18n-l10n-oblicuo","elegidas":["frontend-i18n-l10n"],"confianza":"alta"}
+{"id":"bug-reporting-standard-oblicuo","elegidas":["bug-reporting-standard"],"confianza":"alta"}
+{"id":"github-security-features-directo","elegidas":["github-security-features"],"confianza":"alta"}
+{"id":"frontend-forms-ux-directo","elegidas":["frontend-forms-ux"],"confianza":"alta"}
+{"id":"ux-clarity-usability-oblicuo","elegidas":["ux-clarity-usability","visual-hierarchy-composition"],"confianza":"alta"}
+{"id":"data-quality-validation-directo","elegidas":["data-quality-validation"],"confianza":"alta"}
+{"id":"api-testing-directo","elegidas":["api-testing"],"confianza":"alta"}
+{"id":"web-app-pentest-directo","elegidas":["web-app-pentest"],"confianza":"alta"}
+{"id":"anti-hallucination-guard-directo","elegidas":["anti-hallucination-guard"],"confianza":"alta"}
+{"id":"root-cause-debugging-directo","elegidas":["root-cause-debugging"],"confianza":"alta"}
+{"id":"edge-case-data-catalog-directo","elegidas":["edge-case-data-catalog"],"confianza":"alta"}
+{"id":"api-pentest-directo","elegidas":["api-pentest"],"confianza":"alta"}
+{"id":"backend-development-directo","elegidas":["backend-development"],"confianza":"alta"}
+{"id":"frontend-beautiful-ui-oblicuo","elegidas":["frontend-beautiful-ui","ui-quality-review"],"confianza":"media","nota":"describe defectos visuales concretos (sombras, radios, dark mode) que es frontend-beautiful-ui, pero la frase 'se ve barata' es tambien el disparador textual de ui-quality-review"}
+{"id":"dockerfile-production-oblicuo","elegidas":["dockerfile-production"],"confianza":"alta"}
+{"id":"frontend-design-system-oblicuo","elegidas":["frontend-design-system"],"confianza":"alta"}
+{"id":"frontend-accessibility-directo","elegidas":["frontend-accessibility"],"confianza":"alta"}
+{"id":"static-analysis-linting-oblicuo","elegidas":["static-analysis-linting"],"confianza":"alta"}
+{"id":"progress-reporting-directo","elegidas":["progress-reporting"],"confianza":"alta"}
+{"id":"directories-public-profiles-oblicuo","elegidas":["directories-public-profiles","consent-management"],"confianza":"alta"}
+{"id":"quotations-billing-oblicuo","elegidas":["quotations-billing"],"confianza":"alta"}
+{"id":"code-quality-gates-directo","elegidas":["code-quality-gates"],"confianza":"alta"}
+{"id":"color-systems-directo","elegidas":["color-systems"],"confianza":"alta"}

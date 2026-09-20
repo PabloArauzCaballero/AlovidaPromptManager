@@ -1,0 +1,58 @@
+{"id": "flutter-theming-directo", "prompt": "Necesito definir el tema claro y oscuro de la app Flutter alineado con la identidad de la web."}
+{"id": "color-systems-directo", "prompt": "Tengo que armar la paleta del producto con sus roles y que funcione en modo claro y oscuro."}
+{"id": "windows-dev-environment-oblicuo", "prompt": "Un compañero corrió el hook y le tiró command not found, y a otro se le rompieron los acentos al leer un archivo. En la máquina Linux del CI andaba bien."}
+{"id": "regulatory-compliance-mapping-directo", "prompt": "Necesito armar la matriz que relacione los requisitos que nos pase el área legal con los controles técnicos, su evidencia y su dueño."}
+{"id": "integrity-testing-directo", "prompt": "Quiero probar en serio que las constraints y las transacciones del modulo contable aguantan lo que decimos."}
+{"id": "authn-identity-directo", "prompt": "Voy a implementar el ingreso con codigo de autorizacion y PKCE para la SPA. Donde guardo las credenciales del lado del cliente?"}
+{"id": "incident-response-postmortem-directo", "prompt": "Se cayo produccion. Como nos organizamos para responder y que hacemos despues para que no se repita?"}
+{"id": "coolify-databases-backups-oblicuo", "prompt": "Si mañana se nos rompe el servidor no tengo idea si podemos recuperar los datos de los pacientes. Nunca probamos volver atrás desde una copia."}
+{"id": "prompt-evals-directo", "prompt": "Antes de mergear un cambio en la description de una skill quiero medir si sigue activándose cuando corresponde y que no rompí a las vecinas."}
+{"id": "api-openapi-docs-oblicuo", "prompt": "Los del front generan su cliente a partir del archivo de contrato que exportamos y se les rompio todo porque les cambiamos los nombres de las operaciones sin avisar."}
+{"id": "docker-local-stack-directo", "prompt": "Quiero un compose para levantar la API, Postgres y Redis en local con un solo comando."}
+{"id": "solid-principles-oblicuo", "prompt": "Cada vez que agregamos un tipo de cobertura nuevo hay que tocar el mismo switch gigante y se rompen cosas que ya andaban. ¿Cómo reordeno esto?"}
+{"id": "e2e-failure-triage-oblicuo", "prompt": "Este test a veces pasa y a veces no. Alguien propuso subirle el tiempo de espera para que deje de molestar y seguir."}
+{"id": "test-plan-authoring-directo", "prompt": "Necesito escribir el plan de prueba del carril de agenda antes de empezar a testear."}
+{"id": "prompt-engineering-directo", "prompt": "Quiero reescribir el system prompt del subagente que revisa PRs. ¿Cómo lo redacto para que sea específico y devuelva lo que necesito?"}
+{"id": "accessibility-testing-directo", "prompt": "Quiero sumar chequeos automaticos de accesibilidad a los E2E de la ficha clinica y ademas dejar definida una pasada manual con teclado y lector antes de darla por cerrada."}
+{"id": "native-code-patterns-oblicuo", "prompt": "Se nota a la legua cual archivo salio de la IA: no se parece en nada al resto, usa otros nombres y comenta todo."}
+{"id": "angular-ssr-hydration-directo", "prompt": "Como escribo un componente que necesita medir el ancho del contenedor sin que explote al renderizarse en el servidor?"}
+{"id": "audit-trail-history-oblicuo", "prompt": "Nos pidieron poder demostrar quien abrio el expediente de un paciente hace tres meses, incluyendo a los que lo intentaron y el sistema no los dejo."}
+{"id": "security-guardrails-directo", "prompt": "Antes de mergear este endpoint quiero pasarle el checklist completo de controles: autorización, validación, secretos, headers y logs."}
+{"id": "github-multirepo-coordination-directo", "prompt": "El carril toca el modelo, la API y la web. En que orden conviene mergear los PRs de cada repo?"}
+{"id": "flutter-development-oblicuo", "prompt": "La app móvil va lenta y el build de la pantalla principal tiene trescientas líneas con un montón de métodos que devuelven Widget. Quiero ordenar eso como corresponde."}
+{"id": "pentest-methodology-oblicuo", "prompt": "Antes de que alguien se ponga a buscarle agujeros a nuestro staging, que tenemos que dejar acordado y por escrito?"}
+{"id": "outcome-first-oblicuo", "prompt": "Dimos la tarea por terminada y ahora nadie se pone de acuerdo en si esta hecha. Cada uno entendio otra cosa."}
+{"id": "atomic-design-components-oblicuo", "prompt": "Encontre tres componentes que hacen casi lo mismo con nombres distintos, porque cada equipo se armo el suyo en vez de usar el que ya estaba."}
+{"id": "code-quality-gates-oblicuo", "prompt": "La rama principal se rompe cada dos por tres porque entra código sin pasar por nada. Quiero que deje de depender de que alguien se acuerde de correr las cosas."}
+{"id": "github-issues-projects-directo", "prompt": "Voy a armar las plantillas de issues y el tablero del equipo para el proximo bloque de trabajo."}
+{"id": "environment-secrets-config-oblicuo", "prompt": "Se nos coló la credencial de la base en el repo, y encima la app arranca igual aunque falten la mitad de las variables y recién explota en la primera request. Quiero cortar esto de raíz."}
+{"id": "deployment-verification-smoke-oblicuo", "prompt": "Dimos por hecho que ya estaba en producción porque el deploy quedó en verde, y media hora después nos avisaron los usuarios que el login no andaba."}
+{"id": "maps-geolocation-oblicuo", "prompt": "Guardamos latitud y longitud en dos columnas sueltas y la pantalla de lugares cerca de mi receta tarda muchisimo y da distancias raras."}
+{"id": "backend-development-oblicuo", "prompt": "Los controllers del modulo de seguros tienen doscientas lineas con reglas de negocio y consultas a la base metidas adentro."}
+{"id": "clean-code-oblicuo", "prompt": "Abrí invoice.service.ts y no entiendo qué hace. Los comentarios dicen una cosa y el código hace otra, y hay tres cosas que se llaman casi igual. Lo tengo que tocar igual para un fix."}
+{"id": "dead-code-duplication-oblicuo", "prompt": "Hay un montón de archivos que creo que quedaron de features que sacamos hace meses, pero me da miedo borrarlos por si algo los sigue llamando."}
+{"id": "code-complexity-metrics-directo", "prompt": "Quiero medir la complejidad ciclomática y cognitiva del módulo de agenda para decidir qué refactorizar primero."}
+{"id": "qa-orchestration-oblicuo", "prompt": "Cada salida a producción es un descontrol: nadie sabe quién prueba qué, en qué orden corren las cosas, y al final alguien decide a ojo si sale o no sale."}
+{"id": "ux-clarity-usability-directo", "prompt": "Revisá si esta pantalla se entiende sola y si la acción principal está clara."}
+{"id": "pentest-recon-mapping-directo", "prompt": "Quiero levantar el inventario de toda la superficie que tenemos expuesta: subdominios, puertos abiertos y qué operaciones de la API están publicadas de verdad. Necesito contrastar eso con lo que debería ser alcanzable."}
+{"id": "edge-case-data-catalog-oblicuo", "prompt": "Siempre se nos escapan bugs con nombres con ñ y emojis, con el 29 de febrero y con montos de muchos decimales. Quiero una lista de referencia de qué porquerías meterle a cada tipo de campo."}
+{"id": "root-cause-debugging-directo", "prompt": "Este test se pone rojo y quiero encontrar la causa real, con repro mínimo e hipótesis, antes de tocar una línea."}
+{"id": "angular-ssr-hydration-oblicuo", "prompt": "El directorio publico tira error apenas arranca en Node y en el navegador se ve un parpadeo raro antes de que se acomode el contenido."}
+{"id": "scope-discipline-directo", "prompt": "Antes de empezar quiero dejar escrito qué entra y qué no entra en este cambio, y revisar después que el diff no se haya ido de tema."}
+{"id": "file-uploads-media-oblicuo", "prompt": "Cualquiera puede renombrar un ejecutable a .jpg y mandárnoslo, y encima estamos guardando todo en el disco del contenedor que se borra en cada deploy."}
+{"id": "release-and-rollback-directo", "prompt": "Quiero definir la estrategia de salida a producción y el criterio y la mecánica para volver atrás si algo sale mal."}
+{"id": "api-testing-directo", "prompt": "Quiero tests que levanten la aplicacion Nest completa con sus guards y filtros y le peguen por HTTP contra una base real."}
+{"id": "prompt-governance-versioning-directo", "prompt": "Quiero definir cómo versionamos las skills del repo, quién aprueba un cambio de contrato y cómo se depreca una sin romper a las que la enlazan."}
+{"id": "technical-debt-management-oblicuo", "prompt": "Tenemos comentarios de arreglar esto después por todos lados desde hace un año y nadie los mira nunca. Quiero que eso sea visible y se pueda priorizar."}
+{"id": "smart-dumb-components-directo", "prompt": "¿Cómo separo los componentes contenedores de los presentacionales en la agenda? Quiero que las cards de cita sean reusables."}
+{"id": "frontend-ui-design-oblicuo", "prompt": "En esta vista todo tiene el mismo peso y el usuario no sabe qué tiene que hacer primero: hay doce botones al mismo nivel y ninguno resalta sobre el resto."}
+{"id": "environment-secrets-config-directo", "prompt": "Necesito ordenar las variables de entorno del API y validarlas al arrancar para que no levante si falta alguna."}
+{"id": "server-hardening-oblicuo", "prompt": "Me enteré de que el puerto de la base contesta desde afuera y que al panel se entra por IP con usuario y contraseña nomás. Ahí adentro hay fichas médicas."}
+{"id": "mobile-release-security-directo", "prompt": "Donde guardo los tokens de sesion en la app Flutter y que reviso antes de subirla a las tiendas?"}
+{"id": "incident-response-postmortem-oblicuo", "prompt": "Un medico aviso que en su pantalla aparecio la ficha de un paciente que no es suyo. Esta pasando ahora en produccion, quien hace que?"}
+{"id": "exploratory-testing-oblicuo", "prompt": "Los tests que tenemos pasan todos pero igual aparecen cosas raras que nadie había anticipado. Quiero sentarme una hora con foco a sacudir el módulo y que quede registrado lo que encuentre."}
+{"id": "threat-modeling-oblicuo", "prompt": "Antes de escribir una línea del módulo de recetas quiero sentarme a pensar de forma sistemática qué puede salir mal en seguridad y qué pongo para cubrir cada cosa."}
+{"id": "claude-md-authoring-directo", "prompt": "Que conviene poner en el archivo de contexto del proyecto y que va mejor como regla aparte o como skill?"}
+{"id": "css-architecture-directo", "prompt": "Quiero ordenar la arquitectura de CSS del front, que no usa ningún framework de estilos."}
+{"id": "concurrency-and-locking-oblicuo", "prompt": "Dos secretarias cargaron una cita casi en el mismo momento y quedaron las dos en el mismo horario. Pasa poco pero ya nos pasó tres veces."}
+{"id": "technical-debt-management-directo", "prompt": "¿Cómo llevamos un inventario de deuda técnica en vez de TODOs sueltos por el código?"}

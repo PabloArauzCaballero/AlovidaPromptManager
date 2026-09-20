@@ -1,0 +1,59 @@
+{"id": "qa-strategy-oblicuo", "prompt": "Tenemos un montón de tests y igual se nos siguen escapando bugs a producción, mientras que hay pantallas críticas sin nada. Estamos poniendo el esfuerzo en el lugar equivocado."}
+{"id": "visual-regression-testing-oblicuo", "prompt": "Tocamos un token de color global y sin querer arruinamos el aspecto de media app. Nadie se dio cuenta hasta producción. Quiero que eso salte solo la próxima vez."}
+{"id": "context-thrift-oblicuo", "prompt": "Cada vez que te pido algo en el monorepo terminás abriendo veinte archivos y después te confundís entre dos módulos que se parecen."}
+{"id": "audit-trail-history-oblicuo", "prompt": "Nos pidieron poder demostrar quien abrio el expediente de un paciente hace tres meses, incluyendo a los que lo intentaron y el sistema no los dejo."}
+{"id": "authz-access-control-directo", "prompt": "Necesito definir que rol puede hacer que sobre cada recurso y asegurarme de que el backend lo valide endpoint por endpoint."}
+{"id": "error-handling-contract-directo", "prompt": "¿Qué status HTTP devuelvo cuando el turno ya está ocupado, y cuándo corresponde 409 y cuándo 422?"}
+{"id": "social-feed-design-oblicuo", "prompt": "Necesito que los doctores puedan publicar cosas y que la gente comente y reaccione. Me preocupa que se filtre información privada y que cuando alguien junte muchos seguidores se ponga lento."}
+{"id": "finish-your-turn-directo", "prompt": "Quiero una regla para no cerrar el turno dejando cosas a medias."}
+{"id": "skills-router-oblicuo", "prompt": "Entré nuevo al repo y hay una montaña de instrucciones. Necesito saber cuáles son obligatorias siempre, cuáles solo para ciertas tareas, y qué manda si dos se contradicen."}
+{"id": "evidence-and-verification-oblicuo", "prompt": "Me pasa seguido que me dicen que algo ya quedó andando, lo pruebo y no anda. Quiero una regla clara de qué se puede afirmar según lo que realmente se ejecutó."}
+{"id": "code-review-standard-oblicuo", "prompt": "Las revisiones se nos van en discutir comillas y sangría, y después se cuelan errores de verdad. Encima alguno se lo toma personal. Quiero ordenar eso."}
+{"id": "multi-tenancy-directo", "prompt": "Estoy creando tablas nuevas para el modulo de organizaciones. Como garantizo el aislamiento entre ellas?"}
+{"id": "subagent-design-directo", "prompt": "Quiero crear un agente en .claude/agents que investigue el código pero no pueda editar. ¿Qué campos lleva el frontmatter?"}
+{"id": "database-design-oblicuo", "prompt": "Tengo que guardar importes, fechas de vencimiento y el estado de cada documento, y no sé qué tipos conviene usar ni qué restricciones poner para que no se ensucie después."}
+{"id": "pentest-reporting-remediation-oblicuo", "prompt": "Los tres problemas que encontró el equipo la semana pasada quedaron en un mensaje de chat. Nadie sabe cuál es más grave ni quién lo tiene que resolver, y uno lo dieron por arreglado sin volver a probarlo."}
+{"id": "mobile-offline-sync-oblicuo", "prompt": "El medico cargo una evolucion en el subsuelo donde no hay senal y cuando salio se habia perdido todo lo que escribio."}
+{"id": "pentest-methodology-oblicuo", "prompt": "Antes de que alguien se ponga a buscarle agujeros a nuestro staging, que tenemos que dejar acordado y por escrito?"}
+{"id": "pentest-recon-mapping-directo", "prompt": "Quiero levantar el inventario de toda la superficie que tenemos expuesta: subdominios, puertos abiertos y qué operaciones de la API están publicadas de verdad. Necesito contrastar eso con lo que debería ser alcanzable."}
+{"id": "regression-suite-management-oblicuo", "prompt": "La corrida del CI tarda una hora y media, y hay tres casos que fallan cada tanto sin motivo. El equipo ya ni mira cuando se pone en rojo."}
+{"id": "qa-evidence-reporting-directo", "prompt": "Necesito la plantilla de reporte de QA con qué evidencia hay que pegar por cada caso para poder dar un carril por cerrado."}
+{"id": "uat-acceptance-signoff-oblicuo", "prompt": "QA está todo en verde pero necesito que la gente de negocio valide que esto resuelve lo que pidieron, y que quede constancia de quién lo aprobó y con qué salvedades."}
+{"id": "concurrency-and-locking-oblicuo", "prompt": "Dos secretarias cargaron una cita casi en el mismo momento y quedaron las dos en el mismo horario. Pasa poco pero ya nos pasó tres veces."}
+{"id": "native-code-patterns-directo", "prompt": "Antes de escribir el controller nuevo quiero asegurarme de seguir la convencion que ya usa el repo."}
+{"id": "frontend-data-access-directo", "prompt": "¿Cómo organizo los clientes HTTP contra la API en el front de Angular?"}
+{"id": "github-security-features-oblicuo", "prompt": "Se nos colo la credencial de la base en un commit y nos enteramos meses despues, de casualidad."}
+{"id": "appointment-scheduling-oblicuo", "prompt": "Quedaron dos pacientes con el mismo turno de las 10:15, y encima a los que estan en otra provincia les aparece la hora corrida."}
+{"id": "appointment-scheduling-directo", "prompt": "Voy a modelar los horarios de atencion, los bloqueos y el calculo de disponibilidad de la agenda."}
+{"id": "rationalization-guard-oblicuo", "prompt": "Me di cuenta de que cada vez que estoy apurado me escucho diciendo que es un cambio chiquito y que seguro anda, y después vuelve el bug. Necesito algo que me frene justo en ese momento."}
+{"id": "github-multirepo-coordination-directo", "prompt": "El carril toca el modelo, la API y la web. En que orden conviene mergear los PRs de cada repo?"}
+{"id": "github-actions-ci-oblicuo", "prompt": "Cada vez que pusheo se quedan tres corridas viejas del pipeline ejecutando al pedo y la cola tarda una eternidad en llegar a la mia."}
+{"id": "notifications-delivery-oblicuo", "prompt": "A un paciente le llego cuatro veces el mismo aviso del turno, y encima habia pedido que no le mandaramos mails."}
+{"id": "lane-authoring-directo", "prompt": "Voy a abrir un carril nuevo para el modulo de cotizaciones. Como lo defino y que documentos tiene que tener?"}
+{"id": "mobile-ux-design-directo", "prompt": "Estoy disenando las pantallas de la app nativa y quiero respetar las convenciones de cada sistema."}
+{"id": "maps-geolocation-oblicuo", "prompt": "Guardamos latitud y longitud en dos columnas sueltas y la pantalla de lugares cerca de mi receta tarda muchisimo y da distancias raras."}
+{"id": "root-cause-debugging-oblicuo", "prompt": "Le subí el tiempo de espera y dejó de fallar, pero no me quedo tranquilo porque sigo sin entender por qué fallaba."}
+{"id": "security-testing-directo", "prompt": "Quiero dejar tests automáticos que fallen si alguien rompe la autorización: acceso a recursos de otro usuario, de otro tenant y mass assignment."}
+{"id": "iconography-imagery-oblicuo", "prompt": "El boton de cerrar del modal el lector de pantalla lo lee como boton y nada mas. Y encima se ve de otro grosor que los demas."}
+{"id": "synthetic-test-data-generation-directo", "prompt": "Necesito generar datos de prueba sintéticos realistas de pacientes y citas, con semilla para que sean reproducibles."}
+{"id": "vertical-slicing-directo", "prompt": "¿Cómo corto este carril en rebanadas verticales en vez de hacer todo el backend primero?"}
+{"id": "static-analysis-linting-directo", "prompt": "Quiero configurar ESLint con reglas que usen información de tipos y dejar Prettier aparte. ¿Cómo queda la config?"}
+{"id": "state-machines-workflows-oblicuo", "prompt": "Apareció una cita en completada que nunca pasó por aceptada. Alguien le mandó un PATCH con el campo directo y el backend lo dejó pasar."}
+{"id": "typography-systems-oblicuo", "prompt": "Los textos largos de la ficha se leen incómodos porque las líneas son larguísimas, y en la tabla de montos los números bailan de una fila a otra."}
+{"id": "flutter-development-oblicuo", "prompt": "La app móvil va lenta y el build de la pantalla principal tiene trescientas líneas con un montón de métodos que devuelven Widget. Quiero ordenar eso como corresponde."}
+{"id": "progress-reporting-oblicuo", "prompt": "Te mandé una tarea grande ayer, estuviste veinte minutos sin decir nada y después se cortó la sesión. No tenía forma de saber por dónde ibas ni qué había quedado sin terminar."}
+{"id": "accounting-double-entry-oblicuo", "prompt": "En el modulo de activos y pasivos los saldos no cierran por centavos y encontramos movimientos que quedaron guardados a medias. Necesito que eso sea directamente imposible."}
+{"id": "test-data-management-directo", "prompt": "Quiero armar factories para los tests de integración y que cada test sea dueño de los datos que usa."}
+{"id": "code-complexity-metrics-oblicuo", "prompt": "Tengo dos días para limpiar el backend pero no sé qué archivos elegir. ¿Hay alguna forma de saber dónde duele más en vez de ir a ojo?"}
+{"id": "coolify-operations-directo", "prompt": "Necesito disparar el deploy desde GitHub Actions y poder ver los logs del contenedor cuando algo falla."}
+{"id": "subagent-design-oblicuo", "prompt": "Necesito delegar la búsqueda por el repo a algo aislado que no me llene el contexto con archivos y que encima no tenga permiso de tocar nada."}
+{"id": "data-privacy-phi-directo", "prompt": "Necesito revisar que los endpoints no estén devolviendo más datos de pacientes de los necesarios."}
+{"id": "frontend-i18n-l10n-directo", "prompt": "Quiero preparar el front para tener la aplicación en inglés además de español."}
+{"id": "frontend-performance-oblicuo", "prompt": "La página pública tarda un montón en mostrar algo y cuando por fin carga el contenido salta y la gente termina clickeando donde no quería. En el celular es peor."}
+{"id": "seo-public-pages-oblicuo", "prompt": "Buscás el nombre de uno de nuestros profesionales en internet y no aparece nada, y cuando compartís el link por WhatsApp sale sin imagen ni texto."}
+{"id": "insurance-workflows-oblicuo", "prompt": "Guardamos un booleano de tiene cobertura en el paciente, pero resulta que depende de la fecha de la prestacion y del plan."}
+{"id": "scope-discipline-directo", "prompt": "Antes de empezar quiero dejar escrito qué entra y qué no entra en este cambio, y revisar después que el diff no se haya ido de tema."}
+{"id": "atomic-design-components-directo", "prompt": "En que nivel ubico una tarjeta de resultado de profesional y que tiene permitido saber ese componente?"}
+{"id": "prompt-evals-oblicuo", "prompt": "Toqué el texto de una de las instrucciones y tengo la sensación de que quedó mejor, pero es puro olfato. Necesito comprobarlo con casos reproducibles en vez de opinar."}
+{"id": "css-architecture-oblicuo", "prompt": "Para pisar un estilo terminamos metiendo reglas cada vez más fuertes y ya nadie sabe de dónde sale cada una ni en qué orden se aplican."}
+{"id": "healthcare-interoperability-fhir-directo", "prompt": "Vamos a integrarnos con el sistema de otra institucion y quieren intercambiar informacion clinica con un estandar. Como mapeo nuestras entidades?"}

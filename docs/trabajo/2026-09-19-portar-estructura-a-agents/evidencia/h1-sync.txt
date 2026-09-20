@@ -1,0 +1,18 @@
+=== H1 — sync_agents: evidencia ===
+
+$ python tools/sync_agents.py --self-test
+PASS  el aviso no se cuenta como huerfano
+
+sync_agents self-test: 12 PASS, 0 FAIL
+
+$ python tools/sync_agents.py --check
+sync --check: OK, 192 archivo(s) en espejo, sin deriva
+
+=== KILL-TEST (deriva provocada) ===
+sync --check: DERIVA DETECTADA entre .claude/ y .agents/
+  [difiere] rules/00-no-negociables.md
+
+Corregi con: python tools/sync_agents.py
+exit=1
+(restaurado)
+sync --check: OK, 192 archivo(s) en espejo, sin deriva

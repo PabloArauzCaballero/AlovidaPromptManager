@@ -1,0 +1,30 @@
+{"id":"neg-01","familia":"a","prompt":"Che, ¿en qué habíamos quedado ayer con lo de la agenda? No me acuerdo si lo dejamos cerrado."}
+{"id":"neg-02","familia":"a","prompt":"Gracias, ya está. Cerramos por hoy."}
+{"id":"neg-03","familia":"a","prompt":"¿Me repetís el último comando que corriste? Lo perdí del scroll."}
+{"id":"neg-04","familia":"a","prompt":"Dale, seguí nomás con lo que estabas."}
+{"id":"neg-05","familia":"a","prompt":"Pará un segundo que tengo que atender una llamada, después seguimos."}
+{"id":"neg-06","familia":"b","prompt":"¿Qué quiere decir exactamente que una operación sea idempotente? Me suena pero nunca lo tuve claro del todo."}
+{"id":"neg-07","familia":"b","prompt":"¿Cuál es la diferencia entre TCP y UDP? Es para explicárselo a un junior."}
+{"id":"neg-08","familia":"b","prompt":"¿Por qué se dice que HTTPS usa cifrado asimétrico si después cifra todo con una clave simétrica?"}
+{"id":"neg-09","familia":"b","prompt":"¿De dónde viene el nombre 'yak shaving'? Lo escuché en una reunión y me quedé colgado."}
+{"id":"neg-10","familia":"b","prompt":"¿Qué diferencia hay entre un compilador y un intérprete? Pregunta de curiosidad nomás."}
+{"id":"neg-11","familia":"c","prompt":"Cambiá el texto del botón de 'Guardar' a 'Guardar cambios'."}
+{"id":"neg-12","familia":"c","prompt":"Hay un typo en el README, dice 'instalacion' sin tilde. Corregilo."}
+{"id":"neg-13","familia":"c","prompt":"Agregá mi nombre a la lista de autores en el package.json."}
+{"id":"neg-14","familia":"c","prompt":"Renombrá el archivo notas.txt a notas-reunion.txt, nada más."}
+{"id":"neg-15","familia":"c","prompt":"Sacá esa línea comentada que quedó al final del archivo de config, no se usa."}
+{"id":"neg-16","familia":"d","prompt":"Ayudame a armar la agenda de la reunión del lunes con el equipo, son cuatro temas."}
+{"id":"neg-17","familia":"d","prompt":"Escribime un mail para el proveedor de hosting preguntando por el estado de la factura."}
+{"id":"neg-18","familia":"d","prompt":"¿Cómo instalo Python en una máquina nueva? Me acaban de dar la notebook."}
+{"id":"neg-19","familia":"d","prompt":"Necesito redactar la descripción del puesto para buscar un desarrollador semi senior."}
+{"id":"neg-20","familia":"d","prompt":"¿Me armás un resumen de lo que salió en la daily para mandarle al cliente?"}
+{"id":"neg-21","familia":"e","prompt":"No anda."}
+{"id":"neg-22","familia":"e","prompt":"Fijate esto que te paso."}
+{"id":"neg-23","familia":"e","prompt":"Che, una consulta."}
+{"id":"neg-24","familia":"e","prompt":"¿Vos qué harías?"}
+{"id":"neg-25","familia":"e","prompt":"Está raro lo de recién."}
+{"id":"neg-26","familia":"f","prompt":"¿Cómo configuro un pipeline declarativo en Jenkins? Es para otro proyecto de la empresa."}
+{"id":"neg-27","familia":"f","prompt":"Necesito ayuda con un modelo de Django, no me toma bien la relación many to many."}
+{"id":"neg-28","familia":"f","prompt":"Tengo que migrar unas lambdas de AWS a Azure Functions, ¿por dónde arranco?"}
+{"id":"neg-29","familia":"f","prompt":"¿Sabés cómo se hace un pivot table en Excel con datos de varias hojas?"}
+{"id":"neg-30","familia":"f","prompt":"Estoy peleando con un shader en Unity que no compila en WebGL."}

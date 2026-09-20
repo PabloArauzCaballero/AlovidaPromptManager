@@ -1,0 +1,20 @@
+[
+ {
+  "id": "frontend-ui-design-oblicuo",
+  "antes": "frontend-ui-design",
+  "despues": "visual-hierarchy-composition",
+  "razon": "La description de visual-hierarchy-composition ya decia textual 'todo compite'/'no se donde mirar' ANTES del eval, y su cuerpo declara la frontera. El escenario se derivo de la linea de Ley de Hick en el cuerpo de frontend-ui-design, pero el sintoma es el disparador declarado de la otra."
+ },
+ {
+  "id": "github-releases-versioning-oblicuo",
+  "antes": "github-releases-versioning",
+  "despues": "github-multirepo-coordination",
+  "razon": "Que mobile se entere en produccion es fallo de ventana de compatibilidad entre repos, no de numeracion SemVer. La description de la elegida ya decia 'al romper un contrato que otros consumen'."
+ },
+ {
+  "id": "github-repo-standards-oblicuo",
+  "antes": "github-repo-standards",
+  "despues": "github-branch-protection-rulesets",
+  "razon": "Hacer CUMPLIR CODEOWNERS es rulesets + reviews requeridos. La skill elegida ya reclamaba CODEOWNERS explicitamente antes del eval. github-repo-standards cubre que el archivo EXISTA, no que se aplique."
+ }
+]

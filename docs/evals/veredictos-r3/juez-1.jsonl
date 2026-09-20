@@ -1,0 +1,9 @@
+{"id":"api-testing-oblicuo","elegidas":["api-testing","root-cause-debugging","unit-testing"],"confianza":"alta"}
+{"id":"authz-access-control-oblicuo","elegidas":["authz-access-control","frontend-navigation-ia","api-pentest"],"confianza":"alta","nota":"dudé si frontend-navigation-ia (regla de que ocultar un botón no autoriza nada) debía ir primero, pero el foco del pedido es la falta de chequeo en el servidor (BOLA/IDOR), core de authz-access-control"}
+{"id":"backend-development-directo","elegidas":["backend-development","error-handling-contract","nestjs-development"],"confianza":"alta"}
+{"id":"backend-development-oblicuo","elegidas":["backend-development","nestjs-development","code-complexity-metrics"],"confianza":"alta"}
+{"id":"error-handling-contract-oblicuo","elegidas":["error-handling-contract","concurrency-and-locking","frontend-ux-states"],"confianza":"alta"}
+{"id":"mikroorm-patterns-oblicuo","elegidas":["mikroorm-patterns","concurrency-and-locking","background-jobs-scheduling"],"confianza":"alta"}
+{"id":"nestjs-development-directo","elegidas":["nestjs-development","backend-development","api-openapi-docs"],"confianza":"alta"}
+{"id":"nestjs-development-oblicuo","elegidas":["nestjs-development","backend-development","security-guardrails"],"confianza":"media","nota":"dudé entre nestjs-development y backend-development como primera opción, ya que backend-development explícitamente reclama el ejemplo de 'controller con reglas de negocio y consultas a la base'; me incliné por nestjs-development porque también hay body sin validar (ValidationPipe, mecánica propia de Nest)"}
+{"id":"typescript-standards-oblicuo","elegidas":["typescript-standards","code-review-standard","clean-code"],"confianza":"alta"}

@@ -1,0 +1,58 @@
+{"id": "accounting-double-entry-oblicuo", "prompt": "En el modulo de activos y pasivos los saldos no cierran por centavos y encontramos movimientos que quedaron guardados a medias. Necesito que eso sea directamente imposible."}
+{"id": "insurance-workflows-oblicuo", "prompt": "Guardamos un booleano de tiene cobertura en el paciente, pero resulta que depende de la fecha de la prestacion y del plan."}
+{"id": "skills-router-oblicuo", "prompt": "Entré nuevo al repo y hay una montaña de instrucciones. Necesito saber cuáles son obligatorias siempre, cuáles solo para ciertas tareas, y qué manda si dos se contradicen."}
+{"id": "frontend-forms-ux-directo", "prompt": "¿En qué momento muestro los errores de validación en el formulario de alta de doctor?"}
+{"id": "agent-orchestration-directo", "prompt": "Cuando conviene que lance subagentes y como reparto el trabajo entre ellos para que no se pisen los mismos archivos?"}
+{"id": "flutter-theming-oblicuo", "prompt": "En la app hay Colors.blue y tamaños de letra puestos a mano por todos lados, y en modo oscuro se ve cualquier cosa. Quiero unificar eso en un solo lugar."}
+{"id": "web-app-pentest-oblicuo", "prompt": "Antes del release quiero revisar a mano nuestra propia web: si se filtran stack traces, si la cookie de sesión está bien puesta, y si cambiando un id en la URL puedo ver cosas de otro usuario."}
+{"id": "data-privacy-phi-directo", "prompt": "Necesito revisar que los endpoints no estén devolviendo más datos de pacientes de los necesarios."}
+{"id": "api-openapi-docs-directo", "prompt": "Quiero dejar prolijo el contrato del modulo de citas: operaciones con identificador estable, ejemplos y los errores documentados."}
+{"id": "code-quality-audit-oblicuo", "prompt": "Nos pasaron un repo que mantenía otro equipo y no tenemos idea de qué tan mal está. Quiero un diagnóstico con qué atacar primero y quién se hace cargo de cada cosa."}
+{"id": "e2e-playwright-directo", "prompt": "Quiero cubrir de punta a punta el flujo de reserva de turno con Playwright, desde que el paciente elige el horario hasta que la cita queda guardada."}
+{"id": "security-testing-oblicuo", "prompt": "Ya nos pasó dos veces que un cambio dejó un endpoint accesible para cualquiera y nos enteramos semanas después. Quiero que el pipeline lo agarre solo la próxima vez."}
+{"id": "pentest-recon-mapping-oblicuo", "prompt": "Me quedé pensando que no tenemos ni idea de cuántas cosas nuestras están colgadas en internet. Hay un staging viejo dando vueltas y creo que el panel responde si le pegás directo a la IP."}
+{"id": "data-privacy-phi-oblicuo", "prompt": "Vi que en el reporte de errores aparece el nombre y el documento de la persona cuando algo falla. Eso está bien o lo tenemos que sacar."}
+{"id": "vertical-slicing-directo", "prompt": "¿Cómo corto este carril en rebanadas verticales en vez de hacer todo el backend primero?"}
+{"id": "qa-strategy-directo", "prompt": "Quiero definir qué se prueba en cada nivel y cómo priorizamos por riesgo, antes de ponernos a escribir tests a lo loco."}
+{"id": "frontend-ux-states-directo", "prompt": "¿Qué estados tengo que resolver en el listado de citas antes de darlo por terminado?"}
+{"id": "integrity-testing-oblicuo", "prompt": "Si el proceso se corta por la mitad quedan filas escritas a medias y los saldos dejan de cuadrar. Quiero cubrir ese caso."}
+{"id": "color-systems-oblicuo", "prompt": "Los estados de las solicitudes los distinguimos solo pintándolos y me dicen que hay gente que no los diferencia. Aparte el gris del texto secundario casi no se lee."}
+{"id": "backup-restore-dr-oblicuo", "prompt": "Si manana perdemos la base, cuanto tardamos en estar de nuevo en linea y cuantas horas de datos nos comemos? Nadie lo probo nunca."}
+{"id": "git-workflow-multirepo-directo", "prompt": "¿Cómo manejo las ramas cuando un carril toca el API, el front y el modelo a la vez?"}
+{"id": "claude-md-authoring-oblicuo", "prompt": "Escribimos todas las convenciones en un archivo largo que se carga al inicio del repo y aun asi el asistente se las saltea bastante seguido."}
+{"id": "github-branch-protection-rulesets-oblicuo", "prompt": "Se mergeo un cambio en agenda sin que nadie lo mirara, y encima pisaron la rama con un push forzado. Necesito que eso sea imposible, no que confiemos en que no pase."}
+{"id": "quotations-billing-directo", "prompt": "Voy a modelar el módulo de cotizaciones: líneas, impuestos, estados, numeración y la conversión a factura. ¿Qué tengo que cuidar?"}
+{"id": "frontend-i18n-l10n-oblicuo", "prompt": "Tenemos los textos escritos a mano en los templates y armamos las frases pegando el número adelante de la palabra. Si mañana hay que sumar otro idioma no se puede."}
+{"id": "database-design-oblicuo", "prompt": "Tengo que guardar importes, fechas de vencimiento y el estado de cada documento, y no sé qué tipos conviene usar ni qué restricciones poner para que no se ensucie después."}
+{"id": "backup-restore-dr-directo", "prompt": "Quiero definir la estrategia de respaldo de la base de produccion, con recuperacion a un punto en el tiempo."}
+{"id": "github-actions-ci-directo", "prompt": "Necesito armar el workflow de CI de la API para que en cada PR corra typecheck y los tests contra una Postgres de servicio."}
+{"id": "requirements-and-acceptance-oblicuo", "prompt": "La tarjeta dice mejorar el flujo de bloqueo de agenda y nada más. Cuando lo entreguemos vamos a terminar discutiendo si está bien o no, porque nunca quedó claro qué se esperaba."}
+{"id": "data-quality-validation-directo", "prompt": "Quiero un set de consultas que me valide que la carga de datos quedó bien antes y después."}
+{"id": "dead-code-duplication-directo", "prompt": "Quiero detectar y limpiar el código que ya no se usa y medir cuánta duplicación tenemos."}
+{"id": "uat-acceptance-signoff-directo", "prompt": "¿Cómo organizamos el UAT y quién firma la aceptación antes de salir a producción?"}
+{"id": "lane-authoring-directo", "prompt": "Voy a abrir un carril nuevo para el modulo de cotizaciones. Como lo defino y que documentos tiene que tener?"}
+{"id": "frontend-error-monitoring-oblicuo", "prompt": "Los usuarios dicen que la pantalla se les queda en blanco pero en el servidor no vemos nada raro. No tenemos manera de enterarnos de lo que explota en el navegador ni de atarlo a la traza."}
+{"id": "consent-management-directo", "prompt": "Tengo que modelar el consentimiento del paciente para compartir su ficha con otra institución."}
+{"id": "medication-prescription-safety-directo", "prompt": "Estoy armando el modulo de recetas. Que reglas de seguridad tengo que respetar en el diseno?"}
+{"id": "seed-data-catalogs-directo", "prompt": "Voy a cargar el catálogo de especialidades y aseguradoras. ¿Cómo registro la procedencia del dataset y hago que la carga sea idempotente?"}
+{"id": "vertical-slicing-oblicuo", "prompt": "El plan dice hacer todos los endpoints de agenda y recién después toda la interfaz. Así no vamos a poder probar nada hasta el final y me parece riesgoso."}
+{"id": "github-repo-standards-directo", "prompt": "Estoy creando el repo del modulo contable. Que archivos base tiene que tener para quedar igual que los otros?"}
+{"id": "authz-access-control-directo", "prompt": "Necesito definir que rol puede hacer que sobre cada recurso y asegurarme de que el backend lo valide endpoint por endpoint."}
+{"id": "subagent-design-directo", "prompt": "Quiero crear un agente en .claude/agents que investigue el código pero no pueda editar. ¿Qué campos lleva el frontmatter?"}
+{"id": "synthetic-test-data-generation-directo", "prompt": "Necesito generar datos de prueba sintéticos realistas de pacientes y citas, con semilla para que sean reproducibles."}
+{"id": "clinical-records-oblicuo", "prompt": "El doctor pide poder editar lo que escribió ayer en la consulta. Me suena que no puedo hacer un UPDATE y listo, pero no sé cómo plantearlo para que después no haya problemas."}
+{"id": "database-design-directo", "prompt": "Estoy diseñando el esquema del módulo de cotizaciones desde cero, qué tengo que tener en cuenta."}
+{"id": "angular-testing-oblicuo", "prompt": "Los specs del front siguen con Jasmine y Karma y quiero llevarlos a lo que trae el CLI por defecto hoy, sin terminar con dos corredores mezclados."}
+{"id": "nestjs-development-directo", "prompt": "Voy a crear el modulo de servicios medicos en la API. Como organizo el modulo, el controller y los DTOs?"}
+{"id": "server-hardening-directo", "prompt": "Quiero endurecer el VPS donde corre Coolify: SSH solo por clave, firewall cerrado y 2FA en el panel."}
+{"id": "dashboard-data-ui-directo", "prompt": "Tengo que diseñar el tablero del módulo contable con sus indicadores y gráficos."}
+{"id": "frontend-motion-oblicuo", "prompt": "Todo en la app aparece de golpe y se siente tosco, pero cuando le pusimos efectos quedó lento y mareador. Quiero criterio para cuándo algo se debe mover y cuánto."}
+{"id": "test-plan-authoring-oblicuo", "prompt": "Antes de arrancar a probar la feature nueva quiero dejar por escrito qué entra, qué no, en qué entorno corre cada cosa, con qué datos y cuándo la damos por probada."}
+{"id": "api-testing-oblicuo", "prompt": "Tenemos quinientos unitarios en verde con el ORM mockeado y aun asi el endpoint de recetas devolvio un 500 en staging apenas lo toco un usuario."}
+{"id": "threat-modeling-directo", "prompt": "Quiero hacer un modelado de amenazas con STRIDE del flujo de recetas antes de construirlo."}
+{"id": "dashboard-data-ui-oblicuo", "prompt": "La pantalla de resumen tiene como quince números y tres gráficos y nadie entiende qué mirar primero ni qué decisión tomar con eso."}
+{"id": "mobile-offline-sync-oblicuo", "prompt": "El medico cargo una evolucion en el subsuelo donde no hay senal y cuando salio se habia perdido todo lo que escribio."}
+{"id": "prompt-engineering-oblicuo", "prompt": "Le pido al modelo que mire el módulo de citas y me devuelve una lista de obviedades sin decir dónde está el problema. Algo estoy explicando mal cuando le pido las cosas."}
+{"id": "seed-data-catalogs-oblicuo", "prompt": "Alguien completó la lista de universidades a mano con lo que se acordaba, y ahora no sabemos cuáles existen de verdad. Encima cada vez que reconstruimos la base cambian los identificadores."}
+{"id": "skills-router-directo", "prompt": "¿Hay un índice que me diga qué skill corresponde a cada situación? Son un montón y no sé por dónde empezar."}
+{"id": "dockerfile-production-directo", "prompt": "Necesito escribir el Dockerfile de producción de la API NestJS que usa yarn 4."}

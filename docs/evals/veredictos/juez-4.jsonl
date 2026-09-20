@@ -1,0 +1,58 @@
+{"id":"frontend-design-system-directo","elegidas":["frontend-design-system","color-systems","typography-systems"],"confianza":"alta"}
+{"id":"search-and-filtering-oblicuo","elegidas":["search-and-filtering","postgresql-advanced"],"confianza":"alta"}
+{"id":"coolify-operations-directo","elegidas":["coolify-operations","coolify-deployment"],"confianza":"alta"}
+{"id":"frontend-accessibility-directo","elegidas":["frontend-accessibility","accessibility-testing"],"confianza":"alta"}
+{"id":"security-testing-directo","elegidas":["security-testing","api-testing","authz-access-control"],"confianza":"alta"}
+{"id":"appointment-scheduling-oblicuo","elegidas":["appointment-scheduling","concurrency-and-locking"],"confianza":"media","nota":"dudé entre el síntoma de negocio (appointment-scheduling: doble reserva y zonas horarias) y el mecanismo técnico (concurrency-and-locking)."}
+{"id":"pentest-methodology-directo","elegidas":["pentest-methodology"],"confianza":"alta"}
+{"id":"visual-proof-directo","elegidas":["visual-proof"],"confianza":"alta"}
+{"id":"frontend-motion-directo","elegidas":["frontend-motion"],"confianza":"alta"}
+{"id":"frontend-data-access-directo","elegidas":["frontend-data-access"],"confianza":"alta"}
+{"id":"visual-hierarchy-composition-directo","elegidas":["visual-hierarchy-composition"],"confianza":"alta"}
+{"id":"medication-prescription-safety-oblicuo","elegidas":["medication-prescription-safety"],"confianza":"alta"}
+{"id":"search-and-filtering-directo","elegidas":["search-and-filtering","directories-public-profiles"],"confianza":"alta"}
+{"id":"exploratory-testing-directo","elegidas":["exploratory-testing"],"confianza":"alta"}
+{"id":"github-repo-standards-oblicuo","elegidas":["github-branch-protection-rulesets","github-repo-standards"],"confianza":"media","nota":"dudé entre la aplicación de la regla (github-branch-protection-rulesets: CODEOWNERS + reviews requeridos) y la estructura del repo (github-repo-standards: dónde vive el archivo CODEOWNERS)."}
+{"id":"backend-observability-directo","elegidas":["backend-observability"],"confianza":"alta"}
+{"id":"healthcare-interoperability-fhir-oblicuo","elegidas":["healthcare-interoperability-fhir","database-design"],"confianza":"media","nota":"dudé entre modelar el concepto clínico (fhir) y el diseño de esquema relacional puro (database-design)."}
+{"id":"terminology-value-sets-oblicuo","elegidas":["terminology-value-sets"],"confianza":"alta"}
+{"id":"finish-your-turn-oblicuo","elegidas":["finish-your-turn"],"confianza":"alta"}
+{"id":"concurrency-and-locking-directo","elegidas":["concurrency-and-locking","appointment-scheduling"],"confianza":"alta"}
+{"id":"ci-cd-pipeline-oblicuo","elegidas":["ci-cd-pipeline","code-quality-gates"],"confianza":"alta"}
+{"id":"postgresql-advanced-directo","elegidas":["postgresql-advanced"],"confianza":"alta"}
+{"id":"solid-principles-directo","elegidas":["solid-principles"],"confianza":"alta"}
+{"id":"async-messaging-events-oblicuo","elegidas":["notifications-delivery","async-messaging-events"],"confianza":"media","nota":"dudé entre el gate de notificaciones (recordatorio duplicado/perdido, muy específico) y el de mensajería/eventos subyacente (outbox, entrega at-least-once)."}
+{"id":"data-quality-validation-oblicuo","elegidas":["data-quality-validation"],"confianza":"alta"}
+{"id":"flutter-testing-oblicuo","elegidas":["flutter-testing"],"confianza":"alta"}
+{"id":"nestjs-development-oblicuo","elegidas":["nestjs-development"],"confianza":"alta"}
+{"id":"technical-docs-and-adr-directo","elegidas":["technical-docs-and-adr"],"confianza":"alta"}
+{"id":"github-multirepo-coordination-oblicuo","elegidas":["github-multirepo-coordination"],"confianza":"alta"}
+{"id":"code-quality-audit-directo","elegidas":["code-quality-audit"],"confianza":"alta"}
+{"id":"frontend-responsive-layout-directo","elegidas":["frontend-responsive-layout"],"confianza":"alta"}
+{"id":"authn-identity-oblicuo","elegidas":["authn-identity","auth-session-pentest"],"confianza":"media","nota":"dudé entre diseñar la revocación inmediata de acceso (authn-identity) y evaluarla desde óptica de pentest (auth-session-pentest)."}
+{"id":"regulatory-compliance-mapping-oblicuo","elegidas":["regulatory-compliance-mapping"],"confianza":"alta"}
+{"id":"outcome-first-directo","elegidas":["outcome-first"],"confianza":"alta"}
+{"id":"frontend-ux-states-oblicuo","elegidas":["frontend-ux-states"],"confianza":"alta"}
+{"id":"state-machines-workflows-directo","elegidas":["state-machines-workflows"],"confianza":"alta"}
+{"id":"visual-proof-oblicuo","elegidas":["visual-proof"],"confianza":"alta"}
+{"id":"realtime-websockets-oblicuo","elegidas":["realtime-websockets"],"confianza":"alta"}
+{"id":"visual-regression-testing-oblicuo","elegidas":["visual-regression-testing"],"confianza":"alta"}
+{"id":"prompt-evals-oblicuo","elegidas":["prompt-evals"],"confianza":"alta"}
+{"id":"typescript-standards-directo","elegidas":["typescript-standards"],"confianza":"alta"}
+{"id":"iconography-imagery-oblicuo","elegidas":["iconography-imagery","frontend-accessibility"],"confianza":"alta"}
+{"id":"clean-code-directo","elegidas":["clean-code"],"confianza":"alta"}
+{"id":"clinical-records-directo","elegidas":["clinical-records"],"confianza":"alta"}
+{"id":"postgresql-advanced-oblicuo","elegidas":["postgresql-advanced","database-design"],"confianza":"media","nota":"dudé entre la técnica de bajo nivel (locks/lock_timeout/CONCURRENTLY en postgresql-advanced) y el gate de migraciones zero-downtime (database-design)."}
+{"id":"secure-code-review-directo","elegidas":["secure-code-review"],"confianza":"alta"}
+{"id":"prompt-governance-versioning-oblicuo","elegidas":["prompt-governance-versioning"],"confianza":"alta"}
+{"id":"mobile-offline-sync-directo","elegidas":["mobile-offline-sync"],"confianza":"alta"}
+{"id":"angular-testing-directo","elegidas":["angular-testing"],"confianza":"alta"}
+{"id":"github-pull-requests-directo","elegidas":["github-pull-requests"],"confianza":"alta"}
+{"id":"ux-clarity-usability-oblicuo","elegidas":["ux-clarity-usability","visual-hierarchy-composition"],"confianza":"alta"}
+{"id":"content-moderation-abuse-directo","elegidas":["content-moderation-abuse"],"confianza":"alta"}
+{"id":"coolify-deployment-directo","elegidas":["coolify-deployment"],"confianza":"alta"}
+{"id":"dependency-management-oblicuo","elegidas":["dependency-management"],"confianza":"alta"}
+{"id":"flutter-testing-directo","elegidas":["flutter-testing"],"confianza":"alta"}
+{"id":"frontend-navigation-ia-directo","elegidas":["frontend-navigation-ia"],"confianza":"alta"}
+{"id":"github-pull-requests-oblicuo","elegidas":["github-pull-requests","scope-discipline"],"confianza":"media","nota":"dudé entre el estándar de PR (tamaño y contenido) y el gate de alcance que prohíbe mezclar refactors/renombres/formateo no pedidos."}
+{"id":"performance-load-testing-directo","elegidas":["performance-load-testing"],"confianza":"alta"}

@@ -1,0 +1,58 @@
+{"id": "accounting-double-entry-oblicuo", "elegidas": ["accounting-double-entry", "concurrency-and-locking", "integrity-testing"], "confianza": "alta"}
+{"id": "insurance-workflows-oblicuo", "elegidas": ["insurance-workflows", "database-design"], "confianza": "alta"}
+{"id": "skills-router-oblicuo", "elegidas": ["skills-router", "claude-md-authoring"], "confianza": "media", "nota": "dudé contra claude-md-authoring: ambas cubren jerarquía y qué manda si dos instrucciones se contradicen."}
+{"id": "frontend-forms-ux-directo", "elegidas": ["frontend-forms-ux", "angular-forms"], "confianza": "alta"}
+{"id": "agent-orchestration-directo", "elegidas": ["agent-orchestration", "subagent-design"], "confianza": "alta"}
+{"id": "flutter-theming-oblicuo", "elegidas": ["flutter-theming"], "confianza": "alta"}
+{"id": "web-app-pentest-oblicuo", "elegidas": ["web-app-pentest", "auth-session-pentest"], "confianza": "alta"}
+{"id": "data-privacy-phi-directo", "elegidas": ["data-privacy-phi"], "confianza": "alta"}
+{"id": "api-openapi-docs-directo", "elegidas": ["api-openapi-docs"], "confianza": "alta"}
+{"id": "code-quality-audit-oblicuo", "elegidas": ["code-quality-audit"], "confianza": "alta"}
+{"id": "e2e-playwright-directo", "elegidas": ["e2e-playwright"], "confianza": "alta"}
+{"id": "security-testing-oblicuo", "elegidas": ["security-testing", "authz-access-control"], "confianza": "alta"}
+{"id": "pentest-recon-mapping-oblicuo", "elegidas": ["pentest-recon-mapping"], "confianza": "alta"}
+{"id": "data-privacy-phi-oblicuo", "elegidas": ["data-privacy-phi", "frontend-error-monitoring"], "confianza": "alta"}
+{"id": "vertical-slicing-directo", "elegidas": ["vertical-slicing"], "confianza": "alta"}
+{"id": "qa-strategy-directo", "elegidas": ["qa-strategy"], "confianza": "alta"}
+{"id": "frontend-ux-states-directo", "elegidas": ["frontend-ux-states"], "confianza": "alta"}
+{"id": "integrity-testing-oblicuo", "elegidas": ["integrity-testing", "concurrency-and-locking"], "confianza": "alta"}
+{"id": "color-systems-oblicuo", "elegidas": ["color-systems", "frontend-accessibility"], "confianza": "alta"}
+{"id": "backup-restore-dr-oblicuo", "elegidas": ["backup-restore-dr"], "confianza": "alta"}
+{"id": "git-workflow-multirepo-directo", "elegidas": ["git-workflow-multirepo"], "confianza": "alta"}
+{"id": "claude-md-authoring-oblicuo", "elegidas": ["claude-md-authoring", "hooks-and-guardrails"], "confianza": "media", "nota": "dudé contra hooks-and-guardrails: el síntoma (el asistente se salta la regla) es justo el disparador de esa skill, pero el objeto tocado es el archivo CLAUDE.md."}
+{"id": "github-branch-protection-rulesets-oblicuo", "elegidas": ["github-branch-protection-rulesets"], "confianza": "alta"}
+{"id": "quotations-billing-directo", "elegidas": ["quotations-billing"], "confianza": "alta"}
+{"id": "frontend-i18n-l10n-oblicuo", "elegidas": ["frontend-i18n-l10n"], "confianza": "alta"}
+{"id": "database-design-oblicuo", "elegidas": ["database-design"], "confianza": "alta"}
+{"id": "backup-restore-dr-directo", "elegidas": ["backup-restore-dr"], "confianza": "alta"}
+{"id": "github-actions-ci-directo", "elegidas": ["github-actions-ci"], "confianza": "alta"}
+{"id": "requirements-and-acceptance-oblicuo", "elegidas": ["requirements-and-acceptance"], "confianza": "alta"}
+{"id": "data-quality-validation-directo", "elegidas": ["data-quality-validation"], "confianza": "alta"}
+{"id": "dead-code-duplication-directo", "elegidas": ["dead-code-duplication"], "confianza": "alta"}
+{"id": "uat-acceptance-signoff-directo", "elegidas": ["uat-acceptance-signoff"], "confianza": "alta"}
+{"id": "lane-authoring-directo", "elegidas": ["lane-authoring"], "confianza": "alta"}
+{"id": "frontend-error-monitoring-oblicuo", "elegidas": ["frontend-error-monitoring"], "confianza": "alta"}
+{"id": "consent-management-directo", "elegidas": ["consent-management"], "confianza": "alta"}
+{"id": "medication-prescription-safety-directo", "elegidas": ["medication-prescription-safety"], "confianza": "alta"}
+{"id": "seed-data-catalogs-directo", "elegidas": ["seed-data-catalogs"], "confianza": "alta"}
+{"id": "vertical-slicing-oblicuo", "elegidas": ["vertical-slicing"], "confianza": "alta"}
+{"id": "github-repo-standards-directo", "elegidas": ["github-repo-standards"], "confianza": "alta"}
+{"id": "authz-access-control-directo", "elegidas": ["authz-access-control"], "confianza": "alta"}
+{"id": "subagent-design-directo", "elegidas": ["subagent-design"], "confianza": "alta"}
+{"id": "synthetic-test-data-generation-directo", "elegidas": ["synthetic-test-data-generation"], "confianza": "alta"}
+{"id": "clinical-records-oblicuo", "elegidas": ["clinical-records"], "confianza": "alta"}
+{"id": "database-design-directo", "elegidas": ["database-design", "quotations-billing"], "confianza": "media", "nota": "dudé contra quotations-billing: la pregunta es de esquema genérico pero el dominio es cotizaciones, que tiene gate propio."}
+{"id": "angular-testing-oblicuo", "elegidas": ["angular-testing"], "confianza": "alta"}
+{"id": "nestjs-development-directo", "elegidas": ["nestjs-development"], "confianza": "alta"}
+{"id": "server-hardening-directo", "elegidas": ["server-hardening"], "confianza": "alta"}
+{"id": "dashboard-data-ui-directo", "elegidas": ["dashboard-data-ui"], "confianza": "alta"}
+{"id": "frontend-motion-oblicuo", "elegidas": ["frontend-motion"], "confianza": "alta"}
+{"id": "test-plan-authoring-oblicuo", "elegidas": ["test-plan-authoring"], "confianza": "alta"}
+{"id": "api-testing-oblicuo", "elegidas": ["api-testing"], "confianza": "alta"}
+{"id": "threat-modeling-directo", "elegidas": ["threat-modeling"], "confianza": "alta"}
+{"id": "dashboard-data-ui-oblicuo", "elegidas": ["dashboard-data-ui", "visual-hierarchy-composition"], "confianza": "alta"}
+{"id": "mobile-offline-sync-oblicuo", "elegidas": ["mobile-offline-sync"], "confianza": "alta"}
+{"id": "prompt-engineering-oblicuo", "elegidas": ["prompt-engineering"], "confianza": "alta"}
+{"id": "seed-data-catalogs-oblicuo", "elegidas": ["seed-data-catalogs"], "confianza": "alta"}
+{"id": "skills-router-directo", "elegidas": ["skills-router"], "confianza": "alta"}
+{"id": "dockerfile-production-directo", "elegidas": ["dockerfile-production"], "confianza": "alta"}

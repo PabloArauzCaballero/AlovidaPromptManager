@@ -1,0 +1,58 @@
+{"id":"visual-hierarchy-composition-oblicuo","elegidas":["visual-hierarchy-composition","ui-quality-review"],"confianza":"alta"}
+{"id":"frontend-beautiful-ui-directo","elegidas":["frontend-beautiful-ui"],"confianza":"alta"}
+{"id":"pentest-reporting-remediation-oblicuo","elegidas":["pentest-reporting-remediation"],"confianza":"alta"}
+{"id":"factual-discovery-oblicuo","elegidas":["factual-discovery","anti-hallucination-guard","native-code-patterns"],"confianza":"media","nota":"dudé contra anti-hallucination-guard: el caso final (servicio duplicado) es su ejemplo central, pero el pedido explícito es un método de exploración previo, que es factual-discovery."}
+{"id":"backend-observability-oblicuo","elegidas":["backend-observability","incident-response-postmortem"],"confianza":"alta"}
+{"id":"frontend-design-system-oblicuo","elegidas":["frontend-design-system","css-architecture"],"confianza":"alta"}
+{"id":"visual-regression-testing-directo","elegidas":["visual-regression-testing"],"confianza":"alta"}
+{"id":"directories-public-profiles-oblicuo","elegidas":["directories-public-profiles","consent-management"],"confianza":"alta"}
+{"id":"ci-cd-pipeline-directo","elegidas":["ci-cd-pipeline"],"confianza":"alta"}
+{"id":"data-modeling-plantuml-oblicuo","elegidas":["data-modeling-plantuml","model-driven-schema"],"confianza":"media","nota":"dudé contra model-driven-schema: ambas cubren el flujo diagrama→DDL, pero la mención de un generador que falla por cardinalidad ambigua es más específica de data-modeling-plantuml."}
+{"id":"regression-suite-management-oblicuo","elegidas":["regression-suite-management","e2e-failure-triage"],"confianza":"alta"}
+{"id":"frontend-ui-design-directo","elegidas":["frontend-ui-design"],"confianza":"alta"}
+{"id":"github-security-features-directo","elegidas":["github-security-features"],"confianza":"alta"}
+{"id":"code-quality-gates-directo","elegidas":["code-quality-gates"],"confianza":"alta"}
+{"id":"static-analysis-linting-oblicuo","elegidas":["static-analysis-linting"],"confianza":"alta"}
+{"id":"frontend-forms-ux-oblicuo","elegidas":["frontend-forms-ux","angular-forms"],"confianza":"alta"}
+{"id":"github-cli-automation-directo","elegidas":["github-cli-automation"],"confianza":"alta"}
+{"id":"code-complexity-metrics-oblicuo","elegidas":["code-complexity-metrics"],"confianza":"alta"}
+{"id":"context-thrift-directo","elegidas":["context-thrift"],"confianza":"alta"}
+{"id":"component-architecture-solid-oblicuo","elegidas":["component-architecture-solid"],"confianza":"alta"}
+{"id":"secure-code-review-oblicuo","elegidas":["secure-code-review","authz-access-control"],"confianza":"media","nota":"dudé contra authz-access-control: el pedido es revisar una lógica de permisos ya aprobada buscando agujeros, lo que encaja más en la lente de revisión (secure-code-review) que en el gate de diseño de autorización."}
+{"id":"ui-quality-review-directo","elegidas":["ui-quality-review"],"confianza":"alta"}
+{"id":"python-tooling-standards-oblicuo","elegidas":["python-tooling-standards"],"confianza":"alta"}
+{"id":"async-messaging-events-directo","elegidas":["async-messaging-events"],"confianza":"alta"}
+{"id":"angular-development-directo","elegidas":["angular-development","native-code-patterns","atomic-design-components"],"confianza":"media","nota":"dudé fuerte contra native-code-patterns: el pedido pone el foco en 'que quede igual al resto', que es exactamente el propósito de esa skill; angular-development gana por ser el estándar específico del framework para crear un componente."}
+{"id":"refactoring-safely-directo","elegidas":["refactoring-safely"],"confianza":"alta"}
+{"id":"static-analysis-linting-directo","elegidas":["static-analysis-linting"],"confianza":"alta"}
+{"id":"github-actions-ci-oblicuo","elegidas":["github-actions-ci"],"confianza":"alta"}
+{"id":"test-case-design-techniques-oblicuo","elegidas":["test-case-design-techniques","api-testing"],"confianza":"media","nota":"dudé contra api-testing: el ejemplo dado (médico no dueño + sin consentimiento) es literalmente una matriz de autorización negativa, pero el problema planteado ('elegimos a ojo, se escapan combinaciones') es la técnica sistemática de diseño de casos."}
+{"id":"healthcare-interoperability-fhir-directo","elegidas":["healthcare-interoperability-fhir"],"confianza":"alta"}
+{"id":"flutter-state-architecture-oblicuo","elegidas":["flutter-state-architecture"],"confianza":"alta"}
+{"id":"release-and-rollback-oblicuo","elegidas":["release-and-rollback"],"confianza":"alta"}
+{"id":"frontend-data-access-oblicuo","elegidas":["frontend-data-access"],"confianza":"alta"}
+{"id":"frontend-error-monitoring-directo","elegidas":["frontend-error-monitoring"],"confianza":"alta"}
+{"id":"evidence-and-verification-directo","elegidas":["evidence-and-verification"],"confianza":"alta"}
+{"id":"error-handling-contract-directo","elegidas":["error-handling-contract"],"confianza":"alta"}
+{"id":"rationalization-guard-oblicuo","elegidas":["rationalization-guard"],"confianza":"alta"}
+{"id":"requirements-and-acceptance-directo","elegidas":["requirements-and-acceptance"],"confianza":"alta"}
+{"id":"synthetic-test-data-generation-oblicuo","elegidas":["synthetic-test-data-generation"],"confianza":"alta"}
+{"id":"context-thrift-oblicuo","elegidas":["context-thrift"],"confianza":"alta"}
+{"id":"progress-reporting-directo","elegidas":["progress-reporting"],"confianza":"alta"}
+{"id":"multi-tenancy-oblicuo","elegidas":["multi-tenancy","authz-access-control"],"confianza":"alta"}
+{"id":"quotations-billing-oblicuo","elegidas":["quotations-billing"],"confianza":"alta"}
+{"id":"evidence-and-verification-oblicuo","elegidas":["evidence-and-verification"],"confianza":"alta"}
+{"id":"notifications-delivery-oblicuo","elegidas":["notifications-delivery"],"confianza":"alta"}
+{"id":"technical-docs-and-adr-oblicuo","elegidas":["technical-docs-and-adr"],"confianza":"alta"}
+{"id":"github-releases-versioning-directo","elegidas":["github-releases-versioning"],"confianza":"alta"}
+{"id":"flutter-development-directo","elegidas":["flutter-development"],"confianza":"alta"}
+{"id":"frontend-data-tables-oblicuo","elegidas":["frontend-data-tables"],"confianza":"alta"}
+{"id":"anti-hallucination-guard-oblicuo","elegidas":["anti-hallucination-guard"],"confianza":"alta"}
+{"id":"frontend-performance-oblicuo","elegidas":["frontend-performance"],"confianza":"alta"}
+{"id":"hooks-and-guardrails-oblicuo","elegidas":["hooks-and-guardrails"],"confianza":"alta"}
+{"id":"skill-authoring-oblicuo","elegidas":["skill-authoring"],"confianza":"alta"}
+{"id":"unit-testing-oblicuo","elegidas":["unit-testing"],"confianza":"alta"}
+{"id":"angular-development-oblicuo","elegidas":["angular-development"],"confianza":"alta"}
+{"id":"rationalization-guard-directo","elegidas":["rationalization-guard"],"confianza":"alta"}
+{"id":"typescript-standards-oblicuo","elegidas":["typescript-standards"],"confianza":"alta"}
+{"id":"angular-forms-directo","elegidas":["angular-forms"],"confianza":"alta"}

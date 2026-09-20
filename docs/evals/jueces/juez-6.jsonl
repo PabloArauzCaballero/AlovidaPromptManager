@@ -1,0 +1,58 @@
+{"id": "notifications-delivery-directo", "prompt": "Tengo que implementar los recordatorios de cita por push y por mail."}
+{"id": "api-pentest-oblicuo", "prompt": "Antes del release quiero pasar una tarde intentando romper nuestro propio backend en staging con una cuenta por cada rol, y dejar documentado todo lo que encuentre."}
+{"id": "data-modeling-plantuml-directo", "prompt": "¿Cómo escribo las entidades nuevas en el diagrama para que el generador las interprete bien?"}
+{"id": "dockerfile-production-oblicuo", "prompt": "La imagen que generamos pesa 1.2 GB y encima el contenedor no termina de apagarse cuando lo frenamos, se queda colgado hasta que lo matan."}
+{"id": "terminology-value-sets-directo", "prompt": "¿Cómo modelo el catálogo de especialidades médicas como value set de conceptos en vez de un enum?"}
+{"id": "audit-trail-history-directo", "prompt": "Necesito registrar quien accedio a cada ficha clinica y poder consultarlo despues sin que se pueda alterar."}
+{"id": "caching-strategy-directo", "prompt": "Conviene guardar en memoria el directorio publico y con que criterio lo invalido?"}
+{"id": "e2e-failure-triage-directo", "prompt": "Se me puso rojo un test E2E, cómo lo clasifico antes de ponerme a tocarlo."}
+{"id": "realtime-websockets-directo", "prompt": "Voy a implementar actualización en vivo con un gateway de WebSocket en Nest. ¿Cómo autentico la conexión y manejo las salas por tenant?"}
+{"id": "skill-authoring-directo", "prompt": "Quiero escribir una skill nueva para el repo. ¿Cómo armo el SKILL.md y sobre todo la description para que se active sola cuando corresponde?"}
+{"id": "mobile-ux-design-oblicuo", "prompt": "En el celular el teclado tapa el campo que estas completando, y hay botones a los que es imposible pegarle con el dedo."}
+{"id": "mobile-ux-design-directo", "prompt": "Estoy disenando las pantallas de la app nativa y quiero respetar las convenciones de cada sistema."}
+{"id": "agent-orchestration-oblicuo", "prompt": "Tengo que recorrer como cuarenta archivos para entender como esta armado el flujo de seguros, pero no quiero que todo eso me quede dando vueltas en la conversacion. Como lo encaro?"}
+{"id": "file-uploads-media-directo", "prompt": "Voy a hacer el endpoint para adjuntar estudios a la ficha clínica. ¿Cómo valido el archivo y dónde lo guardo?"}
+{"id": "github-releases-versioning-oblicuo", "prompt": "Saque un cambio que le quito un campo a la respuesta y los de mobile se enteraron cuando se les rompio la app en produccion."}
+{"id": "qa-orchestration-directo", "prompt": "Quiero definir el flujo completo de pruebas de un release: del plan al gate de go/no-go, con las capas del pipeline y quién es dueño de cada una."}
+{"id": "authz-access-control-oblicuo", "prompt": "Ocultamos el boton de editar para el que no es dueno del registro, pero si alguien arma el pedido a mano el servidor se lo acepta igual."}
+{"id": "consent-management-oblicuo", "prompt": "Si un paciente nos dice que ya no quiere que su información esté visible para cierta clínica, cómo hacemos para que eso tenga efecto en todos lados al toque y quede constancia."}
+{"id": "finish-your-turn-directo", "prompt": "Quiero una regla para no cerrar el turno dejando cosas a medias."}
+{"id": "deployment-verification-smoke-directo", "prompt": "Qué tengo que chequear después de cada deploy antes de poder decir que salió bien."}
+{"id": "agent-resource-control-directo", "prompt": "Cuantos builds, suites y navegadores puedo tener corriendo a la vez en mi maquina sin arruinar los resultados?"}
+{"id": "accounting-double-entry-directo", "prompt": "Vamos a arrancar el modulo contable con asientos y plan de cuentas. Como lo modelo para que los registros no se corrompan?"}
+{"id": "backend-development-directo", "prompt": "Voy a arrancar un servicio nuevo. Como separo las capas, donde valido la entrada y que formato de error devuelvo?"}
+{"id": "bug-reporting-standard-oblicuo", "prompt": "QA carga tickets que dicen que la agenda no anda y despues ninguno de nosotros logra reproducir el problema."}
+{"id": "windows-dev-environment-directo", "prompt": "Los scripts del repo tienen que correr en Windows. ¿Qué convenciones seguimos de shell, intérprete y encoding?"}
+{"id": "progress-reporting-oblicuo", "prompt": "Te mandé una tarea grande ayer, estuviste veinte minutos sin decir nada y después se cortó la sesión. No tenía forma de saber por dónde ibas ni qué había quedado sin terminar."}
+{"id": "frontend-security-directo", "prompt": "¿Dónde guardo el token de sesión en el front de Angular y cómo configuro la CSP?"}
+{"id": "code-efficiency-directo", "prompt": "El endpoint de listado de pacientes tarda casi 4 segundos y quiero optimizarlo sin romper nada."}
+{"id": "coolify-databases-backups-directo", "prompt": "Quiero configurar los backups programados de la base Postgres que corre en Coolify y mandarlos a S3."}
+{"id": "ux-writing-microcopy-directo", "prompt": "Quiero revisar los textos de los botones y los mensajes de error de la aplicación."}
+{"id": "security-guardrails-oblicuo", "prompt": "Estamos por sacar la API de recetas y me preocupa que nos estemos olvidando de algo elemental. Querría una revisión sistemática antes de mergear, no que cada uno mire lo que se le ocurra."}
+{"id": "flutter-state-architecture-directo", "prompt": "¿Dónde vive el estado de las citas en la app Flutter, en el widget o en un notifier?"}
+{"id": "unit-testing-directo", "prompt": "¿Cómo escribo un test unitario bien estructurado para esta función que aplica descuentos?"}
+{"id": "root-cause-debugging-oblicuo", "prompt": "Le subí el tiempo de espera y dejó de fallar, pero no me quedo tranquilo porque sigo sin entender por qué fallaba."}
+{"id": "edge-case-data-catalog-directo", "prompt": "Estoy diseñando los casos de prueba del alta de paciente. ¿Qué valores límite le meto a cada campo?"}
+{"id": "test-data-management-directo", "prompt": "Quiero armar factories para los tests de integración y que cada test sea dueño de los datos que usa."}
+{"id": "qa-strategy-oblicuo", "prompt": "Tenemos un montón de tests y igual se nos siguen escapando bugs a producción, mientras que hay pantallas críticas sin nada. Estamos poniendo el esfuerzo en el lugar equivocado."}
+{"id": "anti-hallucination-guard-directo", "prompt": "Antes de crear un DTO nuevo para horarios de atencion, que tendria que verificar y como dejo constancia de la busqueda?"}
+{"id": "accessibility-testing-oblicuo", "prompt": "Una usuaria con baja vision no logra terminar el alta de paciente: dice que el lector no le avisa cuales campos quedaron mal. Quiero saber como compruebo que el resto de las pantallas no tenga el mismo problema."}
+{"id": "iconography-imagery-directo", "prompt": "Estoy eligiendo el set de iconos del producto y quiero fijar el criterio antes de que cada uno traiga el suyo."}
+{"id": "angular-signals-state-directo", "prompt": "Donde deberia vivir el estado de la pantalla de agenda y cuando corresponde derivar un valor en vez de sincronizarlo a mano?"}
+{"id": "state-machines-workflows-oblicuo", "prompt": "Apareció una cita en completada que nunca pasó por aceptada. Alguien le mandó un PATCH con el campo directo y el backend lo dejó pasar."}
+{"id": "frontend-performance-directo", "prompt": "Necesito mejorar el LCP del directorio público, está arriba de cuatro segundos."}
+{"id": "angular-forms-oblicuo", "prompt": "Cuando la API responde que un campo esta mal, el usuario pierde todo lo que habia escrito y encima no se ve al lado de que campo esta el problema."}
+{"id": "scope-discipline-oblicuo", "prompt": "El PR de un arreglo de dos líneas vino con ochenta archivos tocados porque de paso se reordenaron imports y se renombró media carpeta. No hay manera de revisar eso."}
+{"id": "background-jobs-scheduling-oblicuo", "prompt": "Desde que levantamos tres replicas del backend, la tarea de la medianoche se ejecuta tres veces y manda todo duplicado."}
+{"id": "model-driven-schema-oblicuo", "prompt": "Alguien le metio un ALTER a la base directo para salir del paso y ahora en la maquina de otro la app no levanta."}
+{"id": "atomic-design-components-directo", "prompt": "En que nivel ubico una tarjeta de resultado de profesional y que tiene permitido saber ese componente?"}
+{"id": "astro-development-directo", "prompt": "Voy a sumar una seccion de precios a la landing con un acordeon interactivo. Que directiva de hidratacion conviene?"}
+{"id": "frontend-accessibility-oblicuo", "prompt": "Un usuario nos reportó que no puede usar el sistema sin mouse: no llega a los botones con Tab y cuando abre el diálogo se le pierde el cursor. Además hay divs que hacen de botón."}
+{"id": "seo-public-pages-directo", "prompt": "Quiero que los perfiles públicos de los doctores se indexen bien: título y descripción propios por ruta, datos estructurados y sitemap."}
+{"id": "lane-authoring-oblicuo", "prompt": "El cliente nos mando un pedido enorme y no sabemos por donde cortarlo en entregas que se puedan cerrar de punta a punta."}
+{"id": "git-workflow-multirepo-oblicuo", "prompt": "Alguien volvió a commitear directo sobre la rama principal, y los cambios de un mismo pedido quedaron desparramados en tres repos con mensajes tipo varios arreglos."}
+{"id": "ux-writing-microcopy-oblicuo", "prompt": "Los errores le muestran al usuario cosas como Error 500 y los botones dicen Aceptar. La gente no entiende qué pasó ni qué va a pasar si aprieta."}
+{"id": "code-review-standard-oblicuo", "prompt": "Las revisiones se nos van en discutir comillas y sangría, y después se cuelan errores de verdad. Encima alguno se lo toma personal. Quiero ordenar eso."}
+{"id": "github-cli-automation-oblicuo", "prompt": "Estoy harto de abrir el navegador para ver por que se rompio el pipeline. Quiero ver los pasos que fallaron sin salir de la consola."}
+{"id": "bug-reporting-standard-directo", "prompt": "Que tiene que llevar un issue de bug para que sea accionable y no haya que volver a preguntar?"}
+{"id": "typography-systems-directo", "prompt": "Quiero definir la escala tipográfica del producto: tamaños, interlineado y medida de línea."}

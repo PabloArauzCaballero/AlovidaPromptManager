@@ -1,0 +1,59 @@
+{"id":"hooks-and-guardrails-directo","elegidas":["hooks-and-guardrails","github-branch-protection-rulesets"],"confianza":"alta"}
+{"id":"auth-session-pentest-oblicuo","elegidas":["auth-session-pentest","authn-identity"],"confianza":"alta"}
+{"id":"code-review-standard-directo","elegidas":["code-review-standard"],"confianza":"alta"}
+{"id":"mikroorm-patterns-oblicuo","elegidas":["mikroorm-patterns","background-jobs-scheduling"],"confianza":"media","nota":"worker nocturno con datos viejos y sobre-escritura: dudé entre el patrón de MikroORM (identity map/EntityManager por job) y background-jobs-scheduling"}
+{"id":"qa-orchestration-directo","elegidas":["qa-orchestration"],"confianza":"alta"}
+{"id":"frontend-navigation-ia-directo","elegidas":["frontend-navigation-ia"],"confianza":"alta"}
+{"id":"technical-docs-and-adr-directo","elegidas":["technical-docs-and-adr"],"confianza":"alta"}
+{"id":"search-and-filtering-oblicuo","elegidas":["search-and-filtering"],"confianza":"alta"}
+{"id":"async-messaging-events-directo","elegidas":["async-messaging-events"],"confianza":"alta"}
+{"id":"astro-development-oblicuo","elegidas":["astro-development","frontend-performance"],"confianza":"alta"}
+{"id":"exploratory-testing-directo","elegidas":["exploratory-testing"],"confianza":"alta"}
+{"id":"prompt-governance-versioning-oblicuo","elegidas":["prompt-governance-versioning"],"confianza":"alta"}
+{"id":"multi-tenancy-oblicuo","elegidas":["multi-tenancy","search-and-filtering"],"confianza":"media","nota":"fuga de datos de otra clínica en un buscador: dudé si el foco es el aislamiento de tenant o el propio filtro de búsqueda"}
+{"id":"accessibility-testing-oblicuo","elegidas":["accessibility-testing","frontend-accessibility"],"confianza":"media","nota":"pide cómo comprobar que el resto de pantallas no falle (testing), pero el disparador es un bug concreto de accesibilidad en un formulario"}
+{"id":"clean-code-oblicuo","elegidas":["clean-code"],"confianza":"alta"}
+{"id":"e2e-failure-triage-directo","elegidas":["e2e-failure-triage"],"confianza":"alta"}
+{"id":"refactoring-safely-directo","elegidas":["refactoring-safely"],"confianza":"alta"}
+{"id":"typescript-standards-oblicuo","elegidas":["typescript-standards"],"confianza":"alta"}
+{"id":"maps-geolocation-directo","elegidas":["maps-geolocation","postgresql-advanced"],"confianza":"alta"}
+{"id":"clinical-records-directo","elegidas":["clinical-records"],"confianza":"alta"}
+{"id":"prompt-evals-directo","elegidas":["prompt-evals"],"confianza":"alta"}
+{"id":"medication-prescription-safety-oblicuo","elegidas":["medication-prescription-safety"],"confianza":"alta"}
+{"id":"finish-your-turn-oblicuo","elegidas":["finish-your-turn"],"confianza":"alta"}
+{"id":"skill-authoring-directo","elegidas":["skill-authoring"],"confianza":"alta"}
+{"id":"code-quality-audit-directo","elegidas":["code-quality-audit"],"confianza":"alta"}
+{"id":"edge-case-data-catalog-oblicuo","elegidas":["edge-case-data-catalog"],"confianza":"alta"}
+{"id":"github-branch-protection-rulesets-oblicuo","elegidas":["github-branch-protection-rulesets"],"confianza":"alta"}
+{"id":"evidence-and-verification-directo","elegidas":["evidence-and-verification","qa-evidence-reporting"],"confianza":"media","nota":"dudé entre el gate general de verificación antes de decir listo y el estándar de evidencia de QA al cerrar un trabajo"}
+{"id":"github-issues-projects-directo","elegidas":["github-issues-projects"],"confianza":"alta"}
+{"id":"notifications-delivery-directo","elegidas":["notifications-delivery","background-jobs-scheduling"],"confianza":"media","nota":"recordatorios de cita aparecen tanto en notifications-delivery (canal push/mail) como en background-jobs-scheduling (recordatorios programados)"}
+{"id":"pentest-recon-mapping-oblicuo","elegidas":["pentest-recon-mapping"],"confianza":"alta"}
+{"id":"data-modeling-plantuml-oblicuo","elegidas":["data-modeling-plantuml"],"confianza":"alta"}
+{"id":"uat-acceptance-signoff-directo","elegidas":["uat-acceptance-signoff"],"confianza":"alta"}
+{"id":"typography-systems-directo","elegidas":["typography-systems"],"confianza":"alta"}
+{"id":"frontend-ux-states-oblicuo","elegidas":["frontend-ux-states"],"confianza":"alta"}
+{"id":"regression-suite-management-directo","elegidas":["regression-suite-management"],"confianza":"alta"}
+{"id":"background-jobs-scheduling-oblicuo","elegidas":["background-jobs-scheduling"],"confianza":"alta"}
+{"id":"dependency-management-directo","elegidas":["dependency-management"],"confianza":"alta"}
+{"id":"color-systems-oblicuo","elegidas":["color-systems"],"confianza":"alta"}
+{"id":"dead-code-duplication-directo","elegidas":["dead-code-duplication"],"confianza":"alta"}
+{"id":"angular-development-directo","elegidas":["angular-development","native-code-patterns","atomic-design-components"],"confianza":"media","nota":"crear un componente 'igual al resto' podría ser el estándar de Angular, el calce con patrones vecinos (native-code-patterns) o el criterio de reuso de atomic-design-components"}
+{"id":"test-data-management-oblicuo","elegidas":["test-data-management"],"confianza":"alta"}
+{"id":"dockerfile-production-directo","elegidas":["dockerfile-production"],"confianza":"alta"}
+{"id":"integrity-testing-oblicuo","elegidas":["integrity-testing","accounting-double-entry"],"confianza":"media","nota":"'los saldos dejan de cuadrar' podría apuntar al gate contable en vez de al de integridad transaccional/atomicidad"}
+{"id":"frontend-forms-ux-oblicuo","elegidas":["frontend-forms-ux"],"confianza":"alta"}
+{"id":"backend-observability-directo","elegidas":["backend-observability"],"confianza":"alta"}
+{"id":"backend-development-oblicuo","elegidas":["backend-development"],"confianza":"alta"}
+{"id":"bug-reporting-standard-directo","elegidas":["bug-reporting-standard"],"confianza":"alta"}
+{"id":"css-architecture-directo","elegidas":["css-architecture"],"confianza":"alta"}
+{"id":"data-modeling-plantuml-directo","elegidas":["data-modeling-plantuml"],"confianza":"alta"}
+{"id":"frontend-accessibility-oblicuo","elegidas":["frontend-accessibility"],"confianza":"alta"}
+{"id":"audit-trail-history-directo","elegidas":["audit-trail-history"],"confianza":"alta"}
+{"id":"content-moderation-abuse-oblicuo","elegidas":["content-moderation-abuse"],"confianza":"alta"}
+{"id":"performance-load-testing-oblicuo","elegidas":["performance-load-testing"],"confianza":"alta"}
+{"id":"frontend-responsive-layout-oblicuo","elegidas":["frontend-responsive-layout"],"confianza":"alta"}
+{"id":"code-efficiency-oblicuo","elegidas":["code-efficiency","database-design"],"confianza":"alta"}
+{"id":"outcome-first-oblicuo","elegidas":["outcome-first"],"confianza":"alta"}
+{"id":"frontend-design-system-directo","elegidas":["frontend-design-system"],"confianza":"alta"}
+{"id":"ux-writing-microcopy-oblicuo","elegidas":["ux-writing-microcopy"],"confianza":"alta"}

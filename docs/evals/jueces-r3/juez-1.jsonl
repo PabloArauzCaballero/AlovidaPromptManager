@@ -1,0 +1,9 @@
+{"id": "api-testing-oblicuo", "prompt": "Tenemos quinientos unitarios en verde con el ORM mockeado y aun asi el endpoint de recetas devolvio un 500 en staging apenas lo toco un usuario."}
+{"id": "authz-access-control-oblicuo", "prompt": "Ocultamos el boton de editar para el que no es dueno del registro, pero si alguien arma el pedido a mano el servidor se lo acepta igual."}
+{"id": "backend-development-directo", "prompt": "Voy a arrancar un servicio nuevo. Como separo las capas, donde valido la entrada y que formato de error devuelvo?"}
+{"id": "backend-development-oblicuo", "prompt": "Los controllers del modulo de seguros tienen doscientas lineas con reglas de negocio y consultas a la base metidas adentro."}
+{"id": "error-handling-contract-oblicuo", "prompt": "El front no puede distinguir si el guardado falló porque mandaron cualquier cosa, porque no tienen permiso o porque otro lo modificó antes. Le llega todo igual y termina mostrando un cartel genérico."}
+{"id": "mikroorm-patterns-oblicuo", "prompt": "En el worker nocturno leo una fila y me viene con datos viejos, y a veces se termina guardando algo que yo no toque."}
+{"id": "nestjs-development-directo", "prompt": "Voy a crear el modulo de servicios medicos en la API. Como organizo el modulo, el controller y los DTOs?"}
+{"id": "nestjs-development-oblicuo", "prompt": "El handler de ese endpoint tiene doscientas lineas con consultas y reglas de negocio adentro, y el body entra sin validar."}
+{"id": "typescript-standards-oblicuo", "prompt": "En este PR hay tres casteos puestos para que compile y un signo de admiración para callar al compilador. ¿Cómo debería haberse resuelto eso?"}

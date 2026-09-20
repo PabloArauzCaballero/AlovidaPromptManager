@@ -1,0 +1,58 @@
+{"id": "social-feed-design-oblicuo", "prompt": "Necesito que los doctores puedan publicar cosas y que la gente comente y reaccione. Me preocupa que se filtre información privada y que cuando alguien junte muchos seguidores se ponga lento."}
+{"id": "error-handling-contract-oblicuo", "prompt": "El front no puede distinguir si el guardado falló porque mandaron cualquier cosa, porque no tienen permiso o porque otro lo modificó antes. Le llega todo igual y termina mostrando un cartel genérico."}
+{"id": "python-tooling-standards-directo", "prompt": "Estoy escribiendo el script que genera el DDL desde el modelo. ¿Qué reglas sigo para que sea determinista, idempotente y testeable con pytest?"}
+{"id": "e2e-playwright-oblicuo", "prompt": "Cada vez que tocamos la agenda se rompe algo distinto y nos enteramos por el cliente. Necesito algo que simule a un paciente sacando turno de verdad, contra el backend real, y que quede corriendo siempre."}
+{"id": "component-architecture-solid-directo", "prompt": "¿Cómo aplico los principios SOLID al diseño de los componentes de Angular?"}
+{"id": "native-code-patterns-directo", "prompt": "Antes de escribir el controller nuevo quiero asegurarme de seguir la convencion que ya usa el repo."}
+{"id": "test-data-management-oblicuo", "prompt": "Los tests pasan cuando los corro solos pero fallan cuando corre la suite entera, y a veces uno deja basura que rompe al siguiente."}
+{"id": "css-architecture-oblicuo", "prompt": "Para pisar un estilo terminamos metiendo reglas cada vez más fuertes y ya nadie sabe de dónde sale cada una ni en qué orden se aplican."}
+{"id": "hooks-and-guardrails-directo", "prompt": "Quiero escribir un hook que bloquee de entrada cualquier commit directo sobre la rama de integracion."}
+{"id": "regression-suite-management-directo", "prompt": "Quiero organizar la suite de regresión por módulo con tags y definir qué corre en cada etapa según el impacto del cambio."}
+{"id": "subagent-design-oblicuo", "prompt": "Necesito delegar la búsqueda por el repo a algo aislado que no me llene el contexto con archivos y que encima no tenga permiso de tocar nada."}
+{"id": "refactoring-safely-oblicuo", "prompt": "El módulo de seguros es un desastre y hay que ordenarlo, pero no tiene ningún test y me da pánico tocarlo porque no me voy a enterar si rompo algo."}
+{"id": "typography-systems-oblicuo", "prompt": "Los textos largos de la ficha se leen incómodos porque las líneas son larguísimas, y en la tabla de montos los números bailan de una fila a otra."}
+{"id": "ui-quality-review-oblicuo", "prompt": "La pantalla funciona pero se ve como plantilla genérica: todo al mismo peso, espaciados raros y una card con gradiente violeta. Quiero un veredicto objetivo, no una opinión."}
+{"id": "seo-public-pages-oblicuo", "prompt": "Buscás el nombre de uno de nuestros profesionales en internet y no aparece nada, y cuando compartís el link por WhatsApp sale sin imagen ni texto."}
+{"id": "directories-public-profiles-directo", "prompt": "Estoy armando el directorio público de profesionales y entidades de salud."}
+{"id": "social-feed-design-directo", "prompt": "Vamos a hacer el feed de publicaciones públicas. ¿Cómo modelo posts, comentarios y likes, y cómo armo el timeline?"}
+{"id": "maps-geolocation-directo", "prompt": "Necesito implementar la busqueda de entidades de salud cercanas con PostGIS y que use indice."}
+{"id": "factual-discovery-directo", "prompt": "Antes de arrancar el carril de directorios, ¿qué tengo que relevar del repositorio y del runtime?"}
+{"id": "agent-resource-control-oblicuo", "prompt": "Cada vez que dejo compilando el back y arranco las pruebas del front, empiezan a fallar con timeouts al azar y despues pasan solas sin que toque nada."}
+{"id": "model-driven-schema-directo", "prompt": "Tengo que agregar una columna nueva. Cual es el camino correcto para que el diagrama siga siendo la fuente de verdad?"}
+{"id": "frontend-i18n-l10n-directo", "prompt": "Quiero preparar el front para tener la aplicación en inglés además de español."}
+{"id": "smart-dumb-components-oblicuo", "prompt": "Mis componentes de la ficha clínica llaman al HttpClient adentro y ahora no los puedo reusar en otra pantalla ni probarlos sin levantar media app."}
+{"id": "mikroorm-patterns-directo", "prompt": "Como manejo el EntityManager en un job de background para que no se me mezcle el contexto?"}
+{"id": "auth-session-pentest-directo", "prompt": "Quiero revisar a mano todo el flujo de login, segundo factor, refresh y cierre de sesion buscando agujeros."}
+{"id": "caching-strategy-oblicuo", "prompt": "Un usuario vio en pantalla los datos de otro justo despues de que pusimos una capa para acelerar las respuestas."}
+{"id": "frontend-security-oblicuo", "prompt": "Estamos metiendo con innerHTML un HTML que viene de la API directo en la vista, y la sesión vive en localStorage. Me preocupa que cualquier script inyectado se lleve todo."}
+{"id": "frontend-responsive-layout-oblicuo", "prompt": "Maquetamos todo pensando en la pantalla grande y ahora en el celular se rompe; cada vez que aparece un aparato nuevo le agregamos otro parche de CSS encima."}
+{"id": "astro-development-oblicuo", "prompt": "La pagina de marketing carga lenta y manda un monton de JavaScript al navegador para algo que es casi todo texto estatico."}
+{"id": "uat-acceptance-signoff-oblicuo", "prompt": "QA está todo en verde pero necesito que la gente de negocio valide que esto resuelve lo que pidieron, y que quede constancia de quién lo aprobó y con qué salvedades."}
+{"id": "coolify-deployment-oblicuo", "prompt": "Subí el proyecto al servidor, el panel me dice que el deploy salió bien, pero cuando entro al dominio me tira 404."}
+{"id": "qa-evidence-reporting-directo", "prompt": "Necesito la plantilla de reporte de QA con qué evidencia hay que pegar por cada caso para poder dar un carril por cerrado."}
+{"id": "frontend-data-tables-directo", "prompt": "Necesito armar la grilla de solicitudes de consulta con orden, filtros y selección múltiple."}
+{"id": "dependency-management-directo", "prompt": "Qué tengo que mirar antes de sumar una librería nueva al proyecto."}
+{"id": "code-review-standard-directo", "prompt": "Quiero definir cómo revisamos los PR del equipo: qué bloquea el merge y qué es apenas una sugerencia."}
+{"id": "github-issues-projects-oblicuo", "prompt": "Nadie se acuerda de donde salio este requisito ni que cambio lo implemento. Necesitamos poder ir del pedido al codigo y a la prueba."}
+{"id": "qa-evidence-reporting-oblicuo", "prompt": "El informe que me pasaron dice que se probó todo y que anda bien. No tengo forma de saber qué corrieron ni qué quedó sin tocar, y me piden que lo apruebe igual."}
+{"id": "github-branch-protection-rulesets-directo", "prompt": "Quiero configurar los rulesets de la rama de integracion para que exijan aprobacion y que los checks pasen antes de mergear."}
+{"id": "github-security-features-oblicuo", "prompt": "Se nos colo la credencial de la base en un commit y nos enteramos meses despues, de casualidad."}
+{"id": "test-case-design-techniques-directo", "prompt": "¿Qué técnica uso para sacar el conjunto mínimo y suficiente de casos de prueba de esta regla de negocio?"}
+{"id": "mobile-release-security-oblicuo", "prompt": "Nos preguntaron que pasa si alguien agarra el celular de un medico o le mete un proxy al trafico. Que tan expuestos estamos?"}
+{"id": "frontend-beautiful-ui-oblicuo", "prompt": "La vista está terminada pero se ve barata, como plantilla armada rápido. Las sombras son una mancha gris, las esquinas de la tarjeta y del botón no combinan, y en oscuro se aplana todo."}
+{"id": "api-pentest-directo", "prompt": "Quiero hacer una evaluacion de seguridad de nuestra API de fichas recorriendo una por una las categorias del top ten de APIs."}
+{"id": "web-app-pentest-directo", "prompt": "Quiero hacer la pasada manual de seguridad de nuestra app web siguiendo las categorías de la guía de testing de OWASP."}
+{"id": "appointment-scheduling-directo", "prompt": "Voy a modelar los horarios de atencion, los bloqueos y el calculo de disponibilidad de la agenda."}
+{"id": "code-efficiency-oblicuo", "prompt": "Con pocos registros la pantalla de directorio vuela, pero en la organización grande se arrastra. Cuanto más crece la tabla, peor se pone."}
+{"id": "multi-tenancy-directo", "prompt": "Estoy creando tablas nuevas para el modulo de organizaciones. Como garantizo el aislamiento entre ellas?"}
+{"id": "frontend-navigation-ia-oblicuo", "prompt": "Los usuarios nos dicen que no encuentran la sección de bloqueos de agenda, no saben en qué parte del sistema están, y si filtran un listado y recargan se les pierde el filtro."}
+{"id": "angular-signals-state-oblicuo", "prompt": "Tengo un total que actualizo cada vez que cambia la lista de items y se me desincroniza seguido; ademas dispara renders de mas."}
+{"id": "insurance-workflows-directo", "prompt": "Tengo que modelar las solicitudes de autorizacion previa a las aseguradoras y su ciclo de estados."}
+{"id": "content-moderation-abuse-oblicuo", "prompt": "En el muro nos están entrando publicaciones basura y hay una persona hostigando a otra. Necesitamos poder denunciar, bloquear y que alguien revise."}
+{"id": "coolify-operations-oblicuo", "prompt": "El disco del servidor se llenó y no sé qué lo está ocupando. Además quiero que me llegue un aviso cuando algo se caiga en vez de enterarme por un usuario."}
+{"id": "docker-local-stack-oblicuo", "prompt": "Cuando levanto todo junto la API se cae porque arranca antes que la base. Y al que entró nuevo le llevó dos días dejar el entorno funcionando."}
+{"id": "auth-session-pentest-oblicuo", "prompt": "Quiero comprobar si el token viejo sigue sirviendo despues de salir, y si alguien puede ir averiguando que correos estan registrados probando el formulario de recuperar contrasena."}
+{"id": "pentest-reporting-remediation-directo", "prompt": "Terminamos la revisión y tengo una lista de problemas sueltos. Necesito escribirlos con severidad, dueño y plazo, y dejar claro cómo se verifica cada corrección."}
+{"id": "background-jobs-scheduling-directo", "prompt": "Voy a programar el envio de recordatorios de cita para que salgan todas las mananas a una hora fija."}
+{"id": "performance-load-testing-oblicuo", "prompt": "En febrero abrimos el turnero a 40 clínicas de golpe y no tengo idea de si el servidor lo aguanta. Necesito un número confiable antes, no enterarme ese día."}
+{"id": "mikroorm-patterns-oblicuo", "prompt": "En el worker nocturno leo una fila y me viene con datos viejos, y a veces se termina guardando algo que yo no toque."}

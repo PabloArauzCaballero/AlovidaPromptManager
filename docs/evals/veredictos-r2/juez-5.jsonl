@@ -1,0 +1,59 @@
+{"id":"qa-strategy-oblicuo","elegidas":["qa-strategy","regression-suite-management","test-case-design-techniques"],"confianza":"alta"}
+{"id":"visual-regression-testing-oblicuo","elegidas":["visual-regression-testing","css-architecture"],"confianza":"alta"}
+{"id":"context-thrift-oblicuo","elegidas":["context-thrift","native-code-patterns"],"confianza":"alta"}
+{"id":"audit-trail-history-oblicuo","elegidas":["audit-trail-history","data-privacy-phi"],"confianza":"alta"}
+{"id":"authz-access-control-directo","elegidas":["authz-access-control","nestjs-development"],"confianza":"alta"}
+{"id":"error-handling-contract-directo","elegidas":["error-handling-contract","appointment-scheduling"],"confianza":"alta"}
+{"id":"social-feed-design-oblicuo","elegidas":["social-feed-design","content-moderation-abuse","data-privacy-phi"],"confianza":"alta"}
+{"id":"finish-your-turn-directo","elegidas":["finish-your-turn"],"confianza":"alta"}
+{"id":"skills-router-oblicuo","elegidas":["skills-router","claude-md-authoring"],"confianza":"media","nota":"dudé contra claude-md-authoring, que también cubre jerarquía y qué prevalece si dos instrucciones chocan; skills-router encaja mejor por mencionar explícitamente 'incorporar a alguien al repo' y 'orden de precedencia'."}
+{"id":"evidence-and-verification-oblicuo","elegidas":["evidence-and-verification","rationalization-guard"],"confianza":"alta"}
+{"id":"code-review-standard-oblicuo","elegidas":["code-review-standard","static-analysis-linting"],"confianza":"alta"}
+{"id":"multi-tenancy-directo","elegidas":["multi-tenancy","database-design"],"confianza":"alta"}
+{"id":"subagent-design-directo","elegidas":["subagent-design"],"confianza":"alta"}
+{"id":"database-design-oblicuo","elegidas":["database-design","quotations-billing"],"confianza":"alta"}
+{"id":"pentest-reporting-remediation-oblicuo","elegidas":["pentest-reporting-remediation"],"confianza":"alta"}
+{"id":"mobile-offline-sync-oblicuo","elegidas":["mobile-offline-sync","data-privacy-phi"],"confianza":"alta"}
+{"id":"pentest-methodology-oblicuo","elegidas":["pentest-methodology"],"confianza":"alta"}
+{"id":"pentest-recon-mapping-directo","elegidas":["pentest-recon-mapping"],"confianza":"alta"}
+{"id":"regression-suite-management-oblicuo","elegidas":["regression-suite-management","e2e-failure-triage"],"confianza":"alta"}
+{"id":"qa-evidence-reporting-directo","elegidas":["qa-evidence-reporting"],"confianza":"alta"}
+{"id":"uat-acceptance-signoff-oblicuo","elegidas":["uat-acceptance-signoff"],"confianza":"alta"}
+{"id":"concurrency-and-locking-oblicuo","elegidas":["concurrency-and-locking","appointment-scheduling"],"confianza":"media","nota":"dudé entre concurrency-and-locking (mecánica genérica de la carrera, que cita 'doble reserva de turno' como ejemplo) y appointment-scheduling (que también cubre exclusion constraint contra doble reserva)."}
+{"id":"native-code-patterns-directo","elegidas":["native-code-patterns"],"confianza":"alta"}
+{"id":"frontend-data-access-directo","elegidas":["frontend-data-access"],"confianza":"alta"}
+{"id":"github-security-features-oblicuo","elegidas":["github-security-features","environment-secrets-config"],"confianza":"media","nota":"dudé contra environment-secrets-config (secretos que no deben ir al repo); github-security-features encaja mejor por mencionar secret scanning con push protection para justo este caso."}
+{"id":"appointment-scheduling-oblicuo","elegidas":["appointment-scheduling","concurrency-and-locking"],"confianza":"alta"}
+{"id":"appointment-scheduling-directo","elegidas":["appointment-scheduling"],"confianza":"alta"}
+{"id":"rationalization-guard-oblicuo","elegidas":["rationalization-guard"],"confianza":"alta"}
+{"id":"github-multirepo-coordination-directo","elegidas":["github-multirepo-coordination","git-workflow-multirepo"],"confianza":"alta"}
+{"id":"github-actions-ci-oblicuo","elegidas":["github-actions-ci"],"confianza":"alta"}
+{"id":"notifications-delivery-oblicuo","elegidas":["notifications-delivery","async-messaging-events"],"confianza":"alta"}
+{"id":"lane-authoring-directo","elegidas":["lane-authoring"],"confianza":"alta"}
+{"id":"mobile-ux-design-directo","elegidas":["mobile-ux-design"],"confianza":"alta"}
+{"id":"maps-geolocation-oblicuo","elegidas":["maps-geolocation","postgresql-advanced"],"confianza":"alta"}
+{"id":"root-cause-debugging-oblicuo","elegidas":["root-cause-debugging"],"confianza":"alta"}
+{"id":"security-testing-directo","elegidas":["security-testing","api-testing"],"confianza":"alta"}
+{"id":"iconography-imagery-oblicuo","elegidas":["iconography-imagery","frontend-accessibility"],"confianza":"media","nota":"dudé contra frontend-accessibility/accessibility-testing (lector de pantalla); iconography-imagery encaja porque nombra explícitamente 'nombre accesible' del icono y consistencia de grosor."}
+{"id":"synthetic-test-data-generation-directo","elegidas":["synthetic-test-data-generation"],"confianza":"alta"}
+{"id":"vertical-slicing-directo","elegidas":["vertical-slicing"],"confianza":"alta"}
+{"id":"static-analysis-linting-directo","elegidas":["static-analysis-linting"],"confianza":"alta"}
+{"id":"state-machines-workflows-oblicuo","elegidas":["state-machines-workflows"],"confianza":"alta"}
+{"id":"typography-systems-oblicuo","elegidas":["typography-systems"],"confianza":"alta"}
+{"id":"flutter-development-oblicuo","elegidas":["flutter-development","code-complexity-metrics"],"confianza":"alta"}
+{"id":"progress-reporting-oblicuo","elegidas":["progress-reporting"],"confianza":"alta"}
+{"id":"accounting-double-entry-oblicuo","elegidas":["accounting-double-entry","concurrency-and-locking"],"confianza":"alta"}
+{"id":"test-data-management-directo","elegidas":["test-data-management","synthetic-test-data-generation"],"confianza":"alta"}
+{"id":"code-complexity-metrics-oblicuo","elegidas":["code-complexity-metrics","code-quality-audit"],"confianza":"media","nota":"dudé contra code-quality-audit (hotspots por churn x complejidad); code-complexity-metrics encaja por el foco en métricas para elegir qué refactorizar primero."}
+{"id":"coolify-operations-directo","elegidas":["coolify-operations","github-actions-ci"],"confianza":"alta"}
+{"id":"subagent-design-oblicuo","elegidas":["subagent-design","agent-orchestration"],"confianza":"media","nota":"dudé contra agent-orchestration (no llenar el contexto propio); subagent-design encaja casi literal por 'solo lectura, sin poder editar'."}
+{"id":"data-privacy-phi-directo","elegidas":["data-privacy-phi"],"confianza":"alta"}
+{"id":"frontend-i18n-l10n-directo","elegidas":["frontend-i18n-l10n"],"confianza":"alta"}
+{"id":"frontend-performance-oblicuo","elegidas":["frontend-performance"],"confianza":"alta"}
+{"id":"seo-public-pages-oblicuo","elegidas":["seo-public-pages","directories-public-profiles"],"confianza":"media","nota":"dudé contra directories-public-profiles (también menciona SEO de perfiles); seo-public-pages encaja mejor por Open Graph y compartir por link."}
+{"id":"insurance-workflows-oblicuo","elegidas":["insurance-workflows"],"confianza":"alta"}
+{"id":"scope-discipline-directo","elegidas":["scope-discipline"],"confianza":"alta"}
+{"id":"atomic-design-components-directo","elegidas":["atomic-design-components","component-architecture-solid"],"confianza":"alta"}
+{"id":"prompt-evals-oblicuo","elegidas":["prompt-evals"],"confianza":"alta"}
+{"id":"css-architecture-oblicuo","elegidas":["css-architecture"],"confianza":"alta"}
+{"id":"healthcare-interoperability-fhir-directo","elegidas":["healthcare-interoperability-fhir"],"confianza":"alta"}

@@ -1,0 +1,58 @@
+{"id":"flutter-theming-directo","elegidas":["flutter-theming"],"confianza":"alta"}
+{"id":"color-systems-directo","elegidas":["color-systems"],"confianza":"alta"}
+{"id":"windows-dev-environment-oblicuo","elegidas":["windows-dev-environment"],"confianza":"alta"}
+{"id":"regulatory-compliance-mapping-directo","elegidas":["regulatory-compliance-mapping"],"confianza":"alta"}
+{"id":"integrity-testing-directo","elegidas":["integrity-testing","accounting-double-entry"],"confianza":"alta"}
+{"id":"authn-identity-directo","elegidas":["authn-identity","frontend-security"],"confianza":"alta","nota":"dudé entre authn-identity (PKCE, dónde guardar tokens) y frontend-security (dónde vive el token en el cliente)"}
+{"id":"incident-response-postmortem-directo","elegidas":["incident-response-postmortem"],"confianza":"alta"}
+{"id":"coolify-databases-backups-oblicuo","elegidas":["coolify-databases-backups","backup-restore-dr"],"confianza":"media","nota":"no se menciona Coolify explícitamente; dudé entre la gate específica de Coolify y el gate genérico de backup/restore/DR"}
+{"id":"prompt-evals-directo","elegidas":["prompt-evals"],"confianza":"alta"}
+{"id":"api-openapi-docs-oblicuo","elegidas":["api-openapi-docs"],"confianza":"alta"}
+{"id":"docker-local-stack-directo","elegidas":["docker-local-stack"],"confianza":"alta"}
+{"id":"solid-principles-oblicuo","elegidas":["solid-principles"],"confianza":"alta"}
+{"id":"e2e-failure-triage-oblicuo","elegidas":["e2e-failure-triage"],"confianza":"alta"}
+{"id":"test-plan-authoring-directo","elegidas":["test-plan-authoring"],"confianza":"alta"}
+{"id":"prompt-engineering-directo","elegidas":["prompt-engineering"],"confianza":"alta"}
+{"id":"accessibility-testing-directo","elegidas":["accessibility-testing"],"confianza":"alta"}
+{"id":"native-code-patterns-oblicuo","elegidas":["native-code-patterns"],"confianza":"alta"}
+{"id":"angular-ssr-hydration-directo","elegidas":["angular-ssr-hydration"],"confianza":"alta"}
+{"id":"audit-trail-history-oblicuo","elegidas":["audit-trail-history"],"confianza":"alta"}
+{"id":"security-guardrails-directo","elegidas":["security-guardrails","authz-access-control"],"confianza":"alta"}
+{"id":"github-multirepo-coordination-directo","elegidas":["github-multirepo-coordination","git-workflow-multirepo"],"confianza":"media","nota":"ambas describen casi textualmente 'orden de merge por dependencia de contrato'; me incliné por la que menciona PRs explícitamente"}
+{"id":"flutter-development-oblicuo","elegidas":["flutter-development"],"confianza":"alta"}
+{"id":"pentest-methodology-oblicuo","elegidas":["pentest-methodology"],"confianza":"alta"}
+{"id":"outcome-first-oblicuo","elegidas":["requirements-and-acceptance","outcome-first"],"confianza":"media","nota":"desacuerdo retrospectivo sobre si algo está 'hecho': dudé entre criterios de aceptación y el gate de resultado observable"}
+{"id":"atomic-design-components-oblicuo","elegidas":["atomic-design-components"],"confianza":"alta"}
+{"id":"code-quality-gates-oblicuo","elegidas":["code-quality-gates","ci-cd-pipeline"],"confianza":"alta"}
+{"id":"github-issues-projects-directo","elegidas":["github-issues-projects"],"confianza":"alta"}
+{"id":"environment-secrets-config-oblicuo","elegidas":["environment-secrets-config","github-security-features"],"confianza":"alta"}
+{"id":"deployment-verification-smoke-oblicuo","elegidas":["deployment-verification-smoke"],"confianza":"alta"}
+{"id":"maps-geolocation-oblicuo","elegidas":["maps-geolocation"],"confianza":"alta"}
+{"id":"backend-development-oblicuo","elegidas":["nestjs-development","backend-development"],"confianza":"media","nota":"controller gordo con reglas de negocio: dudé entre el gate general de capas y el de NestJS que nombra 'controllers finos'"}
+{"id":"clean-code-oblicuo","elegidas":["clean-code"],"confianza":"alta"}
+{"id":"dead-code-duplication-oblicuo","elegidas":["dead-code-duplication"],"confianza":"alta"}
+{"id":"code-complexity-metrics-directo","elegidas":["code-complexity-metrics"],"confianza":"alta"}
+{"id":"qa-orchestration-oblicuo","elegidas":["qa-orchestration"],"confianza":"alta"}
+{"id":"ux-clarity-usability-directo","elegidas":["ux-clarity-usability"],"confianza":"alta"}
+{"id":"pentest-recon-mapping-directo","elegidas":["pentest-recon-mapping"],"confianza":"alta"}
+{"id":"edge-case-data-catalog-oblicuo","elegidas":["edge-case-data-catalog"],"confianza":"alta"}
+{"id":"root-cause-debugging-directo","elegidas":["root-cause-debugging"],"confianza":"alta"}
+{"id":"angular-ssr-hydration-oblicuo","elegidas":["angular-ssr-hydration"],"confianza":"alta"}
+{"id":"scope-discipline-directo","elegidas":["scope-discipline"],"confianza":"alta"}
+{"id":"file-uploads-media-oblicuo","elegidas":["file-uploads-media"],"confianza":"alta"}
+{"id":"release-and-rollback-directo","elegidas":["release-and-rollback"],"confianza":"alta"}
+{"id":"api-testing-directo","elegidas":["api-testing"],"confianza":"alta"}
+{"id":"prompt-governance-versioning-directo","elegidas":["prompt-governance-versioning"],"confianza":"alta"}
+{"id":"technical-debt-management-oblicuo","elegidas":["technical-debt-management"],"confianza":"alta"}
+{"id":"smart-dumb-components-directo","elegidas":["smart-dumb-components"],"confianza":"alta"}
+{"id":"frontend-ui-design-oblicuo","elegidas":["visual-hierarchy-composition","frontend-ui-design"],"confianza":"media","nota":"'todo compite, nada resalta' calza casi textual con visual-hierarchy-composition, pero frontend-ui-design también cubre jerarquía visual de pantalla nueva"}
+{"id":"environment-secrets-config-directo","elegidas":["environment-secrets-config"],"confianza":"alta"}
+{"id":"server-hardening-oblicuo","elegidas":["server-hardening"],"confianza":"alta"}
+{"id":"mobile-release-security-directo","elegidas":["mobile-release-security"],"confianza":"alta"}
+{"id":"incident-response-postmortem-oblicuo","elegidas":["incident-response-postmortem","data-privacy-phi"],"confianza":"alta"}
+{"id":"exploratory-testing-oblicuo","elegidas":["exploratory-testing"],"confianza":"alta"}
+{"id":"threat-modeling-oblicuo","elegidas":["threat-modeling"],"confianza":"alta"}
+{"id":"claude-md-authoring-directo","elegidas":["claude-md-authoring"],"confianza":"alta"}
+{"id":"css-architecture-directo","elegidas":["css-architecture"],"confianza":"alta"}
+{"id":"concurrency-and-locking-oblicuo","elegidas":["concurrency-and-locking","appointment-scheduling"],"confianza":"media","nota":"'doble reserva de turno' aparece casi textual en ambas skills (una como carrera de concurrencia, la otra como gate de agenda)"}
+{"id":"technical-debt-management-directo","elegidas":["technical-debt-management"],"confianza":"alta"}

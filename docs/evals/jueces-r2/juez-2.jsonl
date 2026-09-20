@@ -1,0 +1,59 @@
+{"id": "hooks-and-guardrails-directo", "prompt": "Quiero escribir un hook que bloquee de entrada cualquier commit directo sobre la rama de integracion."}
+{"id": "auth-session-pentest-oblicuo", "prompt": "Quiero comprobar si el token viejo sigue sirviendo despues de salir, y si alguien puede ir averiguando que correos estan registrados probando el formulario de recuperar contrasena."}
+{"id": "code-review-standard-directo", "prompt": "Quiero definir cómo revisamos los PR del equipo: qué bloquea el merge y qué es apenas una sugerencia."}
+{"id": "mikroorm-patterns-oblicuo", "prompt": "En el worker nocturno leo una fila y me viene con datos viejos, y a veces se termina guardando algo que yo no toque."}
+{"id": "qa-orchestration-directo", "prompt": "Quiero definir el flujo completo de pruebas de un release: del plan al gate de go/no-go, con las capas del pipeline y quién es dueño de cada una."}
+{"id": "frontend-navigation-ia-directo", "prompt": "Quiero rediseñar el menú lateral del panel de doctores y los breadcrumbs."}
+{"id": "technical-docs-and-adr-directo", "prompt": "Quiero registrar por qué elegimos locking optimista y no pesimista. ¿Cómo escribo un ADR?"}
+{"id": "search-and-filtering-oblicuo", "prompt": "Si escribís el nombre sin tilde no aparece nadie, y cuando pasás a la página siguiente se repiten algunos resultados y se saltean otros."}
+{"id": "async-messaging-events-directo", "prompt": "Quiero publicar un hecho cuando se confirma una cita, sin llamar al servicio externo adentro de la transaccion."}
+{"id": "astro-development-oblicuo", "prompt": "La pagina de marketing carga lenta y manda un monton de JavaScript al navegador para algo que es casi todo texto estatico."}
+{"id": "exploratory-testing-directo", "prompt": "Quiero hacer una sesión de testing exploratorio sobre el módulo de agenda antes del release."}
+{"id": "prompt-governance-versioning-oblicuo", "prompt": "Alguien le cambió el nombre a una de las instrucciones y quedaron un montón de referencias apuntando a algo que ya no existe. No tenemos ningún proceso para tocar esto sin romperle el trabajo al resto."}
+{"id": "multi-tenancy-oblicuo", "prompt": "En el buscador de pacientes le aparecieron registros de otra clinica a una usuaria. No hubo ningun error, simplemente los listo."}
+{"id": "accessibility-testing-oblicuo", "prompt": "Una usuaria con baja vision no logra terminar el alta de paciente: dice que el lector no le avisa cuales campos quedaron mal. Quiero saber como compruebo que el resto de las pantallas no tenga el mismo problema."}
+{"id": "clean-code-oblicuo", "prompt": "Abrí invoice.service.ts y no entiendo qué hace. Los comentarios dicen una cosa y el código hace otra, y hay tres cosas que se llaman casi igual. Lo tengo que tocar igual para un fix."}
+{"id": "e2e-failure-triage-directo", "prompt": "Se me puso rojo un test E2E, cómo lo clasifico antes de ponerme a tocarlo."}
+{"id": "refactoring-safely-directo", "prompt": "Quiero reordenar el servicio de facturación sin cambiar comportamiento. ¿Cómo lo hago con red para no romper nada en el camino?"}
+{"id": "typescript-standards-oblicuo", "prompt": "En este PR hay tres casteos puestos para que compile y un signo de admiración para callar al compilador. ¿Cómo debería haberse resuelto eso?"}
+{"id": "maps-geolocation-directo", "prompt": "Necesito implementar la busqueda de entidades de salud cercanas con PostGIS y que use indice."}
+{"id": "clinical-records-directo", "prompt": "Estoy modelando las notas de evolución de la ficha clínica. ¿Cómo manejo que un profesional quiera corregir algo que ya cargó?"}
+{"id": "prompt-evals-directo", "prompt": "Antes de mergear un cambio en la description de una skill quiero medir si sigue activándose cuando corresponde y que no rompí a las vecinas."}
+{"id": "medication-prescription-safety-oblicuo", "prompt": "Para que el medico cargue mas rapido, queremos que el sistema le proponga la dosis habitual del farmaco y le avise de interacciones."}
+{"id": "finish-your-turn-oblicuo", "prompt": "Me cansé de que me devuelvan el trabajo por la mitad y me dejen a mí lo que faltaba. Si estaba pedido, era reversible y se podía hacer ahí mismo, se hace."}
+{"id": "skill-authoring-directo", "prompt": "Quiero escribir una skill nueva para el repo. ¿Cómo armo el SKILL.md y sobre todo la description para que se active sola cuando corresponde?"}
+{"id": "code-quality-audit-directo", "prompt": "Necesito hacer una auditoría de calidad del repo de la API y entregar un informe con hallazgos priorizados."}
+{"id": "edge-case-data-catalog-oblicuo", "prompt": "Siempre se nos escapan bugs con nombres con ñ y emojis, con el 29 de febrero y con montos de muchos decimales. Quiero una lista de referencia de qué porquerías meterle a cada tipo de campo."}
+{"id": "github-branch-protection-rulesets-oblicuo", "prompt": "Se mergeo un cambio en agenda sin que nadie lo mirara, y encima pisaron la rama con un push forzado. Necesito que eso sea imposible, no que confiemos en que no pase."}
+{"id": "evidence-and-verification-directo", "prompt": "Antes de que declare terminada esta feature, ¿qué evidencia tengo que tener sí o sí pegada?"}
+{"id": "github-issues-projects-directo", "prompt": "Voy a armar las plantillas de issues y el tablero del equipo para el proximo bloque de trabajo."}
+{"id": "notifications-delivery-directo", "prompt": "Tengo que implementar los recordatorios de cita por push y por mail."}
+{"id": "pentest-recon-mapping-oblicuo", "prompt": "Me quedé pensando que no tenemos ni idea de cuántas cosas nuestras están colgadas en internet. Hay un staging viejo dando vueltas y creo que el panel responde si le pegás directo a la IP."}
+{"id": "data-modeling-plantuml-oblicuo", "prompt": "El script que arma las tablas se cortó porque parece que no le quedó claro si la relación era de uno a muchos o de muchos a muchos."}
+{"id": "uat-acceptance-signoff-directo", "prompt": "¿Cómo organizamos el UAT y quién firma la aceptación antes de salir a producción?"}
+{"id": "typography-systems-directo", "prompt": "Quiero definir la escala tipográfica del producto: tamaños, interlineado y medida de línea."}
+{"id": "frontend-ux-states-oblicuo", "prompt": "Cuando entra un doctor nuevo que no tiene nada cargado le queda la pantalla en blanco sin explicación, y si la llamada falla se queda girando para siempre."}
+{"id": "regression-suite-management-directo", "prompt": "Quiero organizar la suite de regresión por módulo con tags y definir qué corre en cada etapa según el impacto del cambio."}
+{"id": "background-jobs-scheduling-oblicuo", "prompt": "Desde que levantamos tres replicas del backend, la tarea de la medianoche se ejecuta tres veces y manda todo duplicado."}
+{"id": "dependency-management-directo", "prompt": "Qué tengo que mirar antes de sumar una librería nueva al proyecto."}
+{"id": "color-systems-oblicuo", "prompt": "Los estados de las solicitudes los distinguimos solo pintándolos y me dicen que hay gente que no los diferencia. Aparte el gris del texto secundario casi no se lee."}
+{"id": "dead-code-duplication-directo", "prompt": "Quiero detectar y limpiar el código que ya no se usa y medir cuánta duplicación tenemos."}
+{"id": "angular-development-directo", "prompt": "Voy a crear un componente nuevo de tarjeta de profesional en la web. Que convenciones sigo para que quede igual al resto?"}
+{"id": "test-data-management-oblicuo", "prompt": "Los tests pasan cuando los corro solos pero fallan cuando corre la suite entera, y a veces uno deja basura que rompe al siguiente."}
+{"id": "dockerfile-production-directo", "prompt": "Necesito escribir el Dockerfile de producción de la API NestJS que usa yarn 4."}
+{"id": "integrity-testing-oblicuo", "prompt": "Si el proceso se corta por la mitad quedan filas escritas a medias y los saldos dejan de cuadrar. Quiero cubrir ese caso."}
+{"id": "frontend-forms-ux-oblicuo", "prompt": "El registro le tira errores en rojo al usuario mientras todavía está escribiendo el primer campo, y si el guardado falla se le borra todo lo que había cargado. La gente abandona ahí."}
+{"id": "backend-observability-directo", "prompt": "Quiero instrumentar la API con logs estructurados y trazas para poder diagnosticar que pasa en produccion."}
+{"id": "backend-development-oblicuo", "prompt": "Los controllers del modulo de seguros tienen doscientas lineas con reglas de negocio y consultas a la base metidas adentro."}
+{"id": "bug-reporting-standard-directo", "prompt": "Que tiene que llevar un issue de bug para que sea accionable y no haya que volver a preguntar?"}
+{"id": "css-architecture-directo", "prompt": "Quiero ordenar la arquitectura de CSS del front, que no usa ningún framework de estilos."}
+{"id": "data-modeling-plantuml-directo", "prompt": "¿Cómo escribo las entidades nuevas en el diagrama para que el generador las interprete bien?"}
+{"id": "frontend-accessibility-oblicuo", "prompt": "Un usuario nos reportó que no puede usar el sistema sin mouse: no llega a los botones con Tab y cuando abre el diálogo se le pierde el cursor. Además hay divs que hacen de botón."}
+{"id": "audit-trail-history-directo", "prompt": "Necesito registrar quien accedio a cada ficha clinica y poder consultarlo despues sin que se pueda alterar."}
+{"id": "content-moderation-abuse-oblicuo", "prompt": "En el muro nos están entrando publicaciones basura y hay una persona hostigando a otra. Necesitamos poder denunciar, bloquear y que alguien revise."}
+{"id": "performance-load-testing-oblicuo", "prompt": "En febrero abrimos el turnero a 40 clínicas de golpe y no tengo idea de si el servidor lo aguanta. Necesito un número confiable antes, no enterarme ese día."}
+{"id": "frontend-responsive-layout-oblicuo", "prompt": "Maquetamos todo pensando en la pantalla grande y ahora en el celular se rompe; cada vez que aparece un aparato nuevo le agregamos otro parche de CSS encima."}
+{"id": "code-efficiency-oblicuo", "prompt": "Con pocos registros la pantalla de directorio vuela, pero en la organización grande se arrastra. Cuanto más crece la tabla, peor se pone."}
+{"id": "outcome-first-oblicuo", "prompt": "Dimos la tarea por terminada y ahora nadie se pone de acuerdo en si esta hecha. Cada uno entendio otra cosa."}
+{"id": "frontend-design-system-directo", "prompt": "Quiero armar el sistema de tokens de color, espaciado y tipografía del producto."}
+{"id": "ux-writing-microcopy-oblicuo", "prompt": "Los errores le muestran al usuario cosas como Error 500 y los botones dicen Aceptar. La gente no entiende qué pasó ni qué va a pasar si aprieta."}

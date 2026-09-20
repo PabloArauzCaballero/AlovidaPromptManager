@@ -1,0 +1,57 @@
+{"id":"backend-observability-oblicuo","elegidas":["backend-observability","incident-response-postmortem"],"confianza":"alta","nota":"dude con incident-response-postmortem, pero el pedido es sobre falta de instrumentacion para reconstruir, no respuesta activa a un incidente en curso"}
+{"id":"iconography-imagery-directo","elegidas":["iconography-imagery"],"confianza":"alta"}
+{"id":"server-hardening-directo","elegidas":["server-hardening"],"confianza":"alta"}
+{"id":"docker-local-stack-oblicuo","elegidas":["docker-local-stack"],"confianza":"alta"}
+{"id":"file-uploads-media-oblicuo","elegidas":["file-uploads-media"],"confianza":"alta"}
+{"id":"nestjs-development-directo","elegidas":["nestjs-development","backend-development"],"confianza":"alta"}
+{"id":"agent-orchestration-oblicuo","elegidas":["agent-orchestration","context-thrift"],"confianza":"alta"}
+{"id":"coolify-deployment-directo","elegidas":["coolify-deployment"],"confianza":"alta"}
+{"id":"pentest-methodology-directo","elegidas":["pentest-methodology"],"confianza":"alta"}
+{"id":"visual-proof-directo","elegidas":["visual-proof"],"confianza":"alta"}
+{"id":"backup-restore-dr-directo","elegidas":["backup-restore-dr","coolify-databases-backups"],"confianza":"alta"}
+{"id":"qa-strategy-directo","elegidas":["qa-strategy","test-plan-authoring"],"confianza":"media","nota":"dude con test-plan-authoring; el pedido es estrategia general de niveles/riesgo, no el plan de un carril concreto"}
+{"id":"flutter-theming-directo","elegidas":["flutter-theming"],"confianza":"alta"}
+{"id":"technical-debt-management-oblicuo","elegidas":["technical-debt-management"],"confianza":"alta"}
+{"id":"secure-code-review-oblicuo","elegidas":["secure-code-review","authz-access-control"],"confianza":"alta"}
+{"id":"ux-writing-microcopy-directo","elegidas":["ux-writing-microcopy"],"confianza":"alta"}
+{"id":"release-and-rollback-oblicuo","elegidas":["release-and-rollback"],"confianza":"alta"}
+{"id":"unit-testing-directo","elegidas":["unit-testing"],"confianza":"alta"}
+{"id":"component-architecture-solid-oblicuo","elegidas":["component-architecture-solid","solid-principles"],"confianza":"alta"}
+{"id":"terminology-value-sets-directo","elegidas":["terminology-value-sets"],"confianza":"alta"}
+{"id":"github-cli-automation-directo","elegidas":["github-cli-automation"],"confianza":"alta"}
+{"id":"angular-testing-oblicuo","elegidas":["angular-testing"],"confianza":"alta"}
+{"id":"state-machines-workflows-directo","elegidas":["state-machines-workflows"],"confianza":"alta"}
+{"id":"mobile-offline-sync-directo","elegidas":["mobile-offline-sync"],"confianza":"alta"}
+{"id":"code-efficiency-directo","elegidas":["code-efficiency","postgresql-advanced"],"confianza":"media","nota":"dude con postgresql-advanced; el pedido habla del endpoint en general, no puntualmente de una query"}
+{"id":"quotations-billing-directo","elegidas":["quotations-billing"],"confianza":"alta"}
+{"id":"frontend-motion-oblicuo","elegidas":["frontend-motion"],"confianza":"alta"}
+{"id":"deployment-verification-smoke-oblicuo","elegidas":["deployment-verification-smoke","release-and-rollback"],"confianza":"alta"}
+{"id":"typescript-standards-directo","elegidas":["typescript-standards"],"confianza":"alta"}
+{"id":"ci-cd-pipeline-directo","elegidas":["ci-cd-pipeline"],"confianza":"alta"}
+{"id":"flutter-state-architecture-directo","elegidas":["flutter-state-architecture"],"confianza":"alta"}
+{"id":"solid-principles-oblicuo","elegidas":["solid-principles","terminology-value-sets"],"confianza":"baja","nota":"dude fuerte entre violacion de OCP (solid-principles) y catalogo cerrado modelado con switch (terminology-value-sets)"}
+{"id":"vertical-slicing-oblicuo","elegidas":["vertical-slicing"],"confianza":"alta"}
+{"id":"git-workflow-multirepo-oblicuo","elegidas":["git-workflow-multirepo"],"confianza":"alta"}
+{"id":"smart-dumb-components-oblicuo","elegidas":["smart-dumb-components","frontend-data-access"],"confianza":"alta"}
+{"id":"ui-quality-review-oblicuo","elegidas":["ui-quality-review"],"confianza":"alta"}
+{"id":"accessibility-testing-directo","elegidas":["accessibility-testing","frontend-accessibility"],"confianza":"alta"}
+{"id":"caching-strategy-oblicuo","elegidas":["caching-strategy"],"confianza":"alta"}
+{"id":"frontend-ux-states-directo","elegidas":["frontend-ux-states"],"confianza":"alta"}
+{"id":"authn-identity-oblicuo","elegidas":["authn-identity","authz-access-control"],"confianza":"media","nota":"dude con authz-access-control; el caso es revocacion de sesion/token, no el modelo de permisos en si"}
+{"id":"clean-code-directo","elegidas":["clean-code"],"confianza":"alta"}
+{"id":"clinical-records-oblicuo","elegidas":["clinical-records"],"confianza":"alta"}
+{"id":"frontend-data-access-oblicuo","elegidas":["frontend-data-access","smart-dumb-components"],"confianza":"alta"}
+{"id":"synthetic-test-data-generation-oblicuo","elegidas":["synthetic-test-data-generation","test-data-management"],"confianza":"alta"}
+{"id":"incident-response-postmortem-oblicuo","elegidas":["incident-response-postmortem"],"confianza":"alta"}
+{"id":"security-guardrails-directo","elegidas":["security-guardrails","authz-access-control"],"confianza":"alta"}
+{"id":"test-plan-authoring-directo","elegidas":["test-plan-authoring"],"confianza":"alta"}
+{"id":"milestone-planning-oblicuo","elegidas":["milestone-planning","lane-authoring"],"confianza":"alta"}
+{"id":"api-openapi-docs-directo","elegidas":["api-openapi-docs"],"confianza":"alta"}
+{"id":"scope-discipline-oblicuo","elegidas":["scope-discipline"],"confianza":"alta"}
+{"id":"git-workflow-multirepo-directo","elegidas":["git-workflow-multirepo"],"confianza":"alta"}
+{"id":"flutter-testing-directo","elegidas":["flutter-testing"],"confianza":"alta"}
+{"id":"smart-dumb-components-directo","elegidas":["smart-dumb-components"],"confianza":"alta"}
+{"id":"github-repo-standards-directo","elegidas":["github-repo-standards"],"confianza":"alta"}
+{"id":"work-report-md-directo","elegidas":["work-report-md"],"confianza":"alta"}
+{"id":"outcome-first-directo","elegidas":["outcome-first"],"confianza":"alta"}
+{"id":"e2e-playwright-oblicuo","elegidas":["e2e-playwright","regression-suite-management"],"confianza":"media","nota":"dude con regression-suite-management por el 'que quede corriendo siempre'"}

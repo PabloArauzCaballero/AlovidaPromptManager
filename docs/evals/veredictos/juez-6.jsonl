@@ -1,0 +1,58 @@
+{"id":"notifications-delivery-directo","elegidas":["notifications-delivery"],"confianza":"alta"}
+{"id":"api-pentest-oblicuo","elegidas":["api-pentest","pentest-methodology"],"confianza":"media","nota":"duda entre api-pentest (pruebas de autorización por rol) y pentest-methodology (encuadre del ejercicio en staging)"}
+{"id":"data-modeling-plantuml-directo","elegidas":["data-modeling-plantuml"],"confianza":"alta"}
+{"id":"dockerfile-production-oblicuo","elegidas":["dockerfile-production"],"confianza":"alta"}
+{"id":"terminology-value-sets-directo","elegidas":["terminology-value-sets"],"confianza":"alta"}
+{"id":"audit-trail-history-directo","elegidas":["audit-trail-history","clinical-records"],"confianza":"alta"}
+{"id":"caching-strategy-directo","elegidas":["caching-strategy","directories-public-profiles"],"confianza":"alta"}
+{"id":"e2e-failure-triage-directo","elegidas":["e2e-failure-triage"],"confianza":"alta"}
+{"id":"realtime-websockets-directo","elegidas":["realtime-websockets","multi-tenancy"],"confianza":"alta"}
+{"id":"skill-authoring-directo","elegidas":["skill-authoring"],"confianza":"alta"}
+{"id":"mobile-ux-design-oblicuo","elegidas":["mobile-ux-design"],"confianza":"alta"}
+{"id":"mobile-ux-design-directo","elegidas":["mobile-ux-design"],"confianza":"alta"}
+{"id":"agent-orchestration-oblicuo","elegidas":["context-thrift","agent-orchestration"],"confianza":"media","nota":"duda entre context-thrift (no acumular dumps, delegar a subagente de solo lectura) y agent-orchestration (patrón de fan-out de investigación)"}
+{"id":"file-uploads-media-directo","elegidas":["file-uploads-media"],"confianza":"alta"}
+{"id":"github-releases-versioning-oblicuo","elegidas":["github-multirepo-coordination","api-openapi-docs","github-releases-versioning"],"confianza":"media","nota":"duda entre coordinar el contrato entre repos (mobile roto) y el versionado/deprecación formal del campo removido"}
+{"id":"qa-orchestration-directo","elegidas":["qa-orchestration"],"confianza":"alta"}
+{"id":"authz-access-control-oblicuo","elegidas":["authz-access-control"],"confianza":"alta"}
+{"id":"consent-management-oblicuo","elegidas":["consent-management"],"confianza":"alta"}
+{"id":"finish-your-turn-directo","elegidas":["finish-your-turn"],"confianza":"alta"}
+{"id":"deployment-verification-smoke-directo","elegidas":["deployment-verification-smoke"],"confianza":"alta"}
+{"id":"agent-resource-control-directo","elegidas":["agent-resource-control"],"confianza":"alta"}
+{"id":"accounting-double-entry-directo","elegidas":["accounting-double-entry"],"confianza":"alta"}
+{"id":"backend-development-directo","elegidas":["backend-development","error-handling-contract"],"confianza":"alta"}
+{"id":"bug-reporting-standard-oblicuo","elegidas":["bug-reporting-standard"],"confianza":"alta"}
+{"id":"windows-dev-environment-directo","elegidas":["windows-dev-environment"],"confianza":"alta"}
+{"id":"progress-reporting-oblicuo","elegidas":["progress-reporting"],"confianza":"alta"}
+{"id":"frontend-security-directo","elegidas":["frontend-security"],"confianza":"alta"}
+{"id":"code-efficiency-directo","elegidas":["code-efficiency","database-design"],"confianza":"alta"}
+{"id":"coolify-databases-backups-directo","elegidas":["coolify-databases-backups"],"confianza":"alta"}
+{"id":"ux-writing-microcopy-directo","elegidas":["ux-writing-microcopy"],"confianza":"alta"}
+{"id":"security-guardrails-oblicuo","elegidas":["security-guardrails","medication-prescription-safety"],"confianza":"media","nota":"pide revisión sistemática antes de mergear (security-guardrails) pero el dominio es la API de recetas (medication-prescription-safety)"}
+{"id":"flutter-state-architecture-directo","elegidas":["flutter-state-architecture"],"confianza":"alta"}
+{"id":"unit-testing-directo","elegidas":["unit-testing"],"confianza":"alta"}
+{"id":"root-cause-debugging-oblicuo","elegidas":["root-cause-debugging"],"confianza":"alta"}
+{"id":"edge-case-data-catalog-directo","elegidas":["edge-case-data-catalog","test-case-design-techniques"],"confianza":"alta"}
+{"id":"test-data-management-directo","elegidas":["test-data-management","synthetic-test-data-generation"],"confianza":"alta"}
+{"id":"qa-strategy-oblicuo","elegidas":["qa-strategy"],"confianza":"alta"}
+{"id":"anti-hallucination-guard-directo","elegidas":["anti-hallucination-guard"],"confianza":"alta"}
+{"id":"accessibility-testing-oblicuo","elegidas":["accessibility-testing","frontend-accessibility"],"confianza":"media","nota":"pide verificar el resto de las pantallas (accessibility-testing) pero el hallazgo original es un gate de diseño no cumplido (frontend-accessibility)"}
+{"id":"iconography-imagery-directo","elegidas":["iconography-imagery"],"confianza":"alta"}
+{"id":"angular-signals-state-directo","elegidas":["angular-signals-state"],"confianza":"alta"}
+{"id":"state-machines-workflows-oblicuo","elegidas":["state-machines-workflows"],"confianza":"alta"}
+{"id":"frontend-performance-directo","elegidas":["frontend-performance"],"confianza":"alta"}
+{"id":"angular-forms-oblicuo","elegidas":["angular-forms","frontend-forms-ux"],"confianza":"media","nota":"angular-forms y frontend-forms-ux mencionan casi textualmente lo mismo (preservar datos ante fallo, error junto al campo)"}
+{"id":"scope-discipline-oblicuo","elegidas":["scope-discipline","code-review-standard"],"confianza":"alta"}
+{"id":"background-jobs-scheduling-oblicuo","elegidas":["background-jobs-scheduling"],"confianza":"alta"}
+{"id":"model-driven-schema-oblicuo","elegidas":["model-driven-schema"],"confianza":"alta"}
+{"id":"atomic-design-components-directo","elegidas":["atomic-design-components"],"confianza":"alta"}
+{"id":"astro-development-directo","elegidas":["astro-development"],"confianza":"alta"}
+{"id":"frontend-accessibility-oblicuo","elegidas":["frontend-accessibility"],"confianza":"alta"}
+{"id":"seo-public-pages-directo","elegidas":["seo-public-pages"],"confianza":"alta"}
+{"id":"lane-authoring-oblicuo","elegidas":["vertical-slicing","lane-authoring"],"confianza":"media","nota":"duda entre cortar en slices verticales demostrables (vertical-slicing) y partir el backlog en carriles (lane-authoring)"}
+{"id":"git-workflow-multirepo-oblicuo","elegidas":["git-workflow-multirepo"],"confianza":"alta"}
+{"id":"ux-writing-microcopy-oblicuo","elegidas":["ux-writing-microcopy"],"confianza":"alta"}
+{"id":"code-review-standard-oblicuo","elegidas":["code-review-standard","static-analysis-linting"],"confianza":"alta"}
+{"id":"github-cli-automation-oblicuo","elegidas":["github-cli-automation"],"confianza":"alta"}
+{"id":"bug-reporting-standard-directo","elegidas":["bug-reporting-standard"],"confianza":"alta"}
+{"id":"typography-systems-directo","elegidas":["typography-systems"],"confianza":"alta"}

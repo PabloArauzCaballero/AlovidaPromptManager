@@ -1,0 +1,59 @@
+{"id":"ux-clarity-usability-directo","elegidas":["ux-clarity-usability","frontend-ui-design"],"confianza":"alta"}
+{"id":"file-uploads-media-directo","elegidas":["file-uploads-media","clinical-records"],"confianza":"alta"}
+{"id":"flutter-testing-oblicuo","elegidas":["flutter-testing","regression-suite-management"],"confianza":"alta"}
+{"id":"threat-modeling-directo","elegidas":["threat-modeling"],"confianza":"alta"}
+{"id":"claude-md-authoring-oblicuo","elegidas":["claude-md-authoring","hooks-and-guardrails"],"confianza":"media","nota":"el archivo largo cargado al inicio apunta a claude-md-authoring, pero 'se lo saltea seguido' también podría resolverse con hooks-and-guardrails."}
+{"id":"github-pull-requests-oblicuo","elegidas":["github-pull-requests","scope-discipline"],"confianza":"media","nota":"el síntoma (revisión lenta) es de github-pull-requests, pero la causa (mezclar renombres/formateo con lógica) es justo lo que prohíbe scope-discipline."}
+{"id":"seo-public-pages-directo","elegidas":["seo-public-pages","directories-public-profiles"],"confianza":"alta"}
+{"id":"frontend-motion-directo","elegidas":["frontend-motion"],"confianza":"alta"}
+{"id":"test-case-design-techniques-oblicuo","elegidas":["test-case-design-techniques","authz-access-control","consent-management"],"confianza":"media","nota":"la pregunta es de método (combinaciones que se escapan), pero el ejemplo dado (dueño + consentimiento) tira hacia authz/consent."}
+{"id":"rationalization-guard-directo","elegidas":["rationalization-guard"],"confianza":"alta"}
+{"id":"pentest-reporting-remediation-directo","elegidas":["pentest-reporting-remediation"],"confianza":"alta"}
+{"id":"incident-response-postmortem-directo","elegidas":["incident-response-postmortem"],"confianza":"alta"}
+{"id":"social-feed-design-directo","elegidas":["social-feed-design","content-moderation-abuse"],"confianza":"alta"}
+{"id":"technical-debt-management-directo","elegidas":["technical-debt-management"],"confianza":"alta"}
+{"id":"regulatory-compliance-mapping-directo","elegidas":["regulatory-compliance-mapping"],"confianza":"alta"}
+{"id":"web-app-pentest-oblicuo","elegidas":["web-app-pentest","api-pentest"],"confianza":"alta"}
+{"id":"python-tooling-standards-oblicuo","elegidas":["python-tooling-standards"],"confianza":"alta"}
+{"id":"factual-discovery-directo","elegidas":["factual-discovery"],"confianza":"alta"}
+{"id":"dead-code-duplication-oblicuo","elegidas":["dead-code-duplication"],"confianza":"alta"}
+{"id":"error-handling-contract-oblicuo","elegidas":["error-handling-contract"],"confianza":"alta"}
+{"id":"authz-access-control-oblicuo","elegidas":["authz-access-control"],"confianza":"alta"}
+{"id":"secure-code-review-directo","elegidas":["secure-code-review"],"confianza":"alta"}
+{"id":"code-complexity-metrics-directo","elegidas":["code-complexity-metrics"],"confianza":"alta"}
+{"id":"python-tooling-standards-directo","elegidas":["python-tooling-standards"],"confianza":"alta"}
+{"id":"search-and-filtering-directo","elegidas":["search-and-filtering","directories-public-profiles"],"confianza":"alta"}
+{"id":"hooks-and-guardrails-oblicuo","elegidas":["hooks-and-guardrails"],"confianza":"alta"}
+{"id":"frontend-error-monitoring-oblicuo","elegidas":["frontend-error-monitoring"],"confianza":"alta"}
+{"id":"healthcare-interoperability-fhir-oblicuo","elegidas":["healthcare-interoperability-fhir","database-design"],"confianza":"media","nota":"modelar profesional+especialidad+lugar+horario es el caso típico de PractitionerRole en FHIR, pero también es una pregunta llana de modelado relacional."}
+{"id":"component-architecture-solid-directo","elegidas":["component-architecture-solid","solid-principles"],"confianza":"alta"}
+{"id":"data-quality-validation-oblicuo","elegidas":["data-quality-validation"],"confianza":"alta"}
+{"id":"environment-secrets-config-oblicuo","elegidas":["environment-secrets-config"],"confianza":"alta"}
+{"id":"github-multirepo-coordination-oblicuo","elegidas":["github-multirepo-coordination","release-and-rollback"],"confianza":"alta"}
+{"id":"data-privacy-phi-oblicuo","elegidas":["data-privacy-phi","frontend-error-monitoring"],"confianza":"alta"}
+{"id":"server-hardening-oblicuo","elegidas":["server-hardening"],"confianza":"alta"}
+{"id":"angular-development-oblicuo","elegidas":["angular-development","angular-signals-state"],"confianza":"alta"}
+{"id":"ci-cd-pipeline-oblicuo","elegidas":["ci-cd-pipeline","github-actions-ci"],"confianza":"alta"}
+{"id":"model-driven-schema-directo","elegidas":["model-driven-schema","data-modeling-plantuml"],"confianza":"alta"}
+{"id":"mobile-ux-design-oblicuo","elegidas":["mobile-ux-design"],"confianza":"alta"}
+{"id":"requirements-and-acceptance-oblicuo","elegidas":["requirements-and-acceptance","outcome-first"],"confianza":"alta"}
+{"id":"e2e-playwright-directo","elegidas":["e2e-playwright"],"confianza":"alta"}
+{"id":"caching-strategy-directo","elegidas":["caching-strategy"],"confianza":"alta"}
+{"id":"postgresql-advanced-directo","elegidas":["postgresql-advanced","database-design"],"confianza":"alta"}
+{"id":"visual-hierarchy-composition-directo","elegidas":["visual-hierarchy-composition"],"confianza":"alta"}
+{"id":"angular-ssr-hydration-directo","elegidas":["angular-ssr-hydration"],"confianza":"alta"}
+{"id":"windows-dev-environment-oblicuo","elegidas":["windows-dev-environment"],"confianza":"alta"}
+{"id":"performance-load-testing-directo","elegidas":["performance-load-testing"],"confianza":"alta"}
+{"id":"backup-restore-dr-oblicuo","elegidas":["backup-restore-dr","coolify-databases-backups"],"confianza":"alta"}
+{"id":"consent-management-oblicuo","elegidas":["consent-management"],"confianza":"alta"}
+{"id":"skills-router-directo","elegidas":["skills-router"],"confianza":"alta"}
+{"id":"lane-authoring-oblicuo","elegidas":["lane-authoring","vertical-slicing"],"confianza":"alta"}
+{"id":"frontend-ui-design-directo","elegidas":["frontend-ui-design"],"confianza":"alta"}
+{"id":"test-case-design-techniques-directo","elegidas":["test-case-design-techniques"],"confianza":"alta"}
+{"id":"frontend-data-tables-directo","elegidas":["frontend-data-tables"],"confianza":"alta"}
+{"id":"api-pentest-oblicuo","elegidas":["api-pentest","pentest-methodology"],"confianza":"alta"}
+{"id":"security-guardrails-oblicuo","elegidas":["security-guardrails","medication-prescription-safety"],"confianza":"media","nota":"pide una pasada sistemática de seguridad genérica antes de mergear (security-guardrails), pero el endpoint es de recetas, dominio de medication-prescription-safety."}
+{"id":"qa-evidence-reporting-oblicuo","elegidas":["qa-evidence-reporting","evidence-and-verification"],"confianza":"alta"}
+{"id":"skill-authoring-oblicuo","elegidas":["skill-authoring"],"confianza":"alta"}
+{"id":"agent-resource-control-oblicuo","elegidas":["agent-resource-control"],"confianza":"alta"}
+{"id":"prompt-engineering-oblicuo","elegidas":["prompt-engineering"],"confianza":"alta"}

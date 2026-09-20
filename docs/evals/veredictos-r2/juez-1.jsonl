@@ -1,0 +1,59 @@
+{"id":"database-design-directo","elegidas":["quotations-billing","database-design"],"confianza":"media","nota":"dudé entre el gate de dominio (cotizaciones) y el gate genérico de diseño de esquema; ambos aplican a la vez"}
+{"id":"directories-public-profiles-directo","elegidas":["directories-public-profiles"],"confianza":"alta"}
+{"id":"visual-regression-testing-directo","elegidas":["visual-regression-testing"],"confianza":"alta"}
+{"id":"work-report-md-oblicuo","elegidas":["work-report-md"],"confianza":"alta"}
+{"id":"angular-signals-state-oblicuo","elegidas":["angular-signals-state"],"confianza":"alta"}
+{"id":"technical-docs-and-adr-oblicuo","elegidas":["technical-docs-and-adr"],"confianza":"alta"}
+{"id":"flutter-theming-oblicuo","elegidas":["flutter-theming"],"confianza":"alta"}
+{"id":"visual-hierarchy-composition-oblicuo","elegidas":["visual-hierarchy-composition"],"confianza":"alta"}
+{"id":"consent-management-directo","elegidas":["consent-management"],"confianza":"alta"}
+{"id":"api-testing-oblicuo","elegidas":["api-testing"],"confianza":"alta"}
+{"id":"threat-modeling-oblicuo","elegidas":["threat-modeling"],"confianza":"alta"}
+{"id":"visual-proof-oblicuo","elegidas":["visual-proof"],"confianza":"alta"}
+{"id":"frontend-security-directo","elegidas":["frontend-security"],"confianza":"alta"}
+{"id":"postgresql-advanced-oblicuo","elegidas":["postgresql-advanced","database-design"],"confianza":"media","nota":"el lock al aplicar DDL es postgresql-advanced, pero database-design también cubre migraciones zero-downtime"}
+{"id":"mikroorm-patterns-directo","elegidas":["mikroorm-patterns"],"confianza":"alta"}
+{"id":"frontend-data-tables-oblicuo","elegidas":["frontend-data-tables"],"confianza":"alta"}
+{"id":"claude-md-authoring-directo","elegidas":["claude-md-authoring"],"confianza":"alta"}
+{"id":"flutter-development-directo","elegidas":["flutter-development"],"confianza":"alta"}
+{"id":"context-thrift-directo","elegidas":["context-thrift"],"confianza":"alta"}
+{"id":"dashboard-data-ui-oblicuo","elegidas":["dashboard-data-ui"],"confianza":"alta"}
+{"id":"github-branch-protection-rulesets-directo","elegidas":["github-branch-protection-rulesets"],"confianza":"alta"}
+{"id":"frontend-navigation-ia-oblicuo","elegidas":["frontend-navigation-ia"],"confianza":"alta"}
+{"id":"authn-identity-directo","elegidas":["authn-identity"],"confianza":"alta"}
+{"id":"async-messaging-events-oblicuo","elegidas":["async-messaging-events","notifications-delivery"],"confianza":"alta"}
+{"id":"realtime-websockets-directo","elegidas":["realtime-websockets"],"confianza":"alta"}
+{"id":"github-issues-projects-oblicuo","elegidas":["github-issues-projects"],"confianza":"alta"}
+{"id":"api-openapi-docs-oblicuo","elegidas":["api-openapi-docs"],"confianza":"alta"}
+{"id":"frontend-error-monitoring-directo","elegidas":["frontend-error-monitoring"],"confianza":"alta"}
+{"id":"frontend-performance-directo","elegidas":["frontend-performance"],"confianza":"alta"}
+{"id":"seed-data-catalogs-directo","elegidas":["seed-data-catalogs"],"confianza":"alta"}
+{"id":"coolify-deployment-oblicuo","elegidas":["coolify-deployment"],"confianza":"alta"}
+{"id":"insurance-workflows-directo","elegidas":["insurance-workflows"],"confianza":"alta"}
+{"id":"regulatory-compliance-mapping-oblicuo","elegidas":["regulatory-compliance-mapping"],"confianza":"alta"}
+{"id":"coolify-databases-backups-oblicuo","elegidas":["backup-restore-dr","coolify-databases-backups"],"confianza":"media","nota":"no queda claro si la base corre en Coolify; dudé entre el gate genérico de RPO/RTO/restore y el específico de Coolify"}
+{"id":"angular-forms-oblicuo","elegidas":["angular-forms","frontend-forms-ux"],"confianza":"media","nota":"dudé entre el mapeo técnico de errores de servidor (angular-forms) y la UX de preservar lo escrito (frontend-forms-ux)"}
+{"id":"code-quality-audit-oblicuo","elegidas":["code-quality-audit"],"confianza":"alta"}
+{"id":"flutter-state-architecture-oblicuo","elegidas":["flutter-state-architecture"],"confianza":"alta"}
+{"id":"factual-discovery-oblicuo","elegidas":["factual-discovery","anti-hallucination-guard"],"confianza":"media","nota":"dudé entre el método general de descubrir antes de tocar y el gate específico de no duplicar entidades existentes"}
+{"id":"refactoring-safely-oblicuo","elegidas":["refactoring-safely"],"confianza":"alta"}
+{"id":"medication-prescription-safety-directo","elegidas":["medication-prescription-safety"],"confianza":"alta"}
+{"id":"astro-development-directo","elegidas":["astro-development"],"confianza":"alta"}
+{"id":"github-pull-requests-directo","elegidas":["github-pull-requests"],"confianza":"alta"}
+{"id":"github-cli-automation-oblicuo","elegidas":["github-cli-automation"],"confianza":"alta"}
+{"id":"unit-testing-oblicuo","elegidas":["unit-testing"],"confianza":"alta"}
+{"id":"security-testing-oblicuo","elegidas":["security-testing","authz-access-control"],"confianza":"media","nota":"dudé entre el test automatizado en el pipeline y el gate de diseño de autorización que lo hubiera evitado"}
+{"id":"milestone-planning-directo","elegidas":["milestone-planning"],"confianza":"alta"}
+{"id":"model-driven-schema-oblicuo","elegidas":["model-driven-schema"],"confianza":"alta"}
+{"id":"e2e-failure-triage-oblicuo","elegidas":["e2e-failure-triage"],"confianza":"alta"}
+{"id":"angular-signals-state-directo","elegidas":["angular-signals-state"],"confianza":"alta"}
+{"id":"dependency-management-oblicuo","elegidas":["dependency-management"],"confianza":"alta"}
+{"id":"anti-hallucination-guard-oblicuo","elegidas":["anti-hallucination-guard"],"confianza":"alta"}
+{"id":"concurrency-and-locking-directo","elegidas":["concurrency-and-locking","appointment-scheduling"],"confianza":"media","nota":"la mecánica de locking es concurrency-and-locking, pero el catálogo remite la doble reserva de turnos a appointment-scheduling"}
+{"id":"agent-resource-control-directo","elegidas":["agent-resource-control"],"confianza":"alta"}
+{"id":"github-releases-versioning-directo","elegidas":["github-releases-versioning"],"confianza":"alta"}
+{"id":"content-moderation-abuse-directo","elegidas":["content-moderation-abuse"],"confianza":"alta"}
+{"id":"background-jobs-scheduling-directo","elegidas":["background-jobs-scheduling"],"confianza":"alta"}
+{"id":"solid-principles-directo","elegidas":["solid-principles"],"confianza":"alta"}
+{"id":"agent-orchestration-directo","elegidas":["agent-orchestration"],"confianza":"alta"}
+{"id":"integrity-testing-directo","elegidas":["integrity-testing"],"confianza":"alta"}

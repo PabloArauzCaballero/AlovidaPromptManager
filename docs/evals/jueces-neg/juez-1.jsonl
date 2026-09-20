@@ -1,0 +1,30 @@
+{"id": "neg-01", "prompt": "Che, ¿en qué habíamos quedado ayer con lo de la agenda? No me acuerdo si lo dejamos cerrado."}
+{"id": "neg-02", "prompt": "Gracias, ya está. Cerramos por hoy."}
+{"id": "neg-03", "prompt": "¿Me repetís el último comando que corriste? Lo perdí del scroll."}
+{"id": "neg-04", "prompt": "Dale, seguí nomás con lo que estabas."}
+{"id": "neg-05", "prompt": "Pará un segundo que tengo que atender una llamada, después seguimos."}
+{"id": "neg-06", "prompt": "¿Qué quiere decir exactamente que una operación sea idempotente? Me suena pero nunca lo tuve claro del todo."}
+{"id": "neg-07", "prompt": "¿Cuál es la diferencia entre TCP y UDP? Es para explicárselo a un junior."}
+{"id": "neg-08", "prompt": "¿Por qué se dice que HTTPS usa cifrado asimétrico si después cifra todo con una clave simétrica?"}
+{"id": "neg-09", "prompt": "¿De dónde viene el nombre 'yak shaving'? Lo escuché en una reunión y me quedé colgado."}
+{"id": "neg-10", "prompt": "¿Qué diferencia hay entre un compilador y un intérprete? Pregunta de curiosidad nomás."}
+{"id": "neg-11", "prompt": "Cambiá el texto del botón de 'Guardar' a 'Guardar cambios'."}
+{"id": "neg-12", "prompt": "Hay un typo en el README, dice 'instalacion' sin tilde. Corregilo."}
+{"id": "neg-13", "prompt": "Agregá mi nombre a la lista de autores en el package.json."}
+{"id": "neg-14", "prompt": "Renombrá el archivo notas.txt a notas-reunion.txt, nada más."}
+{"id": "neg-15", "prompt": "Sacá esa línea comentada que quedó al final del archivo de config, no se usa."}
+{"id": "neg-16", "prompt": "Ayudame a armar la agenda de la reunión del lunes con el equipo, son cuatro temas."}
+{"id": "neg-17", "prompt": "Escribime un mail para el proveedor de hosting preguntando por el estado de la factura."}
+{"id": "neg-18", "prompt": "¿Cómo instalo Python en una máquina nueva? Me acaban de dar la notebook."}
+{"id": "neg-19", "prompt": "Necesito redactar la descripción del puesto para buscar un desarrollador semi senior."}
+{"id": "neg-20", "prompt": "¿Me armás un resumen de lo que salió en la daily para mandarle al cliente?"}
+{"id": "neg-21", "prompt": "No anda."}
+{"id": "neg-22", "prompt": "Fijate esto que te paso."}
+{"id": "neg-23", "prompt": "Che, una consulta."}
+{"id": "neg-24", "prompt": "¿Vos qué harías?"}
+{"id": "neg-25", "prompt": "Está raro lo de recién."}
+{"id": "neg-26", "prompt": "¿Cómo configuro un pipeline declarativo en Jenkins? Es para otro proyecto de la empresa."}
+{"id": "neg-27", "prompt": "Necesito ayuda con un modelo de Django, no me toma bien la relación many to many."}
+{"id": "neg-28", "prompt": "Tengo que migrar unas lambdas de AWS a Azure Functions, ¿por dónde arranco?"}
+{"id": "neg-29", "prompt": "¿Sabés cómo se hace un pivot table en Excel con datos de varias hojas?"}
+{"id": "neg-30", "prompt": "Estoy peleando con un shader en Unity que no compila en WebGL."}

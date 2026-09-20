@@ -1,0 +1,57 @@
+{"id": "backend-observability-oblicuo", "prompt": "Anoche se cayo algo y no tenemos manera de reconstruir que paso, ni de saber si estuvo lento o directamente fallo."}
+{"id": "iconography-imagery-directo", "prompt": "Estoy eligiendo el set de iconos del producto y quiero fijar el criterio antes de que cada uno traiga el suyo."}
+{"id": "server-hardening-directo", "prompt": "Quiero endurecer el VPS donde corre Coolify: SSH solo por clave, firewall cerrado y 2FA en el panel."}
+{"id": "docker-local-stack-oblicuo", "prompt": "Cuando levanto todo junto la API se cae porque arranca antes que la base. Y al que entró nuevo le llevó dos días dejar el entorno funcionando."}
+{"id": "file-uploads-media-oblicuo", "prompt": "Cualquiera puede renombrar un ejecutable a .jpg y mandárnoslo, y encima estamos guardando todo en el disco del contenedor que se borra en cada deploy."}
+{"id": "nestjs-development-directo", "prompt": "Voy a crear el modulo de servicios medicos en la API. Como organizo el modulo, el controller y los DTOs?"}
+{"id": "agent-orchestration-oblicuo", "prompt": "Tengo que recorrer como cuarenta archivos para entender como esta armado el flujo de seguros, pero no quiero que todo eso me quede dando vueltas en la conversacion. Como lo encaro?"}
+{"id": "coolify-deployment-directo", "prompt": "Tengo que desplegar la API NestJS y el front Angular con SSR en Coolify y conectarlos al repo."}
+{"id": "pentest-methodology-directo", "prompt": "Queremos hacer una evaluacion de seguridad sobre nuestra propia plataforma. Como la organizamos?"}
+{"id": "visual-proof-directo", "prompt": "Terminé un cambio de layout. ¿Qué capturas necesito y en qué condiciones para dar la pantalla por verificada?"}
+{"id": "backup-restore-dr-directo", "prompt": "Quiero definir la estrategia de respaldo de la base de produccion, con recuperacion a un punto en el tiempo."}
+{"id": "qa-strategy-directo", "prompt": "Quiero definir qué se prueba en cada nivel y cómo priorizamos por riesgo, antes de ponernos a escribir tests a lo loco."}
+{"id": "flutter-theming-directo", "prompt": "Necesito definir el tema claro y oscuro de la app Flutter alineado con la identidad de la web."}
+{"id": "technical-debt-management-oblicuo", "prompt": "Tenemos comentarios de arreglar esto después por todos lados desde hace un año y nadie los mira nunca. Quiero que eso sea visible y se pueda priorizar."}
+{"id": "secure-code-review-oblicuo", "prompt": "Viene un cambio que toca permisos y lo aprobaron porque los tests pasaban. Quiero que alguien lea de verdad esa lógica y busque si deja algún agujero."}
+{"id": "ux-writing-microcopy-directo", "prompt": "Quiero revisar los textos de los botones y los mensajes de error de la aplicación."}
+{"id": "release-and-rollback-oblicuo", "prompt": "El martes subimos una versión, se rompió el alta de pacientes y tardamos cuarenta minutos en volver a la anterior porque nadie sabía cómo. Encima el cambio de base ya estaba aplicado."}
+{"id": "unit-testing-directo", "prompt": "¿Cómo escribo un test unitario bien estructurado para esta función que aplica descuentos?"}
+{"id": "component-architecture-solid-oblicuo", "prompt": "La tarjeta de profesional ya tiene 18 inputs opcionales y un switch adentro para cada caso de uso. Cada vez que agregamos una variante se rompe otra."}
+{"id": "terminology-value-sets-directo", "prompt": "¿Cómo modelo el catálogo de especialidades médicas como value set de conceptos en vez de un enum?"}
+{"id": "github-cli-automation-directo", "prompt": "Quiero automatizar desde la terminal la consulta de PRs abiertos y de las corridas que fallaron, usando gh."}
+{"id": "angular-testing-oblicuo", "prompt": "Los specs del front siguen con Jasmine y Karma y quiero llevarlos a lo que trae el CLI por defecto hoy, sin terminar con dos corredores mezclados."}
+{"id": "state-machines-workflows-directo", "prompt": "La solicitud de consulta tiene estados y los if están desparramados por todos lados. Quiero definir las transiciones en un solo lugar."}
+{"id": "mobile-offline-sync-directo", "prompt": "La app tiene que poder trabajar sin conexion y sincronizar cuando vuelve la red."}
+{"id": "code-efficiency-directo", "prompt": "El endpoint de listado de pacientes tarda casi 4 segundos y quiero optimizarlo sin romper nada."}
+{"id": "quotations-billing-directo", "prompt": "Voy a modelar el módulo de cotizaciones: líneas, impuestos, estados, numeración y la conversión a factura. ¿Qué tengo que cuidar?"}
+{"id": "frontend-motion-oblicuo", "prompt": "Todo en la app aparece de golpe y se siente tosco, pero cuando le pusimos efectos quedó lento y mareador. Quiero criterio para cuándo algo se debe mover y cuánto."}
+{"id": "deployment-verification-smoke-oblicuo", "prompt": "Dimos por hecho que ya estaba en producción porque el deploy quedó en verde, y media hora después nos avisaron los usuarios que el login no andaba."}
+{"id": "typescript-standards-directo", "prompt": "¿Qué flags de tsconfig exigimos en la casa y por qué está prohibido el any?"}
+{"id": "ci-cd-pipeline-directo", "prompt": "Quiero ordenar las etapas del pipeline y definir cuales bloquean el merge y cuales el despliegue."}
+{"id": "flutter-state-architecture-directo", "prompt": "¿Dónde vive el estado de las citas en la app Flutter, en el widget o en un notifier?"}
+{"id": "solid-principles-oblicuo", "prompt": "Cada vez que agregamos un tipo de cobertura nuevo hay que tocar el mismo switch gigante y se rompen cosas que ya andaban. ¿Cómo reordeno esto?"}
+{"id": "vertical-slicing-oblicuo", "prompt": "El plan dice hacer todos los endpoints de agenda y recién después toda la interfaz. Así no vamos a poder probar nada hasta el final y me parece riesgoso."}
+{"id": "git-workflow-multirepo-oblicuo", "prompt": "Alguien volvió a commitear directo sobre la rama principal, y los cambios de un mismo pedido quedaron desparramados en tres repos con mensajes tipo varios arreglos."}
+{"id": "smart-dumb-components-oblicuo", "prompt": "Mis componentes de la ficha clínica llaman al HttpClient adentro y ahora no los puedo reusar en otra pantalla ni probarlos sin levantar media app."}
+{"id": "ui-quality-review-oblicuo", "prompt": "La pantalla funciona pero se ve como plantilla genérica: todo al mismo peso, espaciados raros y una card con gradiente violeta. Quiero un veredicto objetivo, no una opinión."}
+{"id": "accessibility-testing-directo", "prompt": "Quiero sumar chequeos automaticos de accesibilidad a los E2E de la ficha clinica y ademas dejar definida una pasada manual con teclado y lector antes de darla por cerrada."}
+{"id": "caching-strategy-oblicuo", "prompt": "Un usuario vio en pantalla los datos de otro justo despues de que pusimos una capa para acelerar las respuestas."}
+{"id": "frontend-ux-states-directo", "prompt": "¿Qué estados tengo que resolver en el listado de citas antes de darlo por terminado?"}
+{"id": "authn-identity-oblicuo", "prompt": "Cuando damos de baja a un profesional necesitamos que pierda el acceso en el acto, y hoy le sigue funcionando hasta que se le vence solo."}
+{"id": "clean-code-directo", "prompt": "Quiero dejar prolijo el servicio de facturación antes de seguir tocándolo: hay funciones de 80 líneas, nombres tipo data2 y comentarios que ya no aplican. ¿Cómo lo encaro?"}
+{"id": "clinical-records-oblicuo", "prompt": "El doctor pide poder editar lo que escribió ayer en la consulta. Me suena que no puedo hacer un UPDATE y listo, pero no sé cómo plantearlo para que después no haya problemas."}
+{"id": "frontend-data-access-oblicuo", "prompt": "Tenemos componentes que le pegan directo al backend con any y cada uno maneja el error como quiere. Quiero centralizar eso en una capa con los tipos del contrato."}
+{"id": "synthetic-test-data-generation-oblicuo", "prompt": "Nuestros datos de prueba son todos Juan Pérez sin acentos, y después en producción explota con nombres compuestos y con ñ. Encima cuando falla no lo puedo repetir igual."}
+{"id": "incident-response-postmortem-oblicuo", "prompt": "Un medico aviso que en su pantalla aparecio la ficha de un paciente que no es suyo. Esta pasando ahora en produccion, quien hace que?"}
+{"id": "security-guardrails-directo", "prompt": "Antes de mergear este endpoint quiero pasarle el checklist completo de controles: autorización, validación, secretos, headers y logs."}
+{"id": "test-plan-authoring-directo", "prompt": "Necesito escribir el plan de prueba del carril de agenda antes de empezar a testear."}
+{"id": "milestone-planning-oblicuo", "prompt": "Tenemos el modulo de activos y pasivos para las proximas dos semanas. Necesito partirlo en pasos chiquitos donde cada paso se demuestre solo con una corrida concreta, asi veo el avance real en vez de andar preguntando como va."}
+{"id": "api-openapi-docs-directo", "prompt": "Quiero dejar prolijo el contrato del modulo de citas: operaciones con identificador estable, ejemplos y los errores documentados."}
+{"id": "scope-discipline-oblicuo", "prompt": "El PR de un arreglo de dos líneas vino con ochenta archivos tocados porque de paso se reordenaron imports y se renombró media carpeta. No hay manera de revisar eso."}
+{"id": "git-workflow-multirepo-directo", "prompt": "¿Cómo manejo las ramas cuando un carril toca el API, el front y el modelo a la vez?"}
+{"id": "flutter-testing-directo", "prompt": "Quiero escribir widget tests para la tarjeta de cita de la app Flutter."}
+{"id": "smart-dumb-components-directo", "prompt": "¿Cómo separo los componentes contenedores de los presentacionales en la agenda? Quiero que las cards de cita sean reusables."}
+{"id": "github-repo-standards-directo", "prompt": "Estoy creando el repo del modulo contable. Que archivos base tiene que tener para quedar igual que los otros?"}
+{"id": "work-report-md-directo", "prompt": "Estoy cerrando la sesion del trabajo de agenda y quedo a mitad de camino. Como redacto el reporte final con lo completado, lo que quedo a medias y lo pendiente?"}
+{"id": "outcome-first-directo", "prompt": "Antes de arrancar quiero dejar escrito cual es el resultado observable de esta tarea y como se comprueba."}
+{"id": "e2e-playwright-oblicuo", "prompt": "Cada vez que tocamos la agenda se rompe algo distinto y nos enteramos por el cliente. Necesito algo que simule a un paciente sacando turno de verdad, contra el backend real, y que quede corriendo siempre."}

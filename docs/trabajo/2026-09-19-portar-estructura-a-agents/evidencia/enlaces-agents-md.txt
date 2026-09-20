@@ -1,0 +1,38 @@
+Verificacion de enlaces — AGENTS.md y punteros por herramienta
+(se excluyen los bloques de codigo: contienen plantillas con placeholders)
+
+=== AGENTS.md (275 lineas) ===
+  [externo] https://agents.md
+  [OK ] .claude/rules/
+  [OK ] .claude/rules/README.md
+  [OK ] .claude/skills/
+  [OK ] .claude/skills/skills-router/SKILL.md
+  [OK ] .agents/skills/
+  [OK ] .agents/rules/
+  [OK ] README.md
+  [OK ] .claude/hooks/
+  [OK ] (ruta citada) .claude/rules/
+  [OK ] (ruta citada) .claude/skills/
+  [OK ] (ruta citada) .claude/skills/skills-router/SKILL.md
+  [OK ] (ruta citada) .agents/skills/
+  [OK ] (ruta citada) .agents/rules/
+  [OK ] (ruta citada) .claude/skills/
+  [OK ] (ruta citada) .claude/rules/
+  [OK ] (ruta citada) .claude/hooks/
+
+=== .github/copilot-instructions.md (32 lineas) ===
+  [OK ] ../AGENTS.md
+  [OK ] ../AGENTS.md
+  [OK ] ../.claude/skills/skills-router/SKILL.md
+  [OK ] (ruta citada) .claude/skills/skills-router/SKILL.md
+
+=== .cursor/rules/estandar-de-la-casa.mdc (37 lineas) ===
+  [OK ] ../../AGENTS.md
+  [OK ] ../../AGENTS.md
+  [OK ] ../../.claude/skills/skills-router/SKILL.md
+
+--- RESUMEN ---
+enlaces internos verificados : 23
+enlaces ROTOS               : 0
+enlaces externos            : 1  (agents.md, verificado con WebFetch)
+RESULTADO: OK - ningun enlace roto
