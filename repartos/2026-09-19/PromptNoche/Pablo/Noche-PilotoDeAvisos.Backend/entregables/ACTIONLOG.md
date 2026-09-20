@@ -58,7 +58,7 @@ venía atribuyendo a otra causa (memoria, timeouts, `host.docker.internal`).
    de `moduleRef.compile()`, para forzar una pasada de discovery completa y síncrona con el await,
    sobre la hipótesis de que `MetadataStorage` es un singleton de proceso.~~ **Probado y descartado**
    (2026-09-20): mismo `MetadataError: ChatAutoReplies`, `exit_code=1`
-   (`evidencia/H_warmup_experimento_fx1.txt`). El cambio se revirtió (`harness.ts` sin diff). La
+   (`../evidencia/H_warmup_experimento_fx1.txt`). El cambio se revirtió (`harness.ts` sin diff). La
    hipótesis del singleton global era correcta en la lectura del código, pero no explica el fallo:
    `warmup.close()` probablemente libera algo que `moduleRef.compile()` necesita de nuevo, o cada
    `MikroORM.init()` no reutiliza el `MetadataStorage` de una instancia anterior de la forma que
