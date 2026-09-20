@@ -28,14 +28,17 @@ de23711979b33e813d792ea53e501c6d24496197
 
 | `DECISION_REQUIRED` | Dueño | Fecha objetivo | Consecuencia de NO decidirlo |
 |---|---|---|---|
-| Q-06 — durabilidad del aviso | Negocio (Marcelo) + cita textual pendiente de Pablo (H1.S3.M4 de su ficha) | No fijada por esta ficha (es de quien decide) | Cualquier outbox/reintento que Justin diseñe sobre este puerto queda sin saber si debe garantizar entrega o puede perder el aviso — riesgo de sobre-ingeniería (durabilidad que nadie pidió) o de pérdida silenciosa de avisos obligatorios |
+| Q-06 — durabilidad del aviso | Negocio (Marcelo) — las dos citas (código + metaprompt, `~/Downloads/METAPROMPT_PARA_ASTRA.md` L96) ya están completas en §11 del contrato | No fijada por esta ficha (es de quien decide) | Cualquier outbox/reintento que Justin diseñe sobre este puerto queda sin saber si debe garantizar entrega o puede perder el aviso — riesgo de sobre-ingeniería (durabilidad que nadie pidió) o de pérdida silenciosa de avisos obligatorios |
 | TTL/ventana de `debounceKey` | Negocio + dueño del módulo `messaging` | No fijada | Un worker que reintenta no puede razonar sobre cuánto tiempo protege el rebote; riesgo de duplicar avisos si se asume una ventana equivocada |
 | Reintentabilidad de errores de `emit()` | Justin (diseño de idempotencia, citado en el handoff de H1) | No fijada | El adaptador que reemplace al actual no sabe qué fallos vale la pena reintentar automáticamente vs. cuáles son definitivos |
 | Orden/cardinalidad de `emitMany` | Dueño del módulo `scheduling` | No fijada | Un futuro adaptador paralelo (ej. el de P1) podría romper correlaciones `resultados[i]`↔`notices[i]` que algún consumidor futuro asuma sin que el tipo lo prohíba |
 | `tenantId` opcional (hallazgo de seguridad) | Dueño del módulo `messaging` / seguridad | No fijada | Un caller nuevo puede emitir avisos sin aislamiento de tenant explícito, sin que nada lo impida hoy |
-| Segunda capacidad (H3.S3) | Pablo | Pendiente de que la elija | Sin ficha de contrato propia hasta que exista la elección — no bloquea nada de lo ya entregado, pero bloquea el trabajo futuro que dependa de ella |
 
-**Ningún pendiente quedó sin dueño con nombre.**
+**Ningún pendiente quedó sin dueño con nombre.** La segunda capacidad (H3.S3) **ya no figura
+acá**: se cerró `DESCARTADO` para este turno por falta total de insumo (cero mecanismos del
+piloto con evidencia de aislamiento — la ficha de Pablo sigue en `0/53`, sin ejecutar). No es una
+decisión de negocio en suspenso; es un hito sin material sobre el cual decidir esta noche. Se
+retoma, con evidencia real, cuando exista.
 
 ## 3. Riesgos residuales (H6.S3)
 

@@ -38,12 +38,13 @@ nueva del contrato entre H3 y H5. Ninguna celda en blanco.
 
 ## 6. Cierre del contrato al llegar a H5 (H5.S3)
 
-**Lista de `DECISION_REQUIRED` al cierre:** es la misma tabla de `VERSION-ESTABLE.md` §5 (Q-06,
-TTL de `debounceKey`, reintentabilidad, orden de `emitMany`, consistencia de `tenantId`, segunda
-capacidad). Ninguna sin dueño.
+**Lista de `DECISION_REQUIRED` al cierre:** es la misma tabla de `VERSION-ESTABLE.md` §5 (Q-06 —ya
+con las dos citas completas—, TTL de `debounceKey`, reintentabilidad, orden de `emitMany`,
+consistencia de `tenantId`). Ninguna sin dueño. La segunda capacidad (H3.S3) ya no es parte de
+esta lista: se cerró `DESCARTADO` por falta de insumo, no queda como decisión de negocio abierta.
 
 **Riesgo de release declarado** (regla de H5.S3.M1: "una decisión sin dueño es un riesgo de
-release"): las seis decisiones de la tabla **sí** tienen dueño, así que ninguna es, por esa
+release"): las cinco decisiones de la tabla **sí** tienen dueño, así que ninguna es, por esa
 definición, un riesgo de release sin gobernar. El riesgo real que sí queda abierto es el de
 `GOBERNANZA-Y-COMPATIBILIDAD.md` §5 (mensajes de texto libre frágiles a futuro) — tiene dueño
 ("quien apruebe el próximo cambio de estos mensajes") pero no una fecha, porque no hay todavía un
