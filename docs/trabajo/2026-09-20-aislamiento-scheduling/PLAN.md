@@ -134,22 +134,117 @@ fingir un artefacto autónomo que no existe.
 
 ## H4 — Estabilizar el baseline y probar la migración conjunta
 
-**Prioridad:** ALTA · **Estado:** BLOQUEADO — decisión de infraestructura pendiente de Itzan,
-no un TODO más. Detalle completo: `evidencia/H4-bloqueo-decision-infra.md`.
-Resumen: el DoD exige el **baseline de producto completo** (1 184 tablas, ~1,46M filas de
-seed vía `mantra-core-health-model/salud-db/rebuild_stack.py`), una escala de infraestructura
-distinta a la instancia chica de `scheduling` (17 tablas) que D-1 autorizó esta noche. Se
-verificó que el intérprete (`py`, Python 3.14.0) y el script existen; no se ejecutó por ser
-una decisión de infra nueva, no una continuación automática, y por el riesgo de recursos ya
-observado esta sesión (un `yarn test` con Docker arriba murió por protección de memoria baja).
+**Prioridad:** ALTA · **Estado:** EN CURSO (desbloqueado el 20/09 noche — ver D-2).
+
+**Kill-test del hito:** correr la verificación de deriva entre fuente de verdad, base y entidades
+del ORM.
+
+### H4.S1 — Baseline reproducible
+
+| ID | Microtarea | Estado | Evidencia |
+|---|---|---|---|
+| H4.S1.M1 | Levantar el baseline desde cero en un entorno limpio | **A MEDIAS** | `evidencia/H4.S1.M1-hallazgo-patches-no-reproducibles.md` · `H4.S1.M1-postgres-init-base-limpia.txt` · `H4.S1.M1-patches-restantes.txt` · `H4.S1-conteos-e-integridad.txt` |
+| H4.S1.M2 | Checks de integridad antes del escenario | **HECHO** | `evidencia/H4.S1-conteos-e-integridad.txt` — 6 792 FK, **0 no validadas** → huérfanas imposibles por construcción |
+| H4.S1.M3 | Segunda corrida del seeder para demostrar idempotencia | **HECHO** | `evidencia/H4.S1.M3-baseline-corrida-2-idempotencia.txt` y `-corrida-3.txt` — tercera corrida: `TOTAL insertados: 0 · ya existentes: 26493 · EXIT 0` |
+
+**Por qué M1 queda `A MEDIAS` y no `HECHO`:** el baseline se levanta y da conteos estables
+(1 201 tablas · 6 792 FK · 9 236 índices · 65 schemas), pero **no por el camino canónico**.
+`postgres-init` sale 3 sobre base limpia. Dos patches lo impiden, por causas distintas y ambas
+verificadas dos veces:
+
+- `SQL/patches/2026-09-08_v428_billing_quotations.sql:254` — su autoverificación exige un `CHECK`
+  sobre `interest_calculation_method`, columna que `SQL/patches/2026-09-18_v4218_…:76-77` **borró**.
+  La tabla ya está promovida al DDL generado (`SQL/17_billing/02_tables.sql`), así que el
+  `CREATE TABLE IF NOT EXISTS` del patch es un no-op y el `CHECK` nunca llega a crearse.
+- `SQL/patches/2026-09-19_v4221_aseguradoras_codigo_unico.sql` — exige 17 aseguradoras canónicas
+  **más** 1 fila «demo». Las 17 sólo existen en la fase `mock`
+  (`seedsGenerales/modules/26_insurance.seeds.json`: `boot` = 0 filas, `mock` = 17); la fila demo
+  no la reproduce ningún paquete. Es una migración de un solo uso atada a una base viva,
+  estacionada donde se reejecuta en cada arranque.
+
+Los dos se **excluyeron** del baseline, declarándolo (regla 65). Los 44 patches restantes aplican
+sin error. No se escribió DDL a mano ni se tocó el repo del modelo: es territorio ajeno.
+
+### H4.S2 — Migración conjunta
+
+Candidata: `SQL/patches/2026-09-18_v4218_quotations_flexible_payment_plan.sql` — expandir,
+migrar y contraer reales. Evidencia: `evidencia/H4.S2-migracion-candidata-v4218.txt`.
+
+| ID | Microtarea | Estado |
+|---|---|---|
+| H4.S2.M1 | Aplicar la candidata sobre el baseline en entorno de prueba | **HECHO** — aplicó sin error |
+| H4.S2.M2 | Verificar expandir → migrar → contraer | **HECHO**, con hallazgo |
+| H4.S2.M3 | Probar el rollback o la restauración | **HECHO** — **no es practicable**, con plan de recuperación declarado |
+
+**Hallazgo de M2:** el orden está respetado y declarado dentro del archivo (A expandir 47-71 ·
+B contraer 76-82 · C CHECKs 87-96 · D verificación 99), pero las tres etapas van en **una sola
+transacción y un solo despliegue**. El propósito del patrón —que «expandir» salga primero y
+«contraer» después, para que la versión anterior de la app siga viva durante el despliegue— no
+se consigue: en el instante del COMMIT, cualquier instancia con el código anterior rompe.
+
+**M3:** la estructura vuelve (los 5 `ADD COLUMN` corren), los datos no — `DROP COLUMN` los borró.
+Plan de recuperación: respaldo previo de las dos tablas, como el propio patch indica en sus
+líneas 32-34. **Limitación honesta:** `billing.quotations` tiene 0 filas en el baseline, así que
+la pérdida de datos no se pudo demostrar empíricamente, sólo la parte estructural.
+
+
+### H4.S3 — Deriva
+
+| ID | Microtarea | Estado | Evidencia |
+|---|---|---|---|
+| H4.S3.M1 | Verificación de deriva entre fuente de verdad, base y entidades del ORM | **HECHO** — y **detecta deriva** | `evidencia/H4.S3.M1-deriva-orm-vs-base.txt` · `H4.S3.M1-hallazgo-modulo-solo-en-codigo.md` |
+| H4.S3.M2 | Registrar los índices creados con nombre explícito | **HECHO** — CA cumplida: 0 con nombre generado | `evidencia/H4.S3.M2-indices-nombre-explicito.txt` |
+
+**La deriva detectada bloquea el cierre de H4** (así lo dice su propio DoD, y se respeta):
+**44 tablas que el ORM declara y la base no tiene**. 36 son el módulo `pharma_lab` entero, 8 sus
+espejos de auditoría, y las 5 restantes son las fantasma ya documentadas. `pharma_lab` no tiene
+`.puml` (hay 67, ninguno suyo) ni una línea en `SQL/`: vive **sólo en el código**, el mismo
+defecto del módulo 64 `audio_assets` de agosto. Detalle y precedente de cierre en el hallazgo.
+
+**Corrección registrada:** la primera consulta de M2 marcó 17 índices como «nombre generado».
+Era un falso positivo del filtro (`LIKE '%_key'` casaba el nombre de la COLUMNA, no el del
+índice): los 17 llevan prefijo explícito `uq_`/`uk_`. El conteo real es **0 generados sobre
+9 236**. Se deja escrito en la evidencia en lugar de cambiar el número en silencio.
 
 ## H5 — Empaquetar el candidato final del módulo
 
-**Prioridad:** ALTA · **Estado:** BLOQUEADO (depende de H4, que está BLOQUEADO).
+**Prioridad:** ALTA · **Estado:** A MEDIAS. Evidencia: `evidencia/H5-H6-verificacion-artefacto-y-gates.md`.
+
+- **Hash del artefacto: PASS.** Recalculado con la receta del manifiesto sobre
+  `plan-maestro-2026-09-14/noche-2026-09-19-aislamiento-scheduling/artefacto-h3` →
+  `21fe553b9a97…`, idéntico al declarado. Es la verificación que la coordinación dejó a nombre
+  de Itzan, y confirma que la corrección del hash del `tar` al de contenido sirve para lo único
+  que un hash tiene que servir.
+- **H5.S1.M1: CA NO cumplida.** Su kill-test pega: la versión empaquetada y la de la regresión
+  **no coinciden**. Entre `5d5007fb` (artefacto) y `c2c071a4` (`dev` hoy) cambiaron 4 archivos
+  dentro del alcance empaquetado — `ports/agenda-notice-reason.catalog.ts` (+211) y su spec
+  (nuevos, `572e7d2d`), y `services/scheduling-bookings.service.ts` (+46) y su spec (`9ff1542d`).
+  **No se reempaqueta**, porque la decisión de coordinación lo prohíbe explícitamente. Se declara.
+- **La receta del tag necesita TRES fuentes**, no una: `git archive 5d5007fb` por sí solo no
+  reproduce el hash. 99 archivos salen de la API al corte, 5 del repo del modelo
+  (`SQL/41_scheduling`, `diff -rq` vacío), 12 del repo del estándar, más `yarn.lock`.
+  Y los 12 de evidencia son **los de H1 y H2**, no el contenido actual del directorio, que hoy
+  tiene también los de H4.
 
 ## H6 — Reejecutar los gates del artefacto reparado
 
-**Prioridad:** ALTA · **Estado:** BLOQUEADO (depende de H5, que está BLOQUEADO).
+**Prioridad:** ALTA · **Estado:** A MEDIAS — los gates se reejecutaron; el artefacto no está reparado.
+
+| Gate | Estado | Nota |
+|---|---|---|
+| A1 · mapa sin vecino | **FAIL** | Sin cambio; lo arregla el binding port-only, tarjeta del próximo turno |
+| A2 · build delimitado | **FAIL** | Sin cambio |
+| A3–A6 | `NOT_RUN` | Bloqueados por A2 |
+| A7 · sin secretos | **PASS** | Sigue válido: el contenido es bit a bit el mismo (hash idéntico) |
+| A8 · sin datos reales | **PASS** | Ídem |
+| — · hash reproducible | **PASS** | Nuevo |
+| — · regresión vigente | **FAIL** | Nuevo: el kill-test de H5 |
+
+**El camino para A1/A2 ya existe y está verificado:** `test/lab/agenda-notice-capability.lab.ts`
+(carril de Pablo, #444) trae `PortOnlyNoticeAdapter`, que implementa `AgendaNoticePort` **sin
+importar `messaging` ni `community`** — comprobado, sus únicos imports son `dotenv/config`,
+`node:crypto`, `pg` y los tipos del puerto. No se hizo esta noche porque es alcance de otra
+tarjeta, no porque no se pudiera.
 
 ## Riesgos y bloqueos previstos
 
@@ -167,3 +262,11 @@ observado esta sesión (un `yarn test` con Docker arriba murió por protección 
   jamás**: sigue la regla dura de no tocarlo sin OK explícito por comando, y una base aislada e
   identificable (lo que pide H1.S3) no es lo mismo que la base remota compartida — usarla la
   incumpliría igual.
+
+- **D-2 (Itzan, 20/09 noche):** H4–H6 se retoman. Itzan **rechazó** el `down -v` sobre el stack
+  compartido y autorizó en su lugar un **stack paralelo**: proyecto `mantra-h4-baseline`, Postgres
+  en un puerto propio y Mongo en otro, con volúmenes propios (`mantra-h4-baseline_*`). Verificado antes de
+  levantar nada que la configuración resuelta no comparte ni un volumen con `mantra-redesa`. La
+  conexión del cargador se apunta con `SALUD_WORKSPACE` a un workspace sombra, de modo que el
+  `.env` del checkout real **nunca se abre**. Al cerrar, el proyecto aislado se da de baja con sus
+  volúmenes; el compartido no se toca en ningún momento.
