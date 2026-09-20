@@ -6,7 +6,8 @@
   `TESTED`, con self-tests y kill-tests ejecutados · el reparto y el documento de requisitos en
   `WRITTEN` + verificados **de forma**, no de contenido · el workflow de CI sigue `NOT_RUN` en
   GitHub Actions. El peldaño del trabajo es **el más bajo de sus áreas**.
-- Avance: **16 / 18 microtareas HECHO (88,9 %)** — calculado con `plan_status.py`.
+- Avance: **18 / 18 microtareas HECHO (100 %)** — calculado con `plan_status.py`. Del trabajo
+  acumulado de la sesión: **46 / 47 (97,9 %)**; la única fuera es el push, bloqueado.
 
 ## Por qué existió este trabajo
 
@@ -59,6 +60,13 @@ transcripción. Lo que sí cambia: Marcelo pasa de buscar sin nada a tener un ca
 **El dato más incómodo del índice de brechas:** de los 8 módulos, **6 no tienen ninguna marca de
 estado**. Puede ser que estén sin empezar o que nadie los relevó. No se sabe, y no se supuso.
 
+### H4 — El trabajo está commiteado
+
+| ID | Qué se logró | Comando | Resultado |
+|---|---|---|---|
+| H4.S1.M1 | `REPORTE.md` con las tres secciones | `plan_status.py` | `REPORTE.md: completo` |
+| H4.S1.M2 | Commits `ad8748c` y `6b04241` | `git status --short` | **sin salida** (árbol limpio) |
+
 ### H3 — El plan de seis días está repartido completo
 
 | ID | Qué se logró | Comando | Resultado |
@@ -98,8 +106,6 @@ Inventario final del reparto:
 
 | ID | Estado | Qué lo destraba |
 |---|---|---|
-| H4.S1.M1 | `TODO` → se hace a continuación | Nada |
-| H4.S1.M2 | `TODO` → se hace a continuación | Nada |
 | Push a GitHub (heredado) | **`BLOQUEADO`** | El clasificador del modo automático de la sesión rechaza `git push` (`Out-of-Place Publication`). Lo destraba que lo corra el usuario con `! git push origin main` |
 | Ejecutar las 262 microtareas | `TODO` | Es el trabajo del equipo, no de esta sesión |
 | Revisión del contenido de los 30 prompts | `TODO` | Nadie del equipo los leyó todavía |
@@ -107,8 +113,10 @@ Inventario final del reparto:
 ## Evidencia
 
 ```text
-$ python .claude/hooks/plan_status.py --path .../PLAN.md
-  Avance: 16/18 microtareas HECHO  (88.9%)
+$ python .claude/hooks/plan_status.py
+  Avance: 18/18 microtareas HECHO  (100.0%)   <- este trabajo
+  REPORTE.md: completo
+  TOTAL: 46/47 microtareas HECHO (97.9%)      <- los tres trabajos de la sesion
 
 $ python tools/check_reparto.py repartos/*
 check_reparto: OK, 2026-09-19 cumple la estructura obligatoria
