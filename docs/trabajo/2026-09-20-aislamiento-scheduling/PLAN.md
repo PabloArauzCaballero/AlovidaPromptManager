@@ -208,65 +208,50 @@ Era un falso positivo del filtro (`LIKE '%_key'` casaba el nombre de la COLUMNA,
 
 ## H5 — Empaquetar el candidato final del módulo
 
-**Prioridad:** ALTA · **Estado:** A MEDIAS. Evidencia: `evidencia/H5-H6-verificacion-artefacto-y-gates.md`.
+**Estado:** A MEDIAS — 5/7. Detalle: `evidencia/H5-H6-cierre.md`.
 
-- **Hash del artefacto: PASS.** Recalculado con la receta del manifiesto sobre
-  `plan-maestro-2026-09-14/noche-2026-09-19-aislamiento-scheduling/artefacto-h3` →
-  `21fe553b9a97…`, idéntico al declarado. Es la verificación que la coordinación dejó a nombre
-  de Itzan, y confirma que la corrección del hash del `tar` al de contenido sirve para lo único
-  que un hash tiene que servir.
-- **H5.S1.M1: CA NO cumplida.** Su kill-test pega: la versión empaquetada y la de la regresión
-  **no coinciden**. Entre `5d5007fb` (artefacto) y `c2c071a4` (`dev` hoy) cambiaron 4 archivos
-  dentro del alcance empaquetado — `ports/agenda-notice-reason.catalog.ts` (+211) y su spec
-  (nuevos, `572e7d2d`), y `services/scheduling-bookings.service.ts` (+46) y su spec (`9ff1542d`).
-  **No se reempaqueta**, porque la decisión de coordinación lo prohíbe explícitamente. Se declara.
-- **La receta del tag necesita TRES fuentes**, no una: `git archive 5d5007fb` por sí solo no
-  reproduce el hash. 99 archivos salen de la API al corte, 5 del repo del modelo
-  (`SQL/41_scheduling`, `diff -rq` vacío), 12 del repo del estándar, más `yarn.lock`.
-  Y los 12 de evidencia son **los de H1 y H2**, no el contenido actual del directorio, que hoy
-  tiene también los de H4.
+| ID | Estado |
+|---|---|
+| H5.S1.M1 Artefacto de la versión que la regresión respalda | **A MEDIAS** — CA no cumplida |
+| H5.S1.M2 Manifiesto con versiones, hashes, resolución | **HECHO** |
+| H5.S1.M3 Evidencias de los gates A ejecutados | **HECHO** |
+| H5.S2.M1 Ausencia de secretos y datos reales | **HECHO** — A7/A8 `PASS` |
+| H5.S2.M2 No arrastra fuentes del proveedor retirado | **FAIL declarado** |
+| H5.S3.M1 Estado de entrega del candidato | **HECHO** — `TRANSITIONAL_ISOLATION` |
+| H5.S3.M2 Gates `NOT_RUN` | **HECHO** — A3–A6 |
+
+El hash reproduce exacto (`21fe553b9a97…`), y por eso A7 y A8 no son evidencia heredada: el
+contenido es bit a bit el mismo que cuando se corrieron.
 
 ## H6 — Reejecutar los gates del artefacto reparado
 
-**Prioridad:** ALTA · **Estado:** A MEDIAS — los gates se reejecutaron; el artefacto no está reparado.
+**Estado:** A MEDIAS — 5/7. Ejecutado contra una **versión reparada simulada** en copia
+descartable (regla 65), declarada como tal. Detalle: `evidencia/H5-H6-cierre.md` y
+`evidencia/H6.S1.M1-typecheck-con-binding-port-only.txt`.
 
-| Gate | Estado | Nota |
-|---|---|---|
-| A1 · mapa sin vecino | **FAIL** | Sin cambio; lo arregla el binding port-only, tarjeta del próximo turno |
-| A2 · build delimitado | **FAIL** | Sin cambio |
-| A3–A6 | `NOT_RUN` | Bloqueados por A2 |
-| A7 · sin secretos | **PASS** | Sigue válido: el contenido es bit a bit el mismo (hash idéntico) |
-| A8 · sin datos reales | **PASS** | Ídem |
-| — · hash reproducible | **PASS** | Nuevo |
-| — · regresión vigente | **FAIL** | Nuevo: el kill-test de H5 |
+| ID | Estado |
+|---|---|
+| H6.S1.M1 Typecheck/build delimitados sobre la versión reparada | **HECHO** (simulado) |
+| H6.S1.M2 Arranque propio y aceptación local | **NOT_RUN** |
+| H6.S1.M3 Reejecutar la verificación de deriva | **HECHO** |
+| H6.S2.M1 Artefacto final con nuevo hash | **DESCARTADO** — decisión de coordinación |
+| H6.S2.M2 Enlazar cada gate con evidencia de esta versión | **HECHO** |
+| H6.S3.M1 Estado de entrega del artefacto final | **HECHO** |
+| H6.S3.M2 Gates `NOT_RUN` en la versión final | **HECHO** — A3–A6 |
 
-**El camino para A1/A2 ya existe y está verificado:** `test/lab/agenda-notice-capability.lab.ts`
-(carril de Pablo, #444) trae `PortOnlyNoticeAdapter`, que implementa `AgendaNoticePort` **sin
-importar `messaging` ni `community`** — comprobado, sus únicos imports son `dotenv/config`,
-`node:crypto`, `pg` y los tipos del puerto. No se hizo esta noche porque es alcance de otra
-tarjeta, no porque no se pudiera.
+**La medición que responde a H2.** Control y prueba sobre la misma copia, al mismo corte:
 
-## Riesgos y bloqueos previstos
+```
+copia intacta ................................ EXIT 0 · 0 errores
+vecinos retirados + puerto atado al doble .... EXIT 2 · 138 errores
+  de esos, DENTRO de src/modules/scheduling/ .............. 0
+```
 
-| Riesgo | Impacto | Mitigación |
-|---|---|---|
-| PostgreSQL/Docker apagados y sin autorización de levantarlos esta noche | Bloquea H1.S3, H2, H4 completos | Declarar BLOCKED con el error exacto; avanzar H1.S1/S2 (puro código) mientras tanto |
-| 6 hitos no entran en una noche (Q-C1, dicho a propósito por el prompt) | Alcance parcial | Cerrar H1 completo primero (bloqueante); lo que no cierre queda A MEDIAS con las 4 respuestas |
-| Corte de trabajo (`5d5007fb`) distinto del declarado en el prompt (`32ae939…`) | Hallazgos podrían no calzar 1:1 con lo pre-verificado | Contrastar cada hallazgo contra el archivo real en este corte, no contra el paquete |
+En H2, sin el binding port-only, eran **5**. Con el puerto atado a un adaptador que sólo depende
+del contrato, **la capacidad compila con sus vecinos físicamente ausentes**: A1 y A2 en verde
+para la capacidad. Los 138 restantes caen fuera de ella y son los consumidores externos que H2 ya
+había inventariado — el retiro físico es el método de medición, no el estado propuesto.
 
-## Decisiones tomadas esta noche (registradas, no en silencio)
-
-- **D-1 (Itzan, 20/09 madrugada):** Docker autorizado esta noche. Se usa para levantar una instancia
-  Postgres **efímera y propia** de este trabajo (nombre/puerto propios, nunca el contenedor
-  `mantra-redesa-postgres-1` del stack compartido, que tiene datos vivos de otros carriles). **Neon
-  jamás**: sigue la regla dura de no tocarlo sin OK explícito por comando, y una base aislada e
-  identificable (lo que pide H1.S3) no es lo mismo que la base remota compartida — usarla la
-  incumpliría igual.
-
-- **D-2 (Itzan, 20/09 noche):** H4–H6 se retoman. Itzan **rechazó** el `down -v` sobre el stack
-  compartido y autorizó en su lugar un **stack paralelo**: proyecto `mantra-h4-baseline`, Postgres
-  en un puerto propio y Mongo en otro, con volúmenes propios (`mantra-h4-baseline_*`). Verificado antes de
-  levantar nada que la configuración resuelta no comparte ni un volumen con `mantra-redesa`. La
-  conexión del cargador se apunta con `SALUD_WORKSPACE` a un workspace sombra, de modo que el
-  `.env` del checkout real **nunca se abre**. Al cerrar, el proyecto aislado se da de baja con sus
-  volúmenes; el compartido no se toca en ningún momento.
+**Lo que esto NO prueba:** se hizo contra un doble de 32 líneas que devuelve
+`{ delivered: false, skippedReason }`. Sustituye la espera, no la verificación final: el
+adaptador real tiene que emitir de verdad.

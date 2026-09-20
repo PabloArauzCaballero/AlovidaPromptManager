@@ -1,4 +1,4 @@
-> **AVANCE: 33 / 52 — 63,5 %.**
+> **AVANCE: 43 / 52 — 82,7 %.**
 
 # REPORTE — Aislamiento de la capacidad `scheduling` (piloto de avisos)
 
@@ -141,3 +141,34 @@ Dije que los commits nuevos de la API no tocaban `src/`. Era cierto contra `4cc5
 `c2c071a4` ya no: `#447` y `#448` tocan **4 archivos de `src/modules/scheduling`**. Eso es
 justamente lo que hace que el kill-test de H5 dé negativo, así que la corrección cambia una
 conclusión y va escrita, no callada.
+
+
+## Cierre de H5 y H6
+
+Ambos quedan **A MEDIAS, 5/7**, con cada microtarea en un estado legal y ninguna inventada.
+
+**H5.** El hash del artefacto reproduce exacto, así que A7 y A8 se sostienen sin heredar nada.
+Su M1 no cumple CA —el kill-test lo detecta: 4 archivos del alcance empaquetado cambiaron en
+`dev`— y su S2.M2 es `FAIL` declarado, que es el mismo hecho que A1. No se reempaqueta: lo
+prohíbe la decisión de coordinación.
+
+**H6 — y acá está el resultado que más vale del turno.** Se construyó una versión reparada
+simulada en copia descartable y se midió:
+
+```
+copia intacta ................................ EXIT 0 · 0 errores
+vecinos retirados + puerto atado al doble .... EXIT 2 · 138 errores
+  de esos, DENTRO de la capacidad ........................ 0
+```
+
+En H2 eran 5. **Con el puerto atado a un adaptador que sólo depende del contrato, la capacidad
+compila con sus vecinos físicamente ausentes.** Queda medido, antes de que exista el adaptador de
+producción, que el diseño de la tarjeta siguiente funciona: A1 y A2 pasan a verde para la
+capacidad. Los 138 restantes son consumidores externos ya inventariados, fuera de ella.
+
+Se declara con la misma claridad lo que no prueba: es un doble de 32 líneas. Sustituye la espera,
+no la verificación final.
+
+**Lo que queda `NOT_RUN` y por qué:** A3–A6 y H6.S1.M2, todos colgando del arranque propio.
+Simular el arranque no sería un doble de un contrato sino del sistema entero, y su verde no
+diría nada sobre la capacidad. Se declara sin ejecutar antes que fabricar evidencia.

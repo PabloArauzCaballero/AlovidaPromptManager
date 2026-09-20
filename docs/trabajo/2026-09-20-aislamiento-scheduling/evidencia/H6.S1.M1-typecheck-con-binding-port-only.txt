@@ -1,0 +1,58 @@
+=== H6.S1.M1 · typecheck delimitado con el binding port-only (SIMULACION, regla 65) ===
+=== 2026-09-20T19:42:10-04:00 · copia descartable al corte 5d5007fb, sin remoto ===
+
+--- CONTROL: copia intacta ---
+  corepack yarn typecheck -> EXIT 0 · errores TS: 0
+
+--- SIMULACION: vecinos retirados + puerto atado al doble port-only ---
+  corepack yarn typecheck -> EXIT 2 · errores TS totales: 138
+
+  >>> errores DENTRO de src/modules/scheduling/ : 0   <<<
+
+  (en H2, sin el binding port-only, eran 5:
+     scheduling/adapters/messaging-agenda-notice.adapter.ts(6,38)  TS2307
+     scheduling/adapters/support-admin-notice.adapter.ts(9,8)      TS2307
+     scheduling/adapters/support-admin-notice.adapter.ts(10,22)    TS2307
+     scheduling/scheduling.module.ts(60,33)                        TS2307
+     scheduling/scheduling.module.ts(64,33)                        TS2307 )
+
+--- donde caen los 138 restantes: TODOS fuera de la capacidad ---
+     24 src/common/storage
+     14 src/modules/diagnostic_units
+     14 src/common/seed
+      6 src/modules/iam
+      5 src/modules/vector_rag
+      5 src/modules/pharma_lab
+      5 src/modules/cross_store_consistency
+      5 src/modules/automation
+      4 src/modules/workflow
+      4 src/modules/time_series
+      4 src/modules/practice
+      4 src/modules/pharmacy_inventory
+      4 src/modules/lakehouse
+      4 src/modules/graph_intelligence
+      4 src/modules/clinical
+      3 src/modules/identity_assurance
+      3 src/modules/directory
+      3 src/modules/community.RETIRED-SIM
+      3 src/modules/authz
+      2 src/modules/profiles
+      2 src/modules/procedures_perioperative
+      2 src/modules/consent
+      2 src/modules/audio_assets
+      2 src/modules/accounting
+      1 test/integration/storage-purge-dispatch.int-spec.ts(177,32): error TS7006: Parameter 'tx' implicitly has an 'any' type.
+      1 test/integration/storage-purge-dispatch.int-spec.ts(172,18): error TS7006: Parameter 'key' implicitly has an 'any' type.
+      1 test/integration/storage-purge-dispatch.int-spec.ts(172,14): error TS7006: Parameter 'tx' implicitly has an 'any' type.
+      1 test/integration/storage-purge-dispatch.int-spec.ts(14,33): error TS2307: Cannot find module '../../src/modules/messaging/entities/queued_jobs.entity' or its corresponding type declarations.
+      1 test/integration/storage-purge-dispatch.int-spec.ts(13,34): error TS2307: Cannot find module '../../src/modules/messaging/repositories/queues.repository' or its corresponding type declarations.
+      1 test/integration/outbox-relay-race.int-spec.ts(4,31): error TS2307: Cannot find module '../../src/modules/messaging/services' or its corresponding type declarations.
+      1 test/integration/hardening/mch-028.int-spec.ts(5,40): error TS2307: Cannot find module '../../../src/modules/community/repositories' or its corresponding type declarations.
+      1 src/modules/pharmacy
+      1 src/app.module.ts(74,33): error TS2307: Cannot find module './modules
+      1 src/app.module.ts(53,33): error TS2307: Cannot find module './modules
+
+  Son los consumidores externos de messaging/community que H2 ya habia inventariado
+  (infraestructura transversal: almacenamiento, seed, iam...). No son de scheduling,
+  y desaparecen solos cuando los vecinos vuelven a estar presentes: el retiro fisico
+  es el metodo de medicion, no el estado propuesto.
