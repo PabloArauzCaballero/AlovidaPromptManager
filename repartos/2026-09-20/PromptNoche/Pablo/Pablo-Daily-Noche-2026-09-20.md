@@ -62,7 +62,17 @@ El reparto declaraba `689697821a6e6d2c8f702c7508d6728fa9a1869a` (PR #554).
 **Avanzó**, así que manda el mío: **`68dcb562`**.
 
 - **Rama:** `pablo/noche-2026-09-20-agenda-consultas`, saliendo de ese corte.
-- **Worktree:** `alovida/mch-pablo-noche-agenda` · **Commits:** 5, uno por hito.
+- **Worktree:** `alovida/mch-pablo-noche-agenda` · **Commits:** 6.
+- **PR [#564](https://github.com/mdavila-2001/mantra-core-health/pull/564): MERGEADO** en `mockup` (`cfa889c9`).
+- **PR [#566](https://github.com/mdavila-2001/mantra-core-health/pull/566): abierto, seguimiento.**
+  El #564 se mergeó con la versión **previa** al rebase, así que en `mockup`
+  quedaron conviviendo mi desplegable propio y el `app-row-actions` de Itzan. El
+  #566 lo unifica. Hasta que se mergee, **`mockup` tiene las dos**.
+- **Rebasado al cierre sobre `origin/mockup` = `c038f2ef`**, que trae los
+  contratos que publicó Ender durante la noche y el `app-row-actions` que
+  publicó Itzan para C-06. **Los cinco kill-tests se volvieron a correr contra
+  ese simulador nuevo** y siguen en verde:
+  [entregables/CONTRASTE-CON-ENDER.md](Noche-CorreccionesDoctor.AgendaConsultas/entregables/CONTRASTE-CON-ENDER.md).
 
 ## 3. Checkpoints — el más reciente arriba
 
@@ -150,10 +160,12 @@ AVANCE — Pablo — H2 — kill-test del hito
   extra), que queda en `VERIFIED` contra un doble declarado porque el manejador
   simulado crea la excepción `EXTRA` pero **no genera cupos** para su ventana.
 - **`REPORTE.md`:** `Noche-CorreccionesDoctor.AgendaConsultas/entregables/REPORTE.md`
-- **Procesos que quedaron corriendo:** **uno**, declarado — el `yarn start` del
-  servidor de desarrollo en el puerto 4200, levantado para esta sesión. Ningún
-  navegador, ningún Playwright, ningún subagente. Los scripts de `evidencia/`
-  cierran su navegador al terminar.
+- **Procesos que quedaron corriendo:** **ninguno.** El `yarn start` del servidor
+  de desarrollo se bajó al terminar la verificación en navegador, y el puerto
+  4200 quedó libre. Ningún navegador, ningún Playwright, ningún subagente.
+  **Nota de método:** con el 4200 levantado, la suite de pruebas muere por
+  memoria de esta máquina —«Worker exited unexpectedly», cero tests rojos y
+  workers caídos—; hay que correrla con el servidor abajo.
 
 ### Gates del cierre, literales
 
@@ -163,7 +175,7 @@ $ yarn lint               → exit 0
 $ npx ng test --include='src/app/features/agenda/**/*.spec.ts' \
               --include='src/app/features/my-services/**/*.spec.ts' --watch=false
  Test Files  17 passed (17)
-      Tests  471 passed (471)          (línea de base del turno: 430)
+      Tests  473 passed (473)          (línea de base del turno: 430)
 
 $ E2E_BASE_URL=http://localhost:4200 npx playwright test playwright/mockup-barrido.spec.ts --workers=1
   5 passed (23.5s)
@@ -177,7 +189,7 @@ TOTAL: 54/55 microtareas HECHO (98.2%)
 | | Quién | Qué pasó |
 |---|---|---|
 | **Esperaba a** | Ender (excepción `EXTRA`, motivo del bloqueo, forma de la visita) | **No se esperó a nadie.** El simulado ya soportaba `EXTRA`, así que ese camino se ejercitó contra el manejador real; lo que NO hace —generar cupos— quedó registrado. El 409 de «una consulta a la vez» y la duración de la visita se cerraron contra dobles declarados en sus tres niveles (regla 65) |
-| **Esperaba a** | Itzan (componente de acciones de fila) | **No se esperó.** `app-menu` ya existe en el sistema de diseño y esta misma pantalla ya lo usaba: se reusó ése. No hizo falta nada nuevo de `shared/**` |
+| **Esperaba a** | Itzan (componente de acciones de fila) | **No se esperó**, y cuando llegó **se adoptó**. Mientras no estaba publicado se resolvió con `app-menu`, que ya existe y esta pantalla ya usaba; apareció durante la noche (merge `431dbe70`) y C-06 se **migró a `app-row-actions`** en el commit `07fdc7ed`. Dejar la versión propia habría sido una implementación paralela de algo que el sistema resuelve |
 | **Me esperan** | Marcelo | `?vista=table`, `citas`, `solicitudes` y `cupos` **ya no muestran tabla**: abren el calendario. Tarjeta → atender es `dia-ir-a-atender` y lleva a `/medical-records/:id/consultation?motivo=…&cita=…`. Ojo con **H1-P5** al armar locators. Y los `data-testid` de las acciones de fila ahora viven **dentro** de un desplegable: hay que abrirlo antes de buscarlos (el patrón está en `agenda.spec.ts`) |
 | **Me esperan** | Justin | Iniciar el encuentro **ahora tiene un freno**: con una consulta en curso no arranca otra, y el aviso ofrece ir a la abierta. Tu receta se prueba dentro de la que ya esté abierta |
 
@@ -194,6 +206,8 @@ TOTAL: 54/55 microtareas HECHO (98.2%)
 | **H5-P2** | El contrato del doctor no publica el nombre del visitador ni el de su laboratorio. La tarjeta no puede nombrarlo, y mostrar el uuid está prohibido | **Ender** | **PEDIDO** |
 | **H6-P1** | `menu-item` dimensiona el ícono con `[slot='icon'] svg`: el slot va en un **envoltorio**, no en el propio `<svg>`. Puesto mal, el ícono sale a tamaño natural y no lo ve ningún test | Itzan | Anotado (documentar en el componente) |
 | **H6-P2** | `app-back-link` sólo ofrece modo `iconOnly` para el encabezado: C-06 lo dejaría sin texto en todas las secciones | Itzan | **PEDIDO** |
+| **H6-P3** | El set cerrado de `NavIconName` no cubre las acciones de fila más comunes: faltan ver, aceptar, completar y registrar llegada. Seis de las once acciones de la agenda van con su texto y sin ícono, que es lo que `RowAction.icon` opcional permite | **Itzan** (es su set) | **PEDIDO** |
+| **H5-P3** | El handoff de Ender dice que el simulador ya deriva `isAvailable` del tipo y que el campo «se ignora». **En `mockup` HEAD no es así**: lo lee del cuerpo (`scheduling.handlers.ts:624`), y un `EXTRA` sin el campo **cierra** los cupos. Seguir el handoff habría roto el horario extra | **Ender** | **AVISADO** |
 | **Q-D6** | «OTROS SERVICIOS» no está en los 7 motivos del contrato | **Negocio** | `DECISION_REQUIRED` — se usa `OTHER` + texto, sin ampliar el enum |
 | **Q-P4** | La duración configurable de la visita no existe en ningún contrato | **Ender + negocio** | `DECISION_REQUIRED` — 15 min por omisión desde el dato |
 

@@ -27,13 +27,15 @@ PASS  cada cita del dia tiene su capa de atender
 nombre accesible de la tarjeta: "Atender a Germán Agustín Vargas Ulibarri, 08:00"
 SKIP  el dia no tiene "Ver detalle": las acciones de la fila lo reemplazan
 tarjetas encontradas · atendible: true · ya atendida: true
-al tocar una cita YA ATENDIDA: "Esta cita todavía no se atiende |  | Su estado es «Atendida», y desde ese estado no se entra a atender. |  | Paciente | Germán Agustín Vargas Ulibarri | Estado | Atendida | Motivo | Seguimiento post i"
+al tocar una cita YA ATENDIDA: "Esta cita ya está cerrada |  | Su estado es «Atendida», y desde ese estado no se entra a atender. |  | Paciente | Germán Agustín Vargas Ulibarri | Estado | Atendida | Motivo | Seguimiento post infarto"
 PASS  una cita ya atendida no navega: abre su detalle y dice por que
 PASS  y no se fue de la pantalla
 se toca la tarjeta de: "Carlota Andrea Castro León"
-URL tras tocar la tarjeta: /medical-records/403afe5e-dee6-495e-a60a-f6c00d83bd9c/consultation?motivo=Renovaci%C3%B3n%20de%20receta&cita=4b38709c-00f1-4202-acc7-94e65b4982be
+se cruzo C-11: "Ya tenés una consulta en curso |  | No se puede iniciar una segunda: primero cerrá la que está abierta, o volvé a ella para terminarla. |  |"
+PASS  con una en curso, la tarjeta avisa en vez de iniciar una segunda
+URL tras tocar la tarjeta: /medical-records/413afff1-6002-4723-a627-c552a16a3944/consultation?motivo=Mareos%20frecuentes&cita=b4462e2b-44d5-48cb-a955-5000467773a6
 PASS  tocar la tarjeta lleva a la pantalla de atencion
-parametros que viajaron: [["motivo","Renovación de receta"],["cita","4b38709c-00f1-4202-acc7-94e65b4982be"]]
+parametros que viajaron: [["motivo","Mareos frecuentes"],["cita","b4462e2b-44d5-48cb-a955-5000467773a6"]]
 PASS  y el turno y el motivo viajan en la URL
 
 === H4 PASS ===

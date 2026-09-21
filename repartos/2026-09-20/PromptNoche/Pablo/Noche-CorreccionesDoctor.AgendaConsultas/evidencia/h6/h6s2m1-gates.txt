@@ -1,4 +1,5 @@
-H6 — gates de cierre
+H6.S2.M1 — gates de cierre
+(tras rebasar sobre origin/mockup c038f2ef y migrar a app-row-actions)
 
 $ yarn typecheck
 typecheck exit=0
@@ -8,7 +9,8 @@ lint exit=0
 
 $ npx ng test agenda + my-services
  Test Files  17 passed (17)
-      Tests  471 passed (471)
+      Tests  473 passed (473)
+   Duration  16.15s (transform 25.35s, setup 16.62s, import 33.54s, tests 39.58s, environment 34.89s)
 
 $ python .claude/hooks/plan_status.py --path PLAN.md
 PLAN.md
@@ -19,3 +21,7 @@ PLAN.md
   REPORTE.md: completo
 
 TOTAL: 54/55 microtareas HECHO (98.2%)
+
+NOTA DE MÉTODO: con el servidor de desarrollo levantado, esta suite muere por
+memoria de la máquina — «Worker exited unexpectedly», cero tests rojos y
+workers caídos. Se corre con el 4200 abajo. No es un fallo de las pruebas.
