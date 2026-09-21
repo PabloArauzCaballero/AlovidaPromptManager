@@ -63,7 +63,11 @@ El reparto declaraba `689697821a6e6d2c8f702c7508d6728fa9a1869a` (PR #554).
 
 - **Rama:** `pablo/noche-2026-09-20-agenda-consultas`, saliendo de ese corte.
 - **Worktree:** `alovida/mch-pablo-noche-agenda` · **Commits:** 6.
-- **PR abierto:** [#564](https://github.com/mdavila-2001/mantra-core-health/pull/564).
+- **PR [#564](https://github.com/mdavila-2001/mantra-core-health/pull/564): MERGEADO** en `mockup` (`cfa889c9`).
+- **PR [#566](https://github.com/mdavila-2001/mantra-core-health/pull/566): abierto, seguimiento.**
+  El #564 se mergeó con la versión **previa** al rebase, así que en `mockup`
+  quedaron conviviendo mi desplegable propio y el `app-row-actions` de Itzan. El
+  #566 lo unifica. Hasta que se mergee, **`mockup` tiene las dos**.
 - **Rebasado al cierre sobre `origin/mockup` = `c038f2ef`**, que trae los
   contratos que publicó Ender durante la noche y el `app-row-actions` que
   publicó Itzan para C-06. **Los cinco kill-tests se volvieron a correr contra
