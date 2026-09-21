@@ -1,0 +1,139 @@
+CORRIDA DEL GUION DE PRUEBAS POR NAVEGADOR — M-06
+=================================================
+Fecha: 2026-09-20/21 (hora de la base: 2026-09-21 00:43 UTC)
+Documento: entregables/GUION-PRUEBAS-NAVEGADOR-M06-2026-09-20.md
+Capturas: evidencia/capturas-navegador/
+
+ENTORNO (verificado, no asumido)
+--------------------------------
+Front  : mantra-core-health, rama marcelo/feat-insurance-antifraud-hardening
+         `yarn start:real-api` -> http://localhost:4200  (mockBackend: false)
+         NOTA: `yarn start` a secas sirve environment.development.ts con
+         mockBackend:true; una corrida asi no prueba nada.
+API    : http://localhost:3000 -> /health = {"status":"ok"}
+         netstat: PID 29900 = com.docker.backend ; PID 4476 = wslrelay
+         docker ps: mantra-redesa-api-1  0.0.0.0:3000->3000/tcp
+         docker exec ... env: DB_HOST=ep-shy-snow-acyd0u4s-pooler...neon.tech
+                              DB_NAME=alovida  PORT=3000
+         docker images mantra-redesa-api:local -> "32 hours ago"
+         => LA IMAGEN NO CONTIENE EL ARREGLO DE AUTORIZACION DE HOY.
+Base   : Neon `alovida` (la misma del .env de la API)
+Proxy  : proxy.conf.json -> /iam /scheduling /notifications /profiles ... :3000
+
+ACTORES (consultados en la base, no inventados)
+----------------------------------------------
+select external_subject from iam.authentication_credentials
+  where secret_hash like '$argon2%' order by created_at desc;
+  -> 40 cuentas autenticables. Entre ellas:
+     SINT9300815761 / 62 / 63            (pacientes de la corrida H3)
+     SINT9371048891 / 92 / 93            (pacientes de la corrida H4)
+     admin.sur.corrida-930081576@example.test
+     admin@alovida.com  ($argon2id, creada 2026-09-05)
+Clave de los pacientes: P8-passw0rd!  (constante del arnes h3-recorrido.mjs:104)
+Los pacientes entran POR DOCUMENTO, no por correo.
+
+RESULTADOS OBSERVADOS
+---------------------
+[PASA   ] PR-03  sin sesion, /my-account/appointments termino en /auth
+[PASA   ] PR-02  sigue en /auth; el mensaje no distingue que fallo
+[PASA   ] PR-01  tras ingresar con documento quedo en /dashboard
+[PASA   ] PR-22  paciente en /schedule quedo en /dashboard
+[OBSERV.] PR-04  pantalla de busqueda cargo (2277 car.), url /search/practitioners
+errores de consola: 0
+respuestas >=400 de la sesion PA1: []
+
+menu del paciente (verificado en pantalla):
+  Mi perfil, Notificaciones, Panel, Tutoriales, Chats, Directorios,
+  Lugares cercanos, Dependientes, Mis citas, Mis pedidos, Mis puntos,
+  Promociones, Mi historia clinica, Mis resultados, Mis ordenes,
+  Mis cuestionarios, Directorio de medicos, Directorio de laboratorios
+
+llamadas de agenda observadas en la sesion de PA1 (todas 200):
+  GET /scheduling/bookings?patientProfileId=84eb5b98-...&limit=20
+  GET /scheduling/waitlist?patientProfileId=84eb5b98-...
+  GET /scheduling/resources?tenantId=1befcfea-...&resourceType=PRACTITIONER
+  GET /scheduling/bookings?patientProfileId=84eb5b98-...&includeCancelled=true&limit=50
+
+H-1 · IDOR DE LECTURA — PR-27 FALLA
+-----------------------------------
+PB1 (paciente de otra organizacion), sesion abierta en pantalla, organizacion
+"Clinica Sintetica Sur" elegida en el selector. Encabezados tomados de una
+peticion real de la aplicacion: Authorization + x-tenant-id.
+
+  fetch('/scheduling/bookings/d4e31932-...')
+  -> 200
+  {"id":"<uuid>","patientProfileId":"<uuid>","resourceId":"<uuid>",
+   "bookableSlotId":"<uuid>","appointmentId":"<uuid>","encounterId":null,
+   "startAt":"2026...
+
+VEREDICTO: FALLA. Lee la cita ajena completa.
+Se mide contra la imagen ANTERIOR al arreglo, asi que el caso vale como
+detector. Pendiente: reconstruir la imagen y reejecutar PR-27.
+
+H-3 · DOS FALSOS "PASA" DESCARTADOS EN ESTA MISMA CORRIDA
+---------------------------------------------------------
+Intento 1 — sin token:
+  {"code":"UNAUTHENTICATED","message":"Unauthorized",...}  -> 401
+  El token de acceso NO esta en localStorage (alli solo vive
+  "mantra.refresh-token"). Un 401 no prueba autorizacion.
+
+Intento 2 — con token pero sin X-Tenant-Id:
+  {"code":"FORBIDDEN","message":"El actor pertenece a varios tenants:
+   indique cual en X-Tenant-Id.",...}  -> 403
+  Rechazo por peticion mal formada, no por permisos.
+
+Solo el intento 3 (Authorization + x-tenant-id copiados de la app) da una
+respuesta interpretable. Los dos primeros se anotaron INVALIDO, no PASA.
+
+H-2 · AL PACIENTE NO SE LE OFRECE NINGUN PROFESIONAL CON CUPOS
+--------------------------------------------------------------
+Pantalla: Mis citas -> "Agendar una cita" -> "Con un profesional"
+Buscador "Busca por nombre", escrito 'a':
+  profesionales ofrecidos: ["Elena Salas — Consultorio FX-7"]
+Al elegirlo:
+  "Informacion: Sin horarios para mostrar  No hay horarios libres"
+Con fechas 21/09/2026 a 25/09/2026 (dias habiles):
+  hay horarios tras fijar fechas: false
+  cupos pulsables: []
+
+Contraste contra la base:
+  select min(start_at), max(start_at), count(*) from scheduling.bookable_slots;
+   -> desde 2026-01-09  hasta 2026-12-13  total 86
+  select count(*), count(*) filter (where remaining_capacity > 0)
+    from scheduling.bookable_slots where start_at > now();
+   -> total 38 · con_lugar 36
+
+  Por recurso, en el tenant de PA1 (1befcfea-...):
+    18 libres · tipo=health_practitioner_profiles · Consultorio Norte
+    16 libres · tipo=health_practitioner_profiles · Consultorio Norte
+     0 libres · tipo=health_practitioner_profiles · Consultorio Tarde
+     0 libres · tipo=health_practitioner_profiles · Consultorio Martes
+     0 libres · tipo=health_practitioner_profiles · Consultorio Sur
+     0 libres · tipo=health_practitioner_profiles · Consultorio FX-7   <-- el unico ofrecido
+
+VEREDICTO: el buscador ofrece un solo profesional y es el que no tiene cupos;
+dos profesionales con 34 cupos libres en la misma organizacion no aparecen.
+CLASIFICACION: pendiente de discovery. Falta determinar si el buscador filtra
+por perfil publicado, verificacion o especialidad. NO se abre defecto sin eso.
+CONSECUENCIA: PR-07 BLOQUEADO, y con el PR-08, PR-09, PR-10, PR-15..PR-18 y la
+escritura del bloque H.
+
+H-4 · EL ALTA PUBLICA DEJA AL PACIENTE EN DOS ORGANIZACIONES
+------------------------------------------------------------
+PB1, tras ingresar, cae en /auth/organization:
+  "Elegi tu organizacion. Tu cuenta pertenece a mas de una."
+  opciones: "Mantra Core Default Tenant" · "Clinica Sintetica Sur — corrida 930081576"
+PA1 no ve esa pantalla. Para el bloque H hay que elegir la organizacion ajena;
+con el tenant por defecto el caso deja de ser entre organizaciones.
+
+LIMPIEZA
+--------
+Arneses temporales borrados de mantra-core-health y mantra-core-health-api.
+`git status --porcelain` -> vacio en los dos repositorios.
+Capturas conservadas en evidencia/capturas-navegador/.
+El servidor de desarrollo en :4200 quedo levantado a proposito.
+
+LO QUE NO SE EJECUTO
+--------------------
+25 de 35 casos. Casi todos dependen de PR-07: sin una cita confirmada no hay
+que cancelar, que mover ni sobre que avisar una demora.
