@@ -1,7 +1,6 @@
 # Handoff para Pablo — H2 y H3 listos en el simulador
 
-> Preparado el 2026-09-21. **Pendiente de pegar en el daily**: el daily vive en
-> `AlovidaPromptManager` y esta pasada no tiene autorización para escribir ahí.
+> Publicado el 2026-09-21 desde el lote de contratos y panel (Ender).
 
 ## H2 — el motivo «Otros servicios» y el horario extra ya funcionan
 
@@ -83,3 +82,27 @@ mismo rango. Cero, negativo, decimal, texto o por encima del máximo → **400**
 `durationMinutes`. **Ningún campo clínico ni de paciente**, verificado campo por campo en
 `pharma-lab.handlers.spec.ts`. Si te falta algo para pintarla, pedímelo antes de sacarlo de otra
 ruta: el criterio es no mover más datos personales de los que esa vista necesita.
+
+## Corrección posterior — el doble pedía texto donde la API no lo pide
+
+Publiqué esto diciendo que las dos listas de motivos coincidían. **Coinciden en los siete tipos,
+pero no en `requiresText`**, y lo encontré al revisar tu `blocks.ts` para comprobar que mi
+validación no te rompiera nada.
+
+| | Doble (antes) | Backend real |
+|---|---|---|
+| `ABSENCE` · `CONFERENCE` · `ERRAND` | exigían texto | **no lo exigen** |
+| `OTHER` | exige texto | exige texto |
+
+La API declara **un solo** motivo que exige explicación:
+`MOTIVO_QUE_EXIGE_TEXTO: ExceptionType = 'OTHER'` (`scheduling-catalog.service.ts:163`), y de
+ahí salen el `requiresText` del catálogo (`:1245`) y la validación al crear (`:688`).
+
+**Por qué importaba corregirlo antes de que lo usaras.** Tu `guardarAlta()` manda `reason` sólo
+si el usuario escribió algo. Con el doble como estaba, crear una «Ausencia» sin explicación te
+habría dado **400 en la maqueta y 201 contra la API real**: el error simétrico del que veníamos
+—un doble más estricto que el backend— y igual de caro, porque te manda a pedir en pantalla un
+dato que nadie pide.
+
+Ya está corregido: `requiresText` sólo en `OTHER`. Tu spec de la pantalla de bloqueos sigue en
+verde (8/8).

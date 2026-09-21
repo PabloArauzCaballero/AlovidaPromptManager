@@ -172,6 +172,7 @@ justifica dejarla abierta.
 | **Q-D6.a** | «OTROS SERVICIOS» como motivo propio **no es agregar una palabra al enum**: `exception_type_concept_id` es FK a `terminology.catalog_concepts`, ademas de contrato publico, orden de despliegue y migracion | Negocio | **DECISION DE NEGOCIO** · detalle en `Q-D6-decisiones-de-negocio.md` |
 | **Q-D6.b** | La posologia por defecto **no la decide el equipo**. Lo cargado es sintetico, declarado `MANTRA_DEV_VADEMECUM`, sin fuente autoritativa y no apto para uso clinico. Precedente **B-13** | Negocio | **DECISION DE NEGOCIO** · bloquea sacar estos valores de la maqueta |
 | **E-06** | `fixtures/fichas-estandar.spec.ts` falla por **entorno, no por codigo**: hace `readdirSync(cwd + '/../mantra-core-health-api/...')` y esa ruta no existe en esta maquina (la API vive en `Mantra Core Technologies/`). Falla igual fuera de este diff y ningun archivo de este slice participa | Nadie de este lote | **BASELINE_ENVIRONMENT_FAILURE** · no se arregla en este carril |
+| **E-07** | El catalogo del doble exigia texto en `ABSENCE`, `CONFERENCE` y `ERRAND`. La API declara **un solo** motivo que lo exige (`MOTIVO_QUE_EXIGE_TEXTO = 'OTHER'`, `scheduling-catalog.service.ts:163`, validado en `:688`). El doble era **mas estricto** que el backend: habria rechazado lo que la API acepta | Pablo | **CORREGIDO** · lo encontre revisando su `blocks.ts`, despues de publicar el handoff. Rectificado ahi mismo |
 
 **Un bug se reporta apenas aparece, no al cierre** (regla 50).
 
