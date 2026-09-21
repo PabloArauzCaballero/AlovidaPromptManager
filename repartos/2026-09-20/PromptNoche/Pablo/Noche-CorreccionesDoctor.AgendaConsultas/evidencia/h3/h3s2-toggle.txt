@@ -1,0 +1,16 @@
+sesión → http://localhost:4200/dashboard
+opciones de paciente: 10
+PASS  la modalidad se dibuja como un control segmentado
+PASS  cero radios nativos en el formulario
+PASS  el grupo se anuncia con su pregunta
+opción marcada al aparecer: "En el consultorio"
+PASS  arranca en presencial, que es lo que pasa casi siempre
+tras ArrowRight: "Por videollamada"
+PASS  la flecha derecha cambia la opción
+PASS  la flecha izquierda vuelve
+estado anunciado: ["En el consultorio=true","Por videollamada=false","A domicilio=false"]
+PASS  exactamente una opción anunciada como elegida
+
+errores de consola: ninguno
+
+=== H3.S2 PASS ===

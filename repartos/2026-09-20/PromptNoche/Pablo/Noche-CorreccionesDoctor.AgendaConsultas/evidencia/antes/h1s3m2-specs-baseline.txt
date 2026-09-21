@@ -1,0 +1,32 @@
+$ npx ng test --include='src/app/features/agenda/**/*.spec.ts' --include='src/app/features/my-services/**/*.spec.ts' --watch=false
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: AppButtonLink is not used within the template of SurveysHome[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/questionnaires/questionnaires.ts:72:4:
+[37m      72 │     [32mAppButtonLink[37m,
+         ╵     [32m~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: Card is not used within the template of SymptomCheck[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/symptom-check/symptom-check.ts:96:30:
+[37m      96 │   imports: [Alert, AppButton, [32mCard[37m, Chip, RouterLink, Textarea],
+         ╵                               [32m~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: RouterLink is not used within the template of SymptomCheck[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/symptom-check/symptom-check.ts:96:42:
+[37m      96 │   imports: [Alert, AppButton, Card, Chip, [32mRouterLink[37m, Textarea],
+         ╵                                           [32m~~~~~~~~~~[0m
+
+[39m[22m
+
+[1m[30m[46m RUN [49m[39m[22m [36mv4.1.10 [39m[90mC:/Users/Usuario/Downloads/Entrypoint-GitHUb/alovida/mch-pablo-noche-agenda[39m
+
+
+[2m Test Files [22m [1m[32m17 passed[39m[22m[90m (17)[39m
+[2m      Tests [22m [1m[32m430 passed[39m[22m[90m (430)[39m
+[2m   Start at [22m 06:33:13
+[2m   Duration [22m 10.83s[2m (transform 17.56s, setup 15.07s, import 21.27s, tests 19.89s, environment 46.39s)[22m
+
+exit=0

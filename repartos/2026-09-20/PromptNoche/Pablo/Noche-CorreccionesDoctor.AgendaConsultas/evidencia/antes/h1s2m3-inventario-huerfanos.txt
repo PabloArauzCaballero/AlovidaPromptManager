@@ -1,0 +1,32 @@
+H1.S2.M3 — Qué se pierde si se quitan la solapa «Cupos» y la tabla de «Consultas»
+Corte 68dcb562 · archivos y líneas propias
+
+## A) Solapa «Cupos» (agenda.html:281-296)
+
+| Acción que SÓLO vive ahí | Dónde está | Destino que NO se puede borrar | Queda huérfana |
+|---|---|---|---|
+| **Reservar un cupo** | `agenda.html:811-852` (`#celdaReservar`, rama `@else`) → `rutaDeReserva()` `agenda.ts:2005` → `bookingNewRoute(cupo.id)` = `/schedule/book/:slotId`, con `paramsDeReserva()` (`agenda.ts:2013`: `recurso`, `desde`, `hasta`) | La ruta `/schedule/book/:slotId` **sigue existiendo**: cambia quién la ofrece | SÍ |
+| **«Mover acá» (reprogramar una cita)** | `agenda.html:818-827` (rama `@if (enReprogramacion())`) → `reprogramarA()` `agenda.ts:1497` | El modo entero: `iniciarReprogramacion()` (`agenda.ts:1470-1476`) hace `this.publicar({ vista: SLOTS_VIEW })`, o sea **salta a la solapa Cupos**; `cancelarReprogramacion()` (1481-1486) vuelve con `vistaDeConsultas()` | SÍ — y además rompe el salto |
+| Lectura de disponibilidad de la ventana (columna `Disponibilidad`, `Estado`) | `columnasDeCupos()` `agenda.ts:1187-1209` | El calendario ya pinta los cupos del día/semana/mes | NO (duplicada) |
+
+**HALLAZGO H1-P3 (el que el prompt anticipa en H2.S2.M1, confirmado y ampliado):** el encargo
+nombra `#celdaReservar` como la única acción huérfana. **Son dos.** `iniciarReprogramacion()`
+navega a `vista=cupos` por código (`agenda.ts:1475`): al quitar la solapa, mover una cita lleva a
+una solapa que ya no existe. Quitar «Cupos» sin tocar la reprogramación **rompe C-07/C-10 en un
+camino que el pedido no nombra**.
+
+## B) Solapa «Consultas» (la tabla, agenda.html:229-261)
+
+| Función que SÓLO vive ahí | Dónde está | ¿La cubre el calendario? |
+|---|---|---|
+| Lista unificada de TODA la ventana (no de un día) | `app-data-table` `agenda.html:250-260` + `columnasDeConsultas()` `agenda.ts:1130-1165` | **NO** — el calendario es día/semana/mes, no «próximos 30 días» |
+| Aviso «hay N consultas que esperan respuesta» | `agenda.html:231-240` | NO |
+| Aviso de recorte al tope | `agenda.html:242-247` | NO |
+| Filtros de ventana / canceladas / sede | `#filtrosDeListas` `agenda.html:856+`, sólo en `enListas()` (`agenda.ts:830-833`) | NO — el calendario no se filtra por ventana (comentario `agenda.html:857-860`) |
+| Acciones de fila (Ver detalle, Aceptar, Iniciar, Llegó, Demora, Mover, Cancelar) | `celdaAccionesCita()` `agenda.ts:1161` | **SÍ** — `agenda.html:804-809` (`#accionesDeLaCitaDelDia`) reusa la MISMA celda en el calendario |
+
+**HALLAZGO H1-P4:** las acciones de fila no se pierden (el calendario reusa la misma celda), pero
+**la ventana, el filtro de canceladas y el filtro de sede sí**: `enListas()` sólo es verdadero en
+'consultations' y 'slots'. Al quedar dos solapas (Consultas=calendario, Mis horarios), `enListas()`
+queda permanentemente en `false` y esos tres filtros **dejan de existir en toda la pantalla**.
+Eso es pérdida de función, no limpieza. Se registra en el REPORTE y se decide en H2.S1.M1.

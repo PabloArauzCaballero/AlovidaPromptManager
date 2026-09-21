@@ -1,0 +1,14 @@
+sesión → http://localhost:4200/dashboard
+ANTES · ratos libres: 4 · citas confirmadas: 2 · franja que se va a reservar: 08:30–09:00
+PASS  el modal abre con la franja del cupo tocado (08:30–09:00 = 08:30–09:00)
+PASS  el modal se cerró al guardar
+DESPUÉS · ratos libres: 3 · petición: 
+PASS  el cupo DEJÓ de estar libre (4 → 3)
+PASS  la cita de «Ana Lucía Pérez Quiroga» aparece en el día
+la tarjeta nueva dice: "08:30–09:00 · Ana Lucía Pérez Quiroga · Confirmada · Control de presión"
+PASS  y quedó en la franja del cupo, no en otra
+PASS  y sigue ahi despues de salir del dia y volver (relectura contra el servidor)
+
+errores de consola: ninguno
+
+=== H2.S2.M3 PASS ===

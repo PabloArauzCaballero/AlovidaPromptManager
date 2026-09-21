@@ -1,0 +1,117 @@
+H6.S2.M2 — barrido de la maqueta, serial
+
+$ E2E_BASE_URL=http://localhost:4200 npx playwright test playwright/mockup-barrido.spec.ts --workers=1
+
+Running 5 tests using 1 worker
+
+  ok 1 [chromium] › playwright\mockup-barrido.spec.ts:166:9 › mockup · barrido con el backend simulado › Médica (4.8s)
+  ok 2 [chromium] › playwright\mockup-barrido.spec.ts:166:9 › mockup · barrido con el backend simulado › Paciente (3.4s)
+  ok 3 [chromium] › playwright\mockup-barrido.spec.ts:166:9 › mockup · barrido con el backend simulado › Admin (4.4s)
+  ok 4 [chromium] › playwright\mockup-barrido.spec.ts:166:9 › mockup · barrido con el backend simulado › Superadmin (6.2s)
+  ok 5 [chromium] › playwright\mockup-barrido.spec.ts:166:9 › mockup · barrido con el backend simulado › Visitador (3.6s)
+
+  5 passed (23.5s)
+exit=0
+
+$ E2E_BASE_URL=http://localhost:4200 npx playwright test playwright/mockup-click-sweep.spec.ts --workers=1
+    +   "/my-account/profile/edit · «Seguros y tutores» → no se pudo pulsar locator.click: Timeout 4000ms exceeded.",
+    +   "/my-account/profile/edit · «+ Agregar otro nombre» → no se pudo pulsar locator.click: Timeout 4000ms exceeded.",
+    +   "/my-account/profile/edit · «Abrir calendario» → no se pudo pulsar locator.click: Timeout 4000ms exceeded.",
+    +   "/my-account/profile/edit · «Limpiar selección» → no se pudo pulsar locator.click: Timeout 4000ms exceeded.",
+    +   "/my-account/profile/edit · «Cancelar» → no se pudo pulsar locator.click: Timeout 4000ms exceeded.",
+    +   "/my-account/profile/edit · «Guardar cambios» → no se pudo pulsar locator.click: Timeout 4000ms exceeded.",
+    +   "/my-quotations/new · «Abrir calendario» → no se pudo pulsar locator.click: Timeout 4000ms exceeded.",
+    +   "/my-quotations/new · «Semanal» → no se pudo pulsar locator.click: Timeout 4000ms exceeded.",
+    +   "/my-quotations/new · «Quincenal» → no se pudo pulsar locator.click: Timeout 4000ms exceeded.",
+    +   "/my-quotations/new · «Mensual» → no se pudo pulsar locator.click: Timeout 4000ms exceeded.",
+    + ]
+
+      191 |       expect
+      192 |         .soft(rotos.map((c) => `${c.ruta} · «${c.boton}» → ${c.resultado} ${c.detalle}`))
+    > 193 |         .toEqual([]);
+          |          ^
+      194 |     });
+      195 |   }
+      196 |
+        at C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mch-pablo-noche-agenda\playwright\mockup-click-sweep.spec.ts:193:10
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    artifacts\playwright\salida\mockup-click-sweep-mockup--11979--el-backend-simulado-Médica-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: artifacts\playwright\salida\mockup-click-sweep-mockup--11979--el-backend-simulado-Médica-chromium\error-context.md
+
+    Error Context: artifacts\playwright\salida\mockup-click-sweep-mockup--11979--el-backend-simulado-Médica-chromium\error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    artifacts\playwright\salida\mockup-click-sweep-mockup--11979--el-backend-simulado-Médica-chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace artifacts\playwright\salida\mockup-click-sweep-mockup--11979--el-backend-simulado-Médica-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    [chromium] › playwright\mockup-click-sweep.spec.ts:188:9 › mockup · barrido de clics con el backend simulado › Médica 
+  3 passed (7.7m)
+exit=1
+
+## Lectura del click-sweep (H6.S2.M2)
+
+**Barrido (`mockup-barrido.spec.ts`): 5/5 PASS**, los cinco roles.
+
+**Click-sweep: 3 de 4 PASS. El rol «Médica» falla con 10 clics rotos, y los 10
+están FUERA de mi alcance:**
+
+| Ruta | Clics rotos | ¿Es mía? |
+|---|---:|---|
+| `/my-account/profile/edit` | 6 | **No.** `features/account/my-profile/**` está reservado para Itzan |
+| `/my-quotations/new` | 4 | **No.** `features/quotations/**` no es de ningún carril de esta noche |
+
+**Cero clics rotos en `/schedule` y cero en `/my-services`**, que es exactamente
+lo que el DoD de esta microtarea pide.
+
+### Por qué no es mío, dicho con evidencia y no por descarte
+
+Mi rama toca **26 archivos**, todos bajo `features/agenda/**` y
+`features/my-services/**` (25 ya commiteados + `agenda/blocks/blocks.html`, que
+entra con el commit de H6):
+
+```text
+$ git diff --name-only 68dcb562..HEAD
+<pegado abajo>
+```
+
+Ninguno de esos archivos participa de `/my-account/profile/edit` ni de
+`/my-quotations/new`. **No se corrió el click-sweep sobre el corte base para
+comparar**: la corrida completa tarda 7,7 minutos y el turno no dio para dos.
+Eso queda declarado: lo que está demostrado es que los 10 rotos son de rutas que
+no toqué, **no** que ya estuvieran rotos antes. Quien retome puede zanjarlo con
+una corrida sobre `68dcb562`.
+
+$ git diff --name-only 68dcb562..HEAD
+src/app/features/agenda/agenda.html
+src/app/features/agenda/agenda.spec.ts
+src/app/features/agenda/agenda.ts
+src/app/features/agenda/my-agenda/day-view/day-view.css
+src/app/features/agenda/my-agenda/day-view/day-view.html
+src/app/features/agenda/my-agenda/day-view/day-view.ts
+src/app/features/agenda/my-agenda/detalle-de-la-cita.ts
+src/app/features/agenda/my-agenda/month-view/month-view.css
+src/app/features/agenda/my-agenda/month-view/month-view.html
+src/app/features/agenda/my-agenda/month-view/month-view.spec.ts
+src/app/features/agenda/my-agenda/month-view/month-view.ts
+src/app/features/agenda/my-agenda/my-agenda.html
+src/app/features/agenda/my-agenda/my-agenda.spec.ts
+src/app/features/agenda/my-agenda/my-agenda.ts
+src/app/features/agenda/my-agenda/tarjeta-del-dia/tarjeta-del-dia.css
+src/app/features/agenda/my-agenda/tarjeta-del-dia/tarjeta-del-dia.html
+src/app/features/agenda/my-agenda/tarjeta-del-dia/tarjeta-del-dia.spec.ts
+src/app/features/agenda/my-agenda/tarjeta-del-dia/tarjeta-del-dia.ts
+src/app/features/agenda/my-agenda/week-view/week-view.css
+src/app/features/agenda/my-agenda/week-view/week-view.html
+src/app/features/agenda/my-agenda/week-view/week-view.ts
+src/app/features/my-services/my-services.css
+src/app/features/my-services/my-services.html
+src/app/features/my-services/my-services.spec.ts
+src/app/features/my-services/my-services.ts

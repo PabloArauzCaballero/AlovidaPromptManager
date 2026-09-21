@@ -1,0 +1,44 @@
+H6.S1.M1 — cuántos `iconOnly` hay en mis archivos ANTES de tocar
+
+$ git grep -c iconOnly -- src/app/features/agenda src/app/features/my-services
+src/app/features/agenda/agenda.html:15
+src/app/features/agenda/blocks/blocks.html:4
+src/app/features/agenda/my-agenda/day-view/day-view.html:2
+src/app/features/agenda/my-agenda/my-agenda.html:9
+src/app/features/agenda/my-agenda/week-view/week-view.html:2
+
+total: 
+
+$ git grep -n iconOnly -- src/app/features/agenda src/app/features/my-services
+src/app/features/agenda/agenda.html:368:        [iconOnly]="true"
+src/app/features/agenda/agenda.html:384:        [iconOnly]="true"
+src/app/features/agenda/agenda.html:535:        [iconOnly]="true"
+src/app/features/agenda/agenda.html:587:      [iconOnly]="true"
+src/app/features/agenda/agenda.html:608:          [iconOnly]="true"
+src/app/features/agenda/agenda.html:626:        [iconOnly]="true"
+src/app/features/agenda/agenda.html:642:        [iconOnly]="true"
+src/app/features/agenda/agenda.html:663:        [iconOnly]="true"
+src/app/features/agenda/agenda.html:684:        [iconOnly]="true"
+src/app/features/agenda/agenda.html:700:        [iconOnly]="true"
+src/app/features/agenda/agenda.html:721:          [iconOnly]="true"
+src/app/features/agenda/agenda.html:761:        [iconOnly]="true"
+src/app/features/agenda/agenda.html:784:        [iconOnly]="true"
+src/app/features/agenda/agenda.html:806:        [iconOnly]="true"
+src/app/features/agenda/agenda.html:862:      [iconOnly]="true"
+src/app/features/agenda/blocks/blocks.html:15:    [iconOnly]="true"
+src/app/features/agenda/blocks/blocks.html:28:  <app-back-link page-actions [fallback]="rutaAgenda" label="Volver a mi agenda" iconOnly />
+src/app/features/agenda/blocks/blocks.html:80:                [iconOnly]="true"
+src/app/features/agenda/blocks/blocks.html:97:                [iconOnly]="true"
+src/app/features/agenda/my-agenda/day-view/day-view.html:87:          [iconOnly]="true"
+src/app/features/agenda/my-agenda/day-view/day-view.html:111:          [iconOnly]="true"
+src/app/features/agenda/my-agenda/my-agenda.html:49:              [iconOnly]="true"
+src/app/features/agenda/my-agenda/my-agenda.html:77:              [iconOnly]="true"
+src/app/features/agenda/my-agenda/my-agenda.html:272:                    [iconOnly]="true"
+src/app/features/agenda/my-agenda/my-agenda.html:337:                [iconOnly]="true"
+src/app/features/agenda/my-agenda/my-agenda.html:367:                [iconOnly]="true"
+src/app/features/agenda/my-agenda/my-agenda.html:395:                [iconOnly]="true"
+src/app/features/agenda/my-agenda/my-agenda.html:426:                [iconOnly]="true"
+src/app/features/agenda/my-agenda/my-agenda.html:549:                          [iconOnly]="true"
+src/app/features/agenda/my-agenda/my-agenda.html:576:                          [iconOnly]="true"
+src/app/features/agenda/my-agenda/week-view/week-view.html:8:      [iconOnly]="true"
+src/app/features/agenda/my-agenda/week-view/week-view.html:42:      [iconOnly]="true"

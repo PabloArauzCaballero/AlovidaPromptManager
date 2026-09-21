@@ -1,7 +1,7 @@
 # Daily — turno noche — 2026-09-20
 
 > **AVANCE DEL TURNO: 0 / 272 — 0 %.** ← se llena al cerrar, con `microtareas HECHO / total`.
-> Pablo 0/55 · Ender 0/55 · Itzan 0/54 · Marcelo 0/54 · Justin 0/54.
+> Pablo **54/55** · Ender 0/55 · Itzan 0/54 · Marcelo 0/54 · Justin 0/54.
 > **`A MEDIAS` cuenta como no hecha. `DESCARTADO` no suma: se declara aparte con su motivo.**
 
 > **Estado:** `REPARTIDO` al 2026-09-20. Este documento se escribió **al repartir, antes del turno**;
@@ -33,7 +33,7 @@
 
 | Persona | Encargo | Correcciones | Hitos | Subtareas | Microtareas | Estado |
 |---|---|---|---:|---:|---:|---|
-| **Pablo** | [Agenda: dos solapas, el cupo manda la hora, y una sola consulta a la vez](Pablo/Noche-CorreccionesDoctor.AgendaConsultas/SolapasCalendarioSlotsYReglaDeConsulta.md) | C-04, C-07, C-08, C-10, C-11, C-12 (UI), C-13 (UI) | 6 | 18 | 55 | `TODO` |
+| **Pablo** | [Agenda: dos solapas, el cupo manda la hora, y una sola consulta a la vez](Pablo/Noche-CorreccionesDoctor.AgendaConsultas/SolapasCalendarioSlotsYReglaDeConsulta.md) | C-04, C-07, C-08, C-10, C-11, C-12 (UI), C-13 (UI) | 6 | 18 | 55 | **54/55 · A MEDIAS** |
 | **Justin** | [La receta: sacarle lo que no va, y que la dosis y la posología digan la verdad](Justin/Noche-CorreccionesDoctor.Receta/RecetaLimpiaMotivoDosisYPosologia.md) | C-15, C-16, C-17, C-18, C-19, C-20 (UI), C-21, C-22 | 6 | 18 | 54 | `TODO` |
 | **Itzan** | [El patrón de la casa: botones con texto, insignia de especialidad, y un perfil que se puede editar entero](Itzan/Noche-CorreccionesDoctor.PerfilYDisenio/PatronDeBotonesInsigniaYPerfilEditable.md) | C-01, C-02, C-05, **C-06 (patrón)**, C-09, **C-21 (regla)** | 6 | 18 | 54 | `TODO` |
 | **Ender** | [Los contratos que faltan y un panel que diga la verdad](Ender/Noche-CorreccionesDoctor.ContratosYPanel/CatalogosBloqueosPosologiaYPanel.md) | C-03, C-12 (contrato), C-13 (contrato), C-20 (catálogo), C-24 | 6 | 18 | 55 | `TODO` |
@@ -421,7 +421,7 @@ depende de la decisión.
 
 | Persona | HECHO / total | Hitos cerrados | `A MEDIAS` | `BLOQUEADO` | Su daily |
 |---|---|---|---|---|---|
-| Pablo | __ / 55 | __ / 6 | | | [Pablo-Daily-Noche-2026-09-20.md](Pablo/Pablo-Daily-Noche-2026-09-20.md) |
+| Pablo | **54 / 55** | **5 / 6** | H6.S2.M2 (click-sweep sin corrida sobre el corte base) | ninguno | [Pablo-Daily-Noche-2026-09-20.md](Pablo/Pablo-Daily-Noche-2026-09-20.md) |
 | Justin | __ / 54 | __ / 6 | | | [Justin-Daily-Noche-2026-09-20.md](Justin/Justin-Daily-Noche-2026-09-20.md) |
 | Itzan | __ / 54 | __ / 6 | | | [Itzan-Daily-Noche-2026-09-20.md](Itzan/Itzan-Daily-Noche-2026-09-20.md) |
 | Ender | __ / 55 | __ / 6 | | | [Ender-Daily-Noche-2026-09-20.md](Ender/Ender-Daily-Noche-2026-09-20.md) |

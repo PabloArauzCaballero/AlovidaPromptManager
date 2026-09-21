@@ -1,0 +1,21 @@
+sesión → http://localhost:4200/dashboard
+franjas que dibuja el día: ["08:00–08:30","08:30–09:00","09:00–09:30","09:30–10:00","10:00–10:30","10:30–11:00","11:00–11:30","11:30–12:00"]
+horario publicado (recorte): Mis horarios de atención | Cómo viene el mes | Vigente | HORARIO PERMANENTE | Atendés estos días | Horario de consulta | Día completo (00:00 – 23:59) | Semana del 21 al 27 de septiembre | Tus horas de atención. Las resaltadas son las que atendés; pasá el mouse por una franja para ver su detalle. | LUN | 21 | MAR | 22 | MIÉ | 23 | JUE | 24 | VIE | 25 | SÁB | 26 | DOM | 27 | 00:00 | 01:00 | 02:00 | 03:00 | 04:00 | 05:00 | 06:00 | 07:00 | 08:00 | 09:00 | 10:00 | 11:00 | 12:00 | 13:00 | 14:00 | 15:00 | 16:00 | 17:00 | 18:00 | 19:00 | 20:00 | 21:00 | 22:00 | 23:00 | 08:00 – 12:00 | consultas de 30 
+PASS  el día ofrece «Agregar un horario al final»
+texto del diálogo: "Agregar un horario fuera de tu horario de atención Tu horario de atención de este día termina a las 12:00. Si seguís, queda abierto de 12:00 a 12:30 como horario extra, y ese rato se puede reservar. No cambia tu horario publicado: vale sólo para este día. No agregar nada Agregar el horario extra"
+PASS  el diálogo NOMBRA que se sale del horario de atención
+PASS  y dice hasta cuándo atiende hoy
+PASS  y dice qué pasa si sigue
+PASS  es un diálogo de la página, no un confirm() del navegador
+PASS  cancelar no creó nada (8 bloques antes y después)
+PASS  confirmar creó el horario extra y lo avisa
+despues del EXTRA · bloques: 8 (antes 8) · ratos libres: 4
+HALLAZGO H3-P1 · la excepcion EXTRA se crea y se acepta, pero el manejador simulado NO
+  genera cupos para su ventana: POST /scheduling/resources/:id/exceptions con
+  isAvailable:true solo se saltea el cierre de cupos, no crea ninguno
+  (core/mock/handlers/scheduling.handlers.ts:586). Resultado: el horario extra existe
+  como excepcion y NO se puede reservar desde el dia. Es de core/mock/**, de Ender.
+
+errores de consola: ninguno
+
+=== H3.S3 PASS ===

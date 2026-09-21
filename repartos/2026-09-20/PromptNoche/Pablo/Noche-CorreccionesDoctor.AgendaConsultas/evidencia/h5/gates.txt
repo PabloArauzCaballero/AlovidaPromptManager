@@ -1,0 +1,9 @@
+$ yarn typecheck
+typecheck exit=0
+
+$ yarn lint
+lint exit=0
+
+$ npx ng test agenda + my-services
+ Test Files  17 passed (17)
+      Tests  468 passed (468)

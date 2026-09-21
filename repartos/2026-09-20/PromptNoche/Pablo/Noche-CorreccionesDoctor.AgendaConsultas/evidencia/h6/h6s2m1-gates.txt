@@ -1,0 +1,21 @@
+H6 — gates de cierre
+
+$ yarn typecheck
+typecheck exit=0
+
+$ yarn lint
+lint exit=0
+
+$ npx ng test agenda + my-services
+ Test Files  17 passed (17)
+      Tests  471 passed (471)
+
+$ python .claude/hooks/plan_status.py --path PLAN.md
+PLAN.md
+  Avance: 54/55 microtareas HECHO  (98.2%)
+  Estados: HECHO=54  A MEDIAS=1
+  Sin cerrar:
+    - H6.S2.M2: A MEDIAS
+  REPORTE.md: completo
+
+TOTAL: 54/55 microtareas HECHO (98.2%)

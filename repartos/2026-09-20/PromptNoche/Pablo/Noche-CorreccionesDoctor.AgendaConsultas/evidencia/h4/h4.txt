@@ -1,0 +1,39 @@
+citas en la semana: 18
+PASS  la semana lista sus citas
+PASS  el globo esta cerrado hasta que alguien senale la cita
+PASS  con el puntero encima, el globo se abre
+el globo dice: "Cuándo | 08:00 – 08:30 | Qué es | Cita | Estado | Atendida | Paciente | Germán Agustín Vargas Ulibarri | Motivo | Seguimiento post infarto"
+PASS  el globo trae el campo que empieza con "Cu", igual que el detalle del dia
+PASS  el globo trae el campo que empieza con "Qu", igual que el detalle del dia
+PASS  el globo trae el campo que empieza con "Estado", igual que el detalle del dia
+PASS  el globo trae el campo que empieza con "Paciente", igual que el detalle del dia
+PASS  al retirar el puntero, el globo se cierra
+tabulaciones hasta la primera cita de la semana: 32
+PASS  se llega a una cita de la semana SOLO con el teclado
+PASS  KILL-TEST - llegando con el TECLADO, el globo tambien se abre
+dialogos tras Enter: 1 · abiertos: 1 · app-dialog: 1
+PASS  Enter sobre la cita abre el detalle
+el detalle dice: "Detalle de la cita | lunes 21 de septiembre | Cuándo | 08:00 – 08:30 | Qué es | Cita | Estado | Atendida | Paciente | Germán Agustín Vargas Ulibarri | Motivo | Seguimiento post infarto | Cerrar | Abrir expediente"
+PASS  y es el MISMO dialogo de detalle que abre el dia
+PASS  Escape lo cierra
+duracion de la transicion con prefers-reduced-motion: 1e-05s
+PASS  con movimiento reducido el globo no anima: aparece y ya (1e-05s)
+PASS  y se sigue viendo
+PASS  senalar un dia del mes abre la tarjeta con chips de estado
+chips del dia: ["Atendida","No asistió","Atendida","Atendida"]
+PASS  cada chip dice su estado EN PALABRAS, no solo con color
+PASS  y en castellano: ningun "Booking..." del catalogo
+PASS  cada cita del dia tiene su capa de atender
+nombre accesible de la tarjeta: "Atender a Germán Agustín Vargas Ulibarri, 08:00"
+SKIP  el dia no tiene "Ver detalle": las acciones de la fila lo reemplazan
+tarjetas encontradas · atendible: true · ya atendida: true
+al tocar una cita YA ATENDIDA: "Esta cita todavía no se atiende |  | Su estado es «Atendida», y desde ese estado no se entra a atender. |  | Paciente | Germán Agustín Vargas Ulibarri | Estado | Atendida | Motivo | Seguimiento post i"
+PASS  una cita ya atendida no navega: abre su detalle y dice por que
+PASS  y no se fue de la pantalla
+se toca la tarjeta de: "Carlota Andrea Castro León"
+URL tras tocar la tarjeta: /medical-records/403afe5e-dee6-495e-a60a-f6c00d83bd9c/consultation?motivo=Renovaci%C3%B3n%20de%20receta&cita=4b38709c-00f1-4202-acc7-94e65b4982be
+PASS  tocar la tarjeta lleva a la pantalla de atencion
+parametros que viajaron: [["motivo","Renovación de receta"],["cita","4b38709c-00f1-4202-acc7-94e65b4982be"]]
+PASS  y el turno y el motivo viajan en la URL
+
+=== H4 PASS ===

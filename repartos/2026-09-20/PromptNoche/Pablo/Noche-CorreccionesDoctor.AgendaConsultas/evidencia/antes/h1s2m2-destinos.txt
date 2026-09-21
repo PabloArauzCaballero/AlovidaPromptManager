@@ -1,0 +1,21 @@
+H1.S2.M2 — Destino ACTUAL de cada valor de `vista=` (leído de agenda.ts:808-814, mi corte 68dcb562)
+
+| vista=          | pestanaActual() devuelve | Solapa que se abre hoy            | Cómo se resuelve                                  |
+|-----------------|--------------------------|-----------------------------------|---------------------------------------------------|
+| (ausente)       | 'calendar'               | Calendario (si tieneCalendario()) | L812: `if (!vista && this.tieneCalendario())`     |
+| (ausente, sin calendario) | 'consultations' | Consultas (lista/tabla)           | L813 fallback                                      |
+| `cupos`         | 'slots'                  | Cupos (tabla)                     | L810 `SLOTS_VIEW`                                  |
+| `agenda`        | 'schedule'               | Mis horarios (sólo quien atiende) | L811 `SCHEDULE_VIEW && esQuienAtiende()`           |
+| `table`         | 'consultations'          | Consultas (lista/tabla)           | L813 fallback — NO hay rama propia                 |
+| `citas`         | 'consultations'          | Consultas (lista/tabla)           | L813 fallback (ALV-019)                            |
+| `solicitudes`   | 'consultations'          | Consultas (lista/tabla)           | L813 fallback (ALV-019)                            |
+| cualquier basura| 'consultations'          | Consultas (lista/tabla)           | L813 fallback                                      |
+
+HALLAZGO H1-P1: `citas` y `solicitudes` **caen a propósito** al fallback L813 — no tienen rama
+propia. Eso significa que al quitar la solapa 'consultations' (C-07), el fallback de L813 se queda
+sin destino: hay que reapuntarlo, no borrarlo. Lo mismo vale para `table` y para cualquier valor
+desconocido.
+
+HALLAZGO H1-P2: `vista=agenda` SÓLO resuelve a 'schedule' si `esQuienAtiende()`. Para quien reparte
+turnos, `vista=agenda` cae hoy a 'consultations'. Al quitar esa solapa hay que decidir también ese
+caso (queda en el calendario si lo tiene).

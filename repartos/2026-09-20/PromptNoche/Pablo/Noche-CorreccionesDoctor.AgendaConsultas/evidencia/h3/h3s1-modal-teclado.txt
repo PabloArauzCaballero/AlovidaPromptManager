@@ -1,0 +1,25 @@
+sesión → http://localhost:4200/dashboard
+día mirado: 1 saltos desde hoy · ratos libres: 4
+PASS  antes de tocar: no hay tarjeta en la página
+ratos libres en el día: 4
+foco antes de abrir: button:Disponible
+PASS  se abrió UN diálogo
+PASS  el <dialog> está abierto
+nombre accesible del diálogo: "martes, 22 de septiembre"
+PASS  el diálogo tiene nombre
+PASS  es MODAL (:modal), no un panel al pie
+PASS  el foco inicial está DENTRO del modal (button[content-dialog-close]:Cerrar)
+franja del cupo: 1 · campos de hora: 0
+PASS  viniendo de un cupo: la franja es dato y no hay campos de hora
+recorrido de teclado: 1:dentro · 2:dentro · 3:dentro · 4:dentro · 5:ninguno · 6:dentro · 7:dentro · 8:dentro · 9:dentro · 10:dentro · 11:ninguno · 12:dentro · 13:dentro · 14:dentro · 15:dentro · 16:dentro · 17:ninguno · 18:dentro
+PASS  18 tabulaciones y ningún control de la página fuera del modal recibió el foco
+PASS  Escape cerró el modal
+foco después de cerrar: button:Disponible
+PASS  el foco volvió al disparador (button:Disponible)
+PASS  reabre, y sólo uno
+PASS  con el modal abierto, otro rato del día NO es alcanzable (el fondo quedó inerte)
+PASS  sigue habiendo un solo diálogo
+
+errores de consola: ninguno
+
+=== H3.S1 PASS ===

@@ -1,0 +1,29 @@
+$ git grep -n "vista=table\|vista=citas\|vista=solicitudes\|vista=cupos" -- src cypress playwright
+playwright/agenda-pestana-horario.mjs:65:  await pg.goto(`${B}/schedule?vista=table`, { waitUntil: 'commit', timeout: 180000 });
+playwright/agenda-tabla-y-mes.mjs:42:  await pg.goto(`${B}/schedule?vista=table`);
+src/app/features/agenda/agenda.spec.ts:170:   * Monta la pantalla en la tabla de Consultas (`vista=table`): casi todo este
+src/app/features/agenda/agenda.spec.ts:176:    url = '/schedule?vista=table',
+src/app/features/agenda/agenda.spec.ts:830:    await montar({ roles: ['PRACTITIONER'], hpid: 'hp-1' }, '/schedule?vista=table&recurso=r-0');
+src/app/features/agenda/agenda.spec.ts:2083:    it('`vista=cupos` llega a los cupos con y sin «Mis horarios» en el medio', async () => {
+src/app/features/agenda/agenda.spec.ts:2088:      await montar({}, '/schedule?vista=cupos');
+src/app/features/agenda/agenda.spec.ts:2097:     * La prueba anterior fijaba que `vista=cupos` fuera la última de cuatro.
+src/app/features/agenda/agenda.spec.ts:2102:    it('con agenda propia `vista=cupos` cae al calendario: la solapa ya no existe', async () => {
+src/app/features/agenda/agenda.spec.ts:2103:      await montar({ roles: ['PRACTITIONER'], hpid: 'hp-1' }, '/schedule?vista=cupos');
+src/app/features/agenda/agenda.ts:386: * `vista=table` **ya no existe como solapa** (C-07, 2026-09-20): con calendario
+src/app/features/agenda/agenda.ts:832:   * en concreto. Los valores viejos siguen valiendo: `vista=cupos`,
+src/app/features/agenda/agenda.ts:833:   * `vista=agenda` (el horario) y `vista=citas`/`vista=solicitudes`, que llevan
+(exit 0)
+
+LECTURA (H2.S1.M4):
+- Cero `routerLink`, `href` o navegación de `src/` apunta a `vista=table`, `vista=citas`
+  o `vista=solicitudes`. Las coincidencias de `src/` son el spec (actualizado al requisito nuevo)
+  y comentarios de `agenda.ts` (también actualizados).
+- Cero coincidencias en `cypress/`.
+- **HALLAZGO H2-P1 (fuera de mi alcance, se anota):** dos scripts sueltos de evidencia de un carril
+  anterior siguen navegando a `?vista=table`:
+    playwright/agenda-pestana-horario.mjs:65
+    playwright/agenda-tabla-y-mes.mjs:42
+  No son specs —`yarn pw` corre `playwright/*.spec.ts`, no `.mjs`— y no participan de ninguna
+  puerta. Con el cambio, esas dos URLs ahora abren el calendario y sus capturas dejarían de mostrar
+  la tabla que documentaban. No los toco: son artefactos de evidencia de otro turno (18/09) y
+  reescribirlos es cambiar la evidencia de otro. Queda registrado para su dueño.

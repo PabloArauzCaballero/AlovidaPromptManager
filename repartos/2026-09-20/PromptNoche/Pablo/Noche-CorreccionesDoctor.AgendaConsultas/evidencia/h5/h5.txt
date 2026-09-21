@@ -1,0 +1,24 @@
+hay una en curso: true · hay otra atendible: true
+el aviso dice: "Ya tenés una consulta en curso |  | No se puede iniciar una segunda: primero cerrá la que está abierta, o volvé a ella para terminarla. |  | En curso con | María López Collado | Desde | 09:00, lunes 21 de septiembre | Motivo | Mareos frecuentes | Quedarme acá "
+PASS  con una en curso, iniciar otra NO la inicia y dice cual esta abierta
+PASS  y ofrece SALIR a la que esta abierta, no solo frenar
+PASS  no se fue de la pantalla
+PASS  y la segunda cita NO cambio de estado
+se acepta una visita pendiente desde /lab-visits
+visitas de laboratorio encontradas: 1 (tras 2 dias)
+la tarjeta del visitador dice: "13:00–13:20 |  | Visita de laboratorio | Visitador |  | Confirmada |  | Presentar Intipril 10 mg y estudios de bioequivalencia · Consultorio 3, Clínica Los Olivos |  | Ver la bandeja de visitas"
+PASS  la tarjeta lleva la palabra «Visitador», no solo un tono
+PASS  y ni un dato clinico
+PASS  la bandeja /lab-visits sigue alcanzable desde la tarjeta
+PASS  cada servicio ofrece «Programar horario»
+servicio que se programa: "Consulta cardiológica"
+PASS  el modal RECICLA la grilla del horario, no dibuja una nueva
+el modal anuncia el motivo: "En tu agenda va a aparecer como «Otros servicios · Consulta cardiológica»."
+PASS  y dice que va a aparecer como «Otros servicios»
+PASS  guardar cierra el modal
+PASS  y avisa que el rato quedo bloqueado como «Otros servicios»
+ratos ocupados del dia siguiente: ["Ver detalle | 14:00–16:00 |  | Otros servicios · Consulta cardiológica"]
+PASS  el rato aparece BLOQUEADO en la agenda clinica, con el motivo «Otros servicios»
+PASS  y nombra el servicio que lo bloquea
+
+=== H5 PASS ===

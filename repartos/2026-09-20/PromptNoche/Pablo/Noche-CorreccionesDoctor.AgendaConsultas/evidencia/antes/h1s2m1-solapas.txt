@@ -1,0 +1,149 @@
+=== constantes y tipo de solapa (agenda.ts) ===
+376:const TABLE_VIEW = 'table';
+379:const SCHEDULE_VIEW = 'agenda';
+382:const SLOTS_VIEW = 'cupos';
+385:type AgendaTab = 'calendar' | 'consultations' | 'schedule' | 'slots';
+795:  protected readonly pestanas = computed<readonly AgendaTab[]>(() => [
+808:  protected readonly pestanaActual = computed<AgendaTab>(() => {
+810:    if (vista === SLOTS_VIEW) return 'slots';
+811:    if (vista === SCHEDULE_VIEW && this.esQuienAtiende()) return 'schedule';
+1287:  private vistaDe(pestana: AgendaTab): string | null {
+1292:        return SCHEDULE_VIEW;
+1294:        return SLOTS_VIEW;
+1305:    return this.tieneCalendario() ? TABLE_VIEW : null;
+1475:    this.publicar({ vista: SLOTS_VIEW });
+
+=== pestanaActual ===
+808:  protected readonly pestanaActual = computed<AgendaTab>(() => {
+809-    const vista = this.params()?.get('vista');
+810-    if (vista === SLOTS_VIEW) return 'slots';
+811-    if (vista === SCHEDULE_VIEW && this.esQuienAtiende()) return 'schedule';
+812-    if (!vista && this.tieneCalendario()) return 'calendar';
+813-    return 'consultations';
+814-  });
+815-
+816-  /** El índice de la solapa abierta, para `app-tabs`. */
+817:  protected readonly pestana = computed(() => this.pestanas().indexOf(this.pestanaActual()));
+818-
+819-  /** Si está abierta la agenda del día (Día, Semana y Mes). */
+820:  protected readonly enCalendario = computed(() => this.pestanaActual() === 'calendar');
+821-
+822-  /** Si está abierta «Mis horarios», el horario publicado. */
+823:  protected readonly enHorario = computed(() => this.pestanaActual() === 'schedule');
+824-
+825-  /**
+826-   * Si la solapa abierta es una de las listas —Consultas o Cupos—, las únicas
+827-   * que usan la ventana, las canceladas y la sede: mostrarlos sobre el
+828-   * calendario o el horario sugería que los cambiaban.
+829-   */
+830-  protected readonly enListas = computed(() => {
+831:    const actual = this.pestanaActual();
+832-    return actual === 'consultations' || actual === 'slots';
+833-  });
+834-
+835-  protected readonly incluirCanceladas = computed(() => this.params()?.get('canceladas') === 'si');
+836-
+837-  /* -- Derivados ----------------------------------------------------------- */
+838-
+839-  protected readonly organizacion = this.auth.activeTenantId;
+840-
+841-  /** Sin organización no hay agenda que pedir: `tenantId` es obligatorio. */
+842-  protected readonly sinOrganizacion = computed(() => this.organizacion() === null);
+843-
+844-  protected readonly opcionesDeVentana = computed<readonly SelectOption<string>[]>(() =>
+845-    VENTANAS.map((ventana) => ({ value: ventana.clave, label: ventana.etiqueta })),
+846-  );
+847-
+848-  protected readonly resumenDeVentana = computed(() => {
+849-    const ventana = VENTANAS.find((v) => v.clave === this.ventanaElegida());
+850-    return ventana === undefined ? '' : ventana.etiqueta.toLowerCase();
+851-  });
+852-
+=== 370..392 constantes ===
+
+/**
+ * `vista` de la lista de Consultas cuando `/schedule` a secas es la agenda del
+ * día. En inglés por la regla 29; los valores viejos (`agenda`, `cupos`,
+ * `citas`, `solicitudes`) siguen valiendo para no romper enlaces.
+ */
+const TABLE_VIEW = 'table';
+
+/** `vista` del horario publicado («Mis horarios»). Valor histórico: se conserva. */
+const SCHEDULE_VIEW = 'agenda';
+
+/** `vista` de los cupos. Valor histórico: se conserva. */
+const SLOTS_VIEW = 'cupos';
+
+/** Las cuatro solapas de `/schedule`, en el orden en que se muestran. */
+type AgendaTab = 'calendar' | 'consultations' | 'schedule' | 'slots';
+
+/**
+ * **Agenda** (M41) — la sección que hasta ahora era un cartel.
+ *
+ * ## Por qué deja de ser un placeholder
+ *
+ * `APP_SECTIONS` la declaraba `planificada` con el motivo general del vault: el
+
+=== 790..808 pestanas() ===
+   *
+   * «Mis horarios» —el horario publicado— sólo existe para quien atiende: quien
+   * reparte turnos no tiene agenda propia y no se le ofrece una puerta que la
+   * otra pantalla no va a reconocer como suya.
+   */
+  protected readonly pestanas = computed<readonly AgendaTab[]>(() => [
+    ...(this.tieneCalendario() ? (['calendar'] as const) : []),
+    'consultations',
+    ...(this.esQuienAtiende() ? (['schedule'] as const) : []),
+    'slots',
+  ]);
+
+  /**
+   * La solapa abierta, leída de la URL para que un enlace pueda apuntar a una
+   * en concreto. Los valores viejos siguen valiendo: `vista=cupos`,
+   * `vista=agenda` (el horario) y `vista=citas`/`vista=solicitudes`, que llevan
+   * a la lista unificada de Consultas (ALV-019).
+   */
+  protected readonly pestanaActual = computed<AgendaTab>(() => {
+
+=== 1280,1320 vistaDe/rotulos ===
+  protected elegirPestana(indice: number): void {
+    const elegida = this.pestanas()[indice];
+    if (elegida === undefined) return;
+    this.publicar({ vista: this.vistaDe(elegida) });
+  }
+
+  /** El `vista=` de cada solapa, el espejo de `pestanaActual()`. */
+  private vistaDe(pestana: AgendaTab): string | null {
+    switch (pestana) {
+      case 'calendar':
+        return null;
+      case 'schedule':
+        return SCHEDULE_VIEW;
+      case 'slots':
+        return SLOTS_VIEW;
+      case 'consultations':
+        return this.vistaDeConsultas();
+    }
+  }
+
+  /**
+   * La URL de la lista de Consultas. Con calendario, `/schedule` a secas es la
+   * agenda del día, así que la lista necesita nombrarse.
+   */
+  private vistaDeConsultas(): string | null {
+    return this.tieneCalendario() ? TABLE_VIEW : null;
+  }
+
+  protected recargar(): void {
+    this.cargarAgenda();
+  }
+
+  /**
+   * Cambia cada vez que una acción sobre una cita termina bien. El Calendario
+   * lo escucha para releer su día: las acciones son las de esta pantalla, pero
+   * el día lo lee el calendario por su cuenta.
+   */
+  protected readonly versionDeAcciones = signal(0);
+
+  /** Después de operar una cita: se relee la lista y se avisa al calendario. */
+  private trasOperar(): void {

@@ -1,0 +1,56 @@
+sesión → http://localhost:4200/dashboard
+
+/schedule
+   solapas: ["Consultas","Mis horarios"]
+   app-data-table: 0 · app-day-view: 1 · url: /schedule
+PASS  /schedule no muestra ninguna tabla
+PASS  /schedule muestra el día del calendario
+PASS  /schedule: exactamente 2 solapas → ["Consultas","Mis horarios"]
+PASS  /schedule: una sola «Consultas»
+
+/schedule?vista=table
+   solapas: ["Consultas","Mis horarios"]
+   app-data-table: 0 · app-day-view: 1 · url: /schedule?vista=table
+PASS  /schedule?vista=table no muestra ninguna tabla
+PASS  /schedule?vista=table muestra el día del calendario
+PASS  /schedule?vista=table: exactamente 2 solapas → ["Consultas","Mis horarios"]
+PASS  /schedule?vista=table: una sola «Consultas»
+
+/schedule?vista=cupos
+   solapas: ["Consultas","Mis horarios"]
+   app-data-table: 0 · app-day-view: 1 · url: /schedule?vista=cupos
+PASS  /schedule?vista=cupos no muestra ninguna tabla
+PASS  /schedule?vista=cupos muestra el día del calendario
+PASS  /schedule?vista=cupos: exactamente 2 solapas → ["Consultas","Mis horarios"]
+PASS  /schedule?vista=cupos: una sola «Consultas»
+
+/schedule?vista=citas
+   solapas: ["Consultas","Mis horarios"]
+   app-data-table: 0 · app-day-view: 1 · url: /schedule?vista=citas
+PASS  /schedule?vista=citas no muestra ninguna tabla
+PASS  /schedule?vista=citas muestra el día del calendario
+PASS  /schedule?vista=citas: exactamente 2 solapas → ["Consultas","Mis horarios"]
+PASS  /schedule?vista=citas: una sola «Consultas»
+
+/schedule?vista=solicitudes
+   solapas: ["Consultas","Mis horarios"]
+   app-data-table: 0 · app-day-view: 1 · url: /schedule?vista=solicitudes
+PASS  /schedule?vista=solicitudes no muestra ninguna tabla
+PASS  /schedule?vista=solicitudes muestra el día del calendario
+PASS  /schedule?vista=solicitudes: exactamente 2 solapas → ["Consultas","Mis horarios"]
+PASS  /schedule?vista=solicitudes: una sola «Consultas»
+
+/schedule?vista=agenda
+   solapas: ["Consultas","Mis horarios"]
+   app-data-table: 0 · app-day-view: 0 · url: /schedule?vista=agenda
+PASS  /schedule?vista=agenda: exactamente 2 solapas → ["Consultas","Mis horarios"]
+PASS  /schedule?vista=agenda: una sola «Consultas»
+PASS  encabezado sin «Ingreso Mostrador»
+PASS  encabezado sin «Avisar demora»
+PASS  encabezado sin «Visitas de laboratorio»
+PASS  «Ingreso Mostrador» vive ahora en el encabezado del día
+PASS  «Avisar demora» vive ahora en el encabezado del día
+
+errores de consola (descontando los 2 de CSP del baseline): ninguno
+
+=== KILL-TEST H2: PASS ===

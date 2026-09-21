@@ -1,0 +1,5 @@
+$ yarn typecheck
+typecheck exit=0
+
+$ yarn lint
+lint exit=0

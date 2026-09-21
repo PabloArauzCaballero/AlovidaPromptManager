@@ -1,0 +1,10 @@
+$ python .claude/hooks/plan_status.py --path PLAN.md
+
+PLAN.md
+  Avance: 54/55 microtareas HECHO  (98.2%)
+  Estados: HECHO=54  A MEDIAS=1
+  Sin cerrar:
+    - H6.S2.M2: A MEDIAS
+  REPORTE.md: completo
+
+TOTAL: 54/55 microtareas HECHO (98.2%)

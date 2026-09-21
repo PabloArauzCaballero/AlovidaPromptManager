@@ -1,0 +1,25 @@
+H1.S3.M3 — Capturas del estado de partida · corte 68dcb562 · 1440x900 claro
+Comando: yarn node evidencia/h1s3m3-capturas-antes.mjs   (exit 0)
+
+sesión → http://localhost:4200/dashboard   (medica@alovida.mock, cuenta sintética declarada)
+
+01-calendario         · /schedule                  solapas: ["Calendario","Consultas (29)","Mis horarios","Cupos (49)"]  activa: "Calendario"
+02-consultas-tabla    · /schedule?vista=table      activa: "Consultas (29)"
+03-mis-horarios       · /schedule?vista=agenda     activa: "(ninguna)" ← ver HALLAZGO H1-P5
+04-cupos              · /schedule?vista=cupos      activa: "Cupos (49)"
+05-vista-citas        · /schedule?vista=citas      activa: "Consultas (29)"      ← confirma la lectura del código
+06-vista-solicitudes  · /schedule?vista=solicitudes activa: "Consultas (29)"     ← confirma la lectura del código
+07-encabezado         · botones [page-actions]: ["Ingreso Mostrador","Avisar demora","Visitas de laboratorio"]
+
+Archivos: evidencia/antes/capturas/01..07*.png
+
+HALLAZGO H1-P5: con `vista=agenda` («Mis horarios») el `getByRole('tab', {selected:true})`
+devuelve "(ninguna)" a nivel de la página porque la solapa monta un SEGUNDO `tablist` anidado
+(«Mis horarios de atención» / «Cómo viene el mes») y el primer tablist pierde el `aria-selected`
+visible para el locator. No es un bug introducido por mí: está así en el corte. Se anota para que
+el barrido de H6 no lo lea como regresión.
+
+BASELINE DE CONSOLA (regla 30: lo que ya estaba rojo antes no es mío):
+2 errores de Content Security Policy por scripts inline (`script-src 'self' 'sha256-…'`).
+Aparecen en TODAS las rutas, incluida la de login. Son del `index.html`/dev-server, no de
+/schedule. Cualquier comparación posterior descuenta estos dos.
