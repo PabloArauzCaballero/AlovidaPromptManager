@@ -43,12 +43,14 @@ for (const [nombreVp, ancho, alto] of VIEWPORTS) {
     indice.push([`01-dia-${sufijo}.png`, 'Dos solapas, encabezado sin botones, acciones del dia con texto']);
 
     // 2 · el desplegable de acciones abierto
-    const acciones = pg.locator('[data-testid="agenda-acciones"]').first();
+    // C-06 · desde la migración a `app-row-actions`, con tres o más acciones el
+    // disparador es el del componente compartido.
+    const acciones = pg.locator('[data-testid="row-actions-trigger"]').first();
     if ((await acciones.count()) > 0) {
       await acciones.click();
       await pg.waitForTimeout(700);
       await pg.screenshot({ path: `${OUT}/02-acciones-${sufijo}.png`, fullPage: true });
-      indice.push([`02-acciones-${sufijo}.png`, 'El desplegable de acciones: icono Y texto por opcion']);
+      indice.push([`02-acciones-${sufijo}.png`, 'El desplegable de app-row-actions: texto por opcion, e icono donde el set lo cubre']);
       await pg.keyboard.press('Escape');
       await pg.waitForTimeout(400);
     }

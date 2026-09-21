@@ -7,37 +7,37 @@ escritorio-oscuro · errores de consola: ninguno
 
 capturas: 36
   01-dia-movil-claro.png  —  Dos solapas, encabezado sin botones, acciones del dia con texto
-  02-acciones-movil-claro.png  —  El desplegable de acciones: icono Y texto por opcion
+  02-acciones-movil-claro.png  —  El desplegable de app-row-actions: texto por opcion, e icono donde el set lo cubre
   03-semana-movil-claro.png  —  La semana con el globo de una cita abierto
   04-mes-movil-claro.png  —  El mes con la tarjeta del dia y sus chips de estado
   05-modal-movil-claro.png  —  El modal del alta sobre un cupo: franja como dato, sin campos de hora
   06-servicio-horario-movil-claro.png  —  Programar el horario de un servicio, con la grilla reciclada
   01-dia-movil-oscuro.png  —  Dos solapas, encabezado sin botones, acciones del dia con texto
-  02-acciones-movil-oscuro.png  —  El desplegable de acciones: icono Y texto por opcion
+  02-acciones-movil-oscuro.png  —  El desplegable de app-row-actions: texto por opcion, e icono donde el set lo cubre
   03-semana-movil-oscuro.png  —  La semana con el globo de una cita abierto
   04-mes-movil-oscuro.png  —  El mes con la tarjeta del dia y sus chips de estado
   05-modal-movil-oscuro.png  —  El modal del alta sobre un cupo: franja como dato, sin campos de hora
   06-servicio-horario-movil-oscuro.png  —  Programar el horario de un servicio, con la grilla reciclada
   01-dia-tablet-claro.png  —  Dos solapas, encabezado sin botones, acciones del dia con texto
-  02-acciones-tablet-claro.png  —  El desplegable de acciones: icono Y texto por opcion
+  02-acciones-tablet-claro.png  —  El desplegable de app-row-actions: texto por opcion, e icono donde el set lo cubre
   03-semana-tablet-claro.png  —  La semana con el globo de una cita abierto
   04-mes-tablet-claro.png  —  El mes con la tarjeta del dia y sus chips de estado
   05-modal-tablet-claro.png  —  El modal del alta sobre un cupo: franja como dato, sin campos de hora
   06-servicio-horario-tablet-claro.png  —  Programar el horario de un servicio, con la grilla reciclada
   01-dia-tablet-oscuro.png  —  Dos solapas, encabezado sin botones, acciones del dia con texto
-  02-acciones-tablet-oscuro.png  —  El desplegable de acciones: icono Y texto por opcion
+  02-acciones-tablet-oscuro.png  —  El desplegable de app-row-actions: texto por opcion, e icono donde el set lo cubre
   03-semana-tablet-oscuro.png  —  La semana con el globo de una cita abierto
   04-mes-tablet-oscuro.png  —  El mes con la tarjeta del dia y sus chips de estado
   05-modal-tablet-oscuro.png  —  El modal del alta sobre un cupo: franja como dato, sin campos de hora
   06-servicio-horario-tablet-oscuro.png  —  Programar el horario de un servicio, con la grilla reciclada
   01-dia-escritorio-claro.png  —  Dos solapas, encabezado sin botones, acciones del dia con texto
-  02-acciones-escritorio-claro.png  —  El desplegable de acciones: icono Y texto por opcion
+  02-acciones-escritorio-claro.png  —  El desplegable de app-row-actions: texto por opcion, e icono donde el set lo cubre
   03-semana-escritorio-claro.png  —  La semana con el globo de una cita abierto
   04-mes-escritorio-claro.png  —  El mes con la tarjeta del dia y sus chips de estado
   05-modal-escritorio-claro.png  —  El modal del alta sobre un cupo: franja como dato, sin campos de hora
   06-servicio-horario-escritorio-claro.png  —  Programar el horario de un servicio, con la grilla reciclada
   01-dia-escritorio-oscuro.png  —  Dos solapas, encabezado sin botones, acciones del dia con texto
-  02-acciones-escritorio-oscuro.png  —  El desplegable de acciones: icono Y texto por opcion
+  02-acciones-escritorio-oscuro.png  —  El desplegable de app-row-actions: texto por opcion, e icono donde el set lo cubre
   03-semana-escritorio-oscuro.png  —  La semana con el globo de una cita abierto
   04-mes-escritorio-oscuro.png  —  El mes con la tarjeta del dia y sus chips de estado
   05-modal-escritorio-oscuro.png  —  El modal del alta sobre un cupo: franja como dato, sin campos de hora

@@ -161,7 +161,9 @@ if (atendida !== null) {
   const d = pg.locator('dialog').last();
   const td = (await d.innerText()).split(String.fromCharCode(10)).join(' | ');
   console.log('al tocar una cita YA ATENDIDA:', JSON.stringify(td.slice(0, 200)));
-  check(/todav/i.test(td), 'una cita ya atendida no navega: abre su detalle y dice por que');
+  // El titulo separa los dos casos: «ya esta cerrada» para una que paso, y
+  // «todavia no se atiende» para una que espera respuesta.
+  check(/ya est. cerrada|todav/i.test(td), 'una cita ya atendida no navega: abre su detalle y dice por que');
   check(pg.url().endsWith('/schedule'), 'y no se fue de la pantalla');
   await pg.keyboard.press('Escape');
   await pg.waitForTimeout(600);
@@ -173,7 +175,22 @@ if (confirmada === null) {
   const nombre = (await confirmada.locator('.dia__paciente').innerText()).trim();
   console.log('se toca la tarjeta de:', JSON.stringify(nombre));
   await confirmada.locator('[data-testid="dia-ir-a-atender"]').click();
-  await pg.waitForTimeout(4000);
+  await pg.waitForTimeout(2500);
+
+  // C-11 se cruza con C-04 a proposito: si YA hay una consulta en curso, la
+  // tarjeta no inicia una segunda — avisa cual esta abierta y ofrece ir a ella.
+  // Las dos salidas llevan a atender, que es lo que C-04 pide; cual de las dos
+  // aparece depende del dia, asi que se ejercitan las dos.
+  const aviso = pg.locator('dialog').last();
+  const hayAviso = (await aviso.count()) > 0;
+  if (hayAviso) {
+    const t = (await aviso.innerText()).split(String.fromCharCode(10)).join(' | ');
+    console.log('se cruzo C-11:', JSON.stringify(t.slice(0, 140)));
+    check(/Ya ten.s una consulta en curso/.test(t), 'con una en curso, la tarjeta avisa en vez de iniciar una segunda');
+    await aviso.getByRole('button', { name: /Ir a la consulta abierta/i }).click();
+    await pg.waitForTimeout(4000);
+  }
+
   console.log('URL tras tocar la tarjeta:', pg.url().replace(BASE, ''));
   check(new RegExp('medical-records/.+/consultation').test(pg.url()), 'tocar la tarjeta lleva a la pantalla de atencion');
   const params = new URL(pg.url()).searchParams;

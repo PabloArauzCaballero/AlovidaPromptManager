@@ -6,14 +6,6 @@ src/app/features/agenda/blocks/blocks.html:1
 src/app/features/agenda/my-agenda/my-agenda.html:1
 src/app/features/agenda/my-agenda/week-view/week-view.html:2
 
-$ git grep -n iconOnly -- src/app/features/agenda src/app/features/my-services
-src/app/features/agenda/agenda.html:368:        [iconOnly]="true"
-src/app/features/agenda/agenda.html:384:        [iconOnly]="true"
-src/app/features/agenda/blocks/blocks.html:28:  <app-back-link page-actions [fallback]="rutaAgenda" label="Volver a mi agenda" iconOnly />
-src/app/features/agenda/my-agenda/my-agenda.html:272:                    [iconOnly]="true"
-src/app/features/agenda/my-agenda/week-view/week-view.html:8:      [iconOnly]="true"
-src/app/features/agenda/my-agenda/week-view/week-view.html:42:      [iconOnly]="true"
-
 ## La medición
 
 | | `iconOnly` en `features/agenda/**` y `features/my-services/**` |
@@ -22,21 +14,58 @@ src/app/features/agenda/my-agenda/week-view/week-view.html:42:      [iconOnly]="
 | **DESPUÉS** | **6** (agenda.html 2 · blocks.html 1 · my-agenda.html 1 · week-view.html 2) |
 | Convertidos | **26** |
 
-De los 26: **12** eran las acciones de fila de la agenda, que pasaron a un solo
-desplegable con icono y texto por opción (H6.S1.M2); **14** eran botones de barra
-que ahora llevan su palabra al lado del ícono.
+De los 26: **12** eran las acciones de fila de la agenda, que pasaron a
+`app-row-actions`; **14** eran botones de barra que ahora llevan su palabra al
+lado del ícono.
 
-## Los 6 que quedan, uno por uno
+## Cómo se resolvió C-06: con el componente del sistema, no con uno propio
+
+La primera versión de este turno escribió su propio bloque sobre `app-menu`,
+porque `app-row-actions` **todavía no estaba publicado** cuando se empezó. Apareció
+en `origin/mockup` durante la noche (PR de Itzan, merge `431dbe70`), y se migró
+en cuanto apareció: una implementación paralela de algo que el sistema ya
+resuelve es el defecto que la regla 95.1 nombra, y el encargo decía con todas las
+letras «reusá `app-menu` … o el componente que publique Itzan».
+
+`app-row-actions` además encodea una decisión que la versión propia no tenía: con
+**dos o menos** acciones las dibuja en la fila y con **tres o más** las manda al
+desplegable (`ROW_ACTIONS_INLINE_MAX`). Es la misma decisión del 2026-09-13 que
+ADR-0012 conserva, y ahora no se vuelve a tomar en cada pantalla.
+
+Los `code` de cada acción son los mismos `data-testid` que tenían como botones
+sueltos: la acción es la misma y se llama igual; lo que cambió es quién la dibuja.
+
+### Íconos: los que el set cubre, y por qué el resto va sin ícono
+
+El set de `NavIconName` es **cerrado a propósito** y su propio contrato dice que
+abrir una segunda puerta para íconos daría dos sets que se desincronizan. No
+tiene «ver», «aceptar», «completar» ni «registrar llegada».
+
+| Acción | Ícono |
+|---|---|
+| Ver el historial del paciente | `history` |
+| Iniciar la consulta | `stethoscope` |
+| Continuar la consulta | `arrow-right` |
+| Avisar una demora | `bell` |
+| Mover a otro horario | `calendar` |
+| Cancelar la cita | `remove` |
+| Ver detalle · Aceptar · Rechazar · Completar · Registrar que llegó · Ya llegó | **sin ícono, con su texto** |
+
+`RowAction.icon` es opcional justamente para esto, y su comentario dice que
+agregar nombres al set «es una decisión de quien lo lleva y no se toma de paso».
+**Pedido a Itzan** en el daily: seis nombres para acciones de fila.
+
+## Los 6 `iconOnly` que quedan, uno por uno
 
 | Dónde | Qué es | Por qué queda |
 |---|---|---|
-| `agenda.html:368` · `agenda-ventana-anterior` | Chevron « del paginador de la ventana | **Es un paginador, no una acción.** Va en par con el siguiente, uno a cada lado del rótulo de la ventana («21 – 27 Sep 2026»), y ese rótulo **es** el texto del control: la dirección la da la posición y la flecha. Ponerle «Ventana anterior» al lado partiría en tres renglones una barra que hoy entra en uno, y es el patrón que usa el resto del producto. Tiene nombre accesible y globo. |
-| `agenda.html:384` · `agenda-ventana-siguiente` | Chevron » del mismo paginador | Ídem, y por par: convertir uno solo dejaría el paginador asimétrico. |
-| `week-view.html:8` · `semana-anterior` | Chevron « del paginador de la semana | Ídem: el rótulo entre los dos chevrones es «8 – 14 sept», que es lo que se está paginando. |
-| `week-view.html:42` · `semana-siguiente` | Chevron » del mismo paginador | Ídem. |
-| `my-agenda.html:272` · `aviso-agotan` | El ícono del aviso «tus turnos se están por agotar» | **No es un botón de acción**: es el ícono de un aviso, y su texto es el aviso entero, que está al lado y se lee entero. Darle una palabra propia sería repetir el aviso dos veces. |
-| `blocks.html:28` | `app-back-link` «Volver a mi agenda» | Es el **retroceso del encabezado**, no una acción de la pantalla: el componente compartido (`shared/**`, de Itzan) expone `iconOnly` como su modo de encabezado y lo usa igual en todas las secciones. Cambiarlo acá y no en el resto dejaría una sección con un retroceso distinto; y `shared/**` no es de este carril. **Se pide por el daily.** |
+| `agenda.html:368` · `agenda-ventana-anterior` | Chevron « del paginador de la ventana | **Es un paginador, no una acción.** Va en par con el siguiente, uno a cada lado del rótulo («21 – 27 Sep 2026»), y ese rótulo **es** el texto del control: la dirección la da la posición. Ponerle «Ventana anterior» al lado partiría en tres renglones una barra que hoy entra en uno. Tiene nombre accesible y globo |
+| `agenda.html:384` · `agenda-ventana-siguiente` | Chevron » del mismo paginador | Ídem, y por par: convertir uno solo lo dejaría asimétrico |
+| `week-view.html:8` · `semana-anterior` | Chevron « del paginador de la semana | Ídem: el rótulo entre los dos es «8 – 14 sept», que es lo que se pagina |
+| `week-view.html:42` · `semana-siguiente` | Chevron » del mismo paginador | Ídem |
+| `my-agenda.html:272` · `aviso-agotan` | El ícono del aviso «tus turnos se están por agotar» | **No es un botón de acción**: es el ícono de un aviso, y su texto es el aviso entero, que está al lado y se lee completo. Darle una palabra propia sería decir el aviso dos veces |
+| `blocks.html:28` | `app-back-link` «Volver a mi agenda» | Es el **retroceso del encabezado**, no una acción de la pantalla. El componente compartido expone `iconOnly` como su modo de encabezado y lo usa igual en todas las secciones: cambiarlo acá y no en el resto dejaría una sección con un retroceso distinto, y `shared/**` no es de este carril. **Pedido a Itzan** (H6-P2) |
 
 **Ninguno de los seis es una acción de tabla**, que es lo que C-06 nombra con
-todas las letras. Los cuatro chevrones son dos paginadores en par, uno es el
-ícono de un aviso, y el último es un componente compartido que no es mío.
+todas las letras. Cuatro son dos paginadores en par, uno es el ícono de un aviso,
+y el último es un componente compartido que no es mío.

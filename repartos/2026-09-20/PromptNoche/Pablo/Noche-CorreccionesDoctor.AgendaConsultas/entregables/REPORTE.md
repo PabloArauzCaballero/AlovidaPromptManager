@@ -8,22 +8,29 @@
 - **Correcciones cubiertas:** C-04, C-07, C-08, C-10, C-11, C-12 (UI), C-13 (UI), y C-06 en mi área
 - **Repo:** `alovida/mantra-core-health` · **Rama:** `pablo/noche-2026-09-20-agenda-consultas`
 - **Worktree:** `alovida/mch-pablo-noche-agenda`
-- **Corte:** `68dcb562ef3dd74de03f4887c57fd836fb21be13` (el reparto decía
-  `68969782…`, PR #554; **avanzó**, y manda el mío)
+- **Corte de partida:** `68dcb562ef3dd74de03f4887c57fd836fb21be13` (el reparto
+  decía `68969782…`, PR #554; **avanzó**, y mandó el mío)
+- **Rebasado al cierre sobre `origin/mockup` = `c038f2ef`**, que trae los
+  contratos que Ender publicó durante la noche y el componente `app-row-actions`
+  que Itzan publicó para C-06. Los cinco kill-tests **se volvieron a correr**
+  contra ese simulador nuevo: `evidencia/h6/CONTRASTE-CON-ENDER.md`
 - **Plan:** [PLAN.md](./PLAN.md) · **Evidencia:** `evidencia/`
 - **Peldaño de evidencia alcanzado:** `REGRESSION_VERIFIED` en todo lo cerrado,
   salvo H3.S3.M3 (el horario extra), que queda en `VERIFIED` contra un doble
   declarado porque el manejador simulado no genera cupos para la excepción.
 
-## Los 4 commits
+## Los 6 commits
+
+Los SHA son los de después de rebasar sobre `origin/mockup` (`c038f2ef`).
 
 | SHA | Qué trae |
 |---|---|
-| `2114318a` | C-07, C-08, C-11 (encabezado) · de cuatro solapas a dos |
-| `54895bfc` | C-10, C-21 · el modal, el cupo manda la hora, los slots dicen la verdad |
-| `d45f8e0e` | C-08 (semana y mes), C-04 · el globo, los chips y la tarjeta que atiende |
-| `601b20bb` | C-11, C-13, C-12 · una consulta a la vez, el visitador y los otros servicios |
-| *(este)* | C-06 · el desplegable de acciones, la regresión y la prueba visual |
+| `f2431ec2` | C-07, C-08, C-11 (encabezado) · de cuatro solapas a dos |
+| `54774a61` | C-10, C-21 · el modal, el cupo manda la hora, los slots dicen la verdad |
+| `0b21c39e` | C-08 (semana y mes), C-04 · el globo, los chips y la tarjeta que atiende |
+| `f2af33bb` | C-11, C-13, C-12 · una consulta a la vez, el visitador y los otros servicios |
+| `1bd0b040` | C-06 · las acciones de fila a un desplegable, la regresión y la prueba visual |
+| `07fdc7ed` | C-06 migrado a `app-row-actions` en cuanto Itzan lo publicó |
 
 ---
 
@@ -142,9 +149,9 @@ programado aparece bloqueado en la agenda clínica.
 | ID | Qué se logró |
 |---|---|
 | H6.S1.M1 | Medición previa: **32** `iconOnly` en mis archivos |
-| H6.S1.M2 | Las 12 acciones de fila → **un** desplegable (`app-menu`, el del sistema) con icono **y** texto por opción. La fila sigue en un renglón |
+| H6.S1.M2 | Las 12 acciones de fila → **`app-row-actions`**, el componente que el sistema publicó para esto. La primera versión de este turno escribió su propio bloque sobre `app-menu` —el componente no existía todavía— y **se migró en cuanto apareció**: una implementación paralela de algo que el sistema ya resuelve es el defecto que la regla 95.1 nombra |
 | H6.S1.M3 | Medición nueva: **6**. Los 26 convertidos y los 6 que quedan, con su motivo, en `evidencia/h6/h6s1m3-iconoonly-despues.txt`. Ninguno de los 6 es una acción de tabla |
-| H6.S2.M1 | `yarn typecheck` 0 · `yarn lint` 0 · **471/471** specs de agenda y mis-servicios (baseline: 430) |
+| H6.S2.M1 | `yarn typecheck` 0 · `yarn lint` 0 · **473/473** specs de agenda y mis-servicios (baseline del turno: 430) |
 | H6.S2.M2 | Barrido **5/5 PASS**. Click-sweep 3/4: el rol Médica falla con 10 clics rotos, **todos fuera de mi alcance** y **cero en `/schedule` y `/my-services`**. Ver «No cubierto» |
 | H6.S3.M1 | 36 capturas (3 viewports × 2 temas × 6 pantallas), **miradas**, con su observación en `evidencia/h6/INDICE-VISUAL.md`. Encontró 3 defectos, los tres arreglados |
 | H6.S3.M2 | Este archivo |
@@ -266,7 +273,8 @@ Cosas hechas o tocadas que **no** quedaron verificadas, distintas de lo pendient
 
 | Riesgo | Impacto | Qué lo cierra |
 |---|---|---|
-| El freno de «una consulta a la vez» es **del cliente** | Dos pestañas, o el teléfono, pueden abrir dos consultas: la pantalla sólo ve la ventana que leyó | La validación en el servidor. Registrado como brecha |
+| El freno de «una consulta a la vez» es **del cliente** | Dos pestañas, o el teléfono, pueden abrir dos consultas: la pantalla sólo ve la ventana que leyó | La validación en el servidor. Registrado como brecha, y **verificado que sigue abierta** en `mockup` HEAD |
+| El `EXTRA` del simulador depende de que el cliente mande `isAvailable: true` | Si alguien lo quita siguiendo el handoff de Ender, el horario extra pasa a **bloquear** en vez de abrir | Que el manejador lo derive del tipo, como el handoff dice que ya hace. **No lo hace**: ver `evidencia/h6/CONTRASTE-CON-ENDER.md` |
 | El horario extra no genera cupos | El doctor lo crea y no puede reservar ahí | Pedido a Ender (abajo) |
 | La duración de la visita no es configurable | Toda visita se dibuja con lo que traiga, o 15 | Decisión de negocio + contrato |
 | `agenda.ts` tiene 2.500 líneas | Cada cambio es más caro | Fuera de alcance: se anota, no se refactoriza |
@@ -299,6 +307,8 @@ Cosas hechas o tocadas que **no** quedaron verificadas, distintas de lo pendient
 | **H5-P1** | `POST /bookings/:id/start` del simulado no valida el estado previo ni la concurrencia | **Ender** |
 | **H5-P2** | El contrato del doctor no publica el nombre del visitador ni el del laboratorio | **Ender** |
 | **H6-P1** | `menu-item` dimensiona el ícono con `[slot='icon'] svg`: el slot va en un envoltorio, no en el propio `<svg>`. Cuesta una pasada visual descubrirlo | Itzan (documentar en el componente) |
+| **H6-P3** | El set cerrado de `NavIconName` no cubre las acciones de fila más comunes: faltan ver, aceptar, completar y registrar llegada. Seis de las once acciones de la agenda van con su texto y sin ícono | **Itzan** (es su set) |
+| **H5-P3** | El handoff de Ender dice que el simulador deriva `isAvailable` del tipo y que el campo «se ignora». **En `mockup` HEAD no es así**: lo lee del cuerpo, y un `EXTRA` sin el campo cierra los cupos | **Ender** |
 | **H6-P2** | `app-back-link` sólo ofrece modo `iconOnly` para el encabezado: C-06 lo dejaría sin texto en todas las secciones | Itzan |
 
 ---
