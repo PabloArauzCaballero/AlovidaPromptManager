@@ -106,3 +106,50 @@ dato que nadie pide.
 
 Ya está corregido: `requiresText` sólo en `OTHER`. Tu spec de la pantalla de bloqueos sigue en
 verde (8/8).
+
+## Rectificación del 2026-09-21 — lo que dije de H3 era falso
+
+**No uses nada de la sección «H3 — la duración de la visita ya es configurable» de arriba.**
+Queda ahí, sin borrar, porque el error se lee mejor entero.
+
+### Lo que afirmé
+
+Que la API **no tenía** dónde guardar la duración configurable de la visita, que `git grep` de
+`visitDuration`, `duracion.*visit` y `visit.*duration` devolvía **cero**, y que por eso escribía
+`defaultVisitDurationMinutes` como **doble declarado (regla 65)**.
+
+### Lo que es cierto
+
+El contrato real **sí existe**, en `src/modules/pharma_lab/dto/agenda.dto.ts` de la API
+(`origin/dev`, `c2c071a4`):
+
+```ts
+/** Duración estándar de cada visita, en minutos. */
+@ApiProperty({ minimum: 5, maximum: 240 })
+@IsInt() @Min(5) @Max(240)
+slotDurationMinutes!: number;
+
+/** Duración máxima admitida, en minutos. */
+@ApiPropertyOptional({ minimum: 5, maximum: 240 })
+@IsOptional() @IsInt() @Min(5) @Max(240)
+maxDurationMinutes?: number;
+```
+
+Y **los dos campos ya estaban en el simulador**: `slotDurationMinutes` por ventana y
+`maxDurationMinutes` en la política, cuatro apariciones antes de que yo tocara nada.
+
+### Qué salió mal, exactamente
+
+Busqué con **tres nombres que me inventé** y ninguno era el real. Del grep vacío concluí «no
+existe» — que es justo lo que la regla 00 §1.2 llama no-evidencia, y yo mismo lo cité en el plan
+para exigirme lo contrario. Sobre esa premisa falsa construí un **mecanismo paralelo para algo que
+ya tenía contrato**, que es lo que la regla 96.1 llama el defecto más caro del sistema — y es
+exactamente lo que le pedí a Justin que evitáramos en H4.
+
+### Qué vale en su lugar
+
+**El PR #559 lo hizo bien**: respeta el tope de la política del profesional y el rango `[5, 240]`
+del contrato real, y ya está mergeado en `mockup` (`713cfe2d`). **Usá eso.**
+
+`defaultVisitDurationMinutes` **no se adopta** y no va a existir: se queda en mi worktree, sin
+entregar.
