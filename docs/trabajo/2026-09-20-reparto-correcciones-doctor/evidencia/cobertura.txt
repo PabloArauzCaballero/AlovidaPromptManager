@@ -1,0 +1,57 @@
+$ conteo de prompts de tarea
+prompts encontrados: 5
+  - repartos/2026-09-20/PromptNoche/Ender/Noche-CorreccionesDoctor.ContratosYPanel/CatalogosBloqueosPosologiaYPanel.md
+  - repartos/2026-09-20/PromptNoche/Itzan/Noche-CorreccionesDoctor.PerfilYDisenio/PatronDeBotonesInsigniaYPerfilEditable.md
+  - repartos/2026-09-20/PromptNoche/Justin/Noche-CorreccionesDoctor.Receta/RecetaLimpiaMotivoDosisYPosologia.md
+  - repartos/2026-09-20/PromptNoche/Marcelo/Noche-CorreccionesDoctor.ExpedienteYAceptacion/CuadriculaDeNotasInternacionNormadaYDictamen.md
+  - repartos/2026-09-20/PromptNoche/Pablo/Noche-CorreccionesDoctor.AgendaConsultas/SolapasCalendarioSlotsYReglaDeConsulta.md
+
+$ cada C-nn citada en al menos un prompt de tarea
+  C-01 -> Itzan
+  C-02 -> Itzan
+  C-03 -> Ender
+  C-04 -> Pablo
+  C-05 -> Itzan
+  C-06 -> Ender, Itzan, Justin, Pablo
+  C-07 -> Pablo
+  C-08 -> Pablo
+  C-09 -> Itzan
+  C-10 -> Itzan, Pablo
+  C-11 -> Pablo
+  C-12 -> Ender, Pablo
+  C-13 -> Ender, Pablo
+  C-14 -> Marcelo
+  C-15 -> Justin
+  C-16 -> Justin
+  C-17 -> Justin
+  C-18 -> Justin, Marcelo
+  C-19 -> Justin
+  C-20 -> Ender, Justin
+  C-21 -> Ender, Itzan, Justin, Pablo
+  C-22 -> Justin, Marcelo
+  C-23 -> Marcelo
+  C-24 -> Ender
+correcciones sin dueno: 0
+
+$ seccion 1 de instalacion obligatoria del estandar
+  Ender      OK
+  Itzan      OK
+  Justin     OK
+  Marcelo    OK
+  Pablo      OK
+
+$ capas por prompt (hitos / subtareas / microtareas / CA / DoD / Estado)
+  Ender      6 / 18 / 55 / 24 / 24 / 24
+  Itzan      6 / 18 / 54 / 24 / 24 / 24
+  Justin     6 / 18 / 54 / 24 / 24 / 24
+  Marcelo    6 / 18 / 54 / 24 / 24 / 24
+  Pablo      6 / 18 / 55 / 24 / 24 / 24
+TOTAL microtareas repartidas: 272
+
+$ dailies
+  Daily-Noche-2026-09-20.md                      OK
+  Ender/Ender-Daily-Noche-2026-09-20.md          OK
+  Itzan/Itzan-Daily-Noche-2026-09-20.md          OK
+  Justin/Justin-Daily-Noche-2026-09-20.md        OK
+  Marcelo/Marcelo-Daily-Noche-2026-09-20.md      OK
+  Pablo/Pablo-Daily-Noche-2026-09-20.md          OK

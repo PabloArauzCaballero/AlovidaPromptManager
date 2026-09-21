@@ -7,6 +7,74 @@ resumen de alto nivel para quien no quiere abrir carpeta por carpeta. Entradas n
 
 ---
 
+## 2026-09-20 — Pablo, reparto del turno noche 2026-09-20 · "Las 24 correcciones del doctor"
+
+**Rama:** `main` de este repo · **Estado: reparto cerrado, 22/22 microtareas del trabajo en `HECHO`.**
+**Las correcciones en sí están en `TODO`: 0 / 272 microtareas de ejecución** — el reparto está hecho,
+el trabajo no. Confundir las dos cifras es el resumen optimista que la regla 40 prohíbe.
+
+**Encargo:** repartir las 24 correcciones que el doctor pidió sobre la maqueta
+(`https://mockup.173.249.39.237.sslip.io`) entre las cinco personas, con contexto sacado de todos los
+repos de `alovida`, sin dejar ninguna corrección sin dueño.
+
+### Qué se produjo
+
+- **Fuente verbatim con procedencia** — [`CORRECCIONES-DOCTOR-2026-09-20.md`](docs/requisitos/CORRECCIONES-DOCTOR-2026-09-20.md):
+  las 24 transcritas palabra por palabra con IDs `C-01`…`C-24`, ficha de procedencia (lo que **no**
+  consta declarado como tal), 8 ambigüedades registradas, tabla de cobertura y tabla de reservas de
+  archivos.
+- **Verificación contra el código real** — [`VERIFICACION-CONTRA-CODIGO-2026-09-20.md`](docs/verificacion/VERIFICACION-CONTRA-CODIGO-2026-09-20.md):
+  las 24 localizadas con archivo y línea sobre un corte declarado, más 10 hallazgos transversales.
+  Peldaño `DISCOVERED`: **nada se ejecutó**.
+- **Cinco encargos** en [`repartos/2026-09-20/PromptNoche/`](repartos/2026-09-20/PromptNoche/):
+  Pablo (agenda, 55 microtareas) · Justin (receta, 54) · Itzan (perfil y sistema de diseño, 54) ·
+  Ender (contratos, catálogos y panel, 55) · Marcelo (expediente y dictamen de las 24, 54).
+  **30 hitos, 90 subtareas, 272 microtareas**, cada una con CA binario y DoD con comando.
+- **Daily de equipo y los cinco personales**, con dependencias, reservas y ambigüedades.
+
+### Los tres hechos que ordenaron el reparto
+
+- **La maqueta que el doctor mira no tiene backend.** La rama `mockup` fija `mockBackend: true` en
+  `src/environments/environment.ts` **sin leer el entorno del proceso a propósito**. Todo DoD de estas
+  correcciones se demuestra contra los manejadores simulados de `src/app/core/mock/`, que quedaron
+  con un solo dueño (Ender) para que nadie se pise.
+- **El corte es `origin/mockup` (`68969782…`, PR #554), no el working copy.** El working copy está en
+  otra rama y **tres de las cosas que el doctor describe no existen ahí**: `?vista=table`, la solapa
+  «Calendario» y el botón «Mis horarios».
+- **Dos correcciones pueden estar ya cumplidas** (C-18 y C-22). No se declararon hechas: los prompts
+  mandan ejercitarlas y, si ya están, cerrarlas `DESCARTADO` **con la captura**.
+
+### Dos correcciones que chocan con reglas de la casa, y cómo se resolvió
+
+- **C-20 (posología por defecto)** choca con la regla 97.5.4. El vademécum del proyecto **declara su
+  propia licencia**: «dato de desarrollo sin fuente autoritativa… no apto para uso clínico ni
+  producción (ver B-13)», con 17 conceptos y **cero** propiedades de frecuencia. Se partió en
+  **mecanismo** (Justin) y **catálogo con procedencia declarada** (Ender), siguiendo el precedente
+  **B-13** que Marcelo cerró el 02/09. El kill-test del hito pregunta de dónde salió el valor.
+- **C-12 («OTROS SERVICIOS»)** choca con una lista cerrada de 7 motivos validada con `@IsIn`. Se
+  resolvió con `OTHER` + texto —el uso que el propio DTO documenta— y ampliar el enum quedó como
+  decisión de negocio registrada.
+
+### Cómo se verificó el reparto, en vez de afirmarlo
+
+```text
+python tools/check_reparto.py repartos/2026-09-20   -> exit 0
+python tools/check_skills_citadas.py                -> exit 0, 101 skills citadas, 0 inexistentes
+script de cobertura                                 -> 24/24 correcciones con dueño, 0 sin dueño
+                                                       5/5 prompts con la sección 1 obligatoria
+                                                       30 hitos / 90 subtareas / 272 microtareas
+```
+
+Reporte completo: [`docs/trabajo/2026-09-20-reparto-correcciones-doctor/REPORTE.md`](docs/trabajo/2026-09-20-reparto-correcciones-doctor/REPORTE.md).
+
+### Nada tocado en los repos de producto
+
+Por diseño: este trabajo reparte, no implementa. `mantra-core-health`,
+`mantra-core-health-api` y `mantra-core-health-model` se **leyeron** para sacar contexto y se citan
+con archivo y línea; **ninguno tiene commits de este trabajo**.
+
+---
+
 ## 2026-09-20 — Ender, turno noche 2026-09-19 · "El contrato del piloto"
 
 **Rama:** `ender/contrato-agenda-notice-port` · **Commits:** 16 · **Estado: cerrado, 50/50
