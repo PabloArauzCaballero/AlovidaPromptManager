@@ -1,0 +1,30 @@
+# Click-sweep del corte base `68dcb562`
+
+```text
+$ git rev-parse HEAD
+68dcb562ef3dd74de03f4887c57fd836fb21be13
+
+$ E2E_BASE_URL=http://localhost:4200 corepack yarn exec playwright test playwright/mockup-click-sweep.spec.ts --workers=1 --reporter=list
+
+Running 4 tests using 1 worker
+  ✘  1 [chromium] › playwright\\mockup-click-sweep.spec.ts:188:9 › mockup · barrido de clics con el backend simulado › Médica (7.7m)
+  ✓  2 [chromium] › playwright\\mockup-click-sweep.spec.ts:188:9 › mockup · barrido de clics con el backend simulado › Paciente (47.5s)
+  ✓  3 [chromium] › playwright\\mockup-click-sweep.spec.ts:188:9 › mockup · barrido de clics con el backend simulado › Admin (55.2s)
+  ✓  4 [chromium] › playwright\\mockup-click-sweep.spec.ts:188:9 › mockup · barrido de clics con el backend simulado › Visitador (50.9s)
+
+  1 failed
+    [chromium] › playwright\\mockup-click-sweep.spec.ts:188:9 › mockup · barrido de clics con el backend simulado › Médica
+  3 passed (14.0m)
+
+$ # Se filtra el JSON producido por el mismo spec; sólo las dos rutas del pendiente.
+$ # Datos sintéticos de la maqueta: medica@alovida.mock.
+$ target_failures=13
+/my-account/profile/edit=9
+/my-quotations/new=4
+all_medica_failures=92
+```
+
+El corte previo al carril de agenda reproduce los fallos en las dos rutas que
+no pertenecen a ese carril. El número no coincide exactamente con los diez
+registrados al cierre del carril porque las pantallas de perfil cambiaron en
+merges posteriores; la atribución al baseline sí queda demostrada.

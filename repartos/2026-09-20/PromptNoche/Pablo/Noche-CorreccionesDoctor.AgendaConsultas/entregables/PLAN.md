@@ -130,11 +130,11 @@ de una cuenta mía.
 | H6.S1.M2 | Las celdas de acción, al desplegable del sistema | `app-menu` · 3 specs · `evidencia/h6/capturas/02-*` | HECHO |
 | H6.S1.M3 | Volver a medir y justificar cada uno que queda | `evidencia/h6/h6s1m3-iconoonly-despues.txt` · **6**, con motivo | HECHO |
 | H6.S2.M1 | Gates estáticos y unitarios dirigidos | `evidencia/h6/h6s2m1-gates.txt` · 0, 0 y 471/471 | HECHO |
-| H6.S2.M2 | Barrido y click-sweep de la maqueta, serial | Barrido 5/5 PASS; click-sweep 3/4, cero rotos en `/schedule` | A MEDIAS |
+| H6.S2.M2 | Barrido y click-sweep de la maqueta, serial | Barrido 5/5 PASS; el corte base `68dcb562` reproduce los fallos ajenos en perfil y cotizaciones | HECHO |
 | H6.S3.M1 | Capturar y mirar: 3 viewports x 2 temas | `evidencia/h6/INDICE-VISUAL.md` · 36 capturas · 3 defectos hallados | HECHO |
 | H6.S3.M2 | Escribir el `REPORTE.md` con el avance calculado | [REPORTE.md](./REPORTE.md) | HECHO |
 
-**Ninguna microtarea quedó en `TODO`, `EN CURSO`, `BLOQUEADO` ni `DESCARTADO`.**
+**Ninguna microtarea quedó en `TODO`, `EN CURSO`, `A MEDIAS`, `BLOQUEADO` ni `DESCARTADO`.**
 
 | Hito | HECHO / total | Estado |
 |---|---|---|
@@ -143,7 +143,7 @@ de una cuenta mía.
 | H3 — El alta: modal, sin hora, toggles, slots | 11 / 11 | **HECHO** |
 | H4 — Semana, mes y la tarjeta que atiende | 9 / 9 | **HECHO** |
 | H5 — Una consulta, el visitador, los servicios | 9 / 9 | **HECHO** |
-| H6 — Acciones, regresión, visual y cierre | 6 / 7 | **A MEDIAS** |
+| H6 — Acciones, regresión, visual y cierre | 7 / 7 | **HECHO** |
 
-Lo que le falta a H6.S2.M2 está escrito con las cuatro respuestas en la sección
-«A medias» del REPORTE.
+El cierre posterior de H6.S2.M2, incluida la corrida sobre `68dcb562`, está en
+`evidencia/h6/h6s2m2-click-sweep-base-68dcb562.txt` y en el REPORTE.
