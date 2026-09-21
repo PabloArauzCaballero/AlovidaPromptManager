@@ -178,6 +178,17 @@ conclusión y va escrita, no callada.
 
 ## Cierre de H5 y H6
 
+> **Addendum 2026-09-20 — esta sección quedó superada y se corrige arriba.** H5 y H6 **ya no están
+> a medias**: H5 cierra 7/7 y H6 cierra 6/7 con 1 `DESCARTADO`. Lo que abajo se declara «a medias»
+> descansaba en dos cosas que cambiaron: (a) que no existiera una versión que compile sin apuntar a
+> los vecinos —existe, y está probada 11/11—, y (b) que el desfase contra `dev` invalidara el
+> candidato —medido, es **aditivo**: 506 inserciones, 0 borrados, con el contrato y la composición
+> byte a byte idénticos al corte—. Ver «Pendiente» al principio de este reporte.
+>
+> Lo de abajo **se conserva sin tocar**: es el registro de lo que se midió esa noche.
+
+### Lo que se escribió el 19/09
+
 Ambos quedan **A MEDIAS, 5/7**, con cada microtarea en un estado legal y ninguna inventada.
 
 **H5.** El hash del artefacto reproduce exacto, así que A7 y A8 se sostienen sin heredar nada.

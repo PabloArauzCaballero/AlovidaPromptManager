@@ -80,7 +80,7 @@ máquina, entonces sabe qué proveedores necesita, qué entidades registrar y qu
 
 ## H2 — Demostrar materialmente la ausencia del proveedor
 
-**Prioridad:** BLOQUEANTE · **Estado:** HECHO (con veredicto `TRANSITIONAL_ISOLATION`, no aislamiento limpio) — H2.S1 4/4 HECHO · H2.S2 1 FAIL + 2 BLOQUEADO · H2.S3 2/2 HECHO
+**Prioridad:** BLOQUEANTE · **Estado:** HECHO **9/9** (con veredicto `TRANSITIONAL_ISOLATION`, no aislamiento limpio) — H2.S1 4/4 HECHO · **H2.S2 3/3 HECHO** (cerradas el 20/09, simuladas, regla 65) · H2.S3 2/2 HECHO
 Ver documento fuente §4 para CA/DoD literal de cada una (no se duplica aquí para no divergir).
 Copia de trabajo de este hito: `mantra-core-health-api-copia-noche-h2/` (sin remoto, sin git
 del checkout original — evidencia en `H2.S1.M1-copia-y-destruccion.txt`).
@@ -98,7 +98,7 @@ del checkout original — evidencia en `H2.S1.M1-copia-y-destruccion.txt`).
 
 ### H2.S2 — Los gates en la copia
 
-**Estado:** HECHO (con resultado FAIL/BLOQUEADO — es un cierre honesto, no un pase)
+**Estado:** HECHO 3/3 — **simulado** (regla 65). Cerró el 19/09 con 1 `FAIL` + 2 `BLOQUEADO`; el 20/09 se midió contra el binding port-only y las tres se cerraron. Ninguna es un pase: cada una tiene su salida pegada.
 
 | ID | Microtarea | Estado |
 |---|---|---|
