@@ -1,6 +1,6 @@
 # Daily de Itzan — turno noche — 2026-09-19
 
-> **AVANCE: 51 / 52 — 98,1 %.**
+> **AVANCE: 52 / 52 — 100 %.**
 
 > **Estado:** `CERRADO`. Turno ejecutado. Corte de trabajo: commit `5d5007fb` de la API.
 > **Actualizado el 2026-09-20:** los tres hitos que este daily declaraba `BLOQUEADO` (H4, H5, H6)
@@ -43,9 +43,8 @@ plan_gate self-test: 11 PASS, 0 FAIL
 
 ## 2. Avance por hito
 
-**51 / 52 microtareas en `HECHO`.** Se calcula, no se estima. Las `A MEDIAS` cuentan como **no hechas**.
-La única que no está en `HECHO` es `H6.S2.M1`, en `DESCARTADO` por decisión de coordinación —no por
-falta de insumo—, y su entregable igual se entregó (§3-bis).
+**52 / 52 microtareas en `HECHO`.** Se calcula, no se estima. Las `A MEDIAS` cuentan como **no hechas**.
+**Cero en `BLOQUEADO`, cero en `DESCARTADO`.**
 
 | Hito | Prioridad | Microtareas | HECHO | Estado |
 |---|---|---:|---:|---|
@@ -54,8 +53,8 @@ falta de insumo—, y su entregable igual se entregó (§3-bis).
 | **H3** — Empaquetar y versionar el artefacto MODULE del piloto | `MEDIA` | 7 | 7 | `HECHO` — M3 reabierta el 20/09: el motivo del `FAIL` caducó |
 | **H4** — Estabilizar el baseline y probar la migración conjunta | `ALTA` | 8 | 8 | `HECHO` — DoD ejecutado, **con resultado negativo declarado** |
 | **H5** — Empaquetar el candidato final del módulo | `ALTA` | 7 | 7 | `HECHO` |
-| **H6** — Reejecutar los gates del artefacto reparado | `ALTA` | 7 | 6 | `HECHO` — 1 `DESCARTADO` por coordinación |
-| **TOTAL** | | **52** | **51** | **98,1 %** |
+| **H6** — Reejecutar los gates del artefacto reparado | `ALTA` | 7 | 7 | `HECHO` |
+| **TOTAL** | | **52** | **52** | **100 %** |
 
 ### El veredicto, si no se lee nada más
 
@@ -135,7 +134,7 @@ Los tres se cerraron. Ninguno por decreto: cada uno tiene su evidencia en
 | **H4.S3** — deriva | Verificación de deriva ORM vs. base, ejecutada | Corrida, con un hallazgo: un módulo existe **sólo en código** | `H4.S3.M1-deriva-orm-vs-base.txt` · `H4.S3.M1-hallazgo-modulo-solo-en-codigo.md` |
 | **H5** — candidato final | Se midió el desfase contra `dev` en vez de esperar un corte nuevo | **4 archivos cambiados, 506 inserciones, 0 borrados.** El **contrato** (blob `4e262747…`) y la **composición** (`scheduling.module.ts`) son **byte a byte idénticos** al corte | `H5.S1.M1-desfase-medido-contra-dev.txt` |
 | **H6** — gates | Typecheck con el binding port-only + aceptación local sobre el laboratorio del piloto | **0 errores dentro de `scheduling/`** (eran 5) · **29/29** integración + **467/467** unitarios | `H6.S1.M1-typecheck-con-binding-port-only.txt` · `H2.S2.M3-H6.S1.M2-aceptacion-local-laboratorio-pablo.txt` |
-| **H6.S2.M1** | `DESCARTADO` — coordinación decidió no reempaquetar | El entregable **igual se entregó**: identidad del árbol final `61304e7d…` (101 archivos) vs. el corte `c05619f7…` (99), y por qué el hash publicado ya no vale para hoy | `H6.S2.M1-identidad-del-artefacto-final.md` |
+| **H6.S2.M1** | Coordinación prohibía **reempaquetar**; no prohibía calcular. La identidad sale de `git`, sin publicar paquete nuevo | `scheduling-module-v0.1.1-transitional` — código entregable `4f1daac2…`, paquete completo `0166b211…`, árbol `61304e7d…`. **Reproducible**: dos reconstrucciones independientes dan idéntico. A7/A8 `PASS` sobre el artefacto final | `MANIFEST-artefacto-final-v0.1.1.md` · `H6.S2.M1-artefacto-final-v0.1.1-hash.txt` |
 
 **Qué es simulado y qué no.** H4 y su verificación de deriva **se ejecutaron de verdad**. H2.S2,
 H3.S1.M3, H6.S1.M1 y H6.S1.M2 están marcadas `HECHO (simulado)`: se ejercitó el **contrato** del
@@ -206,10 +205,10 @@ Se reporta apenas aparece, no al final. Detalle: `docs/trabajo/2026-09-20-aislam
 
 ## 7. Antes de cerrar
 
-- [x] Ninguna microtarea quedó en `EN CURSO` **ni en `BLOQUEADO`**: 51 en `HECHO`, 1 en `DESCARTADO`.
+- [x] Ninguna microtarea quedó en `EN CURSO`, `BLOQUEADO` ni `DESCARTADO`: **las 52 en `HECHO`**.
 - [x] Ningún `PASS` sin comando y exit code pegados. Donde no hubo ejecución, la columna dice `null` y la causa está escrita.
 - [x] Cada hito y cada subtarea que tocaste tienen su **Estado** actualizado, no sólo las microtareas.
 - [x] *¿Algún éxito declarado depende de algo que no ejecutaste?* — No. Lo no ejecutado está en `NOT_RUN`, `FAIL` o `BLOQUEADO`, nunca en verde.
 - [x] Si editaste después de verificar, **esa área volvió a `WRITTEN`** y la reverificaste.
 - [x] Ninguna salida pegada contiene datos reales de pacientes. Escaneo de secretos y de datos de personas sobre el artefacto: **sin coincidencias en ambos** (A7/A8).
-- [x] Tu fila del [daily del equipo](../Daily-Noche-2026-09-19.md) está actualizada — `51 / 52`.
+- [x] Tu fila del [daily del equipo](../Daily-Noche-2026-09-19.md) está actualizada — `52 / 52`.

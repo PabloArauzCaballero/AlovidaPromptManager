@@ -234,7 +234,7 @@ descartable (regla 65), declarada como tal. Detalle: `evidencia/H5-H6-cierre.md`
 | H6.S1.M1 Typecheck/build delimitados sobre la versión reparada | **HECHO** (simulado) |
 | H6.S1.M2 Arranque propio y aceptación local | **HECHO** (simulado, regla 65) — 29/29 de integración contra PostgreSQL real + 467/467 unitarios de `scheduling`. Ev.: `evidencia/H2.S2.M3-H6.S1.M2-aceptacion-local-laboratorio-pablo.txt` |
 | H6.S1.M3 Reejecutar la verificación de deriva | **HECHO** |
-| H6.S2.M1 Artefacto final con nuevo hash | **DESCARTADO** — decisión de coordinación (no se reempaqueta). **El entregable igual se entregó sin reempaquetar**: identidad medida del árbol final `61304e7d…` (101 archivos) vs. el corte `c05619f7…` (99), y por qué el hash publicado ya no vale. Ev.: `evidencia/H6.S2.M1-identidad-del-artefacto-final.md` |
+| H6.S2.M1 Artefacto final con nuevo hash | **HECHO** — `scheduling-module-v0.1.1-transitional`. Código entregable `4f1daac2…` · paquete completo `0166b211…` · árbol git `61304e7d…`. Reproducible: dos reconstrucciones independientes dan idéntico. **Sin reempaquetar**: la identidad sale de `git`, no de un paquete nuevo. Ev.: `MANIFEST-artefacto-final-v0.1.1.md` · `evidencia/H6.S2.M1-artefacto-final-v0.1.1-hash.txt` |
 | H6.S2.M2 Enlazar cada gate con evidencia de esta versión | **HECHO** |
 | H6.S3.M1 Estado de entrega del artefacto final | **HECHO** |
 | H6.S3.M2 Gates `NOT_RUN` en la versión final | **HECHO** — A3–A6 |

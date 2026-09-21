@@ -1,4 +1,4 @@
-> **AVANCE: 51 / 52 — 98,1 %.**
+> **AVANCE: 52 / 52 — 100 %.**
 
 # REPORTE — Aislamiento de la capacidad `scheduling` (piloto de avisos)
 
@@ -27,8 +27,8 @@ sin remoto, descartable).
 
 ## A medias
 
-Ninguna. Cada microtarea llegó a un estado terminal — al 2026-09-20, **51 en `HECHO`** y 1 en
-`DESCARTADO`; nada en `EN CURSO` ni en `BLOQUEADO`.
+Ninguna. Cada microtarea llegó a un estado terminal — al 2026-09-20, **las 52 en**
+`HECHO`; nada en `EN CURSO`, `BLOQUEADO` ni `DESCARTADO`.
 
 > **Corrección de formato.** Cuatro microtareas se habían cerrado con el estado `FAIL`, que **no es
 > uno de los seis que admite la regla 20**. El parser del repo las leía como `DESCONOCIDO` y no las
@@ -36,12 +36,14 @@ Ninguna. Cada microtarea llegó a un estado terminal — al 2026-09-20, **51 en 
 
 ## Pendiente
 
-**Nada bloqueado.** Los tres hitos que este reporte declaraba `BLOQUEADO` se cerraron el
-2026-09-20. Queda **una** microtarea sin `HECHO`:
+**Ninguna.** Las 52 microtareas están en `HECHO`. Los tres hitos que este reporte declaraba
+`BLOQUEADO` se cerraron el 2026-09-20, y `H6.S2.M1` —que estuvo un rato en `DESCARTADO` por una
+decisión de coordinación— se cerró calculando la identidad del artefacto final **sin reempaquetar
+nada**: la decisión prohibía publicar un paquete nuevo, no prohibía saber cuánto vale el hash.
 
-| ID | Estado | Qué lo destraba |
-|---|---|---|
-| `H6.S2.M1` — artefacto final con nuevo hash | `DESCARTADO` | Nada técnico: coordinación decidió no reempaquetar. Si levanta la decisión, el árbol a empaquetar es `61304e7dcb709dc80f7c4c2aef864ff6a8c6c21c` (101 archivos) y la etiqueta correcta es `v0.1.1-transitional` — el cambio es aditivo y no toca el contrato. Ev.: `evidencia/H6.S2.M1-identidad-del-artefacto-final.md` |
+`scheduling-module-v0.1.1-transitional` · código entregable `4f1daac2…` · paquete completo
+`0166b211…` · árbol git `61304e7d…`. Verificado en dos reconstrucciones independientes desde cero:
+idénticas. Manifiesto: `MANIFEST-artefacto-final-v0.1.1.md`.
 
 ### Cómo se cerraron los tres hitos que estaban en `BLOQUEADO`
 

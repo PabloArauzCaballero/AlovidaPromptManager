@@ -1,0 +1,199 @@
+=== H6.S2.M1 - artefacto final v0.1.1-transitional: hash y receta ===
+Fecha: 2026-09-20 . Origen: mantra-core-health-api @ origin/dev
+Arbol de src/modules/scheduling: 61304e7dcb709dc80f7c4c2aef864ff6a8c6c21c
+
+--- como se reconstruye (sin reempaquetar nada: sale de git) ---
+git archive origin/dev src/modules/scheduling | tar -x -C $ART --strip-components=2
+mv $ART/scheduling $ART/codigo/scheduling
+git archive origin/dev database/SQL/41_scheduling | tar -x -C $ART --strip-components=2
+mv $ART/41_scheduling $ART/codigo/SQL_41_scheduling
+git show origin/dev:yarn.lock > $ART/yarn.lock
+cp docs/trabajo/2026-09-20-aislamiento-scheduling/evidencia/* $ART/evidencia/
+
+--- inventario ---
+codigo/scheduling        : 101 archivos
+codigo/SQL_41_scheduling : 5 archivos
+evidencia                : 37 archivos
+yarn.lock                : 1 archivo
+TOTAL                    : 144 archivos
+
+--- hash de contenido (misma receta que v0.1.0) ---
+$ find codigo evidencia yarn.lock -type f | sort | xargs sha256sum | sha256sum
+0166b211ab32786ef4423f20fa5b21237ddead200d273db108598b9f65a7248a *-
+
+--- reproducibilidad: segunda reconstruccion independiente, desde cero ---
+0166b211ab32786ef4423f20fa5b21237ddead200d273db108598b9f65a7248a *-
+IDENTICO -> el hash es reproducible, que es la condicion que v0.1.0 no cumplia con el tar
+
+--- por que NO se usa el hash del tar (demostrado, no afirmado) ---
+$ tar -cf - codigo evidencia yarn.lock | sha256sum   (copia 1)
+3c63e9ed4140a3a378ca42b3b58b8b85557c0cda9372e5540d6bfb48cfdb97df *-
+$ tar -cf - codigo evidencia yarn.lock | sha256sum   (copia 2, mismo contenido)
+1e0a53ef9766117c88e72cb9b70cfca8b2e7943623996c5260915cea09a65f07 *-
+DISTINTOS con el mismo contenido -> el tar arrastra fechas y permisos. Por eso se descarto.
+
+--- A7 secretos / A8 datos de personas, sobre el artefacto final ---
+A7 secretos en codigo+yarn.lock        : 0 coincidencias
+A8 correos personales en codigo        : 0
+A8 documentos de identidad en codigo   : 0
+A7/A8 sobre evidencia (nueva en v0.1.1): 0 / 0 / 0
+
+--- AVISO para quien lo reproduzca ---
+El hash de arriba cubre las 37 filas de `evidencia/` que existian al calcularlo. Este mismo
+archivo se escribio DESPUES, asi que la carpeta ya tiene 38: si lo recalculas con el contenido
+de hoy te va a dar otro numero, y no es que el artefacto cambio. La lista exacta de los 144
+archivos que entran esta al final.
+
+Por eso se publica tambien una segunda identidad, que NO depende de cuanta evidencia se sume:
+
+  $ find codigo yarn.lock -type f | sort | xargs sha256sum | sha256sum
+  4f1daac2d46b5cf3a0d762fa9b7803a4715652e3af2603545ba0714e4aa5ad06
+
+Esa es la del codigo entregable (106 archivos + lockfile) y es la que conviene fijar en una
+relacion de dependencias. Verificada en dos reconstrucciones independientes: identica.
+
+--- lista completa de los archivos que entran en el hash ---
+codigo/SQL_41_scheduling/01_schema.sql
+codigo/SQL_41_scheduling/02_tables.sql
+codigo/SQL_41_scheduling/03_fk_intra.sql
+codigo/SQL_41_scheduling/04_indexes.sql
+codigo/SQL_41_scheduling/90_fk_deferred.sql
+codigo/scheduling/README.md
+codigo/scheduling/adapters/README.md
+codigo/scheduling/adapters/messaging-agenda-notice.adapter.spec.ts
+codigo/scheduling/adapters/messaging-agenda-notice.adapter.ts
+codigo/scheduling/adapters/postgres-waitlist.adapter.ts
+codigo/scheduling/adapters/support-admin-notice.adapter.spec.ts
+codigo/scheduling/adapters/support-admin-notice.adapter.ts
+codigo/scheduling/controllers/README.md
+codigo/scheduling/controllers/index.ts
+codigo/scheduling/controllers/scheduling-agenda.controller.ts
+codigo/scheduling/controllers/scheduling-bookings.controller.ts
+codigo/scheduling/controllers/scheduling-confirmation.controller.ts
+codigo/scheduling/controllers/scheduling-internal.controller.ts
+codigo/scheduling/controllers/scheduling.controller.spec.ts
+codigo/scheduling/controllers/scheduling.controller.ts
+codigo/scheduling/controllers/tenant-agenda.controller.ts
+codigo/scheduling/dto/README.md
+codigo/scheduling/dto/index.ts
+codigo/scheduling/dto/scheduling-agenda.dto.ts
+codigo/scheduling/dto/scheduling-bookings.dto.ts
+codigo/scheduling/dto/scheduling-catalog.dto.ts
+codigo/scheduling/dto/scheduling-confirmation.dto.ts
+codigo/scheduling/dto/scheduling-read.dto.ts
+codigo/scheduling/dto/scheduling-walk-in.dto.ts
+codigo/scheduling/dto/tenant-agenda.dto.ts
+codigo/scheduling/entities/README.md
+codigo/scheduling/entities/appointment_bookings.entity.ts
+codigo/scheduling/entities/appointment_bookings.types.ts
+codigo/scheduling/entities/appointment_payment_states.entity.ts
+codigo/scheduling/entities/appointment_reminders.entity.ts
+codigo/scheduling/entities/availability_exceptions.entity.ts
+codigo/scheduling/entities/availability_slots.entity.ts
+codigo/scheduling/entities/bookable_slots.entity.ts
+codigo/scheduling/entities/booking_cancellations.entity.ts
+codigo/scheduling/entities/booking_confirmation_rules.entity.ts
+codigo/scheduling/entities/booking_confirmation_rules.types.ts
+codigo/scheduling/entities/booking_policies.entity.ts
+codigo/scheduling/entities/booking_reschedules.entity.ts
+codigo/scheduling/entities/calendar_absences.entity.ts
+codigo/scheduling/entities/index.ts
+codigo/scheduling/entities/practitioner_schedules.entity.ts
+codigo/scheduling/entities/schedulable_resources.entity.ts
+codigo/scheduling/entities/schedule_rules.entity.ts
+codigo/scheduling/entities/schedule_templates.entity.ts
+codigo/scheduling/entities/slot_holds.entity.ts
+codigo/scheduling/entities/waitlist_entries.entity.ts
+codigo/scheduling/notices/agenda-notices.env.ts
+codigo/scheduling/notices/agenda-notices.spec.ts
+codigo/scheduling/notices/agenda-notices.ts
+codigo/scheduling/policies/booking-reason-visibility.policy.spec.ts
+codigo/scheduling/policies/booking-reason-visibility.policy.ts
+codigo/scheduling/ports/README.md
+codigo/scheduling/ports/agenda-notice-reason.catalog.spec.ts
+codigo/scheduling/ports/agenda-notice-reason.catalog.ts
+codigo/scheduling/ports/agenda-notice.port.ts
+codigo/scheduling/ports/waitlist.port.ts
+codigo/scheduling/repositories/README.md
+codigo/scheduling/repositories/index.ts
+codigo/scheduling/repositories/scheduling-absences.repository.ts
+codigo/scheduling/repositories/scheduling-agenda.repository.spec.ts
+codigo/scheduling/repositories/scheduling-agenda.repository.ts
+codigo/scheduling/repositories/scheduling-bookings.repository.ts
+codigo/scheduling/repositories/scheduling-catalog.repository.ts
+codigo/scheduling/repositories/scheduling-confirmation.repository.ts
+codigo/scheduling/repositories/scheduling-notice.repository.ts
+codigo/scheduling/scheduling-time.spec.ts
+codigo/scheduling/scheduling-time.ts
+codigo/scheduling/scheduling.concepts.ts
+codigo/scheduling/scheduling.module.ts
+codigo/scheduling/scheduling.persistence.ts
+codigo/scheduling/scheduling.tokens.ts
+codigo/scheduling/services/README.md
+codigo/scheduling/services/index.ts
+codigo/scheduling/services/practitioner-affiliation-gate.service.spec.ts
+codigo/scheduling/services/practitioner-affiliation-gate.service.ts
+codigo/scheduling/services/scheduling-agenda-notices.service.spec.ts
+codigo/scheduling/services/scheduling-agenda-notices.service.ts
+codigo/scheduling/services/scheduling-agenda.service.spec.ts
+codigo/scheduling/services/scheduling-agenda.service.ts
+codigo/scheduling/services/scheduling-bookings.service.spec.ts
+codigo/scheduling/services/scheduling-bookings.service.ts
+codigo/scheduling/services/scheduling-catalog.service.spec.ts
+codigo/scheduling/services/scheduling-catalog.service.ts
+codigo/scheduling/services/scheduling-confirmation.service.spec.ts
+codigo/scheduling/services/scheduling-confirmation.service.ts
+codigo/scheduling/services/scheduling-delay.service.spec.ts
+codigo/scheduling/services/scheduling-delay.service.ts
+codigo/scheduling/services/scheduling-professional-time.service.spec.ts
+codigo/scheduling/services/scheduling-professional-time.service.ts
+codigo/scheduling/services/scheduling-tenant-agenda.service.spec.ts
+codigo/scheduling/services/scheduling-tenant-agenda.service.ts
+codigo/scheduling/services/scheduling-waitlist.service.spec.ts
+codigo/scheduling/services/scheduling-waitlist.service.ts
+codigo/scheduling/services/scheduling-walk-in.service.spec.ts
+codigo/scheduling/services/scheduling-walk-in.service.ts
+codigo/scheduling/services/walk-in-patient.spec.ts
+codigo/scheduling/services/walk-in-patient.ts
+codigo/scheduling/state/README.md
+codigo/scheduling/state/booking-state-machine.spec.ts
+codigo/scheduling/state/booking-state-machine.ts
+codigo/scheduling/state/booking-transition.ts
+evidencia/H1.S1.M1-imports-literales.txt
+evidencia/H1.S1.M2-M4-clasificacion-imports.md
+evidencia/H1.S2.M1-M3-M4-orm-y-transaccion.md
+evidencia/H1.S2.M2-M5-propuestas.md
+evidencia/H1.S3.M1-docker-postgres-hallazgo.txt
+evidencia/H1.S3.M1-docker-postgres.txt
+evidencia/H1.S3.M2-M5-identidad-y-limpieza.txt
+evidencia/H1.S3.M3-M4-ddl-y-roles.txt
+evidencia/H2.S1.M1-copia-y-destruccion.txt
+evidencia/H2.S1.M2-M3-retiro-e-inventario.txt
+evidencia/H2.S2-gates-en-la-copia.txt
+evidencia/H2.S2.M3-H6.S1.M2-aceptacion-local-laboratorio-pablo.txt
+evidencia/H2.S3-veredicto-honesto.md
+evidencia/H3.S1.M3-mapa-de-resolucion-corregido.md
+evidencia/H4-bloqueo-decision-infra.md
+evidencia/H4-receta-baseline-aislado.md
+evidencia/H4.S1-conteos-e-integridad.txt
+evidencia/H4.S1.M1-baseline-corrida-1.txt
+evidencia/H4.S1.M1-hallazgo-patches-no-reproducibles.md
+evidencia/H4.S1.M1-patches-restantes.txt
+evidencia/H4.S1.M1-postgres-init-base-limpia.txt
+evidencia/H4.S1.M1-seeds-corrida-1.txt
+evidencia/H4.S1.M1-v4221-depende-de-mock.txt
+evidencia/H4.S1.M1-v4221-tras-seeds.txt
+evidencia/H4.S1.M3-baseline-corrida-2-idempotencia.txt
+evidencia/H4.S1.M3-baseline-corrida-3.txt
+evidencia/H4.S2-migracion-candidata-v4218.txt
+evidencia/H4.S3.M1-deriva-orm-vs-base.txt
+evidencia/H4.S3.M1-hallazgo-modulo-solo-en-codigo.md
+evidencia/H4.S3.M2-indices-nombre-explicito.txt
+evidencia/H5-H6-cierre.md
+evidencia/H5-H6-verificacion-artefacto-y-gates.md
+evidencia/H5.S1.M1-desfase-medido-contra-dev.txt
+evidencia/H6-doble-port-only-agenda-notice.adapter.ts.txt
+evidencia/H6.S1.M1-typecheck-con-binding-port-only.txt
+evidencia/H6.S1.M1-typecheck-simulacion-salida-completa.txt
+evidencia/H6.S2.M1-identidad-del-artefacto-final.md
+yarn.lock
