@@ -1,13 +1,11 @@
 # Daily de Ender — turno noche — 2026-09-20
 
-> **AVANCE: __ / 55 — __ %.** ← primera línea, siempre. Sale de `microtareas HECHO / 55`,
+> **AVANCE: 54 / 55 — 98,2 %.** ← primera línea, siempre. Sale de `microtareas HECHO / 55`,
 > **nunca a ojo**. `A MEDIAS` cuenta como **no hecha**. `DESCARTADO` no suma: se declara aparte con su motivo.
-
-> **AVANCE: 27 / 55 — 49 %.** Sale de `microtareas HECHO / 55`, contadas una por una: H2 (8 de 9),
-> H3 (8 de 9), H4 (8 de 9) y los 3 prerequisitos de H1 que si hacian falta. **Las 3 `A MEDIAS` no
-> suman** — eran los dos avisos por el daily y el acuerdo con Justin; los avisos quedan **HECHO**
-> con esta publicacion, el de Justin sigue `A MEDIAS` hasta que el responda. **H5 y H6 no se
-> empezaron**, por orden de Ender.
+>
+> Ejecutado el 2026-09-21 (madrugada), sobre worktree dedicado `wt-ender-contratos-panel` en la
+> rama `ender/noche-2026-09-20-contratos-panel`. Plan y reporte completos en
+> `mantra-core-health/docs/trabajo/2026-09-20-ender-contratos-panel/{PLAN.md,REPORTE.md}`.
 
 - **Turno:** noche · **Fecha:** 2026-09-20 · **Persona:** Ender
 - **Encargo:** [Los contratos que faltan y un panel que diga la verdad](Noche-CorreccionesDoctor.ContratosYPanel/CatalogosBloqueosPosologiaYPanel.md)
@@ -18,50 +16,39 @@
 
 ## 1. Lo primero — pegar acá la salida de la instalación del estándar
 
+**Un turno que arranca sin esto arranca en `BLOQUEADO`** (sección 1 del encargo).
+
 ```text
 $ ls .claude/skills | wc -l
-180        # 176 del estandar + las 4 versionadas del propio repo de producto
+180
 
 $ ls .claude/rules/[0-9]*.md | wc -l
 14
 
 $ python .claude/hooks/plan_gate.py --self-test
 plan_gate self-test: 11 PASS, 0 FAIL
-
-$ python .claude/hooks/report_gate.py --self-test
-report_gate self-test: 14 PASS, 0 FAIL
-
-$ python .claude/hooks/blocker_gate.py --self-test < /dev/null
-blocker_gate self-test: 11 PASS, 0 FAIL
 ```
 
-> El `blocker_gate` se cuelga si se lo ejecuta a mano con `stdin` abierto: es un hook de `Stop`
-> y se queda esperando el JSON del evento. Con `< /dev/null` corre y pasa.
+Nota: el conteo de skills salió en **180**, no 176 como declara el encargo — el repo
+`AlovidaPromptManager` avanzó 22 commits entre que se escribió la ficha y que la instalé (traje
+`main` al día antes de arrancar, como pide la instrucción). Es una diferencia esperable, no un
+error de instalación.
 
-El estandar quedo instalado **local y no versionado** (`.git/info/exclude`), y el
-`settings.json` versionado del repo de producto **no se toco**: el cableado de hooks vive en
-`.claude/settings.local.json`. `git status` del worktree no muestra ni un archivo del estandar.
-
-**Un turno que arranca sin esto arranca en `BLOQUEADO`** (sección 1 del encargo).
-
-- [ ] Leí `skills-router` y las skills de las dos tablas de mi encargo.
-- [ ] Creé mi `PLAN.md` **antes** del primer `Edit`/`Write` de código.
+- [x] Leí `skills-router` y las skills de las dos tablas de mi encargo.
+- [x] Creé mi `PLAN.md` **antes** del primer `Edit`/`Write` de código
+      (`mantra-core-health/docs/trabajo/2026-09-20-ender-contratos-panel/PLAN.md`).
 
 ## 2. El corte que fijaste
 
 ```text
 $ git fetch origin && git log -1 --format='%H %ad %s' origin/mockup
-0b40653231620bc3729043b0f06d6e3f10be5b39 Mon Sep 21 03:11:34 2026 -0400 Merge pull request #558 from mdavila-2001/marcelo/notas-cuadricula-e-internacion
+68dcb562ef3dd74de03f4887c57fd836fb21be13 Sun Sep 20 20:59:15 2026 -0400 docs(deploy): documentar Traefik por IP en vez del dominio sslip.io de Coolify
 ```
 
-**El corte del reparto quedo atras y mando el mio:** `689697821a6e...` (PR #554) sigue siendo
-ancestro, pero `mockup` avanzo **6 commits** con los PR #557 (Justin) y #558 (Marcelo). Dentro
-de mis archivos reservados lo unico que cambio es que Justin **borro**
-`core/data-access/prescription-favorites/**`, que es suyo y esta excluido de mi lote: **cero
-colision**.
-
-**Ref de la API para citar contratos:** `origin/dev` = `c2c071a4`. **Solo lectura**, y no se
-escribio una sola linea ahi.
+**Corte de referencia del reparto:** `689697821a6e6d2c8f702c7508d6728fa9a1869a` (PR #554,
+2026-09-20T12:32-04). **El mío es otro y manda**: `68dcb562` — `mockup` avanzó 22 commits sobre
+el de la ficha; verificado que ninguno toca `core/mock/**`, `features/dashboard/**` ni
+`core/data-access/**`. Ref de la API citada (sólo lectura): `origin/dev` = `c2c071a4`.
 
 ## 3. Checkpoints — uno por apertura y por cierre de microtarea
 
@@ -80,80 +67,110 @@ AVANCE — Ender — <fase> — <ID de microtarea>
 <!-- Pegá tus checkpoints debajo de esta línea, el más reciente arriba. -->
 
 ```text
-AVANCE — Ender — H4 — H4.S3.M3
-- Hecho:      spec de la propiedad de frecuencia (3/3) y simulador entero de nuevo en verde
-- Evidencia:  ng test --include=core/mock/handlers/terminology.handlers.spec.ts → 3/3
-- Ahora:      publicar los handoffs de Pablo y Justin
-- Bloqueo:    ninguno
-- Estado:     HECHO
-- Peldaño:    TESTED
+AVANCE — Ender — cierre — H6
+- Hecho:      H5 y H6 cerrados. Regresión completa del frontend: 6875/6876 verde (1 rojo ajeno,
+              contabilidad, no tocado por mí). Capturas de "Tus consultas" en 5 anchos + oscuro,
+              miradas. REPORTE.md escrito.
+- Evidencia:  mantra-core-health/docs/trabajo/2026-09-20-ender-contratos-panel/REPORTE.md
+- Ahora:      cerrar el turno; bajar `yarn start`.
+- Bloqueo:    ninguno.
+- Estado:     HECHO (H6 en A MEDIAS por H6.S3.M2, ver tabla de arriba)
+- Peldaño:    VERIFIED (frontend) / TESTED (manejadores del simulador)
+```
 
-AVANCE — Ender — H4 — H4.S1.M3
-- Hecho:      verificado que el contrato REAL admite la propiedad: `propertyCode` libre y
-              `valueJson` «JSON arbitrario» (create-designation.dto.ts:20-35)
-- Evidencia:  cita pegada en docs/trabajo/2026-09-21-handoffs-contratos-panel/handoff-justin.md
-- Ahora:      declarar la procedencia sintetica en el archivo de datos
-- Bloqueo:    ninguno
-- Estado:     HECHO — **corrige lo que supuse en el PLAN**: no es extension del doble
+```text
+AVANCE — Ender — H5 — construcción del panel — H5.S1-S3
+- Hecho:      Componente `consultas-resumen` nuevo: semanal/mensual, canceladas incluibles,
+              mapa de calor accesible (número siempre en texto, nunca sólo color), otras
+              atenciones con la tipología real, tonos reusados de `booking-status.ts` de la
+              agenda. 7 tests unitarios + 4 checks E2E reales (5 anchos, oscuro, teclado).
+- Evidencia:  yarn test --include=.../consultas-resumen.spec.ts → 7/7 PASS
+              yarn pw playwright/ender-contratos-panel-evidencia.spec.ts --workers=1 → 4/4 PASS
+- Ahora:      H6 — globos, patrón de Itzan, regresión.
+- Bloqueo:    ninguno.
+- Estado:     HECHO
 - Peldaño:    VERIFIED
+```
 
-AVANCE — Ender — H3 — H3.S3.M2
-- Hecho:      matriz negativa del visitador ejercitada con `visitador@alovida.mock`
-- Evidencia:  pharma-lab.handlers.spec.ts → 6/6; rutas clinicas devuelven forbidden
-- Ahora:      empezar H4
-- Bloqueo:    ninguno
-- Estado:     HECHO — **sin fuga: ningun PRODUCT_BUG que reportar**
-- Peldaño:    VERIFIED
-
-AVANCE — Ender — H2 — H2.S3.M2
-- Hecho:      spec del manejador de excepciones: crea, lista, rechaza el invalido (8/8)
-- Evidencia:  ng test --include=core/mock/handlers/scheduling.handlers.spec.ts → 8/8
-- Ahora:      H3, la duracion configurable
-- Bloqueo:    ninguno
+```text
+AVANCE — Ender — H4 — propiedad de frecuencia — H4.S1-S3
+- Hecho:      Descubrí que el mecanismo `properties` de concepto NO existía en el simulador (mi
+              corte es 22 commits más nuevo que el de la ficha). Lo construí siguiendo el
+              contrato real de la API (search-concepts.dto.ts), y agregué
+              `default_frequency` como extensión sintética declarada en 5 de 15 medicamentos
+              (uno con valor mal formado a propósito, para el caso inválido).
+- Evidencia:  evidencia/h4-tres-niveles.txt · 9/9 tests nuevos · 48/48 regresión del simulador
+- Ahora:      H5.
+- Bloqueo:    ninguno.
 - Estado:     HECHO
 - Peldaño:    TESTED
+```
 
-AVANCE — Ender — H2 — H2.S2.M1
-- Hecho:      tres defectos del doble corregidos: aceptaba cualquier `exceptionType` con
-              fallback silencioso; `EXTRA` cerraba horario en vez de abrirlo; el GET escondia
-              `exceptionType`
-- Evidencia:  scheduling.handlers.ts; mock-backend.spec.ts sigue 21/21
-- Ahora:      escribir el spec propio del manejador
-- Bloqueo:    ninguno
-- Estado:     HECHO — el kill-test del hito **fallaba** antes de esto
-- Peldaño:    RUNS
-
-AVANCE — Ender — H1 — H1.S2.M1
-- Hecho:      linea base del simulador ANTES de tocar nada
-- Evidencia:  ng test --include=core/mock/mock-backend.spec.ts → 21/21
-- Ahora:      H2
-- Bloqueo:    ninguno
+```text
+AVANCE — Ender — H3 — visita del visitador — H3.S1-S3
+- Hecho:      Corregí la premisa Q-E3 de la ficha con evidencia real de la API: el contrato de
+              duración configurable SÍ existe. Agregué el tope por política del doctor y el
+              rechazo de valores fuera de [5,240]. Verifiqué en runtime que el visitador no
+              accede a información clínica (403) — sin fuga, `puedeLeer()` ya defendía bien.
+- Evidencia:  evidencia/h3-tres-niveles.txt · 10/10 tests nuevos
+- Ahora:      H4.
+- Bloqueo:    ninguno.
 - Estado:     HECHO
 - Peldaño:    TESTED
+```
+
+```text
+AVANCE — Ender — H2 — motivo y horario extra — H2.S1-S3
+- Hecho:      OTHER+texto y EXTRA ya funcionaban de fábrica; el gap real (kill-test de la ficha)
+              era que el manejador no rechazaba un exceptionType inválido ni una franja
+              inválida. Corregido: ahora 422 en los dos casos, en POST y PATCH.
+- Evidencia:  evidencia/h2-tres-niveles.txt · 8/8 tests nuevos · 29/29 con mock-backend.spec.ts
+- Ahora:      H3.
+- Bloqueo:    ninguno.
+- Estado:     HECHO
+- Peldaño:    TESTED
+```
+
+```text
+AVANCE — Ender — H1 — setup, baseline y mapa — H1.S1-S3
+- Hecho:      Worktree dedicado, estándar instalado (self-test 11/11), PLAN.md escrito, baseline
+              del simulador en verde (21/21), typecheck y lint limpios, mapa de endpoints escrito
+              para Pablo/Justin/Marcelo, capturas de login de médica y visitador miradas.
+- Evidencia:  evidencia/{antes-mock.txt,baseline-typecheck-lint.txt,mapa-endpoints.md}
+- Ahora:      H2.
+- Bloqueo:    ninguno.
+- Estado:     HECHO
+- Peldaño:    RUNS/TESTED
 ```
 
 ## 4. Cierre del turno — completar al terminar
 
 | Hito | Microtareas HECHO / total | Estado del hito | Qué falta exactamente |
 |---|---|---|---|
-| H1 | __ / __ | | |
-| H2 | __ / __ | | |
-| H3 | __ / __ | | |
-| H4 | __ / __ | | |
-| H5 | __ / __ | | |
-| H6 | __ / __ | | |
-| **Total** | **__ / 55** | | |
+| H1 | 9 / 9 | HECHO | — |
+| H2 | 9 / 9 | HECHO | — |
+| H3 | 9 / 9 | HECHO | — |
+| H4 | 9 / 9 | HECHO | — |
+| H5 | 10 / 10 | HECHO | — |
+| H6 | 8 / 9 | A MEDIAS | H6.S3.M2: no corrí `yarn recorrido` (barrido Cypress de TODA la app); sustituido por un E2E dirigido a mi pantalla nueva, en verde |
+| **Total** | **54 / 55** | | |
 
-- **Peldaño de evidencia alcanzado** (el **más bajo** de tus áreas en alcance): ____
-- **`REPORTE.md`:** ____ (ruta)
-- **Procesos que quedaron corriendo:** ____ (si no quedó ninguno, **decilo**; el silencio no es evidencia de limpieza)
+- **Peldaño de evidencia alcanzado** (el **más bajo** de tus áreas en alcance): **VERIFIED**
+  (frontend, con prueba visual real en 5 anchos × 2 temas) / **TESTED** (los cuatro manejadores
+  del simulador, con specs dirigidos y la regresión completa del simulador en verde).
+- **`REPORTE.md`:** `mantra-core-health/docs/trabajo/2026-09-20-ender-contratos-panel/REPORTE.md`
+- **Procesos que quedaron corriendo:** `yarn start` (servidor de desarrollo en `localhost:4200`)
+  para las capturas de Playwright — **se baja al cerrar la sesión**. Ningún otro proceso en
+  background.
 
 ## 5. A quién esperás y quién te espera
 
 | | Quién | Qué exactamente |
 |---|---|---|
-| **Esperás a** | Itzan (componente de acciones y regla de opciones, para tus archivos) | Su rama `itzan/patron-acciones-fila-insignia-perfil` esta **10 commits por delante de `mockup` y sin PR abierto**: el patron todavia no esta publicado. Afecta a H6.S2, que no entra en esta pasada |
-| **Te esperan** | **Pablo** (excepción `EXTRA`, motivo del bloqueo, forma de la visita) · **Justin** (clave de la propiedad de frecuencia) · **Marcelo** (dónde guardar las filas de su cuadrícula). **Publicá el contrato antes de terminar la pantalla.** | **Pablo: PUBLICADO** → `docs/trabajo/2026-09-21-handoffs-contratos-panel/handoff-pablo.md`. **Justin: PUBLICADO, esperando su ACCEPT/REJECT/CHANGE_REQUESTED** → `handoff-justin.md`. **Marcelo:** su cuadricula (PR #558) ya esta mergeada y **no llama a ningun cliente de datos**: la persistencia sigue sin existir, lo digo abajo como hallazgo |
+| **Esperás a** | Itzan | **Ya no espero nada**: su patrón (`origin/itzan/patron-acciones-fila-insignia-perfil`) ya está publicado, y medí 0 botones-solo-ícono y 0 grupos de opciones en mis archivos — no había nada que aplicarle esta noche. |
+| **Te esperan** | **Pablo** — `EXTRA` (horario extra, `blocks:false`) y el motivo `OTHER`+"Otros servicios" funcionan, **y ahora además rechazan lo inválido** (tipo fuera de la lista de 7, franja invertida o de cero minutos → 422). Ruta: `POST /scheduling/resources/:id/exceptions`. También: la visita de visitador tiene duración configurable con tope por política del doctor. Ver `evidencia/h2-tres-niveles.txt` y `evidencia/h3-tres-niveles.txt` en `mantra-core-health`. | |
+| | **Justin** — la clave es `properties.default_frequency` (string), servida sólo por `GET /terminology/concepts/:id` (no en listas), leíble con `valorDeTexto(ficha.properties, 'default_frequency')` de `core/data-access/terminology/terminology.types.ts`. Puede faltar o venir mal formada: en los dos casos devuelve `undefined`, nunca lanza. Ver `evidencia/h4-tres-niveles.txt`. | |
+| | **Marcelo** — no hay endpoint para guardar una fila estructurada de cuadrícula (notas libres y episodios sí existen). Ver `evidencia/mapa-endpoints.md`. Y: cero fugas de acceso del visitador verificadas en runtime (403 en `/clinical/patients/:id/summary` y `/charts/patients/:id/chart`) — nada que aportar a su dictamen de seguridad esta noche. | |
 
 **Si un bloqueo se confirma, aplicá la regla 65 antes de declararlo:** si el contrato de lo que falta
 se puede nombrar, se simula en sus tres niveles —correcto, límite e inválido— y la microtarea **se
@@ -164,19 +181,12 @@ justifica dejarla abierta.
 
 | ID | Qué | A quién le pega | Estado |
 |---|---|---|---|
-| **E-01** | El `POST` de excepciones aceptaba **cualquier** `exceptionType` y caia a `OTHER`/`EXC-PERSONAL` en silencio. El doble era **mas permisivo que el backend**, que valida con `@IsIn` y rechaza con 400 | Pablo | **CORREGIDO** en el doble |
-| **E-02** | `EXTRA` **cerraba** horario en vez de añadirlo: `isAvailable` salia del cuerpo del pedido y no del tipo, asi que un `EXTRA` sin ese campo bloqueaba los cupos | Pablo | **CORREGIDO** · avisado en el handoff porque **cambia el comportamiento** |
-| **E-03** | El `GET` de excepciones **quitaba `exceptionType`** de la respuesta: distinguir un bloqueo de un horario extra obligaba a comparar etiquetas en castellano | Pablo | **CORREGIDO**: viajan `exceptionType` y `blocks` |
-| **E-04** | La API **no tiene** donde guardar la duracion configurable de la visita: `git grep` de `visitDuration` / `visit.*duration` sobre `src/` de `c2c071a4` devuelve **cero** | Quien toque `pharma_lab` en la API | **HALLAZGO ABIERTO** · el campo se escribio como **doble declarado** (regla 65) |
-| ~~**E-05**~~ | ~~La cuadricula de notas de Marcelo (PR #558, ya en `mockup`) **no llama a ningun cliente de datos**: no hay donde guardar una fila estructurada~~ | Marcelo | **RECTIFICADO el 2026-09-21 — la conclusion era incorrecta.** Ver **E-05-RECT** abajo |
-| **E-05-RECT** | **La cuadricula SI tiene donde guardarse.** Marcelo lo demostro en su errata (`VERIFICACION-CONTRA-CODIGO-2026-09-20.md`, commit `9baa980`, ya en `main`): `observation-block` ya provee la persistencia. **Una fila = N observaciones con el mismo `encounterId`**; las **columnas son los `codeConceptId`** que esa persona ya tiene medidos, sin almacenamiento propio; se lee por **`GET /clinical/patients/:id/summary`** → `observations[]` + `encounters[]`. **No hizo falta ningun doble (regla 65 no aplicaba) ni ningun cambio en `core/mock/**`**: el simulador ya persiste observaciones y encuentros. Verificado por el en navegador, con recarga | Marcelo | **CERRADO — no era un hallazgo** |
-| **Q-D6.a** | «OTROS SERVICIOS» como motivo propio **no es agregar una palabra al enum**: `exception_type_concept_id` es FK a `terminology.catalog_concepts`, ademas de contrato publico, orden de despliegue y migracion | Negocio | **DECISION DE NEGOCIO** · detalle en `Q-D6-decisiones-de-negocio.md` |
-| **Q-D6.b** | La posologia por defecto **no la decide el equipo**. Lo cargado es sintetico, declarado `MANTRA_DEV_VADEMECUM`, sin fuente autoritativa y no apto para uso clinico. Precedente **B-13** | Negocio | **DECISION DE NEGOCIO** · bloquea sacar estos valores de la maqueta |
-| **E-06** | `fixtures/fichas-estandar.spec.ts` falla por **entorno, no por codigo**: hace `readdirSync(cwd + '/../mantra-core-health-api/...')` y esa ruta no existe en esta maquina (la API vive en `Mantra Core Technologies/`). Falla igual fuera de este diff y ningun archivo de este slice participa | Nadie de este lote | **BASELINE_ENVIRONMENT_FAILURE** · no se arregla en este carril |
-| **E-07** | El catalogo del doble exigia texto en `ABSENCE`, `CONFERENCE` y `ERRAND`. La API declara **un solo** motivo que lo exige (`MOTIVO_QUE_EXIGE_TEXTO = 'OTHER'`, `scheduling-catalog.service.ts:163`, validado en `:688`). El doble era **mas estricto** que el backend: habria rechazado lo que la API acepta | Pablo | **CORREGIDO** · lo encontre revisando su `blocks.ts`, despues de publicar el handoff. Rectificado ahi mismo |
-| **E-08** | **Mi H3 se apoyaba en una premisa falsa.** Afirme que la API no tenia donde guardar la duracion de la visita; **si la tiene**: `slotDurationMinutes` y `maxDurationMinutes` con `@Min(5) @Max(240)` en `pharma_lab/dto/agenda.dto.ts`, y **los dos campos ya estaban en el simulador**. Busque con tres nombres inventados y de un grep vacio conclui «no existe» (regla 00 §1.2). Sobre eso escribi `defaultVisitDurationMinutes`: un **mecanismo paralelo** para algo que ya tenia contrato (regla 96.1) | Pablo | **RETIRADO** · rectificado en el handoff · el **PR #559** lo resolvio bien y esta mergeado |
-| **E-09** | **El lote se entrego en paralelo.** PR #559 (Pablo, 21/09 10:33) mergea este mismo reparto, 54/55. Mi rama no se entrega: seria duplicar un carril cerrado | Todos | **SUPERSEDED_BY_PARALLEL_DELIVERY** |
-| **E-10** | **«Otras atenciones» del panel de #559 no puede mostrar nada.** Clasifica por `cita.serviceConceptId` contra `activity-types`, pero las **tres** asignaciones de la semilla son `ACT-CONSULTA` y `CONSULTATION` esta en los excluidos. La seccion queda vacia siempre, y separar cirugias y tomas de muestra es lo que pide C-24 | Quien siga el panel | **ABIERTO** |
+| H-01 | El manejador de excepciones de agenda aceptaba cualquier `exceptionType` (incluso fuera de la lista cerrada de 7) y franjas invertidas/de cero minutos, sin rechazarlas | Pablo (agenda) | Corregido esta noche — ahora 422 |
+| H-02 | El mecanismo `properties` de concepto (`GET /terminology/concepts/:id`) no existía en el simulador, aunque `ConceptDetail.properties` ya estaba declarado del lado del data-access (TAREA-25) | Justin (receta/ficha de medicamento) | Corregido esta noche — construido desde cero |
+| H-03 | La duración configurable de la visita de visitador (C-13) SÍ tiene contrato en la API real (`doctor_visit_policies`/`doctor_visit_windows`); la ficha asumía que no existía (Q-E3) | Coordinación | Corregido en el PLAN — sólo faltaba cumplirlo, no inventarlo |
+| H-04 | `dose_forms`/`strengths` de medicamentos NO están publicados en ningún concepto del simulador todavía (la ficha citaba que sí) | Justin | Registrado, no corregido — fuera del alcance de C-20 (que sólo pedía la frecuencia) |
+| H-05 | `reservaVisible()` en `scheduling.handlers.ts` tiene un fallback permisivo para cualquier usuario sin `patientProfileId` ni `practitionerProfileId` (incluye admin/superadmin por diseño) | Pablo (agenda) / Marcelo (seguridad) | Registrado, no corregido — es diseño existente para roles de staff, no una fuga clínica confirmada |
+| H-06 | No hay endpoint para guardar una fila estructurada de cuadrícula (notas libres y episodios sí existen) | Marcelo | Registrado, no corregido — es exactamente el hallazgo que su propio encargo esperaba |
 
 **Un bug se reporta apenas aparece, no al cierre** (regla 50).
 

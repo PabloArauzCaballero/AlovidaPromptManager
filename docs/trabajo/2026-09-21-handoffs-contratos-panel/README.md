@@ -63,6 +63,8 @@ no, también está dicho:
 
 ### Lo que #559 **no** corrigió, verificado contra `713cfe2d`
 
+Detalle con línea y archivo en `hallazgos-post-559.md`, en esta misma carpeta.
+
 1. **`EXTRA` sigue cerrando horario en vez de abrirlo**: `isAvailable: datos.isAvailable ?? false`
    se lee del cuerpo del pedido y no del tipo. Un `EXTRA` sin ese campo cierra los cupos del rato.
 2. **El `GET` de excepciones sigue quitando `exceptionType`** de la respuesta: distinguir un
