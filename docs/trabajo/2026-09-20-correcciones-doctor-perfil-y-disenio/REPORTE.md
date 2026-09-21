@@ -63,8 +63,11 @@ El detalle microtarea por microtarea, con su evidencia literal, está en el
   descartaba entero el detalle que el servidor manda, con quince campos en un
   mismo formulario. Ahora el rechazo se reparte por campo —usando
   `details.violations`, el contrato de errores real del proyecto—, se avisa una
-  sola vez, y un guardado nuevo limpia el anterior. Cuatro pruebas dirigidas, una
-  de ellas **sobre el DOM**: el mensaje se pinta debajo del NIT y no debajo de
+  sola vez, y un guardado nuevo limpia el anterior. Seis pruebas dirigidas que
+  recorren los tres niveles del contrato —correcto, límite e **inválido**: un
+  cuerpo que no respeta el contrato de errores y unas violaciones con la forma
+  equivocada, y en los dos el formulario conserva lo tecleado—, una de ellas
+  **sobre el DOM**: el mensaje se pinta debajo del NIT y no debajo de
   «Razón social».
 - **Qué no anda:** nada. Falta **observarlo**.
 - **Qué falta exactamente:** la captura del recorrido. No se pudo tomar: el
@@ -180,9 +183,9 @@ se revisan: `docs/frontend/evidence/insignia-especialidad/`,
 
 Lo que se escribió y **no** se ejercitó, que es distinto de lo pendiente:
 
-- **El rechazo por campo, en la pantalla** (H5.S3.M3). Probado con cuatro pruebas
-  dirigidas contra el contrato real, una de ellas sobre el DOM; no observado en
-  el navegador, por HALL-I8.
+- **El rechazo por campo, en la pantalla** (H5.S3.M3). Probado con seis pruebas
+  dirigidas contra el contrato real en sus tres niveles, una de ellas sobre el
+  DOM; no observado en el navegador, por HALL-I8.
 - **La corrección de un consultorio desde la pestaña nueva.** Se verificó que el
   bloque se monta, que sus acciones funcionan y que el QR se abre y muestra la
   imagen; **no** se ejercitó el ciclo completo de editar un consultorio, guardar
@@ -259,6 +262,18 @@ Los nueve están en el daily del turno con su dueño. Los que bloquean a alguien
   rutas**: el interruptor de tema tiene nombre accesible y le falta la otra
   mitad de ADR-0012. Es una sola línea, y es el hallazgo de C-06 con más
   alcance de todos los que aparecieron esta noche.
+- **HALL-I13** — **el chequeo de tipos del CI no puede pasar en un runner
+  limpio.** El archivo que `component-stock.ts` importa lo genera un comando
+  que el job `verificar` no corre (`.github/workflows/ci.yml:85` genera el
+  entorno, no el índice de componentes) y que el repo ignora
+  (`.gitignore:160`). Siete errores de tipos, y como los pasos son
+  secuenciales, los doce chequeos siguientes no se ejecutan en ninguna rama.
+  Idéntico en `dev`. Es agregar un comando al job; fuera de mi frontera.
+- **HALL-I14** — **la suite crítica de navegador está en rojo para todo el
+  repo**: 23 fallos en 8 de 10 specs, todos en autenticación, formularios de
+  cuenta y navegación. `dev` da la misma secuencia exacta (`1 1 1 5 1 5 4 5`,
+  `8 of 10 failed`) y las últimas doce corridas, de cuatro personas, terminan
+  todas en `failure`. Medido y atribuido, no diagnosticado.
 
 **HALL-I5 se cerró**: era el mismo defecto en el menú de preferencias de una
 publicación, ese sí en mi territorio. Entró como microtarea propia (H2.S3.M7)
