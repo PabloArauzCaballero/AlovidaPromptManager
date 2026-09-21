@@ -1,0 +1,34 @@
+Ender (5 rutas reservadas):
+    scripts/check-architecture.mjs
+    scripts/generate-component-index.mjs
+    scripts/lib/**
+    src/app/core/mock/faker/**
+    src/app/features/component-stock/**
+Itzan (6 rutas reservadas):
+    organisms/form-actions/**
+    organisms/form-section/**
+    src/app/features/account/my-profile/**
+    src/app/features/auth/register-*/**
+    src/app/shared/components/molecules/form-field/**
+    src/app/shared/components/organisms/paginated-form/**
+Justin (5 rutas reservadas):
+    molecules/pagination/**
+    organisms/page-header/**
+    src/app/features/alovida/{terminologia,datos-compartidos,buscar,directorio,inicio}/**
+    src/app/shared/components/molecules/search-field/**
+    src/app/shared/components/organisms/directory-page/**
+Marcelo (6 rutas reservadas):
+    organisms/attachment-dialog/**
+    organisms/attachment-uploader/**
+    organisms/fact-section/**
+    src/app/features/clinical-record/**
+    src/app/shared/components/molecules/fact-list/**
+    src/app/shared/components/organisms/content-dialog/**
+Pablo (5 rutas reservadas):
+    organisms/filter-bar/**
+    organisms/view-state-host/**
+    src/app/features/alovida/accesos/**
+    src/app/features/alovida/personas/**
+    src/app/shared/components/organisms/data-table/**
+
+RESULTADO: 0 choque(s) entre 5 carriles

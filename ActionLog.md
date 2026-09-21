@@ -7,6 +7,48 @@ resumen de alto nivel para quien no quiere abrir carpeta por carpeta. Entradas n
 
 ---
 
+## 2026-09-21 — Pablo, reparto del turno noche 2026-09-21 · "Refactorización frontend: limpio y declarativo"
+
+**Rama:** `main` de este repo · **Estado: reparto cerrado, 16/16 microtareas del trabajo en `HECHO`.**
+**Peldaño: `TESTED`** — los tres gates del reparto corrieron con salida pegada. **No `VERIFIED`:**
+nadie ejecutó ninguno de los cinco encargos todavía.
+
+- **Pedido:** [`docs/requisitos/REFACTOR-FRONTEND-2026-09-21.md`](docs/requisitos/REFACTOR-FRONTEND-2026-09-21.md)
+  (663 líneas, archivado desde `Downloads/`) · **Verificación:**
+  [`docs/verificacion/VERIFICACION-CONTRA-CODIGO-2026-09-21.md`](docs/verificacion/VERIFICACION-CONTRA-CODIGO-2026-09-21.md)
+- **Corte:** `alovida/mantra-core-health` @ `origin/mockup` `5a0776c66b005ad4d2d6722321e933cd7adea621`
+  — resultó ser **la punta actual**, el mismo SHA que el documento cita como "referencia histórica".
+- **Repartido:** 5 carriles · 6 hitos cada uno · **317 microtareas**
+  (Ender 61 · Pablo 63 · Justin 68 · Itzan 64 · Marcelo 61). Reservas de archivos **disjuntas: 0 choques**.
+- **Gates:** `check_reparto.py` exit 0 · `check_skills_citadas.py` 107 skills citadas, 0 inexistentes.
+
+### Lo que cambió el diseño del reparto
+
+El documento pide "crear" doce familias de organismos: **casi todas ya existen** y varias con adopción
+alta (`page-header` 171, `view-state-host` 69, `paginated-form` 52, `data-table` 29, `content-dialog` 26).
+Así que el trabajo no es crear, es **adopción + separación smart/dumb + arreglar el catálogo**.
+
+El hallazgo grande: **70 de las 81 tablas escritas a mano viven en `features/alovida/`**, cuyas 161
+pantallas son **maqueta generada** por `scripts/port-vistas-alovida.mjs` — sólo 22 importan algo de
+`shared/components`. Replican las clases CSS del sistema, y **los atributos (`app-page-header=""`)
+no instancian nada**: esos componentes tienen selector de elemento, verificado uno por uno.
+
+### Lo que quedó fuera, con motivo
+
+- **Oleada 2:** 80 de 96 piezas del sistema de diseño, 11 tablas crudas, 6 diálogos crudos, y los
+  contenedores de `agenda` (350 KB), `form-builder`, `accounting`, `admin/medical-laboratory`,
+  `account/appointments`. Declarada con dueño propuesto en el daily de equipo §4.3.
+- **`agenda/**` fuera del carril de Pablo** a propósito: ya lo trabajó el 2026-09-20 y además coordina.
+- **Q-A `DECISION_REQUIRED`:** el generador de `alovida` declara "si se vuelve a correr, lo pisa" y no
+  tiene exclusión. Afecta a 70 pantallas de dos carriles. Es la microtarea H1.S3 de Pablo.
+
+### Nada tocado en `mantra-core-health`
+
+Por diseño: este trabajo reparte. Todo el conocimiento del corte salió de `git grep`/`git show`/
+`git ls-tree` sobre `origin/mockup`. El repo de frontend no tiene commits de este turno.
+
+---
+
 ## 2026-09-20 — Pablo, reparto del turno noche 2026-09-20 · "Las 24 correcciones del doctor"
 
 **Rama:** `main` de este repo · **Estado: reparto cerrado, 22/22 microtareas del trabajo en `HECHO`.**

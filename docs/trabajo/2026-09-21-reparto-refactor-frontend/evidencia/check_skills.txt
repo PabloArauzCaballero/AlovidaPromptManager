@@ -1,0 +1,2 @@
+check_skills_citadas: OK, 107 skill(s) distinta(s) citada(s), 0 inexistentes (de 176 en disco)
+check_skills exit=0
