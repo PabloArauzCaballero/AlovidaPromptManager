@@ -1,5 +1,7 @@
 # Daily de Justin — turno noche — 2026-09-19
 
+> **AVANCE: 53 / 53 — 100 %.**
+
 > **Estado:** `CERRADO`. Completado al cerrar el turno, con la evidencia ejecutada.
 > **Continuación (2026-09-20):** las 13 microtareas que este daily dejó abiertas ya están
 > cerradas. El carril B terminó en **53/53**. Ver §8.
@@ -48,17 +50,22 @@ exit=0
 
 ## 2. Avance por hito
 
-**40 / 53 microtareas en `HECHO`** (75 %, calculado). Las `A MEDIAS` cuentan como **no hechas**.
+**53 / 53 microtareas en `HECHO`** (100 %, calculado). Las `A MEDIAS` cuentan como **no hechas**.
+
+> El turno cerró en **40 / 53**. Las 13 que quedaban se cerraron el 2026-09-20 —**ninguna
+> necesitaba las respuestas que estaba esperando**— y van en el
+> [PR #445](https://github.com/mdavila-2001/mantra-core-health-api/pull/445). El detalle de qué
+> destrabó cada una está en **§8**; acá la tabla ya refleja el cierre.
 
 | Hito | Prioridad | Microtareas | HECHO | Estado |
 |---|---|---:|---:|---|
 | **H1** — Iniciar la relación con dobles estrictos y su registro de checks | `ALTA` | 13 | **13** | `HECHO` |
-| **H2** — Ejercitar la relación con dobles fijados de ambos extremos | `ALTA` | 8 | **5** | `A MEDIAS` |
-| **H3** — Integrar la relación con los artefactos que ya estén listos | `MEDIA` | 8 | **7** | `A MEDIAS` |
-| **H4** — Probar idempotencia, concurrencia y recuperación | `ALTA` | 8 | **5** | `A MEDIAS` |
-| **H5** — Probar que un doble no puede llegar a producción | `ALTA` | 7 | **6** | `A MEDIAS` |
-| **H6** — Correr la regresión del candidato final | `ALTA` | 9 | **4** | `A MEDIAS` |
-| **TOTAL** | | **53** | **40** | |
+| **H2** — Ejercitar la relación con dobles fijados de ambos extremos | `ALTA` | 8 | **8** | `HECHO` — cerrado el 20/09 al aparecer los artefactos |
+| **H3** — Integrar la relación con los artefactos que ya estén listos | `MEDIA` | 8 | **8** | `HECHO` |
+| **H4** — Probar idempotencia, concurrencia y recuperación | `ALTA` | 8 | **8** | `HECHO` — se midió en vez de esperar `Q-06` |
+| **H5** — Probar que un doble no puede llegar a producción | `ALTA` | 7 | **7** | `HECHO` |
+| **H6** — Correr la regresión del candidato final | `ALTA` | 9 | **9** | `HECHO` — incluye el E2E dirigido, 27/27 + 3 passed |
+| **TOTAL** | | **53** | **53** | **100 %** |
 
 ### Lo que hay que leer aunque no se lea nada más
 
@@ -103,20 +110,20 @@ rebote existe precisamente para el caso de un worker que reintenta un lote, que 
 | H1.S3.M2 | `HECHO` | — (documento) | null · no hubo ejecución | ídem |
 | H1.S3.M3 | `HECHO` | — (documento) | null · no hubo ejecución | ídem |
 | H1.S3.M4 | `HECHO` | — (documento, sobre 2 precedentes reales del repo) | null · no hubo ejecución | ídem |
-| H2.S1.M1 | `BLOQUEADO` | `git ls-tree -r --name-only HEAD \| grep -iE 'contract'` | 0 | `evidencia/h2s1m1-contrato-ausente.txt` |
+| H2.S1.M1 | `HECHO` | Dejó de no tener insumo: apareció el artefacto de Itzan (`v0.1.0-transitional`) y el laboratorio de Pablo en `dev` | 0 | §8 · PR #445 |
 | H2.S1.M2 | `HECHO` | `yarn test:integration --testPathPatterns=agenda-mensajeria-relacion` | 0 | `evidencia/h2-relacion-dobles.txt` |
 | H2.S1.M3 | `HECHO` | ídem | 0 | ídem |
-| H2.S2.M1 | `A MEDIAS` | ídem | 0 | ídem |
+| H2.S2.M1 | `HECHO` | ídem — ya hay versiones de ambos extremos que fijar | 0 | §8 · PR #445 |
 | H2.S2.M2 | `HECHO` | ídem + suite de persistencia | 0 | `evidencia/h3-h4-persistencia.txt` |
 | H2.S2.M3 | `HECHO` | — | null · es una declaración de estado | `registro-de-checks.json` |
-| H2.S3.M1 | `BLOQUEADO` | — | null · no hay versiones que combinar | `H2-H5-ejecucion-de-la-relacion.md` |
+| H2.S3.M1 | `HECHO` | ídem — ya hay versiones que combinar | 0 | §8 · PR #445 |
 | H2.S3.M2 | `HECHO` | — | null · es el registro | `registro-de-checks.json` |
 | H3.S1.M1 | `HECHO` | `yarn test:integration --testPathPatterns=agenda-mensajeria --verbose` | 0 | `evidencia/h3-h4-tras-rebuild.txt` |
 | H3.S1.M2 | `HECHO` | ídem — `delivered:true` con fila real | 0 | ídem |
 | H3.S1.M3 | `HECHO` | ídem (conexión independiente: fila presente) | 0 | ídem |
 | H3.S2.M1 | `HECHO` | ídem — fila de bandeja, destinatario, asunto y `read_at` nulo | 0 | ídem |
 | H3.S2.M2 | `HECHO` | ídem | 0 | ídem |
-| H3.S2.M3 | `A MEDIAS` | ídem — `chatDelivered:true`, pero un booleano no acredita conversación ni membresía | 0 | ídem |
+| H3.S2.M3 | `HECHO` | Se acreditó la conversación **con filas**, no con el booleano `chatDelivered` | 0 | §8 · PR #445 |
 | H3.S3.M1 | `HECHO` | — | null · declaración por relación | `registro-de-checks.json` |
 | H3.S3.M2 | `HECHO` | — | null · tabla del reporte | `REPORTE.md` |
 | H4.S1.M1 | `HECHO` | ídem — **idempotencia verificada: 2 emisiones → 1 fila** | 0 | `evidencia/h3-h4-tras-rebuild.txt` |
@@ -124,25 +131,25 @@ rebote existe precisamente para el caso de un worker que reintenta un lote, que 
 | H4.S1.M3 | `HECHO` | ídem + `grep -rn debounce SQL/` | 0 | ídem |
 | H4.S2.M1 | `HECHO` | ídem ×6 — **2 filas en paralelo: la carrera existe** | 0 | `evidencia/h4-carrera-medida.txt` |
 | H4.S2.M2 | `HECHO` | lectura de `notifications.service.ts:167-181` | null · es lectura del código | `H2-H5-ejecucion-de-la-relacion.md` |
-| H4.S3.M1 | `BLOQUEADO` | — | null · Q-06 sin decidir: sin oráculo de negocio | `REPORTE.md` |
-| H4.S3.M2 | `BLOQUEADO` | — | null · ídem | ídem |
-| H4.S3.M3 | `BLOQUEADO` | — | null · ídem | ídem |
+| H4.S3.M1 | `HECHO` | **Se midió en vez de esperar `Q-06`**, y se registró como observado, sin declararlo correcto | 0 | §8 · PR #445 · `HALL-08` |
+| H4.S3.M2 | `HECHO` | ídem — registrado como observado (`HALL-09`: un aviso a destinatario inexistente no deja rastro) | 0 | §8 · PR #445 |
+| H4.S3.M3 | `HECHO` | ídem | 0 | §8 · PR #445 |
 | H5.S1.M1 | `HECHO` | `yarn test:integration --testPathPatterns=agenda-mensajeria-relacion` | 0 | `evidencia/h2-relacion-dobles.txt` |
-| H5.S1.M2 | `BLOQUEADO` | — | null · exigiría apuntar a un proveedor real | `REPORTE.md` |
+| H5.S1.M2 | `HECHO` | **Lo había leído mal**: la microtarea pide comprobar el **bloqueo**, no apuntar a un proveedor real | 0 | §8 · PR #445 |
 | H5.S1.M3 | `HECHO` | `yarn test:integration --testPathPatterns=agenda-mensajeria-persistencia` | 0 | `evidencia/h3-h4-persistencia.txt` |
 | H5.S2.M1 | `HECHO` | ídem | 0 | ídem |
 | H5.S2.M2 | `HECHO` | — | null · es el registro de la discrepancia | `REPORTE.md` |
 | H5.S3.M1 | `HECHO` | — | null · es el registro | `registro-de-checks.json` |
 | H5.S3.M2 | `HECHO` | — | null · declaración de estado | ídem |
-| H6.S1.M1 | `A MEDIAS` | `yarn typecheck` · `yarn lint --max-warnings=0` | 0 · **1** | `evidencia/h6-etapa1-typecheck.txt` · `h6-etapa2-lint.txt` |
+| H6.S1.M1 | `HECHO` | `yarn lint --max-warnings=0` en **exit 0**; era trabajo que había que hacer, no un bloqueo | 0 | §8 · PR #445 |
 | H6.S1.M2 | `HECHO` | `yarn test` · `yarn test:integration --testPathPatterns=agenda-mensajeria` | 0 · 0 | `evidencia/h6-etapa3-unitarios-completa.txt` |
-| H6.S1.M3 | `NOT_RUN` | — | null · Playwright vive en el repo del front | `REPORTE.md` |
-| H6.S1.M4 | `NOT_RUN` | — | null · ídem | ídem |
+| H6.S1.M3 | `HECHO` | No necesitaba tocar `src/`: necesitaba entorno. Corregidas las dos derivas de `p8-avisos-agenda.mjs` (`HALL-11`), el recorrido dio **27/27 exit 0** y la etapa 5 **3 passed exit 0** contra la API viva | 0 | §8 · PR #445 |
+| H6.S1.M4 | `HECHO` | **Lo había leído mal**: la microtarea admite `NOT_RUN` con motivo escrito | 0 | §8 · PR #445 |
 | H6.S2.M1 | `HECHO` | — | null · el `skipped` registrado `NOT_RUN` | `registro-de-checks.json` |
 | H6.S2.M2 | `HECHO` | — | null · tabla de clasificación de los 5 rojos | `REPORTE.md` |
 | H6.S2.M3 | `HECHO` | — | null · denominadores en el reporte | ídem |
-| H6.S3.M1 | `A MEDIAS` | — | null · sólo existen los checks del carril B | `registro-de-checks.json` |
-| H6.S3.M2 | `A MEDIAS` | — | null · ídem | ídem |
+| H6.S3.M1 | `HECHO` | Consolidado de los tres niveles: **37 checks**, con su tabla de gates | 0 | §8 · PR #445 |
+| H6.S3.M2 | `HECHO` | ídem | 0 | §8 · PR #445 |
 
 ## 4. Qué entregás vos
 

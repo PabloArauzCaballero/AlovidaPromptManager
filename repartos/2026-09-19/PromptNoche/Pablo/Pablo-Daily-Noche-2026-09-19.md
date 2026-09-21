@@ -189,10 +189,17 @@ H2-H6 vuelven a `TODO`: sin impedimento técnico, pendientes de ejecución por t
 | H4.S3.M1 | `HECHO` | Tabla de las 3 no corregidas, con motivo y costo real (no estimado a ojo) | — | `CORTE-2026-09-19.md` §12 |
 | H4.S3.M2 | `HECHO` | Declarado: el piloto sigue `TRANSITIONAL_ISOLATION` (estado de Itzan, no reformulado) | — | ídem |
 
-**Las 53 microtareas del lote llegan a un estado terminal hoy: 45 `HECHO` + 8 `DESCARTADO`, 0 en
-`TODO`/`BLOQUEADO`, 0 en `EN CURSO`.** `DESCARTADO` no es "no se hizo" — es una decisión explícita
-con motivo (8 casos: 3 de H4, por invadir el diseño/archivo de otros; 5 de H6, por un bug ajeno a
-P8 que se investigó a fondo y no se pudo resolver en este lote).
+**Las 53 microtareas del lote están en `HECHO`: 0 en `TODO`/`BLOQUEADO`, 0 en `EN CURSO`, 0 en
+`DESCARTADO`.**
+
+> **Este párrafo decía «45 `HECHO` + 8 `DESCARTADO`» y quedó vencido.** Era cierto a mitad del
+> turno: 3 microtareas de H4 se habían descartado por no invadir el archivo de otro, y 5 de H6 por
+> un bug ajeno a P8. Las ocho se cerraron después aplicando la **regla 65** —aislar el contrato y
+> simular sus tres niveles en vez de esperar—, sin tocar un solo archivo ajeno: la corrección de H4
+> se probó con `PortOnlyNoticeAdapter`, que implementa el puerto sin importar nada de `messaging`
+> ni de `community` (11/11, dos corridas idénticas), y H6 quedó verificado contra el contrato en
+> vez de contra la app entera. Las filas de §3 de arriba ya muestran los estados reales; era este
+> resumen el que no se había actualizado, y contradecía la tabla de §2.
 
 ## 4. Qué entregás vos
 

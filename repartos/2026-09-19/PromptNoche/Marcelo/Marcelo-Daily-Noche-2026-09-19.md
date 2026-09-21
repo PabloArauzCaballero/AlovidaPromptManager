@@ -1,5 +1,7 @@
 # Daily de Marcelo — turno noche — 2026-09-19
 
+> **AVANCE: 54 / 54 — 100 %.**
+
 > **Estado:** `COMPLETADO`. **54 / 54 microtareas en `HECHO`** — los seis hitos cerrados. El dictamen está en [`DICTAMEN-M06-2026-09-20.md`](Noche-PilotoDeAvisos.Registro/entregables/DICTAMEN-M06-2026-09-20.md) y **no declara el producto aceptado**: `PRODUCT_ACCEPTANCE_NOT_VERIFIED`. El 100 % es de las microtareas del prompt, no del producto.
 > **Hallazgo que domina el turno, y su arreglo.** `GET /scheduling/bookings/:id`, `POST .../cancel` y `POST .../reschedule` no verificaban de quién era la cita: cualquier paciente, de cualquier organización, la leía, la cancelaba y la movía. Confirmado por ejecución contra la API real y **corregido en el mismo turno**: PR [mantra-core-health-api#447](https://github.com/mdavila-2001/mantra-core-health-api/pull/447), rama `marcelo/fix-authz-citas-ajenas`, commit `9ff1542d` sobre `dev` @ `33f17785`. Reverificado: intruso **403**, titular **200**, sobre la misma cita. Suite de `scheduling` **483/483**; sin el arreglo, 4 de las 7 pruebas nuevas fallan.
 > **Corrección de mi propio hallazgo:** de los 4 rojos que declaré, 3 eran bugs y están arreglados; el cuarto (`GET /scheduling/slots` entre organizaciones) se **reclasificó a `DECISION_REQUIRED`** al ir a corregirlo — no lleva datos de paciente y el cliente pide explícitamente poder ver todos los médicos disponibles, así que restringirlo rompería el recorrido. Es pregunta de producto, no defecto.
@@ -161,7 +163,9 @@ Salida completa: [`evidencia/H0_instalacion-estandar.txt`](Noche-PilotoDeAvisos.
 
 ## 7. Antes de cerrar
 
-- [x] Ninguna microtarea quedó en `EN CURSO`: las 29 de H1+H2+H3 en `HECHO`; H4-H6 en `TODO` explícito.
+- [x] Ninguna microtarea quedó en `EN CURSO`: **las 54 en `HECHO`**, los seis hitos cerrados.
+      *(Esta casilla decía «las 29 de H1+H2+H3 en `HECHO`; H4-H6 en `TODO`»: era el estado a mitad
+      del turno y quedó sin actualizar cuando H4-H6 cerraron. Contradecía la tabla de §2.)*
 - [x] Ningún `PASS` sin comando y exit code pegados — ver tabla §3. Los `FAIL` de H3.S1 también llevan comando y salida literal (no se maquillaron).
 - [x] H1, H2 y H3, y sus 9 subtareas, tienen su Estado actualizado a `HECHO`, no sólo las microtareas.
 - [x] *¿Algún éxito declarado depende de algo que no ejecutaste?* No: cada `HECHO` tiene su comando y salida propia, incluidos los 4 `FAIL` de autorización, que se ejecutaron con la API real, no se infirieron por lectura.
