@@ -1,0 +1,33 @@
+import { Injectable } from '@nestjs/common';
+
+import type {
+  AgendaNotice,
+  AgendaNoticePort,
+  AgendaNoticeResult,
+} from '../ports/agenda-notice.port';
+
+/**
+ * Doble declarado del emisor de avisos de agenda, usado para medir el
+ * aislamiento de la capacidad: implementa `AgendaNoticePort` sin depender de
+ * ningún módulo vecino.
+ *
+ * No es el adaptador de producción. Su única razón de ser es comprobar que la
+ * capacidad compila y resuelve su puerto cuando el proveedor concreto no está
+ * presente; el adaptador real se resuelve por configuración en su propio
+ * módulo.
+ */
+@Injectable()
+export class PortOnlyAgendaNoticeAdapter implements AgendaNoticePort {
+  async emit(notice: AgendaNotice): Promise<AgendaNoticeResult> {
+    return {
+      delivered: false,
+      skippedReason: `sin proveedor de avisos configurado (${notice.kind})`,
+    };
+  }
+
+  async emitMany(
+    notices: readonly AgendaNotice[],
+  ): Promise<AgendaNoticeResult[]> {
+    return Promise.all(notices.map((notice) => this.emit(notice)));
+  }
+}

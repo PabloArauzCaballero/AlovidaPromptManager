@@ -1,0 +1,321 @@
+src/app.module.ts(53,33): error TS2307: Cannot find module './modules/community/community.module' or its corresponding type declarations.
+src/app.module.ts(74,33): error TS2307: Cannot find module './modules/messaging/messaging.module' or its corresponding type declarations.
+src/common/seed/audio-assets-seed.service.ts(5,31): error TS2307: Cannot find module '../../modules/messaging/entities' or its corresponding type declarations.
+src/common/seed/audio-assets-seed.service.ts(111,8): error TS2769: No overload matches this call.
+  Overload 2 of 2, '(entityName: EntityName<object>, data: { id: string; code: string; name: string; stateConceptId: string; defaultPriority: number; defaultMaxAttempts: number; visibilityTimeoutS: number; deadLetterQueueId: string | undefined; createdAt: Date; updatedAt: Date; } & { ...; }, options: CreateOptions<...> & { ...; }): object', gave the following error.
+    Type 'string' is not assignable to type 'never'.
+  Overload 2 of 2, '(entityName: EntityName<object>, data: { id: string; code: string; name: string; stateConceptId: string; defaultPriority: number; defaultMaxAttempts: number; visibilityTimeoutS: number; deadLetterQueueId: string | undefined; createdAt: Date; updatedAt: Date; } & { ...; }, options: CreateOptions<...> & { ...; }): object', gave the following error.
+    Type 'string' is not assignable to type 'never'.
+  Overload 2 of 2, '(entityName: EntityName<object>, data: { id: string; code: string; name: string; stateConceptId: string; defaultPriority: number; defaultMaxAttempts: number; visibilityTimeoutS: number; deadLetterQueueId: string | undefined; createdAt: Date; updatedAt: Date; } & { ...; }, options: CreateOptions<...> & { ...; }): object', gave the following error.
+    Type 'string' is not assignable to type 'never'.
+  Overload 2 of 2, '(entityName: EntityName<object>, data: { id: string; code: string; name: string; stateConceptId: string; defaultPriority: number; defaultMaxAttempts: number; visibilityTimeoutS: number; deadLetterQueueId: string | undefined; createdAt: Date; updatedAt: Date; } & { ...; }, options: CreateOptions<...> & { ...; }): object', gave the following error.
+    Type 'string' is not assignable to type 'never'.
+  Overload 2 of 2, '(entityName: EntityName<object>, data: { id: string; code: string; name: string; stateConceptId: string; defaultPriority: number; defaultMaxAttempts: number; visibilityTimeoutS: number; deadLetterQueueId: string | undefined; createdAt: Date; updatedAt: Date; } & { ...; }, options: CreateOptions<...> & { ...; }): object', gave the following error.
+    Type 'number' is not assignable to type 'never'.
+  Overload 2 of 2, '(entityName: EntityName<object>, data: { id: string; code: string; name: string; stateConceptId: string; defaultPriority: number; defaultMaxAttempts: number; visibilityTimeoutS: number; deadLetterQueueId: string | undefined; createdAt: Date; updatedAt: Date; } & { ...; }, options: CreateOptions<...> & { ...; }): object', gave the following error.
+    Type 'number' is not assignable to type 'never'.
+  Overload 2 of 2, '(entityName: EntityName<object>, data: { id: string; code: string; name: string; stateConceptId: string; defaultPriority: number; defaultMaxAttempts: number; visibilityTimeoutS: number; deadLetterQueueId: string | undefined; createdAt: Date; updatedAt: Date; } & { ...; }, options: CreateOptions<...> & { ...; }): object', gave the following error.
+    Type 'number' is not assignable to type 'never'.
+  Overload 2 of 2, '(entityName: EntityName<object>, data: { id: string; code: string; name: string; stateConceptId: string; defaultPriority: number; defaultMaxAttempts: number; visibilityTimeoutS: number; deadLetterQueueId: string | undefined; createdAt: Date; updatedAt: Date; } & { ...; }, options: CreateOptions<...> & { ...; }): object', gave the following error.
+    Type 'string | undefined' is not assignable to type 'never'.
+      Type 'undefined' is not assignable to type 'never'.
+  Overload 2 of 2, '(entityName: EntityName<object>, data: { id: string; code: string; name: string; stateConceptId: string; defaultPriority: number; defaultMaxAttempts: number; visibilityTimeoutS: number; deadLetterQueueId: string | undefined; createdAt: Date; updatedAt: Date; } & { ...; }, options: CreateOptions<...> & { ...; }): object', gave the following error.
+    Type 'Date' is not assignable to type 'never'.
+  Overload 2 of 2, '(entityName: EntityName<object>, data: { id: string; code: string; name: string; stateConceptId: string; defaultPriority: number; defaultMaxAttempts: number; visibilityTimeoutS: number; deadLetterQueueId: string | undefined; createdAt: Date; updatedAt: Date; } & { ...; }, options: CreateOptions<...> & { ...; }): object', gave the following error.
+    Type 'Date' is not assignable to type 'never'.
+src/common/seed/messaging-seed.service.ts(8,8): error TS2307: Cannot find module '../../modules/messaging/entities' or its corresponding type declarations.
+src/common/seed/messaging-seed.service.ts(119,18): error TS2339: Property 'id' does not exist on type 'Loaded<object, never, never, never>'.
+src/common/seed/messaging-seed.service.ts(129,18): error TS2339: Property 'id' does not exist on type 'Loaded<object, never, never, never>'.
+src/common/seed/messaging-seed.service.ts(141,8): error TS2769: No overload matches this call.
+  Overload 2 of 2, '(entityName: EntityName<object>, data: { id: string; code: "EMAIL"; name: string; channelTypeConceptId: string; supportsTemplates: boolean; stateConceptId: string; createdAt: Date; updatedAt: Date; } & { ...; }, options: CreateOptions<...> & { ...; }): object', gave the following error.
+    Type 'string' is not assignable to type 'never'.
+  Overload 2 of 2, '(entityName: EntityName<object>, data: { id: string; code: "EMAIL"; name: string; channelTypeConceptId: string; supportsTemplates: boolean; stateConceptId: string; createdAt: Date; updatedAt: Date; } & { ...; }, options: CreateOptions<...> & { ...; }): object', gave the following error.
+    Type '"EMAIL"' is not assignable to type 'never'.
+  Overload 2 of 2, '(entityName: EntityName<object>, data: { id: string; code: "EMAIL"; name: string; channelTypeConceptId: string; supportsTemplates: boolean; stateConceptId: string; createdAt: Date; updatedAt: Date; } & { ...; }, options: CreateOptions<...> & { ...; }): object', gave the following error.
+    Type 'string' is not assignable to type 'never'.
+  Overload 2 of 2, '(entityName: EntityName<object>, data: { id: string; code: "EMAIL"; name: string; channelTypeConceptId: string; supportsTemplates: boolean; stateConceptId: string; createdAt: Date; updatedAt: Date; } & { ...; }, options: CreateOptions<...> & { ...; }): object', gave the following error.
+    Type 'string' is not assignable to type 'never'.
+  Overload 2 of 2, '(entityName: EntityName<object>, data: { id: string; code: "EMAIL"; name: string; channelTypeConceptId: string; supportsTemplates: boolean; stateConceptId: string; createdAt: Date; updatedAt: Date; } & { ...; }, options: CreateOptions<...> & { ...; }): object', gave the following error.
+    Type 'true' is not assignable to type 'never'.
+  Overload 2 of 2, '(entityName: EntityName<object>, data: { id: string; code: "EMAIL"; name: string; channelTypeConceptId: string; supportsTemplates: boolean; stateConceptId: string; createdAt: Date; updatedAt: Date; } & { ...; }, options: CreateOptions<...> & { ...; }): object', gave the following error.
+    Type 'string' is not assignable to type 'never'.
+  Overload 2 of 2, '(entityName: EntityName<object>, data: { id: string; code: "EMAIL"; name: string; channelTypeConceptId: string; supportsTemplates: boolean; stateConceptId: string; createdAt: Date; updatedAt: Date; } & { ...; }, options: CreateOptions<...> & { ...; }): object', gave the following error.
+    Type 'Date' is not assignable to type 'never'.
+  Overload 2 of 2, '(entityName: EntityName<object>, data: { id: string; code: "EMAIL"; name: string; channelTypeConceptId: string; supportsTemplates: boolean; stateConceptId: string; createdAt: Date; updatedAt: Date; } & { ...; }, options: CreateOptions<...> & { ...; }): object', gave the following error.
+    Type 'Date' is not assignable to type 'never'.
+src/common/seed/messaging-seed.service.ts(166,8): error TS2769: No overload matches this call.
+  Overload 2 of 2, '(entityName: EntityName<object>, data: { id: string; code: "DEFAULT_EMAIL"; name: string; providerTypeConceptId: string; stateConceptId: string; adapterCode: string; adapterVersion: string; ... 8 more ...; updatedAt: Date; } & { ...; }, options: CreateOptions<...> & { ...; }): object', gave the following error.
+    Type 'string' is not assignable to type 'never'.
+  Overload 2 of 2, '(entityName: EntityName<object>, data: { id: string; code: "DEFAULT_EMAIL"; name: string; providerTypeConceptId: string; stateConceptId: string; adapterCode: string; adapterVersion: string; ... 8 more ...; updatedAt: Date; } & { ...; }, options: CreateOptions<...> & { ...; }): object', gave the following error.
+    Type '"DEFAULT_EMAIL"' is not assignable to type 'never'.
+  Overload 2 of 2, '(entityName: EntityName<object>, data: { id: string; code: "DEFAULT_EMAIL"; name: string; providerTypeConceptId: string; stateConceptId: string; adapterCode: string; adapterVersion: string; ... 8 more ...; updatedAt: Date; } & { ...; }, options: CreateOptions<...> & { ...; }): object', gave the following error.
+    Type 'string' is not assignable to type 'never'.
+  Overload 2 of 2, '(entityName: EntityName<object>, data: { id: string; code: "DEFAULT_EMAIL"; name: string; providerTypeConceptId: string; stateConceptId: string; adapterCode: string; adapterVersion: string; ... 8 more ...; updatedAt: Date; } & { ...; }, options: CreateOptions<...> & { ...; }): object', gave the following error.
+    Type 'string' is not assignable to type 'never'.
+  Overload 2 of 2, '(entityName: EntityName<object>, data: { id: string; code: "DEFAULT_EMAIL"; name: string; providerTypeConceptId: string; stateConceptId: string; adapterCode: string; adapterVersion: string; ... 8 more ...; updatedAt: Date; } & { ...; }, options: CreateOptions<...> & { ...; }): object', gave the following error.
+    Type 'string' is not assignable to type 'never'.
+  Overload 2 of 2, '(entityName: EntityName<object>, data: { id: string; code: "DEFAULT_EMAIL"; name: string; providerTypeConceptId: string; stateConceptId: string; adapterCode: string; adapterVersion: string; ... 8 more ...; updatedAt: Date; } & { ...; }, options: CreateOptions<...> & { ...; }): object', gave the following error.
+    Type 'string' is not assignable to type 'never'.
+  Overload 2 of 2, '(entityName: EntityName<object>, data: { id: string; code: "DEFAULT_EMAIL"; name: string; providerTypeConceptId: string; stateConceptId: string; adapterCode: string; adapterVersion: string; ... 8 more ...; updatedAt: Date; } & { ...; }, options: CreateOptions<...> & { ...; }): object', gave the following error.
+    Type 'string' is not assignable to type 'never'.
+  Overload 2 of 2, '(entityName: EntityName<object>, data: { id: string; code: "DEFAULT_EMAIL"; name: string; providerTypeConceptId: string; stateConceptId: string; adapterCode: string; adapterVersion: string; ... 8 more ...; updatedAt: Date; } & { ...; }, options: CreateOptions<...> & { ...; }): object', gave the following error.
+    Type 'true' is not assignable to type 'never'.
+  Overload 2 of 2, '(entityName: EntityName<object>, data: { id: string; code: "DEFAULT_EMAIL"; name: string; providerTypeConceptId: string; stateConceptId: string; adapterCode: string; adapterVersion: string; ... 8 more ...; updatedAt: Date; } & { ...; }, options: CreateOptions<...> & { ...; }): object', gave the following error.
+    Type 'false' is not assignable to type 'never'.
+  Overload 2 of 2, '(entityName: EntityName<object>, data: { id: string; code: "DEFAULT_EMAIL"; name: string; providerTypeConceptId: string; stateConceptId: string; adapterCode: string; adapterVersion: string; ... 8 more ...; updatedAt: Date; } & { ...; }, options: CreateOptions<...> & { ...; }): object', gave the following error.
+    Type 'false' is not assignable to type 'never'.
+  Overload 2 of 2, '(entityName: EntityName<object>, data: { id: string; code: "DEFAULT_EMAIL"; name: string; providerTypeConceptId: string; stateConceptId: string; adapterCode: string; adapterVersion: string; ... 8 more ...; updatedAt: Date; } & { ...; }, options: CreateOptions<...> & { ...; }): object', gave the following error.
+    Type 'false' is not assignable to type 'never'.
+  Overload 2 of 2, '(entityName: EntityName<object>, data: { id: string; code: "DEFAULT_EMAIL"; name: string; providerTypeConceptId: string; stateConceptId: string; adapterCode: string; adapterVersion: string; ... 8 more ...; updatedAt: Date; } & { ...; }, options: CreateOptions<...> & { ...; }): object', gave the following error.
+    Type 'false' is not assignable to type 'never'.
+  Overload 2 of 2, '(entityName: EntityName<object>, data: { id: string; code: "DEFAULT_EMAIL"; name: string; providerTypeConceptId: string; stateConceptId: string; adapterCode: string; adapterVersion: string; ... 8 more ...; updatedAt: Date; } & { ...; }, options: CreateOptions<...> & { ...; }): object', gave the following error.
+    Type 'false' is not assignable to type 'never'.
+  Overload 2 of 2, '(entityName: EntityName<object>, data: { id: string; code: "DEFAULT_EMAIL"; name: string; providerTypeConceptId: string; stateConceptId: string; adapterCode: string; adapterVersion: string; ... 8 more ...; updatedAt: Date; } & { ...; }, options: CreateOptions<...> & { ...; }): object', gave the following error.
+    Type 'false' is not assignable to type 'never'.
+  Overload 2 of 2, '(entityName: EntityName<object>, data: { id: string; code: "DEFAULT_EMAIL"; name: string; providerTypeConceptId: string; stateConceptId: string; adapterCode: string; adapterVersion: string; ... 8 more ...; updatedAt: Date; } & { ...; }, options: CreateOptions<...> & { ...; }): object', gave the following error.
+    Type 'Date' is not assignable to type 'never'.
+  Overload 2 of 2, '(entityName: EntityName<object>, data: { id: string; code: "DEFAULT_EMAIL"; name: string; providerTypeConceptId: string; stateConceptId: string; adapterCode: string; adapterVersion: string; ... 8 more ...; updatedAt: Date; } & { ...; }, options: CreateOptions<...> & { ...; }): object', gave the following error.
+    Type 'Date' is not assignable to type 'never'.
+src/common/seed/messaging-seed.service.ts(215,8): error TS2769: No overload matches this call.
+  Overload 2 of 2, '(entityName: EntityName<object>, data: { id: string; code: "IN_APP"; name: string; channelTypeConceptId: string; supportsTemplates: boolean; stateConceptId: string; createdAt: Date; updatedAt: Date; } & { ...; }, options: CreateOptions<...> & { ...; }): object', gave the following error.
+    Type 'string' is not assignable to type 'never'.
+  Overload 2 of 2, '(entityName: EntityName<object>, data: { id: string; code: "IN_APP"; name: string; channelTypeConceptId: string; supportsTemplates: boolean; stateConceptId: string; createdAt: Date; updatedAt: Date; } & { ...; }, options: CreateOptions<...> & { ...; }): object', gave the following error.
+    Type '"IN_APP"' is not assignable to type 'never'.
+  Overload 2 of 2, '(entityName: EntityName<object>, data: { id: string; code: "IN_APP"; name: string; channelTypeConceptId: string; supportsTemplates: boolean; stateConceptId: string; createdAt: Date; updatedAt: Date; } & { ...; }, options: CreateOptions<...> & { ...; }): object', gave the following error.
+    Type 'string' is not assignable to type 'never'.
+  Overload 2 of 2, '(entityName: EntityName<object>, data: { id: string; code: "IN_APP"; name: string; channelTypeConceptId: string; supportsTemplates: boolean; stateConceptId: string; createdAt: Date; updatedAt: Date; } & { ...; }, options: CreateOptions<...> & { ...; }): object', gave the following error.
+    Type 'string' is not assignable to type 'never'.
+  Overload 2 of 2, '(entityName: EntityName<object>, data: { id: string; code: "IN_APP"; name: string; channelTypeConceptId: string; supportsTemplates: boolean; stateConceptId: string; createdAt: Date; updatedAt: Date; } & { ...; }, options: CreateOptions<...> & { ...; }): object', gave the following error.
+    Type 'false' is not assignable to type 'never'.
+  Overload 2 of 2, '(entityName: EntityName<object>, data: { id: string; code: "IN_APP"; name: string; channelTypeConceptId: string; supportsTemplates: boolean; stateConceptId: string; createdAt: Date; updatedAt: Date; } & { ...; }, options: CreateOptions<...> & { ...; }): object', gave the following error.
+    Type 'string' is not assignable to type 'never'.
+  Overload 2 of 2, '(entityName: EntityName<object>, data: { id: string; code: "IN_APP"; name: string; channelTypeConceptId: string; supportsTemplates: boolean; stateConceptId: string; createdAt: Date; updatedAt: Date; } & { ...; }, options: CreateOptions<...> & { ...; }): object', gave the following error.
+    Type 'Date' is not assignable to type 'never'.
+  Overload 2 of 2, '(entityName: EntityName<object>, data: { id: string; code: "IN_APP"; name: string; channelTypeConceptId: string; supportsTemplates: boolean; stateConceptId: string; createdAt: Date; updatedAt: Date; } & { ...; }, options: CreateOptions<...> & { ...; }): object', gave the following error.
+    Type 'Date' is not assignable to type 'never'.
+src/common/seed/messaging-seed.service.ts(251,8): error TS2769: No overload matches this call.
+  Overload 2 of 2, '(entityName: EntityName<object>, data: { id: string; code: "DEFAULT_IN_APP"; name: string; providerTypeConceptId: string; stateConceptId: string; adapterCode: string; adapterVersion: string; ... 8 more ...; updatedAt: Date; } & { ...; }, options: CreateOptions<...> & { ...; }): object', gave the following error.
+    Type 'string' is not assignable to type 'never'.
+  Overload 2 of 2, '(entityName: EntityName<object>, data: { id: string; code: "DEFAULT_IN_APP"; name: string; providerTypeConceptId: string; stateConceptId: string; adapterCode: string; adapterVersion: string; ... 8 more ...; updatedAt: Date; } & { ...; }, options: CreateOptions<...> & { ...; }): object', gave the following error.
+    Type '"DEFAULT_IN_APP"' is not assignable to type 'never'.
+  Overload 2 of 2, '(entityName: EntityName<object>, data: { id: string; code: "DEFAULT_IN_APP"; name: string; providerTypeConceptId: string; stateConceptId: string; adapterCode: string; adapterVersion: string; ... 8 more ...; updatedAt: Date; } & { ...; }, options: CreateOptions<...> & { ...; }): object', gave the following error.
+    Type 'string' is not assignable to type 'never'.
+  Overload 2 of 2, '(entityName: EntityName<object>, data: { id: string; code: "DEFAULT_IN_APP"; name: string; providerTypeConceptId: string; stateConceptId: string; adapterCode: string; adapterVersion: string; ... 8 more ...; updatedAt: Date; } & { ...; }, options: CreateOptions<...> & { ...; }): object', gave the following error.
+    Type 'string' is not assignable to type 'never'.
+  Overload 2 of 2, '(entityName: EntityName<object>, data: { id: string; code: "DEFAULT_IN_APP"; name: string; providerTypeConceptId: string; stateConceptId: string; adapterCode: string; adapterVersion: string; ... 8 more ...; updatedAt: Date; } & { ...; }, options: CreateOptions<...> & { ...; }): object', gave the following error.
+    Type 'string' is not assignable to type 'never'.
+  Overload 2 of 2, '(entityName: EntityName<object>, data: { id: string; code: "DEFAULT_IN_APP"; name: string; providerTypeConceptId: string; stateConceptId: string; adapterCode: string; adapterVersion: string; ... 8 more ...; updatedAt: Date; } & { ...; }, options: CreateOptions<...> & { ...; }): object', gave the following error.
+    Type 'string' is not assignable to type 'never'.
+  Overload 2 of 2, '(entityName: EntityName<object>, data: { id: string; code: "DEFAULT_IN_APP"; name: string; providerTypeConceptId: string; stateConceptId: string; adapterCode: string; adapterVersion: string; ... 8 more ...; updatedAt: Date; } & { ...; }, options: CreateOptions<...> & { ...; }): object', gave the following error.
+    Type 'string' is not assignable to type 'never'.
+  Overload 2 of 2, '(entityName: EntityName<object>, data: { id: string; code: "DEFAULT_IN_APP"; name: string; providerTypeConceptId: string; stateConceptId: string; adapterCode: string; adapterVersion: string; ... 8 more ...; updatedAt: Date; } & { ...; }, options: CreateOptions<...> & { ...; }): object', gave the following error.
+    Type 'true' is not assignable to type 'never'.
+  Overload 2 of 2, '(entityName: EntityName<object>, data: { id: string; code: "DEFAULT_IN_APP"; name: string; providerTypeConceptId: string; stateConceptId: string; adapterCode: string; adapterVersion: string; ... 8 more ...; updatedAt: Date; } & { ...; }, options: CreateOptions<...> & { ...; }): object', gave the following error.
+    Type 'false' is not assignable to type 'never'.
+  Overload 2 of 2, '(entityName: EntityName<object>, data: { id: string; code: "DEFAULT_IN_APP"; name: string; providerTypeConceptId: string; stateConceptId: string; adapterCode: string; adapterVersion: string; ... 8 more ...; updatedAt: Date; } & { ...; }, options: CreateOptions<...> & { ...; }): object', gave the following error.
+    Type 'false' is not assignable to type 'never'.
+  Overload 2 of 2, '(entityName: EntityName<object>, data: { id: string; code: "DEFAULT_IN_APP"; name: string; providerTypeConceptId: string; stateConceptId: string; adapterCode: string; adapterVersion: string; ... 8 more ...; updatedAt: Date; } & { ...; }, options: CreateOptions<...> & { ...; }): object', gave the following error.
+    Type 'false' is not assignable to type 'never'.
+  Overload 2 of 2, '(entityName: EntityName<object>, data: { id: string; code: "DEFAULT_IN_APP"; name: string; providerTypeConceptId: string; stateConceptId: string; adapterCode: string; adapterVersion: string; ... 8 more ...; updatedAt: Date; } & { ...; }, options: CreateOptions<...> & { ...; }): object', gave the following error.
+    Type 'false' is not assignable to type 'never'.
+  Overload 2 of 2, '(entityName: EntityName<object>, data: { id: string; code: "DEFAULT_IN_APP"; name: string; providerTypeConceptId: string; stateConceptId: string; adapterCode: string; adapterVersion: string; ... 8 more ...; updatedAt: Date; } & { ...; }, options: CreateOptions<...> & { ...; }): object', gave the following error.
+    Type 'false' is not assignable to type 'never'.
+  Overload 2 of 2, '(entityName: EntityName<object>, data: { id: string; code: "DEFAULT_IN_APP"; name: string; providerTypeConceptId: string; stateConceptId: string; adapterCode: string; adapterVersion: string; ... 8 more ...; updatedAt: Date; } & { ...; }, options: CreateOptions<...> & { ...; }): object', gave the following error.
+    Type 'false' is not assignable to type 'never'.
+  Overload 2 of 2, '(entityName: EntityName<object>, data: { id: string; code: "DEFAULT_IN_APP"; name: string; providerTypeConceptId: string; stateConceptId: string; adapterCode: string; adapterVersion: string; ... 8 more ...; updatedAt: Date; } & { ...; }, options: CreateOptions<...> & { ...; }): object', gave the following error.
+    Type 'Date' is not assignable to type 'never'.
+  Overload 2 of 2, '(entityName: EntityName<object>, data: { id: string; code: "DEFAULT_IN_APP"; name: string; providerTypeConceptId: string; stateConceptId: string; adapterCode: string; adapterVersion: string; ... 8 more ...; updatedAt: Date; } & { ...; }, options: CreateOptions<...> & { ...; }): object', gave the following error.
+    Type 'Date' is not assignable to type 'never'.
+src/common/seed/messaging-seed.service.ts(297,8): error TS2769: No overload matches this call.
+  Overload 2 of 2, '(entityName: EntityName<object>, data: { id: string; providerId: string; channelId: string; tenantId: string; priority: number; stateConceptId: string; adapterConfigVersion: number; ... 4 more ...; updatedAt: Date; } & { ...; }, options: CreateOptions<...> & { ...; }): object', gave the following error.
+    Type 'string' is not assignable to type 'never'.
+  Overload 2 of 2, '(entityName: EntityName<object>, data: { id: string; providerId: string; channelId: string; tenantId: string; priority: number; stateConceptId: string; adapterConfigVersion: number; ... 4 more ...; updatedAt: Date; } & { ...; }, options: CreateOptions<...> & { ...; }): object', gave the following error.
+    Type 'string' is not assignable to type 'never'.
+  Overload 2 of 2, '(entityName: EntityName<object>, data: { id: string; providerId: string; channelId: string; tenantId: string; priority: number; stateConceptId: string; adapterConfigVersion: number; ... 4 more ...; updatedAt: Date; } & { ...; }, options: CreateOptions<...> & { ...; }): object', gave the following error.
+    Type 'string' is not assignable to type 'never'.
+  Overload 2 of 2, '(entityName: EntityName<object>, data: { id: string; providerId: string; channelId: string; tenantId: string; priority: number; stateConceptId: string; adapterConfigVersion: number; ... 4 more ...; updatedAt: Date; } & { ...; }, options: CreateOptions<...> & { ...; }): object', gave the following error.
+    Type 'string' is not assignable to type 'never'.
+  Overload 2 of 2, '(entityName: EntityName<object>, data: { id: string; providerId: string; channelId: string; tenantId: string; priority: number; stateConceptId: string; adapterConfigVersion: number; ... 4 more ...; updatedAt: Date; } & { ...; }, options: CreateOptions<...> & { ...; }): object', gave the following error.
+    Type 'number' is not assignable to type 'never'.
+  Overload 2 of 2, '(entityName: EntityName<object>, data: { id: string; providerId: string; channelId: string; tenantId: string; priority: number; stateConceptId: string; adapterConfigVersion: number; ... 4 more ...; updatedAt: Date; } & { ...; }, options: CreateOptions<...> & { ...; }): object', gave the following error.
+    Type 'string' is not assignable to type 'never'.
+  Overload 2 of 2, '(entityName: EntityName<object>, data: { id: string; providerId: string; channelId: string; tenantId: string; priority: number; stateConceptId: string; adapterConfigVersion: number; ... 4 more ...; updatedAt: Date; } & { ...; }, options: CreateOptions<...> & { ...; }): object', gave the following error.
+    Type 'number' is not assignable to type 'never'.
+  Overload 2 of 2, '(entityName: EntityName<object>, data: { id: string; providerId: string; channelId: string; tenantId: string; priority: number; stateConceptId: string; adapterConfigVersion: number; ... 4 more ...; updatedAt: Date; } & { ...; }, options: CreateOptions<...> & { ...; }): object', gave the following error.
+    Type 'string' is not assignable to type 'never'.
+  Overload 2 of 2, '(entityName: EntityName<object>, data: { id: string; providerId: string; channelId: string; tenantId: string; priority: number; stateConceptId: string; adapterConfigVersion: number; ... 4 more ...; updatedAt: Date; } & { ...; }, options: CreateOptions<...> & { ...; }): object', gave the following error.
+    Type 'number' is not assignable to type 'never'.
+  Overload 2 of 2, '(entityName: EntityName<object>, data: { id: string; providerId: string; channelId: string; tenantId: string; priority: number; stateConceptId: string; adapterConfigVersion: number; ... 4 more ...; updatedAt: Date; } & { ...; }, options: CreateOptions<...> & { ...; }): object', gave the following error.
+    Type 'Date' is not assignable to type 'never'.
+  Overload 2 of 2, '(entityName: EntityName<object>, data: { id: string; providerId: string; channelId: string; tenantId: string; priority: number; stateConceptId: string; adapterConfigVersion: number; ... 4 more ...; updatedAt: Date; } & { ...; }, options: CreateOptions<...> & { ...; }): object', gave the following error.
+    Type 'Date' is not assignable to type 'never'.
+  Overload 2 of 2, '(entityName: EntityName<object>, data: { id: string; providerId: string; channelId: string; tenantId: string; priority: number; stateConceptId: string; adapterConfigVersion: number; ... 4 more ...; updatedAt: Date; } & { ...; }, options: CreateOptions<...> & { ...; }): object', gave the following error.
+    Type 'Date' is not assignable to type 'never'.
+src/common/seed/messaging-seed.service.ts(339,8): error TS2769: No overload matches this call.
+  Overload 2 of 2, '(entityName: EntityName<object>, data: { id: string; providerId: string; channelId: string; tenantId: string; priority: number; stateConceptId: string; adapterConfigVersion: number; ... 4 more ...; updatedAt: Date; } & { ...; }, options: CreateOptions<...> & { ...; }): object', gave the following error.
+    Type 'string' is not assignable to type 'never'.
+  Overload 2 of 2, '(entityName: EntityName<object>, data: { id: string; providerId: string; channelId: string; tenantId: string; priority: number; stateConceptId: string; adapterConfigVersion: number; ... 4 more ...; updatedAt: Date; } & { ...; }, options: CreateOptions<...> & { ...; }): object', gave the following error.
+    Type 'string' is not assignable to type 'never'.
+  Overload 2 of 2, '(entityName: EntityName<object>, data: { id: string; providerId: string; channelId: string; tenantId: string; priority: number; stateConceptId: string; adapterConfigVersion: number; ... 4 more ...; updatedAt: Date; } & { ...; }, options: CreateOptions<...> & { ...; }): object', gave the following error.
+    Type 'string' is not assignable to type 'never'.
+  Overload 2 of 2, '(entityName: EntityName<object>, data: { id: string; providerId: string; channelId: string; tenantId: string; priority: number; stateConceptId: string; adapterConfigVersion: number; ... 4 more ...; updatedAt: Date; } & { ...; }, options: CreateOptions<...> & { ...; }): object', gave the following error.
+    Type 'string' is not assignable to type 'never'.
+  Overload 2 of 2, '(entityName: EntityName<object>, data: { id: string; providerId: string; channelId: string; tenantId: string; priority: number; stateConceptId: string; adapterConfigVersion: number; ... 4 more ...; updatedAt: Date; } & { ...; }, options: CreateOptions<...> & { ...; }): object', gave the following error.
+    Type 'number' is not assignable to type 'never'.
+  Overload 2 of 2, '(entityName: EntityName<object>, data: { id: string; providerId: string; channelId: string; tenantId: string; priority: number; stateConceptId: string; adapterConfigVersion: number; ... 4 more ...; updatedAt: Date; } & { ...; }, options: CreateOptions<...> & { ...; }): object', gave the following error.
+    Type 'string' is not assignable to type 'never'.
+  Overload 2 of 2, '(entityName: EntityName<object>, data: { id: string; providerId: string; channelId: string; tenantId: string; priority: number; stateConceptId: string; adapterConfigVersion: number; ... 4 more ...; updatedAt: Date; } & { ...; }, options: CreateOptions<...> & { ...; }): object', gave the following error.
+    Type 'number' is not assignable to type 'never'.
+  Overload 2 of 2, '(entityName: EntityName<object>, data: { id: string; providerId: string; channelId: string; tenantId: string; priority: number; stateConceptId: string; adapterConfigVersion: number; ... 4 more ...; updatedAt: Date; } & { ...; }, options: CreateOptions<...> & { ...; }): object', gave the following error.
+    Type 'string' is not assignable to type 'never'.
+  Overload 2 of 2, '(entityName: EntityName<object>, data: { id: string; providerId: string; channelId: string; tenantId: string; priority: number; stateConceptId: string; adapterConfigVersion: number; ... 4 more ...; updatedAt: Date; } & { ...; }, options: CreateOptions<...> & { ...; }): object', gave the following error.
+    Type 'number' is not assignable to type 'never'.
+  Overload 2 of 2, '(entityName: EntityName<object>, data: { id: string; providerId: string; channelId: string; tenantId: string; priority: number; stateConceptId: string; adapterConfigVersion: number; ... 4 more ...; updatedAt: Date; } & { ...; }, options: CreateOptions<...> & { ...; }): object', gave the following error.
+    Type 'Date' is not assignable to type 'never'.
+  Overload 2 of 2, '(entityName: EntityName<object>, data: { id: string; providerId: string; channelId: string; tenantId: string; priority: number; stateConceptId: string; adapterConfigVersion: number; ... 4 more ...; updatedAt: Date; } & { ...; }, options: CreateOptions<...> & { ...; }): object', gave the following error.
+    Type 'Date' is not assignable to type 'never'.
+  Overload 2 of 2, '(entityName: EntityName<object>, data: { id: string; providerId: string; channelId: string; tenantId: string; priority: number; stateConceptId: string; adapterConfigVersion: number; ... 4 more ...; updatedAt: Date; } & { ...; }, options: CreateOptions<...> & { ...; }): object', gave the following error.
+    Type 'Date' is not assignable to type 'never'.
+src/common/seed/module-concepts.ts(18,41): error TS2307: Cannot find module '../../modules/community/community.concepts' or its corresponding type declarations.
+src/common/seed/seed.module.ts(38,8): error TS2307: Cannot find module '../../modules/messaging/entities' or its corresponding type declarations.
+src/common/seed/seed.module.ts(52,31): error TS2307: Cannot find module '../../modules/messaging/entities' or its corresponding type declarations.
+src/common/storage/storage-lifecycle-concurrency.spec.ts(3,33): error TS2307: Cannot find module '../../modules/messaging/entities/queued_jobs.entity' or its corresponding type declarations.
+src/common/storage/storage-lifecycle-concurrency.spec.ts(4,34): error TS2307: Cannot find module '../../modules/messaging/repositories/queues.repository' or its corresponding type declarations.
+src/common/storage/storage-lifecycle-concurrency.spec.ts(84,32): error TS7006: Parameter 'tx' implicitly has an 'any' type.
+src/common/storage/storage-lifecycle-concurrency.spec.ts(88,14): error TS7006: Parameter 'tx' implicitly has an 'any' type.
+src/common/storage/storage-lifecycle-concurrency.spec.ts(88,18): error TS7006: Parameter 'key' implicitly has an 'any' type.
+src/common/storage/storage-lifecycle-concurrency.spec.ts(91,53): error TS7006: Parameter 'tx' implicitly has an 'any' type.
+src/common/storage/storage-lifecycle-concurrency.spec.ts(91,57): error TS7006: Parameter 'data' implicitly has an 'any' type.
+src/common/storage/storage-lifecycle-coordinator.service.spec.ts(3,34): error TS2307: Cannot find module '../../modules/messaging/repositories/queues.repository' or its corresponding type declarations.
+src/common/storage/storage-lifecycle-coordinator.service.spec.ts(4,33): error TS2307: Cannot find module '../../modules/messaging/entities/queued_jobs.entity' or its corresponding type declarations.
+src/common/storage/storage-lifecycle-coordinator.service.spec.ts(65,14): error TS7006: Parameter '_tx' implicitly has an 'any' type.
+src/common/storage/storage-lifecycle-coordinator.service.spec.ts(65,19): error TS7006: Parameter 'key' implicitly has an 'any' type.
+src/common/storage/storage-lifecycle-coordinator.service.spec.ts(68,53): error TS7006: Parameter '_tx' implicitly has an 'any' type.
+src/common/storage/storage-lifecycle-coordinator.service.spec.ts(68,58): error TS7006: Parameter 'data' implicitly has an 'any' type.
+src/common/storage/storage-lifecycle-coordinator.service.ts(6,34): error TS2307: Cannot find module '../../modules/messaging/repositories/queues.repository' or its corresponding type declarations.
+src/common/storage/storage-lifecycle-coordinator.service.ts(7,33): error TS2307: Cannot find module '../../modules/messaging/entities/queued_jobs.entity' or its corresponding type declarations.
+src/common/storage/storage-lifecycle-coordinator.service.ts(401,18): error TS7006: Parameter 'job' implicitly has an 'any' type.
+src/common/storage/storage-lifecycle-coordinator.service.ts(402,15): error TS7006: Parameter 'job' implicitly has an 'any' type.
+src/common/storage/storage-lifecycle-coordinator.service.ts(403,18): error TS7006: Parameter 'intent' implicitly has an 'any' type.
+src/common/storage/storage-lifecycle.module.ts(3,34): error TS2307: Cannot find module '../../modules/messaging/repositories/queues.repository' or its corresponding type declarations.
+src/common/storage/storage-worker-publication.service.ts(19,28): error TS2307: Cannot find module '../../modules/messaging/entities/queued_jobs.entity' or its corresponding type declarations.
+src/common/storage/storage-worker-publication.service.ts(55,26): error TS2339: Property 'payloadJson' does not exist on type 'Loaded<object, never, never, never>'.
+src/common/storage/storage-worker-publication.service.ts(60,11): error TS2339: Property 'tenantId' does not exist on type 'Loaded<object, never, never, never>'.
+src/common/storage/storage-worker-publication.service.ts(61,11): error TS2339: Property 'jobType' does not exist on type 'Loaded<object, never, never, never>'.
+src/common/storage/storage-worker-publication.service.ts(62,11): error TS2339: Property 'statusConceptId' does not exist on type 'Loaded<object, never, never, never>'.
+src/modules/accounting/accounting.module.ts(7,33): error TS2307: Cannot find module '../messaging/messaging.module' or its corresponding type declarations.
+src/modules/accounting/services/practitioner-accounting.service.ts(24,38): error TS2307: Cannot find module '../../messaging/services' or its corresponding type declarations.
+src/modules/audio_assets/audio-assets.module.ts(4,33): error TS2307: Cannot find module '../messaging/messaging.module' or its corresponding type declarations.
+src/modules/audio_assets/infrastructure/audio-job-queue.adapter.ts(3,31): error TS2307: Cannot find module '../../messaging/services/queues.service' or its corresponding type declarations.
+src/modules/authz/authz.module.ts(41,33): error TS2307: Cannot find module '../messaging/messaging.module' or its corresponding type declarations.
+src/modules/authz/services/authz-care-relationships.service.ts(17,53): error TS2307: Cannot find module '../../messaging/services' or its corresponding type declarations.
+src/modules/authz/services/authz-clinical.service.ts(18,31): error TS2307: Cannot find module '../../messaging/services' or its corresponding type declarations.
+src/modules/automation/automation.module.ts(4,33): error TS2307: Cannot find module '../messaging/messaging.module' or its corresponding type declarations.
+src/modules/automation/services/agent-catalog.service.ts(12,31): error TS2307: Cannot find module '../../messaging/services' or its corresponding type declarations.
+src/modules/automation/services/automation-definition.service.ts(11,31): error TS2307: Cannot find module '../../messaging/services' or its corresponding type declarations.
+src/modules/automation/services/automation-execution.service.ts(13,31): error TS2307: Cannot find module '../../messaging/services' or its corresponding type declarations.
+src/modules/automation/services/record-automation.service.ts(11,31): error TS2307: Cannot find module '../../messaging/services' or its corresponding type declarations.
+src/modules/clinical/clinical.module.ts(9,33): error TS2307: Cannot find module '../messaging/messaging.module' or its corresponding type declarations.
+src/modules/clinical/services/clinical-notifications.service.ts(4,38): error TS2307: Cannot find module '../../messaging/services' or its corresponding type declarations.
+src/modules/clinical/services/clinical-notifications.service.ts(5,38): error TS2307: Cannot find module '../../messaging/notifications.contract' or its corresponding type declarations.
+src/modules/clinical/services/service-requests.service.ts(23,31): error TS2307: Cannot find module '../../messaging/services' or its corresponding type declarations.
+src/modules/community.RETIRED-SIM/community.module.ts(8,33): error TS2307: Cannot find module '../messaging/messaging.module' or its corresponding type declarations.
+src/modules/community.RETIRED-SIM/services/community-group-notifications.service.ts(6,38): error TS2307: Cannot find module '../../messaging/services' or its corresponding type declarations.
+src/modules/community.RETIRED-SIM/services/community-message-notifications.service.ts(4,38): error TS2307: Cannot find module '../../messaging/services' or its corresponding type declarations.
+src/modules/consent/adapters/messaging-practitioner-access-notice.adapter.ts(5,38): error TS2307: Cannot find module '../../messaging/services' or its corresponding type declarations.
+src/modules/consent/consent.module.ts(43,33): error TS2307: Cannot find module '../messaging/messaging.module' or its corresponding type declarations.
+src/modules/cross_store_consistency/cross_store_consistency.module.ts(4,33): error TS2307: Cannot find module '../messaging/messaging.module' or its corresponding type declarations.
+src/modules/cross_store_consistency/services/deletion.service.ts(11,31): error TS2307: Cannot find module '../../messaging/services' or its corresponding type declarations.
+src/modules/cross_store_consistency/services/projection-delivery.service.ts(11,31): error TS2307: Cannot find module '../../messaging/services' or its corresponding type declarations.
+src/modules/cross_store_consistency/services/reconciliation.service.ts(11,31): error TS2307: Cannot find module '../../messaging/services' or its corresponding type declarations.
+src/modules/cross_store_consistency/services/storage-maintenance.service.ts(8,31): error TS2307: Cannot find module '../../messaging/services' or its corresponding type declarations.
+src/modules/diagnostic_units/diagnostic_units.module.ts(3,33): error TS2307: Cannot find module '../community/community.module' or its corresponding type declarations.
+src/modules/diagnostic_units/services/diagnostic-units-search.service.ts(4,41): error TS2307: Cannot find module '../../community/services' or its corresponding type declarations.
+src/modules/diagnostic_units/services/diagnostic-units-search.service.ts(178,19): error TS7006: Parameter 'sitio' implicitly has an 'any' type.
+src/modules/diagnostic_units/services/diagnostic-units-search.service.ts(182,24): error TS7006: Parameter 'cronograma' implicitly has an 'any' type.
+src/modules/diagnostic_units/services/diagnostic-units-search.service.ts(187,22): error TS7006: Parameter 'concepto' implicitly has an 'any' type.
+src/modules/diagnostic_units/services/diagnostic-units-search.service.ts(190,19): error TS7006: Parameter 'sitio' implicitly has an 'any' type.
+src/modules/diagnostic_units/services/diagnostic-units-search.service.ts(193,24): error TS7006: Parameter 'cronograma' implicitly has an 'any' type.
+src/modules/diagnostic_units/services/diagnostic-units-search.service.ts(199,54): error TS18046: 's' is of type 'unknown'.
+src/modules/diagnostic_units/services/diagnostic-units-search.service.ts(200,57): error TS18046: 'o' is of type 'unknown'.
+src/modules/diagnostic_units/services/diagnostic-units-search.service.ts(202,7): error TS2322: Type 'unknown' is not assignable to type 'string | undefined'.
+src/modules/diagnostic_units/services/diagnostic-units-search.service.ts(214,42): error TS2345: Argument of type '{} | null' is not assignable to parameter of type 'string'.
+  Type 'null' is not assignable to type 'string'.
+src/modules/diagnostic_units/services/diagnostic-units-search.service.ts(216,29): error TS2345: Argument of type '{} | null' is not assignable to parameter of type 'string'.
+  Type 'null' is not assignable to type 'string'.
+src/modules/diagnostic_units/services/diagnostic-units-search.service.ts(230,24): error TS2345: Argument of type 'unknown' is not assignable to parameter of type 'CatalogConcepts | undefined'.
+src/modules/diagnostic_units/services/diagnostic-units.service.ts(35,48): error TS2307: Cannot find module '../../community/services' or its corresponding type declarations.
+src/modules/directory/directory.module.ts(3,33): error TS2307: Cannot find module '../community/community.module' or its corresponding type declarations.
+src/modules/directory/services/directory-tenants.service.ts(37,48): error TS2307: Cannot find module '../../community/services' or its corresponding type declarations.
+src/modules/directory/services/directory-tenants.service.ts(38,22): error TS2307: Cannot find module '../../community/community.concepts' or its corresponding type declarations.
+src/modules/graph_intelligence/graph_intelligence.module.ts(4,33): error TS2307: Cannot find module '../messaging/messaging.module' or its corresponding type declarations.
+src/modules/graph_intelligence/services/graph-analytics.service.ts(10,31): error TS2307: Cannot find module '../../messaging/services' or its corresponding type declarations.
+src/modules/graph_intelligence/services/graph-projection.service.ts(10,31): error TS2307: Cannot find module '../../messaging/services' or its corresponding type declarations.
+src/modules/graph_intelligence/services/graph-traversal.service.ts(11,31): error TS2307: Cannot find module '../../messaging/services' or its corresponding type declarations.
+src/modules/iam/iam.module.ts(6,33): error TS2307: Cannot find module '../messaging/messaging.module' or its corresponding type declarations.
+src/modules/iam/services/iam-email-verification.service.ts(6,38): error TS2307: Cannot find module '../../messaging/services' or its corresponding type declarations.
+src/modules/iam/services/iam-organization-self-registration.service.ts(17,38): error TS2307: Cannot find module '../../messaging/services' or its corresponding type declarations.
+src/modules/iam/services/iam-password-reset.service.ts(13,38): error TS2307: Cannot find module '../../messaging/services' or its corresponding type declarations.
+src/modules/iam/services/iam-patient-self-registration.service.ts(39,38): error TS2307: Cannot find module '../../messaging/services' or its corresponding type declarations.
+src/modules/iam/services/iam-practitioner-self-registration.service.ts(47,38): error TS2307: Cannot find module '../../messaging/services' or its corresponding type declarations.
+src/modules/identity_assurance/identity_assurance.module.ts(8,33): error TS2307: Cannot find module '../community/community.module' or its corresponding type declarations.
+src/modules/identity_assurance/services/identity-verification-effects.service.ts(12,46): error TS2307: Cannot find module '../../community/services' or its corresponding type declarations.
+src/modules/identity_assurance/services/identity-verification-effects.service.ts(13,22): error TS2307: Cannot find module '../../community/community.concepts' or its corresponding type declarations.
+src/modules/lakehouse/lakehouse.module.ts(9,33): error TS2307: Cannot find module '../messaging/messaging.module' or its corresponding type declarations.
+src/modules/lakehouse/services/lakehouse-catalog.service.ts(10,31): error TS2307: Cannot find module '../../messaging/services' or its corresponding type declarations.
+src/modules/lakehouse/services/research-release.service.ts(11,31): error TS2307: Cannot find module '../../messaging/services' or its corresponding type declarations.
+src/modules/lakehouse/services/transformation.service.ts(10,31): error TS2307: Cannot find module '../../messaging/services' or its corresponding type declarations.
+src/modules/pharma_lab/services/pharma-social.service.ts(12,45): error TS2307: Cannot find module '../../community/entities' or its corresponding type declarations.
+src/modules/pharma_lab/services/pharma-social.service.ts(13,22): error TS2307: Cannot find module '../../community/community.concepts' or its corresponding type declarations.
+src/modules/pharma_lab/services/pharma-social.service.ts(179,25): error TS2769: No overload matches this call.
+  Overload 2 of 2, '(entityName: EntityName<object>, data: { createdAt: Date; updatedAt: Date; createdByUserId?: string | undefined; updatedByUserId?: string | undefined; authorPublicProfileId: any; ... 6 more ...; publishedAt: Date; } & { ...; }, options: CreateOptions<...> & { ...; }): object', gave the following error.
+    Type 'string' is not assignable to type 'never'.
+  Overload 2 of 2, '(entityName: EntityName<object>, data: { createdAt: Date; updatedAt: Date; createdByUserId?: string | undefined; updatedByUserId?: string | undefined; authorPublicProfileId: any; ... 6 more ...; publishedAt: Date; } & { ...; }, options: CreateOptions<...> & { ...; }): object', gave the following error.
+    Type 'true' is not assignable to type 'never'.
+  Overload 2 of 2, '(entityName: EntityName<object>, data: { createdAt: Date; updatedAt: Date; createdByUserId?: string | undefined; updatedByUserId?: string | undefined; authorPublicProfileId: any; ... 6 more ...; publishedAt: Date; } & { ...; }, options: CreateOptions<...> & { ...; }): object', gave the following error.
+    Type 'Date' is not assignable to type 'never'.
+src/modules/pharma_lab/services/pharma-social.service.ts(195,40): error TS2339: Property 'id' does not exist on type 'object'.
+src/modules/pharma_lab/services/pharma-social.service.ts(266,24): error TS2769: No overload matches this call.
+  Overload 2 of 2, '(entityName: EntityName<object>, data: { createdAt: Date; updatedAt: Date; createdByUserId?: string | undefined; updatedByUserId?: string | undefined; tenantId: string; ... 5 more ...; commentsDefaultEnabled: boolean; } & { ...; }, options: CreateOptions<...> & { ...; }): object', gave the following error.
+    Type 'string' is not assignable to type 'never'.
+  Overload 2 of 2, '(entityName: EntityName<object>, data: { createdAt: Date; updatedAt: Date; createdByUserId?: string | undefined; updatedByUserId?: string | undefined; tenantId: string; ... 5 more ...; commentsDefaultEnabled: boolean; } & { ...; }, options: CreateOptions<...> & { ...; }): object', gave the following error.
+    Type 'string' is not assignable to type 'never'.
+  Overload 2 of 2, '(entityName: EntityName<object>, data: { createdAt: Date; updatedAt: Date; createdByUserId?: string | undefined; updatedByUserId?: string | undefined; tenantId: string; ... 5 more ...; commentsDefaultEnabled: boolean; } & { ...; }, options: CreateOptions<...> & { ...; }): object', gave the following error.
+    Type 'string' is not assignable to type 'never'.
+  Overload 2 of 2, '(entityName: EntityName<object>, data: { createdAt: Date; updatedAt: Date; createdByUserId?: string | undefined; updatedByUserId?: string | undefined; tenantId: string; ... 5 more ...; commentsDefaultEnabled: boolean; } & { ...; }, options: CreateOptions<...> & { ...; }): object', gave the following error.
+    Type 'string' is not assignable to type 'never'.
+  Overload 2 of 2, '(entityName: EntityName<object>, data: { createdAt: Date; updatedAt: Date; createdByUserId?: string | undefined; updatedByUserId?: string | undefined; tenantId: string; ... 5 more ...; commentsDefaultEnabled: boolean; } & { ...; }, options: CreateOptions<...> & { ...; }): object', gave the following error.
+    Type 'true' is not assignable to type 'never'.
+src/modules/pharmacy/repositories/pharmacy-marketplace.repository.ts(4,22): error TS2307: Cannot find module '../../community/community.concepts' or its corresponding type declarations.
+src/modules/pharmacy_inventory/pharmacy_inventory.module.ts(6,33): error TS2307: Cannot find module '../messaging/messaging.module' or its corresponding type declarations.
+src/modules/pharmacy_inventory/services/pharmacy-order-notifications.service.ts(4,38): error TS2307: Cannot find module '../../messaging/services' or its corresponding type declarations.
+src/modules/pharmacy_inventory/services/pharmacy-order-notifications.service.ts(5,38): error TS2307: Cannot find module '../../messaging/notifications.contract' or its corresponding type declarations.
+src/modules/pharmacy_inventory/services/pharmacy-orders.service.ts(18,31): error TS2307: Cannot find module '../../messaging/services' or its corresponding type declarations.
+src/modules/practice/services/practice-workforce.service.ts(9,32): error TS2307: Cannot find module '../../community/entities' or its corresponding type declarations.
+src/modules/practice/services/practice-workforce.service.ts(10,22): error TS2307: Cannot find module '../../community/community.concepts' or its corresponding type declarations.
+src/modules/practice/services/practice-workforce.service.ts(292,29): error TS2339: Property 'targetId' does not exist on type 'Loaded<object, never, never, never>'.
+src/modules/practice/services/practice-workforce.service.ts(292,54): error TS2339: Property 'avatarFileId' does not exist on type 'Loaded<object, never, never, never>'.
+src/modules/procedures_perioperative/procedures_perioperative.module.ts(23,33): error TS2307: Cannot find module '../messaging/messaging.module' or its corresponding type declarations.
+src/modules/procedures_perioperative/services/periop-cases.service.ts(19,31): error TS2307: Cannot find module '../../messaging/services' or its corresponding type declarations.
+src/modules/profiles/adapters/messaging-affiliation-notice.adapter.ts(5,38): error TS2307: Cannot find module '../../messaging/services' or its corresponding type declarations.
+src/modules/profiles/profiles.module.ts(51,33): error TS2307: Cannot find module '../messaging/messaging.module' or its corresponding type declarations.
+src/modules/time_series/services/series-ingest.service.ts(9,31): error TS2307: Cannot find module '../../messaging/services' or its corresponding type declarations.
+src/modules/time_series/services/timescale-admin.service.ts(8,31): error TS2307: Cannot find module '../../messaging/services' or its corresponding type declarations.
+src/modules/time_series/services/vital-normalization.service.ts(9,31): error TS2307: Cannot find module '../../messaging/services' or its corresponding type declarations.
+src/modules/time_series/time_series.module.ts(6,33): error TS2307: Cannot find module '../messaging/messaging.module' or its corresponding type declarations.
+src/modules/vector_rag/services/embedding-pipeline.service.ts(11,31): error TS2307: Cannot find module '../../messaging/services' or its corresponding type declarations.
+src/modules/vector_rag/services/retrieval.service.ts(10,31): error TS2307: Cannot find module '../../messaging/services' or its corresponding type declarations.
+src/modules/vector_rag/services/vector-governance.service.ts(10,31): error TS2307: Cannot find module '../../messaging/services' or its corresponding type declarations.
+src/modules/vector_rag/services/vector-maintenance.service.ts(10,31): error TS2307: Cannot find module '../../messaging/services' or its corresponding type declarations.
+src/modules/vector_rag/vector_rag.module.ts(4,33): error TS2307: Cannot find module '../messaging/messaging.module' or its corresponding type declarations.
+src/modules/workflow/services/state-machine-definition.service.ts(12,31): error TS2307: Cannot find module '../../messaging/services' or its corresponding type declarations.
+src/modules/workflow/services/transition-execution.service.ts(13,31): error TS2307: Cannot find module '../../messaging/services' or its corresponding type declarations.
+src/modules/workflow/services/workflow-instances.service.ts(12,31): error TS2307: Cannot find module '../../messaging/services' or its corresponding type declarations.
+src/modules/workflow/workflow.module.ts(4,33): error TS2307: Cannot find module '../messaging/messaging.module' or its corresponding type declarations.
+test/integration/hardening/mch-028.int-spec.ts(5,40): error TS2307: Cannot find module '../../../src/modules/community/repositories' or its corresponding type declarations.
+test/integration/outbox-relay-race.int-spec.ts(4,31): error TS2307: Cannot find module '../../src/modules/messaging/services' or its corresponding type declarations.
+test/integration/storage-purge-dispatch.int-spec.ts(13,34): error TS2307: Cannot find module '../../src/modules/messaging/repositories/queues.repository' or its corresponding type declarations.
+test/integration/storage-purge-dispatch.int-spec.ts(14,33): error TS2307: Cannot find module '../../src/modules/messaging/entities/queued_jobs.entity' or its corresponding type declarations.
+test/integration/storage-purge-dispatch.int-spec.ts(172,14): error TS7006: Parameter 'tx' implicitly has an 'any' type.
+test/integration/storage-purge-dispatch.int-spec.ts(172,18): error TS7006: Parameter 'key' implicitly has an 'any' type.
+test/integration/storage-purge-dispatch.int-spec.ts(177,32): error TS7006: Parameter 'tx' implicitly has an 'any' type.

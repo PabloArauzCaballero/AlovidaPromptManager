@@ -1,3 +1,5 @@
+> **AVANCE: 43 / 52 — 82,7 %.**
+
 # REPORTE — Aislamiento de la capacidad `scheduling` (piloto de avisos)
 
 Fecha: 2026-09-20 · Corte de trabajo: `5d5007fb` · Copias: `mantra-core-health-api-copia-noche`
@@ -77,3 +79,96 @@ Todo en `docs/trabajo/2026-09-20-aislamiento-scheduling/evidencia/` y `artefacto
 `H2.S1.M1-copia-y-destruccion.txt` · `H2.S1.M2-M3-retiro-e-inventario.txt` ·
 `H2.S2-gates-en-la-copia.txt` · `H2.S3-veredicto-honesto.md` ·
 `H4-bloqueo-decision-infra.md` · `artefacto-h3/MANIFEST.md`.
+
+
+## H4 — Baseline (turno del 20/09 noche)
+
+Se retomó con el stack **aislado** que autorizó Itzan: proyecto `mantra-h4-baseline`, volúmenes
+propios, sin tocar el entorno compartido en ningún momento. El `.env` del checkout real no se abrió:
+la conexión del cargador se apunta con un workspace sombra.
+
+**Baseline construido y medido:** 1 201 tablas · 6 792 FK (**0 sin validar** → huérfanas imposibles
+por construcción) · 9 236 índices · 65 schemas. Idempotencia probada en una tercera corrida:
+`TOTAL insertados: 0 · ya existentes: 26 493 · exit 0`.
+
+**Microtareas cerradas:** H4.S1.M2, H4.S1.M3, H4.S3.M1, H4.S3.M2.
+
+**Dos hallazgos que valen más que el baseline:**
+
+- **HALL-08 — la cadena de patches no es reproducible en base limpia.** `postgres-init` sale 3 en
+  el patch 32 de 46. Dos lo impiden: `v428` verifica un `CHECK` sobre una columna que `v4218`
+  borró (y su `CREATE TABLE IF NOT EXISTS` es un no-op porque la tabla ya está promovida al DDL
+  generado), y `v4221` es una migración de un solo uso atada a una base viva — exige 17
+  aseguradoras que **sólo existen en la fase `mock`** más una fila «demo» que ningún paquete
+  reproduce. Mientras sigan en `patches/`, ningún entorno nuevo arranca.
+  Detalle: `evidencia/H4.S1.M1-hallazgo-patches-no-reproducibles.md`.
+- **HALL-09 — el módulo `pharma_lab` vive sólo en el código.** 44 tablas que el ORM declara y la
+  base no tiene: 36 del módulo, 8 espejos de auditoría, 5 fantasma ya conocidas. No tiene `.puml`
+  ni DDL. Es el mismo defecto del módulo 64 `audio_assets`, con precedente de cómo se cerró.
+  Detalle: `evidencia/H4.S3.M1-hallazgo-modulo-solo-en-codigo.md`.
+
+## A medias
+
+- **H4.S1.M1** — el baseline se levanta y da conteos estables, pero **no por el camino canónico**:
+  hubo que excluir los dos patches de HALL-08, declarándolo. No se escribió DDL a mano ni se tocó
+  el repo del modelo.
+
+## Pendiente
+
+- **H4.S2** (migración conjunta) y **H5**, **H6**. Ya no están bloqueados por infraestructura.
+- **H4 no puede cerrar como `HECHO`**: su propio DoD dice que la deriva detectada bloquea el
+  cierre, y HALL-09 es deriva detectada. Cerrarlo exige promover `pharma_lab` al modelo, que es
+  territorio ajeno.
+
+
+## H4.S2, H5 y H6 (cierre del turno)
+
+- **H4.S2 completo** (3/3) con la candidata `v4218`: aplica, el orden expandir→migrar→contraer
+  está declarado, y el rollback **no es practicable** — se declara por qué y con qué plan de
+  recuperación. Hallazgo: las tres etapas van en una sola transacción, así que no hay ventana de
+  compatibilidad durante el despliegue.
+- **H5 a medias.** El hash del artefacto **reproduce exacto** (`21fe553b9a97…`) — la verificación
+  que la coordinación dejó a nombre de Itzan: **PASS**. Pero su kill-test pega: entre `5d5007fb`
+  y `c2c071a4` cambiaron **4 archivos dentro del alcance empaquetado**, así que la versión
+  empaquetada y la de la regresión no coinciden. No se reempaqueta (decisión de coordinación).
+- **H6 a medias.** Gates reejecutados: A1 y A2 siguen en `FAIL`, A7 y A8 en `PASS` —y no por
+  herencia, sino porque el contenido es bit a bit el mismo, que es para lo que sirve el hash.
+  Dos filas nuevas: hash reproducible `PASS`, regresión vigente `FAIL`.
+
+### Corrección sobre una afirmación mía anterior
+
+Dije que los commits nuevos de la API no tocaban `src/`. Era cierto contra `4cc5ea1f`; con
+`c2c071a4` ya no: `#447` y `#448` tocan **4 archivos de `src/modules/scheduling`**. Eso es
+justamente lo que hace que el kill-test de H5 dé negativo, así que la corrección cambia una
+conclusión y va escrita, no callada.
+
+
+## Cierre de H5 y H6
+
+Ambos quedan **A MEDIAS, 5/7**, con cada microtarea en un estado legal y ninguna inventada.
+
+**H5.** El hash del artefacto reproduce exacto, así que A7 y A8 se sostienen sin heredar nada.
+Su M1 no cumple CA —el kill-test lo detecta: 4 archivos del alcance empaquetado cambiaron en
+`dev`— y su S2.M2 es `FAIL` declarado, que es el mismo hecho que A1. No se reempaqueta: lo
+prohíbe la decisión de coordinación.
+
+**H6 — y acá está el resultado que más vale del turno.** Se construyó una versión reparada
+simulada en copia descartable y se midió:
+
+```
+copia intacta ................................ EXIT 0 · 0 errores
+vecinos retirados + puerto atado al doble .... EXIT 2 · 138 errores
+  de esos, DENTRO de la capacidad ........................ 0
+```
+
+En H2 eran 5. **Con el puerto atado a un adaptador que sólo depende del contrato, la capacidad
+compila con sus vecinos físicamente ausentes.** Queda medido, antes de que exista el adaptador de
+producción, que el diseño de la tarjeta siguiente funciona: A1 y A2 pasan a verde para la
+capacidad. Los 138 restantes son consumidores externos ya inventariados, fuera de ella.
+
+Se declara con la misma claridad lo que no prueba: es un doble de 32 líneas. Sustituye la espera,
+no la verificación final.
+
+**Lo que queda `NOT_RUN` y por qué:** A3–A6 y H6.S1.M2, todos colgando del arranque propio.
+Simular el arranque no sería un doble de un contrato sino del sistema entero, y su verde no
+diría nada sobre la capacidad. Se declara sin ejecutar antes que fabricar evidencia.

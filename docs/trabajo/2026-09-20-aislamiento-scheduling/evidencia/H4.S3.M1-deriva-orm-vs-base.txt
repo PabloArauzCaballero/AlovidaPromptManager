@@ -1,0 +1,67 @@
+=== H4.S3.M1 · DERIVA: entidades del ORM vs base del baseline ===
+=== 2026-09-20T19:04:24-04:00 · base mantra_h4_baseline ===
+
+entidades con tabla declarada : 1166
+tablas en la base             : 1201
+
+--- TABLA-AUSENTE (la entidad la declara, la base no la tiene) ---
+audit.informational_materials_history
+audit.medical_visitors_history
+audit.pharma_lab_staff_history
+audit.pharma_labs_history
+audit.pharma_products_history
+audit.pharmacovigilance_reports_history
+audit.regulatory_documents_history
+audit.visit_requests_history
+organization_extensions.data_use_agreements
+payments.cash_registers
+pharma_lab.doctor_visit_blocks
+pharma_lab.doctor_visit_policies
+pharma_lab.doctor_visit_windows
+pharma_lab.informational_materials
+pharma_lab.material_approvals
+pharma_lab.material_assets
+pharma_lab.medical_visitor_products
+pharma_lab.medical_visitor_specialties
+pharma_lab.medical_visitors
+pharma_lab.pharma_cost_allocations
+pharma_lab.pharma_lab_link_events
+pharma_lab.pharma_lab_notices
+pharma_lab.pharma_lab_staff
+pharma_lab.pharma_labs
+pharma_lab.pharma_products
+pharma_lab.pharmacovigilance_actions
+pharma_lab.pharmacovigilance_reports
+pharma_lab.regulatory_document_access_log
+pharma_lab.regulatory_document_versions
+pharma_lab.regulatory_documents
+pharma_lab.visit_ratings
+pharma_lab.visit_record_materials
+pharma_lab.visit_records
+pharma_lab.visit_request_events
+pharma_lab.visit_request_topics
+pharma_lab.visit_requests
+pharma_lab.visit_survey_answers
+pharma_lab.visit_survey_questions
+pharma_lab.visit_survey_responses
+pharma_lab.visit_surveys
+pharma_lab.visitor_post_submissions
+pharmacy_inventory.purchase_quotations
+procedures_perioperative.instrument_sets
+system_ops.accepted_risks
+    total: 44
+
+--- EN LA BASE Y SIN ENTIDAD (informativo, no es deriva bloqueante) ---
+cross_store_consistency.cache_invalidation_jobs
+cross_store_consistency.deletion_verifications
+cross_store_consistency.projection_checkpoints
+cross_store_consistency.projection_consumers
+cross_store_consistency.projection_dead_letters
+cross_store_consistency.projection_definitions
+cross_store_consistency.projection_delivery_attempts
+cross_store_consistency.projection_drift_events
+cross_store_consistency.projection_repair_jobs
+cross_store_consistency.projection_subscriptions
+cross_store_consistency.reconciliation_items
+cross_store_consistency.schema_migration_jobs
+    total: 79
