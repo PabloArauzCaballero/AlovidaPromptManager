@@ -226,7 +226,7 @@ arreglarlo: `PRODUCT_BUG` · `TEST_BUG` · `ENVIRONMENT` · `DATA` · `EXTERNAL`
 | PR-24 | NO EJECUTADO |  | - |
 | PR-25 | NO EJECUTADO |  | - |
 | PR-26 | NO EJECUTADO |  | - |
-| PR-27 | **FALLA** | PB1, paciente de **otra organizacion**, lee la cita de PA1: **`200` con el cuerpo completo** (`patientProfileId`, `resourceId`, `bookableSlotId`, `startAt`) | `PRODUCT_BUG` — ver nota de version |
+| PR-27 | **PASA** (tras reconstruir la imagen) | Contra la imagen vieja: `200` con el cuerpo completo. Contra `c2c071a4`: **`403 FORBIDDEN` sin datos** | — |
 | PR-28 | BLOQUEADO | Necesita una cita **confirmada**; las dos de PA1 estan canceladas y el rechazo seria por estado, no por permisos | - |
 | PR-29 | BLOQUEADO | Igual que PR-28 | - |
 | PR-30 | BLOQUEADO | Primer intento dio `400` por payload mal armado mio, no por permisos | - |
@@ -246,7 +246,7 @@ haría falta explicar es que salgan en verde.
 | PR-10 | No hay paso de facturación | El cliente lo pide en 3.6 y no está implementado |
 | PR-14 | No se puede salir de la espera | El estado existe en el código y nadie lo usa |
 | PR-25 | El correo no llega | 16 avisos enviados, 0 entregados, medido |
-| PR-27…PR-31 | Rojos **si corrés contra el contenedor viejo** | La imagen es anterior al arreglo de autorización |
+| PR-27…PR-31 | Rojos **si corrés contra una imagen anterior al arreglo** | Verificado: con la imagen de 32 h daba `200`; reconstruida desde `dev`, `403` sin datos |
 
 ## §8 — Corrida del 2026-09-20
 
@@ -258,9 +258,9 @@ PA1 y PB1, abiertas escribiendo documento y clave en la pantalla de ingreso.
 
 | | |
 |---|---|
-| Con resultado | **6** de 35 |
-| `PASA` | 4 — PR-01, PR-02, PR-03, PR-22 |
-| `FALLA` | **1 — PR-27** |
+| Con resultado | **6** de 35 (PR-27 medido dos veces: antes y después del rebuild) |
+| `PASA` | 5 — PR-01, PR-02, PR-03, PR-22 y **PR-27 en la reejecución** |
+| `FALLA` | 1 — PR-27, **corregido al reconstruir la imagen** |
 | `BLOQUEADO` | 4 — PR-07, PR-28, PR-29, PR-30 |
 | Sin ejecutar | 25 |
 | Errores de consola | 0 |
@@ -272,9 +272,18 @@ PB1 —paciente registrado en otra organización, con la sesión de **su** organ
 pantalla de selección— pidió la cita de PA1 y recibió **`200` con el cuerpo entero**:
 `patientProfileId`, `resourceId`, `bookableSlotId`, `appointmentId`, `startAt`.
 
-Es el defecto que el arreglo de hoy corrige, y la API que respondió es la imagen **anterior** al
-arreglo. O sea: **el caso vale como detector**. Queda pendiente reconstruir la imagen y volver a
-correr PR-27; ahí tiene que dar rechazo.
+Es el defecto que el arreglo de hoy corrige, y la API que respondió era la imagen **anterior** al
+arreglo. O sea: el caso vale como detector.
+
+**Reejecutado el mismo día contra la imagen reconstruida desde `dev` (commit `c2c071a4`):**
+
+| Imagen | Respuesta a la misma petición |
+|---|---|
+| Anterior al arreglo | `200` · `patientProfileId`, `resourceId`, `bookableSlotId`, `startAt` |
+| `c2c071a4` | **`403 FORBIDDEN`** · «No cuenta con autorización de tutoría sobre el paciente indicado» · **sin datos** |
+
+Misma usuaria, misma sesión abierta en pantalla, mismos encabezados. **El arreglo queda verificado
+de punta a punta por navegador**, no sólo por pruebas unitarias.
 
 ### H-2 · Al paciente no se le ofrece ningún profesional con cupos
 

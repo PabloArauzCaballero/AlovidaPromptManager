@@ -137,3 +137,48 @@ LO QUE NO SE EJECUTO
 --------------------
 25 de 35 casos. Casi todos dependen de PR-07: sin una cita confirmada no hay
 que cancelar, que mover ni sobre que avisar una demora.
+
+REEJECUCION DE PR-27 TRAS RECONSTRUIR LA IMAGEN (2026-09-21 01:07 UTC)
+======================================================================
+Motivo: la primera corrida midio contra una imagen de 32 horas, anterior al
+arreglo de autorizacion. Reconstruir era condicion para que el resultado
+significara algo.
+
+  cd mantra-core-health-api
+  git pull --ff-only origin dev      -> Already up to date (c2c071a4)
+  GIT_COMMIT=$(git rev-parse HEAD) BUILD_TIME=$(date -Iseconds) \
+    docker compose build api         -> exit 0, "Image mantra-redesa-api:local Built"
+  docker compose up -d --no-deps --force-recreate api
+
+Log de arranque del contenedor:
+  "Arranca vdesconocido · commit c2c071a4 · construido 2026-09-20T20:53:34-04:00
+   · entorno development"
+  commit: c2c071a4ad322ff0a9f6cc705b90238f3d2887bb
+El arreglo esta en ese arbol:
+  scheduling-bookings.service.ts:1259 y :1417  (comentarios H3.S1.M2)
+  scheduling-bookings.service.ts:2460 y :2900  ("Esta cita es de otra agenda")
+
+Misma prueba, mismo navegador, misma sesion de PB1 abierta en pantalla,
+encabezados Authorization + x-tenant-id tomados de una peticion real de la app:
+
+  ANTES (imagen de 32 h):
+    GET /scheduling/bookings/d4e31932-... -> 200
+    {"id":"<uuid>","patientProfileId":"<uuid>","resourceId":"<uuid>",
+     "bookableSlotId":"<uuid>","appointmentId":"<uuid>",...
+
+  DESPUES (commit c2c071a4):
+    GET /scheduling/bookings/d4e31932-... -> 403
+    {"code":"FORBIDDEN","message":"No cuenta con autorizacion de tutoria sobre
+     el paciente indicado","correlationId":"135",
+     "timestamp":"2026-09-21T01:07:36.065Z","path":"/scheduling/bookings/<uuid>"}
+
+VEREDICTO: [PASA] PR-27. El arreglo queda verificado de punta a punta por
+navegador, con sesion real, no solo por pruebas unitarias.
+
+ESTADO DE LOS REPOSITORIOS AL CERRAR
+------------------------------------
+mantra-core-health-api : rama dev, limpia, c2c071a4 (Already up to date)
+mantra-core-health     : adelantada a origin/dev (estaba 5 atras, 0 adelante),
+                         limpia
+AlovidaPromptManager   : rama marcelo/features-a-trabajar, adelantada a
+                         origin/main (PR #14 se mergeo 2026-09-20T22:24:33Z)
