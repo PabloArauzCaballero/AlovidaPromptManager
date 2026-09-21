@@ -59,6 +59,36 @@ mergearlo**; y el estado anterior se restaura de inmediato.
 **DoD:** salida del merge con `--admin` + revert aplicado + `main` en verde otra vez.
 **Estado:** BLOQUEADO — el clasificador del modo automático de la sesión rechazó **las dos vías**: el merge con `--admin` (`Security Weaken`) y el push directo a la rama protegida (`CI Bypass`). No fue GitHub ni permisos del token.
 
+> ### Regla 65 — por qué este bloqueo no se cierra contra un doble, y qué lo cerraría
+> *(Declaración agregada el 2026-09-20 al cerrar el reparto de las 24 correcciones: el candado
+> `blocker_gate.py` señaló estas cuatro microtareas y tenía razón en que el plan no declaraba nada.)*
+>
+> **Es el caso de excepción de la regla 65: una acción destructiva sobre algo compartido.** Lo que
+> H2.S1.M2 pide es mergear un PR con el check en rojo a `main` protegida, y la alternativa
+> (`git push` directo) lleva un commit sin checks aprobados a esa misma rama. No es «esperar a que
+> otro entregue lo suyo» —eso no sería excepción—: es debilitar a propósito la protección de una
+> rama que usa todo el equipo. **`DECISION_REQUIRED`: autorizarlo o ejecutarlo es del dueño del
+> repositorio, no de la sesión.**
+>
+> **Y sí hay forma de cerrarlo sin tocar `main`, que es lo que la regla 65 pide de verdad.** El
+> contrato de lo que falta se puede nombrar: es el comportamiento de la protección de rama de GitHub
+> —`required_status_checks` y `enforce_admins: false`— frente a tres entradas. Se simula en un
+> repositorio descartable con la misma configuración, nunca en el compartido:
+>
+> | Nivel | Entrada | Qué tiene que pasar |
+> |---|---|---|
+> | **ACEPTADO** | PR con el check en verde, merge sin `--admin` | mergea (ya demostrado en H1, sobre el repo real) |
+> | **LIMITE** | PR con el check en rojo, merge **sin** `--admin` | `mergeStateStatus: BLOCKED` y el merge falla |
+> | **INVALIDO** | PR con el check en rojo, merge **con** `--admin` | atraviesa la protección — que es justo lo que hay que demostrar, y por eso va en un repo descartable |
+>
+> **Estado de esa simulación: `NOT_RUN`.** Crear un repositorio en GitHub es una acción hacia afuera
+> y no estaba en el alcance del turno que la descubrió ni en el del que escribió esta nota. Queda
+> como el siguiente paso concreto, con su contrato ya escrito: no hace falta volver a pensarlo.
+>
+> Mientras eso no corra, el peldaño del salteo sigue siendo **`UNKNOWN`**, y la inferencia de que
+> `enforce_admins: false` deja pasar al dueño **no se presenta como verificación** (es lo que el
+> `REPORTE.md` de este trabajo ya declara).
+
 ### H2.S1 — Ejercitar el salteo y deshacerlo enseguida
 
 **CA:** Se demuestra el salteo **y** `main` vuelve a verde en la misma secuencia, sin quedar rota.

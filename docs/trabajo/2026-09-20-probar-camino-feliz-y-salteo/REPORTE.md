@@ -6,6 +6,18 @@
 - Avance: **7 / 11 microtareas HECHO (63,6 %)** — calculado con `plan_status.py`. Las 4 que faltan
   son todas la misma: el salteo de admin, rechazado por el clasificador de la sesión.
 
+
+> **Nota agregada el 2026-09-20 desde otro turno** (el reparto de las 24 correcciones del doctor).
+> El candado `blocker_gate.py` señaló las cuatro microtareas de `H2.S1` al cerrar esa sesión, y tenía
+> razón: el plan las dejaba en `BLOQUEADO` sin declarar nada de lo que la regla 65 exige. Se agregó
+> esa declaración al `PLAN.md` — es el caso de excepción («acción destructiva sobre algo compartido»,
+> `DECISION_REQUIRED` del dueño del repositorio) **más** el contrato de la simulación que sí lo
+> cerraría, en un repositorio descartable y no en `main`, con sus tres niveles escritos.
+> **Esa simulación sigue `NOT_RUN`**: crear un repositorio en GitHub es una acción hacia afuera y no
+> estaba en el alcance de ninguno de los dos turnos. **Nada de este reporte cambió de veredicto**: el
+> salteo de admin sigue sin ejecutarse y su peldaño sigue siendo `UNKNOWN`.
+
+
 ## La noticia que importa
 
 **La protección no traba al equipo.** Un PR limpio pasó el check y **mergeó solo**, sin `--admin`
