@@ -1,0 +1,10 @@
+=== H2.S2.M3 / H6.S1.M2 — aceptación local de la capacidad (laboratorio de Pablo) ===
+Fecha: 2026-09-21T00:37:06Z · contra PostgreSQL real en 127.0.0.1:5434
+
+$ yarn test:integration --testPathPatterns='agenda-notice|port-only-adapter'
+Test Suites: 3 passed, 3 total
+Tests:       29 passed, 29 total
+
+$ yarn test --testPathPatterns=src/modules/scheduling
+Test Suites: 19 passed, 19 total
+Tests:       467 passed, 467 total

@@ -1,0 +1,37 @@
+=== H5.S1.M1 — el desfase entre el corte del artefacto (5d5007fb) y dev, medido ===
+$ git diff --stat 5d5007fb..origin/dev -- src/modules/scheduling/
+ .../ports/agenda-notice-reason.catalog.spec.ts     | 120 ++++++++++++
+ .../ports/agenda-notice-reason.catalog.ts          | 211 +++++++++++++++++++++
+ .../services/scheduling-bookings.service.spec.ts   | 129 +++++++++++++
+ .../services/scheduling-bookings.service.ts        |  46 +++++
+ 4 files changed, 506 insertions(+)
+
+$ git diff --name-only 5d5007fb..origin/dev -- src/ database/ | wc -l  (todo el alcance de producto)
+8
+
+--- ¿alguno de esos toca el contrato del puerto? ---
+ .../ports/agenda-notice-reason.catalog.spec.ts     | 120 ++++++++++++
+ .../ports/agenda-notice-reason.catalog.ts          | 211 +++++++++++++++++++++
+ 2 files changed, 331 insertions(+)
+(vacío = el contrato y la composición NO cambiaron desde el corte del artefacto)
+--- el archivo del contrato, byte a byte, corte vs dev ---
+blob en 5d5007fb : 4e262747735005c16262a907de3caf09a1268923
+blob en dev      : 4e262747735005c16262a907de3caf09a1268923
+IDENTICOS -> el contrato del puerto NO cambió desde el corte del artefacto
+
+--- scheduling.module.ts (la composición) ---
+IDENTICOS -> la composición tampoco cambió
+
+--- qué ES lo nuevo bajo ports/ ---
+/**
+ * Catálogo de razones de no-entrega de `AgendaNoticePort`.
+ *
+ * ## Por qué existe
+ *
+ * El contrato `AgendaNoticePort v1.0.0` declara `skippedReason` como `string?`
+ * y su propia ficha lo dice sin rodeos: es **texto libre, no un código
+ * estable**, así que compararlo por contenido es frágil. La consecuencia no es
+ * estética: hoy «falló la base, reintentá» y «este destinatario no tiene
+ * cuenta, no insistas» vuelven por el mismo campo y con la misma forma. Nadie
+ * —ni una persona leyendo un log ni un `if`— puede distinguirlas.
+ *

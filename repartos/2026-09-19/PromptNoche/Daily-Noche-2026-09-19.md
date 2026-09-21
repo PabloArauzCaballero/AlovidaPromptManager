@@ -1,7 +1,12 @@
 # Daily — turno noche — 2026-09-19
 
-> **Estado:** `IN_PROGRESS`. Se escribió **al repartir**, antes del turno.
-> Todo «resultado» está en `NOT_RUN` a propósito: **nadie ejecutó nada todavía**.
+> **AVANCE DEL TURNO: 261 / 262 — 99,6 %.**
+> Pablo 53/53 · Ender 50/50 · Itzan 51/52 · Marcelo 54/54 · Justin 53/53.
+> La única sin `HECHO` es `H6.S2.M1` de Itzan, en `DESCARTADO` por decisión de coordinación.
+> **Cero microtareas en `BLOQUEADO`.**
+
+> **Estado:** `CERRADO` al 2026-09-20. Este documento se escribió al repartir, antes del turno;
+> las filas de resultado se fueron llenando con lo que cada carril ejecutó.
 
 - **Turno:** noche · **Fecha:** 2026-09-19 · **Paquete fuente:** `BACKEND_AUTONOMO_MANTRA`
 - **Requisitos del cliente:** [`REQUISITOS-CLIENTE-ALOVIDA.md`](../../../docs/requisitos/REQUISITOS-CLIENTE-ALOVIDA.md)
@@ -14,12 +19,12 @@
 |---|---|---|---:|---:|---:|---|
 | **Pablo** | [Corte, laboratorio del piloto y regresión de aislamiento](Pablo/Noche-PilotoDeAvisos.Backend/CorteLaboratorioYRegresion.md) | A | 6 | 18 | 53 | **53/53 — 100 %** · 0 `DESCARTADO` |
 | **Ender** | [El contrato del piloto: fijarlo, validarlo y gobernar su evolución](Ender/Noche-PilotoDeAvisos.Contrato/ContratoValidadorYCompatibilidad.md) | A | 6 | 18 | 50 | **50/50 — 100 %** · 0 `DESCARTADO` |
-| **Itzan** | [Composición, prueba de ausencia y baseline de la capacidad](Itzan/Noche-PilotoDeAvisos.Aislamiento/ComposicionAusenciaYBaseline.md) | A | 6 | 18 | 52 | `26 / 52` — H1 `HECHO`; H2 y H3 `A MEDIAS`; H4–H6 `BLOQUEADO` |
+| **Itzan** | [Composición, prueba de ausencia y baseline de la capacidad](Itzan/Noche-PilotoDeAvisos.Aislamiento/ComposicionAusenciaYBaseline.md) | A | 6 | 18 | 52 | **`51 / 52` — 98,1 %.** Los 6 hitos cerrados; 1 `DESCARTADO` (coordinación). H4–H6 se destrabaron el 20/09 |
 | **Marcelo** | [Recorrido del registro: selección, casos y aceptación](Marcelo/Noche-PilotoDeAvisos.Registro/RecorridoCasosYAceptacion.md) | B | 6 | 18 | 54 | **`COMPLETADO — 54/54`** · dictamen: `PRODUCT_ACCEPTANCE_NOT_VERIFIED`, 4 rojos abiertos |
 | **Justin** | [La relación agenda → mensajería: dobles, integración y regresión final](Justin/Noche-PilotoDeAvisos.Integracion/DoblesRelacionYRegresionFinal.md) | B | 6 | 18 | 53 | **53/53** (40/53 al cerrar el turno; las 13 restantes se cerraron el 20/09, PR #445) |
 | | | | **30** | **90** | **262** | |
 
-**Total del turno: 236 / 262 microtareas** (Pablo 53/53 · Ender 50/50 · Itzan 26/52 · Marcelo 54/54 · Justin 53/53). El avance se reporta `HECHO / total`, **nunca a ojo**.
+**Total del turno: 261 / 262 microtareas — 99,6 %** (Pablo 53/53 · Ender 50/50 · Itzan 51/52 · Marcelo 54/54 · Justin 53/53). El avance se reporta `HECHO / total`, **nunca a ojo**.
 
 > ⚠️ **Esto es más de lo que entra en una noche, y está dicho a propósito.** El alcance se entrega
 > completo y ordenado por dependencia. **Lo que no se cierre va `A MEDIAS`**, con qué anda, qué no
@@ -103,7 +108,7 @@ es el puerto, blob sha1 `4e262747735005c16262a907de3caf09a1268923`.
 |---|---|---|---|---|---|
 | Pablo | **53 / 53 — 100 %** | 6 / 6 | — | — (**0 `DESCARTADO`**) | [Pablo-Daily-Noche-2026-09-19.md](Pablo/Pablo-Daily-Noche-2026-09-19.md) — **H5 dejó un `PRODUCT_BUG` sistémico abierto para el equipo (no para su lote): el `MetadataError` de descubrimiento de entidades bloquea `bootstrapTestApp()` para toda integración full-app. 5 hipótesis probadas y descartadas —incluida la pista `Q-I3` de Itzan—, plan de acción en su [`ACTIONLOG.md`](Pablo/Noche-PilotoDeAvisos.Backend/entregables/ACTIONLOG.md) §3. El área quedó verificada contra su contrato en tres niveles, así que nada de P8 espera por ese bug** |
 | Ender | **50 / 50 — 100 %** | 6 / 6 | — | — (**0 `DESCARTADO`**: H3.S3 se reabrió al cumplirse su condición y se cerró con la ficha del segundo contrato) | [Ender-Daily-Noche-2026-09-19.md](Ender/Ender-Daily-Noche-2026-09-19.md) |
-| Itzan | `26 / 52` | 1 / 6 (H1) | H2 (6/9), H3 (6/7) | H4, H5, H6 | [Itzan-Daily-Noche-2026-09-19.md](Itzan/Itzan-Daily-Noche-2026-09-19.md) |
+| Itzan | **`51 / 52` — 98,1 %** | 6 / 6 | — | — (**0 `BLOQUEADO`**; 1 `DESCARTADO`: `H6.S2.M1`, coordinación decidió no reempaquetar, y el entregable se entregó igual midiendo la identidad del árbol final) | [Itzan-Daily-Noche-2026-09-19.md](Itzan/Itzan-Daily-Noche-2026-09-19.md) — **los tres hitos que estaban `BLOQUEADO` se cerraron el 20/09 aplicando la regla 65. H4 se ejecutó y dio negativo (patches no reproducibles desde base limpia), que es el entregable. H6 con el binding port-only: 0 errores dentro de `scheduling/` contra 5 sin él** |
 | Marcelo | **54 / 54** | 6 / 6 | — | — | [Marcelo-Daily-Noche-2026-09-19.md](Marcelo/Marcelo-Daily-Noche-2026-09-19.md) — **H3 confirmó por ejecución un `PRODUCT_BUG` de autorización (leer/cancelar/reprogramar la cita de otro paciente, incluso de otra organización) y lo dejó CORREGIDO, reverificado y mergeado: PR [api#447](https://github.com/mdavila-2001/mantra-core-health-api/pull/447). H4 ejercitó el recorrido de punta a punta sin un solo doble; el dictamen de H6 declara `PRODUCT_ACCEPTANCE_NOT_VERIFIED` con 4 rojos abiertos, dos de ellos de rastro de auditoría** |
 | Justin | **53 / 53** | 6 / 6 | — | — (las 13 pendientes se cerraron el 20/09; ver §8 de su daily) | [Justin-Daily-Noche-2026-09-19.md](Justin/Justin-Daily-Noche-2026-09-19.md) |
 

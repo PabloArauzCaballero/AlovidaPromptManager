@@ -34,6 +34,18 @@ Conteo verificado: `find . -type f | wc -l` → 117 archivos (código + evidenci
 
 ## H3.S1.M3 — Mapa de resolución
 
+> **Addendum 2026-09-20 — esta sección quedó desactualizada y se corrige acá.** Abajo se afirma
+> que *«no hay una versión hoy que cumpla a la vez "compila" y "no apunta a ningún vecino"»*.
+> **Ya la hay**: `test/lab/port-only-notice.adapter.ts` del carril de Pablo, con 11/11 en los tres
+> niveles del contrato. Medido de nuevo, el conjunto residual hacia los proveedores retirados son
+> **5 líneas en 3 archivos**, y las 5 cuelgan de una sola decisión de composición
+> (`scheduling.module.ts:142`). Con el binding port-only, el CA se cumple. La microtarea pasa de
+> `FAIL` a `HECHO (simulado)`. Medición completa:
+> `evidencia/H3.S1.M3-mapa-de-resolucion-corregido.md`.
+>
+> Lo de abajo **se conserva sin tocar**: era correcto cuando se escribió y es el registro de lo que
+> se midió ese día. Lo que caducó es la conclusión, no la observación.
+
 **No cumple el CA literal** ("ninguna ruta apunta al proveedor retirado"): este artefacto
 empaqueta el código **real** de `scheduling` (no la versión con vecinos retirados), así que
 SÍ contiene imports que apuntan a `messaging` y `community`:

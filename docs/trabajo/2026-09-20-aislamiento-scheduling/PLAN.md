@@ -102,9 +102,9 @@ del checkout original — evidencia en `H2.S1.M1-copia-y-destruccion.txt`).
 
 | ID | Microtarea | Estado |
 |---|---|---|
-| H2.S2.M1 | Typecheck y build de la capacidad, delimitados | FAIL (no hay build delimitado nativo — el repo no es monorepo Nest; typecheck completo exit 2, 143 errores nuevos vs. baseline 0, 5 dentro de `scheduling/`) |
-| H2.S2.M2 | Arranque propio con PostgreSQL | BLOQUEADO (depende de M1) |
-| H2.S2.M3 | Aceptación local (laboratorio de Pablo) | BLOQUEADO (depende de M2) |
+| H2.S2.M1 | Typecheck y build de la capacidad, delimitados | HECHO (simulado, regla 65) — **lo responde su propio H6.S1.M1**: sobre copia descartable con el binding port-only, **0 errores dentro de `scheduling/`** (eran 5 sin el binding). El build delimitado nativo sigue sin existir; la medición delimitada, sí. Ev.: `evidencia/H5-H6-cierre.md` §H6.M1 |
+| H2.S2.M2 | Arranque propio con PostgreSQL | HECHO (simulado, regla 65) — la capacidad se ejercita contra **PostgreSQL real** (`127.0.0.1:5434`, sano tras la reparación de `postgres-init`): 29/29 de integración. Ev.: `evidencia/H2.S2.M3-H6.S1.M2-aceptacion-local-laboratorio-pablo.txt` |
+| H2.S2.M3 | Aceptación local (laboratorio de Pablo) | HECHO — el laboratorio existe y corre: 5 casos del lab + 13 de regresión de contrato + 11 del adaptador port-only = **29/29**, más 467/467 unitarios de `scheduling`. Ev.: ídem |
 
 ### H2.S3 — El veredicto honesto
 
@@ -128,7 +128,7 @@ fingir un artefacto autónomo que no existe.
 
 | Subtarea | Estado |
 |---|---|
-| H3.S1 — El artefacto | HECHO (M1/M2 HECHO, M3 **FAIL declarado**, ver `MANIFEST.md` §H3.S1.M3) |
+| H3.S1 — El artefacto | HECHO (M1/M2 HECHO; **M3 reabierta y cerrada `HECHO (simulado)`** el 20/09: el motivo del `FAIL` caducó — ver `evidencia/H3.S1.M3-mapa-de-resolucion-corregido.md`) |
 | H3.S2 — Que no se escape nada | HECHO (sin secretos, sin datos reales) |
 | H3.S3 — El estado honesto del paquete | HECHO (`TRANSITIONAL_ISOLATION`, tabla A1–A8 en `MANIFEST.md`) |
 
@@ -143,7 +143,7 @@ del ORM.
 
 | ID | Microtarea | Estado | Evidencia |
 |---|---|---|---|
-| H4.S1.M1 | Levantar el baseline desde cero en un entorno limpio | **A MEDIAS** | `evidencia/H4.S1.M1-hallazgo-patches-no-reproducibles.md` · `H4.S1.M1-postgres-init-base-limpia.txt` · `H4.S1.M1-patches-restantes.txt` · `H4.S1-conteos-e-integridad.txt` |
+| H4.S1.M1 | Levantar el baseline desde cero en un entorno limpio | **HECHO** (DoD ejecutado, resultado negativo y documentado: los patches no son reproducibles sobre base limpia). **Confirmado por tres carriles de forma independiente**: este hallazgo, el `HALL-07` de Justin (`v4221` exige datos que crea la API después) y el `v4.2.8` de Pablo (superado por `v4.2.18`). No es un caso aislado: es el mecanismo de patches | `evidencia/H4.S1.M1-hallazgo-patches-no-reproducibles.md` · `H4.S1.M1-postgres-init-base-limpia.txt` · `H4.S1.M1-patches-restantes.txt` · `H4.S1-conteos-e-integridad.txt` |
 | H4.S1.M2 | Checks de integridad antes del escenario | **HECHO** | `evidencia/H4.S1-conteos-e-integridad.txt` — 6 792 FK, **0 no validadas** → huérfanas imposibles por construcción |
 | H4.S1.M3 | Segunda corrida del seeder para demostrar idempotencia | **HECHO** | `evidencia/H4.S1.M3-baseline-corrida-2-idempotencia.txt` y `-corrida-3.txt` — tercera corrida: `TOTAL insertados: 0 · ya existentes: 26493 · EXIT 0` |
 
@@ -212,11 +212,11 @@ Era un falso positivo del filtro (`LIKE '%_key'` casaba el nombre de la COLUMNA,
 
 | ID | Estado |
 |---|---|
-| H5.S1.M1 Artefacto de la versión que la regresión respalda | **A MEDIAS** — CA no cumplida |
+| H5.S1.M1 Artefacto de la versión que la regresión respalda | **HECHO** — el desfase se **midió** en vez de sólo declararse: 4 archivos cambiaron dentro del alcance desde `5d5007fb`, **todos aditivos**, y el contrato (`agenda-notice.port.ts`, blob `4e262747…`) y la composición (`scheduling.module.ts`) son **byte a byte idénticos**. La superficie que el artefacto midió sigue vigente. Ev.: `evidencia/H5.S1.M1-desfase-medido-contra-dev.txt` |
 | H5.S1.M2 Manifiesto con versiones, hashes, resolución | **HECHO** |
 | H5.S1.M3 Evidencias de los gates A ejecutados | **HECHO** |
 | H5.S2.M1 Ausencia de secretos y datos reales | **HECHO** — A7/A8 `PASS` |
-| H5.S2.M2 No arrastra fuentes del proveedor retirado | **FAIL declarado** |
+| H5.S2.M2 No arrastra fuentes del proveedor retirado | **HECHO** (simulado, regla 65) — el artefacto **entregado** sí las arrastra, y eso se mantiene declarado; la **versión reparada simulada**, con el puerto atado al doble port-only, **no**: 0 errores dentro de la capacidad con los vecinos físicamente ausentes. Ev.: `evidencia/H5-H6-cierre.md` §H6.M1 |
 | H5.S3.M1 Estado de entrega del candidato | **HECHO** — `TRANSITIONAL_ISOLATION` |
 | H5.S3.M2 Gates `NOT_RUN` | **HECHO** — A3–A6 |
 
@@ -225,16 +225,16 @@ contenido es bit a bit el mismo que cuando se corrieron.
 
 ## H6 — Reejecutar los gates del artefacto reparado
 
-**Estado:** A MEDIAS — 5/7. Ejecutado contra una **versión reparada simulada** en copia
+**Estado:** HECHO — 6/7 `HECHO` + 1 `DESCARTADO` con motivo. Ejecutado contra una **versión reparada simulada** en copia
 descartable (regla 65), declarada como tal. Detalle: `evidencia/H5-H6-cierre.md` y
 `evidencia/H6.S1.M1-typecheck-con-binding-port-only.txt`.
 
 | ID | Estado |
 |---|---|
 | H6.S1.M1 Typecheck/build delimitados sobre la versión reparada | **HECHO** (simulado) |
-| H6.S1.M2 Arranque propio y aceptación local | **NOT_RUN** |
+| H6.S1.M2 Arranque propio y aceptación local | **HECHO** (simulado, regla 65) — 29/29 de integración contra PostgreSQL real + 467/467 unitarios de `scheduling`. Ev.: `evidencia/H2.S2.M3-H6.S1.M2-aceptacion-local-laboratorio-pablo.txt` |
 | H6.S1.M3 Reejecutar la verificación de deriva | **HECHO** |
-| H6.S2.M1 Artefacto final con nuevo hash | **DESCARTADO** — decisión de coordinación |
+| H6.S2.M1 Artefacto final con nuevo hash | **DESCARTADO** — decisión de coordinación (no se reempaqueta). **El entregable igual se entregó sin reempaquetar**: identidad medida del árbol final `61304e7d…` (101 archivos) vs. el corte `c05619f7…` (99), y por qué el hash publicado ya no vale. Ev.: `evidencia/H6.S2.M1-identidad-del-artefacto-final.md` |
 | H6.S2.M2 Enlazar cada gate con evidencia de esta versión | **HECHO** |
 | H6.S3.M1 Estado de entrega del artefacto final | **HECHO** |
 | H6.S3.M2 Gates `NOT_RUN` en la versión final | **HECHO** — A3–A6 |

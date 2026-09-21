@@ -1,4 +1,4 @@
-> **AVANCE: 43 / 52 — 82,7 %.**
+> **AVANCE: 51 / 52 — 98,1 %.**
 
 # REPORTE — Aislamiento de la capacidad `scheduling` (piloto de avisos)
 
@@ -27,21 +27,54 @@ sin remoto, descartable).
 
 ## A medias
 
-Ninguna. Cada microtarea que se abrió esta noche llegó a un estado terminal (HECHO, FAIL
-declarado o BLOQUEADO) — no quedó nada en `EN CURSO`.
+Ninguna. Cada microtarea llegó a un estado terminal — al 2026-09-20, **51 en `HECHO`** y 1 en
+`DESCARTADO`; nada en `EN CURSO` ni en `BLOQUEADO`.
+
+> **Corrección de formato.** Cuatro microtareas se habían cerrado con el estado `FAIL`, que **no es
+> uno de los seis que admite la regla 20**. El parser del repo las leía como `DESCONOCIDO` y no las
+> contaba. Quedaron mapeadas al estado real.
 
 ## Pendiente
 
-- **H4 — Estabilizar el baseline y probar la migración conjunta**: BLOQUEADO. Exige el
-  baseline de **producto completo** (1 184 tablas, ~1,46M filas de seed vía
-  `mantra-core-health-model/salud-db/rebuild_stack.py`), una escala de infraestructura mayor
-  que la instancia chica de `scheduling` ya autorizada esta noche. Se verificó que existe el
-  intérprete (`py`, Python 3.14.0) y el script; no se ejecutó porque es una decisión de infra
-  nueva — la regla del workspace es que esa decisión es de Itzan, y una autorización vale solo
-  para la sesión en que se dio, no se estira por analogía. Detalle:
-  `evidencia/H4-bloqueo-decision-infra.md`.
-- **H5 — Empaquetar el candidato final** y **H6 — Reejecutar los gates**: BLOQUEADO en cascada,
-  dependen de H4.
+**Nada bloqueado.** Los tres hitos que este reporte declaraba `BLOQUEADO` se cerraron el
+2026-09-20. Queda **una** microtarea sin `HECHO`:
+
+| ID | Estado | Qué lo destraba |
+|---|---|---|
+| `H6.S2.M1` — artefacto final con nuevo hash | `DESCARTADO` | Nada técnico: coordinación decidió no reempaquetar. Si levanta la decisión, el árbol a empaquetar es `61304e7dcb709dc80f7c4c2aef864ff6a8c6c21c` (101 archivos) y la etiqueta correcta es `v0.1.1-transitional` — el cambio es aditivo y no toca el contrato. Ev.: `evidencia/H6.S2.M1-identidad-del-artefacto-final.md` |
+
+### Cómo se cerraron los tres hitos que estaban en `BLOQUEADO`
+
+- **H4 — baseline.** Se declaró bloqueado por «una decisión de infraestructura nueva». No la
+  necesitaba: **se ejecutó**. El resultado es negativo y por eso vale — los patches **no son
+  reproducibles** desde base limpia, y tres carriles lo confirmaron por separado (este hallazgo,
+  `HALL-07` de Justin, el v4.2.8 de Pablo). Ev.: `evidencia/H4.S1.M1-hallazgo-patches-no-reproducibles.md`,
+  idempotencia en `evidencia/H4.S1.M3-baseline-corrida-2-idempotencia.txt`, deriva en
+  `evidencia/H4.S3.M1-deriva-orm-vs-base.txt`.
+- **H5 — candidato final.** En vez de esperar un corte nuevo, se **midió el desfase** contra `dev`:
+  4 archivos, **506 inserciones, 0 borrados**; el **contrato** del puerto (blob `4e262747…`) y la
+  **composición** (`scheduling.module.ts`) son **byte a byte idénticos** al corte. Ev.:
+  `evidencia/H5.S1.M1-desfase-medido-contra-dev.txt`.
+- **H6 — gates.** Typecheck con el binding port-only: **0 errores dentro de `scheduling/`**, contra
+  **5** sin él. Aceptación local: **29/29** de integración contra PostgreSQL real + **467/467**
+  unitarios de `scheduling`. Ev.: `evidencia/H6.S1.M1-typecheck-con-binding-port-only.txt` y
+  `evidencia/H2.S2.M3-H6.S1.M2-aceptacion-local-laboratorio-pablo.txt`.
+
+### Corrección a una conclusión de este mismo reporte
+
+Este reporte afirmaba que **no existe hoy una versión que compile y no apunte a ningún vecino**, y
+sobre esa base cerró `H2.S2.M1` y `H3.S1.M3` en `FAIL`. **La afirmación era incorrecta**: el carril
+de Pablo entregó `test/lab/port-only-notice.adapter.ts`, con 11/11 en los tres niveles del
+contrato. Medido de nuevo, el acoplamiento hacia los proveedores retirados son **5 líneas en 3
+archivos**, todas colgando de **una sola decisión de composición** (`scheduling.module.ts:142`).
+Las dos microtareas pasan a `HECHO (simulado)`. Ev.:
+`evidencia/H3.S1.M3-mapa-de-resolucion-corregido.md`.
+
+### Qué sigue siendo verdad
+
+El estado de entrega **no cambia**: sigue siendo `TRANSITIONAL_ISOLATION`. El binding del producto
+**no se tocó** (`scheduling.module.ts` es archivo reservado y el cambio depende de `Q-06`, que es
+decisión de negocio), y `clinical` sigue siendo una dependencia residual sin resolver (`Q-I2`).
 
 ## No cubierto
 
