@@ -1,0 +1,45 @@
+LINEA DE BASE DE GATES — H1.S3.M3
+=================================
+
+QUE FOTO ES ESTA, Y POR QUE NO ES LA DEL CORTE
+----------------------------------------------
+El encargo pone esta medicion en H1, antes de todo. El orden de ejecucion del
+plan puso H2 primero, con el motivo escrito (seccion 2 del PLAN): el patron
+tenia que existir y probarse en un archivo propio antes de repartirlo a cuatro
+personas.
+
+Asi que esta foto se toma con H2 YA DENTRO. Es la linea de base de H3 a H6, no
+la del corte, y se dice para que nadie la lea como lo que no es.
+
+Lo que la linea de base sirve —atribuir un rojo futuro— no se pierde: cada rojo
+que aparecio durante H2 se comparo contra el corte 68dcb562 en el momento en que
+aparecio, volviendo los archivos atras y midiendo con una sonda que funciona
+contra las dos versiones. Eso esta en el PLAN, microtarea por microtarea.
+
+Rama:  itzan/patron-acciones-fila-insignia-perfil
+Cabeza: 4b47574d   (6 commits sobre el corte 68dcb562)
+Arbol:  limpio
+
+
+LOS TRES GATES
+--------------
+
+$ corepack yarn typecheck
+typecheck exit=0
+
+$ corepack yarn lint
+lint exit=0
+
+$ corepack yarn ng test --include='src/app/features/account/my-profile/**/*.spec.ts' --watch=false
+ Test Files  17 passed (17)
+      Tests  350 passed (350)
+specs exit=0
+
+
+LO QUE ESTO NO MIDE
+-------------------
+1. Los gates del repo los define .github/workflows/ci.yml, no este archivo.
+   Estos tres son los que el encargo pide; no son "el CI en verde".
+2. Los specs son unitarios sobre my-profile/. No tocan navegador. Lo que se ve
+   en pantalla se verifica aparte, y esta en evidencia/h2/.
+3. 350 pruebas en 17 archivos es el alcance de my-profile/, no del repositorio.
