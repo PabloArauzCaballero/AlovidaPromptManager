@@ -638,7 +638,7 @@ AVANCE — Itzan — H1.S1 — H1.S1.M1
 > previsto. Están marcadas **(añadida)** en el `PLAN.md`.
 
 - **Peldaño de evidencia alcanzado** (el **más bajo** de tus áreas en alcance): **`TESTED`**. Lo fija H5.S3.M3; todo el resto del alcance llegó a `VERIFIED`, y H2, H3, H4 y H6 además con regresión.
-- **`REPORTE.md`:** `Noche-CorreccionesDoctor.PerfilYDisenio/REPORTE.md`
+- **`REPORTE.md`:** `docs/trabajo/2026-09-20-correcciones-doctor-perfil-y-disenio/REPORTE.md`, con el plan y la evidencia al lado
 - **Procesos que quedaron corriendo:** **ninguno, verificado.** Todo lo que se puso en marcha para mirar la aplicación quedó detenido al cerrar, y se comprobó que efectivamente lo estaba. Una vez algo sobrevivió a su propia detención y se cerró en el momento; el silencio no cuenta como limpieza.
 
 ## 5. A quién esperás y quién te espera
