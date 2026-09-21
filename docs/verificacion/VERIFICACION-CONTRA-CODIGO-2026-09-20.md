@@ -184,6 +184,37 @@ por eso se pueden pegar en el reporte. Regla 70.3: **un solo worker**; Playwrigh
   **Dato medido:** los tipos de pregunta del motor de formularios son **cinco** —`BOOLEAN`, `MULTIPLE_CHOICE`, `SCALE`, `SINGLE_CHOICE`, `TEXT`— (`atoms/question-type-icon/question-type-icon.ts`). **No hay tipo tabla ni grupo repetible.** Así que el motor, tal como está, no da la grilla: eso es un hallazgo de contrato, y la salida honesta es la regla 65 (simular contra el doble del simulador y registrar la brecha del contrato real), no inventar un tipo de pregunta.
 - «Una fila por sesión» es una **regla de integridad**: se valida donde se escribe, no sólo con un cartel (regla 96.3.2). En la maqueta el freno vive en el manejador; en el contrato real, no existe todavía.
 
+> [!important] Errata del 2026-09-21 — **la grilla SÍ tiene dónde guardarse**
+> Escrita por la línea B al ejecutar C-14. Corrige **la conclusión** del punto de arriba, no sus
+> mediciones: que el motor de formularios tenga cinco tipos y ninguno sea tabla **es cierto y sigue
+> en pie**. Lo que no se sostiene es el salto de «el motor no puede» a «no hay dónde», que es lo que
+> originó la ambigüedad `Q-M3` del lote.
+>
+> **La respuesta estaba en el candidato 2 de esta misma lista.** `observation-block` —«lo más
+> parecido a "una fila por sesión" que ya existe», dice el punto de arriba— usa un contrato que
+> tiene las tres piezas del pedido:
+>
+> | Pieza de C-14 | Campo |
+> |---|---|
+> | «seleccionar el nombre del header» | `Observation.codeConceptId`, concepto de terminología, con el `app-concept-select` que ese bloque ya usa |
+> | «una fila por sesión» | `encounterId` — las observaciones que lo comparten **son** la fila |
+> | «se deben cargar para la siguiente sesiones» | `GET /clinical/patients/:id/summary` → `observations[]` + `encounters[]` |
+>
+> **Una fila = N observaciones con el mismo `encounterId`**, no un registro nuevo y no una
+> observación con `components[]`: la escritura admite componentes (`clinical.types.ts:629`) pero la
+> **lectura no los devuelve** (`interface Observation`, `clinical.types.ts:115-129`) y el simulador
+> los descarta (`clinical.handlers.ts:511`). Y **las columnas no necesitan almacenamiento propio**:
+> son la unión de los `codeConceptId` que esa persona ya tiene medidos.
+>
+> **Consecuencias para el reparto:**
+> 1. **No hizo falta ningún doble** (regla 65 no aplicaba) ni ningún cambio en `core/mock/**`: el
+>    simulador ya persiste observaciones y encuentros (`fixtures/clinica.ts:509-511`).
+> 2. **La restricción de una fila por sesión sí tiene dónde vivir** en el contrato real: es
+>    «este encuentro ya tiene observaciones», comprobable al leer.
+>
+> Verificado en navegador: cargar la fila → recargar la página → reabrir la casilla → sigue ahí.
+> Detalle y evidencia en [`docs/trabajo/2026-09-21-dictamen-y-hallazgos-lote-B/`](../trabajo/2026-09-21-dictamen-y-hallazgos-lote-B/REPORTE.md).
+
 ### C-15 · No se puede descargar la receta desde donde se la escribe
 
 - `src/app/features/clinical-record/patient-chart/medication-block/medication-block.html`: el botón «Descargar PDF» está en la lista de recetas, **líneas 62-70**, y su comentario dice *«La receta en papel (corrección #16). Está siempre, también sobre una emitida —que es cuando más se pide— y sobre una sin emitir, donde el documento se declara copia de trabajo»*. O sea: **estaba puesto a propósito por una corrección anterior.**
@@ -260,8 +291,8 @@ por eso se pueden pegar en el reporte. Regla 70.3: **un solo worker**; Playwrigh
 | **HALL-D3** | C-06 revierte una decisión de propietario **escrita en el código** el 2026-09-13 | Itzan (patrón) y los cuatro que aplican | Regla 00 §8: gana el requisito del cliente; el desvío **se registra** |
 | **HALL-D4** | «OTROS SERVICIOS» no está en la lista cerrada de 7 motivos del contrato | Pablo, Ender | Regla 00 §1.3 y 96.4.1 |
 | **HALL-D5** | El vademécum **declara** que no tiene fuente autoritativa, y no publica ninguna frecuencia | Justin, Ender | Regla 97.5.4 + precedente B-13 |
-| **HALL-D6** | El motor de formularios tiene 5 tipos de pregunta y **ninguno es tabla**: la grilla de C-14 no tiene dónde guardarse hoy | Marcelo | Regla 65 + 96.1 |
-| **HALL-D7** | `care_episodes` no tiene servicio, sala, cama ni diagnóstico de ingreso: la mayor parte de una hoja de admisión normada **no tiene columna** | Marcelo | Regla 97.1 y 97.7 |
+| **HALL-D6** | ~~El motor de formularios tiene 5 tipos de pregunta y **ninguno es tabla**: la grilla de C-14 no tiene dónde guardarse hoy~~ → **CORREGIDO 2026-09-21**: lo de los 5 tipos es cierto; la conclusión no. La grilla se guarda como **N observaciones con el mismo `encounterId`** — ver la errata en §C-14 | Marcelo | ~~Regla 65~~ → no aplicaba: hay contrato real |
+| **HALL-D7** | `care_episodes` no tiene servicio, sala, cama ni diagnóstico de ingreso: la mayor parte de una hoja de admisión normada **no tiene columna** — **CONFIRMADO 2026-09-21** y dimensionado: **10 de 18 campos** sin dónde caer, y en el estándar viven en `Encounter.hospitalization`, no en el episodio. Propuesta de modelo escrita | Marcelo | Regla 97.1 y 97.7 |
 | **HALL-D8** | No existe endpoint de analítica de consultas; `reporting` es un motor de definiciones (todo `POST`) | Ender | Regla 00 §1.1 |
 | **HALL-D9** | El visitador **no puede** ver información clínica y la visita comercial **no se mezcla** con la agenda clínica (especificación citada en el propio tipo) | Pablo, Ender | Regla 90.1 y 90.2 |
 | **HALL-D10** | `pestanas-del-perfil-medico.spec.ts` falla si un campo del alta queda sin pestaña: vaciar «Dónde atiendo» toca ese contrato | Itzan | Regla 80.5.4 (no se debilita el spec) |
