@@ -182,3 +182,99 @@ mantra-core-health     : adelantada a origin/dev (estaba 5 atras, 0 adelante),
                          limpia
 AlovidaPromptManager   : rama marcelo/features-a-trabajar, adelantada a
                          origin/main (PR #14 se mergeo 2026-09-20T22:24:33Z)
+
+REEJECUCION COMPLETA DEL GUION (2026-09-21)
+===========================================
+API: contenedor mantra-redesa-api-1, imagen reconstruida desde dev (c2c071a4)
+Front: rama marcelo/fix-agendas-homonimas (arreglo de agendas homonimas aplicado)
+Base: Neon `alovida`
+
+RESULTADO: 18 PASA · 3 FALLA · 8 BLOQUEADO · 3 NO EJECUTADO · 1 REVISAR · 2 del arnes
+
+BLOQUE H — PERMISOS, ENTERO EN VERDE
+------------------------------------
+PB1 (paciente de otra organizacion), sesion real, encabezados Authorization +
+x-tenant-id tomados de peticiones de la propia aplicacion:
+  [PASA] PR-27  PB1 leyendo la cita de PA1   -> 403; sin datos
+  [PASA] PR-28  PB1 cancelando la cita       -> 403
+  [PASA] PR-29  PB1 moviendo la cita         -> 403
+  [PASA] PR-30  PB1 anotando a PA1 en espera -> 403
+  (tras los cuatro intentos, la cita de PA1 sigue intacta)
+
+H-5 · DEFECTO NUEVO: LA ESPERA ACEPTA UNA VENTANA INVERTIDA
+-----------------------------------------------------------
+POST /scheduling/waitlist
+  { tenantId, patientProfileId, desiredFrom: 2026-10-10, desiredTo: 2026-10-01 }
+  -> 201 {"id":"c5fac0e2-...","priority":0,"statusConceptId":"3897dfe3-..."}
+
+En la base:
+  espera c5fac0e2 | recurso null | estado WL_ACTIVE
+                  | desired_from 2026-10-10T12:00:00.000Z
+                  | desired_to   2026-10-01T12:00:00.000Z
+
+Una espera con la ventana al reves no casa con ningun cupo: la persona queda
+anotada para siempre y nunca recibe nada.
+
+OJO CON COMO SE DESCUBRIO: en la primera corrida este caso dio 400 y lo di por
+PASA. El 400 era porque a MI peticion le faltaba tenantId. Con el cuerpo
+completo, la API acepta la ventana invertida.
+
+TRES ESPERADOS DEL GUION QUE ESTABAN MAL ESCRITOS
+--------------------------------------------------
+PR-07  decia "la cita queda confirmada".
+       Real: queda SOLICITADA. Toast: "Turno solicitado. Enviamos tu solicitud.
+       El profesional la confirma o te propone otro horario."
+       Estado en base: scheduling:BOOKING_PENDING_CONFIRMATION.
+       Es la politica de la organizacion (booking_confirmation_rules).
+
+PR-15  decia "cancelas la cita".
+       Real con un turno de manana:
+       422 {"code":"PRECONDITION_FAILED","message":"Podes cancelar hasta 24
+       horas antes del turno...","details":{"cancellationWindowMinutes":1440,
+       "startAt":"2026-09-21T14:00:00.000Z"}}
+       Con un turno del 28 de septiembre:
+       200 {"bookingId":"e79cbc5d-...","capacityReleased":true}
+       Y cancelar dos veces:
+       409 {"code":"CONFLICT","message":"La cita ya esta cancelada"}
+
+PR-16  decia "PA2 recibe el aviso".
+       Real: solo si PA2 espera en EL MISMO recurso. Primera corrida en rojo
+       porque la espera de PA1 era del recurso b64ff264 (Consultorio FX-7) y el
+       cupo liberado era del cd53ffb2 (Consultorio Norte). Recursos distintos,
+       aviso no esperado.
+       Con PA2 anotada en cd53ffb2, el aviso llega:
+
+         "Se liberó un horario que estabas esperando
+          Se liberó un horario con Elena Salas el lunes, 21 de septiembre,
+          14:30. Reservalo desde «Mis turnos» antes de que lo tome otra persona."
+
+       Dice con quien y cuando. NO dice quien cancelo ni por que -> PR-17 PASA.
+
+       MATIZ DECLARADO: en esa corrida las llamadas de reserva del arnes dieron
+       400 (faltaba tenantId), asi que el aviso salio del cupo libre que ya
+       habia en ese recurso, no de una cancelacion de esa misma corrida. El
+       mecanismo queda verificado; la cadena causal exacta, no.
+
+LOS 8 BLOQUEADOS, TODOS POR LA MISMA RAZON
+-------------------------------------------
+PR-19, PR-20, PR-21, PR-26, PR-31, PR-32, PR-33, PR-34 necesitan una sesion con
+rol de agenda. `admin@alovida.com` NO entra con `S3cret-passw0rd` (la clave
+documentada en credenciales-locales.md); su clave real esta en
+BOOTSTRAP_ADMIN_PASSWORD del .env de la API.
+Con esa clave, o con una cuenta de profesional con agenda propia, el guion se
+corre entero.
+
+OTROS DATOS DE LA CORRIDA
+--------------------------
+PR-08  retener dos veces el mismo cupo -> 409 CONFLICT "El slot no tiene cupos
+       disponibles"  (la doble reserva se rechaza)
+PR-22  paciente en /schedule -> expulsado a /dashboard
+PR-10  la pantalla "Reservar un turno" no tiene ningun campo de facturacion
+PR-14  no hay control para darse de baja de la espera
+worker de scheduling: mantra-redesa-worker-scheduling-1, corriendo (el barrido
+de promocion de la espera existe y funciona: PR-16 lo demuestra)
+
+DOS PROBLEMAS DEL ARNES, NO DEL PRODUCTO
+-----------------------------------------
+PR-11  PA1 ya estaba anotada de una corrida previa (antes=1, despues=1)
+PR-12  el boton de anotarse desaparece una vez anotada, y el arnes lo espero 30 s
