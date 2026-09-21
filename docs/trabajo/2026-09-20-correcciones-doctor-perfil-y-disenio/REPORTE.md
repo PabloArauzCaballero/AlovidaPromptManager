@@ -262,6 +262,18 @@ Los nueve están en el daily del turno con su dueño. Los que bloquean a alguien
   rutas**: el interruptor de tema tiene nombre accesible y le falta la otra
   mitad de ADR-0012. Es una sola línea, y es el hallazgo de C-06 con más
   alcance de todos los que aparecieron esta noche.
+- **HALL-I13** — **el chequeo de tipos del CI no puede pasar en un runner
+  limpio.** El archivo que `component-stock.ts` importa lo genera un comando
+  que el job `verificar` no corre (`.github/workflows/ci.yml:85` genera el
+  entorno, no el índice de componentes) y que el repo ignora
+  (`.gitignore:160`). Siete errores de tipos, y como los pasos son
+  secuenciales, los doce chequeos siguientes no se ejecutan en ninguna rama.
+  Idéntico en `dev`. Es agregar un comando al job; fuera de mi frontera.
+- **HALL-I14** — **la suite crítica de navegador está en rojo para todo el
+  repo**: 23 fallos en 8 de 10 specs, todos en autenticación, formularios de
+  cuenta y navegación. `dev` da la misma secuencia exacta (`1 1 1 5 1 5 4 5`,
+  `8 of 10 failed`) y las últimas doce corridas, de cuatro personas, terminan
+  todas en `failure`. Medido y atribuido, no diagnosticado.
 
 **HALL-I5 se cerró**: era el mismo defecto en el menú de preferencias de una
 publicación, ese sí en mi territorio. Entró como microtarea propia (H2.S3.M7)
