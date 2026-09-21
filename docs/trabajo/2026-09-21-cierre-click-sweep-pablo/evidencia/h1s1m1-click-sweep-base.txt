@@ -1,0 +1,12 @@
+$ git rev-parse HEAD
+68dcb562ef3dd74de03f4887c57fd836fb21be13
+
+$ E2E_BASE_URL=http://localhost:4200 corepack yarn exec playwright test playwright/mockup-click-sweep.spec.ts --workers=1 --reporter=list
+  1 failed
+    [chromium] › playwright\\mockup-click-sweep.spec.ts:188:9 › mockup · barrido de clics con el backend simulado › Médica
+  3 passed (14.0m)
+
+$ target_failures=13
+/my-account/profile/edit=9
+/my-quotations/new=4
+all_medica_failures=92

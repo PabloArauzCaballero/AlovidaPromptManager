@@ -1,7 +1,7 @@
 # Reporte — Pablo · turno noche 2026-09-20 · Agenda: dos solapas, el cupo manda la hora, una sola consulta
 
-> **AVANCE: 54 / 55 — 98,2 %.** (`A MEDIAS` cuenta como no hecha; el
-> `DESCARTADO` no suma y se declara aparte con su motivo.)
+> **AVANCE: 55 / 55 — 100 %.** El cierre posterior de H6.S2.M2 demostró en el
+> corte base que sus clics rotos ya existían antes del carril de agenda.
 
 - **Fecha:** 2026-09-20 (turno noche, cerrado el 2026-09-21) · **Persona:** Pablo
 - **Encargo:** [SolapasCalendarioSlotsYReglaDeConsulta.md](../../AlovidaPromptManager/repartos/2026-09-20/PromptNoche/Pablo/Noche-CorreccionesDoctor.AgendaConsultas/SolapasCalendarioSlotsYReglaDeConsulta.md)
@@ -137,7 +137,7 @@ programado aparece bloqueado en la agenda clínica.
 | H5.S3.M2 | Horario programado y **bloqueo visto** en la agenda clínica: «Otros servicios · Consulta cardiológica», 14:00–16:00 |
 | H5.S3.M3 | La petición lleva `exceptionType: 'OTHER'` + `reason`; **no** se amplió el enum |
 
-### H6 — Acciones con texto, regresión, prueba visual y cierre · **6 / 7**
+### H6 — Acciones con texto, regresión, prueba visual y cierre · **7 / 7**
 
 | ID | Qué se logró |
 |---|---|
@@ -145,7 +145,7 @@ programado aparece bloqueado en la agenda clínica.
 | H6.S1.M2 | Las 12 acciones de fila → **un** desplegable (`app-menu`, el del sistema) con icono **y** texto por opción. La fila sigue en un renglón |
 | H6.S1.M3 | Medición nueva: **6**. Los 26 convertidos y los 6 que quedan, con su motivo, en `evidencia/h6/h6s1m3-iconoonly-despues.txt`. Ninguno de los 6 es una acción de tabla |
 | H6.S2.M1 | `yarn typecheck` 0 · `yarn lint` 0 · **471/471** specs de agenda y mis-servicios (baseline: 430) |
-| H6.S2.M2 | Barrido **5/5 PASS**. Click-sweep 3/4: el rol Médica falla con 10 clics rotos, **todos fuera de mi alcance** y **cero en `/schedule` y `/my-services`**. Ver «No cubierto» |
+| H6.S2.M2 | Barrido **5/5 PASS**. El click-sweep del corte base `68dcb562` vuelve a fallar en las rutas ajenas: 9 clics en `/my-account/profile/edit` y 4 en `/my-quotations/new`; ver `evidencia/h6/h6s2m2-click-sweep-base-68dcb562.txt`. |
 | H6.S3.M1 | 36 capturas (3 viewports × 2 temas × 6 pantallas), **miradas**, con su observación en `evidencia/h6/INDICE-VISUAL.md`. Encontró 3 defectos, los tres arreglados |
 | H6.S3.M2 | Este archivo |
 
@@ -153,32 +153,28 @@ programado aparece bloqueado en la agenda clínica.
 
 ## A medias
 
-### H6.S2.M2 — El click-sweep no cierra en verde
+Ninguna al cierre.
 
-- **Qué anda:** el barrido de rutas pasa **5/5** en los cinco roles. El
-  click-sweep pasa en 3 de 4 roles, y **cero de los clics rotos está en
-  `/schedule` ni en `/my-services`**, que es lo que el DoD de la microtarea
-  pide.
-- **Qué no anda:** el rol «Médica» falla con 10 clics rotos: 6 en
-  `/my-account/profile/edit` (reservado para **Itzan**) y 4 en
-  `/my-quotations/new` (de nadie esta noche).
-- **Qué falta exactamente:** correr el mismo spec sobre el corte base
-  `68dcb562` para demostrar que ya fallaba antes. No se hizo: la corrida tarda
-  **7,7 minutos** y el turno no dio para dos. Lo que **sí** está demostrado es
-  que mi rama toca 26 archivos y **ninguno** participa de esas dos rutas
-  (`git diff --name-only 68dcb562..HEAD`, pegado en la evidencia). Eso hace muy
-  probable que sea baseline, pero **no lo prueba**, y por eso la microtarea no
-  se marca `HECHO`.
-- **Dónde quedó:** `evidencia/h6/h6s2m2-barrido.txt`, con la salida literal y el
-  listado de los 10 rotos. Artefactos de Playwright en
-  `artifacts/playwright/salida/`.
+### Cierre posterior de H6.S2.M2
+
+Al terminar el turno la microtarea quedó `A MEDIAS`: faltaba repetir el mismo
+spec sobre el corte base `68dcb562`. Se ejecutó el 2026-09-21 en un worktree
+detenido en ese SHA. El runner terminó con **1 fallido / 3 pasados (14,0 min)**:
+la cuenta Médica falla también en el corte base. En las dos rutas que el carril
+había declarado ajenas aparecen 13 fallos (9 de perfil y 4 de cotizaciones).
+
+El número no es idéntico a los diez informados al cierre del carril: perfiles
+cambió en merges posteriores. Eso no reduce la evidencia relevante: los fallos
+de ambas rutas ya existían en el corte anterior al carril. La salida literal y
+el filtro del JSON generado por el spec están en
+`evidencia/h6/h6s2m2-click-sweep-base-68dcb562.txt`.
 
 ---
 
 ## Pendiente
 
-Ninguna. Las 55 microtareas están en `HECHO` (54) o `A MEDIAS` (1). Ninguna
-quedó en `TODO`, en `EN CURSO`, en `BLOQUEADO` ni en `DESCARTADO`.
+Ninguna. Las 55 microtareas están en `HECHO`. Ninguna quedó en `TODO`,
+`EN CURSO`, `A MEDIAS`, `BLOQUEADO` ni `DESCARTADO`.
 
 ---
 
