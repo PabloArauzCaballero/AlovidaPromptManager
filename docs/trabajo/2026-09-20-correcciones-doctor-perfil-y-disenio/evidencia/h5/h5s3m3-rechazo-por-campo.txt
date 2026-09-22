@@ -1,0 +1,31 @@
+largo del valor: 116 caracteres (tope del DTO: 100)
+OK    el editor abrió con el perfil sembrado — valores leídos
+OK    doble del servidor instalado en el borde del servicio
+traza del borde: {"errorDeLaMaqueta":{"clase":"HttpErrorResponse","status":500},"errorEntregado":{"clase":"HttpErrorResponse","mismaClase":true,"status":400},"llegoUnExito":false,"mandoNombre":116,"mandoApellido":116}
+OK    el guardado salió por el camino real y la maqueta lo hizo fallar — maqueta=HttpErrorResponse 500
+OK    el rechazo entregado es un HttpErrorResponse genuino con 400 — HttpErrorResponse 400
+OK    lo que se mandó es lo que se tecleó — name=116 lastName=116
+OK    «Nombre» muestra SU mensaje y sólo el suyo — muestra=["name must be shorter than or equal to 100 characters"]
+OK    «Nombre» queda enlazado a su mensaje por accesibilidad — aria-describedby→mensaje=true · aria-invalid=true
+OK    «Apellido paterno» muestra SU mensaje y sólo el suyo — muestra=["lastName must be shorter than or equal to 100 characters"]
+OK    «Apellido paterno» queda enlazado a su mensaje por accesibilidad — aria-describedby→mensaje=true · aria-invalid=true
+OK    ningún otro campo del panel muestra un mensaje ajeno — revisados=6 [Segundo nombre (opcional) · Tercer nombre (opcional) · Apellido materno (opcional) · Fecha de nacimiento · Título profesional · Biografía] derramados=[]
+OK    el aviso general dice que hay campos marcados, una sola vez — avisos=["Error:PerfilRevisá los campos marcados y volvé a guardar."]
+OK    lo tecleado sigue escrito para poder corregirlo
+captura: rechazo-por-campo-movil-light.png
+captura: rechazo-por-campo-tablet-light.png
+captura: rechazo-por-campo-escritorio-light.png
+captura: rechazo-por-campo-movil-dark.png
+captura: rechazo-por-campo-tablet-dark.png
+captura: rechazo-por-campo-escritorio-dark.png
+reemplazada: editor-con-todas-las-pestanas/error-del-servidor-en-su-campo.png
+OK    volver a lo guardado y apretar Guardar no deja mensajes de un valor que ya no está — quedan=[]
+captura: rechazo-y-vuelta-atras-escritorio-light.png
+OK    corregido y guardado, los rechazos se van — quedan=[]
+captura: rechazo-corregido-escritorio-light.png
+OK    el perfil vuelve a sus valores de antes
+errores de consola: 2
+  · Executing inline script violates the following Content Security Policy directive 'script-src 'self' 'sha256-Ohy6Wz7NFFGmQaVW/a8g5BXylUJrN/hbRM2QuMglZ6Q=' 'sha256-HasAYtZ13nA92vtyhOH9KYrQLVFmnxB9+lraZXpGRQc=''. Either the
+  · Executing inline script violates the following Content Security Policy directive 'script-src 'self' 'sha256-Ohy6Wz7NFFGmQaVW/a8g5BXylUJrN/hbRM2QuMglZ6Q=' 'sha256-HasAYtZ13nA92vtyhOH9KYrQLVFmnxB9+lraZXpGRQc=''. Either the
+
+15/15 pasos en verde

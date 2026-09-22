@@ -1,6 +1,6 @@
 # Daily de Itzan — turno noche — 2026-09-20
 
-> **AVANCE: 55 / 59 — 93,2 %.** ← primera línea, siempre. Sale de `microtareas HECHO / 59`,
+> **AVANCE: 62 / 62 — 100 %.** ← primera línea, siempre. Sale de `microtareas HECHO / 62`,
 > **nunca a ojo**. `A MEDIAS` cuenta como **no hecha**. `DESCARTADO` no suma: se declara aparte con su motivo.
 
 - **Turno:** noche · **Fecha:** 2026-09-20 · **Persona:** Itzan
@@ -87,6 +87,22 @@ AVANCE — Itzan — <fase> — <ID de microtarea>
 ```
 
 <!-- Pegá tus checkpoints debajo de esta línea, el más reciente arriba. -->
+
+```text
+AVANCE — Itzan — CIERRE DE H5.S3.M3 (22/09) — 62/62 (100 %)
+- Hecho:      H5.S3.M3 observado en el navegador: cada rechazo debajo de su
+              campo, con aria-describedby y aria-invalid, y ningún otro campo
+              teñido. Al mirarlo salieron dos más, cerrados: H5.S3.M4 (una
+              captura que no mostraba lo que decía) y H5.S3.M5 (volver a lo
+              guardado dejaba los rechazos pintados; reproducido, arreglado).
+- Evidencia:  recorrido 15/15 · editor 80/80 (2 pruebas en rojo antes, verde
+              después) · área del perfil 380/380 · typecheck 0 · lint 0 ·
+              capturas en 3 anchos × 2 temas, miradas. PR #571.
+- Ahora:      nada: el encargo cierra entero.
+- Bloqueo:    ninguno.
+- Estado:     HECHO 62 de 62
+- Peldaño:    TESTED (lo fija el cuestionario, que la maqueta no dibuja)
+```
 
 ```text
 AVANCE — Itzan — CIERRE DEL TURNO — 59/60 (98,3 %)
@@ -629,15 +645,15 @@ AVANCE — Itzan — H1.S1 — H1.S1.M1
 | H2 | 14 / 14 | HECHO | nada |
 | H3 | 9 / 9 | HECHO | nada |
 | H4 | 10 / 10 | HECHO | nada |
-| H5 | 8 / 9 | A MEDIAS | La captura de H5.S3.M3. El mecanismo de anclar el error del servidor a su campo está construido y ejercitado en los tres niveles del contrato; lo que falta es **verlo en la pantalla**, y la maqueta no puede provocar un rechazo de validación con el campo adentro (HALL-I8) |
+| H5 | 11 / 11 | HECHO | nada |
 | H6 | 9 / 9 | HECHO | nada |
-| **Total** | **59 / 60** | | |
+| **Total** | **62 / 62** | | |
 
-> El total del plan es **60** y no 54: seis microtareas se agregaron sobre la
+> El total del plan es **62** y no 54: ocho microtareas se agregaron sobre la
 > marcha, cada una con su criterio y su DoD, según aparecía trabajo no
-> previsto. Están marcadas **(añadida)** en el `PLAN.md`.
+> previsto. Están marcadas **(añadida)** en el `PLAN.md` o explicadas en su fila.
 
-- **Peldaño de evidencia alcanzado** (el **más bajo** de tus áreas en alcance): **`TESTED`**. Lo fija H5.S3.M3; todo el resto del alcance llegó a `VERIFIED`, y H2, H3, H4 y H6 además con regresión.
+- **Peldaño de evidencia alcanzado** (el **más bajo** de tus áreas en alcance): **`TESTED`**. Lo fija el cuestionario con su desplegable, que la maqueta no dibuja; H5.S3.M3 subió a `VERIFIED` el 22/09. El resto del alcance llegó a `VERIFIED`, y H2, H3, H4 y H6 además con regresión.
 - **`REPORTE.md`:** `docs/trabajo/2026-09-20-correcciones-doctor-perfil-y-disenio/REPORTE.md`, con el plan y la evidencia al lado
 - **Procesos que quedaron corriendo:** **ninguno, verificado.** Todo lo que se puso en marcha para mirar la aplicación quedó detenido al cerrar, y se comprobó que efectivamente lo estaba. Una vez algo sobrevivió a su propia detención y se cerró en el momento; el silencio no cuenta como limpieza.
 
@@ -722,6 +738,11 @@ alta lo pregunte.
 | HALL-I12 | **Un botón sólo-icono sin globo, en la cabecera, en 44 rutas.** El interruptor de tema tiene nombre accesible dinámico («Cambiar a modo claro» / «…oscuro») y **no tiene `appTooltip`**: es la excepción de ADR-0012 cumplida a medias, igual que HALL-I5, pero en la cabecera de la aplicación y por lo tanto en toda pantalla con marco. Sale contado de la matriz de acabado del carril 34: `tooltip :: button[data-testid="header-theme-toggle"]` aparece **44 veces**, una por ruta. Vive en `features/shell-layout/shell-layout.html:362` y `features/alovida/inicio/portada/portada.html:20`; la directiva es `core/alovida/alovida-theme-toggle.directive.ts:24` | Quien lleve el marco de la aplicación | Registrado. **No se tocó** — las tres rutas están fuera de mi frontera declarada. Es una línea, y es el hallazgo de C-06 con más alcance de la noche |
 | HALL-I13 | **El chequeo de tipos del CI no puede pasar en un runner limpio, y corta todo lo que viene detrás.** `component-stock.ts` importa `./component-index.generated`, que lo produce `yarn stock:generate` (`scripts/generate-component-index.mjs`) y está ignorado por `.gitignore:160`, así que no viaja en el repo. El job `verificar` corre `yarn env:generate` (`.github/workflows/ci.yml:85`) y **no** corre `stock:generate` antes de `yarn tsc -p tsconfig.app.json --noEmit` (`:91`): siete errores, `TS2307` más seis `TS7006`. En local no se nota porque `yarn start` encadena los dos generadores, y por eso el chequeo de tipos da 0 en la máquina y 2 en el CI. Como los pasos son secuenciales, **los doce chequeos que siguen —lint ya pasó, pero pruebas, cobertura, build, presupuesto, arquitectura, tokens y contraste— no llegan a ejecutarse en ninguna rama**: no están en verde, están sin medir. Verificado idéntico —mismo archivo, mismas siete líneas— en la última corrida de `dev` | Quien lleve el CI del front | Registrado. **No se tocó** — el workflow está fuera de mi frontera. Es agregar un comando al job |
 | HALL-I14 | **La suite crítica de navegador está en rojo para todo el repo, no para una rama.** 23 fallos en 8 de 10 specs, con esta distribución: `activar-cuenta 1 · nueva-clave 1 · reenviar-verificacion 1 · registro 5 · verificar-correo 1 · navegacion 5 · login 4 · sesion 5`. La última corrida de `dev` da **la misma secuencia exacta** (`1 1 1 5 1 5 4 5`, `8 of 10 failed`), y las últimas doce corridas del repo —de cuatro personas distintas— terminan todas en `failure`. Todos los fallos caen en autenticación, formularios de cuenta y navegación. No está diagnosticado: está medido y atribuido | Quien lleve el CI del front | Registrado. **No se tocó** — ninguno de esos archivos está en mi frontera, y el diff de mi rama no devuelve nada de `auth/**` |
+| HALL-I15 | **Contra la API real, todo guardado que toque el NIT o la razón social se rechaza entero.** El editor manda `taxId` y `taxHolderName` cuando cambian (`src/app/core/data-access/profiles/profiles.client.ts:484-485`); el DTO del médico no los declara (`mantra-core-health-api/src/modules/profiles/dto/update-practitioner-profile.dto.ts`) y la validación global corre con `forbidNonWhitelisted: true` (`mantra-core-health-api/src/main.ts:161`). Respuesta esperable: `property taxId should not exist`, que no se ancla porque `fieldOf` descarta «property». Ninguna rama de la API los agrega; en la maqueta no se nota porque el simulador los acepta | Quien lleve el contrato del perfil médico (front y API) | Registrado. **No se tocó** |
+| HALL-I16 | **El rechazo más probable del formulario no llega a su campo.** El mensaje de los teléfonos en la API es «El teléfono sólo admite dígitos, espacios, paréntesis, + y guion» (`update-practitioner-profile.dto.ts:60-61`): empieza con «El», y `fieldOf` sólo ancla mensajes que empiezan con el nombre de la propiedad (`src/app/core/http/error-to-view-state.ts:199-216`). Va al aviso general | Quien lleve `core/http` o los mensajes de la API | Registrado. **No se tocó** |
+| HALL-I17 | **Los mensajes del servidor se muestran crudos y en inglés.** Debajo del campo se lee literalmente «lastName must be shorter than or equal to 100 characters»: `errorToViewState` pasa el texto tal cual (`src/app/core/http/error-to-view-state.ts:162-165`). Afecta a todo formulario que use ese mapeo | Quien lleve `core/http` | Registrado. **No se tocó** |
+| HALL-I18 | **Cuatro `check-*.mjs` del front salen en 1 en `mockup`**: `check-architecture`, `check-api-prefixes`, `check-form-pages` (2 formularios sin paginar) y `check-css-tokens` (3 tokens sin declarar). Salida idéntica byte a byte con las fuentes del corte `a0987d9f`. El `CLAUDE.md` del front pide correrlos a mano porque el CI está caído | Quien lleve el CI del front | Registrado. **No se tocó** |
+| HALL-I19 | **Toda página registra dos violaciones de CSP por un script en línea**, incluida una carga limpia de `/auth` sin sesión | Quien lleve la política de seguridad del front | Registrado. **No se tocó** |
 | HALL-I8 | **El simulador de fallos de la maqueta no puede provocar el error que más le importa a un formulario.** Ofrece cinco clases —sin red, sin permiso, no existe, conflicto y fallo del servidor— y ninguna es un **rechazo de validación con el campo adentro** (`details.violations`), que es el único que se puede anclar a un control. Comprobado además que ningún manejador del servicio simulado emite `violations`. Consecuencia concreta: el mensaje por campo del editor del perfil quedó probado contra el contrato real y **sin poder mirarse en la pantalla** | Quien lleve el simulador de fallos | Abierto — es una clase más en un archivo que no es mío; no se toca |
 | HALL-I7 | **«Dónde atiendo» ahora enseña los mismos lugares dos veces**: arriba el mapa con sus direcciones (pedido del 19/09) y abajo la lista con sus direcciones y sus acciones (C-02). Las dos mitades están pedidas explícitamente, así que ninguna se puede sacar por cuenta propia. Lo que sí se hizo fue que no se lean como lo mismo: el bloque de arriba se llama **«Dónde caen en el mapa»** —dice lo que contesta, que es dónde queda uno respecto de otro— y el de abajo conserva su nombre. Si el propietario prefiere un solo bloque, el camino natural es que el mapa absorba la lista y las acciones cuelguen del pin; es una decisión de diseño, no de implementación | Propietario | Registrado con su mitigación aplicada — no se toca sin decisión |
 

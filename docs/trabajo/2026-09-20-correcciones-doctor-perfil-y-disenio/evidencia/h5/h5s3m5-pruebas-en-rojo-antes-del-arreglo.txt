@@ -1,0 +1,8 @@
+corepack yarn test --watch=false --include="src/app/features/account/my-profile/practitioner-profile-edit/practitioner-profile-edit.spec.ts"   (ANTES del arreglo)
+
+× volver a lo guardado y apretar Guardar no deja el mensaje de un valor que ya no está
+× un intento frenado por un teléfono a medias tampoco deja rechazos viejos pintados
+AssertionError: expected 'taxId no existe en el padrón.' to be '' // Object.is equality
+AssertionError: expected 'taxId no existe en el padrón.' to be '' // Object.is equality
+ Test Files  1 failed (1)
+      Tests  2 failed | 78 passed (80)

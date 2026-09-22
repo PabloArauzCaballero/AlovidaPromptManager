@@ -1,0 +1,96 @@
+[generate-env] src/environments/env.generated.ts · sin variables definidas (se usan los valores por defecto)
+Using Vitest configuration file: mantra-core-health\vitest.config.ts
+❯ Building...
+✔ Building...
+Initial chunk files                                                                         | Names                                                                                    |  Raw size
+spec-app-features-account-my-profile-practitioner-profile-edit-practitioner-profile-edit.js | spec-app-features-account-my-profile-practitioner-profile-edit-practitioner-profile-edit |   1.33 MB | 
+styles.css                                                                                  | styles                                                                                   | 166.11 kB | 
+chunk-GRMW4LEW.js                                                                           | -                                                                                        | 121.32 kB | 
+chunk-SOTNGF5F.js                                                                           | -                                                                                        |  22.65 kB | 
+chunk-JBWBLPNK.js                                                                           | -                                                                                        |   5.19 kB | 
+init-testbed.js                                                                             | init-testbed                                                                             |   1.21 kB | 
+vitest-mock-patch.js                                                                        | vitest-mock-patch                                                                        | 974 bytes | 
+setup-test-setup.js                                                                         | setup-test-setup                                                                         | 911 bytes | 
+
+                                                                                            | Initial total                                                                            |   1.65 MB
+
+Lazy chunk files                                                                            | Names                                                                                    |  Raw size
+chunk-QSRNX3GK.js                                                                           | map                                                                                      | 224 bytes | 
+chunk-SFD426JW.js                                                                           | location-picker                                                                          | 158 bytes | 
+
+Application bundle generation complete. [75.820 seconds] - 2026-09-22T16:06:47.243Z
+
+▲ [WARNING] NG8113: Alert is not used within the template of MedicalArticles [plugin angular-compiler]
+
+    src/app/features/account/my-profile/medical-articles/medical-articles.ts:75:4:
+      75 │     Alert,
+         ╵     ~~~~~
+
+
+▲ [WARNING] NG8113: RouterLink is not used within the template of MedicalArticles [plugin angular-compiler]
+
+    src/app/features/account/my-profile/medical-articles/medical-articles.ts:85:4:
+      85 │     RouterLink,
+         ╵     ~~~~~~~~~~
+
+
+▲ [WARNING] NG8113: PractitionerProfileView is not used within the template of PractitionerProfileView [plugin angular-compiler]
+
+    src/app/features/account/my-profile/practitioner-profile/practitioner-profile-view/practitioner-profile-view.ts:162:4:
+      162 │     PractitionerProfileView,
+          ╵     ~~~~~~~~~~~~~~~~~~~~~~~
+
+
+▲ [WARNING] NG8113: AppButtonLink is not used within the template of Questionnaires [plugin angular-compiler]
+
+    src/app/features/account/questionnaires/questionnaires.ts:88:4:
+      88 │     AppButtonLink,
+         ╵     ~~~~~~~~~~~~~
+
+
+▲ [WARNING] NG8113: Link is not used within the template of Groups [plugin angular-compiler]
+
+    src/app/features/groups/groups.ts:59:4:
+      59 │     Link,
+         ╵     ~~~~
+
+
+▲ [WARNING] NG8113: AppButton is not used within the template of NearbyPlaces [plugin angular-compiler]
+
+    src/app/features/nearby-places/nearby-places.ts:103:4:
+      103 │     AppButton,
+          ╵     ~~~~~~~~~
+
+
+▲ [WARNING] NG8113: AppButtonLink is not used within the template of SurveysHome [plugin angular-compiler]
+
+    src/app/features/questionnaires/questionnaires.ts:72:4:
+      72 │     AppButtonLink,
+         ╵     ~~~~~~~~~~~~~
+
+
+▲ [WARNING] NG8113: Card is not used within the template of SymptomCheck [plugin angular-compiler]
+
+    src/app/features/symptom-check/symptom-check.ts:96:30:
+      96 │   imports: [Alert, AppButton, Card, Chip, RouterLink, Textarea],
+         ╵                               ~~~~
+
+
+▲ [WARNING] NG8113: RouterLink is not used within the template of SymptomCheck [plugin angular-compiler]
+
+    src/app/features/symptom-check/symptom-check.ts:96:42:
+      96 │   imports: [Alert, AppButton, Card, Chip, RouterLink, Textarea],
+         ╵                                           ~~~~~~~~~~
+
+
+
+ RUN  v4.1.10 mantra-core-health
+
+Not implemented: navigation to another Document
+Not implemented: navigation to another Document
+
+ Test Files  1 passed (1)
+      Tests  80 passed (80)
+   Start at  12:06:48
+   Duration  6.58s (transform 1.82s, setup 473ms, import 2.84s, tests 1.61s, environment 1.33s)
+
