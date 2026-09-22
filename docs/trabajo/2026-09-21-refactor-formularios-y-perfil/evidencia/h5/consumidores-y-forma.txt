@@ -1,0 +1,69 @@
+# Consumidores del motor y forma en que arman su FormGroup
+# Corte: origin/mockup (d76e3054) - medido 2026-09-22
+
+$ git grep -l '<app-paginated-form' origin/mockup -- 'src/app/**/*.html' | wc -l
+53
+
+# El encargo dice 52. La medicion da 53.
+
+## Forma del grupo en el .ts de cada consumidor
+ESTATICA (literal de objeto, TypeScript infiere el tipo): 52
+DINAMICA  (addControl/removeControl/setControl/FormRecord): 1
+
+El unico dinamico - y no es casual, su oficio ES construir formularios:
+  features/form-builder/form-builder.ts
+
+## Los 53 consumidores
+  features/admin/assisted-registration/assisted-registration.html
+  features/admin/data-catalog/object-detail/annotation-dialog.html
+  features/admin/organizations/branch-new/branch-new.html
+  features/admin/organizations/child-organization-new/child-organization-new.html
+  features/admin/organizations/organization-new/organization-new.html
+  features/admin/user-registration/user-registration.html
+  features/assets-liabilities/assets-liabilities.html
+  features/auth-providers/attribute-mappings-form/attribute-mappings-form.html
+  features/auth-providers/key-rotation-form/key-rotation-form.html
+  features/auth-providers/login-callback-form/login-callback-form.html
+  features/auth-providers/login-start-form/login-start-form.html
+  features/auth-providers/protocol-config-form/protocol-config-form.html
+  features/auth-providers/provider-form/provider-form.html
+  features/auth-providers/provisioning-rule-form/provisioning-rule-form.html
+  features/auth-providers/signing-key-form/signing-key-form.html
+  features/auth-providers/tenant-binding-form/tenant-binding-form.html
+  features/auth/register-imaging-center/register-imaging-center.html
+  features/auth/register-laboratory/register-laboratory.html
+  features/auth/register-organization/register-organization.html
+  features/auth/register-patient/register-patient.html
+  features/auth/register-practitioner/register-practitioner.html
+  features/delegated-access/access-request-form/access-request-form.html
+  features/delegated-access/access-request-resolution/access-request-resolution.html
+  features/delegated-access/actor-evaluation/actor-evaluation.html
+  features/delegated-access/grant-form/grant-form.html
+  features/delegated-access/org-assignment-form/org-assignment-form.html
+  features/delegated-access/org-assignment-update/org-assignment-update.html
+  features/delegated-access/permission-set-form/permission-set-form.html
+  features/delegated-access/practitioner-delegate-form/practitioner-delegate-form.html
+  features/design-system-sample/organisms-gallery/organisms-gallery.html
+  features/form-builder/form-builder.html
+  features/geo/geofence-event-form/geofence-event-form.html
+  features/geo/geofence-form/geofence-form.html
+  features/geo/ping-ingest/ping-ingest.html
+  features/health-context/agent-form/agent-form.html
+  features/health-context/collection-run-finish/collection-run-finish.html
+  features/health-context/collection-run-form/collection-run-form.html
+  features/health-context/context-form/context-form.html
+  features/health-context/observation-form/observation-form.html
+  features/health-context/quality-review-form/quality-review-form.html
+  features/health-context/schedule-form/schedule-form.html
+  features/health-context/source-form/source-form.html
+  features/health-context/version-form/version-form.html
+  features/identity-assurance/assertion-issue-form/assertion-issue-form.html
+  features/identity-assurance/assertion-revoke-form/assertion-revoke-form.html
+  features/identity-assurance/authority-endpoint-form/authority-endpoint-form.html
+  features/identity-assurance/authority-form/authority-form.html
+  features/identity-assurance/case-evidence-form/case-evidence-form.html
+  features/identity-assurance/case-open-form/case-open-form.html
+  features/identity-assurance/check-attempt-form/check-attempt-form.html
+  features/identity-assurance/check-result-form/check-result-form.html
+  features/identity-assurance/fraud-signal-form/fraud-signal-form.html
+  features/identity-assurance/verification-policy-form/verification-policy-form.html

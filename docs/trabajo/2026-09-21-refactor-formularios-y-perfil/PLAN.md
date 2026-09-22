@@ -232,26 +232,88 @@ Las Q-I1…Q-I5 de **este encargo (2026-09-21, §5)**; no son las del 2026-09-20
 
 **CA:** Dado un fallo de guardado, cuando la persona vuelve al formulario, entonces sigue lo escrito; y dado un doble clic, no se envía dos veces.
 **DoD:** los dos comportamientos probados y comparados contra H1.S2.
-**Estado:** TODO
+**Estado:** A MEDIAS — el CA de la subtarea (lo escrito sobrevive, un solo envío) está demostrado; las dos microtareas de anclaje y foco no se cumplen y son **anteriores a este trabajo**.
 
 | ID | Microtarea | CA (binario) | DoD (comando de verificación) | Estado |
 |---|---|---|---|---|
-| H3.S2.M1 | Error de guardado forzado: el borrador sigue | Nada se perdió | captura tras el fallo, comparada con H1.S2.M4 | TODO |
-| H3.S2.M2 | Doble envío | No se envía dos veces | descripción + captura | TODO |
-| H3.S2.M3 | El error del servidor se ancla al campo | El mensaje aparece en su campo | captura | TODO |
-| H3.S2.M4 | Foco al primer error y etiqueta accesible | El foco va al primer error y todo campo tiene etiqueta | descripción por paso + captura del foco | TODO |
+| H3.S2.M1 | Error de guardado forzado: el borrador sigue | Nada se perdió | captura tras el fallo, comparada con H1.S2.M4 | HECHO |
+| H3.S2.M2 | Doble envío | No se envía dos veces | descripción + captura | HECHO |
+| H3.S2.M3 | El error del servidor se ancla al campo | El mensaje aparece en su campo | captura | A MEDIAS |
+| H3.S2.M4 | Foco al primer error y etiqueta accesible | El foco va al primer error y todo campo tiene etiqueta | descripción por paso + captura del foco | A MEDIAS |
+
+**H3.S2.M1 — HECHO.** Con «error» forzado y doble clic sobre «Crear cuenta»: la página no se
+mueve del paso 13, la contraseña sigue en su campo y los valores del formulario son idénticos
+antes y después (`evidencia/h3/despues-profesional.txt:48-55`). Comparado con el mismo recorrido
+del baseline (`evidencia/antes/recorrido-profesional.md`): sin diferencias. Captura mirada:
+`evidencia/h3/capturas/pro-13-tras-error-de-guardado.png` — se ve la contraseña conservada y el
+paso 13 intacto.
+
+**H3.S2.M2 — HECHO.** Mismo ejercicio: `envíos al servicio: 1` con doble clic
+(`evidencia/h3/despues-profesional.txt:49`), y el botón vuelve a habilitarse después del fallo.
+
+**H3.S2.M3 — A MEDIAS.** Detalle y contrato a simular en
+[`evidencia/h3/deuda-anclaje-y-foco.md`](./evidencia/h3/deuda-anclaje-y-foco.md).
+- *Qué anda:* el borde HTTP ya deduce el campo desde el mensaje del servidor y lo publica en
+  `ViewStateIssue.field` (`core/http/error-to-view-state.ts:199`).
+- *Qué no anda:* el alta lo descarta —`errorMessage` toma sólo `issues[0].message`
+  (`register-patient.ts:2097`, `register-practitioner.ts:2024`)— y lo pinta en una alerta genérica
+  arriba del formulario (`register-patient.html:42`). El motor no tiene entrada para errores
+  externos por campo: `errorDe(campo)` (`paginated-form.ts:493`) sale de `mensajeDeError`, que
+  sólo reconoce claves de validador conocidas.
+- *Qué falta exactamente:* (1) un input aditivo en el organismo para errores por campo venidos de
+  afuera; (2) mapear `state().issues` a ese input en las altas; (3) **simular el contrato en tres
+  niveles (regla 65)**, porque el simulador de fallos en modo `error` devuelve sólo
+  `code: 'INTERNAL'` y un mensaje genérico (`core/mock/fallos-simulados.ts:105-126`) y
+  `core/mock/**` está declarado OUT.
+
+**H3.S2.M4 — A MEDIAS.**
+- *Qué anda:* al intentar enviar, `enviar()` marca todo como tocado y **salta a la primera página
+  con error** (`paginated-form.ts:598-613`), y un effect sobre `indice()` lleva el foco **al título
+  de esa página** (`paginated-form.ts:453-466`).
+- *Qué no anda:* el foco no llega al primer control inválido. Medido en el baseline: queda en el
+  propio botón «Siguiente» en las 7 páginas con obligatorios
+  (`evidencia/antes/recorrido-profesional.md:37`). La segunda mitad del CA —«todo campo tiene
+  etiqueta»— no se verificó por separado.
+- *Qué falta exactamente:* mover el foco al primer control inválido de la página tras
+  `markAllAsTouched()`, y recorrer los campos comprobando su etiqueta accesible. Lo primero cambia
+  el foco en los **53** consumidores del organismo, así que exige la regresión de cinco
+  consumidores ajenos que el propio encargo pide en H5.S1.M4.
 
 #### H3.S3 — Acreditar en el catálogo
 
 **CA:** Dado lo tocado, cuando se monta en el catálogo, entonces se monta con contrato válido e hijos reales.
 **DoD:** escenario en el catálogo con captura.
-**Estado:** TODO
+**Estado:** HECHO — el escenario ya existía y ya estaba tipado; se acreditó por observación.
 
 | ID | Microtarea | CA (binario) | DoD (comando de verificación) | Estado |
 |---|---|---|---|---|
-| H3.S3.M1 | Pedir a Ender el escenario tipado si falta | El pedido está escrito | línea en el daily | TODO |
-| H3.S3.M2 | Acreditar el organismo con contrato válido | La ficha monta con `paginas` y `form` reales | captura de la ficha | TODO |
-| H3.S3.M3 | Mientras no exista, simular el contrato en tres niveles (regla 65) | Hay correcto, límite e inválido | tres corridas o tres capturas | TODO |
+| H3.S3.M1 | Pedir a Ender el escenario tipado si falta | El pedido está escrito | línea en el daily | DESCARTADO |
+| H3.S3.M2 | Acreditar el organismo con contrato válido | La ficha monta con `paginas` y `form` reales | captura de la ficha | HECHO |
+| H3.S3.M3 | Mientras no exista, simular el contrato en tres niveles (regla 65) | Hay correcto, límite e inválido | tres corridas o tres capturas | DESCARTADO |
+
+**H3.S3.M1 — DESCARTADO.** *Por qué:* no hace falta pedirlo, **ya existe y ya está tipado**.
+`organisms-gallery.ts:339-345` declara `formDemo` como un `FormGroup` con controles tipados
+(`nonNullable: true`, `FormControl<Date | null>`), y `paginasDemo` (línea 352) arma las páginas con
+`paginarCampos`. *Quién lo decidió:* Itzan, sobre la medición, el 2026-09-22.
+
+**H3.S3.M2 — HECHO.** Observado en `/design-system` con el servidor de desarrollo: el organismo
+monta con **dos pasos** en el indicador («Identidad» y «Acceso») y **cuatro controles** con su
+etiqueta; con los obligatorios vacíos no avanza y dibuja «Este dato es obligatorio.» **debajo de
+cada campo**. Salida en `evidencia/h3/catalogo.txt`; capturas
+`evidencia/h3/capturas/catalogo-motor-montado.png` y `catalogo-motor-avanzado.png`, miradas.
+Consola: 2 errores, los dos de CSP por script en línea, **preexistentes** — los mismos que ya
+registraba el baseline (`evidencia/antes/recorrido-profesional.md:57`).
+
+**H3.S3.M3 — DESCARTADO.** *Por qué:* su premisa es «mientras no exista». El escenario existe, se
+montó y se ejercitó, así que no hay contrato ausente que simular. La simulación de tres niveles que
+la regla 65 **sí** reclama en este trabajo es la de `H3.S2.M3`, y queda escrita con sus tres casos
+en [`evidencia/h3/deuda-anclaje-y-foco.md`](./evidencia/h3/deuda-anclaje-y-foco.md).
+*Quién lo decidió:* Itzan, sobre la observación, el 2026-09-22.
+
+> **Insumo para H5, medido acá:** el catálogo ya le pasa al motor un `FormGroup` **tipado**, y el
+> motor lo acepta, porque `input.required<FormGroup>()` es `FormGroup<any>` y cualquier grupo
+> tipado le es asignable. Tipar **el input** del organismo es lo incompatible, no tipar los
+> formularios de los consumidores. Ver `H5.S1`.
 
 ### H4 — Separar vista y contenedor en un contenedor grande
 
@@ -298,27 +360,73 @@ Las Q-I1…Q-I5 de **este encargo (2026-09-21, §5)**; no son las del 2026-09-20
 
 **CA:** Dada la decisión, cuando se lee, entonces dice qué se gana, a quién rompe, qué adaptador temporal se usa y cuándo se elimina.
 **DoD:** la decisión escrita + la lista de los 52 consumidores.
-**Estado:** TODO
+**Estado:** HECHO — decisión **D-5** en [`DECISIONES-DEL-MOTOR.md`](./DECISIONES-DEL-MOTOR.md).
 
 | ID | Microtarea | CA (binario) | DoD (comando de verificación) | Estado |
 |---|---|---|---|---|
-| H5.S1.M1 | Listar los consumidores | El conteo da 52, o se registra el real | `git grep -l '<app-paginated-form' origin/mockup -- 'src/app/**/*.html' \| wc -l` | TODO |
-| H5.S1.M2 | La decisión con su plan de compatibilidad | Dice qué adaptador y cuándo se retira | el archivo de decisión | TODO |
-| H5.S1.M3 | La alternativa descartada | Hay al menos una, con motivo | el archivo de decisión | TODO |
-| H5.S1.M4 | Si se implementa: cinco consumidores ajenos | Las cinco pantallas funcionan igual | cinco capturas comparadas | TODO |
+| H5.S1.M1 | Listar los consumidores | El conteo da 52, o se registra el real | `git grep -l '<app-paginated-form' origin/mockup -- 'src/app/**/*.html' \| wc -l` | HECHO |
+| H5.S1.M2 | La decisión con su plan de compatibilidad | Dice qué adaptador y cuándo se retira | el archivo de decisión | HECHO |
+| H5.S1.M3 | La alternativa descartada | Hay al menos una, con motivo | el archivo de decisión | HECHO |
+| H5.S1.M4 | Si se implementa: cinco consumidores ajenos | Las cinco pantallas funcionan igual | cinco capturas comparadas | DESCARTADO |
+
+**H5.S1.M1 — HECHO.** El conteo da **53**, no 52, y se registra el real. Y una medición que el
+encargo no pedía pero que es la que decide: **52 de los 53 arman su `FormGroup` de forma estática**
+y el único dinámico es `features/form-builder/form-builder.ts`, que está declarado fuera de
+alcance. Salida literal en
+[`evidencia/h5/consumidores-y-forma.txt`](./evidencia/h5/consumidores-y-forma.txt).
+
+**H5.S1.M2 — HECHO.** D-5 dice qué se gana (la `key` deja de ser un string libre y el error de
+campo inexistente pasa de aviso en ejecución a error de compilación), a quién rompe (1 de 53), qué
+adaptador se usa (genérico con tipo abierto por defecto + vía explícita para el caso dinámico) y
+**cuándo se retira** (cuando `form-builder` sea el único que la declare, comprobado con esta misma
+medición).
+
+**H5.S1.M3 — HECHO.** Dos alternativas descartadas con motivo en D-5: tipar de un tirón sin escape
+—dejaría a `form-builder` sin compilar y su única salida sería un `as any` en un consumidor ajeno,
+en un repo que hoy tiene cero— y no hacer nada nunca.
+
+**H5.S1.M4 — DESCARTADO.** *Por qué:* la microtarea es condicional («**si se implementa**») y la
+decisión D-5 es **no implementar** el tipado en este trabajo. El propio encargo lo autoriza:
+«implementarlo puede ser oleada 2; decidirlo no». Sin cambio en el organismo no hay nada que
+comparar en cinco consumidores ajenos. *Quién lo decidió:* Itzan, el 2026-09-22.
 
 #### H5.S2 — Las seis banderas, una por una
 
 **CA:** Dada cada bandera booleana, cuando se evalúa, entonces queda decidido si se conserva, se convierte en variante o se resuelve por proyección, con el mecanismo del §8.
 **DoD:** seis filas con decisión, motivo y quién la usa hoy.
-**Estado:** TODO
+**Estado:** HECHO — decisión **D-6** en [`DECISIONES-DEL-MOTOR.md`](./DECISIONES-DEL-MOTOR.md).
 
 | ID | Microtarea | CA (binario) | DoD (comando de verificación) | Estado |
 |---|---|---|---|---|
-| H5.S2.M1 | Medir quién usa cada una | Seis conteos | `git grep -c '<bandera>' origin/mockup -- 'src/app/**/*.html'` por bandera | TODO |
-| H5.S2.M2 | Decidir por cada una: conservar / variante / proyección | Seis decisiones con motivo | tabla en el archivo de decisión | TODO |
-| H5.S2.M3 | Ninguna bandera lleva nombre de pantalla | Ninguna, o se registra la que sí | revisión del contrato | TODO |
-| H5.S2.M4 | Ninguna se borra con consumidores vivos | Nada se borró con uso vivo | las mediciones pegadas | TODO |
+| H5.S2.M1 | Medir quién usa cada una | Seis conteos | `git grep -c '<bandera>' origin/mockup -- 'src/app/**/*.html'` por bandera | HECHO |
+| H5.S2.M2 | Decidir por cada una: conservar / variante / proyección | Seis decisiones con motivo | tabla en el archivo de decisión | HECHO |
+| H5.S2.M3 | Ninguna bandera lleva nombre de pantalla | Ninguna, o se registra la que sí | revisión del contrato | HECHO |
+| H5.S2.M4 | Ninguna se borra con consumidores vivos | Nada se borró con uso vivo | las mediciones pegadas | HECHO |
+
+**H5.S2.M1 — HECHO, con el instrumento corregido.** Las banderas booleanas son **cinco**, no seis;
+la sexta que cuenta el encargo es `cancelLabel`, que no es booleana pero opera como tal (con `''`
+no hay botón). Y el comando del DoD **mide otra cosa**: cuenta archivos que contienen la palabra,
+no consumidores que le pasan la bandera al motor. Medido bien —extrayendo el tag
+`<app-paginated-form>` de cada uno de los 53 y buscando dentro—: `pending` **49**, `iconOnlyNav`
+**4**, `cancelLabel` **4**, `compactSteps` **1**, `interactiveSteps` **0**, `destructive` **0**.
+Con el comando ingenuo, `destructive` habría dado 5 y parecería viva. Salida literal en
+[`evidencia/h5/banderas-medidas.txt`](./evidencia/h5/banderas-medidas.txt).
+
+**H5.S2.M2 — HECHO.** Seis filas con decisión y motivo en D-6: conservar `pending`, `iconOnlyNav` y
+`compactSteps` (esta última vigilada); `cancelLabel` a variante semántica en oleada 2;
+`interactiveSteps` conserva el comportamiento y pierde la bandera; `destructive` se retira con
+`confirmTitle` y `confirmMessage`.
+
+**H5.S2.M3 — HECHO.** Revisado el contrato completo (`paginated-form.ts:198-272`): las doce
+entradas nombran qué hace el organismo, ninguna nombra a un consumidor. La más cerca del olor del
+§5.6 es `compactSteps`, con un solo usuario, pero dice «pasos compactos», no «paciente».
+**Ninguna incumple.**
+
+**H5.S2.M4 — HECHO.** No se retiró ninguna bandera en este trabajo. Las dos con cero consumidores
+quedan declaradas para oleada 2 con su medición pegada; las cuatro con uso vivo se conservan. Se
+comprobó además que `destructive` e `interactiveSteps` tampoco se fijan desde TypeScript: los
+`destructive: true` del repo son de `DialogService`, `app-menu-item` y `app-form-actions`, ninguno
+del motor.
 
 ### H6 — Regresión, gates y cierre
 
