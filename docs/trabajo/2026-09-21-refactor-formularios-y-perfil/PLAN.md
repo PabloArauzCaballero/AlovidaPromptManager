@@ -125,13 +125,13 @@ Las Q-I1…Q-I5 de **este encargo (2026-09-21, §5)**; no son las del 2026-09-20
 **Prioridad:** `BLOQUEANTE`
 **CA:** Dado mi entorno, cuando alguien pregunta contra qué versión trabajé y cómo se veían y comportaban los formularios antes, entonces hay SHA, capturas y descripción, no un recuerdo.
 **DoD:** salidas del baseline en `evidencia/antes/`, seis capturas descritas, comportamiento de dos formularios anotado paso por paso.
-**Estado:** EN CURSO
+**Estado:** HECHO — las 13 microtareas cerradas. **Con una nota viva:** el corte se movió después de medir el baseline, así que la cifra de pruebas esperada sube de 7 087 a 7 089 y se vuelve a medir en H6 (ver §1).
 
 #### H1.S1 — Corte y baseline
 
 **CA:** Dado un rojo posterior, cuando alguien pregunta si lo rompí yo, entonces la respuesta sale de un archivo.
 **DoD:** salidas con su código de salida, pegadas.
-**Estado:** EN CURSO
+**Estado:** HECHO
 
 | ID | Microtarea | CA (binario) | DoD (comando de verificación) | Estado |
 |---|---|---|---|---|
@@ -252,13 +252,13 @@ Nada de esto se corrige en este carril: es diagnóstico, con su medida y su cons
 **Prioridad:** `ALTA`
 **CA:** Dada la regla extraída, cuando se la busca en el repo, entonces está escrita una sola vez; y los dos registros que la consumen se comportan igual que en las notas de H1.S2.
 **DoD:** la regla en un archivo, dos consumidores migrados, los dos recorridos comparados contra H1.S2.
-**Estado:** TODO
+**Estado:** A MEDIAS — la regla vive una sola vez y los cinco consumidores se comportan igual (H3.S1 completo, H3.S3 acreditado). Lo que no se cumple son las dos microtareas de anclaje del error por campo y foco al primer error, **anteriores a este trabajo** y detalladas en `evidencia/h3/deuda-anclaje-y-foco.md`.
 
 #### H3.S1 — Extraer sin cambiar comportamiento
 
 **CA:** Dada la extracción, cuando se compara antes y después, entonces no hay diferencia de comportamiento sin justificar por escrito.
 **DoD:** el test que protege la regla en verde, y el recorrido comparado.
-**Estado:** TODO
+**Estado:** HECHO
 
 | ID | Microtarea | CA (binario) | DoD (comando de verificación) | Estado |
 |---|---|---|---|---|
@@ -362,13 +362,13 @@ en [`evidencia/h3/deuda-anclaje-y-foco.md`](./evidencia/h3/deuda-anclaje-y-foco.
 **Prioridad:** `ALTA`
 **CA:** Dado el contenedor elegido, cuando alguien lee su plantilla, entonces ve regiones, estados y acciones con nombres del problema; y el contenedor muestra conexión de casos de uso, no renderizado.
 **DoD:** el diff, el comportamiento comparado contra H1 y la tabla de propiedad del estado cumplida.
-**Estado:** TODO
+**Estado:** EN CURSO — el contenedor está elegido y su contrato escrito; falta la extracción en sí.
 
 #### H4.S1 — Bajar la presentación a la vista
 
 **CA:** Dada la vista extraída, cuando se le pasan entradas explícitas, entonces pinta sin conocer endpoints, sesión ni persistencia.
 **DoD:** la vista con entradas y salidas tipadas, y su test de contrato.
-**Estado:** TODO
+**Estado:** EN CURSO
 
 | ID | Microtarea | CA (binario) | DoD (comando de verificación) | Estado |
 |---|---|---|---|---|
@@ -445,7 +445,7 @@ vista ya vive en el motor de formularios. Separarlo no demostraría nada de lo q
 **Prioridad:** `MEDIA`
 **CA:** Dado `form: FormGroup` sin tipar y las seis banderas, cuando alguien pregunta qué se decidió, entonces hay una decisión escrita por cada una, con plan de compatibilidad y alternativa descartada.
 **DoD:** las decisiones en un archivo, con los 52 consumidores nombrados como superficie.
-**Estado:** TODO
+**Estado:** HECHO — las dos decisiones tomadas con medición, no con razonamiento: **D-5** y **D-6** en [`DECISIONES-DEL-MOTOR.md`](./DECISIONES-DEL-MOTOR.md).
 
 #### H5.S1 — La decisión sobre `FormGroup` tipado
 
@@ -539,13 +539,13 @@ del motor.
 **Prioridad:** `ALTA`
 **CA:** Dado el cierre, cuando alguien que no vio el turno lee el reporte, entonces sabe qué quedó demostrado, qué quedó a medias con sus cuatro respuestas y qué no se cubrió.
 **DoD:** baseline repetido y comparado, capturas miradas, §19 respondido y `REPORTE.md` escrito.
-**Estado:** TODO
+**Estado:** EN CURSO — adelantada la muestra de consumidores ajenos, cuyo sujeto ya está congelado. El resto espera el estado final de H4.
 
 #### H6.S1 — Regresión, con la muestra de consumidores ajenos
 
 **CA:** Dado el cambio, cuando se corren los comandos del baseline, entonces ningún rojo es nuevo; y si se tocó `paginated-form` o `form-field`, cinco consumidores ajenos están comprobados a mano.
 **DoD:** salidas comparadas + cinco capturas de consumidores ajenos.
-**Estado:** TODO
+**Estado:** EN CURSO
 
 | ID | Microtarea | CA (binario) | DoD (comando de verificación) | Estado |
 |---|---|---|---|---|
