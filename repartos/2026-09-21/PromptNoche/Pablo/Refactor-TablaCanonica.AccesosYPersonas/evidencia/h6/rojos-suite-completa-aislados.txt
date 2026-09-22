@@ -1,0 +1,26 @@
+=== Re-corrida AISLADA de los 4 rojos de la suite completa post-H7 ===
+
+$ yarn test --watch=false --include=src/app/app.routes.spec.ts
+ Test Files  1 passed (1)
+      Tests  47 passed (47)
+exit=0
+
+$ yarn test --watch=false --include=src/app/features/agenda/my-agenda/my-agenda.spec.ts
+ Test Files  1 passed (1)
+      Tests  43 passed (43)
+exit=0
+
+$ yarn test --watch=false --include=src/app/features/auth/register-practitioner/register-practitioner.spec.ts
+ Test Files  1 passed (1)
+      Tests  97 passed (97)
+exit=0
+
+$ yarn test --watch=false --include=src/app/features/account/my-profile/work-history/site-bank-qr-dialog/site-bank-qr-dialog.spec.ts
+ Test Files  1 passed (1)
+      Tests  8 passed (8)
+exit=0
+
+$ yarn test --watch=false --include=src/app/features/accounting/resumen/resumen.spec.ts  # el de antes, ver si sigue igual
+ Test Files  1 passed (1)
+      Tests  12 passed (12)
+exit=0

@@ -1,0 +1,2 @@
+$ yarn lint   # despues de H7
+exit=0

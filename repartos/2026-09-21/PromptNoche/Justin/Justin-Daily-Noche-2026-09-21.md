@@ -10,9 +10,45 @@
 
 ## 0. Dos cosas que te van a llegar de otros — y qué hacés si no llegan
 
+> ## 🛑 PARÁ ACÁ — tus 39 pantallas NO se migran. Q-A resuelta, y el resultado cancela el trabajo
+>
+> **`docs/adr/ADR-0014-pantallas-portadas-que-se-graduan.md`** (rama `pablo/refactor-tabla-canonica`).
+> **No empieces a migrar nada de `features/alovida/**` hasta leerlo.**
+>
+> ### Por qué
+>
+> 1. Al abrir una de esas pantallas en el navegador, el propio producto muestra un aviso **que no se
+>    puede cerrar**: *«Referencia de diseño, no la aplicación. Esta pantalla viene de la bóveda con
+>    datos de ejemplo… La pantalla que sí funciona es Pacientes.»*
+> 2. Lo pinta `alovida/shell/alovida-design-notice.ts`, y su documentación declara que las 126
+>    portadas son **el entregable del diseñador y la fuente contra la que se rehidratan las vistas
+>    reales** (corrección #8), y que el carril 01 pide **marcarlas, no borrarlas**.
+> 3. **Las pantallas reales ya montan el organismo canónico.** Medido:
+>    `admin/organizations/organization-list`, `admin/patients/patient-list` y
+>    `admin/terminology/terminology-catalog` usan `<app-data-table>`, y **ninguna** tiene una tabla
+>    escrita a mano. Tus tres módulos con pantalla real ya están adoptados.
+>
+> **Migrar tus 39 destruiría el entregable de diseño para conseguir cero valor de producto.**
+> Quedan `DESCARTADO`, igual que las 31 de Pablo. Tu H3, H4 y H5 no corresponden.
+>
+> ### Dos datos que igual te sirven
+>
+> - **El generador no sobrescribe: borra.** `port-vistas-alovida.mjs:275-284` hace
+>   `rmSync(..., { recursive: true, force: true })` sobre los siete segmentos, **incluidos tus cinco**.
+>   Un archivo nuevo creado a mano ahí adentro tampoco sobrevive.
+> - **`maqueta portada: 119` de `yarn audit:vistas` no es deuda**: es el recuento del entregable de
+>   diseño. Usarlo como meta a bajar sería medir mal.
+>
+> ### Qué hacer en su lugar — confirmalo con Pablo antes de arrancar
+>
+> Lo que **sí** es deuda real, y hoy **no tiene dueño**: la pantalla real de Pacientes tiene **4 de
+> las 8 columnas** y **ninguno de los 5 filtros** que el diseño especifica, y monta `DataTable` pero
+> **no** `ViewStateHost`. Eso vive en `features/admin/**`. Es trabajo de producto, no de
+> refactorización, y hay que asignarlo antes de tocarlo.
+
 | Qué esperás | De quién | Si no llegó |
 |---|---|---|
-| La **decisión Q-A** sobre el generador de `features/alovida/**` | Pablo, su H1.S3 | Tu H1 y tu H2 avanzan igual (inventario, familias, contrato). A la hora de migrar, trabajás contra el supuesto declarado —piloto a mano y exclusión declarada— y **lo decís en el reporte**, anotando qué habría que rehacer |
+| ~~La **decisión Q-A**~~ | ~~Pablo~~ | **RESUELTA** — ver el recuadro de arriba |
 | El **contrato de `content-dialog`** para tus dos diálogos crudos | Marcelo, su H2 | Simulás el contrato en tres niveles (correcto, límite, inválido), cerrás contra el doble y **declarás que se cerró contra un doble** (regla 65) |
 
 **No te bloquees esperando.** `BLOQUEADO` sin simulación previa no es un cierre válido y el
@@ -87,12 +123,16 @@ AVANCE — directorio, cabecera y búsqueda — <fase> — <ID de microtarea>
 | Patrón de migración de tabla | Pablo | | |
 | Fixtures de terminología y datos compartidos | Ender | | |
 
-## 7. El archivo compartido
+## 7. El archivo compartido — **corregido el 2026-09-21 por ADR-0014**
 
-`features/alovida/alovida.routes.ts` (43 KB) lo comparten **Pablo y vos**. Sólo se **agrega**; nunca se
-reordena ni se reformatea, y se avisa **antes**.
+> ❌ **`features/alovida/alovida.routes.ts` NO se toca nunca.** Es un archivo **generado** y está en
+> la lista de borrado del generador (línea 281). Lo que se escriba ahí se pierde.
+>
+> ✅ **El archivo de coordinación real es `src/app/app.routes.ts`.** Ahí va la ruta de cada pantalla
+> graduada, en el bloque que corre **antes** de `ALOVIDA_ROUTES`. Sólo se **agrega**; nunca se
+> reordena ni se reformatea, y se avisa **antes** en el daily. Lo comparten Pablo y vos.
 
-| ¿Lo tocaste? | Qué agregaste | ¿Avisaste antes? |
+| ¿Tocaste `app.routes.ts`? | Qué ruta agregaste | ¿Avisaste antes? |
 |---|---|---|
 | | | |
 

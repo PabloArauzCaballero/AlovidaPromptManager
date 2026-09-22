@@ -1,0 +1,40 @@
+Inventario de las 31 pantallas objetivo — corte 5a0776c6
+Ruta verificada = el slug de la carpeta aparece como `path:` en alovida.routes.ts
+
+=== /accesos -- 16 plantillas con <table> escrito a mano ===
+  /accesos/accesos-clinicos-del-paciente-listado
+  /accesos/accesos-clinicos-listado
+  /accesos/accesos-clinicos-revocar
+  /accesos/alcance-de-recurso-listado
+  /accesos/asignaciones-de-rol-listado
+  /accesos/categorias-de-permiso-listado
+  /accesos/concesiones-de-permiso-listado
+  /accesos/permisos-de-campo-listado
+  /accesos/permisos-del-rol-listado
+  /accesos/permisos-listado
+  /accesos/politicas-de-acceso-listado
+  /accesos/relaciones-de-cuidado-listado
+  /accesos/relaciones-de-cuidado-revocar
+  /accesos/representaciones-legales-listado
+  /accesos/representaciones-legales-revocar
+  /accesos/roles-listado
+
+=== /personas -- 15 plantillas con <table> escrito a mano ===
+  /personas/apoderados-de-portal-listado
+  /personas/autorizaciones-de-jurisdiccion-listado
+  /personas/credenciales-listado
+  /personas/credenciales-verificar
+  /personas/especialidades-listado
+  /personas/pacientes-fusionar
+  /personas/pacientes-listado
+  /personas/pacientes-revertir
+  /personas/personas-listado
+  /personas/personas-registrar-defuncion
+  /personas/personas-relacionadas-listado
+  /personas/profesionales-listado
+  /personas/resumen-propio-listado
+  /personas/vinculos-de-cuenta-listado
+  /personas/vinculos-de-identidad-listado
+
+TOTAL: 31  (esperado 31)
+con ruta verificada contra el router: 31 / 31

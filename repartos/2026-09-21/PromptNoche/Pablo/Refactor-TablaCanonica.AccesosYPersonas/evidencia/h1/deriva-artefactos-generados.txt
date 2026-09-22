@@ -1,0 +1,20 @@
+== Deriva de los artefactos generados (hallazgo fuera de alcance) ==
+Correr 'yarn audit:vistas' sobre el corte 5a0776c6 SIN tocar codigo produce un diff.
+O sea: lo commiteado en docs/reports/generated/ no concuerda con sus fuentes.
+Es el gate del paragrafo 18 del documento maestro: 'los artefactos generados
+concuerdan con sus fuentes'. Hoy NO concuerdan.
+
+warning: in the working copy of 'docs/reports/generated/design-view-inventory.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'docs/reports/generated/rutas.json', LF will be replaced by CRLF the next time Git touches it
+ docs/reports/generated/design-view-inventory.md | 8 ++++----
+ docs/reports/generated/rutas.json               | 4 ++--
+ 2 files changed, 6 insertions(+), 6 deletions(-)
+
+warning: in the working copy of 'docs/reports/generated/rutas.json', LF will be replaced by CRLF the next time Git touches it
++        "PharmaLabClient",
+-        "PrescriptionFavoritesClient",
++        "SchedulingClient",
+-        "PrescriptionFavoritesClient",
+
+Accion tomada: REVERTIDO. Regenerarlos no esta en el alcance de este carril y
+cambiaria el baseline de los otros cuatro. Se reporta para su dueno.

@@ -108,7 +108,7 @@ un cierre válido, y el `blocker_gate.py` lo frena.
 
 | ID | Ambigüedad | Quién la resuelve | A quién bloquea |
 |---|---|---|---|
-| **Q-A** | Las 161 pantallas de `features/alovida/**` las **genera** `scripts/port-vistas-alovida.mjs`, que declara «si se vuelve a correr, lo pisa» y **no tiene mecanismo de exclusión**. ¿El generador aprende a emitir componentes canónicos, la pantalla migrada sale de su alcance, o se congela el generador? | **Pablo, en su H1.S3 — es lo primero de la noche** | Pablo y Justin: **70 pantallas** |
+| ~~**Q-A**~~ | **RESUELTA el 2026-09-21 — [`ADR-0014`](../../../docs/adr/) en `pablo/refactor-tabla-canonica`.** **La pregunta tenía un supuesto equivocado: no hace falta graduar nada.** Las pantallas portadas de `features/alovida/**` son, por decisión explícita del producto y visible en pantalla, «referencia de diseño, no la aplicación» — **no se migran**. Las pantallas reales ya montan el organismo canónico. Ver §5.bis (reescrita) | Pablo — **hecho** | nadie |
 | **Q-B** | El §17 pide siete artefactos y un `REFACTOR_FRONTEND.md`. Pero ya existe `docs/refactor-profesional/trabajo/` con `INVENTARIO.md`, `MATRIZ_COBERTURA.md`, `ESTADO.md`, `HALLAZGOS.md`, `DECISIONES.md` y `EVIDENCIAS.md`. ¿Se reusa o se crea? | Pablo | los cinco |
 | **Q-C** | `form: FormGroup` de `paginated-form` no está tipado, contra el §10.1 — pero tiene **52 consumidores** | Pablo, con el plan de compatibilidad de Itzan | Itzan |
 | **Q-D** | `fact-section` existe (239 líneas) y `<app-fact-section` aparece en **0** plantillas | Pablo, con las cuatro mediciones de Marcelo | Marcelo |
@@ -117,6 +117,46 @@ un cierre válido, y el `blocker_gate.py` lo frena.
 **Supuesto tomado para Q-B, y hay que confirmarlo:** se **reusa** `docs/refactor-profesional/trabajo/`,
 porque el propio §17 dice «reutiliza archivos equivalentes si existen. No multipliques documentos que
 repiten lo mismo».
+
+## 5.bis Q-A resuelta — **REESCRITA**: el ADR se corrigió a mitad del turno y esta sección lo sigue
+
+> ⚠️ **Si leíste esta sección antes y viste hablar de "graduar" pantallas mudándolas de carpeta, esa
+> era la primera versión del ADR.** Pablo la reescribió al medir un paso más: el resultado final es
+> el de acá. Se deja constancia del giro en vez de editar en silencio.
+
+Medido sobre el corte. Afecta a **Pablo y a Justin**, o sea a las 70 pantallas — pero al revés de lo
+que el reparto original suponía.
+
+1. **El propio producto ya declara qué son esas pantallas.** `alovida/shell/alovida-design-notice.ts`
+   pinta, en los dos marcos de la maqueta, un aviso que **no se puede cerrar**: *«Referencia de
+   diseño, no la aplicación… La pantalla que sí funciona es Pacientes.»* Su documentación dice que las
+   126 portadas son **el entregable del diseñador y la fuente contra la que se rehidratan las vistas
+   reales** (corrección #8), y que el carril 01 pide **marcarlas, no borrarlas**.
+2. **Las pantallas reales ya montan el organismo canónico**, medido:
+   `admin/organizations/organization-list`, `admin/patients/patient-list` y
+   `admin/terminology/terminology-catalog` usan `<app-data-table>`. **Ninguna** tiene una tabla
+   escrita a mano.
+3. **Conclusión: las 70 tablas de la maqueta NO son deuda de adopción.** Migrarlas destruiría el
+   entregable de diseño para conseguir cero valor de producto. **No se migran, y nadie más las migre.**
+
+**Lo que sí sigue siendo válido de la primera pasada**, por si alguna vez hace falta graduar una
+pantalla real (no una portada de la maqueta):
+
+- El generador no sobrescribe, **borra**: `port-vistas-alovida.mjs:275-284`,
+  `rmSync(..., {recursive:true})` sobre los siete segmentos.
+- **`alovida.routes.ts` es generado.** El daily de Justin decía «compartido con Pablo, sólo agregar»:
+  **eso estaba mal y quedó corregido**. El archivo de coordinación real es **`src/app/app.routes.ts`**.
+- El repo ya tiene el mecanismo, documentado y probado, en `app.routes.ts:1232-1240` (precedente de
+  `/search`), y `features/alovida/shell/` como ejemplo de carpeta que sobrevive por no ser un segmento.
+
+**`yarn audit:vistas` → `maqueta portada: 119` NO es un indicador de deuda a bajar.** Es el recuento
+del entregable de diseño. Usarlo como meta sería medir mal.
+
+**La brecha real estaba al revés de lo que el reparto suponía**: no es que la maqueta necesite
+adopción, es que la pantalla **real** de Pacientes tenía menos columnas que las que su propio
+contrato ya declaraba. Pablo lo cerró en el mismo turno (H7): agregó Documento y Teléfono a
+`admin/patients/patient-list`, con los tres niveles del contrato probados y verificado en pantalla
+real. Quedan pendientes los 5 filtros que el diseño especifica y que la pantalla real no tiene.
 
 ## 6. Lo que NO hay que hacer, y ya está medido
 

@@ -1,0 +1,38 @@
+Adopcion de los organismos canonicos en las PANTALLAS REALES
+(las que el propio producto declara en alovida-design-notice.ts:24-29)
+
+=== buscar         -> /directory
+    componente: NO RESUELTO desde app.routes.ts
+
+=== directorio     -> /administration/organizations
+    componente: features/admin/organizations/organization-list/organization-list
+      <app-data-table        1
+      <app-page-header       1
+      <app-view-state-host   0
+      <app-filter-bar        0
+      <table                 0
+
+=== personas       -> /administration/patients
+    componente: features/admin/patients/patient-list/patient-list
+      <app-data-table        1
+      <app-page-header       1
+      <app-view-state-host   0
+      <app-filter-bar        0
+      <table                 0
+
+=== terminologia   -> /administration/terminology
+    componente: features/admin/terminology/terminology-catalog
+      <app-data-table        1
+      <app-page-header       2
+      <app-view-state-host   1
+      <app-filter-bar        0
+      <table                 0
+
+=== accesos        -> /administration/delegated-access
+    componente: features/delegated-access/delegated-access-home/delegated-access-home
+      <app-data-table        0
+      <app-page-header       1
+      <app-view-state-host   0
+      <app-filter-bar        0
+      <table                 0
+

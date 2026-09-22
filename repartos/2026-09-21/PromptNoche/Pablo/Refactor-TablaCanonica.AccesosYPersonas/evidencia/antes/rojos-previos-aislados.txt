@@ -1,0 +1,37 @@
+=== Re-corrida AISLADA de los 3 rojos del baseline, para distinguir fallo real de contencion ===
+
+$ yarn test --watch=false --include=src/app/app.routes.spec.ts
+ Test Files  1 passed (1)
+      Tests  47 passed (47)
+exit=0
+
+$ yarn test --watch=false --include=src/app/features/accounting/resumen/resumen.spec.ts
+       × pide el estado de resultados SEIS veces, cada una con su ventana 134ms
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+ Test Files  1 failed (1)
+      Tests  1 failed | 11 passed (12)
+exit=1
+
+$ yarn test --watch=false --include=src/app/features/auth/register-practitioner/register-practitioner.spec.ts
+ Test Files  1 passed (1)
+      Tests  97 passed (97)
+exit=0
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL   mantra-core-health  src/app/features/accounting/resumen/resumen.spec.ts > Resumen contable > los tres tramos > pide el estado de resultados SEIS veces, cada una con su ventana
+AssertionError: expected 5 to be 6 // Object.is equality
+
+- Expected
++ Received
+
+- 6
++ 5
+
+ ❯ src/app/features/accounting/resumen/resumen.spec.ts:150:70
+    148|       }));
+    149|       // Las seis son distintas entre sí, y las seis llevan las dos pu…
+    150|       expect(new Set(ventanas.map((v) => `${v.from}|${v.to}`)).size).t…
+       |                                                                      ^
+    151|       expect(ventanas.every((v) => v.from !== null && v.to !== null)).…
+    152|       // Y todas cuelgan de la práctica elegida.
+

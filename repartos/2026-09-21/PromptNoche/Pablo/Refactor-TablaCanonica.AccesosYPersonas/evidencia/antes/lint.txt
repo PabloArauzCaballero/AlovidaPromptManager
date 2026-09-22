@@ -1,0 +1,2 @@
+$ yarn lint   # corte 5a0776c6, rama pablo/refactor-tabla-canonica
+exit=0

@@ -1,0 +1,10 @@
+$ yarn audit:vistas   # corte 5a0776c6
+✓ docs/reports/generated/design-view-inventory.md
+✓ docs/reports/generated/rutas.json
+  conectada: 148
+  maqueta portada: 119
+  conectada con deuda: 19
+  presentacional: 10
+  placeholder: 1
+  con deuda: 1
+exit=0

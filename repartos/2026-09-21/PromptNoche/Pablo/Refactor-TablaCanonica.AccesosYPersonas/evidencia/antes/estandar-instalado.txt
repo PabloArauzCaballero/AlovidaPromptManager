@@ -1,0 +1,23 @@
+== Instalacion del estandar - carril Pablo, 2026-09-21 ==
+NOTA: el estandar NO se copio dentro del worktree del producto.
+Se carga desde AlovidaPromptManager/, que es el directorio de trabajo de la sesion.
+Motivo: mantra-core-health tiene .claude/ TRACKEADO con 4 skills propias
+(fable-refactor-orchestrator, frontend-production-gate, project-design-system,
+visual-quality-gate). Copiar 176 skills ahi ensuciaria el diff del producto
+con ~1000 archivos fuera de alcance (regla 00 sec.3.1). Desvio declarado.
+
+$ ls .claude/skills | wc -l
+176
+
+$ ls .claude/rules/[0-9]*.md | wc -l
+14
+
+$ python .claude/hooks/plan_gate.py --self-test
+PASS  plan ilegible: igual permite (no bloquea por formato)
+
+plan_gate self-test: 11 PASS, 0 FAIL
+
+$ git -C ../alovida/mch-pablo-tabla-canonica rev-parse HEAD
+5a0776c66b005ad4d2d6722321e933cd7adea621
+$ git -C ... branch --show-current
+pablo/refactor-tabla-canonica

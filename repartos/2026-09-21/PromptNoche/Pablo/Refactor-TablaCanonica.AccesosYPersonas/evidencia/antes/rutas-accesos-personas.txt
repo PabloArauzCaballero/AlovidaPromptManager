@@ -1,0 +1,7 @@
+total de secciones en rutas.json: 62
+por estado: {'conectada con deuda': 12, 'presentacional': 10, 'conectada': 38, 'placeholder': 1, 'con deuda': 1}
+
+=== /accesos — 0 rutas ===
+
+=== /personas — 0 rutas ===
+

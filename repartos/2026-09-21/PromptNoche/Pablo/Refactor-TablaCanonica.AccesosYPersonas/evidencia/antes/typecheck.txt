@@ -1,0 +1,2 @@
+$ yarn typecheck   # DESPUES de env:generate y stock:generate
+exit=0

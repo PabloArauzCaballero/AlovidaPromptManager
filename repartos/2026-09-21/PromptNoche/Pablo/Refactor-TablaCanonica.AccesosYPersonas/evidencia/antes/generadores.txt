@@ -1,0 +1,9 @@
+$ yarn env:generate
+[generate-env] src/environments/env.generated.ts · sin variables definidas (se usan los valores por defecto)
+exit=0
+
+$ yarn stock:generate
+✓ src/app/features/component-stock/component-index.generated.ts
+  537 componentes · 3 otros · 295 pantallas · 138 maquetas · 23 atomos · 45 moleculas · 33 organismos
+  191 con algo que mirar
+exit=0
