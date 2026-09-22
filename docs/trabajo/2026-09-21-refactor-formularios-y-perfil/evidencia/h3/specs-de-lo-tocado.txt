@@ -1,0 +1,5 @@
+registro-compartido/politica-de-contrasena.spec.ts             exit=0  Tests  5 passed (5)
+register-practitioner/register-practitioner.spec.ts            exit=1  Tests  1 failed | 94 passed (95)
+register-patient/register-patient.spec.ts                      exit=0  Tests  115 passed (115)
+register-laboratory/register-laboratory.spec.ts                exit=0  Tests  21 passed (21)
+register-imaging-center/register-imaging-center.spec.ts        exit=0  Tests  25 passed (25)

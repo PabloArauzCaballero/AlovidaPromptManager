@@ -1,6 +1,8 @@
 # PLAN — Separar quién decide de quién pinta en los registros y en el perfil
 
-> **AVANCE: 21 / 65 — 32,3 %.** El denominador subió de 64 a 65: el baseline destapó un rojo previo
+> **AVANCE: 29 / 67 — 43,3 %.** El denominador subió de 64 a 67: el baseline destapó un rojo previo
+> propio (H1.S1.M5) y la extracción destapó código muerto y tres consumidores más de la misma regla
+> (H3.S1.M6 y M7). El denominador subió de 64 a 65: el baseline destapó un rojo previo
 > dentro de un archivo reservado (H1.S1.M5).
 
 - **Persona:** Itzan · **Turno:** noche · **Fecha del reparto:** 2026-09-21 · **Línea:** C
@@ -121,7 +123,7 @@ Las Q-I1…Q-I5 de **este encargo (2026-09-21, §5)**; no son las del 2026-09-20
 | H1.S1.M2 | Baseline de `lint` y `typecheck` | Hay salida y exit code | `corepack yarn lint` · `corepack yarn typecheck` → `evidencia/antes/lint-typecheck.txt` (los dos exit 0; typecheck local depende del índice generado, ver archivo) | HECHO |
 | H1.S1.M3 | Baseline de `test` | Hay conteo de fallos previos | `corepack yarn test --watch=false` → `evidencia/antes/test.txt` (exit 1 · 2 fallidos / 7 085 pasados de 7 087 · 571 archivos) | HECHO |
 | H1.S1.M4 | Clasificar cada rojo previo | Cada uno con su clase de la regla 80.4 | tabla abajo + `evidencia/antes/clasificacion-rojos.md` (los dos reproducidos aislados) | HECHO |
-| H1.S1.M5 | **Nueva (descubierta en H1.S1.M4).** El rojo previo propio de `register-practitioner.spec.ts:2002` pasa a verde sin tocar su aserción | Dado el spec, cuando corre aislado y dentro de la suite, entonces el test con backend simulado pasa y su aserción de la línea 2033 sigue igual | `corepack yarn test --watch=false --include=src/app/features/auth/register-practitioner/register-practitioner.spec.ts` → `97 passed` + `git diff` del spec sin cambios en la aserción | TODO |
+| H1.S1.M5 | **Nueva (descubierta en H1.S1.M4).** El rojo previo propio de `register-practitioner.spec.ts:2002` pasa a verde sin tocar su aserción | Dado el spec, cuando corre aislado y dentro de la suite, entonces el test con backend simulado pasa y su aserción sigue igual | `corepack yarn test --watch=false --include=…/register-practitioner.spec.ts` → **`95 passed (95)`, exit 0**. Tope propio de 20 s con la causa medida (~10,4 s contra la latencia simulada); ninguna aserción tocada | HECHO |
 
 **Rojos previos del baseline (regla 80.4):**
 
@@ -218,11 +220,13 @@ Las Q-I1…Q-I5 de **este encargo (2026-09-21, §5)**; no son las del 2026-09-20
 
 | ID | Microtarea | CA (binario) | DoD (comando de verificación) | Estado |
 |---|---|---|---|---|
-| H3.S1.M1 | Test que protege la regla, escrito primero | Falla antes de extraer, pasa después | dos corridas pegadas | TODO |
-| H3.S1.M2 | La regla como función pura tipada | No consulta DOM, no inyecta sesión, no hace HTTP | el archivo + revisión contra §3.1 | TODO |
-| H3.S1.M3 | Migrar el primer consumidor | El registro se comporta igual | recorrido comparado contra H1.S2.M2 | TODO |
-| H3.S1.M4 | Migrar el segundo consumidor | El registro se comporta igual | recorrido comparado contra H1.S2.M3 | TODO |
-| H3.S1.M5 | La copia vieja ya no existe | `git grep` de la regla da una sola definición | `git grep -n '<patrón>' -- 'src/app/features/auth/register-*/**'` | TODO |
+| H3.S1.M1 | Test que protege la regla, escrito primero | Falla antes de extraer, pasa después | `evidencia/h3/test-de-la-regla.txt` (respaldo: rojo `TS2307` → `6 passed`) y la política de contraseña (rojo `TS2307` → `5 passed`) | HECHO |
+| H3.S1.M2 | La regla como función pura tipada | No consulta DOM, no inyecta sesión, no hace HTTP | `registro-compartido/politica-de-contrasena.ts` (constantes + validadores; sin DOM, sin sesión, sin HTTP) | HECHO |
+| H3.S1.M3 | Migrar el primer consumidor | El registro se comporta igual | profesional: `evidencia/h3/despues-profesional.txt` comparado con `antes/recorrido-profesional.md` — mismo mensaje, 1 envío, valores idénticos | HECHO |
+| H3.S1.M4 | Migrar el segundo consumidor | El registro se comporta igual | paciente: `evidencia/h3/despues-paciente.txt` comparado con `antes/recorrido-paciente.md` | HECHO |
+| H3.S1.M5 | La copia vieja ya no existe | `git grep` de la regla da una sola definición | `MIN_PASSWORD` ya no existe en **ninguna** de las 5 altas; la única definición es `politica-de-contrasena.ts`. Quedan fuera de la reserva `reset-password`, `activate-account` y `admin/user-registration` (oleada 2, declarados) | HECHO |
+| H3.S1.M6 | **Nueva.** Migrar también las otras tres altas (organización, laboratorio, imagenología) | Ninguna declara ya su mínimo ni su mensaje | `corepack yarn typecheck` y `corepack yarn lint` exit 0 · suite completa **7 082 pruebas, 0 fallos** | HECHO |
+| H3.S1.M7 | **Nueva.** Retirar el código muerto de adjuntos que la extracción destapó | Ningún método de adjuntos sin plantilla que lo llame sigue en pie, y las pruebas que lo ejercían se reapuntaron al camino vivo o se retiraron con su motivo | `evidencia/h3/codigo-muerto-retirado.md`; suite completa en verde | HECHO |
 
 #### H3.S2 — Que no se pierda lo que la persona escribió
 

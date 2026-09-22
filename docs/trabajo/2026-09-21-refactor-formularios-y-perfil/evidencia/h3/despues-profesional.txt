@@ -1,0 +1,59 @@
+P01 «¿Cómo te llamás?»
+  «Siguiente» sin completar: NO avanza
+    error: registro-pro-apellido-paterno → «Ingresá tu apellido paterno.»
+    foco: button testid=paginated-form-continuar id=-
+  tras completar, errores visibles: 0
+P02 «Tu documento de identidad»
+  «Siguiente» sin completar: NO avanza
+    error: registro-pro-documento → «Ingresá un documento válido: letras, números, punto y guion. | No es con lo que iniciás sesión —eso es tu correo—, pero es lo que ata tu matrícula a una persona.»
+    error: mch-field-16-control → «Elegí el departamento que expidió tu cédula.»
+    foco: button testid=paginated-form-continuar id=-
+  documento «12#45» y Tab (sin «Siguiente»):
+    error: registro-pro-documento → «Ingresá un documento válido: letras, números, punto y guion. | No es con lo que iniciás sesión —eso es tu correo—, pero es lo que ata tu matrícula a una persona.»
+    error: mch-field-16-control → «Elegí el departamento que expidió tu cédula.»
+P03 «Contanos un poco sobre vos»
+  «Siguiente» sin completar: NO avanza
+    error: mch-field-18-control → «Elegí una opción.»
+    error: mch-field-20-control → «Indicá tu fecha de nacimiento.»
+    foco: button testid=paginated-form-continuar id=-
+P04 «Cómo te contactamos en privado»
+  «Siguiente» sin completar: NO avanza
+    error: registro-pro-celular-personal → «El número está incompleto para el país elegido. | Es el número por el que te contactamos a vos. El que ve un paciente es el de tu consultorio, que se pide en la página siguiente.»
+    error: registro-pro-correo-personal → «Ingresá un correo válido. | Usá uno que sigas teniendo si cambiás de trabajo: es por donde se recupera la cuenta si perdés la clave.»
+    foco: button testid=paginated-form-continuar id=-
+  correo «no-es-un-correo» y Tab (sin «Siguiente»):
+    error: registro-pro-celular-personal → «El número está incompleto para el país elegido. | Es el número por el que te contactamos a vos. El que ve un paciente es el de tu consultorio, que se pide en la página siguiente.»
+    error: registro-pro-correo-personal → «Ingresá un correo válido. | Usá uno que sigas teniendo si cambiás de trabajo: es por donde se recupera la cuenta si perdés la clave.»
+P05 «El contacto de tu trabajo» (opcional, se pasa de largo)
+P06 «¿Dónde vivís?» (opcional, se pasa de largo)
+P07 «Tu consultorio propio» (opcional, se pasa de largo)
+P08 «Tu título profesional y foto»
+  «Siguiente» sin completar: NO avanza
+    foco: button testid=paginated-form-continuar id=-
+P09 «Tu habilitación para ejercer»
+  «Siguiente» sin completar: NO avanza
+    error: registro-pro-matricula → «Ingresá tu matrícula profesional. | Es la que comprobamos antes de que aparezcas en el directorio: es lo que le da certeza a quien te elige sin conocerte.»
+    error: registro-pro-credencial → «Ingresá tu número de registro del SEDES.»
+    foco: button testid=paginated-form-continuar id=-
+P10 «Los respaldos de tu habilitación» (opcional, se pasa de largo)
+P11 «Tus títulos» (opcional, se pasa de largo)
+P12 «Tus especialidades» (opcional, se pasa de largo)
+P13 «Tu contraseña»
+  botón: «Crear cuenta»
+  «Siguiente» sin completar: NO avanza
+    error: registro-pro-password → «La contraseña necesita al menos 8 caracteres. | Se guarda cifrada: ni el equipo de AloVida puede verla, y nunca te la vamos a pedir por teléfono ni por correo.»
+    foco: button testid=paginated-form-continuar id=-
+  contraseña «abc» y Tab:
+    error: registro-pro-password → «La contraseña necesita al menos 8 caracteres. | Se guarda cifrada: ni el equipo de AloVida puede verla, y nunca te la vamos a pedir por teléfono ni por correo.»
+ERROR DE GUARDADO (modo «error», doble clic sobre «Crear cuenta»):
+  envíos al servicio: 1
+  alerta: «Error: Simulado: fallo del servidor. (mock-fallo)»
+  página tras el fallo: «Tu contraseña»
+  botón habilitado otra vez: true
+  contraseña conservada en su campo: true
+  valores del formulario idénticos antes/después: true
+  volviendo al inicio: «Tu documento de identidad» · nombre=«Ana» · apellido=«Paz»
+SALIR A MITAD Y VOLVER (Atrás del navegador): página «¿Cómo te llamás?» · nombre=«»
+CONSOLA (errores): 6
+  Executing inline script violates the following Content Security Policy directive 'script-src 'self' 'sha256-Ohy6Wz7NFFGmQaVW/a8g5BXylUJrN/hb
+
