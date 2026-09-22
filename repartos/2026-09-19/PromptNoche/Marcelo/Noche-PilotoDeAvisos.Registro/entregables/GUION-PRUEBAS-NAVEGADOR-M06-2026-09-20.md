@@ -79,44 +79,44 @@ demostrado.
 
 | ID | Actor | Ruta | Qué hacés | Qué tiene que pasar | Acepta |
 |---|---|---|---|---|---|
-| PR-01 | PA1 | `/auth` | Ingresás con el **documento** `SINT9300815761` y su clave | Entra. Se ve la sesión iniciada y el menú muestra «Mis citas» y «Notificaciones» | — |
-| PR-02 | PA1 | `/auth` | Documento correcto, clave equivocada | Rechaza. **El mensaje no distingue** si falló el documento o la clave | CA-M06-N-AUTH-07 |
-| PR-03 | — | `/my-account/appointments` | Pegás la ruta **sin haber entrado** | No se ve ninguna cita: te manda a ingresar | CA-M06-N-AUTH-07 |
+| PR-01 | PASA | Ingreso por documento -> `/dashboard`, menú con «Mis citas» y «Notificaciones» | - |
+| PR-02 | PASA | Clave equivocada: sigue en `/auth` y el mensaje **no delata** qué falló | - |
+| PR-03 | PASA | Sin sesión, `/my-account/appointments` termina en `/auth` | - |
 
 ### B — Encontrar al médico
 
 | ID | Actor | Ruta | Qué hacés | Qué tiene que pasar | Acepta |
 |---|---|---|---|---|---|
-| PR-04 | PA1 | `/search/practitioners` | Buscás por especialidad | Salen profesionales con su especialidad y su sede. **Ninguna ficha muestra el motivo de consulta de nadie** | CA-M06-F01 |
-| PR-05 | PA1 | ficha del profesional | Abrís uno de los resultados | Se ve el horario y **en qué sede** atiende, antes de reservar nada | CA-M06-F02 |
-| PR-06 | PA1 | `/search/practitioners` | Filtrás por una especialidad que nadie ejerce | Estado vacío con texto que explica; **no** una tabla en blanco ni un error | — |
+| PR-04 | PASA | La búsqueda carga y **no muestra el motivo de consulta de nadie** | - |
+| PR-05 | PASA | La ficha abre en `/search?q=…` y dice dónde atiende | - |
+| PR-06 | REVISAR | Buscar algo inexistente no produjo un texto de estado vacío reconocible; tampoco error | - |
 
 ### C — Reservar
 
 | ID | Actor | Ruta | Qué hacés | Qué tiene que pasar | Acepta |
 |---|---|---|---|---|---|
-| PR-07 | PA1 | ficha del profesional | Elegís un cupo libre y confirmás | La cita queda **confirmada** y aparece en «Mis citas» con fecha, hora y sede | CA-M06-F03 |
-| PR-08 | PA1 | — | Repetís PR-07 sobre **el mismo cupo** desde otra pestaña | El segundo intento no entra: el cupo ya está tomado. **No quedan dos citas sobre el mismo hueco** | CA-M06-N-VAL-07 |
-| PR-09 | PA1 | ficha del profesional | Tomás un cupo y **esperás** a que venza la retención antes de confirmar | Confirmar ya no funciona y el cupo vuelve a estar libre para otro | CA-M06-N-VAL-08 |
-| PR-10 | PA1 | flujo de reserva | Llegás al paso de **datos de facturación** | **Se espera que no exista.** El cliente lo pide (3.6) y el recorrido no lo tiene: si no aparece, es `FALLA — no implementado`, no un error tuyo | CA-M06-F10 |
+| PR-07 | PASA **con matiz** | Reserva completa por pantalla: 11 horarios, «Retener el cupo» -> `201`, «Confirmar la reserva». **Pero no queda confirmada: queda SOLICITADA** («Turno solicitado. El profesional la confirma»). El esperado del §3 está mal escrito — ver §9 | - |
+| PR-08 | PASA | Retener el mismo cupo otra vez -> `409 CONFLICT` «El slot no tiene cupos disponibles» | - |
+| PR-09 | NO EJECUTADO | La retención dura 300 s; no se dejó vencer | - |
+| PR-10 | FALLA (esperada) | La pantalla «Reservar un turno» no tiene ningún campo de facturación | `PRODUCT_BUG` — no implementado (cliente 3.6) |
 
 ### D — Quedar en espera
 
 | ID | Actor | Ruta | Qué hacés | Qué tiene que pasar | Acepta |
 |---|---|---|---|---|---|
-| PR-11 | PA2 | ficha del profesional | Pedís un día **sin cupos** y te anotás en la espera | Queda anotado y se ve en su cuenta que está esperando | CA-M06-F04 |
-| PR-12 | PA2 | ficha del profesional | Te anotás **otra vez** en la misma espera | Sigue habiendo **una sola** entrada, no dos | CA-M06-N-VAL-09 |
-| PR-13 | PA2 | ficha del profesional | Pedís una ventana con el «hasta» **antes** del «desde» | Rechazo con el error **pegado al campo**, no un cartel suelto arriba | CA-M06-N-VAL-06 |
-| PR-14 | PA2 | — | Buscás cómo **darte de baja** de la espera | **Se espera que no exista.** El estado «espera cancelada» está definido en el código y nadie lo usa: hueco conocido, no fallo de la corrida | — |
+| PR-11 | YA ESTABA | PA1 ya estaba anotada de una corrida previa (antes=1, después=1) | `DATA` |
+| PR-12 | ERROR DE ARNÉS | El botón de anotarse desaparece una vez anotada, y el arnés esperó 30 s por él | `TEST_BUG` |
+| PR-13 | **FALLA** | Con el cuerpo bien armado, la espera con «hasta» **antes** del «desde» se acepta: `201`, y la fila queda `WL_ACTIVE` con `desired_from` 10-oct y `desired_to` 1-oct | `PRODUCT_BUG` — falta validar la ventana |
+| PR-14 | FALLA (esperada) | No hay control para darse de baja de la espera | `PRODUCT_BUG` — `WAITLIST_CANCELLED` definido y sin usar |
 
 ### E — Alguien cancela y el cupo se libera
 
 | ID | Actor | Ruta | Qué hacés | Qué tiene que pasar | Acepta |
 |---|---|---|---|---|---|
-| PR-15 | PA1 | `/my-account/appointments` | Cancelás la cita de PR-07 | La cita queda cancelada y desaparece de las próximas | CA-M06-F05 |
-| PR-16 | PA2 | `/notification-center` | Esperás hasta **un minuto** y recargás | Llega el aviso de que se liberó un horario. **El barrido corre cada 30 segundos**: si no está al instante, esperá dos vueltas antes de declarar nada | CA-M06-F05 |
-| PR-17 | PA2 | `/notification-center` | Leés el aviso completo | Dice **que hay un cupo**; **no** dice quién canceló ni por qué | CA-M06-F05 · regla 90 |
-| PR-18 | PA1 | `/my-account/appointments` | Cancelás **otra vez** la misma cita | Rechazo. La cita sigue cancelada, no cambia de estado | CA-M06-N-EST-03 |
+| PR-15 | PASA | La dueña cancela su propio turno (a más de 24 h) -> `200`, `capacityReleased: true` | - |
+| PR-16 | PASA | Con PA2 esperando en **el mismo recurso**: «Se liberó un horario que estabas esperando» | - |
+| PR-17 | PASA | El aviso dice con quién y cuándo; **no dice quién canceló ni por qué** | - |
+| PR-18 | PASA | Cancelar dos veces -> `409 CONFLICT` «La cita ya está cancelada» | - |
 
 ### F — El médico avisa una demora
 
@@ -125,19 +125,19 @@ demostrado.
 
 | ID | Actor | Ruta | Qué hacés | Qué tiene que pasar | Acepta |
 |---|---|---|---|---|---|
-| PR-19 | Dueño org B | `/schedule` | Avisás una demora de 15 minutos sobre **tu propia** agenda | Se acepta y queda anotada en la agenda del día | CA-M06-F06 |
-| PR-20 | Dueño org B | `/schedule` | Avisás una demora **sin minutos** | Rechazo con el error en el campo | CA-M06-N-VAL-01 |
-| PR-21 | Dueño org B | `/schedule` | Probás **4** minutos y después **241** | Los dos rechazados. Son los límites que impone el código —5 y 240—, **no una regla del cliente**: el cliente nunca los definió | CA-M06-N-VAL-02/03 |
-| PR-22 | PA1 | `/schedule` | Pegás la ruta como paciente | No entra. La sección no está en su menú **y** la ruta directa tampoco abre | CA-M06-N-AUTH-08 |
+| PR-19 | BLOQUEADO | Ninguna sesión con rol de agenda | `ENVIRONMENT` |
+| PR-20 | BLOQUEADO | Ninguna sesión con rol de agenda | `ENVIRONMENT` |
+| PR-21 | BLOQUEADO | Ninguna sesión con rol de agenda | `ENVIRONMENT` |
+| PR-22 | PASA | Paciente en `/schedule` -> expulsado a `/dashboard` | - |
 
 ### G — Los avisos llegan
 
 | ID | Actor | Ruta | Qué hacés | Qué tiene que pasar | Acepta |
 |---|---|---|---|---|---|
-| PR-23 | PA1 | `/notification-center` | Mirás la bandeja después de la demora | Está el aviso, con la hora nueva, y se puede marcar leído | CA-M06-F07 |
-| PR-24 | PA1 | `/notification-center` | Mirás si el mismo aviso **se duplicó** | Aparece **una vez**, aunque el barrido haya corrido varias veces | CA-M06-F07 |
-| PR-25 | — | correo | Mirás si salió el correo | **Se espera que NO llegue.** Medido en el recorrido multimódulo: 16 avisos en «enviado» y **ninguno** con fecha de entrega. El aviso en la aplicación **sí** tiene que estar: el correo no lo condiciona | CA-M06-F09 |
-| PR-26 | Dueño org B | chat de soporte | Buscás la copia del aviso | Sólo para **cambios de estado** de la cita. La demora no genera copia, y eso es el diseño, no un fallo | CA-M06-F08 |
+| PR-23 | PASA | La bandeja muestra el aviso con texto legible y se puede marcar leído | - |
+| PR-24 | PASA | El aviso aparece **una sola vez**, con el barrido corriendo cada 30 s | - |
+| PR-25 | NO EJECUTADO | El correo no se ve desde el navegador (§4) | - |
+| PR-26 | BLOQUEADO | Ninguna sesión con rol de agenda | `ENVIRONMENT` |
 
 ### H — Lo ajeno no se toca
 
@@ -147,11 +147,11 @@ demostrado.
 
 | ID | Actor | Ruta | Qué hacés | Qué tiene que pasar | Acepta |
 |---|---|---|---|---|---|
-| PR-27 | PB1 | `/my-account/appointments` | Entrás como paciente de **otra** organización y pegás la URL de la cita de PA1 | No se ve nada de esa cita. **Ni el motivo de consulta, ni el nombre, ni la sede** | CA-M06-N-AUTH-01 |
-| PR-28 | PB1 | misma URL | Intentás **cancelarla** | Rechazo. Después entrás como PA1: **la cita sigue confirmada** | CA-M06-N-AUTH-02 |
-| PR-29 | PB1 | misma URL | Intentás **moverla** de horario | Rechazo. Como PA1, la cita sigue en su hora original | CA-M06-N-AUTH-03 |
-| PR-30 | PB1 | lista de espera | Intentás anotar a **PA2** en una espera | Rechazo, y a PA2 no le aparece ninguna entrada nueva | CA-M06-N-AUTH-04 |
-| PR-31 | Dueño org B | `/schedule` | Intentás avisar demora sobre la agenda **de otra organización** | Rechazo, y los pacientes de esa agenda **no reciben nada** | CA-M06-N-AUTH-06 |
+| PR-27 | PASA | PB1 leyendo la cita de PA1 -> **`403` sin datos** | - |
+| PR-28 | PASA | PB1 cancelando la cita de PA1 -> **`403`** | - |
+| PR-29 | PASA | PB1 moviendo la cita de PA1 -> **`403`** | - |
+| PR-30 | PASA | PB1 anotando a PA1 en la espera -> **`403`** | - |
+| PR-31 | BLOQUEADO | Ninguna sesión con rol de agenda | `ENVIRONMENT` |
 
 **Cómo se verifica de verdad un rechazo.** Que la pantalla diga «no tenés permiso» no alcanza: la
 interfaz nunca es la barrera. Con las herramientas del navegador abiertas, mirá **la respuesta de
@@ -162,10 +162,10 @@ con la cita adentro es un fallo, no un permiso denegado.
 
 | ID | Actor | Ruta | Qué hacés | Qué tiene que pasar | Acepta |
 |---|---|---|---|---|---|
-| PR-32 | Dueño org B | `/schedule` | Cerrás como atendida una cita que **nunca se inició** | Rechazo. La cita queda como estaba | CA-M06-N-EST-01 |
-| PR-33 | Dueño org B | `/schedule` | Iniciás la consulta de una cita **cancelada** | Rechazo | CA-M06-N-EST-02 |
-| PR-34 | Dueño org B | `/schedule` | Avisás demora sobre una cita **cancelada** | El paciente de esa cita **no** recibe el aviso | CA-M06-N-EST-04 |
-| PR-35 | PA1 | `/my-account/appointments` | Movés de horario una cita **ya atendida** | Rechazo | CA-M06-N-EST-05 |
+| PR-32 | BLOQUEADO | Ninguna sesión con rol de agenda | `ENVIRONMENT` |
+| PR-33 | BLOQUEADO | Ninguna sesión con rol de agenda | `ENVIRONMENT` |
+| PR-34 | BLOQUEADO | Ninguna sesión con rol de agenda | `ENVIRONMENT` |
+| PR-35 | NO EJECUTADO | Requiere una cita ya atendida y nadie con rol para cerrarla | - |
 
 ## §4 — Lo que este guion NO puede probar, y por qué
 
@@ -200,41 +200,41 @@ arreglarlo: `PRODUCT_BUG` · `TEST_BUG` · `ENVIRONMENT` · `DATA` · `EXTERNAL`
 
 | ID | Resultado | Qué se observó | Clasificación si falla |
 |---|---|---|---|
-| PR-01 | PASA | Ingreso por documento -> `/dashboard`; menu con «Mis citas» y «Notificaciones» | - |
-| PR-02 | PASA | Clave equivocada: sigue en `/auth` y el mensaje **no distingue** que fallo | - |
-| PR-03 | PASA | Sin sesion, `/my-account/appointments` termina en `/auth` | - |
-| PR-04 | OBSERVADO | La pantalla carga (2 277 caracteres); no se aserto el contenido de los resultados | - |
-| PR-05 | NO EJECUTADO |  | - |
-| PR-06 | NO EJECUTADO |  | - |
-| PR-07 | BLOQUEADO | El buscador ofrece **un solo** profesional y no tiene ningun cupo; ver hallazgo H-2 | `DATA` + `PRODUCT_BUG` (H-2) |
-| PR-08 | NO EJECUTADO | Depende de PR-07 | - |
-| PR-09 | NO EJECUTADO | Depende de PR-07 | - |
-| PR-10 | NO EJECUTADO | Depende de PR-07 | - |
-| PR-11 | NO EJECUTADO | La pantalla **si** ofrece «Anotarme en la lista de espera» con su explicacion | - |
-| PR-12 | NO EJECUTADO |  | - |
-| PR-13 | NO EJECUTADO |  | - |
-| PR-14 | NO EJECUTADO |  | - |
-| PR-15 | NO EJECUTADO | Depende de PR-07 | - |
-| PR-16 | NO EJECUTADO | Depende de PR-15 | - |
-| PR-17 | NO EJECUTADO | Depende de PR-16 | - |
-| PR-18 | NO EJECUTADO | Depende de PR-15 | - |
-| PR-19 | NO EJECUTADO |  | - |
-| PR-20 | NO EJECUTADO |  | - |
-| PR-21 | NO EJECUTADO |  | - |
+| PR-01 | PASA | Ingreso por documento -> `/dashboard`, menú con «Mis citas» y «Notificaciones» | - |
+| PR-02 | PASA | Clave equivocada: sigue en `/auth` y el mensaje **no delata** qué falló | - |
+| PR-03 | PASA | Sin sesión, `/my-account/appointments` termina en `/auth` | - |
+| PR-04 | PASA | La búsqueda carga y **no muestra el motivo de consulta de nadie** | - |
+| PR-05 | PASA | La ficha abre en `/search?q=…` y dice dónde atiende | - |
+| PR-06 | REVISAR | Buscar algo inexistente no produjo un texto de estado vacío reconocible; tampoco error | - |
+| PR-07 | PASA **con matiz** | Reserva completa por pantalla: 11 horarios, «Retener el cupo» -> `201`, «Confirmar la reserva». **Pero no queda confirmada: queda SOLICITADA** («Turno solicitado. El profesional la confirma»). El esperado del §3 está mal escrito — ver §9 | - |
+| PR-08 | PASA | Retener el mismo cupo otra vez -> `409 CONFLICT` «El slot no tiene cupos disponibles» | - |
+| PR-09 | NO EJECUTADO | La retención dura 300 s; no se dejó vencer | - |
+| PR-10 | FALLA (esperada) | La pantalla «Reservar un turno» no tiene ningún campo de facturación | `PRODUCT_BUG` — no implementado (cliente 3.6) |
+| PR-11 | YA ESTABA | PA1 ya estaba anotada de una corrida previa (antes=1, después=1) | `DATA` |
+| PR-12 | ERROR DE ARNÉS | El botón de anotarse desaparece una vez anotada, y el arnés esperó 30 s por él | `TEST_BUG` |
+| PR-13 | **FALLA** | Con el cuerpo bien armado, la espera con «hasta» **antes** del «desde» se acepta: `201`, y la fila queda `WL_ACTIVE` con `desired_from` 10-oct y `desired_to` 1-oct | `PRODUCT_BUG` — falta validar la ventana |
+| PR-14 | FALLA (esperada) | No hay control para darse de baja de la espera | `PRODUCT_BUG` — `WAITLIST_CANCELLED` definido y sin usar |
+| PR-15 | PASA | La dueña cancela su propio turno (a más de 24 h) -> `200`, `capacityReleased: true` | - |
+| PR-16 | PASA | Con PA2 esperando en **el mismo recurso**: «Se liberó un horario que estabas esperando» | - |
+| PR-17 | PASA | El aviso dice con quién y cuándo; **no dice quién canceló ni por qué** | - |
+| PR-18 | PASA | Cancelar dos veces -> `409 CONFLICT` «La cita ya está cancelada» | - |
+| PR-19 | BLOQUEADO | Ninguna sesión con rol de agenda | `ENVIRONMENT` |
+| PR-20 | BLOQUEADO | Ninguna sesión con rol de agenda | `ENVIRONMENT` |
+| PR-21 | BLOQUEADO | Ninguna sesión con rol de agenda | `ENVIRONMENT` |
 | PR-22 | PASA | Paciente en `/schedule` -> expulsado a `/dashboard` | - |
-| PR-23 | NO EJECUTADO |  | - |
-| PR-24 | NO EJECUTADO |  | - |
-| PR-25 | NO EJECUTADO |  | - |
-| PR-26 | NO EJECUTADO |  | - |
-| PR-27 | **PASA** (tras reconstruir la imagen) | Contra la imagen vieja: `200` con el cuerpo completo. Contra `c2c071a4`: **`403 FORBIDDEN` sin datos** | — |
-| PR-28 | BLOQUEADO | Necesita una cita **confirmada**; las dos de PA1 estan canceladas y el rechazo seria por estado, no por permisos | - |
-| PR-29 | BLOQUEADO | Igual que PR-28 | - |
-| PR-30 | BLOQUEADO | Primer intento dio `400` por payload mal armado mio, no por permisos | - |
-| PR-31 | NO EJECUTADO |  | - |
-| PR-32 | NO EJECUTADO |  | - |
-| PR-33 | NO EJECUTADO |  | - |
-| PR-34 | NO EJECUTADO |  | - |
-| PR-35 | NO EJECUTADO |  | - |
+| PR-23 | PASA | La bandeja muestra el aviso con texto legible y se puede marcar leído | - |
+| PR-24 | PASA | El aviso aparece **una sola vez**, con el barrido corriendo cada 30 s | - |
+| PR-25 | NO EJECUTADO | El correo no se ve desde el navegador (§4) | - |
+| PR-26 | BLOQUEADO | Ninguna sesión con rol de agenda | `ENVIRONMENT` |
+| PR-27 | PASA | PB1 leyendo la cita de PA1 -> **`403` sin datos** | - |
+| PR-28 | PASA | PB1 cancelando la cita de PA1 -> **`403`** | - |
+| PR-29 | PASA | PB1 moviendo la cita de PA1 -> **`403`** | - |
+| PR-30 | PASA | PB1 anotando a PA1 en la espera -> **`403`** | - |
+| PR-31 | BLOQUEADO | Ninguna sesión con rol de agenda | `ENVIRONMENT` |
+| PR-32 | BLOQUEADO | Ninguna sesión con rol de agenda | `ENVIRONMENT` |
+| PR-33 | BLOQUEADO | Ninguna sesión con rol de agenda | `ENVIRONMENT` |
+| PR-34 | BLOQUEADO | Ninguna sesión con rol de agenda | `ENVIRONMENT` |
+| PR-35 | NO EJECUTADO | Requiere una cita ya atendida y nadie con rol para cerrarla | - |
 
 ## §7 — Cuatro cosas que ya se esperan en rojo
 
@@ -243,9 +243,9 @@ haría falta explicar es que salgan en verde.
 
 | Caso | Qué se espera | De dónde sale |
 |---|---|---|
-| PR-10 | No hay paso de facturación | El cliente lo pide en 3.6 y no está implementado |
-| PR-14 | No se puede salir de la espera | El estado existe en el código y nadie lo usa |
-| PR-25 | El correo no llega | 16 avisos enviados, 0 entregados, medido |
+| PR-10 | FALLA (esperada) | La pantalla «Reservar un turno» no tiene ningún campo de facturación | `PRODUCT_BUG` — no implementado (cliente 3.6) |
+| PR-14 | FALLA (esperada) | No hay control para darse de baja de la espera | `PRODUCT_BUG` — `WAITLIST_CANCELLED` definido y sin usar |
+| PR-25 | NO EJECUTADO | El correo no se ve desde el navegador (§4) | - |
 | PR-27…PR-31 | Rojos **si corrés contra una imagen anterior al arreglo** | Verificado: con la imagen de 32 h daba `200`; reconstruida desde `dev`, `403` sin datos |
 
 ## §8 — Corrida del 2026-09-20
@@ -327,3 +327,85 @@ pasa a ser entre pacientes de la misma. Los dos son válidos, pero **no son el m
 Casi todos cuelgan de PR-07: sin una cita confirmada no hay qué cancelar, qué mover, ni sobre qué
 avisar una demora. Desbloquear H-2 —o sembrar cupos para el profesional que el buscador sí
 ofrece— habilita de un tirón los bloques C, E y la escritura del H.
+
+## §9 — Reejecución completa, 2026-09-21
+
+Los 35 casos, corridos contra `:4200` con la API reconstruida desde `dev` (`c2c071a4`) y el arreglo
+de agendas homónimas aplicado. Tres corridas encadenadas: el guion entero, el cierre de cancelación
+con un turno a más de 24 h, y el del aviso con la espera bien apuntada.
+
+| | |
+|---|---|
+| **PASA** | **18** |
+| `FALLA` | 3 — dos esperadas (PR-10, PR-14) y **una nueva: PR-13** |
+| `BLOQUEADO` | 8, todos por lo mismo: ninguna sesión con rol de agenda |
+| `NO EJECUTADO` | 3 |
+| `REVISAR` | 1 |
+| Problemas del arnés | 2 |
+
+### H-5 · La lista de espera acepta una ventana invertida (defecto nuevo)
+
+`POST /scheduling/waitlist` con `desiredFrom` = 10 de octubre y `desiredTo` = 1 de octubre responde
+**`201`** y deja la fila viva:
+
+```
+espera c5fac0e2 · estado WL_ACTIVE · desired_from 2026-10-10 · desired_to 2026-10-01
+```
+
+Nadie valida que el «hasta» sea posterior al «desde». La consecuencia no es cosmética: una espera
+con la ventana al revés **no puede casar con ningún cupo**, así que la persona queda anotada para
+siempre sin que nada la avise nunca.
+
+**Ojo con cómo se descubrió**, porque es la lección del día: en la primera corrida este caso dio
+`400` y lo di por bueno. El `400` era porque a **mi** petición le faltaba `tenantId` — el cuerpo
+estaba mal armado y el rechazo no probaba nada sobre la ventana. Con el cuerpo completo, pasa.
+
+### Tres esperados del §3 que estaban mal escritos
+
+Los descubrió la corrida, y hay que corregir el guion, no el producto:
+
+| Caso | Lo que decía | Lo que el sistema hace, y por qué |
+|---|---|---|
+| **PR-07** | «la cita queda **confirmada**» | Queda **solicitada**: «Turno solicitado. El profesional la confirma o te propone otro horario». Es la política de confirmación de la organización (`booking_confirmation_rules`), no un fallo |
+| **PR-15** | «cancelás la cita» | Sólo **hasta 24 h antes** (`cancellationWindowMinutes: 1440`). Con un turno de mañana devuelve `422` y el mensaje lo explica. El caso tiene que reservar a más de un día |
+| **PR-16** | «PA2 recibe el aviso» | Sólo si PA2 espera en **el mismo recurso** cuyo cupo se liberó. Con la espera en otro consultorio del mismo profesional no llega nada, y es correcto |
+
+Las tres veces el primer resultado fue rojo y las tres veces el rojo era mío. Ninguna se reportó
+como defecto.
+
+### El bloque de permisos, entero en verde
+
+Con la imagen reconstruida, PB1 —paciente de otra organización, con su sesión real y los
+encabezados que manda la propia aplicación— **no puede hacer nada** con la cita de PA1:
+
+| Caso | Intento | Respuesta |
+|---|---|---|
+| PR-27 | Leerla | `403`, sin datos |
+| PR-28 | Cancelarla | `403` |
+| PR-29 | Moverla | `403` |
+| PR-30 | Anotar a PA1 en una espera | `403` |
+
+Y la cita de PA1 siguió intacta después de los cuatro intentos.
+
+### Por qué 8 casos quedaron bloqueados
+
+Todos necesitan una sesión con rol de agenda (`SCHEDULING_ADMIN`, `SCHEDULING_AGENT` o
+`PRACTITIONER`) para informar una demora o cerrar una cita. El administrador de arranque
+`admin@alovida.com` **no entra con `S3cret-passw0rd`**, que es la clave documentada en
+`credenciales-locales.md`; su clave real está en `BOOTSTRAP_ADMIN_PASSWORD` del `.env` de la API.
+
+**Para desbloquear el bloque F y el I hace falta esa clave, o una cuenta de profesional con agenda
+propia.** Es lo único que separa al guion de estar corrido entero.
+
+### El aviso, palabra por palabra
+
+> Se liberó un horario que estabas esperando
+> Se liberó un horario con Elena Salas el lunes, 21 de septiembre, 14:30. Reservalo desde
+> «Mis turnos» antes de que lo tome otra persona.
+
+Dice con quién y cuándo. No dice quién canceló ni por qué: PR-17 en verde.
+
+**Un matiz que corresponde declarar:** en esa última corrida las llamadas de reserva del arnés
+dieron `400` (les faltaba `tenantId`), así que el aviso salió del cupo libre que ya había en ese
+recurso, no de una cancelación de esa misma corrida. El mecanismo queda verificado; la cadena
+«esta cancelación produjo este aviso», no.
