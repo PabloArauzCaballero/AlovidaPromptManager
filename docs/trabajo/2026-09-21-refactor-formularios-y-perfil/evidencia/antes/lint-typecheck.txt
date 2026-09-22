@@ -1,0 +1,15 @@
+Baseline H1.S1.M2 — corte d76e3054487eed8ed106fb834842d607f57b8351, rama itzan/separacion-smart-dumb-registros, sin cambios
+
+$ corepack yarn lint            # eslint .
+(sin salida)
+exit=0  (72 s)
+
+$ corepack yarn typecheck       # tsc -p tsconfig.app.json && tsc -p cypress/tsconfig.json && tsc -p playwright/tsconfig.json (--noEmit)
+(sin salida)
+exit=0  (65 s)
+
+Condición del verde de typecheck:
+  src/app/features/component-stock/component-index.generated.ts existe localmente
+  (generado 2026-09-22 11:47, ignorado por .gitignore:160). En CI ese archivo no se genera
+  antes del paso de tipos (hallazgo HALL-I13 del turno anterior), por eso allá el mismo
+  gate da rojo. Este baseline es el local; no dice nada del CI.
