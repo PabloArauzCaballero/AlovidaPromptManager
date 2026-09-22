@@ -1,8 +1,9 @@
 # PLAN — Separar quién decide de quién pinta en los registros y en el perfil
 
-> **AVANCE: 45 / 67 — 67,2 %.** El denominador subió de 64 a 67: el baseline destapó un rojo previo
-> propio (H1.S1.M5) y la extracción destapó código muerto y tres consumidores más de la misma regla
-> (H3.S1.M6 y M7). Cifra calculada, no estimada:
+> **AVANCE: 46 / 68 — 67,6 %.** El denominador subió de 64 a 68: el baseline destapó un rojo previo
+> propio (H1.S1.M5), la extracción destapó código muerto y tres consumidores más de la misma regla
+> (H3.S1.M6 y M7), y separar la vista del perfil destapó una auto-referencia que el propio contrato
+> daba por viva y ya no existe (H4.S1.M6). Cifra calculada, no estimada:
 > `py -3 .claude/hooks/plan_status.py --path <este archivo>`.
 
 - **Persona:** Itzan · **Turno:** noche · **Fecha del reparto:** 2026-09-21 · **Línea:** C
@@ -374,9 +375,50 @@ en [`evidencia/h3/deuda-anclaje-y-foco.md`](./evidencia/h3/deuda-anclaje-y-foco.
 |---|---|---|---|---|
 | H4.S1.M1 | Elegir el contenedor y declarar por qué | Hay criterio escrito | una línea en `PLAN.md` | HECHO |
 | H4.S1.M2 | Contrato de la vista según el §10 | Las diez áreas respondidas | el archivo de contrato | HECHO |
-| H4.S1.M3 | Extraer la vista con entradas explícitas y salidas tipadas | No inyecta clientes de negocio | revisión del diff + `node scripts/check-architecture.mjs` en verde | TODO |
+| H4.S1.M3 | Extraer la vista con entradas explícitas y salidas tipadas | No inyecta clientes de negocio | revisión del diff + `corepack yarn build` + los dos specs en verde (ver desvío) | HECHO |
 | H4.S1.M4 | La vista no muta los objetos que recibe | Hay test que lo demuestra | `corepack yarn test --watch=false --include=<spec>` | TODO |
 | H4.S1.M5 | Una intención no se emite al cargar datos | Hay test que lo demuestra | `corepack yarn test --watch=false --include=<spec>` | TODO |
+| H4.S1.M6 | Retirar la auto-referencia muerta que el contrato daba por viva | `verPreview`, `TAB` y el import de sí mismo no existen más; `previewMode` sigue | `corepack yarn build` + los dos specs en verde | TODO |
+
+**H4.S1.M3 — HECHO.** Las **siete** inyecciones salieron de la vista. Quedó con seis entradas y
+cuatro salidas; las tres operaciones viven en `PractitionerProfile`.
+
+| Qué | Antes | Ahora |
+|---|---|---|
+| Subir la foto, fijarla y propagarla a la vitrina | `practitioner-profile-view.ts:259-347` | `practitioner-profile.ts`, `subirFoto` + `propagarAVitrina` |
+| Retirar una credencial, con confirmación | ídem `:479-497` | ídem, `retirarCredencial` |
+| El aviso único de «Credenciales» | un `effect` en `:206-218` | `alVerPestana`, llamado sólo por acción de una persona |
+
+**Lo que hizo falta y no estaba previsto: mudar ocho pruebas.** El spec de la vista dio **8 rojos**,
+todos de las tres operaciones. Clasificación (regla 80.4): `TEST_BUG` — el producto hace lo pedido,
+las pruebas afirmaban sobre el dueño anterior. **No se borró ninguna**: las ocho se reescribieron en
+`practitioner-profile.spec.ts`, contra peticiones reales, y en el spec de la vista quedaron las que
+fijan lo que ahora promete —que avisa, con qué, y que no llama a nadie—. `96/96` en verde.
+
+> **Desvío declarado del DoD (regla 20 §6.7).** El DoD pedía `node scripts/check-architecture.mjs`
+> **en verde**, y ese gate **ya estaba rojo antes de tocar nada**. Comprobado como manda el
+> `CLAUDE.md` del front —corriéndolo también sobre el commit base en un árbol aparte— y comparando
+> la salida literal: los tres bloques (3 ciclos en `core/mock/fixtures` y `features/agenda`, 1
+> import contra las capas en `core/mock/mock-backend.spec.ts`, 1 petición fuera de
+> `core/data-access` en `core/messaging/adjunto-metadata.ts`) son **idénticos**, y ninguno toca los
+> cuatro archivos del cambio. La salida de este árbol es un **subconjunto estricto** de la del base.
+> Se sustituye por: sin hallazgos nuevos respecto del baseline, **más `corepack yarn build`**, que
+> es lo que de verdad revisa las plantillas — `yarn typecheck` es `tsc --noEmit` y **no las mira**.
+> Los cinco hallazgos son deuda ajena y quedan anotados, no arreglados (regla 00 §3.2).
+
+> **Hallazgo que refuta el propio contrato de `H4.S1.M2`.** Decía que hay **tres** consumidores y
+> que uno es la vista previa embebida, con `previewMode` cortando la recursión. **Son dos.** La
+> pestaña «Vista previa» se quitó en `f70d6580`, ajeno a este carril: en toda la plantilla no queda
+> un solo `<app-practitioner-profile-view>`, `TAB` no aparece, `verPreview()` no se llama desde
+> ningún lado y **nadie pasa `[previewMode]` en el repo entero**. El contrato quedó corregido y esto
+> abre `H4.S1.M6`. Lo que **sí** sigue vivo es el input `previewMode`: cinco guardas de la plantilla
+> cuelgan de él y dos pruebas lo ejercitan pasándolo a mano.
+
+> **Un detalle verificado en vez de supuesto, y que decidió el diseño.** `app-tabs` declara
+> `selectedIndex` como `model()` y **sólo lo escribe dentro de `select()`**, su manejador de clic
+> (`tabs.ts:93`). Por eso la plantilla desarmó el `[(selectedIndex)]` en entrada + evento: escuchar
+> `(selectedIndexChange)` significa exactamente «lo cambió una persona» y no se dispara en el primer
+> dibujo. Con un `effect` sobre la señal sí se dispararía — que es justo lo que `H4.S1.M5` prohíbe.
 
 **H4.S1.M1 — HECHO. El contenedor elegido es `practitioner-profile-view`**
 (`features/account/my-profile/practitioner-profile/practitioner-profile-view/`).

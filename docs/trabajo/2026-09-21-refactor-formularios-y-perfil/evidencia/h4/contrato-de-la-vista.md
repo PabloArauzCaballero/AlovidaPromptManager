@@ -4,6 +4,13 @@ Las **diez áreas** que el §10 del documento maestro declara obligatorias, resp
 elegida en `H4.S1.M1`. Se escribe **antes** de tocar código, que es lo que el §10 pide: «no se
 inicia la migración de una familia con entradas y eventos ambiguos».
 
+> [!important] Corrección del 2026-09-22, al ejecutar `H4.S1.M3`
+> Este contrato afirmaba **tres** consumidores y que uno era la vista previa embebida. Es falso:
+> son **dos**. La auto-instanciación se quitó en `f70d6580` antes de este carril, y en todo el
+> repo nadie pasa `[previewMode]`. Lo destapó buscarlo en la plantilla en vez de confiar en lo
+> que el propio archivo decía de sí mismo. Las secciones §1, §5 y §9 quedan corregidas abajo; el
+> código muerto que dejó (`verPreview`, `TAB`, el import de sí mismo) es `H4.S1.M6`.
+
 ## El problema, en una frase
 
 `PractitionerProfileView` **se llama vista y no lo es**: recibe el perfil por `input.required()` y
@@ -34,8 +41,8 @@ derivaciones puras.
 | Selector | `app-practitioner-profile-view` |
 | Responsabilidad | **Pintar** la ficha de un perfil profesional y **avisar** lo que la persona quiere hacer. No decide, no persiste, no navega. |
 | Nivel | Organismo de feature (no compartido): vive en su feature y no se publica en `shared/`. |
-| Ámbito | `my-profile`, **y la Guía**. Se instancia desde `PractitionerProfile`, desde sí mismo en vista previa, y desde `directory/practitioner-detail` — ese tercero está **fuera** de la reserva del carril (ver §9). |
-| Versión de contrato | Tres entradas nuevas **con valor por defecto** y tres salidas nuevas. Compila para los tres consumidores sin tocarlos; lo que cambia es dónde ocurren las operaciones. Consumidores: **tres** (ver §9). |
+| Ámbito | `my-profile`, **y la Guía**. Se instancia desde `PractitionerProfile` y desde `directory/practitioner-detail` — ese segundo está **fuera** de la reserva del carril (ver §9). |
+| Versión de contrato | Tres entradas nuevas **con valor por defecto** y tres salidas nuevas. Compila para los dos consumidores sin tocarlos; lo que cambia es dónde ocurren las operaciones. Consumidores: **dos** (ver §9). |
 
 ## 2 · Entradas
 
@@ -95,11 +102,13 @@ testeable y no deja que la vista sepa qué pasa después.
 - **Hijos:** los del sistema de diseño (`Avatar`, `Badge`, `Card`, `Tabs`, `Tooltip`,
   `SpecialtyBadge`, `StatusSeal`) más los paneles propios de la ficha.
 - **Cardinalidad:** una instancia por ficha, **más una anidada** en modo vista previa.
-- **Auto-referencia:** la pestaña «Vista previa» reinstancia este mismo componente
-  (`:160-162`). `previewMode` corta la recursión y **suprime toda acción de escritura, aunque
-  `esPropio` llegue en `true` por error de quien llama** (`:175-181`). Con la vista ya tonta esto se
-  vuelve más fuerte, no más débil: la instancia embebida simplemente **no lleva manejadores
-  conectados**, así que no hay nada que suprimir.
+- **Auto-referencia: ninguna, y es una corrección.** Este contrato decía que la pestaña
+  «Vista previa» reinstanciaba el componente dentro de sí mismo. **Ya no existe**: se quitó en
+  `f70d6580`, ajeno a este carril. En la plantilla no queda un solo `<app-practitioner-profile-view>`.
+- **`previewMode` sigue vivo, y no es lo mismo.** Es un input que **suprime toda acción de
+  escritura aunque `esPropio` llegue en `true` por error de quien llama**: cinco guardas de la
+  plantilla cuelgan de él y dos pruebas lo ejercitan pasándolo a mano. Hoy **nadie lo pasa en
+  producción**, así que es una red, no un modo en uso.
 - **Slots:** ninguno nuevo.
 - **Semántica accesible:** la que ya tiene. Este trabajo **no la toca**; cualquier diferencia sería
   una regresión, no una mejora.
@@ -155,7 +164,7 @@ defecto, así que **no rompen a quien no las pase**; las salidas no obligan a na
 Lo que sí es incompatible es el comportamiento: sin conectar los manejadores, las tres operaciones
 dejan de ocurrir.
 
-**Consumidores identificados: tres. Y el tercero está FUERA de la reserva.**
+**Consumidores identificados: dos. Y el segundo está FUERA de la reserva.**
 
 > ⚠️ **La primera versión de este contrato decía que no había consumidores fuera del carril. Era
 > falso**, y se descubrió al verificarlo en vez de suponerlo:
@@ -165,7 +174,6 @@ dejan de ocurrir.
 | Consumidor | Dónde | Dentro de la reserva | Qué hay que hacer |
 |---|---|---|---|
 | `PractitionerProfile` | `practitioner-profile.html:7-10` | sí | conectar las tres salidas y pasar las tres entradas nuevas |
-| Él mismo, en vista previa | `practitioner-profile-view.ts:160-162` | sí | nada: en `previewMode` no se conecta ninguna |
 | `PractitionerDetail` (la Guía) | `directory/practitioner-detail/practitioner-detail.html:15` | **no** | **nada, y está comprobado** |
 
 **Por qué el tercero no se entera del cambio — verificado, no supuesto.** Monta la vista con
