@@ -43,9 +43,25 @@ $ git fetch origin && git log -1 --format='%H %ad %s' origin/mockup
 d76e3054487eed8ed106fb834842d607f57b8351 Tue Sep 22 11:45:09 2026 -0400 fix(scripts): usar ng directamente en lugar de npx para compatibilidad nativa con Yarn Berry
 ```
 
+> **El corte se movió a mitad del trabajo, y se declara.** Al reverificarlo antes de abrir H4,
+> `origin/mockup` había avanzado **un** commit: `d40b5631` — *«fix(mi-perfil): el rechazo del
+> servidor, junto a su campo (#571)»*—, que toca `practitioner-profile-edit`, es decir **dentro de
+> la reserva de este carril y en la carpeta donde entra H4**. Se rebasó sobre él antes de empezar.
+>
+> - Fusión de prueba (`git merge-tree`) **limpia**, sin conflictos; la diferencia real son 2
+>   archivos (`practitioner-profile-edit.ts` +8 líneas, su spec +40) más capturas.
+> - Rebase ejecutado: el commit del front pasa de `6b598346` a **`caaf77dd`**, sobre `d40b5631`.
+> - **Consecuencia sobre el baseline (regla 30 §4):** el baseline de H1 se midió en `d76e3054`. El
+>   commit nuevo agrega **2 pruebas**, así que el total esperado sube de 7 087 a 7 089. Se vuelve a
+>   medir en H6, que ya exige la corrida completa; hasta entonces las cifras de H1 se leen con esta
+>   nota al lado. Lint y typecheck se reverificaron tras el rebase.
+> - *Por qué se rebasó en vez de congelar el corte:* el resto del trabajo ocurre en
+>   `my-profile/practitioner-profile/`, y el commit nuevo cae en la carpeta hermana. Separarle la
+>   vista a una versión ya superada es rehacer trabajo.
+
 | Campo | Valor |
 |---|---|
-| **SHA fijado** | `d76e3054487eed8ed106fb834842d607f57b8351` |
+| **SHA fijado** | `d40b56312…` (rebasado el 2026-09-22; el corte original fue `d76e3054487eed8ed106fb834842d607f57b8351`) |
 | **Rama de trabajo (front)** | `itzan/separacion-smart-dumb-registros` |
 | **Base del PR (front)** | `mockup` |
 | **Rama de este repo** | `itzan/refactor-formularios-y-perfil` → PR a `main` |
@@ -330,11 +346,60 @@ en [`evidencia/h3/deuda-anclaje-y-foco.md`](./evidencia/h3/deuda-anclaje-y-foco.
 
 | ID | Microtarea | CA (binario) | DoD (comando de verificación) | Estado |
 |---|---|---|---|---|
-| H4.S1.M1 | Elegir el contenedor y declarar por qué | Hay criterio escrito | una línea en `PLAN.md` | TODO |
-| H4.S1.M2 | Contrato de la vista según el §10 | Las diez áreas respondidas | el archivo de contrato | TODO |
+| H4.S1.M1 | Elegir el contenedor y declarar por qué | Hay criterio escrito | una línea en `PLAN.md` | HECHO |
+| H4.S1.M2 | Contrato de la vista según el §10 | Las diez áreas respondidas | el archivo de contrato | HECHO |
 | H4.S1.M3 | Extraer la vista con entradas explícitas y salidas tipadas | No inyecta clientes de negocio | revisión del diff + `node scripts/check-architecture.mjs` en verde | TODO |
 | H4.S1.M4 | La vista no muta los objetos que recibe | Hay test que lo demuestra | `corepack yarn test --watch=false --include=<spec>` | TODO |
 | H4.S1.M5 | Una intención no se emite al cargar datos | Hay test que lo demuestra | `corepack yarn test --watch=false --include=<spec>` | TODO |
+
+**H4.S1.M1 — HECHO. El contenedor elegido es `practitioner-profile-view`**
+(`features/account/my-profile/practitioner-profile/practitioner-profile-view/`).
+
+*El criterio es cohesión, no tamaño* — el §5.6 prohíbe explícitamente usar líneas como definición
+de calidad, y el encargo lo repite: «el tamaño NO es el defecto».
+
+**Por qué éste:** es el único del árbol que **se llama vista y no lo es**. Recibe el perfil por
+`input.required<PerfilProfesionalVisible>()` (`practitioner-profile-view.ts:170`) —la forma de un
+presentacional— y al mismo tiempo inyecta **siete** dependencias de datos y servicio
+(`:185-191`: `FilesClient`, `ProfilesClient`, `CommunityClient`, `AuthService`, `DialogService`,
+`ToastService`, `HelpBlockDismissalStore`) con las que hace **escrituras reales**, no lecturas:
+
+| Escritura | Dónde |
+|---|---|
+| Sube la foto y la persiste en dos sitios | `:288-292` |
+| Sincroniza el perfil público de comunidad | `:330-335` |
+| Retira una credencial | `:489` |
+
+Y todo eso sostiene **la plantilla más grande de `my-profile/`: 1 413 líneas**
+(`practitioner-profile-view.html`), la menos partida en organismos reutilizables. Un componente que
+decide y pinta a la vez es exactamente lo que el §5.6 llama mal repartido, y el nombre del archivo
+lo vuelve peor: **miente sobre su rol**, así que nadie lo revisa como contenedor.
+
+**Segundo mejor, y por qué no:** `practitioner-profile-edit` tiene **más** inyecciones (10) y más
+llamadas a servicio (18 sitios), pero su plantilla ya está segmentada en organismos —`DataTable`,
+`ViewStateHost`, `ContentDialog`, pestañas—, así que su vista pesa menos en motivos de cambio.
+Además acaba de cambiar en `d40b5631`, y tocarlo encima de un cambio recién fusionado agrega riesgo
+sin agregar demostración.
+
+**H4.S1.M2 — HECHO.** Las diez áreas del §10 respondidas en
+[`evidencia/h4/contrato-de-la-vista.md`](./evidencia/h4/contrato-de-la-vista.md): tres entradas
+nuevas con valor por defecto, tres salidas nuevas, la tabla de propiedad del estado (que también
+cierra lo que `H2.S3` dejó abierto), las tres clases de error separadas y la compatibilidad con
+consumidores nombrados. Sin adaptador temporal, con el motivo escrito.
+
+> **Un hallazgo del propio contrato, por verificar en vez de suponer.** La primera versión decía
+> «fuera de este carril no hay consumidores». Es **falso**: `git grep app-practitioner-profile-view`
+> devuelve un tercero en `features/directory/practitioner-detail/practitioner-detail.html:15` — la
+> Guía—, **fuera de la reserva**. No hay que tocarlo: monta la vista con `[esPropio]="false"` y las
+> tres operaciones están cerradas por esa bandera en la plantilla (`:17`, `:707`) y en el `effect`
+> (`practitioner-profile-view.ts:207`), así que ve una ficha de sólo lectura. Queda declarado como
+> consumidor ajeno y entra en la muestra de regresión de H6.
+
+**Descartado con evidencia el candidato obvio:** `register-practitioner.ts` es el archivo más
+grande del carril (108 165 bytes), pero **no es un problema de mezcla vista/contenedor**: ~40 % son
+declaraciones de campos y páginas (`TITULOS_MEDICOS` `:137-252`, `TIPOS_DE_TITULO` `:253-361`,
+`AYUDA_PROFESIONAL` `:395-539`, `paginasProfesional` `:1464-1960`) y **el marcado es ~0 %** — su
+vista ya vive en el motor de formularios. Separarlo no demostraría nada de lo que H4 pide.
 
 #### H4.S2 — Que la plantilla describa la interfaz
 

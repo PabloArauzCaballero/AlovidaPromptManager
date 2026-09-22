@@ -56,6 +56,31 @@ habría que ejercitar, inyectando el error en el borde del servicio sin tocar `c
 El tercer nivel es el que importa: es el modo de fallo benigno que el diseño de `fieldOf` promete,
 y es lo que impide que un mensaje suelto ancle a un campo equivocado.
 
+### ⚠️ Hay una implementación de referencia, y está en terreno propio
+
+Descubierto al verificar el corte, **después** de haber declarado esta microtarea `A MEDIAS`:
+`origin/mockup` tiene el commit `d40b5631` — *«fix(mi-perfil): el rechazo del servidor, junto a su
+campo — y sin mensajes viejos pintados»* — que resuelve **este mismo problema** en
+`account/my-profile/practitioner-profile-edit/`, que es una de las seis carpetas reservadas de este
+carril.
+
+Su propio mensaje describe la técnica y desarma el bloqueo que este archivo daba por firme:
+
+> «El rechazo tiene la forma que la API manda ante un DTO inválido (400 `VALIDATION_FAILED` con
+> `details.violations`, mensajes literales de `@MaxLength(100)`). **La maqueta no emite
+> `violations`, así que se entrega en el borde del servicio de datos, sobre el error real que
+> devuelve el simulador**; del borde para adentro es el camino de siempre.»
+
+Es decir: **no hace falta tocar `core/mock/**` para producir el error por campo.** Se inyecta en el
+borde del servicio de datos, sobre el error real del simulador, y de ahí para adentro el camino es
+el de producción. Ese commit trae además su evidencia visual en tres anchos y dos temas, y dos
+pruebas nuevas en `practitioner-profile-edit.spec.ts`.
+
+**Qué significa para quien retome esta microtarea:** el trabajo no es inventar el mecanismo, es
+**llevar al motor de formularios un patrón que ya funciona en el editor del perfil**. Lo que sigue
+faltando es lo específico del motor —un input aditivo para errores por campo que hoy no existe— y
+la simulación de los tres niveles de arriba.
+
 ## M4 — Foco al primer error
 
 ### Lo que ya está puesto
