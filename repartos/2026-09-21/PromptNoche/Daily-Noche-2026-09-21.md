@@ -203,6 +203,14 @@ real. Quedan pendientes los 5 filtros que el diseño especifica y que la pantall
 | **Marcelo** | [`Refactor-DialogosYAdjuntos.Expediente`](Marcelo/Refactor-DialogosYAdjuntos.Expediente/ContratoDeDialogoAdjuntosYSeccionDeDatosDelExpediente.md) | 61 | Que el diálogo del expediente respeta la política de descarte por los tres caminos y devuelve el foco |
 | | **Total** | **317** | |
 
+> **Cierre de Marcelo (2026-09-21/22, 90,0 % — 63/70, denominador propio declarado):** el
+> contrato de `content-dialog` está entregado — `mantra-core-health/docs/refactor-profesional/
+> trabajo/contratos/content-dialog.md` — con receta de migración para los dos diálogos crudos de
+> Justin. `patient-chart` cablea la política de descarte por los tres caminos, verificado con E2E
+> real (3 passed/1 skipped) y 37 tests unitarios nuevos, 0 regresión (`mantra-core-health`, rama
+> `marcelo/noche-2026-09-21-dialogos-adjuntos-expediente`). Detalle completo en
+> [`Marcelo-Daily-Noche-2026-09-21.md`](Marcelo/Marcelo-Daily-Noche-2026-09-21.md).
+
 ## 9. Advertencia sobre el alcance
 
 **Ningún carril entra completo en una noche, y está dicho a propósito en los cinco prompts.** 31 y 39
