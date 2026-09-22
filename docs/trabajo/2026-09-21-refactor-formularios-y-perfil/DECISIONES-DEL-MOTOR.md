@@ -43,8 +43,56 @@ La `key` de un campo es la **única atadura** entre lo declarado y el dato; el p
 «un campo con una `key` que no existe en el grupo es un error de programación… en producción se
 vería como un campo que no guarda nada — el peor fallo posible en un formulario»
 (`paginated-form.types.ts:106-110`). Hoy eso se avisa **en desarrollo, en tiempo de ejecución**.
-Con `PaginaDeFormulario<T>` y `key: keyof T`, el mismo error lo caza el compilador, y lo caza en
-los 53 consumidores a la vez.
+Con `PaginaDeFormulario<T>` y `key: keyof T`, el mismo error lo cazaría el compilador.
+
+### Verificado por experimento, no razonado
+
+> Esta decisión se escribió primero **sin correr nada**, razonando desde el conteo. Eso es
+> exactamente lo que la regla 60 llama «es obvio que…», y la obviedad no es un veredicto. Así que
+> se hizo el experimento: se hicieron genéricos los tres archivos del motor
+> (`paginated-form.types.ts`, `paginar-campos.ts`, `paginated-form.ts`) con `key: keyof TControles`
+> y un valor por defecto que preserva el comportamiento, se corrió `corepack yarn typecheck`, y se
+> **revirtió** (`git checkout --`; árbol limpio y `typecheck` exit 0 después).
+
+**Resultado: 19 errores.** No cientos — y ése es el primer dato que corrige la decisión escrita a
+ojo. Se reparten así:
+
+| Grupo | Cuántos | Qué son |
+|---|---|---|
+| Internos del motor | **9** | Threading incompleto del genérico por los ayudantes del propio organismo. Mecánicos, en archivos míos. |
+| En consumidores | **10** | Ver abajo: **no** son typos, son un hallazgo de diseño. |
+
+### El hallazgo que cambia la decisión: `key` significa dos cosas
+
+Dos de los diez errores dicen esto:
+
+```
+child-organization-new.ts(202,13): Type '"administrador"' is not assignable to type '"code" | "tipo" | "legalName"'
+organization-new.ts(390,13):      Type '"owner"' is not assignable to type '"code" | "timeZone" | "tradeName" | "tipo" | "legalName"'
+```
+
+A primera vista parecen el bug que el tipado promete cazar: un campo que no guarda nada. **No lo
+son.** Los dos son `control: 'custom'` —campos **proyectados**— y su valor vive fuera del
+formulario a propósito: `administrador` es un `signal<ReferenceOption | null>`
+(`child-organization-new.ts:222`) que se lee directo al armar el envío (línea 389). Su `key` no
+nombra un control: nombra una **ranura de proyección**.
+
+Y no es uniforme, que es lo que lo vuelve una decisión y no una corrección. En
+`register-patient.ts:1380-1400`, `campoDepartamentoEmisor` usa **la misma `key` para `custom` y
+para `select`**: el campo cambia de proyectado a dibujado por el motor según si el catálogo de
+departamentos está caído, y la clave se mantiene **precisamente porque sí es un control** — «la
+clave es la misma en los dos casos… así que lo que se haya elegido antes de un fallo no se
+pierde» (línea 1377).
+
+**Escala del asunto: 55 campos `custom` en 12 de los 53 consumidores.**
+
+Conclusión: `key: keyof T` **plano es incorrecto**, y el experimento es lo que lo demostró. El
+contrato necesita una **unión discriminada**: un campo con control declara `key: keyof T`, y un
+campo proyectado declara una ranura que puede o no serlo. Decidir cuál de las dos es cada uno de
+esos 55 campos es una decisión sobre pantallas de `features/admin/**`, `features/geo/**` y
+`features/delegated-access/**` — todas declaradas fuera de alcance.
+
+**Eso, y no el conteo de consumidores, es lo que manda esto a la oleada 2.** Ahora con evidencia.
 
 ### A quién rompe — medido, no estimado
 
@@ -63,16 +111,28 @@ poder**, y el diseño tiene que dejarle una puerta.
 
 ### El adaptador temporal y su condición de retiro
 
-1. El input se hace genérico con un valor por defecto que preserva el comportamiento actual:
+En este orden, porque el paso 1 es el que el experimento dejó sin resolver:
+
+1. **Primero, la unión discriminada de `CampoDeFormulario`.** Un campo con control declara
+   `key: keyof T`; un campo proyectado declara su ranura. Sin esto, los 55 campos `custom` no
+   compilan, y el experimento lo midió. Exige repasar esos 55 uno por uno y decir de cada uno si su
+   `key` nombra un control o una ranura — el caso de `register-patient` demuestra que las dos
+   respuestas existen en el repo.
+2. El input se hace genérico con un valor por defecto que preserva el comportamiento actual:
    `form = input.required<FormGroup<TForma>>()` con `TForma` cayendo en el tipo abierto cuando no se
    especifica. Los 52 estáticos compilan sin tocar una línea.
-2. Para el caso dinámico se expone **una** vía explícita —un tipo `FormularioDinamico` o el
+3. Se termina de pasar el genérico por los ayudantes internos del organismo: son los **9** errores
+   del experimento en archivos propios, todos mecánicos.
+4. Para el caso dinámico se expone **una** vía explícita —un tipo `FormularioDinamico` o el
    `FormRecord` del propio Angular— y `form-builder` la declara. Es una declaración de intención,
    no un escape genérico: quien la usa dice que su forma se decide en ejecución.
-3. **Condición de retiro del adaptador:** cuando `form-builder` sea el único que lo declara y eso
+5. **Condición de retiro del adaptador:** cuando `form-builder` sea el único que lo declara y eso
    esté verificado con la misma medición de esta tabla, el tipo abierto por defecto se elimina y
    el genérico pasa a ser obligatorio. La medición que lo comprueba es la que produjo este archivo,
    y se vuelve a correr entonces.
+
+**Costo real, ya no estimado:** 9 errores mecánicos propios + una revisión de 55 campos repartidos
+en 12 pantallas ajenas. Lo caro no es el tipado: es la revisión.
 
 ### Alternativa descartada
 

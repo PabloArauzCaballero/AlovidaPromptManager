@@ -385,10 +385,25 @@ medición).
 —dejaría a `form-builder` sin compilar y su única salida sería un `as any` en un consumidor ajeno,
 en un repo que hoy tiene cero— y no hacer nada nunca.
 
-**H5.S1.M4 — DESCARTADO.** *Por qué:* la microtarea es condicional («**si se implementa**») y la
-decisión D-5 es **no implementar** el tipado en este trabajo. El propio encargo lo autoriza:
-«implementarlo puede ser oleada 2; decidirlo no». Sin cambio en el organismo no hay nada que
-comparar en cinco consumidores ajenos. *Quién lo decidió:* Itzan, el 2026-09-22.
+**H5.S1.M4 — DESCARTADO, y esta vez verificado.** *Por qué:* la microtarea es condicional («**si se
+implementa**») y la decisión D-5 es **no implementar** el tipado en este trabajo.
+
+*Cómo se comprobó que no es pereza.* La primera versión de D-5 se escribió razonando desde el
+conteo, sin correr nada — la racionalización que la regla 60 llama «es obvio». Así que se hizo el
+experimento: genéricos los tres archivos del motor con `key: keyof TControles`,
+`corepack yarn typecheck`, y **revertido** (árbol limpio y `typecheck` exit 0 después).
+
+**19 errores, no cientos.** Nueve son internos del organismo, mecánicos. Los otros diez destaparon
+lo que decide: `key` significa **dos cosas distintas** en este repo. En un campo normal nombra un
+control; en un campo `control: 'custom'` nombra una **ranura de proyección**, y su valor puede vivir
+fuera del formulario (`child-organization-new.ts:202,222,389`) **o** ser el mismo control
+(`register-patient.ts:1380-1400`, donde la clave se mantiene a propósito al cambiar de `custom` a
+`select`). Son **55 campos `custom` en 12 de los 53 consumidores**, y decidir cuál es cuál es una
+decisión sobre pantallas de `admin/`, `geo/` y `delegated-access/`, todas fuera de alcance.
+
+Por eso va a oleada 2: no por el conteo de consumidores, sino porque el contrato necesita una unión
+discriminada que nadie puede escribir sin repasar esos 55 campos. Detalle en
+[`DECISIONES-DEL-MOTOR.md`](./DECISIONES-DEL-MOTOR.md). *Quién lo decidió:* Itzan, el 2026-09-22.
 
 #### H5.S2 — Las seis banderas, una por una
 
