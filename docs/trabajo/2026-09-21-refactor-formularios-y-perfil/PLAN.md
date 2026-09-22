@@ -1,9 +1,9 @@
 # PLAN — Separar quién decide de quién pinta en los registros y en el perfil
 
-> **AVANCE: 29 / 67 — 43,3 %.** El denominador subió de 64 a 67: el baseline destapó un rojo previo
+> **AVANCE: 45 / 67 — 67,2 %.** El denominador subió de 64 a 67: el baseline destapó un rojo previo
 > propio (H1.S1.M5) y la extracción destapó código muerto y tres consumidores más de la misma regla
-> (H3.S1.M6 y M7). El denominador subió de 64 a 65: el baseline destapó un rojo previo
-> dentro de un archivo reservado (H1.S1.M5).
+> (H3.S1.M6 y M7). Cifra calculada, no estimada:
+> `py -3 .claude/hooks/plan_status.py --path <este archivo>`.
 
 - **Persona:** Itzan · **Turno:** noche · **Fecha del reparto:** 2026-09-21 · **Línea:** C
 - **Encargo:** [`SeparacionSmartDumbDeLosSeisRegistrosYDelPerfil.md`](../../../repartos/2026-09-21/PromptNoche/Itzan/Refactor-FormulariosYPerfil.RegistroYMiPerfil/SeparacionSmartDumbDeLosSeisRegistrosYDelPerfil.md)
@@ -99,7 +99,7 @@ indica el encargo.
 | 2 | H2 | Encontrar la regla repetida **con dos citas** antes de extraer nada |
 | 3 | H3 | La regla vive una vez y la consumen dos registros; el test se escribe en rojo primero |
 | 4 | H5 | Decisiones escritas; es documento, no depende de H4 |
-| 5 | H4 | `my-profile` está tocado por un PR abierto de este mismo carril (#571): se trabaja cuando esté fusionado o se elige un contenedor de `register-*` |
+| 5 | H4 | Se planificó para después de H5 porque `my-profile` tenía un PR en vuelo (#571). **Ya no es así:** ese PR está fusionado y es el commit `d40b5631` sobre el que se rebasó, así que la carpeta quedó libre y H4 arrancó con el contenedor elegido de `my-profile`, no con uno de `register-*` |
 | 6 | H6 | Regresión, gates y cierre |
 
 ## 4. Ambigüedades registradas
@@ -179,13 +179,13 @@ Las Q-I1…Q-I5 de **este encargo (2026-09-21, §5)**; no son las del 2026-09-20
 **Prioridad:** `ALTA`
 **CA:** Dado el conjunto de registros, cuando afirmo que hay duplicación, entonces señalo la misma regla escrita dos o más veces, con archivo y línea de cada copia, y declaro un contraejemplo.
 **DoD:** ficha de familia del §7.3 con las copias citadas por línea.
-**Estado:** TODO
+**Estado:** HECHO — las tres subtareas cerradas. La regla repetida quedó nombrada con sus copias por línea, y la propiedad del estado, escrita.
 
 #### H2.S1 — Clasificar los contenedores con la terna del §3
 
 **CA:** Dado un contenedor, cuando lo clasifico, entonces tiene responsabilidad, nivel compositivo y ámbito, sacados de sus dependencias reales.
 **DoD:** tabla con una fila por contenedor y sus dependencias transitivas relevantes.
-**Estado:** TODO
+**Estado:** HECHO
 
 | ID | Microtarea | CA (binario) | DoD (comando de verificación) | Estado |
 |---|---|---|---|---|
@@ -198,7 +198,7 @@ Las Q-I1…Q-I5 de **este encargo (2026-09-21, §5)**; no son las del 2026-09-20
 
 **CA:** Dada la afirmación «esto está duplicado», cuando se verifica, entonces hay dos copias de la misma regla citadas por línea y está dicho qué cambio se haría una sola vez.
 **DoD:** la ficha del §7.3 completa, con el contraejemplo.
-**Estado:** TODO
+**Estado:** HECHO
 
 | ID | Microtarea | CA (binario) | DoD (comando de verificación) | Estado |
 |---|---|---|---|---|
@@ -212,14 +212,40 @@ Las Q-I1…Q-I5 de **este encargo (2026-09-21, §5)**; no son las del 2026-09-20
 
 **CA:** Dado cada estado mutable del contenedor elegido, cuando alguien pregunta de quién es, entonces está escrito quién lo crea, lo cambia, lo lee, qué lo invalida y cuándo se destruye.
 **DoD:** la tabla del §4 completa para el contenedor elegido.
-**Estado:** TODO
+**Estado:** HECHO
 
 | ID | Microtarea | CA (binario) | DoD (comando de verificación) | Estado |
 |---|---|---|---|---|
-| H2.S3.M1 | Estados mutables del contenedor elegido | Hay lista | tabla en `PLAN.md` | TODO |
-| H2.S3.M2 | Las cinco preguntas por estado | Ninguna fila incompleta | tabla | TODO |
-| H2.S3.M3 | Estados derivados que hoy son copias mutables | Hay lista con líneas | tabla con ruta y línea | TODO |
-| H2.S3.M4 | `effect` que copian estado en vez de derivarlo | Hay lista, o se declara que no hay | `git grep -n 'effect(' origin/mockup -- '<archivos>'` | TODO |
+| H2.S3.M1 | Estados mutables del contenedor elegido | Hay lista | tabla en `PLAN.md` (abajo) + inventario por familia en `evidencia/h2/propiedad-del-estado.md` §1 — **27** en profesional, **34** en paciente, +1 fuera del grafo de signals | HECHO |
+| H2.S3.M2 | Las cinco preguntas por estado | Ninguna fila incompleta | las 8 familias de `propiedad-del-estado.md` §1, cada una con las cinco respondidas | HECHO |
+| H2.S3.M3 | Estados derivados que hoy son copias mutables | Hay lista con líneas | `propiedad-del-estado.md` §2 — 7 pares de catálogo + **4 campos de referencia con 4 dueños distintos** | HECHO |
+| H2.S3.M4 | `effect` que copian estado en vez de derivarlo | Hay lista, o se declara que no hay | `git grep -n 'effect(' d40b5631 -- <alcance IN>` → **6 en total, 0 en las altas**; los 6 clasificados en `propiedad-del-estado.md` §3 → **ninguno copia estado derivable** | HECHO |
+
+> **Desvío de orden, declarado (regla 20 §6.7).** Esta subtarea es de H2 pero se ejecutó después de
+> abrir H4.S1.M1 y M2. El plan la ponía antes de tocar código y se respetó en lo que importa:
+> H4 todavía no escribió una línea de código, así que el diagnóstico sigue siendo previo a la
+> extracción. Lo que sí cambió es el motivo por el que se retomó — buscar trabajo que no chocara
+> con H4 — y no el contenido.
+
+**La tabla del §4, para los dos contenedores que H2.S1 clasificó.** El detalle con las cinco
+preguntas por familia está en [`evidencia/h2/propiedad-del-estado.md`](./evidencia/h2/propiedad-del-estado.md).
+
+| Categoría del §4 | Dueño hoy | Miembros | Veredicto |
+|---|---|---|---|
+| Entidad remota / estado de petición | Contenedor | 7 catálogos + sus 7 banderas `*Caido` | **A medias.** Una fuente por catálogo y sin carrera posible, pero 14 signals donde alcanzarían 7 `ViewState` — ver §2.1 |
+| Parámetros navegables | — | Ninguno: el alta no lee nada de la URL | No aplica, declarado |
+| Datos derivados | Contenedor, **por copia** | `tituloProfesionalElegido`, `ocupacionSeleccionada` | **NO cumple.** Son espejos mutables de un `FormControl` — ver §2.2 |
+| Foco, expansión, resaltado | El organismo `paginated-form` | `indice`, `visitedIndex`, el foco del título | Cumple: es estado local del organismo y no sale de ahí |
+| Selección | **Mixto — y ése es el hallazgo** | Título, ocupación, empresa, fecha de nacimiento | **NO cumple.** Cuatro campos hermanos, cuatro dueños distintos del mismo tipo de dato |
+| Borrador | Contenedor (el `FormGroup`) | `formProfesional` / `formPaciente` + los arreglos que crecen | Cumple. Política ante cierre: no hay recuperación, y está declarado desde H1 |
+| Guardado y error remoto | Contenedor | `state`, `registered`, `verificationSent` | Cumple. `isSubmitting` y `errorMessage` son derivaciones puras de `state`: **es el ejemplo bien hecho del archivo** |
+
+**Lo que sale de acá y no estaba previsto:** los cuatro campos de referencia resuelven la misma
+pregunta —cómo llega el valor de un `FormControl` a un `computed`— de cuatro maneras distintas, y
+sólo una de ellas (`toSignal`, `register-patient.ts:1652`) no puede desincronizarse. Esto **refuerza
+D-5**: tipar el `FormGroup` no vería el caso de la empresa, cuyo id nunca entra al formulario. Un
+contrato tipado escrito sin resolver antes la propiedad de cada campo queda tipado y equivocado.
+Nada de esto se corrige en este carril: es diagnóstico, con su medida y su consecuencia.
 
 ### H3 — La regla vive una sola vez, y dos consumidores la usan
 
