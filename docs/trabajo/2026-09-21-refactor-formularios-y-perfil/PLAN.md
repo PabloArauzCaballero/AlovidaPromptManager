@@ -551,9 +551,26 @@ del motor.
 |---|---|---|---|---|
 | H6.S1.M1 | `lint` y `typecheck` | Sin rojos nuevos | diff contra baseline | TODO |
 | H6.S1.M2 | `test` completo | Sin rojos nuevos | diff contra baseline | TODO |
-| H6.S1.M3 | Cinco consumidores ajenos de `paginated-form`, a mano | Las cinco se comportan igual | cinco capturas comparadas | TODO |
+| H6.S1.M3 | Cinco consumidores ajenos de `paginated-form`, a mano | Las cinco se comportan igual | **4 de 5** observadas y miradas → [`evidencia/h6/consumidores-ajenos.md`](./evidencia/h6/consumidores-ajenos.md) | A MEDIAS |
 | H6.S1.M4 | E2E dirigido al registro tocado, `--workers=1` | Pasa | salida pegada | TODO |
 | H6.S1.M5 | Barrido de las rutas de `auth` y `my-profile` | Ninguna ruta rompe | salida pegada | TODO |
+
+> **H6.S1.M3 — `A MEDIAS`, las tres respuestas (regla 20 §5).**
+> - **Qué anda:** cuatro consumidores ajenos de cuatro funcionalidades distintas montan el motor y
+>   paginan bien, observados y mirados uno por uno: vitrina de organismos, alta asistida de paciente,
+>   activos y pasivos, y la vista previa del constructor de formularios —donde 20 campos se dibujan
+>   como 5 páginas de 4, que es el tope de `paginarCampos`. Cero desborde, cero error de consola o de
+>   red salvo el de CSP ya registrado en el baseline.
+> - **Qué no anda:** nada roto. Lo que falta es alcance: la quinta pantalla no se abrió.
+> - **Qué falta exactamente:** observar un consumidor de las secciones de organizaciones o de equipo
+>   (`/administration/organizations/new`, `/administration/users`). Las dos devuelven al Panel: la
+>   cuenta disponible es de una profesional y esas secciones no están entre las que habilita. Hace
+>   falta una cuenta con otras habilitaciones, que no es de las declaradas para este trabajo.
+>
+> **Se adelantó a propósito, y se puede:** su sujeto quedó congelado al cerrar H3. El carril no tocó
+> el organismo ni nada de lo que el organismo importa —`git diff` vacío sobre `paginated-form/` y
+> `shared/forms/`, y ningún consumidor ajeno importa de `features/auth`— y H4 trabaja en el perfil.
+> Por eso esta evidencia no se invalida con lo que falta de H4.
 
 #### H6.S2 — Cierre honesto
 
