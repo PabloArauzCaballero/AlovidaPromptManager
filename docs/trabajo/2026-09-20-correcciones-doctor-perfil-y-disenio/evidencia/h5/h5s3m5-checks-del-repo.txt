@@ -1,0 +1,12 @@
+node scripts/check-architecture.mjs → exit=1
+node scripts/check-api-prefixes.mjs → exit=1
+node scripts/check-route-prefixes.mjs → exit=0
+node scripts/check-form-pages.mjs → exit=1
+node scripts/check-tokens.mjs → exit=0
+node scripts/check-css-tokens.mjs → exit=1
+node scripts/check-contrast.mjs → exit=0
+Comparación de salidas: rama itzan/captura-rechazo-por-campo contra el corte a0987d9f
+check-architecture: IDÉNTICA (exit 1 en los dos)
+check-api-prefixes: IDÉNTICA (exit 1 en los dos)
+check-form-pages: IDÉNTICA (exit 1 en los dos)
+check-css-tokens: IDÉNTICA (exit 1 en los dos)

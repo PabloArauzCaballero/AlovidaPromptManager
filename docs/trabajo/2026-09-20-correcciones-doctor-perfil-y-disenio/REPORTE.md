@@ -1,10 +1,11 @@
 # Reporte — El patrón de la casa: botones con texto, insignia de especialidad, y un perfil que se puede editar entero
 
-> **AVANCE: 59 / 60 — 98,3 %.**
+> **AVANCE: 62 / 62 — 100 %.**
 
 - Fecha: 2026-09-21 · Plan: [PLAN.md](./PLAN.md) · Rama: `itzan/patron-acciones-fila-insignia-perfil` (desde `origin/mockup` `68dcb562`)
+- Cierre de H5.S3.M3, M4 y M5: 2026-09-22 · Rama: `itzan/captura-rechazo-por-campo` (desde `origin/mockup` `a0987d9f`) · PR #571
 - Correcciones cubiertas: **C-01, C-02, C-05, C-06** (dueño del patrón), **C-09, C-21** (dueño de la regla)
-- Peldaño de evidencia alcanzado: **`VERIFIED`** — el más bajo de las áreas en alcance. Lo fija H5.S3.M3, que quedó en `TESTED`: el mecanismo está probado con pruebas dirigidas y **no se pudo observar en la pantalla**, por el motivo que se explica abajo.
+- Peldaño de evidencia alcanzado: **`TESTED`** — el más bajo de las áreas en alcance. Lo fija el cuestionario con su desplegable, que la maqueta no dibuja (ver «No cubierto»). H5.S3.M3 subió a `VERIFIED` el 22/09. *Corrección:* hasta el 22/09 esta línea decía `VERIFIED` mientras reconocía un área en `TESTED`; el peldaño de un trabajo es el de su área más baja.
 
 ## Completado
 
@@ -14,7 +15,7 @@
 | **H2** (14/14) | `app-row-actions` publicado: icono **y** texto por opción, recorrible con teclado, con ejemplo de uso real, y la regla escrita en `docs/adr/ADR-0012` | `10/10` en navegador · `12 passed (12)` del componente · `58 passed (58)` de su primer uso | PASS |
 | **H3** (9/9) | La especialidad se ve igual en todos lados: una insignia con icono, nombre y estado, en grid | Kill-test **0 restos** de forma vieja · `16/16` en 3 anchos × 2 temas · `23 passed (23)` | PASS |
 | **H4** (10/10) | El perfil médico perdió «Cómo atendés» y los enlaces sueltos, y el consultorio propio se administra adentro, con su QR | **19/19** en navegador · `ruta=/my-account imagen=true` | PASS |
-| **H5** (8/9) | El editor tiene las **siete** pestañas de la ficha y los 34 campos del alta están: 28 escribiéndose y 6 declarados uno por uno | **22/22** en navegador · `ficha=7 · editor=7` | PASS |
+| **H5** (11/11) | El editor tiene las **siete** pestañas de la ficha y los 34 campos del alta están: 28 escribiéndose y 6 declarados uno por uno. El rechazo del servidor llega a **su** campo, observado en el navegador, y un intento que no llega al servidor ya no deja rechazos viejos pintados | **22/22** y **15/15** en navegador · `ficha=7 · editor=7` · editor `80/80` | PASS |
 | **H6** (9/9) | La regla de «opciones = `select`» publicada como `ADR-0013` y anunciada, y aplicada en mis archivos: **13 → 11**; regresión, barrido y capturas cerradas | `git grep -o` antes y después · suite completa `556 / 6 903` · barrido `8/8` y `6/6` · capturas `24/24` | PASS |
 
 El detalle microtarea por microtarea, con su evidencia literal, está en el
@@ -56,34 +57,11 @@ El detalle microtarea por microtarea, con su evidencia literal, está en el
 
 ## A medias
 
-### H5.S3.M3 — que el error del servidor se muestre en su campo
-
-- **Qué anda:** el mecanismo **no existía** y ahora existe. Un guardado
-  rechazado mostraba sólo «No se pudo guardar el cambio. Probá de nuevo.» y
-  descartaba entero el detalle que el servidor manda, con quince campos en un
-  mismo formulario. Ahora el rechazo se reparte por campo —usando
-  `details.violations`, el contrato de errores real del proyecto—, se avisa una
-  sola vez, y un guardado nuevo limpia el anterior. Seis pruebas dirigidas que
-  recorren los tres niveles del contrato —correcto, límite e **inválido**: un
-  cuerpo que no respeta el contrato de errores y unas violaciones con la forma
-  equivocada, y en los dos el formulario conserva lo tecleado—, una de ellas
-  **sobre el DOM**: el mensaje se pinta debajo del NIT y no debajo de
-  «Razón social».
-- **Qué no anda:** nada. Falta **observarlo**.
-- **Qué falta exactamente:** la captura del recorrido. No se pudo tomar: el
-  simulador de fallos de esta maqueta ofrece cinco clases —sin red, sin permiso,
-  no existe, conflicto y fallo del servidor— y **ninguna es un rechazo de
-  validación con el campo adentro**, que es la única que un formulario necesita.
-  Se comprobó además que ningún manejador del servicio simulado emite
-  `violations`. Agregar esa clase es tocar el simulador, que está declarado fuera
-  de mi alcance. Registrado como **HALL-I8**.
-- **Dónde quedó:** en la rama, compilando, con los gates en verde y los 375 del
-  área del perfil en verde.
+Ninguna. H5.S3.M3 cerró el 22/09: ver «Completado» y «Evidencia».
 
 ## Pendiente
 
-Ninguna. Las 60 microtareas están cerradas salvo H5.S3.M3, que figura arriba
-como `A MEDIAS` con las cuatro respuestas.
+Ninguna. Las 62 microtareas están en `HECHO`.
 
 ## Evidencia
 
@@ -179,13 +157,41 @@ se revisan: `docs/frontend/evidence/insignia-especialidad/`,
 `docs/frontend/evidence/editor-con-todas-las-pestanas/` y
 `docs/frontend/evidence/formato-en-select/`.
 
+### Cierre de H5.S3.M3, M4 y M5 (22/09)
+
+```text
+node rechazo-por-campo.mjs   (recorrido de navegador, sesión de la médica de la maqueta)
+traza del borde: {"errorDeLaMaqueta":{"clase":"HttpErrorResponse","status":500},"errorEntregado":{"clase":"HttpErrorResponse","mismaClase":true,"status":400},"llegoUnExito":false,"mandoNombre":116,"mandoApellido":116}
+OK    «Nombre» muestra SU mensaje y sólo el suyo — muestra=["name must be shorter than or equal to 100 characters"]
+OK    «Nombre» queda enlazado a su mensaje por accesibilidad — aria-describedby→mensaje=true · aria-invalid=true
+OK    «Apellido paterno» muestra SU mensaje y sólo el suyo — muestra=["lastName must be shorter than or equal to 100 characters"]
+OK    ningún otro campo del panel muestra un mensaje ajeno — revisados=6 … derramados=[]
+OK    el aviso general dice que hay campos marcados, una sola vez
+OK    volver a lo guardado y apretar Guardar no deja mensajes de un valor que ya no está — quedan=[]
+15/15 pasos en verde
+
+corepack yarn test … practitioner-profile-edit.spec.ts   (ANTES del arreglo de H5.S3.M5)
+AssertionError: expected 'taxId no existe en el padrón.' to be '' // Object.is equality
+      Tests  2 failed | 78 passed (80)
+corepack yarn test … practitioner-profile-edit.spec.ts   (DESPUÉS)
+      Tests  80 passed (80)
+corepack yarn test … my-profile/**/*.spec.ts
+ Test Files  17 passed (17)
+      Tests  380 passed (380)
+corepack yarn typecheck → exit=0
+corepack yarn lint → exit=0
+```
+
+Salidas completas en `evidencia/h5/`. Capturas en `mantra-core-health/docs/frontend/evidence/rechazo-por-campo/`: tres anchos y dos temas, más el ciclo rechazo → vuelta atrás → corrección. **Miradas**, no sólo tomadas.
+
+Los `check-*.mjs` del repo se corrieron a mano, como pide su `CLAUDE.md`: `check-route-prefixes`, `check-tokens` y `check-contrast` en 0; `check-architecture`, `check-api-prefixes`, `check-form-pages` y `check-css-tokens` en 1, con **salida idéntica byte a byte** con las fuentes del corte `a0987d9f` (HALL-I18).
+
 ## No cubierto
 
 Lo que se escribió y **no** se ejercitó, que es distinto de lo pendiente:
 
-- **El rechazo por campo, en la pantalla** (H5.S3.M3). Probado con seis pruebas
-  dirigidas contra el contrato real en sus tres niveles, una de ellas sobre el
-  DOM; no observado en el navegador, por HALL-I8.
+- **El rechazo por campo, contra la API real.** Se observó contra un **doble declarado del servidor**: el simulador de la maqueta hace fallar el guardado de verdad y, en el borde del servicio de datos, el cuerpo se reemplaza por el que la API manda ante un DTO inválido, con los mensajes literales de sus validadores. Lo que falta es verlo contra la API, y ahí hoy no todo llegaría a su campo (HALL-I15 y HALL-I16).
+- **La suite completa no se volvió a correr** tras el arreglo de H5.S3.M5. El editor es una hoja —sólo lo importan la ruta y el índice generado del catálogo—, así que la regresión del área del perfil es su radio.
 - **La corrección de un consultorio desde la pestaña nueva.** Se verificó que el
   bloque se monta, que sus acciones funcionan y que el QR se abre y muestra la
   imagen; **no** se ejercitó el ciclo completo de editar un consultorio, guardar
@@ -206,6 +212,7 @@ Lo que se escribió y **no** se ejercitó, que es distinto de lo pendiente:
 
 | Qué | Por qué |
 |---|---|
+| **H5.S3.M4 y H5.S3.M5 no estaban en el plan** | Salieron al cerrar H5.S3.M3: una captura del turno anterior que no mostraba lo que su nombre decía, y un defecto del mismo mecanismo que sólo se ve mirando el ciclo entero en el navegador. Entraron como microtareas propias, con su criterio y su DoD, en vez de arreglarse de paso |
 | **«Actividad» no se hizo editable, pero la pestaña se agregó igual** | Un contador que se escribe a mano deja de contar. El kill-test de C-05 es contar pestañas; la respuesta que cumple las dos cosas es tenerla y decir en ella por qué no hay nada que escribir |
 | **Tres campos del alta se muestran en el editor sin poder editarse** | El contrato de corrección no los acepta. Inventarles un campo que el guardado descarta sería prometer algo que no guarda; no mostrarlos deja a quien viene a corregirlos sin el dato y sin el motivo |
 | **El mapa de campos no cambió ningún valor en H4, y sí cambió uno en H5** | En H4 los cuatro campos del consultorio ya apuntaban bien. En H5 el cruce campo por campo destapó que `sexAtBirth` apuntaba a una pestaña donde nunca estuvo |
@@ -274,6 +281,23 @@ Los nueve están en el daily del turno con su dueño. Los que bloquean a alguien
   cuenta y navegación. `dev` da la misma secuencia exacta (`1 1 1 5 1 5 4 5`,
   `8 of 10 failed`) y las últimas doce corridas, de cuatro personas, terminan
   todas en `failure`. Medido y atribuido, no diagnosticado.
+- **HALL-I15** — **contra la API real, todo guardado que toque el NIT o la razón social se rechaza
+  entero.** El editor manda `taxId` y `taxHolderName` cuando cambian
+  (`core/data-access/profiles/profiles.client.ts:484-485`); el DTO del médico no los declara
+  (`mantra-core-health-api/src/modules/profiles/dto/update-practitioner-profile.dto.ts`) y la validación
+  global corre con `forbidNonWhitelisted: true` (`mantra-core-health-api/src/main.ts:161`). La respuesta
+  sería `property taxId should not exist`, que tampoco se ancla. Ninguna rama de la API los agrega.
+- **HALL-I16** — **el rechazo más probable del formulario no llega a su campo.** El mensaje de los
+  teléfonos en la API empieza con «El» (`update-practitioner-profile.dto.ts:60-61`), y `fieldOf` sólo
+  ancla mensajes que empiezan con el nombre de la propiedad (`core/http/error-to-view-state.ts:199-216`).
+- **HALL-I17** — **los mensajes del servidor se muestran crudos y en inglés** («lastName must be shorter
+  than or equal to 100 characters»): `errorToViewState` pasa el texto tal cual
+  (`core/http/error-to-view-state.ts:162-165`). Es de todo formulario que use ese mapeo.
+- **HALL-I18** — **cuatro `check-*.mjs` salen en 1 en `mockup`**: `check-architecture`,
+  `check-api-prefixes`, `check-form-pages` (2 formularios sin paginar) y `check-css-tokens` (3 tokens sin
+  declarar). Salida idéntica byte a byte en el corte `a0987d9f`.
+- **HALL-I19** — **toda página registra dos violaciones de CSP por un script en línea**, incluida una
+  carga limpia de `/auth` sin sesión.
 
 **HALL-I5 se cerró**: era el mismo defecto en el menú de preferencias de una
 publicación, ese sí en mi territorio. Entró como microtarea propia (H2.S3.M7)

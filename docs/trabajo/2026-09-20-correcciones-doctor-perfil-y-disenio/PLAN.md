@@ -1,9 +1,9 @@
 # PLAN — El patrón de la casa: botones con texto, insignia de especialidad y perfil editable
 
-> **AVANCE: 31 / 58 — 53,4 %.** El denominador subió de 54 a 58: el primer uso real
-> destapó cuatro trabajos que el encargo no preveía (H2.S2.M4, H2.S3.M4, H2.S3.M5,
-> H2.S3.M6) y que no se pueden hacer «de paso». El porcentaje se calcula sobre el
-> denominador corregido, no sobre el que hacía quedar mejor.
+> **AVANCE: 62 / 62 — 100 %.** El denominador pasó de 54 a 62: ocho microtareas se agregaron
+> sobre la marcha, cada una por un trabajo que el encargo no preveía y que no se podía hacer
+> «de paso» (H2.S2.M4, H2.S3.M4 a M7, H4.S2.M4, H5.S3.M4 y H5.S3.M5). El porcentaje se calcula
+> sobre el denominador corregido, no sobre el que hacía quedar mejor.
 
 - **Persona:** Itzan · **Turno:** noche · **Fecha del reparto:** 2026-09-20
 - **Encargo:** [`PatronDeBotonesInsigniaYPerfilEditable.md`](PatronDeBotonesInsigniaYPerfilEditable.md)
@@ -216,7 +216,7 @@ C-06. Por eso el camino crítico va primero, sin saltear nada:
 
 **Prioridad:** `ALTA` · **Kill-test:** contá las pestañas del editor contra las de la ficha; después editá, guardá y recargá.
 
-**Estado:** A MEDIAS — ocho de nueve microtareas cerradas. La que falta es H5.S3.M3, y falta **la captura, no el mecanismo**: ver su fila.
+**Estado:** HECHO — once de once. H5.S3.M3 cerró el 22/09 con su captura, y al cerrarla aparecieron dos trabajos más, cerrados también: H5.S3.M4 (una captura que no mostraba lo que su nombre decía) y H5.S3.M5 (un defecto del mismo mecanismo).
 
 **Kill-test, ejecutado en la pantalla:** `ficha=7 [Datos personales · Contacto · Facturación · Dónde atiendo · Trayectoria · Credenciales · Actividad] · editor=7 [los mismos siete, en el mismo orden]`. Recorrido **22/22**, capturas en `docs/frontend/evidence/editor-con-todas-las-pestanas/`. Gates: `typecheck exit=0` · `lint exit=0` · área del perfil **`17 archivos · 375 passed (375)`**.
 
@@ -242,13 +242,15 @@ C-06. Por eso el camino crítico va primero, sin saltear nada:
 
 #### H5.S3 — Guardar de verdad, y no perder lo escrito
 
-**Estado:** A MEDIAS — M1 y M2 cerradas; M3 tiene el mecanismo construido y probado, y le falta la captura.
+**Estado:** HECHO — M1 a M5.
 
 | ID | Microtarea | CA (binario) | DoD | Estado |
 |---|---|---|---|---|
 | H5.S3.M1 | Editar y guardar un campo por pestaña, recargando después | El valor nuevo sobrevive a la recarga | Se cambió la biografía en «Datos personales» y el NIT en «Facturación» —los tres primeros paneles son un solo formulario y viajan juntos—, se guardó, se recargó la pantalla entera y el valor estaba. Captura `guardado-tras-recargar.png` | HECHO |
 | H5.S3.M2 | Provocar un fallo de guardado y verificar que no se pierde lo escrito | Los datos siguen y el error se ve | El fallo se provocó con **el interruptor que la propia maqueta trae** para esto, no interceptando la red: acá el servicio simulado responde dentro de la aplicación y ninguna petición sale al navegador. La primera versión del recorrido lo hizo interceptando y sus dos pasos quedaron **en verde por el motivo equivocado** —el guardado había funcionado y el aviso que leía era el de éxito—. Con el interruptor: lo escrito sigue, el NIT rechazado en la otra pestaña también, y el aviso dice `Error: Perfil — No se pudo guardar el cambio. Probá de nuevo.` | HECHO |
-| H5.S3.M3 | Verificar que el error del servidor se muestra en su campo | Cada error llega a su campo | **A MEDIAS.** *Qué anda:* el mecanismo **no existía** y ahora existe — un rechazo mostraba sólo «No se pudo guardar el cambio» y el detalle del servidor se descartaba entero, con quince campos en un mismo formulario. Ahora se reparte por campo (`details.violations`, el contrato de errores real del proyecto), se avisa una vez, y un guardado nuevo limpia el anterior. Seis pruebas dirigidas, una de ellas **sobre el DOM**: el mensaje se pinta debajo del NIT y no debajo de «Razón social». El contrato quedó ejercitado en sus tres niveles —correcto (la violación llega a su campo), límite (un rechazo sin campo sale por el aviso general) e **inválido** (un cuerpo que no respeta el contrato de errores, y unas `violations` con la forma equivocada: en los dos el formulario no se queda mudo y **no se pierde lo tecleado**)—. *Qué no anda:* nada; falta **observarlo**. *Qué falta exactamente:* la captura del recorrido. No se pudo tomar porque el simulador de fallos de esta maqueta ofrece cinco clases —sin red, sin permiso, no existe, conflicto y fallo del servidor— y **ninguna es un rechazo de validación con el campo adentro**, que es la única que un formulario necesita; comprobado además que el servicio simulado no emite `violations` en ninguna ruta. Sumarle esa clase es tocar el simulador, que está declarado fuera de mi alcance. *Dónde quedó:* en la rama, compilando y con los 375 del área en verde; registrado como HALL-I8 | A MEDIAS |
+| H5.S3.M3 | Verificar que el error del servidor se muestra en su campo | Cada error llega a su campo | **Observado en el navegador (22/09)**, con el rechazo que la API real manda ante un DTO inválido —400 `VALIDATION_FAILED` con `details.violations`, mensajes literales de `@MaxLength(100)` para `name` y `lastName`— inyectado en el borde del servicio de datos, porque el simulador de la maqueta no emite `violations` (HALL-I8). El error se construye con el mismo constructor del `HttpErrorResponse` que la maqueta devolvió, así que el `instanceof` de `errorToViewState` es genuino; del borde para adentro todo es el camino real. Resultado: cada mensaje debajo de **su** campo, con `aria-describedby` y `aria-invalid`; los otros seis campos del panel, limpios; el aviso general, una vez; lo tecleado, intacto. Capturas en tres anchos y dos temas: `docs/frontend/evidence/rechazo-por-campo/`. Salida: `evidencia/h5/h5s3m3-rechazo-por-campo.txt`. Es un doble declarado del servidor, no la API | HECHO |
+| H5.S3.M4 | Reemplazar la captura `editor-con-todas-las-pestanas/error-del-servidor-en-su-campo.png`, que no muestra lo que su nombre dice | La imagen con ese nombre muestra un error del servidor junto a su campo, no un guardado exitoso | Reemplazada en `d19e545f` por la de escritorio y tema claro del recorrido de H5.S3.M3; mirada: los dos mensajes debajo de «Nombre» y «Apellido paterno», los demás campos limpios | HECHO |
+| H5.S3.M5 | Que volver a lo guardado y apretar Guardar no deje pintados los rechazos del intento anterior | Tras un rechazo, un intento que no llega al servidor —sin cambios, o frenado por un teléfono a medias— no deja mensajes de valores que ya no están escritos | **Reproducido en el navegador antes de tocar nada**: los dos mensajes seguían ahí tras «No había ningún cambio para guardar». Causa: la limpieza estaba después de la salida temprana. Arreglo: sube al comienzo del intento (`29bd2614`). Dos pruebas dirigidas en rojo antes (`expected 'taxId no existe en el padrón.' to be ''`) y en verde después: editor `80/80`, área del perfil `17 archivos · 380`, `typecheck` y `lint` en 0, recorrido `15/15`. Salidas en `evidencia/h5/` | HECHO |
 
 ### H6 — «Opciones = select», regresión, prueba visual y cierre
 
