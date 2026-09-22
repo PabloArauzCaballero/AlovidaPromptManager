@@ -1,6 +1,6 @@
 # PLAN — Separar quién decide de quién pinta en los registros y en el perfil
 
-> **AVANCE: 46 / 68 — 67,6 %.** El denominador subió de 64 a 68: el baseline destapó un rojo previo
+> **AVANCE: 49 / 68 — 72,1 %.** El denominador subió de 64 a 68: el baseline destapó un rojo previo
 > propio (H1.S1.M5), la extracción destapó código muerto y tres consumidores más de la misma regla
 > (H3.S1.M6 y M7), y separar la vista del perfil destapó una auto-referencia que el propio contrato
 > daba por viva y ya no existe (H4.S1.M6). Cifra calculada, no estimada:
@@ -369,16 +369,29 @@ en [`evidencia/h3/deuda-anclaje-y-foco.md`](./evidencia/h3/deuda-anclaje-y-foco.
 
 **CA:** Dada la vista extraída, cuando se le pasan entradas explícitas, entonces pinta sin conocer endpoints, sesión ni persistencia.
 **DoD:** la vista con entradas y salidas tipadas, y su test de contrato.
-**Estado:** EN CURSO
+**Estado:** HECHO — seis microtareas cerradas. La vista quedó con **cero inyecciones**: seis
+entradas, cuatro salidas y ninguna escritura. `corepack yarn build` en verde, `98/98` entre los dos
+specs, `typecheck` y `lint` en 0.
+
+> **Las tres pruebas que fijan el contrato, y por qué prueban algo.**
+> `no muta el perfil que recibe` le pasa el objeto **congelado**: cualquier escritura revienta en
+> el acto, porque el módulo es estricto, y además se compara el objeto antes y después por si
+> alguien le colgara algo que `Object.freeze` no alcanza.
+> `no emite ninguna intención al dibujarse ni al llegarle datos nuevos` engancha **las cuatro**
+> salidas **antes** del primer `detectChanges()`; para eso el ayudante de montaje del spec ganó un
+> gancho. Suscribirse después no distingue «no emitió» de «emitió y no lo vi», que es la trampa que
+> vuelve vacua a esta clase de prueba.
+> Y la tercera comprueba que lo recibido **sí se dibuja**, para que ninguna de las dos pase por no
+> haber pintado nada.
 
 | ID | Microtarea | CA (binario) | DoD (comando de verificación) | Estado |
 |---|---|---|---|---|
 | H4.S1.M1 | Elegir el contenedor y declarar por qué | Hay criterio escrito | una línea en `PLAN.md` | HECHO |
 | H4.S1.M2 | Contrato de la vista según el §10 | Las diez áreas respondidas | el archivo de contrato | HECHO |
 | H4.S1.M3 | Extraer la vista con entradas explícitas y salidas tipadas | No inyecta clientes de negocio | revisión del diff + `corepack yarn build` + los dos specs en verde (ver desvío) | HECHO |
-| H4.S1.M4 | La vista no muta los objetos que recibe | Hay test que lo demuestra | `corepack yarn test --watch=false --include=<spec>` | TODO |
-| H4.S1.M5 | Una intención no se emite al cargar datos | Hay test que lo demuestra | `corepack yarn test --watch=false --include=<spec>` | TODO |
-| H4.S1.M6 | Retirar la auto-referencia muerta que el contrato daba por viva | `verPreview`, `TAB` y el import de sí mismo no existen más; `previewMode` sigue | `corepack yarn build` + los dos specs en verde | TODO |
+| H4.S1.M4 | La vista no muta los objetos que recibe | Hay test que lo demuestra | `corepack yarn test --watch=false --include=<spec>` | HECHO |
+| H4.S1.M5 | Una intención no se emite al cargar datos | Hay test que lo demuestra | `corepack yarn test --watch=false --include=<spec>` | HECHO |
+| H4.S1.M6 | Retirar la auto-referencia muerta que el contrato daba por viva | `verPreview`, `TAB` y el import de sí mismo no existen más; `previewMode` sigue | `corepack yarn build` + los dos specs en verde | HECHO |
 
 **H4.S1.M3 — HECHO.** Las **siete** inyecciones salieron de la vista. Quedó con seis entradas y
 cuatro salidas; las tres operaciones viven en `PractitionerProfile`.
