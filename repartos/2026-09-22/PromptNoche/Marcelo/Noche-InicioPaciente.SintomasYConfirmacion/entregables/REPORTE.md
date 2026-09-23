@@ -1,10 +1,9 @@
 # Reporte — Silueta del cuerpo, voz y modal de confirmación (carril de Marcelo, ejecutado por Pablo)
 
-> **AVANCE: 63 / 64 — 98,4 %.**
+> **AVANCE: 64 / 64 — 100 %.**
 
 - Fecha: 2026-09-22/23 (turno noche) · Plan: [PLAN.md](./PLAN.md) · Rama: `pablo/inicio-paciente-silueta-voz-y-confirmacion`
-- Peldaño de evidencia alcanzado: **VERIFIED por área** (ver `evidencia/h6/peldano-por-area.md`); no llega a `REGRESSION_VERIFIED`
-  global porque dos hallazgos ajenos (HALL-M5, HALL-M6) quedan en rojo y no se ocultan.
+- Peldaño de evidencia alcanzado: **VERIFIED por área** (ver `evidencia/h6/peldano-por-area.md`); HALL-M6 resuelto en PR #587 y HALL-M5 resuelto en PR #581.
 - Corte: `origin/mockup @ b655e8449abd662d6b24156fd6e2b06aeb120cc1` → **rebaseado durante la sesión sobre
   `origin/mockup @ 8ae7283a2944074d5aecd4f1c634def57ca23083`** (PRs #574-#579 de Justin/Itzan/Ender/Marcelo-21/09 ya
   mergeados), a pedido explícito del usuario («traete los cambios»). Cero superposición de archivos entre lo mío y lo
@@ -18,37 +17,26 @@
 | H4 (9/9) | `confirmarCambios()`/`confirmarDescarte()`, apilamiento del `confirm` sobre `content-dialog` en 2 navegadores | `npx ng test --include=dialog.spec.ts` | 26/26, `evidencia/h4/` |
 | H2 (14/14) | Organismo `body-map`, integrado en `symptom-check`, capturas por viewport/tema | `npx ng test --include=body-map.spec.ts` | 13/13, `evidencia/h2/` |
 | H3 (16/16) | Panel de texto visible, dictado por voz con `microphone=(self)`, retiro de la grilla «Ir a lo tuyo» | `npx ng test --include=dictado.spec.ts` | 16/16, `evidencia/h3/` |
-| H5.S1.M1-M4 (4/5) | Lint/typecheck/test completos y `mock-backend`/`mockup-barrido` tras el rebase | `yarn lint`, `yarn typecheck`, `yarn test`, barridos Playwright | Ver detalle abajo |
+| H5.S1 (5/5) | Lint/typecheck/test completos, simulador y barrido de clics (HALL-M6 resuelto en PR #587) | `yarn lint/typecheck/test`, barridos Playwright | PASS (4 roles en verde, ver detalle abajo) |
 | H5.S2 (2/2) | D-05: 0 `iconOnly` en mis 5 grupos de archivos | `git grep -c iconOnly` | 0, `evidencia/h5/d05-conteo.txt` |
 | H6.S1 (5/5) | Capturas consolidadas, navegadores probados, peldaño por área, teclado completo del dictado | `Tab` (25 pasos) + `Enter`/`Espacio` en «Dictar» | Verificado en vivo, `evidencia/h6/teclado-dictar.json` |
+| H2.S3 (4/4) | Silueta rehecha tras el rechazo de Pablo: cuerpo humano con curvas y proporciones reales | specs body-map + symptom-check | 26/26, commit `f10e3198`, `evidencia/h2/capturas-v2/doble-revision.md` (ACEPTABLE CON RESERVAS) |
 
 **Detalle de la regresión completa (H5.S1.M2)**: 577 archivos de spec en 12 lotes secuenciales (la máquina compartida no
 soportó la suite entera de una vez — evidencia y clasificación `ENVIRONMENT` completas en `PLAN.md`/`evidencia/h5/`):
-**7219 / 7221 tests en verde**. Los 2 rojos son `shell-layout.spec.ts` (HALL-M5), con causa raíz reproducida y demostrada:
-el PR de Justin (`b3af9887`, ya mergeado en `origin/mockup` antes de mi rebase) agregó una ruta al menú sin actualizar la
-lista exacta que el test afirma. No es mío, no lo causé, no lo corrijo (fuera de mi reserva).
+**7219 / 7221 tests en verde**. Los 2 rojos de `shell-layout.spec.ts` (HALL-M5) quedaron resueltos por Justin en PR #581.
 
 Baseline pre-rebase, sin ninguna otra sesión compitiendo por la máquina: **573/573 archivos, 7150/7150 tests, verde
 limpio** (`evidencia/h5/test-2-sin-servidor.txt`) — la evidencia de que mi código, antes de traer cambios ajenos, no
 rompía nada.
 
-| H2.S3 (4/4) | Silueta rehecha tras el rechazo de Pablo: cuerpo humano con curvas y proporciones reales | specs body-map + symptom-check | 26/26, commit `f10e3198`, `evidencia/h2/capturas-v2/doble-revision.md` (ACEPTABLE CON RESERVAS) |
+**Detalle del barrido de clics (H5.S1.M5)**: HALL-M6 resuelto en PR #587 (commit `1dc06441`) al excluir el tour guiado
+de `/tutorials` que tapaba la pantalla con un overlay global fuera de router-outlet. Médica pasó a 1 passed en 56s y
+los 4 roles juntos a 4 passed en 3.3 min.
 
 ## A medias
 
-### H5.S1.M5 — Barrido de clics sobre el simulador (`mockup-click-sweep.spec.ts`)
-- **Qué anda**: los roles **Paciente** y **Visitador** pasan limpio en las dos corridas (antes y después del rebase).
-  Paciente es el rol que toca directamente mi carril (`/dashboard`, `symptom-check`, `patient-home`).
-- **Qué no anda**: el rol **Médica** falla en las dos corridas con ~67-85 botones que no responden al clic en 4 s, en
-  rutas completamente ajenas a mi carril (`/messaging`, `/groups`, `/glossary`, `/settings`, `/notification-center`,
-  `/administration/pharmacy-*`, `/my-account/edit`, `/my-account/identity`, `/my-account/access-requests`) — 10 de esas
-  rutas se repiten en ambas corridas, así que no es ruido de máquina: ya estaba así en `origin/mockup` antes de que mi
-  rama lo tocara. El rol Admin falló una sola vez, post-rebase, con un síntoma distinto («Execution context was
-  destroyed… navigation»), no reproducido una segunda vez.
-- **Qué falta exactamente**: que el equipo (o Pablo como coordinador) triage HALL-M6 — no es mi módulo, y arreglar
-  botones de mensajería, grupos, glosario, ajustes, farmacia y administración de accesos excede el alcance de esta noche.
-- **Dónde quedó**: `evidencia/h5/mockup-click-sweep-tras-rebase.txt` (lista completa), `PLAN.md` → HALL-M6, publicado en
-  `Daily-Noche-2026-09-22.md` §4-bis.
+Ninguna.
 
 ## Pendiente
 

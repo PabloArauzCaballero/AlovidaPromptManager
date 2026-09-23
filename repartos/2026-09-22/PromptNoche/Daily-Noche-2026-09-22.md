@@ -245,7 +245,7 @@ Las 20 están con supuesto y dueño en el documento fuente. Las que **bloquean c
 | Itzan | __ / 93 | __ / 8 | | | [Itzan-Daily-Noche-2026-09-22.md](Itzan/Itzan-Daily-Noche-2026-09-22.md) |
 | Justin | 29 / 51 | 0 / 6 | 20 HECHO legados + 9 HECHO no solapados, publicados en #583: capturas por viewport/tema, teclado, gates locales, clic único y acción visible de disponibilidad. Las 6 de documentos son `DESCARTADO` por la decisión «Cotizaciones solamente». | Quedan baseline histórico, contratos de negocio para precios/origen/acciones y validación remota de Coolify. | [Justin-Daily-Noche-2026-09-22.md](Justin/Justin-Daily-Noche-2026-09-22.md) |
 | Ender | 14 / 48 | 1 / 6 | H2 (H2.S1 5/5; H2.S2 sin empezar). Latencia determinista y medida: «elegir médico» 311–557 → 231–247 ms en arnés. Cambios locales, sin commit en producto | H3 y H4 sin autorizar todavía; H3 con decisiones de alcance tomadas (los 13 registrados, `comunidad.ts` fuera) | [Ender-Daily-Noche-2026-09-22.md](Ender/Ender-Daily-Noche-2026-09-22.md) |
-| Marcelo | __ / 59 | __ / 6 | | | [Marcelo-Daily-Noche-2026-09-22.md](Marcelo/Marcelo-Daily-Noche-2026-09-22.md) |
+| Marcelo | 64 / 64 | 6 / 6 | ninguno | ninguno | [Marcelo-Daily-Noche-2026-09-22.md](Marcelo/Marcelo-Daily-Noche-2026-09-22.md) |
 | **Total** | **__ / 319** | **__ / 32** | | | |
 
 ### Qué NO se puede escribir en este documento
