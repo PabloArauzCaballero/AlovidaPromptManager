@@ -1,0 +1,1 @@
+    244 @angular-eslint/prefer-on-push-component-change-detection

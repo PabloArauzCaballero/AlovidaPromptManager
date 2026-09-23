@@ -1,0 +1,94 @@
+{
+  "_que_es": "Salida literal de los scripts de Playwright (browser_run_code) sobre http://localhost:4200/dashboard como paciente@alovida.mock (cuenta sintética). Navegador del MCP: Chrome/153.0.0.0 (UA), no headless. 2026-09-23.",
+  "soporte": {
+    "SpeechRecognition": true,
+    "webkitSpeechRecognition": true,
+    "boton": true,
+    "botonTexto": "Dictar",
+    "iconoEnBoton": true,
+    "aviso": "Lo que dictás lo transcribe tu navegador; no lo guardamos.",
+    "avisoAntesDelBoton": true,
+    "describedby": "sintomas-dictado-aviso"
+  },
+  "clic_sin_permiso_concedido": {
+    "inmediato": {
+      "boton": "Detener",
+      "presionado": "true",
+      "estado": "Escuchando… decí qué te pasa.",
+      "texto": ""
+    },
+    "final": {
+      "boton": "Dictar",
+      "presionado": "false",
+      "estado": "Activá el micrófono en el navegador o escribí.",
+      "texto": ""
+    }
+  },
+  "clic_con_permiso_concedido_por_playwright": {
+    "permiso": "granted (navigator.permissions.query → 'granted' tras context.grantPermissions(['microphone']))",
+    "final": {
+      "boton": "Dictar",
+      "presionado": "false",
+      "estado": "Activá el micrófono en el navegador o escribí.",
+      "texto": ""
+    },
+    "consola": "[WARNING] AudioCapture permission has been blocked because of a permissions policy applied to the current document. See https://crbug.com/414348233",
+    "causa_verificada": "La app manda `Permissions-Policy: camera=(), microphone=(), geolocation=(self)` desde su servidor SSR (src/server/security-headers.ts:268; spec en security-headers.spec.ts:194-195). Con microphone=() el documento no puede capturar audio, conceda o no la persona: el reconocedor devuelve not-allowed. Ver HALL-M4 en PLAN.md."
+  },
+  "repeticion_sin_avisos_flotantes": {
+    "escuchando": {
+      "boton": "Detener",
+      "presionado": "true",
+      "estado": "Escuchando… decí qué te pasa."
+    },
+    "sinPermiso": {
+      "boton": "Dictar",
+      "presionado": "false",
+      "estado": "Activá el micrófono en el navegador o escribí."
+    },
+    "toastsVisibles": 0
+  },
+  "movimiento_reducido": {
+    "enVivoConReduce": {
+      "animationName": "_ngcontent-ng-c312428185_sintomas-latido",
+      "animationDuration": "1e-05s",
+      "prefiere": true
+    },
+    "enVivoSinPreferencia": {
+      "animationName": "_ngcontent-ng-c312428185_sintomas-latido",
+      "animationDuration": "1.2s",
+      "prefiere": false
+    },
+    "clonConReduce": {
+      "animationName": "_ngcontent-ng-c312428185_sintomas-latido",
+      "animationDuration": "1e-05s",
+      "prefiere": true
+    },
+    "clonSinPreferencia": {
+      "animationName": "_ngcontent-ng-c312428185_sintomas-latido",
+      "animationDuration": "1.2s",
+      "prefiere": false
+    },
+    "_lectura": "«en vivo» = medido sobre el punto real mientras decía «Escuchando…»; «clon» = un span con la misma clase y el mismo atributo de encapsulación, para confirmar sin depender de la ventana corta. Los dos coinciden."
+  },
+  "no_cubierto": "Una transcripción de una frase elegida (por ejemplo «me duele la cabeza») que llegue a reconocerse como síntoma: no se dictó a propósito y no se repite la captura de audio ambiente. Lo que se observó (frase ambiente transcrita y agregada al área) demuestra el mecanismo; el reconocimiento del síntoma a partir de texto ya está cubierto por los specs del chequeo.",
+  "tras_H3_S2_M9_politica_microphone_self": {
+    "cabeceraServida": "camera=(), microphone=(self), geolocation=(self)",
+    "permiso": "granted",
+    "featurePolicy.allowsFeature('microphone')": true,
+    "consola_warnings_o_errors_durante_la_prueba": [],
+    "onerror_del_reconocedor": [],
+    "inmediato": {
+      "boton": "Detener",
+      "presionado": "true",
+      "estado": "Escuchando… decí qué te pasa."
+    },
+    "a_los_15s": {
+      "boton": "Detener",
+      "presionado": "true",
+      "estado": "Escuchando… decí qué te pasa."
+    },
+    "transcripcion": "SÍ hubo: el reconocedor transcribió una frase de audio ambiente real captada por el micrófono de la máquina de desarrollo (nadie hablaba para la prueba). La frase llegó al área de texto, pasó por `escribir()` y el chequeo respondió «No reconocimos ningún síntoma…» (no era un síntoma). **El contenido se excluyó de la evidencia y se borró la captura que lo mostraba**: es la voz de una persona real, ajena a la prueba (regla 90.2). Se detuvo con «Detener» → botón «Dictar», micrófono cerrado, área vaciada.",
+    "_lectura": "Con la política abierta el camino completo funciona: permiso → Escuchando… → texto en el área → reconocimiento. No se repite la prueba con audio real para no volver a captar a nadie."
+  }
+}

@@ -1,0 +1,13 @@
+src/app/core/build/build-info.ts(3,27): error TS2307: Cannot find module '../../../environments/env.generated' or its corresponding type declarations.
+src/app/core/mock/mock-store.ts(1,27): error TS2307: Cannot find module '../../../environments/env.generated' or its corresponding type declarations.
+src/app/core/observability/config/telemetry.config.ts(1,27): error TS2307: Cannot find module '../../../../environments/env.generated' or its corresponding type declarations.
+src/app/features/component-stock/component-stock.ts(28,29): error TS2307: Cannot find module './component-index.generated' or its corresponding type declarations.
+src/app/features/component-stock/component-stock.ts(135,29): error TS7006: Parameter 'c' implicitly has an 'any' type.
+src/app/features/component-stock/component-stock.ts(148,31): error TS7006: Parameter 'c' implicitly has an 'any' type.
+src/app/features/component-stock/component-stock.ts(165,45): error TS7006: Parameter 'c' implicitly has an 'any' type.
+src/app/features/component-stock/component-stock.ts(172,38): error TS7006: Parameter 'c' implicitly has an 'any' type.
+src/app/features/component-stock/component-stock.ts(179,37): error TS7006: Parameter 'c' implicitly has an 'any' type.
+src/app/features/component-stock/component-stock.ts(631,38): error TS7006: Parameter 'c' implicitly has an 'any' type.
+src/environments/environment.development.ts(2,32): error TS2307: Cannot find module './env.generated' or its corresponding type declarations.
+src/environments/environment.ts(2,32): error TS2307: Cannot find module './env.generated' or its corresponding type declarations.
+exit=2

@@ -1,0 +1,134 @@
+
+Running 4 tests using 1 worker
+
+  x  1 [chromium] › playwright\mockup-click-sweep.spec.ts:188:9 › mockup · barrido de clics con el backend simulado › Médica (6.5m)
+  ok 2 [chromium] › playwright\mockup-click-sweep.spec.ts:188:9 › mockup · barrido de clics con el backend simulado › Paciente (41.8s)
+  ok 3 [chromium] › playwright\mockup-click-sweep.spec.ts:188:9 › mockup · barrido de clics con el backend simulado › Admin (45.8s)
+  ok 4 [chromium] › playwright\mockup-click-sweep.spec.ts:188:9 › mockup · barrido de clics con el backend simulado › Visitador (44.7s)
+
+
+  1) [chromium] › playwright\mockup-click-sweep.spec.ts:188:9 › mockup · barrido de clics con el backend simulado › Médica 
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  -  1
+    + Received  + 87
+
+    - Array []
+    + Array [
+    +   "/messaging · «Todos» → no se pudo pulsar locator.click: Timeout 4000ms exceeded.",
+    +   "/messaging · «Favoritos» → no se pudo pulsar locator.click: Timeout 4000ms exceeded.",
+    +   "/messaging · «Grupos» → no se pudo pulsar locator.click: Timeout 4000ms exceeded.",
+    +   "/groups · «Cardiología» → no se pudo pulsar locator.click: Timeout 4000ms exceeded.",
+    +   "/groups · «Pediatría» → no se pudo pulsar locator.click: Timeout 4000ms exceeded.",
+    +   "/groups · «Diabetes» → no se pudo pulsar locator.click: Timeout 4000ms exceeded.",
+    +   "/groups · «Salud mental» → no se pudo pulsar locator.click: Timeout 4000ms exceeded.",
+    +   "/groups · «Nutrición» → no se pudo pulsar locator.click: Timeout 4000ms exceeded.",
+    +   "/groups · «Embarazo y maternidad» → no se pudo pulsar locator.click: Timeout 4000ms exceeded.",
+    +   "/groups · «Crear grupo» → no se pudo pulsar locator.click: Timeout 4000ms exceeded.",
+    +   "/glossary · «Ir a la letra A» → no se pudo pulsar locator.click: Timeout 4000ms exceeded.",
+    +   "/glossary · «Ir a la letra B» → no se pudo pulsar locator.click: Timeout 4000ms exceeded.",
+    +   "/glossary · «Ir a la letra C» → no se pudo pulsar locator.click: Timeout 4000ms exceeded.",
+    +   "/glossary · «Ir a la letra D» → no se pudo pulsar locator.click: Timeout 4000ms exceeded.",
+    +   "/glossary · «Ir a la letra E» → no se pudo pulsar locator.click: Timeout 4000ms exceeded.",
+    +   "/glossary · «Ir a la letra F» → no se pudo pulsar locator.click: Timeout 4000ms exceeded.",
+    +   "/glossary · «Ir a la letra G» → no se pudo pulsar locator.click: Timeout 4000ms exceeded.",
+    +   "/glossary · «Página 1» → no se pudo pulsar locator.click: Timeout 4000ms exceeded.",
+    +   "/glossary · «Página 2» → no se pudo pulsar locator.click: Timeout 4000ms exceeded.",
+    +   "/glossary · «Página 3» → no se pudo pulsar locator.click: Timeout 4000ms exceeded.",
+    +   "/glossary · «Página 4» → no se pudo pulsar locator.click: Timeout 4000ms exceeded.",
+    +   "/glossary · «Página 5» → no se pudo pulsar locator.click: Timeout 4000ms exceeded.",
+    +   "/glossary · «Página 17» → no se pudo pulsar locator.click: Timeout 4000ms exceeded.",
+    +   "/glossary · «Página siguiente» → no se pudo pulsar locator.click: Timeout 4000ms exceeded.",
+    +   "/my-services · «Editar precio: Consulta cardiológica» → no se pudo pulsar locator.click: Timeout 4000ms exceeded.",
+    +   "/my-services · «Programar horario: Consulta cardiológica» → no se pudo pulsar locator.click: Timeout 4000ms exceeded.",
+    +   "/my-services · «Editar precio: Control cardiológico» → no se pudo pulsar locator.click: Timeout 4000ms exceeded.",
+    +   "/my-services · «Programar horario: Control cardiológico» → no se pudo pulsar locator.click: Timeout 4000ms exceeded.",
+    +   "/my-services · «Editar precio: Electrocardiograma» → no se pudo pulsar locator.click: Timeout 4000ms exceeded.",
+    +   "/my-services · «Programar horario: Electrocardiograma» → no se pudo pulsar locator.click: Timeout 4000ms exceeded.",
+    +   "/my-services · «Editar precio: Ecocardiograma Doppler» → no se pudo pulsar locator.click: Timeout 4000ms exceeded.",
+    +   "/my-services · «Programar horario: Ecocardiograma Doppler» → no se pudo pulsar locator.click: Timeout 4000ms exceeded.",
+    +   "/my-services · «Editar precio: Holter de 24 horas» → no se pudo pulsar locator.click: Timeout 4000ms exceeded.",
+    +   "/my-services · «Programar horario: Holter de 24 horas» → no se pudo pulsar locator.click: Timeout 4000ms exceeded.",
+    +   "/my-services · «Editar precio: Monitoreo ambulatorio de presión (MAPA)» → no se pudo pulsar locator.click: Timeout 4000ms exceeded.",
+    +   "/my-services · «Programar horario: Monitoreo ambulatorio de presión (MAPA)» → no se pudo pulsar locator.click: Timeout 4000ms exceeded.",
+    +   "/my-services · «Editar precio: Teleconsulta cardiológica» → no se pudo pulsar locator.click: Timeout 4000ms exceeded.",
+    +   "/my-services · «Programar horario: Teleconsulta cardiológica» → no se pudo pulsar locator.click: Timeout 4000ms exceeded.",
+    +   "/settings · «Avisos» → no se pudo pulsar locator.click: Timeout 4000ms exceeded.",
+    +   "/settings · «Chats» → no se pudo pulsar locator.click: Timeout 4000ms exceeded.",
+    +   "/settings · «Apariencia» → no se pudo pulsar locator.click: Timeout 4000ms exceeded.",
+    +   "/settings · «Permisos» → no se pudo pulsar locator.click: Timeout 4000ms exceeded.",
+    +   "/settings · «Guardar preferencias» → no se pudo pulsar locator.click: Timeout 4000ms exceeded.",
+    +   "/notification-center · «Marcar todas como leídas (4)» → no se pudo pulsar locator.click: Timeout 4000ms exceeded.",
+    +   "/notification-center · «Todas» → no se pudo pulsar locator.click: Timeout 4000ms exceeded.",
+    +   "/notification-center · «Sin leer (4)» → no se pudo pulsar locator.click: Timeout 4000ms exceeded.",
+    +   "/notification-center · «Ana Lucía Pérez Quiroga te escribió Doctora, ya me llegaron los resultados del laboratorio… Mensajes · hace 1 h Nueva» → no se pudo pulsar locator.click: Timeout 4000ms exceeded.",
+    +   "/notification-center · «Nueva solicitud de consulta Rosario Laura Riojas Domínguez pidió turno: «Segunda opinión». Turnos · hace 2 h Nueva» → no se pudo pulsar locator.click: Timeout 4000ms exceeded.",
+    +   "/notification-center · «Cita cancelada Jorge Luis Mamani Choque canceló su cita de mañana: «El paciente avisó que viajaba». Turnos · hace 17 h Nueva» → no se pudo pulsar locator.click: Timeout 4000ms exceeded.",
+    +   "/notification-center · «Dra. Terrazas te escribió Le pedí un Holter, cuando lo tengas lo vemos juntas. Mensajes · ayer Nueva» → no se pudo pulsar locator.click: Timeout 4000ms exceeded.",
+    +   "/notification-center · «Resultado crítico Laboratorio Central informa potasio 5,9 mmol/L en Ricardo Condori Apaza. Clínico · hace 2 días» → no se pudo pulsar locator.click: Timeout 4000ms exceeded.",
+    +   "/my-account/identity · «Verificar» → no se pudo pulsar locator.click: Timeout 4000ms exceeded.",
+    +   "/my-account/identity · «Mis trámites» → no se pudo pulsar locator.click: Timeout 4000ms exceeded.",
+    +   "/administration/pharmacy-orders · «En preparación (3)» → no se pudo pulsar locator.click: Timeout 4000ms exceeded.",
+    +   "/administration/pharmacy-orders · «Cerrados (2)» → no se pudo pulsar locator.click: Timeout 4000ms exceeded.",
+    +   "/administration/pharmacy-profile · «Ver los documentos» → no se pudo pulsar locator.click: Timeout 4000ms exceeded.",
+    +   "/administration/pharmacy-profile · «Empresa» → no se pudo pulsar locator.click: Timeout 4000ms exceeded.",
+    +   "/administration/pharmacy-profile · «Documentos» → no se pudo pulsar locator.click: Timeout 4000ms exceeded.",
+    +   "/administration/pharmacy-profile · «Representante y gerentes» → no se pudo pulsar locator.click: Timeout 4000ms exceeded.",
+    +   "/administration/pharmacy-profile · «Editar» → no se pudo pulsar locator.click: Timeout 4000ms exceeded.",
+    +   "/my-account/access-requests · «Rechazar» → no se pudo pulsar locator.click: Timeout 4000ms exceeded.",
+    +   "/my-account/access-requests · «Autorizar lo elegido» → no se pudo pulsar locator.click: Timeout 4000ms exceeded.",
+    +   "/my-account/edit · «Datos personales» → no se pudo pulsar locator.click: Timeout 4000ms exceeded.",
+    +   "/my-account/edit · «Contacto» → no se pudo pulsar locator.click: Timeout 4000ms exceeded.",
+    +   "/my-account/edit · «Facturación» → no se pudo pulsar locator.click: Timeout 4000ms exceeded.",
+    +   "/my-account/edit · «Dónde atiendo» → no se pudo pulsar locator.click: Timeout 4000ms exceeded.",
+    +   "/my-account/edit · «Trayectoria» → no se pudo pulsar locator.click: Timeout 4000ms exceeded.",
+    +   "/my-account/edit · «Credenciales» → no se pudo pulsar locator.click: Timeout 4000ms exceeded.",
+    +   "/my-account/edit · «Actividad» → no se pudo pulsar locator.click: Timeout 4000ms exceeded.",
+    +   "/my-account/edit · «+ Agregar otro nombre» → no se pudo pulsar locator.click: Timeout 4000ms exceeded.",
+    +   "/my-account/edit · «Abrir calendario» → no se pudo pulsar locator.click: Timeout 4000ms exceeded.",
+    +   "/my-account/edit · «Guardar cambios» → no se pudo pulsar locator.click: Timeout 4000ms exceeded.",
+    +   "/my-account/profile/edit · «Datos personales» → no se pudo pulsar locator.click: Timeout 4000ms exceeded.",
+    +   "/my-account/profile/edit · «Contacto» → no se pudo pulsar locator.click: Timeout 4000ms exceeded.",
+    +   "/my-account/profile/edit · «Facturación» → no se pudo pulsar locator.click: Timeout 4000ms exceeded.",
+    +   "/my-account/profile/edit · «Seguros y tutores» → no se pudo pulsar locator.click: Timeout 4000ms exceeded.",
+    +   "/my-account/profile/edit · «+ Agregar otro nombre» → no se pudo pulsar locator.click: Timeout 4000ms exceeded.",
+    +   "/my-account/profile/edit · «Abrir calendario» → no se pudo pulsar locator.click: Timeout 4000ms exceeded.",
+    +   "/my-account/profile/edit · «Limpiar selección» → no se pudo pulsar locator.click: Timeout 4000ms exceeded.",
+    +   "/my-account/profile/edit · «Cancelar» → no se pudo pulsar locator.click: Timeout 4000ms exceeded.",
+    +   "/my-account/profile/edit · «Guardar cambios» → no se pudo pulsar locator.click: Timeout 4000ms exceeded.",
+    +   "/my-quotations/new · «Abrir calendario» → no se pudo pulsar locator.click: Timeout 4000ms exceeded.",
+    +   "/my-quotations/new · «Semanal» → no se pudo pulsar locator.click: Timeout 4000ms exceeded.",
+    +   "/my-quotations/new · «Quincenal» → no se pudo pulsar locator.click: Timeout 4000ms exceeded.",
+    +   "/my-quotations/new · «Mensual» → no se pudo pulsar locator.click: Timeout 4000ms exceeded.",
+    + ]
+
+      191 |       expect
+      192 |         .soft(rotos.map((c) => `${c.ruta} · «${c.boton}» → ${c.resultado} ${c.detalle}`))
+    > 193 |         .toEqual([]);
+          |          ^
+      194 |     });
+      195 |   }
+      196 |
+        at C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mch-marcelo-inicio-paciente\playwright\mockup-click-sweep.spec.ts:193:10
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    artifacts\playwright\salida\mockup-click-sweep-mockup--11979--el-backend-simulado-Médica-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: artifacts\playwright\salida\mockup-click-sweep-mockup--11979--el-backend-simulado-Médica-chromium\error-context.md
+
+    Error Context: artifacts\playwright\salida\mockup-click-sweep-mockup--11979--el-backend-simulado-Médica-chromium\error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    artifacts\playwright\salida\mockup-click-sweep-mockup--11979--el-backend-simulado-Médica-chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace artifacts\playwright\salida\mockup-click-sweep-mockup--11979--el-backend-simulado-Médica-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    [chromium] › playwright\mockup-click-sweep.spec.ts:188:9 › mockup · barrido de clics con el backend simulado › Médica 
+  3 passed (9.1m)
+exit=1

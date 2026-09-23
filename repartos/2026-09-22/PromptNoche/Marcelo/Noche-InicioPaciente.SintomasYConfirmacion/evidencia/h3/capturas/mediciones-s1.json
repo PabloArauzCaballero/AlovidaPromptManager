@@ -1,0 +1,8 @@
+{
+  "_que_es": "Salida literal del script de Playwright (browser_run_code) tras reiniciar `yarn dev` (HALL-M3), sobre http://localhost:4200/dashboard como paciente@alovida.mock (cuenta sintética). Chromium 151. 2026-09-23.",
+  "defTrasReinicio": {"panelEnDef":true,"detailsEnDom":false,"panelEnDom":true,"origenComponente":67},
+  "01-375-panel-de-texto": {"details":0,"visible":true,"panel":[37,496,286,135],"rotulo":"Contanos con tus palabras","rotuloPara":"mch-field-23-control","textareaId":"mch-field-23-control","hint":"Podés escribir varios síntomas; no hace falta que sea exacto.","icono":true,"desborda":false},
+  "02-1440-panel-de-texto": {"details":0,"visible":true,"panel":[303,594,1057,110],"rotulo":"Contanos con tus palabras","rotuloPara":"mch-field-23-control","textareaId":"mch-field-23-control","hint":"Podés escribir varios síntomas; no hace falta que sea exacto.","icono":true,"desborda":false},
+  "escrito": {"valor":"me duele la cabeza hace tres días","anuncio":"Reconocimos: dolor de cabeza.","chips":["Te entendimos","dolor de cabeza","Empezar de nuevo"]},
+  "_lectura": "Sin <details> en la página; el panel está visible en los dos anchos; el <label for> apunta al id del textarea (asociación real, no visual); hay ícono y ayuda; escribir sigue reconociendo («dolor de cabeza») y anunciando por la región viva, como antes del cambio."
+}

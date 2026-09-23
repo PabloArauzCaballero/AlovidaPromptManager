@@ -1,0 +1,21 @@
+$ npx prettier --write symptom-check.{html,ts,css,spec.ts} ; --check
+All matched files use Prettier code style!
+
+$ npx ng test --include=src/app/features/symptom-check/*.spec.ts --watch=false
+exit=0
+[2m Test Files [22m [1m[32m5 passed[39m[22m[90m (5)[39m
+[2m      Tests [22m [1m[32m94 passed[39m[22m[90m (94)[39m
+
+$ yarn eslint src/app/features/symptom-check --max-warnings=0
+exit=0
+
+$ git diff --stat
+warning: in the working copy of 'src/app/features/symptom-check/symptom-check.css', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/app/features/symptom-check/symptom-check.html', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/app/features/symptom-check/symptom-check.spec.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/app/features/symptom-check/symptom-check.ts', LF will be replaced by CRLF the next time Git touches it
+ src/app/features/symptom-check/symptom-check.css   | 18 ++------
+ src/app/features/symptom-check/symptom-check.html  | 36 ++++++++-------
+ .../features/symptom-check/symptom-check.spec.ts   | 51 ++++++++++++++++++++++
+ src/app/features/symptom-check/symptom-check.ts    |  3 +-
+ 4 files changed, 77 insertions(+), 31 deletions(-)

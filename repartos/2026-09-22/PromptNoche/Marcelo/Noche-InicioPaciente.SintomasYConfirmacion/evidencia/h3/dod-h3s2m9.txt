@@ -1,0 +1,32 @@
+$ npx ng test --include=src/server/security-headers.spec.ts --watch=false
+exit=0
+[2m Test Files [22m [1m[32m1 passed[39m[22m[90m (1)[39m
+[2m      Tests [22m [1m[32m25 passed[39m[22m[90m (25)[39m
+
+$ npx prettier --check src/server/security-headers.ts src/server/security-headers.spec.ts docs/security/*.md
+[[33mwarn[39m] docs/security/frontend-security.md
+[[33mwarn[39m] Code style issues found in 3 files. Run Prettier with --write to fix.
+
+$ yarn eslint src/server --max-warnings=0
+exit=0
+
+$ git diff --stat -- src/server docs/security
+warning: in the working copy of 'docs/security/content-security-policy.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'docs/security/frontend-security.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/server/security-headers.spec.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/server/security-headers.ts', LF will be replaced by CRLF the next time Git touches it
+ docs/security/content-security-policy.md |  2 +-
+ docs/security/frontend-security.md       |  2 +-
+ src/server/security-headers.spec.ts      | 10 ++++++----
+ src/server/security-headers.ts           | 13 ++++++++-----
+ 4 files changed, 16 insertions(+), 11 deletions(-)
+
+$ curl -sI http://localhost:4200/dashboard | grep -i permissions-policy   (¿el servidor de desarrollo tomó el cambio?)
+Permissions-Policy: camera=(), microphone=(self), geolocation=(self)
+
+$ prettier --check por archivo, ahora vs corte (git show HEAD:<f> | prettier --stdin-filepath)
+src/server/security-headers.ts → ahora: ok · en el corte: ok
+src/server/security-headers.spec.ts → ahora: NO · en el corte: NO   (lo que prettier cambiaría está en L142-143 y L227-229, líneas que no toqué)
+docs/security/content-security-policy.md → ahora: NO · en el corte: NO
+docs/security/frontend-security.md → ahora: NO · en el corte: NO
+→ no se reformatea lo que ya venía sin formatear (regla 00 §3.2); mis líneas cumplen el estilo.

@@ -1,0 +1,28 @@
+$ git status --short -- src/app/shared/components/organisms/body-map
+?? src/app/shared/components/organisms/body-map/
+
+$ sed -n 1,4p body-zones.geometry.ts  (cabecera: de dónde sale el trazo)
+/* ============================================================================
+    La silueta del cuerpo, para señalar dónde duele con el dedo o con el
+    teclado (P-01, doctor 22/09/2026: «un dibujo como el mapa de Bolivia…
+    donde uno le dé click identifique la parte del cuerpo»).
+
+$ grep -n 'input.required\|model<' body-map.ts
+58:  readonly zonas = input.required<readonly ZonaElegible[]>();
+61:  readonly value = model<string | null>(null);
+
+$ git grep --untracked -n -E '#[0-9a-fA-F]{3,6}' -- src/app/shared/components/organisms/body-map | wc -l
+0
+
+$ yarn stock:generate (1) ; cp index ; yarn stock:generate (2) ; diff
+✓ src/app/features/component-stock/component-index.generated.ts
+  546 componentes · 3 otros · 303 pantallas · 138 maquetas · 23 atomos · 45 moleculas · 34 organismos
+  192 con algo que mirar
+exit=0
+cambios en git tras generar: 
+
+$ md5sum component-index.generated.ts (corrida 1) ; yarn stock:generate ; md5sum (corrida 2)
+0c0748410276af4f666b2c23a9ec3a81  corrida 1
+0c0748410276af4f666b2c23a9ec3a81  corrida 2  → idéntico
+$ grep -n "body-map" component-index.generated.ts → clave shared/components/organisms/body-map/body-map · clase BodyMap · selector app-body-map (L22295-22299, L22334)
+(el índice está en .gitignore:160 → no se versiona)

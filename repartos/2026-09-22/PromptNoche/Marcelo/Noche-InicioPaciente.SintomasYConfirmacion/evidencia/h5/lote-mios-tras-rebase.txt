@@ -1,0 +1,122 @@
+Using Vitest configuration file: C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mch-marcelo-inicio-paciente\vitest.config.ts
+[33m❯[39m Building...
+[32m✔[39m Building...
+[1mInitial chunk files[22m                                      [2m | [22m[1mNames[22m                                                 [2m | [22m [1mRaw size[22m
+[32mspec-app-features-dashboard-patient-home-patient-home.js[39m [2m | [22m[2mspec-app-features-dashboard-patient-home-patient-home[22m [2m | [22m[36m235.22 kB[39m[2m | [22m
+[32mchunk-WRHBAN2J.js[39m                                        [2m | [22m[2m-[22m                                                     [2m | [22m[36m234.70 kB[39m[2m | [22m
+[32mstyles.css[39m                                               [2m | [22m[2mstyles[22m                                                [2m | [22m[36m166.11 kB[39m[2m | [22m
+[32mchunk-DV5HYHPW.js[39m                                        [2m | [22m[2m-[22m                                                     [2m | [22m [36m61.54 kB[39m[2m | [22m
+[32mspec-app-shared-components-molecules-dialog-dialog.js[39m    [2m | [22m[2mspec-app-shared-components-molecules-dialog-dialog[22m    [2m | [22m [36m37.62 kB[39m[2m | [22m
+[32mchunk-74LHDUTH.js[39m                                        [2m | [22m[2m-[22m                                                     [2m | [22m [36m37.10 kB[39m[2m | [22m
+[32mchunk-56MUURKS.js[39m                                        [2m | [22m[2m-[22m                                                     [2m | [22m [36m14.72 kB[39m[2m | [22m
+[32mchunk-Y6IBL6YR.js[39m                                        [2m | [22m[2m-[22m                                                     [2m | [22m [36m13.08 kB[39m[2m | [22m
+[32mspec-server-security-headers.js[39m                          [2m | [22m[2mspec-server-security-headers[22m                          [2m | [22m [36m10.83 kB[39m[2m | [22m
+[32mspec-app-features-symptom-check-symptom-check.js[39m         [2m | [22m[2mspec-app-features-symptom-check-symptom-check[22m         [2m | [22m  [36m9.68 kB[39m[2m | [22m
+[32mspec-app-features-symptom-check-dictado.js[39m               [2m | [22m[2mspec-app-features-symptom-check-dictado[22m               [2m | [22m  [36m5.34 kB[39m[2m | [22m
+[32mchunk-JBWBLPNK.js[39m                                        [2m | [22m[2m-[22m                                                     [2m | [22m  [36m5.19 kB[39m[2m | [22m
+[32mspec-app-shared-components-organisms-body-map-body-map.js[39m[2m | [22m[2mspec-app-shared-components-organisms-body-map-body-map[22m[2m | [22m  [36m4.85 kB[39m[2m | [22m
+[32mchunk-NYVTOIRA.js[39m                                        [2m | [22m[2m-[22m                                                     [2m | [22m  [36m3.84 kB[39m[2m | [22m
+[32minit-testbed.js[39m                                          [2m | [22m[2minit-testbed[22m                                          [2m | [22m  [36m1.21 kB[39m[2m | [22m
+[32mvitest-mock-patch.js[39m                                     [2m | [22m[2mvitest-mock-patch[22m                                     [2m | [22m[36m974 bytes[39m[2m | [22m
+[32msetup-test-setup.js[39m                                      [2m | [22m[2msetup-test-setup[22m                                      [2m | [22m[36m911 bytes[39m[2m | [22m
+
+[1m [22m                                                        [2m | [22m[1mInitial total[22m                                         [2m | [22m[1m842.91 kB[22m
+
+[1mLazy chunk files[22m                                         [2m | [22m[1mNames[22m                                                 [2m | [22m [1mRaw size[22m
+[32mchunk-UTLMCIQR.js[39m                                        [2m | [22m[2msymptom-check[22m                                         [2m | [22m[36m304 bytes[39m[2m | [22m
+
+Application bundle generation complete. [60.284 seconds] - 2026-09-23T14:55:33.550Z
+
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: Alert is not used within the template of MedicalArticles[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/account/my-profile/medical-articles/medical-articles.ts:75:4:
+[37m      75 │     [32mAlert[37m,
+         ╵     [32m~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: RouterLink is not used within the template of MedicalArticles[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/account/my-profile/medical-articles/medical-articles.ts:85:4:
+[37m      85 │     [32mRouterLink[37m,
+         ╵     [32m~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: AppButtonLink is not used within the template of Questionnaires[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/account/questionnaires/questionnaires.ts:88:4:
+[37m      88 │     [32mAppButtonLink[37m,
+         ╵     [32m~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: Link is not used within the template of Groups[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/groups/groups.ts:59:4:
+[37m      59 │     [32mLink[37m,
+         ╵     [32m~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: AppButton is not used within the template of NearbyPlaces[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/nearby-places/nearby-places.ts:103:4:
+[37m      103 │     [32mAppButton[37m,
+          ╵     [32m~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: AppButtonLink is not used within the template of SurveysHome[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/questionnaires/questionnaires.ts:72:4:
+[37m      72 │     [32mAppButtonLink[37m,
+         ╵     [32m~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: Card is not used within the template of SymptomCheck[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/symptom-check/symptom-check.ts:99:39:
+[37m      99 │ ...: [Alert, AppButton, BodyMap, [32mCard[37m, Chip, FormField, RouterLink...
+         ╵                                  [32m~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: RouterLink is not used within the template of SymptomCheck[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/symptom-check/symptom-check.ts:99:62:
+[37m      99 │ ... AppButton, BodyMap, Card, Chip, FormField, [32mRouterLink[37m, Textarea],
+         ╵                                                [32m~~~~~~~~~~[0m
+
+[39m[22m
+
+[1m[30m[46m RUN [49m[39m[22m [36mv4.1.10 [39m[90mC:/Users/Usuario/Downloads/Entrypoint-GitHUb/alovida/mch-marcelo-inicio-paciente[39m
+
+
+
+#
+# Fatal process out of memory: Zone
+#
+----- Native stack trace -----
+
+[31m⎯⎯⎯⎯⎯⎯[39m[1m[41m Unhandled Errors [49m[22m[31m⎯⎯⎯⎯⎯⎯[39m
+[31m[1m
+Vitest caught 1 unhandled error during the test run.
+This might cause false positive tests. Resolve unhandled errors to make sure your tests are not affected.[22m[39m
+
+[31m⎯⎯⎯⎯⎯⎯[39m[1m[41m Unhandled Error [49m[22m[31m⎯⎯⎯⎯⎯⎯⎯[39m
+[31m[1mError[22m: [vitest-pool]: Worker forks emitted error.[39m
+[90m [2m❯[22m EventEmitter.onTaskError node_modules/vitest/dist/chunks/cli-api.BK8pd4xc.js:[2m3459:21[22m[39m
+[90m [2m❯[22m EventEmitter.emit node:events:[2m519:28[22m[39m
+[90m [2m❯[22m ChildProcess.emitUnexpectedExit node_modules/vitest/dist/chunks/cli-api.BK8pd4xc.js:[2m3025:22[22m[39m
+[90m [2m❯[22m ChildProcess.emit node:events:[2m519:28[22m[39m
+[90m [2m❯[22m Process.ChildProcess._handle.onexit node:internal/child_process:[2m293:12[22m[39m
+
+[31m[1mCaused by: Error[22m: Worker exited unexpectedly[39m
+[90m [2m❯[22m ChildProcess.emitUnexpectedExit node_modules/vitest/dist/chunks/cli-api.BK8pd4xc.js:[2m3023:33[22m[39m
+[90m [2m❯[22m ChildProcess.emit node:events:[2m519:28[22m[39m
+[90m [2m❯[22m Process.ChildProcess._handle.onexit node:internal/child_process:[2m293:12[22m[39m
+
+[31m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[39m
+
+
+[2m Test Files [22m [1m[32m5 passed[39m[22m[90m (6)[39m
+[2m      Tests [22m [1m[32m91 passed[39m[22m[90m (91)[39m
+[2m     Errors [22m [1m[31m1 error[39m[22m
+[2m   Start at [22m 10:55:34
+[2m   Duration [22m 5.98s[2m (transform 4.89s, setup 4.97s, import 4.02s, tests 1.86s, environment 10.82s)[22m
+

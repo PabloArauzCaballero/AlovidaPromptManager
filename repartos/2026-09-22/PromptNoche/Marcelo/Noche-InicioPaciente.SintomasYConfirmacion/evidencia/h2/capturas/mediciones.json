@@ -1,0 +1,39 @@
+{
+  "_que_es": "Salida literal de los scripts de Playwright (browser_run_code) corridos sobre http://localhost:4200/dashboard como paciente@alovida.mock (cuenta sintética del simulador). Chromium 151 (Playwright MCP). Fecha 2026-09-23.",
+  "_tamano_de_objetivos_a_375": {
+    "escala_px_por_unidad": 0.98,
+    "svg_px": [196, 431],
+    "bbox_px_por_zona": {
+      "cabeza": [63, 78], "ojos": [47, 27], "orl": [74, 80], "pecho": [94, 78], "panza": [82, 55], "huesos": [153, 292], "intima": [78, 51]
+    },
+    "area_contigua_minima_por_diseno_px": { "ojos": [47, 27], "cuello_de_orl": [27, 31], "pierna_de_huesos": [31, 127], "brazo_mas_fino": [18, 108] },
+    "criterio": "WCAG 2.2 · 2.5.8 Target Size (Minimum) 24×24 CSS px: toda zona tiene un área contigua ≥ 24×24. Antes del ajuste de geometría la banda de ojos medía 43×14 y el cuello 24×20: por eso se rehízo la geometría (ver spec-body-map.txt, segunda corrida)."
+  },
+  "matriz_viewports_temas": {
+    "01-375-light": {"svg":[82,96,196,431],"desborda":false,"scrollWidth":360,"clientWidth":360,"dark":false,"columnasPastillas":2,"columnasElegir":"286px","relleno":"color(srgb 0.916706 0.918118 0.918118)","trazo":"rgb(205, 217, 213)"},
+    "02-375-dark": {"svg":[82,96,196,431],"desborda":false,"scrollWidth":360,"clientWidth":360,"dark":true,"columnasPastillas":2,"columnasElegir":"286px","relleno":"oklab(0.435338 -0.0236086 -0.031305)","trazo":"rgba(228, 235, 232, 0.23)"},
+    "03-768-light": {"svg":[279,96,196,431],"desborda":false,"scrollWidth":753,"clientWidth":753,"dark":false,"columnasPastillas":4,"columnasElegir":"663px","relleno":"color(srgb 0.916706 0.918118 0.918118)","trazo":"rgb(205, 217, 213)"},
+    "04-768-dark": {"svg":[279,96,196,431],"desborda":false,"scrollWidth":753,"clientWidth":753,"dark":true,"columnasPastillas":4,"columnasElegir":"663px","relleno":"oklab(0.435073 -0.0236209 -0.0313215)","trazo":"rgba(228, 235, 232, 0.23)"},
+    "05-1440-light": {"svg":[297,96,196,431],"desborda":false,"scrollWidth":1425,"clientWidth":1425,"dark":false,"columnasPastillas":6,"columnasElegir":"196px 850.672px","relleno":"color(srgb 0.916706 0.918118 0.918118)","trazo":"rgb(205, 217, 213)"},
+    "06-1440-dark": {"svg":[305,96,196,431],"desborda":false,"scrollWidth":1425,"clientWidth":1425,"dark":true,"columnasPastillas":6,"columnasElegir":"196px 843px","relleno":"oklab(0.37332 -0.0264859 -0.0351623)","trazo":"rgba(249, 251, 250, 0.133)"}
+  },
+  "interaccion_con_el_dedo_a_375": {
+    "trasTocarPecho": {"presionada":"true","linea":"Zona elegida: Pecho y respiración","pastillaAbierta":"true","sintomas":["tos","dificultad para respirar","dolor de pecho","palpitaciones","presión alta"],"trazoElegida":"5px","rellenoElegida":"oklab(0.829951 -0.0107209 -0.013761)","trazoOtra":"2px"},
+    "trasTocarPastillaPanza": {"panza":"true","pecho":"false","linea":"Zona elegida: Panza y digestión","primerSintoma":"dolor de panza"}
+  },
+  "teclado_a_375": {
+    "_nota": "La primera corrida leyó el DOM sin esperar el render zoneless y mostró «orl: false» tras la barra: TEST_BUG del script de evidencia (lectura antes del render), reproducido y corregido con `waitFor` sobre `aria-pressed`. Esta es la corrida con esperas por condición.",
+    "orden_de_tabulacion": ["body-map-cabeza","body-map-ojos","body-map-orl","body-map-pecho","body-map-panza","body-map-huesos","body-map-intima"],
+    "despues_de_la_figura_el_foco_va_a": "zona-cabeza (la primera pastilla)",
+    "inicio": {"foco":"body-map-pecho","presionadas":[],"linea":"Tocá una parte del cuerpo.","sintomasAbiertos":0,"scrollY":272},
+    "enterEnOjos": {"foco":"body-map-ojos","presionadas":["body-map-ojos"],"linea":"Zona elegida: Ojos","sintomasAbiertos":1,"scrollY":272},
+    "espacioEnOrl": {"foco":"body-map-orl","presionadas":["body-map-orl"],"linea":"Zona elegida: Oído, nariz y garganta","sintomasAbiertos":4,"scrollY":272},
+    "espacioOtraVezSuelta": {"foco":"body-map-orl","presionadas":[],"linea":"Tocá una parte del cuerpo.","sintomasAbiertos":0,"scrollY":272},
+    "shiftTab": {"foco":"body-map-ojos","presionadas":[],"linea":"Tocá una parte del cuerpo.","sintomasAbiertos":0,"scrollY":272},
+    "trazo_con_foco_visible": "6px (focus-visible sobre el trazo, sin outline rectangular)"
+  },
+  "movimiento_reducido": {
+    "con_prefers_reduced_motion_reduce": {"prefiere":true,"transicion":"1e-05s"},
+    "sin_preferencia": "0.12s, 0.12s"
+  }
+}

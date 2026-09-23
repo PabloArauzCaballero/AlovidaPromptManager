@@ -1,0 +1,16 @@
+$ npx prettier --write (symptom-check.{ts,html,css,spec.ts} dictado.{ts,types.ts,spec.ts}) ; --check
+All matched files use Prettier code style!
+
+$ npx ng test --include=src/app/features/symptom-check/*.spec.ts --watch=false
+exit=0
+[2m Test Files [22m [1m[32m6 passed[39m[22m[90m (6)[39m
+[2m      Tests [22m [1m[32m114 passed[39m[22m[90m (114)[39m
+
+$ yarn eslint src/app/features/symptom-check --max-warnings=0
+exit=0
+
+$ npx tsc -p tsconfig.app.json --noEmit
+exit=0
+
+$ git grep -n 'console\.' -- src/app/features/symptom-check | wc -l
+0

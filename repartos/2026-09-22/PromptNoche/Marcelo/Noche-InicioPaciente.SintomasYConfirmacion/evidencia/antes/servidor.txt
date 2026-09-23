@@ -1,0 +1,4 @@
+servidor de desarrollo: yarn dev (ng serve) en el worktree mch-marcelo-inicio-paciente
+PID 35492 · escucha [::1]:4200 · bundle listo en 36.7 s (2026-09-23T04:28:56Z)
+curl http://localhost:4200/login -> HTTP 200
+advertencias previas del compilador (no mías): NG8113 Card y RouterLink sin uso en symptom-check.ts:96

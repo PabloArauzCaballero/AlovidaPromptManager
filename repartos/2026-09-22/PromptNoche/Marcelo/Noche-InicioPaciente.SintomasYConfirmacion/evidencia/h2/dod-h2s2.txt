@@ -1,0 +1,39 @@
+$ npx prettier --check symptom-check.{ts,html,css,spec.ts} body-map/*
+Checking formatting...
+[[33mwarn[39m] src/app/features/symptom-check/symptom-check.html
+[[33mwarn[39m] src/app/features/symptom-check/symptom-check.spec.ts
+[[33mwarn[39m] Code style issues found in 2 files. Run Prettier with --write to fix.
+exit=1
+
+$ npx ng test --include=src/app/features/symptom-check/*.spec.ts --watch=false
+exit=0
+[2m Test Files [22m [1m[32m5 passed[39m[22m[90m (5)[39m
+[2m      Tests [22m [1m[32m92 passed[39m[22m[90m (92)[39m
+
+$ yarn eslint src/app/features/symptom-check --max-warnings=0
+exit=0
+
+$ git diff --stat -- src/app/features/symptom-check/sintomas.datos.ts src/app/features/symptom-check/motor.ts
+(líneas de salida: 0 → diff vacío)
+
+$ npx tsc -p tsconfig.app.json --noEmit
+exit=0
+
+$ npx prettier --write symptom-check.html symptom-check.spec.ts  (sólo mis líneas nuevas: L3 y L165)
+src/app/features/symptom-check/symptom-check.html 110ms
+src/app/features/symptom-check/symptom-check.spec.ts 68ms
+$ npx prettier --check (los 9 archivos)
+All matched files use Prettier code style!
+exit=0
+
+$ npx ng test --include=src/app/features/symptom-check/*.spec.ts --watch=false  (re-corrida tras prettier)
+exit=0
+[2m Test Files [22m [1m[32m5 passed[39m[22m[90m (5)[39m
+[2m      Tests [22m [1m[32m92 passed[39m[22m[90m (92)[39m
+
+$ git status --short
+ M src/app/features/symptom-check/symptom-check.css
+ M src/app/features/symptom-check/symptom-check.html
+ M src/app/features/symptom-check/symptom-check.spec.ts
+ M src/app/features/symptom-check/symptom-check.ts
+?? src/app/shared/components/organisms/body-map/

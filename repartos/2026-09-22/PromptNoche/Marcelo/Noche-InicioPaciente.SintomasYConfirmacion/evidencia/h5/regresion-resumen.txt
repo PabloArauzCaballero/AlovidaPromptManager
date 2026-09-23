@@ -1,0 +1,17 @@
+$ yarn lint   (11:19:19 UTC)
+exit=1
+problemas ahora: 244 problems · antes: 244 problems
+archivos con errores ahora: 195
+
+$ yarn typecheck   (11:20:12 UTC)
+exit=0
+exit=0
+
+$ yarn test --watch=false   (11:20:39 UTC)
+exit=1
+[41m[1m FAIL [22m[49m [30m[46m mantra-core-health [49m[39m src/app/features/auth/register-practitioner/register-practitioner.spec.ts[2m > [22mRegisterPractitioner con mockBackend[2m > [22mresuelve los cinco tipos canónicos de credencial desde el backend simulado
+[41m[1m FAIL [22m[49m [30m[46m mantra-core-health [49m[39m src/app/features/insurance/insurance-analytics/insurance-analytics.spec.ts[2m > [22mInsuranceAnalytics[2m > [22mel tablero no tiene violaciones mecánicas de accesibilidad
+[41m[1m FAIL [22m[49m [30m[46m mantra-core-health [49m[39m src/app/shared/components/organisms/page-header/page-header.spec.ts[2m > [22mPageHeader[2m > [22mencabezado[2m > [22mrenderiza exactamente un h1
+[2m Test Files [22m [1m[31m4 failed[39m[22m[2m | [22m[1m[32m569 passed[39m[22m[90m (573)[39m
+[2m      Tests [22m [1m[31m4 failed[39m[22m[2m | [22m[1m[32m7146 passed[39m[22m[90m (7150)[39m
+[2m   Duration [22m 67.14s[2m (transform 388.49s, setup 146.98s, import 552.08s, tests 809.91s, environment 3692.39s)[22m

@@ -1,0 +1,4 @@
+$ git grep -c iconOnly -- src/app/shared/components/organisms/content-dialog src/app/shared/components/molecules/dialog
+exit=1 (1 = sin coincidencias)
+
+Veredicto D-05 (H4.S2): el botón de cerrar de content-dialog lleva ícono Y texto ({{ closeLabel() }}, content-dialog.html:39-58): cumple ADR-0012 §1, no es excepción. Los botones de la confirmación llevan texto («Seguir editando» / «Confirmar» / «Descartar»): observado en chromium-01-apilado.png y firefox-01-apilado.png.

@@ -1,0 +1,14 @@
+{
+  "_que_es": "Salida literal del script de Playwright (browser_run_code) tras retirar la grilla «Ir a lo tuyo», sobre http://localhost:4200/dashboard como paciente@alovida.mock (cuenta sintética). Chrome 153 (MCP). 2026-09-23.",
+  "overlayAlCargar": false,
+  "estado": {"overlay":false,"grillaEnDom":false,"accesos":0,"grillaEnDef":false,"tooltipEnDef":false,"enlacesTurnos":2,"enlacesHistoria":3,"ultimoHijoDeMiSalud":"section.proxima-cita"},
+  "04-375-claro-sin-grilla": {"desborda":false},
+  "05-375-oscuro-sin-grilla": {"desborda":false},
+  "06-768-claro-sin-grilla": {"desborda":false},
+  "07-768-oscuro-sin-grilla": {"desborda":false},
+  "08-1440-claro-sin-grilla": {"desborda":false},
+  "09-1440-oscuro-sin-grilla": {"desborda":false},
+  "alturaPaginaCompleta375": 2194,
+  "_lectura": "Ni `nav.mi-salud__accesos` ni `[data-testid=mi-salud-acceso]` en el DOM, ni `mi-salud__accesos`/`appTooltip` en los `consts` de la definición del componente en ejecución (no es un HMR viejo). Los destinos siguen: 2 enlaces a turnos y 3 a la historia. El último bloque de «Mi salud» ahora es la próxima cita. Sin desborde en ningún viewport.",
+  "_nota_overlay": "Antes de esta corrida el navegador mostraba un `vite-error-overlay` con `TS2339: Property 'accesos' does not exist` — residuo de una compilación transitoria (el script de retiro se corrió dos veces; la primera escribió el .ts antes de fallar en una aserción propia y se restauró con git checkout). La compilación final terminó sin errores (yarn-dev-2.log L1145) y al recargar el overlay ya no estaba (`overlayAlCargar: false`)."
+}

@@ -1,0 +1,2 @@
+$ git grep -c iconOnly -- src/app/features/symptom-check src/app/features/dashboard/patient-home src/app/shared/components/organisms/body-map src/app/shared/components/organisms/content-dialog src/app/shared/components/molecules/dialog
+(sin salida = 0 coincidencias en los 5 grupos de archivos)

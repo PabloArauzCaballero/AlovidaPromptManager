@@ -1,0 +1,15 @@
+$ npx ng test --include=src/app/shared/components/organisms/body-map/body-map.spec.ts --watch=false
+exit=0
+[32mspec-app-shared-components-organisms-body-map-body-map.js[39m[2m | [22m[2mspec-app-shared-components-organisms-body-map-body-map[22m[2m | [22m [36m19.29 kB[39m[2m | [22m
+[2m Test Files [22m [1m[32m1 passed[39m[22m[90m (1)[39m
+[2m      Tests [22m [1m[32m13 passed[39m[22m[90m (13)[39m
+
+$ yarn eslint src/app/shared/components/organisms/body-map --max-warnings=0
+exit=0
+
+$ (tras ajustar la geometría por tamaño de objetivo) npx ng test --include=src/app/shared/components/organisms/body-map/body-map.spec.ts --watch=false
+exit=0
+[2m Test Files [22m [1m[32m1 passed[39m[22m[90m (1)[39m
+[2m      Tests [22m [1m[32m13 passed[39m[22m[90m (13)[39m
+$ npx prettier --check body-zones.geometry.ts
+All matched files use Prettier code style!

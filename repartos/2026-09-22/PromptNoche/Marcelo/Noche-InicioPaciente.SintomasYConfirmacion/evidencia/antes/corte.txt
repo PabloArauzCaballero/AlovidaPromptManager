@@ -1,0 +1,4 @@
+$ git rev-parse origin/mockup HEAD && git branch --show-current
+b655e8449abd662d6b24156fd6e2b06aeb120cc1
+b655e8449abd662d6b24156fd6e2b06aeb120cc1
+pablo/inicio-paciente-silueta-voz-y-confirmacion
