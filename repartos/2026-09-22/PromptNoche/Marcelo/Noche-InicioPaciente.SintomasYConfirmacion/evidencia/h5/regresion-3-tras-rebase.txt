@@ -1,0 +1,167 @@
+$ yarn lint   (tras rebase sobre origin/mockup@8ae7283a, 14:32:16 UTC)
+exit=1
+243 problems
+
+$ yarn typecheck   (regenera el índice solo, 14:33:54 UTC)
+exit=0
+  547 componentes · 3 otros · 304 pantallas · 138 maquetas · 23 atomos · 45 moleculas · 34 organismos
+  202 con algo que mirar
+  relaciones: 2144 template-instantiates · 6 imports-available sin instanciar · 69 type-only · 208 dynamic-loads
+  nivel: 0 declarado · 547 por-ruta · 5 unresolvedEvidence en 5 componentes
+  acreditación: descubiertos 547/547 · con escenario 3/547 · verificados visualmente 3/547 · bloqueados 70/547 · montó e interactuó: se miden en el banco (runtime)
+$ yarn test --watch=false   (tras rebase, sin servidor de desarrollo, 14:35:58 UTC)
+exit=1
+$ yarn test --watch=false --runner-config="$CFG"  (pool acotado a 4 forks por OOM del H5.S1.M2 previo; 14:40:42 UTC)
+exit=1
+$ yarn test --watch=false --runner-config=artifacts/vitest.acotado.config.ts  (pool acotado a 4 forks; 14:42:32 UTC)
+exit=1
+# Fatal process out of memory: Zone
+# Fatal process out of memory: Zone
+# Fatal process out of memory: Zone
+# Fatal process out of memory: Zone
+# Fatal process out of memory: Zone
+# Fatal process out of memory: Zone
+# Fatal process out of memory: Zone
+# Fatal process out of memory: Zone
+# Fatal process out of memory: Zone
+# Fatal process out of memory: Zone
+# Fatal process out of memory: Zone
+# Fatal process out of memory: Zone
+# Fatal process out of memory: Zone
+# Fatal process out of memory: Zone
+# Fatal process out of memory: Zone
+# Fatal process out of memory: Zone
+# Fatal process out of memory: Zone
+# Fatal process out of memory: Zone
+# Fatal process out of memory: Zone
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+ FAIL   mantra-core-health  src/app/features/shell-layout/shell-layout.spec.ts > ShellLayout > el menú solo ofrece rutas que existen
+ FAIL   mantra-core-health  src/app/features/shell-layout/shell-layout.spec.ts > ShellLayout > marco ALOVIDA > los desplegables > sin rótulo que las agrupe, las cosas parecidas siguen saliendo seguidas
+ Test Files  1 failed | 21 passed (35)
+      Tests  2 failed | 829 passed (1562)
+   Duration  36.46s (transform 158.98s, setup 73.95s, import 217.39s, tests 222.83s, environment 206.12s)
+$ yarn test --watch=false --runner-config=artifacts/vitest.acotado.config.ts  (1 fork, serial; 14:45:31 UTC)
+exit=1
+FATAL ERROR: NewSpace::EnsureCurrentCapacity Allocation failed - JavaScript heap out of memory
+FATAL ERROR: Commit wasm code space Allocation failed - process out of memory
+FATAL ERROR: Commit wasm code space Allocation failed - process out of memory
+FATAL ERROR: Commit wasm code space Allocation failed - process out of memory
+FATAL ERROR: Commit wasm code space Allocation failed - process out of memory
+FATAL ERROR: NewSpace::EnsureCurrentCapacity Allocation failed - JavaScript heap out of memory
+$ yarn test --watch=false --include=src/app/core/** --runner-config=artifacts/vitest.acotado.config.ts  (lote 1/4: core, 1 fork; 14:52:13 UTC)
+exit=1
+$ npx ng test  --include=playwright/alv-054-panel-accesses.spec.ts --include=src/app/features/dashboard/patient-home/patient-home.spec.ts --include=src/app/features/symptom-check/dictado.spec.ts --include=src/app/features/symptom-check/symptom-check.spec.ts --include=src/app/shared/components/molecules/dialog/dialog.spec.ts --include=src/app/shared/components/organisms/body-map/body-map.spec.ts --include=src/server/security-headers.spec.ts --watch=false  (mis specs, tras rebase, 14:54:30 UTC)
+exit=1
+# Fatal process out of memory: Zone
+ Test Files  5 passed (6)
+      Tests  91 passed (91)
+   Duration  5.98s (transform 4.89s, setup 4.97s, import 4.02s, tests 1.86s, environment 10.82s)
+$ npx ng test --include=src/app/features/symptom-check/dictado.spec.ts --watch=false  (reintento, 15:04:30 UTC)
+exit=0
+ Test Files  1 passed (1)
+      Tests  16 passed (16)
+$ npx ng test --include=src/app/features/symptom-check/symptom-check.spec.ts --watch=false  (reintento, 15:05:38 UTC)
+exit=0
+ Test Files  1 passed (1)
+      Tests  13 passed (13)
+$ yarn test --watch=false --runner-config=artifacts/vitest.acotado.config.ts  (suite completa, 1 fork, tras liberarse otras sesiones; 15:07:05 UTC)
+exit=1
+# Fatal process out of memory: Zone
+# Fatal process out of memory: Zone
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+ FAIL   mantra-core-health  src/app/features/shell-layout/shell-layout.spec.ts > ShellLayout > el menú solo ofrece rutas que existen
+ FAIL   mantra-core-health  src/app/features/shell-layout/shell-layout.spec.ts > ShellLayout > marco ALOVIDA > los desplegables > sin rótulo que las agrupe, las cosas parecidas siguen saliendo seguidas
+ Test Files  1 failed | 182 passed (185)
+      Tests  2 failed | 3205 passed (3213)
+   Duration  45.98s (transform 291.14s, setup 139.67s, import 353.36s, tests 349.59s, environment 1687.74s)
+$ npx ng test <archivos 1-50> --watch=false  (reintento lote 1; 15:28:22 UTC)
+exit=0
+ Test Files  50 passed (50)
+      Tests  715 passed (715)
+$ npx ng test --include=src/app/features/shell-layout/shell-layout.spec.ts --watch=false  (aislado; 15:30:20 UTC)
+exit=1
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+ FAIL   mantra-core-health  src/app/features/shell-layout/shell-layout.spec.ts > ShellLayout > el menú solo ofrece rutas que existen
+ FAIL   mantra-core-health  src/app/features/shell-layout/shell-layout.spec.ts > ShellLayout > marco ALOVIDA > los desplegables > sin rótulo que las agrupe, las cosas parecidas siguen saliendo seguidas
+ Test Files  1 failed (1)
+      Tests  2 failed | 52 passed (54)
+$ npx ng test --include=src/app/core/mock/mock-backend.spec.ts --watch=false  (tras rebase, 15:34:16 UTC)
+exit=1
+$ npx ng test --include=src/app/core/mock/mock-backend.spec.ts --watch=false  (sin servidor de desarrollo, 15:34:53 UTC)
+exit=0
+ Test Files  1 passed (1)
+      Tests  21 passed (21)
+$ E2E_BASE_URL=http://localhost:4200 npx playwright test playwright/mockup-barrido.spec.ts --workers=1  (tras rebase, 15:36:20 UTC)
+exit=0
+
+Running 5 tests using 1 worker
+
+  ok 1 [chromium] › playwright\mockup-barrido.spec.ts:166:9 › mockup · barrido con el backend simulado › Médica (8.5s)
+  ok 2 [chromium] › playwright\mockup-barrido.spec.ts:166:9 › mockup · barrido con el backend simulado › Paciente (7.1s)
+  ok 3 [chromium] › playwright\mockup-barrido.spec.ts:166:9 › mockup · barrido con el backend simulado › Admin (6.0s)
+  ok 4 [chromium] › playwright\mockup-barrido.spec.ts:166:9 › mockup · barrido con el backend simulado › Superadmin (7.7s)
+  ok 5 [chromium] › playwright\mockup-barrido.spec.ts:166:9 › mockup · barrido con el backend simulado › Visitador (5.7s)
+
+  5 passed (37.4s)
+$ E2E_BASE_URL=http://localhost:4200 npx playwright test playwright/mockup-click-sweep.spec.ts --workers=1  (tras rebase, 15:37:09 UTC)
+exit=1
+      192 |         .soft(rotos.map((c) => `${c.ruta} · «${c.boton}» → ${c.resultado} ${c.detalle}`))
+    > 193 |         .toEqual([]);
+          |          ^
+      194 |     });
+      195 |   }
+      196 |
+        at C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mch-marcelo-inicio-paciente\playwright\mockup-click-sweep.spec.ts:193:10
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    artifacts\playwright\salida\mockup-click-sweep-mockup--11979--el-backend-simulado-Médica-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: artifacts\playwright\salida\mockup-click-sweep-mockup--11979--el-backend-simulado-Médica-chromium\error-context.md
+
+    Error Context: artifacts\playwright\salida\mockup-click-sweep-mockup--11979--el-backend-simulado-Médica-chromium\error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    artifacts\playwright\salida\mockup-click-sweep-mockup--11979--el-backend-simulado-Médica-chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace artifacts\playwright\salida\mockup-click-sweep-mockup--11979--el-backend-simulado-Médica-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) [chromium] › playwright\mockup-click-sweep.spec.ts:188:9 › mockup · barrido de clics con el backend simulado › Admin 
+
+    Error: locator.evaluateAll: Execution context was destroyed, most likely because of a navigation
+
+      77 |  */
+      78 | async function rotulosDe(page: Page): Promise<string[]> {
+    > 79 |   return page.locator(BOTONES_HABILITADOS).evaluateAll((botones) =>
+         |                                            ^
+      80 |     botones.map((b) =>
+      81 |       (b as HTMLElement).offsetParent === null
+      82 |         ? ''
+        at rotulosDe (C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mch-marcelo-inicio-paciente\playwright\mockup-click-sweep.spec.ts:79:44)
+        at botonesDe (C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mch-marcelo-inicio-paciente\playwright\mockup-click-sweep.spec.ts:92:25)
+        at barrer (C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mch-marcelo-inicio-paciente\playwright\mockup-click-sweep.spec.ts:150:32)
+        at C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mch-marcelo-inicio-paciente\playwright\mockup-click-sweep.spec.ts:189:7
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    artifacts\playwright\salida\mockup-click-sweep-mockup--2319b-n-el-backend-simulado-Admin-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: artifacts\playwright\salida\mockup-click-sweep-mockup--2319b-n-el-backend-simulado-Admin-chromium\error-context.md
+
+    Error Context: artifacts\playwright\salida\mockup-click-sweep-mockup--2319b-n-el-backend-simulado-Admin-chromium\error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    artifacts\playwright\salida\mockup-click-sweep-mockup--2319b-n-el-backend-simulado-Admin-chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace artifacts\playwright\salida\mockup-click-sweep-mockup--2319b-n-el-backend-simulado-Admin-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2 failed
+    [chromium] › playwright\mockup-click-sweep.spec.ts:188:9 › mockup · barrido de clics con el backend simulado › Médica 
+    [chromium] › playwright\mockup-click-sweep.spec.ts:188:9 › mockup · barrido de clics con el backend simulado › Admin 
+  2 passed (8.1m)

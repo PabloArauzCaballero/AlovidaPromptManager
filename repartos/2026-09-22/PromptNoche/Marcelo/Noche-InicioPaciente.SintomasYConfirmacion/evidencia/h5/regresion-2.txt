@@ -1,0 +1,5 @@
+$ yarn test --watch=false   (2ª corrida, SIN servidor de desarrollo, 14:14:51 UTC)
+exit=0
+ Test Files  573 passed (573)
+      Tests  7150 passed (7150)
+   Duration  44.60s (transform 260.71s, setup 100.08s, import 357.83s, tests 546.71s, environment 2245.87s)

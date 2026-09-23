@@ -1,0 +1,42 @@
+$ npx ng test --include=src/app/shared/components/molecules/dialog/dialog.spec.ts --watch=false
+[37m      75 │     [32mAlert[37m,
+         ╵     [32m~~~~~[0m
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: RouterLink is not used within the template of MedicalArticles[0m [1m[35m[plugin angular-compiler][0m
+    src/app/features/account/my-profile/medical-articles/medical-articles.ts:85:4:
+[37m      85 │     [32mRouterLink[37m,
+         ╵     [32m~~~~~~~~~~[0m
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: PractitionerProfileView is not used within the template of PractitionerProfileView[0m [1m[35m[plugin angular-compiler][0m
+    src/app/features/account/my-profile/practitioner-profile/practitioner-profile-view/practitioner-profile-view.ts:162:4:
+[37m      162 │     [32mPractitionerProfileView[37m,
+          ╵     [32m~~~~~~~~~~~~~~~~~~~~~~~[0m
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: AppButtonLink is not used within the template of Questionnaires[0m [1m[35m[plugin angular-compiler][0m
+    src/app/features/account/questionnaires/questionnaires.ts:88:4:
+[37m      88 │     [32mAppButtonLink[37m,
+         ╵     [32m~~~~~~~~~~~~~[0m
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: Link is not used within the template of Groups[0m [1m[35m[plugin angular-compiler][0m
+    src/app/features/groups/groups.ts:59:4:
+[37m      59 │     [32mLink[37m,
+         ╵     [32m~~~~[0m
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: AppButton is not used within the template of NearbyPlaces[0m [1m[35m[plugin angular-compiler][0m
+    src/app/features/nearby-places/nearby-places.ts:103:4:
+[37m      103 │     [32mAppButton[37m,
+          ╵     [32m~~~~~~~~~[0m
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: AppButtonLink is not used within the template of SurveysHome[0m [1m[35m[plugin angular-compiler][0m
+    src/app/features/questionnaires/questionnaires.ts:72:4:
+[37m      72 │     [32mAppButtonLink[37m,
+         ╵     [32m~~~~~~~~~~~~~[0m
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: Card is not used within the template of SymptomCheck[0m [1m[35m[plugin angular-compiler][0m
+    src/app/features/symptom-check/symptom-check.ts:96:30:
+[37m      96 │   imports: [Alert, AppButton, [32mCard[37m, Chip, RouterLink, Textarea],
+         ╵                               [32m~~~~[0m
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: RouterLink is not used within the template of SymptomCheck[0m [1m[35m[plugin angular-compiler][0m
+    src/app/features/symptom-check/symptom-check.ts:96:42:
+[37m      96 │   imports: [Alert, AppButton, Card, Chip, [32mRouterLink[37m, Textarea],
+         ╵                                           [32m~~~~~~~~~~[0m
+[39m[22m
+[1m[30m[46m RUN [49m[39m[22m [36mv4.1.10 [39m[90mC:/Users/Usuario/Downloads/Entrypoint-GitHUb/alovida/mch-marcelo-inicio-paciente[39m
+[2m Test Files [22m [1m[32m1 passed[39m[22m[90m (1)[39m
+[2m      Tests [22m [1m[32m26 passed[39m[22m[90m (26)[39m
+[2m   Start at [22m 01:02:42
+[2m   Duration [22m 2.04s[2m (transform 117ms, setup 355ms, import 133ms, tests 296ms, environment 1.07s)[22m
+exit=0

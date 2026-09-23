@@ -1,0 +1,138 @@
+Using Vitest configuration file: C:\Users\Usuario\Downloads\Entrypoint-GitHUb\alovida\mch-marcelo-inicio-paciente\artifacts\vitest.acotado.config.ts
+[33m❯[39m Building...
+[32m✔[39m Building...
+Application bundle generation failed. [52.023 seconds] - 2026-09-23T14:53:08.730Z
+
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mFile 'src\app\core\observability\browser\telemetry-browser.bootstrap.ts' not found in TypeScript compilation.[0m [1m[35m[plugin angular-compiler][0m
+
+  The file will be bundled and included in the output but will not be type-checked at build time. To remove this message you can add the file to the TypeScript program via the 'files' or 'include' property.
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mFile 'src\app\core\observability\browser\telemetry-browser.exporter.ts' not found in TypeScript compilation.[0m [1m[35m[plugin angular-compiler][0m
+
+  The file will be bundled and included in the output but will not be type-checked at build time. To remove this message you can add the file to the TypeScript program via the 'files' or 'include' property.
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mFile 'src\app\core\observability\browser\telemetry-browser.lifecycle.ts' not found in TypeScript compilation.[0m [1m[35m[plugin angular-compiler][0m
+
+  The file will be bundled and included in the output but will not be type-checked at build time. To remove this message you can add the file to the TypeScript program via the 'files' or 'include' property.
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mFile 'src\app\core\observability\tracing\document-load.ts' not found in TypeScript compilation.[0m [1m[35m[plugin angular-compiler][0m
+
+  The file will be bundled and included in the output but will not be type-checked at build time. To remove this message you can add the file to the TypeScript program via the 'files' or 'include' property.
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mFile 'src\app\core\observability\telemetry.bootstrap.ts' not found in TypeScript compilation.[0m [1m[35m[plugin angular-compiler][0m
+
+  The file will be bundled and included in the output but will not be type-checked at build time. To remove this message you can add the file to the TypeScript program via the 'files' or 'include' property.
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mFile 'src\app\core\data-access\common\common.types.ts' not found in TypeScript compilation.[0m [1m[35m[plugin angular-compiler][0m
+
+  The file will be bundled and included in the output but will not be type-checked at build time. To remove this message you can add the file to the TypeScript program via the 'files' or 'include' property.
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mFile 'src\app\core\observability\browser\telemetry-browser.sampling.ts' not found in TypeScript compilation.[0m [1m[35m[plugin angular-compiler][0m
+
+  The file will be bundled and included in the output but will not be type-checked at build time. To remove this message you can add the file to the TypeScript program via the 'files' or 'include' property.
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: Alert is not used within the template of MedicalArticles[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/account/my-profile/medical-articles/medical-articles.ts:75:4:
+[37m      75 │     [32mAlert[37m,
+         ╵     [32m~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: RouterLink is not used within the template of MedicalArticles[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/account/my-profile/medical-articles/medical-articles.ts:85:4:
+[37m      85 │     [32mRouterLink[37m,
+         ╵     [32m~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: AppButtonLink is not used within the template of Questionnaires[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/account/questionnaires/questionnaires.ts:88:4:
+[37m      88 │     [32mAppButtonLink[37m,
+         ╵     [32m~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: Link is not used within the template of Groups[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/groups/groups.ts:59:4:
+[37m      59 │     [32mLink[37m,
+         ╵     [32m~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: AppButton is not used within the template of NearbyPlaces[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/nearby-places/nearby-places.ts:103:4:
+[37m      103 │     [32mAppButton[37m,
+          ╵     [32m~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: AppButtonLink is not used within the template of SurveysHome[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/questionnaires/questionnaires.ts:72:4:
+[37m      72 │     [32mAppButtonLink[37m,
+         ╵     [32m~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: Card is not used within the template of SymptomCheck[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/symptom-check/symptom-check.ts:99:39:
+[37m      99 │ ...: [Alert, AppButton, BodyMap, [32mCard[37m, Chip, FormField, RouterLink...
+         ╵                                  [32m~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: RouterLink is not used within the template of SymptomCheck[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/features/symptom-check/symptom-check.ts:99:62:
+[37m      99 │ ... AppButton, BodyMap, Card, Chip, FormField, [32mRouterLink[37m, Textarea],
+         ╵                                                [32m~~~~~~~~~~[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mNo loader is configured for ".md" files: src/app/core/mock/README.md[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mNo loader is configured for ".html" files: src/app/core/dev/toast-dev-panel/toast-dev-panel.html[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mNo loader is configured for ".md" files: src/app/core/data-access/terminology/README.md[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mNo loader is configured for ".md" files: src/app/core/data-access/pharmacy-campaigns/README.md[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mFile 'src\app\core\observability\tracing\app-stability.ts' not found in TypeScript compilation.[0m [1m[35m[plugin angular-compiler][0m
+
+  Files containing Angular metadata ('@Component'/'@Directive'/etc.) must be part of the TypeScript compilation. You can ensure the file is part of the TypeScript program via the 'files' or 'include' property.
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mFile 'src\app\core\data-access\public\public.client.ts' not found in TypeScript compilation.[0m [1m[35m[plugin angular-compiler][0m
+
+  Files containing Angular metadata ('@Component'/'@Directive'/etc.) must be part of the TypeScript compilation. You can ensure the file is part of the TypeScript program via the 'files' or 'include' property.
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mFile 'src\app\core\data-access\common\addresses.client.ts' not found in TypeScript compilation.[0m [1m[35m[plugin angular-compiler][0m
+
+  Files containing Angular metadata ('@Component'/'@Directive'/etc.) must be part of the TypeScript compilation. You can ensure the file is part of the TypeScript program via the 'files' or 'include' property.
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mFile 'src\app\core\observability\observability.providers.ts' not found in TypeScript compilation.[0m [1m[35m[plugin angular-compiler][0m
+
+  Files containing Angular metadata ('@Component'/'@Directive'/etc.) must be part of the TypeScript compilation. You can ensure the file is part of the TypeScript program via the 'files' or 'include' property.
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mFile 'src\app\core\observability\browser\telemetry-browser.resource.ts' not found in TypeScript compilation.[0m [1m[35m[plugin angular-compiler][0m
+
+  Files containing Angular metadata ('@Component'/'@Directive'/etc.) must be part of the TypeScript compilation. You can ensure the file is part of the TypeScript program via the 'files' or 'include' property.
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mFile 'src\app\core\errors\app-error-handler.ts' not found in TypeScript compilation.[0m [1m[35m[plugin angular-compiler][0m
+
+  Files containing Angular metadata ('@Component'/'@Directive'/etc.) must be part of the TypeScript compilation. You can ensure the file is part of the TypeScript program via the 'files' or 'include' property.
+
+[39m[22m

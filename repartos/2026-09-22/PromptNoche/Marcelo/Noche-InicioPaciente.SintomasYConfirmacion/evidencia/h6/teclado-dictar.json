@@ -1,0 +1,22 @@
+{
+  "_que_es": "Salida literal de dos scripts de Playwright (browser_run_code) sobre http://localhost:4200/dashboard como paciente@alovida.mock (cuenta sintética). Chromium 153. 2026-09-23, tras el cierre inicial del carril, completando H6.S1.M2.",
+  "primera_corrida": {
+    "llegoConTab": true,
+    "pasosDeTab": 25,
+    "focoTrasTabs": "sintomas-dictar",
+    "antes": { "presionado": "false", "boton": "Dictar", "estado": "", "foco": "sintomas-dictar" },
+    "trasEnter": { "presionado": "true", "boton": "Detener", "estado": "Escuchando… decí qué te pasa.", "foco": "sintomas-dictar" },
+    "trasEspacio_condicionMalDisenada": { "presionado": "true", "boton": "Detener", "estado": "Escuchando… decí qué te pasa.", "foco": "sintomas-dictar" }
+  },
+  "_nota_test_bug": "El primer 'trasEspacio' no demuestra nada: la condición de espera (\"estado no vacío O aria-pressed false\") ya se cumplía antes de presionar Espacio, así que el script no esperó a que el reconocedor procesara el toggle. Es un defecto del script de verificación, no del producto. Se corrigió esperando específicamente aria-pressed === 'false'.",
+  "segunda_corrida_espera_corregida": {
+    "antesDelEspacio": { "presionado": "false", "boton": "Dictar", "estado": "", "foco": "sintomas-dictar" },
+    "trasEspacio": { "presionado": "true", "boton": "Detener", "estado": "Escuchando… decí qué te pasa. hola hola", "foco": "sintomas-dictar" }
+  },
+  "_lectura": "Entre la primera y la segunda corrida el botón ya se había apagado solo (antesDelEspacio: presionado=false), confirmando que el primer Espacio SÍ había alternado el estado a apagado — sólo la lectura estaba mal temporizada. La segunda corrida demuestra que Espacio también lo vuelve a encender. 'hola hola' es audio ambiente captado sin querer al abrir el micrófono de nuevo; no se guardó ninguna captura que lo mostrara.",
+  "cierre": {
+    "final": { "presionado": "false", "boton": "Dictar" },
+    "areaDeTextoLimpia": true,
+    "paginaCerrada": true
+  }
+}

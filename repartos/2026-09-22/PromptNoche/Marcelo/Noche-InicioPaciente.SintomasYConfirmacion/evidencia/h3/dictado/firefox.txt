@@ -1,0 +1,14 @@
+$ node artifacts/dictado-firefox.mjs   (Playwright firefox-1538, yarn dev en :4200, navegador MCP cerrado antes)
+{
+  "navegador": "153.0",
+  "soporte": {
+    "SpeechRecognition": false,
+    "webkitSpeechRecognition": false,
+    "botonDictar": false,
+    "bloqueDictado": false,
+    "areaDeTexto": true,
+    "rotulo": "Contanos con tus palabras"
+  },
+  "veredicto": "PASS: Firefox sin reconocedor → sin botón; el área de texto sigue"
+}
+exit=0

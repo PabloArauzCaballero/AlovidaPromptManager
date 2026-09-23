@@ -1,0 +1,12 @@
+navegador: firefox 153.0
+consola [error]: [JavaScript Error: "Content-Security-Policy: The page’s settings blocked an inline script (script-src-elem) from being executed because it v
+consola [error]: [JavaScript Error: "Content-Security-Policy: The page’s settings blocked an inline script (script-src-elem) from being executed because it v
+login medica@ → /dashboard
+content-dialog «Añadir elemento a tu historial» abierto
+antes: abiertos=["content-dialog"] · foco en «content-dialog-close» dentro de content-dialog
+durante: abiertos=["content-dialog","dialogo"] · foco en «dialogo-confirmar» dentro de dialogo
+título de la confirmación: «¿Confirmás estos cambios?»
+Tab ×4 con la confirmación abierta: dialogo-confirmar@dialogo → dialogo-confirmar@dialogo → dialogo-confirmar@dialogo → dialogo-confirmar@dialogo
+el foco nunca alcanzó el modal de abajo mientras la confirmación estaba abierta
+Escape → resolvió false · abiertos=["content-dialog"] · foco en «content-dialog-close» dentro de content-dialog
+VEREDICTO firefox: PASS

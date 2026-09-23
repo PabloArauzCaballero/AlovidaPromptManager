@@ -1,0 +1,31 @@
+$ npx prettier --write patient-home.{ts,html,css,spec.ts} playwright/alv-054-panel-accesses.spec.ts ; --check
+All matched files use Prettier code style!
+
+$ git grep -n 'mi-salud__accesos\|accesos()\|mi-salud-acceso' -- src playwright | wc -l
+22
+
+$ npx ng test --include=src/app/features/dashboard/patient-home/*.spec.ts --watch=false
+exit=0
+[2m Test Files [22m [1m[32m1 passed[39m[22m[90m (1)[39m
+[2m      Tests [22m [1m[32m11 passed[39m[22m[90m (11)[39m
+
+$ yarn eslint src/app/features/dashboard/patient-home playwright/alv-054-panel-accesses.spec.ts --max-warnings=0
+exit=0
+
+$ npx tsc -p tsconfig.app.json --noEmit
+exit=0
+$ npx tsc -p playwright/tsconfig.json --noEmit
+exit=0
+
+$ git diff --stat
+warning: in the working copy of 'playwright/alv-054-panel-accesses.spec.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/app/features/dashboard/patient-home/patient-home.css', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/app/features/dashboard/patient-home/patient-home.html', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/app/features/dashboard/patient-home/patient-home.spec.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/app/features/dashboard/patient-home/patient-home.ts', LF will be replaced by CRLF the next time Git touches it
+ playwright/alv-054-panel-accesses.spec.ts          |  46 +---------
+ .../dashboard/patient-home/patient-home.css        |  56 -----------
+ .../dashboard/patient-home/patient-home.html       |  35 ++-----
+ .../dashboard/patient-home/patient-home.spec.ts    |  46 +++++-----
+ .../dashboard/patient-home/patient-home.ts         | 102 ++-------------------
+ 5 files changed, 45 insertions(+), 240 deletions(-)

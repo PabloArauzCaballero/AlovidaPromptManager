@@ -1,0 +1,11 @@
+
+Running 5 tests using 1 worker
+
+  ok 1 [chromium] › playwright\mockup-barrido.spec.ts:166:9 › mockup · barrido con el backend simulado › Médica (5.8s)
+  ok 2 [chromium] › playwright\mockup-barrido.spec.ts:166:9 › mockup · barrido con el backend simulado › Paciente (4.2s)
+  ok 3 [chromium] › playwright\mockup-barrido.spec.ts:166:9 › mockup · barrido con el backend simulado › Admin (3.9s)
+  ok 4 [chromium] › playwright\mockup-barrido.spec.ts:166:9 › mockup · barrido con el backend simulado › Superadmin (6.6s)
+  ok 5 [chromium] › playwright\mockup-barrido.spec.ts:166:9 › mockup · barrido con el backend simulado › Visitador (3.6s)
+
+  5 passed (25.4s)
+exit=0
