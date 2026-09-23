@@ -14,6 +14,15 @@
 - Kill-test: el del prompt (§2): sin figura humana en `/dashboard`, o sin `zona-abierta` al tocar el pecho, o sin Tab/Enter,
   o área de texto plegada, o sin «Dictar» en Chromium, o sin «¿Confirmás estos cambios?» al llamar a la pieza — no está hecho.
 
+## 0. Antes de escribir — instalación OBLIGATORIA del estándar
+
+Entrada por `skills-router` antes de tocar código, desde `AlovidaPromptManager` (Q-X2: el worktree del
+producto no copia `.claude/`). Verificado con:
+
+    python .claude/hooks/plan_gate.py --self-test
+
+Salida: 11 PASS, 0 FAIL (misma sesión que abrió este carril).
+
 ## Alcance
 
 - IN: lo del §3 del prompt. Todo el código va a la rama del worktree; los artefactos, a esta carpeta.
@@ -150,7 +159,8 @@ los síntomas de esa zona y, al elegir, aparece la especialidad recomendada; la 
 oscuro y la zona elegida se distingue por relleno, trazo y texto — nunca sólo por color.
 **DoD:** organismo con spec de tres niveles; integración con spec; capturas ×3 viewports ×2 temas;
 borrador mostrado al doctor.
-**Estado:** EN CURSO — 14/14 microtareas HECHO; el hito cierra con la regresión y los gates de H5
+**Estado:** EN CURSO
+(14/14 microtareas HECHO; el hito cierra con la regresión y los gates de H5.)
 
 #### H2.S1 — El organismo `body-map`
 
@@ -159,7 +169,8 @@ neutra frontal con un `<path>` por zona anatómica, cada uno `role="button"` con
 `aria-pressed`, recorribles con Tab en un orden fijo y activables con Enter o Espacio; una zona que no
 esté en `zonas` no se dibuja como elegible.
 **DoD:** las 7 microtareas en `HECHO`.
-**Estado:** HECHO — 7/7
+**Estado:** HECHO
+(7/7.)
 
 | ID | Microtarea | CA (binario) | DoD (comando de verificación) | Estado |
 |---|---|---|---|---|
@@ -176,7 +187,8 @@ esté en `zonas` no se dibuja como elegible.
 pastilla (`alternarZona`): se abren sus síntomas, y al elegir uno aparece la recomendación de siempre; las
 pastillas siguen para teclado y para las tres zonas que no son partes del cuerpo.
 **DoD:** las 7 microtareas en `HECHO`.
-**Estado:** HECHO — 7/7
+**Estado:** HECHO
+(7/7.)
 
 | ID | Microtarea | CA (binario) | DoD (comando de verificación) | Estado |
 |---|---|---|---|---|
@@ -196,13 +208,15 @@ en Chromium hay «Dictar» (ícono + texto) que vuelca lo dicho al texto, con es
 privacidad; sin soporte el botón no aparece; y el panel de abajo no está, tras confirmar cuál era.
 **DoD:** specs con doble del reconocedor; prueba real en Chromium con captura; `mi-salud__accesos` retirado
 tras la confirmación.
-**Estado:** EN CURSO — 16/16 microtareas HECHO (S1 3, S2 9 con la M9 agregada, S3 4); el hito cierra con la regresión y los gates de H5
+**Estado:** EN CURSO
+(16/16 microtareas HECHO: S1 3, S2 9 con la M9 agregada, S3 4; el hito cierra con la regresión y los gates de H5.)
 
 #### H3.S1 — El área de texto como panel
 
 **CA:** Dada la pantalla, cuando se abre, entonces el área de texto se ve sin desplegar nada, con su rótulo.
 **DoD:** las 3 microtareas en `HECHO`.
-**Estado:** HECHO — 3/3
+**Estado:** HECHO
+(3/3.)
 
 | ID | Microtarea | CA (binario) | DoD (comando de verificación) | Estado |
 |---|---|---|---|---|
@@ -215,7 +229,8 @@ tras la confirmación.
 se muestra «Escuchando…» y lo reconocido aparece en el texto; sin soporte el botón no existe; sin permiso o
 sin resultado el estado dice qué hacer; nada de lo dictado sale a consola, logs ni a un servicio no declarado.
 **DoD:** las 8 microtareas en `HECHO`.
-**Estado:** HECHO — 9/9 (M9 agregada por decisión de Pablo)
+**Estado:** HECHO
+(9/9; M9 agregada por decisión de Pablo.)
 
 | ID | Microtarea | CA (binario) | DoD (comando de verificación) | Estado |
 |---|---|---|---|---|
@@ -233,7 +248,8 @@ sin resultado el estado dice qué hacer; nada de lo dictado sale a consola, logs
 **CA:** Dada la confirmación de cuál es el bloque, cuando se lo retira, entonces la pantalla sigue
 completa, specs y barrido siguen en verde; sin confirmación, el retiro queda preparado y `A MEDIAS`.
 **DoD:** las 4 microtareas en `HECHO` o la cuarta `A MEDIAS` con la captura.
-**Estado:** HECHO — 4/4
+**Estado:** HECHO
+(4/4.)
 
 | ID | Microtarea | CA (binario) | DoD (comando de verificación) | Estado |
 |---|---|---|---|---|
@@ -290,13 +306,15 @@ ADR-0012 §3 con `aria-label` **y** globo, escrita al lado; y todo botón de la 
 **CA:** Dado tu cambio, cuando corrés los comandos del baseline y el barrido, entonces ningún rojo es
 nuevo; y está dicho, medido, cuántos `iconOnly` hay en tus archivos.
 **DoD:** salidas comparadas; barrido `--workers=1`; conteo.
-**Estado:** EN CURSO — S1 A MEDIAS (lo mío verificado; hallazgos ajenos elevados); S2 HECHO
+**Estado:** EN CURSO
+(S1 A MEDIAS: lo mío verificado, hallazgos ajenos elevados; S2 HECHO.)
 
 #### H5.S1 — Regresión
 
 **CA:** Dado el baseline, cuando se repite, entonces coincide o la diferencia está explicada.
 **DoD:** las 5 microtareas en `HECHO`.
-**Estado:** A MEDIAS — 4/5 HECHO, M5 A MEDIAS (Paciente/Visitador limpio; Médica/Admin ajenos, elevados)
+**Estado:** A MEDIAS
+(4/5 HECHO, M5 A MEDIAS: Paciente/Visitador limpio, Médica/Admin ajenos y elevados.)
 
 | ID | Microtarea | CA (binario) | DoD (comando de verificación) | Estado |
 |---|---|---|---|---|
@@ -310,7 +328,8 @@ nuevo; y está dicho, medido, cuántos `iconOnly` hay en tus archivos.
 **CA:** Dado el inventario de Pablo, cuando se filtra por tus archivos, entonces el conteo está pegado y
 cada botón nuevo lleva ícono + texto.
 **DoD:** las 2 microtareas en `HECHO`.
-**Estado:** HECHO — 2/2
+**Estado:** HECHO
+(2/2.)
 
 | ID | Microtarea | CA (binario) | DoD (comando de verificación) | Estado |
 |---|---|---|---|---|
@@ -323,13 +342,15 @@ cada botón nuevo lleva ícono + texto.
 **CA:** Dado el cierre, cuando alguien que no vio tu turno lee el reporte, entonces sabe qué quedó
 demostrado, qué quedó a medias con las cuatro respuestas, en qué navegadores se probó la voz y qué no se cubrió.
 **DoD:** `REPORTE.md` con sus tres secciones y el avance arriba.
-**Estado:** HECHO — 5/5
+**Estado:** HECHO
+(5/5.)
 
 #### H6.S1 — Cierre honesto
 
 **CA:** Dado el reporte, cuando se lee la primera línea, entonces está el avance calculado.
 **DoD:** las 5 microtareas en `HECHO`.
-**Estado:** HECHO — 5/5 (M2 completado en una segunda pasada)
+**Estado:** HECHO
+(5/5; M2 completado en una segunda pasada.)
 
 | ID | Microtarea | CA (binario) | DoD (comando de verificación) | Estado |
 |---|---|---|---|---|
@@ -338,6 +359,13 @@ demostrado, qué quedó a medias con las cuatro respuestas, en qué navegadores 
 | H6.S1.M3 | Declarar navegadores probados para la voz, y que nada de lo dictado se registró | Lista + afirmación con el grep | sección en `REPORTE.md` | HECHO — \`evidencia/h6/navegadores-y-privacidad.md\` |
 | H6.S1.M4 | Declarar el peldaño por área (regla 30) | Hay peldaño por área | sección en `REPORTE.md` | HECHO — \`evidencia/h6/peldano-por-area.md\` |
 | H6.S1.M5 | Escribir `REPORTE.md` con el avance primero y enumerar procesos que quedaron corriendo | `head -3` muestra el avance | `head -3 REPORTE.md` | HECHO — \`REPORTE.md\` escrito con avance 57/60 en la primera línea y sus tres secciones |
+## Definition of Done del hito
+
+Cada hito (H1-H6) cierra cuando sus subtareas están en `HECHO` con el DoD de cada microtarea
+ejecutado y su salida pegada en `evidencia/`, o en `A MEDIAS`/`BLOQUEADO` con el detalle exigido
+por la regla 20 §5. El detalle numérico de cada hito y subtarea vive en su propia fila de la tabla
+de microtareas, no repetido en la línea de `**Estado:**` (regla del formato del reparto).
+
 ## Ambigüedades del prompt (§5)
 | ID | Ambigüedad | Supuesto con el que trabajás | Quién puede resolverla | Qué bloquea |
 |---|---|---|---|---|
