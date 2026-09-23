@@ -149,7 +149,7 @@ Cada carril anuncia acá lo que otros consumen, con ruta y ejemplo. Vacío al re
 | `confirmarCambios()` / `confirmarDescarte()` + receta + apilamiento probado | Marcelo, H4 | **temprano** | | `TODO` |
 | Captura anotada de la pantalla de inicio: ¿cuál es «el panel de abajo»? (Q-13) | Marcelo, H1.S2.M3 | temprano | | `TODO` |
 | Borrador de la silueta para el doctor | Marcelo, H2.S2.M5 | | | `TODO` |
-| Medición del flujo de reserva (peticiones, tiempos) | Justin, H1.S2 | **temprano** | | `TODO` |
+| Medición del flujo de reserva (peticiones, tiempos) | Justin, H1.S2 | **temprano** | No publicada: ver Justin §9; faltan baseline y recorrido | `A MEDIAS` |
 | Tabla de latencia por prefijo | Ender, H2.S1 | primera mitad | | `TODO` |
 | Renglón «Cotizaciones» PATIENT + ruta · retiro «Mis puntos» + redirect | Ender, H4.S2 | a pedido | | `TODO` |
 | `output` del `ubicacion-picker` al tocar el mapa | Itzan, H5.S1 | | | `TODO` |
@@ -223,7 +223,7 @@ Las 20 están con supuesto y dueño en el documento fuente. Las que **bloquean c
 |---|---|---|---|---|---|
 | Pablo | __ / 68 | __ / 6 | | | [Pablo-Daily-Noche-2026-09-22.md](Pablo/Pablo-Daily-Noche-2026-09-22.md) |
 | Itzan | __ / 93 | __ / 8 | | | [Itzan-Daily-Noche-2026-09-22.md](Itzan/Itzan-Daily-Noche-2026-09-22.md) |
-| Justin | __ / 51 | __ / 6 | | | [Justin-Daily-Noche-2026-09-22.md](Justin/Justin-Daily-Noche-2026-09-22.md) |
+| Justin | 0 / 51 | 0 / 6 | Cotizaciones entregadas fuera de los DoD originales: #578 y #579 fusionados; #580 abierto; faltan medición/gates/publicación del mockup | Mockup observado anterior a #579; estado del host sin acceso SSH | [Justin-Daily-Noche-2026-09-22.md](Justin/Justin-Daily-Noche-2026-09-22.md) |
 | Ender | __ / 48 | __ / 6 | | | [Ender-Daily-Noche-2026-09-22.md](Ender/Ender-Daily-Noche-2026-09-22.md) |
 | Marcelo | __ / 59 | __ / 6 | | | [Marcelo-Daily-Noche-2026-09-22.md](Marcelo/Marcelo-Daily-Noche-2026-09-22.md) |
 | **Total** | **__ / 319** | **__ / 32** | | | |
