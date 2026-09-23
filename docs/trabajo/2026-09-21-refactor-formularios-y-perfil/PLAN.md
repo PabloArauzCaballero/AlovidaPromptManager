@@ -490,10 +490,34 @@ vista ya vive en el motor de formularios. Separarlo no demostraría nada de lo q
 
 | ID | Microtarea | CA (binario) | DoD (comando de verificación) | Estado |
 |---|---|---|---|---|
-| H4.S2.M1 | Cálculos de dominio de la plantilla a funciones nombradas | La plantilla no calcula reglas | revisión del diff | TODO |
-| H4.S2.M2 | Identidad estable en las colecciones | No hay `track $index` donde la identidad importa | `git grep -n 'track \$index' -- '<archivos>'` | TODO |
-| H4.S2.M3 | Ningún evento hace tres cosas en una expresión | Cada evento llama una operación | revisión del diff | TODO |
+| H4.S2.M1 | Cálculos de dominio de la plantilla a funciones nombradas | La plantilla no calcula reglas | revisión del diff | HECHO |
+| H4.S2.M2 | Identidad estable en las colecciones | No hay `track $index` donde la identidad importa | `git grep -n 'track \$index' -- '<archivos>'` | HECHO |
+| H4.S2.M3 | Ningún evento hace tres cosas en una expresión | Cada evento llama una operación | revisión del diff | HECHO |
 | H4.S2.M4 | Comportamiento comparado con el recorrido de H1.S2 | Sin diferencias injustificadas | recorrido comparado | TODO |
+
+Las tres primeras, con su medida, en
+[`evidencia/h4/la-plantilla-describe-la-interfaz.md`](./evidencia/h4/la-plantilla-describe-la-interfaz.md).
+`corepack yarn build` y `lint` en 0, `98/98` entre los dos specs.
+
+- **M1 — dos reglas salieron de la plantilla, y una vivía dos veces con dos redacciones
+  distintas.** «Un título se retira sólo mientras está pendiente» se decidía en los dos dibujos de
+  la ficha; en el propio le faltaba «sólo el dueño», que quedaba implícita en un `@if` de más
+  arriba. Ahora es `sePuedeRetirar`. La otra es la condición de cinco términos que decide si
+  aparece «Tus datos», hoy `tieneDatosDeFiliacion` — con el detalle que la hacía frágil escrito
+  donde se lee: `edad` se compara contra `null`, porque un `0` legítimo borraría la sección entera.
+- **M2 — se cumplía ya.** Los **quince** `@for` llevan `track` por identidad; el comando del DoD no
+  devuelve nada. Importa acá más que en una lista cualquiera: la trayectoria se reordena al alta y
+  a la baja, y con el índice Angular reusaría el nodo equivocado.
+- **M3 — quince enlaces de evento, cada uno una sola operación.** `H4.S1` mejoró este número sin
+  proponérselo: `(fileDropRejected)="errorDeFoto.set($event)"` escribía una señal **desde la
+  plantilla**, que es peor que hacer tres cosas — es hacer una que no debería poder hacerse.
+
+> **Hueco declarado y NO corregido (regla 00 §3.2).** El botón «Retirar» del dibujo de la Guía no
+> respeta `previewMode`, que promete suprimir toda acción de escritura. Se eligió que
+> `sePuedeRetirar` sea la **unión exacta** de lo que las dos redacciones decían y no la regla
+> «mejor»: añadirle `!previewMode()` habría cambiado comportamiento, y estas microtareas nombran
+> reglas. Es inalcanzable hoy —nadie pasa el input— e inofensivo: `alPedirRetiro` sí lo comprueba
+> antes de emitir, así que sería un botón muerto en un modo que nadie usa.
 
 ### H5 — Las dos decisiones que no se pueden tomar en silencio
 
