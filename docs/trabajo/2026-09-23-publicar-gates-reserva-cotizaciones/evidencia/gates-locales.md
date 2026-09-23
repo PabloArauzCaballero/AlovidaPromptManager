@@ -24,6 +24,11 @@ src/app/shared/components/organisms/data-table/data-table.spec.ts
 $ corepack yarn eslint 'src/app/features/account/cotizaciones/**/*.ts' 'src/app/features/directory/**/*.ts'
 exit 0
 
+$changedTs = @(git diff --name-only b7785e36 4c9e419f | Where-Object { $_ -match '\.(ts|tsx)$' })
+$ corepack yarn eslint @changedTs
+7 TypeScript del diff
+exit 0
+
 $ corepack yarn typecheck
 exit 0
 
@@ -57,7 +62,7 @@ $ corepack yarn lint
 ✖ 243 problems (243 errors, 0 warnings)
 ```
 
-Todos corresponden a `@angular-eslint/prefer-on-push-component-change-detection`; el conteo en los focos `cotizaciones` y `directory` fue cero.
+Todos corresponden a `@angular-eslint/prefer-on-push-component-change-detection`; los siete archivos TypeScript del diff de #583 también dieron cero en el lint focal, por lo que los 243 rojos no se adjudican a ese cambio.
 
 ```text
 $ corepack yarn test --watch=false
