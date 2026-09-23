@@ -3,10 +3,10 @@
 > **REPARTIDO: 5 / 5 carriles · 19 / 19 observaciones con dueño · 32 hitos · 64 subtareas · 319 microtareas.**
 <<<<<<< HEAD
 > **AVANCE DEL TURNO: 65 / 319 — 20,4 %.** ← se llena al cerrar, con `microtareas HECHO / total`.
-> Pablo 45/68 · Itzan 0/93 · Justin 20/51 · Ender 0/48 · Marcelo 0/59.
+> Pablo 45/68 · Itzan 0/93 · Justin 20/51 · Ender 30/48 · Marcelo 0/59.
 =======
 > **AVANCE DEL TURNO: 0 / 319 — 0 %.** ← se llena al cerrar, con `microtareas HECHO / total`.
-> Pablo 0/68 · Itzan 0/93 · Justin 29/51 · Ender 14/48 · Marcelo 0/59.
+> Pablo 0/68 · Itzan 0/93 · Justin 29/51 · Ender 30/48 · Marcelo 0/59.
 >>>>>>> origin/main
 > **`A MEDIAS` cuenta como no hecha. `DESCARTADO` no suma: se declara aparte con su motivo.**
 
@@ -169,8 +169,8 @@ Cada carril anuncia acá lo que otros consumen, con ruta y ejemplo. Vacío al re
 | **HALL-M6 — `mockup-click-sweep` rota para Médica en ~10 rutas ajenas al reparto** | Pablo (coordinador), a triar | — | 67-85 botones sin responder en 4s en `/messaging`, `/groups`, `/glossary`, `/settings`, `/notification-center`, `/administration/pharmacy-*`, `/my-account/edit`, `/my-account/identity`, `/my-account/access-requests`. Ya estaba así en `origin/mockup` antes del rebase de esta noche (no lo causó ningún carril de hoy); Paciente y Visitador pasan limpio. Lista completa en `Marcelo/…/evidencia/h5/mockup-click-sweep-tras-rebase.txt`. No tiene dueño obvio esta noche: lo triage quien coordine. | **A TRIAR** |
 | **HALL-M4 — el micrófono está bloqueado por la propia app** | Pablo (carril de Marcelo), H3.S2 | — | `src/server/security-headers.ts:268` manda `Permissions-Policy: camera=(), microphone=(), geolocation=(self)`: ningún documento puede capturar audio, conceda o no la persona (Chrome: «AudioCapture permission has been blocked because of a permissions policy»). Afecta al dictado nuevo **y al `Grabador` de notas de voz de mensajería que ya existía**. **Decisión de Pablo 2026-09-23: `microphone=(self)` en este carril (H3.S2.M9), cámara sigue cerrada.** **Hecho en la rama `pablo/inicio-paciente-silueta-voz-y-confirmacion`: `microphone=(self)`, spec 25/25, `docs/security/*` al día; verificado en Chrome (sin warning, escucha y transcribe).** Quien toque `src/server/security-headers.ts` esta noche: partir de esa rama. | **PUBLICADO + RESUELTO** |
 | Medición del flujo de reserva (peticiones, tiempos) | Justin, H1.S2 | **temprano** | No publicada: ver Justin §9; faltan baseline y recorrido | `A MEDIAS` |
-| Tabla de latencia por prefijo | Ender, H2.S1 | primera mitad | [Ender §4](Ender/Ender-Daily-Noche-2026-09-22.md): `/terminology` 40 · `/scheduling/slots` 80 · `/profiles` 100 · subida 600 · resto 120, sin azar. Local, sin commit en producto | `PUBLICADO` |
-| Renglón «Cotizaciones» PATIENT + ruta · retiro «Mis puntos» + redirect | Ender, H4.S2 | a pedido | | `TODO` |
+| Tabla de latencia por prefijo | Ender, H2.S1 | primera mitad | [Ender §4](Ender/Ender-Daily-Noche-2026-09-22.md): `/terminology` 40 · `/scheduling/slots` 40 · `/profiles` 90 · subida 600 · resto 120, sin azar — la tabla del código en `mockup` (#584). **Corregido 2026-09-23:** #32 había publicado 80/100, de una variante local que no quedó | `PUBLICADO` |
+| Renglón «Cotizaciones» PATIENT + ruta · retiro «Mis puntos» + redirect | Ender, H4.S2 | a pedido | «Cotizaciones»: ya en `mockup` (Justin, `b3af9887`). «Mis puntos»: simulación previa en `mockup` (renglón retirado, `/my-account/loyalty` → `/my-account`); el contrato final `/my-account?pestana=puntos` espera el código de Itzan | `TODO` (H4.S2 sin empezar) |
 >>>>>>> origin/main
 | `output` del `ubicacion-picker` al tocar el mapa | Itzan, H5.S1 | | | `TODO` |
 
@@ -244,7 +244,7 @@ Las 20 están con supuesto y dueño en el documento fuente. Las que **bloquean c
 | Pablo | 45 / 68 | 3 / 6 | H4.S2.M9 (teclado del modal, sin verificar; resto de H4.S2 HECHO) | ninguno | [Pablo-Daily-Noche-2026-09-22.md](Pablo/Pablo-Daily-Noche-2026-09-22.md) |
 | Itzan | __ / 93 | __ / 8 | | | [Itzan-Daily-Noche-2026-09-22.md](Itzan/Itzan-Daily-Noche-2026-09-22.md) |
 | Justin | 29 / 51 | 0 / 6 | 20 HECHO legados + 9 HECHO no solapados, publicados en #583: capturas por viewport/tema, teclado, gates locales, clic único y acción visible de disponibilidad. Las 6 de documentos son `DESCARTADO` por la decisión «Cotizaciones solamente». | Quedan baseline histórico, contratos de negocio para precios/origen/acciones y validación remota de Coolify. | [Justin-Daily-Noche-2026-09-22.md](Justin/Justin-Daily-Noche-2026-09-22.md) |
-| Ender | 14 / 48 | 1 / 6 | H2 (H2.S1 5/5; H2.S2 sin empezar). Latencia determinista y medida: «elegir médico» 311–557 → 231–247 ms en arnés. Cambios locales, sin commit en producto | H3 y H4 sin autorizar todavía; H3 con decisiones de alcance tomadas (los 13 registrados, `comunidad.ts` fuera) | [Ender-Daily-Noche-2026-09-22.md](Ender/Ender-Daily-Noche-2026-09-22.md) |
+| Ender | 30 / 48 | 2 / 6 | H2 (H2.S2 sin empezar) · H4 (H4.S2 sin empezar; «Mis puntos» espera a Itzan). H1 y H3 cerrados. H3 con el contrato **D-H3-PROV-01 = C**: agenda para 13 profesionales de demostración, ninguna para las personas reales de la planilla. Rama reconciliada sobre `mockup` `a43ad2b3`, local, sin PR | H4.S2.M2 espera el código de Itzan en `mockup` | [Ender-Daily-Noche-2026-09-22.md](Ender/Ender-Daily-Noche-2026-09-22.md) |
 | Marcelo | __ / 59 | __ / 6 | | | [Marcelo-Daily-Noche-2026-09-22.md](Marcelo/Marcelo-Daily-Noche-2026-09-22.md) |
 | **Total** | **__ / 319** | **__ / 32** | | | |
 
