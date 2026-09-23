@@ -16,7 +16,7 @@
 
 **CA:** Dado el daily, cuando el equipo busca el estado de Cotizaciones, entonces encuentra el SHA integrado, el PR de verificación, comandos y los límites sin recurrir al chat.
 **DoD:** `git diff --check`, búsqueda de `#581` y `#583` en ambos dailies y PR de PromptManager abierto.
-**Estado:** A MEDIAS
+**Estado:** HECHO
 
 ### H1.S1 — Publicar hechos sin inflar el avance
 
@@ -24,4 +24,4 @@
 |---|---|---|---|---|
 | H1.S1.M1 | Registrar #581 fusionado y #583 publicado en el daily de Justin | Se separa merge de despliegue y no se altera 20/51 | `rg -n '#581|#583' ...Justin-Daily...` | HECHO |
 | H1.S1.M2 | Actualizar hallazgo M5 y estado Justin en el daily de equipo | El contrato corregido no queda marcado como rojo | `rg -n 'HALL-M5|#583' ...Daily-Noche...` | HECHO |
-| H1.S1.M3 | Abrir PR de PromptManager | La publicación es revisable | `gh pr view <número>` | TODO |
+| H1.S1.M3 | Abrir PR de PromptManager | La publicación es revisable | `gh pr view 33` | HECHO |
