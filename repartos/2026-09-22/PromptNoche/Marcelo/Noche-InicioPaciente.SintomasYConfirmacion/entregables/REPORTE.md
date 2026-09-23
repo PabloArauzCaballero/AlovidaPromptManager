@@ -1,6 +1,6 @@
 # Reporte — Silueta del cuerpo, voz y modal de confirmación (carril de Marcelo, ejecutado por Pablo)
 
-> **AVANCE: 59 / 60 — 98,3 %.** (H6.S1.M2 se cerró en una segunda pasada tras el primer cierre: ver «Desvíos».)
+> **AVANCE: 63 / 64 — 98,4 %.**
 
 - Fecha: 2026-09-22/23 (turno noche) · Plan: [PLAN.md](./PLAN.md) · Rama: `pablo/inicio-paciente-silueta-voz-y-confirmacion`
 - Peldaño de evidencia alcanzado: **VERIFIED por área** (ver `evidencia/h6/peldano-por-area.md`); no llega a `REGRESSION_VERIFIED`
@@ -31,6 +31,8 @@ lista exacta que el test afirma. No es mío, no lo causé, no lo corrijo (fuera 
 Baseline pre-rebase, sin ninguna otra sesión compitiendo por la máquina: **573/573 archivos, 7150/7150 tests, verde
 limpio** (`evidencia/h5/test-2-sin-servidor.txt`) — la evidencia de que mi código, antes de traer cambios ajenos, no
 rompía nada.
+
+| H2.S3 (4/4) | Silueta rehecha tras el rechazo de Pablo: cuerpo humano con curvas y proporciones reales | specs body-map + symptom-check | 26/26, commit `f10e3198`, `evidencia/h2/capturas-v2/doble-revision.md` (ACEPTABLE CON RESERVAS) |
 
 ## A medias
 

@@ -199,6 +199,26 @@ pastillas siguen para teclado y para las tres zonas que no son partes del cuerpo
 | H2.S2.M5 | Borrador de la silueta mostrado al doctor / Pablo (captura en el daily de equipo) antes de pulir (Q-11) | Publicado | sección en `Daily-Noche-2026-09-22.md` | HECHO — publicado en el daily de equipo §4-bis con tres preguntas para el doctor (Q-11); la respuesta del doctor queda pendiente y no bloquea |
 | H2.S2.M6 | Spec de `symptom-check`: zona por figura abre síntomas; alarma sigue funcionando | Verde | `npx ng test --include=src/app/features/symptom-check/*.spec.ts --watch=false` | HECHO — 92/92 |
 | H2.S2.M7 | Capturas ×3 viewports ×2 temas, miradas; a 375 px la figura no desborda | 6 con su línea; `scrollWidth` ≤ `clientWidth` | `evidencia/h2/capturas/` | HECHO — capturas 01-06 miradas (LEEME.md); scrollWidth = clientWidth en 375/768/1440 |
+#### H2.S3 — Rediseño de la silueta tras el rechazo visual
+
+**Origen:** 2026-09-23, tras el cierre. Pablo, mirando la figura publicada: «El cuerpo humano está pésimo,
+despreciable, totalmente feo». Diagnóstico propio sobre la geometría: ojos como un rectángulo tipo visor,
+orejas como dos tabs rectangulares, torso-caja, brazos y piernas como cuadriláteros rectos sin manos ni pies.
+Es trabajo no previsto: se agrega acá (regla 20.6.6) y reabre H2 (regla 30.4: el área vuelve a `WRITTEN`).
+
+**CA:** Dada la pantalla de inicio del paciente, cuando se mira la figura, entonces se reconoce un cuerpo
+humano de frente con contornos curvos (cabeza con mandíbula, ojos en antifaz, orejas redondeadas, cuello,
+hombros, cintura, cadera, brazos con mano, piernas con pie), sin ningún rectángulo visible; y sigue siendo
+el mismo control (mismas siete zonas, mismo orden de Tab, objetivos ≥ 24×24 px a 375 px).
+**DoD:** las 4 microtareas en `HECHO`.
+**Estado:** HECHO
+
+| ID | Microtarea | CA (binario) | DoD (comando de verificación) | Estado |
+|---|---|---|---|---|
+| H2.S3.M1 | Geometría nueva en `body-zones.geometry.ts`: sólo curvas en los contornos exteriores, mismas 7 zonas y mismo orden | Specs de `body-map` y `symptom-check` en verde sin tocarlos | `npx ng test --include=body-map.spec.ts --include=symptom-check.spec.ts --watch=false` | HECHO |
+| H2.S3.M2 | Objetivos ≥ 24×24 px a 375 px, medidos en navegador | Cada zona con un área contigua ≥ 24×24 | `getBBox()` por zona × escala, pegado | HECHO |
+| H2.S3.M3 | Capturas ×3 viewports ×2 temas + elegida + escala de grises, **miradas** | Se ve un cuerpo, no un maniquí de bloques | `evidencia/h2/capturas-v2/` con `LEEME.md` | HECHO |
+| H2.S3.M4 | Commit a la rama del PR #582 y push | El PR muestra el commit | `git log origin/pablo/inicio-paciente-silueta-voz-y-confirmacion -1` | HECHO |
 ### H3 — Texto visible, dictado por voz, y el panel sobrante (P-02, P-03)
 
 **Prioridad:** `ALTA`

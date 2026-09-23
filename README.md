@@ -12,7 +12,7 @@ entre proyectos, pero están escritas para el stack real que usamos.
 concreta (arrancar una tarea, tocar un endpoint, diseñar una pantalla, desplegar, cerrar un carril)
 a la skill que hay que cargar, y fija la precedencia cuando dos se contradicen.
 
-Con 174 skills, leer el catálogo entero no sirve. El router sí.
+Con 178 skills, leer el catálogo entero no sirve. El router sí.
 
 ## Cómo se usa
 

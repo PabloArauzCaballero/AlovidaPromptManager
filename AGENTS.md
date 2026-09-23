@@ -1,6 +1,6 @@
 # AGENTS.md — Estándar de trabajo de la empresa
 
-Este repo es el **estándar de ingeniería, diseño y operación de la casa**: 176 skills, 14 reglas y
+Este repo es el **estándar de ingeniería, diseño y operación de la casa**: 178 skills, 15 reglas y
 los candados que las hacen cumplir. Si sos un agente de IA trabajando en cualquier repo de la
 empresa —o un programador usando uno—, esto es lo que tenés que respetar, sin importar qué
 herramienta uses.
@@ -77,6 +77,21 @@ Esta plataforma maneja datos clínicos. Estas prohibiciones **no admiten excepci
 - **Prohibido mockear el backend** en un test de integración o E2E y declarar la funcionalidad
   terminada. Un mock cubre una capa, no prueba la integración.
 - Un test en rojo **bloquea el cierre**. Se corrige, o se declara `BLOQUEADO` con evidencia externa.
+
+### 1.6 Entrega — EXTREMADAMENTE OBLIGATORIO
+
+- **Toda captura de Playwright se revisa DOS veces.** Primera pasada: verificación contra el
+  criterio de aceptación. Segunda pasada, después de cerrar la primera: **adversarial y ultra
+  crítica**, con la postura de quien tiene que rechazar la entrega, severidad por hallazgo y nota
+  por pantalla (`RECHAZADA` / `ACEPTABLE CON RESERVAS` / `APROBADA`). Una pantalla `RECHAZADA` no
+  se entrega. Toda corrección exige re-captura y las dos pasadas otra vez.
+- **Todo PR que se deja queda MERGEABLE**, demostrado con la salida literal de
+  `gh pr view <n> --json isDraft,mergeable,mergeStateStatus` y `gh pr checks <n>` después del
+  último push: sin conflictos, fuera de draft, checks en verde. Si no se logra, la entrega es
+  `A MEDIAS` con la causa, nunca `HECHO`.
+
+Detalle: regla [`35`](.claude/rules/35-doble-revision-critica-y-pr-mergeable.md), skills
+`critical-double-review` y `pr-mergeable-gate`.
 
 ---
 
@@ -217,8 +232,8 @@ sesión.
 
 | Qué | Dónde |
 |---|---|
-| **Las 14 reglas completas** | [`.claude/rules/`](.claude/rules/) — empezá por [`README.md`](.claude/rules/README.md) |
-| **Catálogo de 176 skills** | [`.claude/skills/`](.claude/skills/) |
+| **Las 15 reglas completas** | [`.claude/rules/`](.claude/rules/) — empezá por [`README.md`](.claude/rules/README.md) |
+| **Catálogo de 178 skills** | [`.claude/skills/`](.claude/skills/) |
 | **Índice de skills** | [`.claude/skills/skills-router/SKILL.md`](.claude/skills/skills-router/SKILL.md) |
 | **Espejo cross-tool** | [`.agents/skills/`](.agents/skills/) y [`.agents/rules/`](.agents/rules/) |
 | **Panorama del repo** | [`README.md`](README.md) |
