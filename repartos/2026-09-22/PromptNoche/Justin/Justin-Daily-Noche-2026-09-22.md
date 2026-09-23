@@ -8,7 +8,7 @@
 - Rama: `________________` · Peldaño alcanzado (regla 30): `________________`
 - Daily de equipo: [`Daily-Noche-2026-09-22.md`](../Daily-Noche-2026-09-22.md)
 
-> **Publicación tardía — 2026-09-23.** El frontend sí recibió dos PRs de Justin: [#578](https://github.com/mdavila-2001/mantra-core-health/pull/578) y [#579](https://github.com/mdavila-2001/mantra-core-health/pull/579), fusionados en `mockup`. El arreglo posterior de estados quedó en [#580](https://github.com/mdavila-2001/mantra-core-health/pull/580), abierto al corte de esta publicación. Este daily no se había actualizado, por eso el equipo no tenía el puntero. El detalle, evidencia y límites están en [`docs/trabajo/2026-09-23-publicar-avance-justin/REPORTE.md`](../../../../docs/trabajo/2026-09-23-publicar-avance-justin/REPORTE.md).
+> **Publicación tardía — 2026-09-23.** El frontend recibió los PRs de Justin [#578](https://github.com/mdavila-2001/mantra-core-health/pull/578), [#579](https://github.com/mdavila-2001/mantra-core-health/pull/579) y [#580](https://github.com/mdavila-2001/mantra-core-health/pull/580), fusionados en `mockup`. Este daily no se había actualizado, por eso el equipo no tenía el puntero. El detalle, evidencia y límites están en [`docs/trabajo/2026-09-23-publicar-avance-justin/REPORTE.md`](../../../../docs/trabajo/2026-09-23-publicar-avance-justin/REPORTE.md).
 
 ## 0. Tu primera entrega es una medición, y Ender la espera
 
@@ -90,7 +90,7 @@ AVANCE — reserva y cotizaciones — <fase> — <ID de microtarea>
 |---|---|---|---|
 | Pantalla, ruta y menú de Cotizaciones | Pablo, Ender | `mantra-core-health` PR [#578](https://github.com/mdavila-2001/mantra-core-health/pull/578), merge `38072e84`, 2026-09-23 13:56 UTC | `A MEDIAS`: no cubre los DoD completos del carril |
 | Órdenes diagnósticas propias con etiquetas, sin IDs impresos | Pablo | `mantra-core-health` PR [#579](https://github.com/mdavila-2001/mantra-core-health/pull/579), merge `8ae7283a`, 2026-09-23 14:13 UTC | `A MEDIAS`: falta publicación observable en mockup |
-| Estados de perfil, error y truncamiento de órdenes | Pablo | `mantra-core-health` PR [#580](https://github.com/mdavila-2001/mantra-core-health/pull/580) | `EN CURSO`: PR abierto |
+| Estados de perfil, error y truncamiento de órdenes | Pablo | `mantra-core-health` PR [#580](https://github.com/mdavila-2001/mantra-core-health/pull/580), merge `05d83cb8` | `A MEDIAS`: fusionado; falta publicación observable y DoD del carril |
 
 ## 8. Al cerrar
 
@@ -108,6 +108,6 @@ AVANCE — reserva y cotizaciones — <fase> — <ID de microtarea>
 ## 9. Estado real al publicar este daily
 
 - **`0 / 51 HECHO` se conserva:** las microtareas originales exigen baseline, medición antes/después, capturas por tema/viewport, barridos y gates que no se ejecutaron. Los cambios de frontend no sustituyen esos DoD.
-- **Código fusionado:** #578 y #579 forman parte de `origin/mockup`; la punta observada fue `8ae7283a`.
+- **Código fusionado:** #578, #579 y #580 forman parte de `origin/mockup`; la punta observada fue `05d83cb8`.
 - **No es un despliegue verificado:** el mockup público respondió HTML con `Last-Modified: 2026-09-23 13:59 UTC`, anterior al merge de #579. El host no pudo consultarse por SSH desde este equipo (`atlas-db`: host desconocido; host público: puerto 22 inaccesible).
-- **Siguiente paso concreto:** revisar `/opt/alovida-mockup/estado/redeploy.log` desde un equipo con acceso al host y decidir #580; después repetir el recorrido autenticado y las mediciones del carril.
+- **Siguiente paso concreto:** revisar `/opt/alovida-mockup/estado/redeploy.log` desde un equipo con acceso al host; después repetir el recorrido autenticado y las mediciones del carril.

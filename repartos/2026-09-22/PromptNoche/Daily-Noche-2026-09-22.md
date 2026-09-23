@@ -223,7 +223,7 @@ Las 20 están con supuesto y dueño en el documento fuente. Las que **bloquean c
 |---|---|---|---|---|---|
 | Pablo | __ / 68 | __ / 6 | | | [Pablo-Daily-Noche-2026-09-22.md](Pablo/Pablo-Daily-Noche-2026-09-22.md) |
 | Itzan | __ / 93 | __ / 8 | | | [Itzan-Daily-Noche-2026-09-22.md](Itzan/Itzan-Daily-Noche-2026-09-22.md) |
-| Justin | 0 / 51 | 0 / 6 | Cotizaciones entregadas fuera de los DoD originales: #578 y #579 fusionados; #580 abierto; faltan medición/gates/publicación del mockup | Mockup observado anterior a #579; estado del host sin acceso SSH | [Justin-Daily-Noche-2026-09-22.md](Justin/Justin-Daily-Noche-2026-09-22.md) |
+| Justin | 0 / 51 | 0 / 6 | Cotizaciones entregadas fuera de los DoD originales: #578, #579 y #580 fusionados; faltan medición/gates/publicación del mockup | Mockup observado anterior a #579; estado del host sin acceso SSH | [Justin-Daily-Noche-2026-09-22.md](Justin/Justin-Daily-Noche-2026-09-22.md) |
 | Ender | __ / 48 | __ / 6 | | | [Ender-Daily-Noche-2026-09-22.md](Ender/Ender-Daily-Noche-2026-09-22.md) |
 | Marcelo | __ / 59 | __ / 6 | | | [Marcelo-Daily-Noche-2026-09-22.md](Marcelo/Marcelo-Daily-Noche-2026-09-22.md) |
 | **Total** | **__ / 319** | **__ / 32** | | | |
