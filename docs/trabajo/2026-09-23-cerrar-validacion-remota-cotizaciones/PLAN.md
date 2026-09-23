@@ -44,10 +44,10 @@
 | H2.S1.M1 | Actualizar el daily personal | No declara el mockup como bloqueado ni altera el conteo publicado | búsqueda de `fc8adc4` y `29 / 51` | HECHO |
 | H2.S1.M2 | Actualizar el daily de equipo | El bloqueo de SSH no aparece como bloqueo vigente de Justin | búsqueda de `fc8adc4` y ausencia de “Mockup observado anterior a #579” | HECHO |
 
-## Riesgos y bloqueos previstos
+## Riesgos y límites previstos
 
 | Riesgo | Impacto | Mitigación |
 |---|---|---|
 | Confundir un E2E contra el doble con una API real | Se sobrestima la cobertura | Declarar explícitamente el backend simulado en reporte y dailies |
-| Confundir esta verificación con los 31 pendientes originales | Se infla el avance | Mantener `20 / 51` y enumerar los DoD que aún faltan |
+| Confundir esta verificación con los pendientes originales | Se infla el avance | Mantener `29 / 51` y enumerar los DoD que aún faltan |
 | El dominio `demo.alovidasalud.com` no apunta al servidor de Coolify | No es apto para esta comprobación | Usar sólo el dominio `sslip.io` que Coolify marca con DNS coincidente; no cambiar DNS |

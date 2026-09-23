@@ -17,9 +17,11 @@
 
 Ninguna dentro de este cierre documental. El carril original no queda cerrado por esta prueba remota puntual.
 
+No hay bloqueos activos: los ítems del carril original que no están `HECHO` se mantienen explícitamente como `A MEDIAS` o `DECISION_REQUIRED`; no impiden integrar este PR ni continuar con contratos simulados declarados.
+
 ## Pendiente
 
-| Pendiente del carril original | Estado | Qué lo destraba |
+| Seguimiento del carril original | Estado | Qué falta para cerrarlo |
 |---|---|---|
 | Medición antes/después del directorio y reserva | `A MEDIAS` | Línea base histórica comparable, recorrido instrumentado y resultado repetido. |
 | Precios, procedencia y acción de negocio para Cotizaciones (Q-16) | `DECISION_REQUIRED` | Fuente y decisión explícita de Negocio; no se inventa precio ni procedencia. |
