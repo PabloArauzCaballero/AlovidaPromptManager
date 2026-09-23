@@ -1,6 +1,6 @@
 # PLAN — Separar quién decide de quién pinta en los registros y en el perfil
 
-> **AVANCE: 49 / 68 — 72,1 %.** El denominador subió de 64 a 68: el baseline destapó un rojo previo
+> **AVANCE: 53 / 68 — 77,9 %.** El denominador subió de 64 a 68: el baseline destapó un rojo previo
 > propio (H1.S1.M5), la extracción destapó código muerto y tres consumidores más de la misma regla
 > (H3.S1.M6 y M7), y separar la vista del perfil destapó una auto-referencia que el propio contrato
 > daba por viva y ya no existe (H4.S1.M6). Cifra calculada, no estimada:
@@ -363,7 +363,9 @@ en [`evidencia/h3/deuda-anclaje-y-foco.md`](./evidencia/h3/deuda-anclaje-y-foco.
 **Prioridad:** `ALTA`
 **CA:** Dado el contenedor elegido, cuando alguien lee su plantilla, entonces ve regiones, estados y acciones con nombres del problema; y el contenedor muestra conexión de casos de uso, no renderizado.
 **DoD:** el diff, el comportamiento comparado contra H1 y la tabla de propiedad del estado cumplida.
-**Estado:** EN CURSO — el contenedor está elegido y su contrato escrito; falta la extracción en sí.
+**Estado:** HECHO — las diez microtareas cerradas. La vista quedó con **cero inyecciones**; las
+tres operaciones viven en el contenedor; la plantilla ya no decide reglas; y el comportamiento se
+comparó en el navegador contra el baseline, con lo no cubierto declarado.
 
 #### H4.S1 — Bajar la presentación a la vista
 
@@ -486,14 +488,47 @@ vista ya vive en el motor de formularios. Separarlo no demostraría nada de lo q
 
 **CA:** Dada la plantilla resultante, cuando se lee, entonces los eventos llaman una operación con intención clara y las colecciones tienen identidad estable.
 **DoD:** revisión del diff contra el §5.2, con los hallazgos corregidos.
-**Estado:** TODO
+**Estado:** HECHO — cuatro microtareas cerradas.
 
 | ID | Microtarea | CA (binario) | DoD (comando de verificación) | Estado |
 |---|---|---|---|---|
 | H4.S2.M1 | Cálculos de dominio de la plantilla a funciones nombradas | La plantilla no calcula reglas | revisión del diff | HECHO |
 | H4.S2.M2 | Identidad estable en las colecciones | No hay `track $index` donde la identidad importa | `git grep -n 'track \$index' -- '<archivos>'` | HECHO |
 | H4.S2.M3 | Ningún evento hace tres cosas en una expresión | Cada evento llama una operación | revisión del diff | HECHO |
-| H4.S2.M4 | Comportamiento comparado con el recorrido de H1.S2 | Sin diferencias injustificadas | recorrido comparado | TODO |
+| H4.S2.M4 | Comportamiento comparado con el recorrido de H1.S2 | Sin diferencias injustificadas | recorrido comparado | HECHO |
+
+**H4.S2.M4 — HECHO, PASS con cobertura declarada.** Todo en
+[`evidencia/h4/recorrido-comparado.md`](./evidencia/h4/recorrido-comparado.md), con sus once
+capturas. Las ocho celdas del baseline re-tomadas con **la misma sonda, verbatim**: desborde 0,
+problemas 0, fondos correctos, y la ficha de consulta **indistinguible** de la del baseline abierta
+al lado. `/my-account/edit` entra como control: no se tocó y se ve igual.
+
+*(El baseline del perfil es `H1.S3`, no `H1.S2` —que son los recorridos de alta—. El plan nombraba
+la subtarea equivocada; se compara contra la que existe.)*
+
+> **El hallazgo que más lejos llega: el instrumento del baseline no mide el código.** La primera
+> corrida dio 931 caracteres donde el baseline decía 934, y parecía una diferencia que explicar. Se
+> comprobó en **las dos direcciones**, devolviendo los cuatro archivos al commit anterior: el mismo
+> código produce 931 y 934, y el código anterior también. El volcado del texto en los dos estados es
+> idéntico línea a línea. La causa se aisló forzando una recompilación **sin cambiar una sola
+> línea** (`touch`, `git status` vacío después): los sellos de Trayectoria pasaron de 2 a 6. **La
+> maqueta regenera sus datos en cada compilación.** Dentro de una compilación es estable.
+>
+> **Consecuencia para `H6`:** ninguna cuenta tomada a un lado y otro de un rebuild —caracteres,
+> sellos, filas— vale como huella. Se compara estructura y comportamiento, no cifras.
+
+**Las tres operaciones que bajaron al contenedor, en el navegador.** El aviso de «Credenciales»:
+0 al abrir la ficha, **1** al abrir esa pestaña con su texto completo visible en la captura, y sigue
+en 1 al volver. Retirar: **no ejercitado**, esta compilación no trae ningún título pendiente — la
+regla la fijan cuatro pruebas dirigidas. La foto: el manejador corre y no sale ninguna petición, con
+**dos** instrumentos distintos y **exactamente igual con el código anterior**, así que no hay
+regresión; qué falla —el producto o la emulación del diálogo de archivo— no se afirma, y el camino
+queda para el E2E dirigido de `H6.S1.M4`.
+
+> **Un defecto propio del método, anotado.** La primera corrida murió con el overlay de error de
+> vite tapando la pantalla, y **no había ningún error de compilación**: la sonda había arrancado
+> mientras el servidor recompilaba. Se resolvió esperando por condición —contando las marcas de
+> compilación completa— en vez de correr y ver.
 
 Las tres primeras, con su medida, en
 [`evidencia/h4/la-plantilla-describe-la-interfaz.md`](./evidencia/h4/la-plantilla-describe-la-interfaz.md).
