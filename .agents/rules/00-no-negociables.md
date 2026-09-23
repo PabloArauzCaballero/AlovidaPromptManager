@@ -96,5 +96,16 @@ Cuando dos fuentes se contradicen, gana la de arriba:
 
 El `CLAUDE.md` del proyecto manda sobre cualquier skill. Esta regla manda sobre la conveniencia.
 
+## 9. Entrega — EXTREMADAMENTE OBLIGATORIO (regla 35)
+
+1. **Prohibido declarar verificada una entrega visual con una sola revisión de las capturas.**
+   Toda captura de Playwright se revisa **dos veces**: una pasada de verificación y una segunda
+   pasada adversarial y ultra crítica, con veredicto escrito, severidad por hallazgo y nota por
+   pantalla. Una pantalla `RECHAZADA` no se entrega. Skill: `critical-double-review`.
+2. **Prohibido dejar un PR que no sea mergeable.** Antes de entregarlo se demuestra con la salida
+   literal de `gh pr view --json mergeable,mergeStateStatus,...` y `gh pr checks` que no tiene
+   conflictos, no está en draft y sus checks están en verde. Si no se logra, la entrega queda
+   `A MEDIAS` con la causa. Skill: `pr-mergeable-gate`.
+
 Skills relacionadas: `anti-hallucination-guard`, `scope-discipline`, `evidence-and-verification`,
-`data-privacy-phi`, `seed-data-catalogs`.
+`data-privacy-phi`, `seed-data-catalogs`, `critical-double-review`, `pr-mergeable-gate`.

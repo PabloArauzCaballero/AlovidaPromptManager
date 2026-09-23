@@ -87,13 +87,17 @@ Trampas verificadas en la doc:
   como vinculado. Preferí la descripción del PR.
 - Si el PR solo avanza el issue sin terminarlo, escribí `Refs #10`: no cierra nada.
 
-## 6. Antes de pedir review
+## 6. Antes de pedir review — y antes de entregar
 
 1. Leé tu propio diff completo en la pestaña "Files changed". Lo que te da vergüenza, arreglalo.
 2. Sin archivos ajenos al cambio, sin `console.log`, sin código comentado, sin secretos.
 3. CI verde. No pidas review con checks rojos "que después arreglo".
 4. Rama actualizada contra la base si hay conflicto o si la base cambió el contrato que tocás.
 5. Pedí review a quien corresponde; CODEOWNERS lo hace solo para los paths cubiertos.
+6. **OBLIGATORIO (regla 35):** demostrá que el PR es mergeable con la salida literal de `gh`
+   (`mergeable`, `mergeStateStatus`, checks) después del último push y antes de cerrar el turno.
+   Procedimiento y cómo destrabar cada estado: `pr-mergeable-gate`. Si tiene UI, la doble
+   revisión de capturas (`critical-double-review`) va antes.
 
 ## 7. Conversaciones
 

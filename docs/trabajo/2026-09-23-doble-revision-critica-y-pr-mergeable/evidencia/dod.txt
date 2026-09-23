@@ -1,0 +1,61 @@
+$ grep -c "^name: critical-double-review" .claude/skills/critical-double-review/SKILL.md
+1
+ref ok: ui-quality-review
+ref ok: frontend-beautiful-ui
+ref ok: visual-proof
+ref ok: evidence-and-verification
+ref ok: data-privacy-phi
+
+$ grep -c "Primera pasada\|mergeStateStatus" .claude/rules/35-*.md
+4
+$ grep -n "regla 35" .claude/rules/00-no-negociables.md
+99:## 9. Entrega — EXTREMADAMENTE OBLIGATORIO (regla 35)
+$ grep -n "critical-double-review" .claude/skills/visual-proof/SKILL.md
+96:> con las diez preguntas, severidades y nota por pantalla de `critical-double-review`. Sin ella,
+146:- [ ] Segunda pasada adversarial hecha y registrada en `evidencia/doble-revision.md` (`critical-double-review`).
+
+$ gh pr update-branch --help | head -3
+Update a pull request branch with latest changes of the base branch.
+
+Without an argument, the pull request that belongs to the current branch is selected.
+$ gh pr ready --help | head -2
+Mark a pull request as ready for review.
+
+$ grep -c "^name: pr-mergeable-gate" .claude/skills/pr-mergeable-gate/SKILL.md
+1
+ref ok: github-pull-requests
+ref ok: github-branch-protection-rulesets
+ref ok: github-cli-automation
+ref ok: e2e-failure-triage
+
+$ grep -n "pr-mergeable-gate" .claude/skills/github-pull-requests/SKILL.md
+99:   Procedimiento y cómo destrabar cada estado: `pr-mergeable-gate`. Si tiene UI, la doble
+
+$ grep -n "critical-double-review\|pr-mergeable-gate" .claude/skills/skills-router/SKILL.md
+37:| **Después de toda captura Playwright — OBLIGATORIO** | **`critical-double-review`** | **Entregar con una sola mirada complaciente: exige dos pasadas, la segunda adversarial y ultra crítica** |
+38:| **Si dejás un PR — OBLIGATORIO** | **`pr-mergeable-gate`** | **Entregar un PR con conflictos, en draft o con checks en rojo** |
+164:| PR | `github-pull-requests` · `github-multirepo-coordination` → **`pr-mergeable-gate`** (siempre) |
+210:5. **`critical-double-review`** — si hay capturas: dos pasadas, la segunda ultra crítica, con nota
+212:6. **`pr-mergeable-gate`** — si dejás un PR: `mergeable`/`mergeStateStatus`/checks pegados tras el
+$ grep -n "35-doble" .claude/rules/README.md
+31:| **`35-doble-revision-critica-y-pr-mergeable.md`** | **EXTREMADAMENTE OBLIGA
+$ grep -n "1.6" AGENTS.md
+81:### 1.6 Entrega — EXTREMADAMENTE OBLIGATORIO
+$ grep -n "178" README.md ; ls -d .claude/skills/*/ | wc -l
+15:Con 178 skills, leer el catálogo entero no sirve. El router sí.
+178
+
+$ python tools/sync_agents.py
+sync: 8 archivo(s) copiado(s), 0 huerfano(s) borrado(s)
+$ python tools/sync_agents.py --check; echo exit=$?
+sync --check: OK, 196 archivo(s) en espejo, sin deriva
+exit=0
+$ python tools/sync_agents.py --check  (sin pipe)
+sync --check: OK, 196 archivo(s) en espejo, sin deriva
+exit=0
+$ python tools/sync_agents.py --self-test
+PASS  una diferencia real sigue siendo deriva
+
+sync_agents self-test: 14 PASS, 0 FAIL
+$ python .claude/hooks/plan_status.py
+docs/trabajo/2026-09-23-doble-revision-critica-y-pr-mergeable/PLAN.md

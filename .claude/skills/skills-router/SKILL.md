@@ -34,6 +34,8 @@ Estas no son opcionales ni dependen del tipo de tarea. Son el esqueleto de todo 
 | Cuando te oís decir "debería" | `rationalization-guard` | Racionalizar un atajo |
 | Antes de decir "listo" | `evidence-and-verification` | Afirmar sin salida literal pegada |
 | Si tocaste UI | `visual-proof` | Cerrar sin mirar realmente las capturas |
+| **Después de toda captura Playwright — OBLIGATORIO** | **`critical-double-review`** | **Entregar con una sola mirada complaciente: exige dos pasadas, la segunda adversarial y ultra crítica** |
+| **Si dejás un PR — OBLIGATORIO** | **`pr-mergeable-gate`** | **Entregar un PR con conflictos, en draft o con checks en rojo** |
 | Al cerrar el turno | `finish-your-turn` | Devolver con trabajo en alcance a medias |
 
 Si delegás en subagentes: `agent-orchestration` + `agent-resource-control`.
@@ -159,7 +161,7 @@ Si el cambio toca datos de pacientes, profesionales o cualquier dato clínico:
 | Definir la unidad de trabajo | `lane-authoring` → `requirements-and-acceptance` → `vertical-slicing` |
 | Reportar un bug | `bug-reporting-standard` |
 | Ramas y commits entre repos | `git-workflow-multirepo` |
-| PR | `github-pull-requests` · `github-multirepo-coordination` |
+| PR | `github-pull-requests` · `github-multirepo-coordination` → **`pr-mergeable-gate`** (siempre) |
 | Issues y tablero | `github-issues-projects` |
 | Proteger ramas | `github-branch-protection-rulesets` |
 | CI | `ci-cd-pipeline` (diseño) → `github-actions-ci` (implementación) |
@@ -197,7 +199,7 @@ Si el cambio toca datos de pacientes, profesionales o cualquier dato clínico:
 | Diseño vs prueba del mismo tema | Ambas, en orden: diseño primero (`frontend-accessibility` → `accessibility-testing`) |
 | Cualquier skill vs `CLAUDE.md` del proyecto | El **`CLAUDE.md`** |
 
-## 4. Los cinco gates que bloquean un cierre
+## 4. Los siete gates que bloquean un cierre
 
 Ninguno se puede declarar cumplido sin salida literal pegada:
 
@@ -205,7 +207,11 @@ Ninguno se puede declarar cumplido sin salida literal pegada:
 2. `security-guardrails` — si el cambio toca autorización, datos o entrada de usuario.
 3. `data-privacy-phi` — si toca datos de personas.
 4. `visual-proof` — si toca UI.
-5. `qa-evidence-reporting` — el reporte tiene comandos, salida y "No cubierto".
+5. **`critical-double-review`** — si hay capturas: dos pasadas, la segunda ultra crítica, con nota
+   por pantalla (regla 35). Ninguna pantalla `RECHAZADA` se entrega.
+6. **`pr-mergeable-gate`** — si dejás un PR: `mergeable`/`mergeStateStatus`/checks pegados tras el
+   último push (regla 35).
+7. `qa-evidence-reporting` — el reporte tiene comandos, salida y "No cubierto".
 
 ## Checklist
 

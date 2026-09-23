@@ -28,7 +28,7 @@ un cambio de lógica altera lo que se ve, aplica.
 |---|---|---|
 | Escrito | Se editó el código | "Cambié X". Nada sobre cómo se ve. |
 | Verificado funcionalmente | E2E/DOM en verde, sin mirar capturas | "El flujo funciona". **No** "se ve bien". |
-| Verificado visualmente | Matriz de §3 capturada **e inspeccionada**, defectos corregidos y re-capturados | "Verificado visual en los viewports/temas/estados listados". |
+| Verificado visualmente | Matriz de §3 capturada **e inspeccionada dos veces** (§5 + `critical-double-review`), defectos corregidos y re-capturados | "Verificado visual en los viewports/temas/estados listados". |
 
 Nunca subas de nivel sin la evidencia del nivel. La escalera general está en
 `evidence-and-verification`.
@@ -91,6 +91,11 @@ captura, no un "se ve bien" global.
 Defecto encontrado → corregir → **re-capturar la misma celda** → re-inspeccionar. Una
 captura vieja no prueba el código nuevo.
 
+> [!important] Esta inspección es solo la PRIMERA pasada (regla 35)
+> Es obligatoria una **segunda pasada adversarial y ultra crítica** sobre las capturas finales,
+> con las diez preguntas, severidades y nota por pantalla de `critical-double-review`. Sin ella,
+> el máximo alcanzable es "verificado funcionalmente", aunque esta lista esté completa.
+
 ## 6. Consola y red
 
 Una pantalla que se ve bien con errores por debajo no está verificada.
@@ -138,6 +143,7 @@ Si falta la inspección, el nivel alcanzado es **verificado funcionalmente**, y 
 - [ ] Carga, vacío, error, con datos y contenido extremo.
 - [ ] La interacción cambiada, capturada en su estado abierto/activo/con foco.
 - [ ] Cada captura abierta e inspeccionada contra §5.
+- [ ] Segunda pasada adversarial hecha y registrada en `evidencia/doble-revision.md` (`critical-double-review`).
 - [ ] Defectos corregidos y celdas re-capturadas.
 - [ ] Consola y red sin errores inesperados.
 - [ ] Sin datos reales en las imágenes.

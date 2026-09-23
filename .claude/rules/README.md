@@ -28,6 +28,7 @@ registrala como ambigüedad (regla 00) y dejala anotada para corregir la fuente 
 | `10-ciclo-de-trabajo.md` | El ciclo obligatorio de principio a fin |
 | **`20-plan-obligatorio.md`** | **Plan por hitos → subtareas → microtareas, con CA y DoD. Candado: `plan_gate.py`** |
 | `30-escalera-de-evidencia.md` | Qué se puede afirmar con qué evidencia |
+| **`35-doble-revision-critica-y-pr-mergeable.md`** | **EXTREMADAMENTE OBLIGATORIO: toda captura Playwright se revisa dos veces (la segunda ultra crítica, con nota por pantalla) y todo PR se entrega mergeable, demostrado con `gh`. Skills: `critical-double-review`, `pr-mergeable-gate`** |
 | **`40-reporte-obligatorio.md`** | **`REPORTE.md` con completado / a medias / pendiente, y el avance en la PRIMERA línea. Candado: `report_gate.py`** |
 | `50-progreso-visible.md` | Checkpoints y frecuencia; el porcentaje sale de `plan_status.py` |
 | `60-guardia-de-racionalizacion.md` | Autoengaños típicos y su contramedida |
