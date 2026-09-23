@@ -2,7 +2,7 @@
 
 > **REPARTIDO: 5 / 5 carriles · 19 / 19 observaciones con dueño · 32 hitos · 64 subtareas · 319 microtareas.**
 > **AVANCE DEL TURNO: 0 / 319 — 0 %.** ← se llena al cerrar, con `microtareas HECHO / total`.
-> Pablo 0/68 · Itzan 0/93 · Justin 0/51 · Ender 0/48 · Marcelo 0/59.
+> Pablo 0/68 · Itzan 0/93 · Justin 20/51 · Ender 0/48 · Marcelo 0/59.
 > **`A MEDIAS` cuenta como no hecha. `DESCARTADO` no suma: se declara aparte con su motivo.**
 
 > **Estado:** `REPARTIDO` al 2026-09-22. Este documento se escribió **al repartir, antes del turno**;
@@ -223,7 +223,7 @@ Las 20 están con supuesto y dueño en el documento fuente. Las que **bloquean c
 |---|---|---|---|---|---|
 | Pablo | __ / 68 | __ / 6 | | | [Pablo-Daily-Noche-2026-09-22.md](Pablo/Pablo-Daily-Noche-2026-09-22.md) |
 | Itzan | __ / 93 | __ / 8 | | | [Itzan-Daily-Noche-2026-09-22.md](Itzan/Itzan-Daily-Noche-2026-09-22.md) |
-| Justin | 0 / 51 | 0 / 6 | Cotizaciones entregadas fuera de los DoD originales: #578, #579 y #580 fusionados; faltan medición/gates/publicación del mockup | Mockup observado anterior a #579; estado del host sin acceso SSH | [Justin-Daily-Noche-2026-09-22.md](Justin/Justin-Daily-Noche-2026-09-22.md) |
+| Justin | 20 / 51 | 0 / 6 | El plan fuente registra 20 microtareas verificadas; #578, #579 y #580 están fusionados. Faltan medición/gates/publicación del mockup para las restantes. | Mockup observado anterior a #579; estado del host sin acceso SSH | [Justin-Daily-Noche-2026-09-22.md](Justin/Justin-Daily-Noche-2026-09-22.md) |
 | Ender | __ / 48 | __ / 6 | | | [Ender-Daily-Noche-2026-09-22.md](Ender/Ender-Daily-Noche-2026-09-22.md) |
 | Marcelo | __ / 59 | __ / 6 | | | [Marcelo-Daily-Noche-2026-09-22.md](Marcelo/Marcelo-Daily-Noche-2026-09-22.md) |
 | **Total** | **__ / 319** | **__ / 32** | | | |

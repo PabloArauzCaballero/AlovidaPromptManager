@@ -63,5 +63,5 @@ Ninguno.
 
 ## Decisiones y ambigüedades
 
-- Se conserva `0 / 51` en el daily original: no hay evidencia para subir microtareas cuyos DoD exigen medición/capturas/gates no ejecutados.
+- **Rectificado por `2026-09-23-corregir-avance-justin`:** el plan fuente ya declaraba `20 / 51` microtareas verificadas. Las 31 restantes no se suben porque sus DoD exigen medición/capturas/gates no ejecutados.
 - Se reportan los tres PRs sin cambiar la propiedad original de archivos o la asignación de Ender para navegación.
