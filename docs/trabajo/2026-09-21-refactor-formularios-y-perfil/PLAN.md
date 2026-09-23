@@ -1,6 +1,6 @@
 # PLAN — Separar quién decide de quién pinta en los registros y en el perfil
 
-> **AVANCE: 53 / 68 — 77,9 %.** El denominador subió de 64 a 68: el baseline destapó un rojo previo
+> **AVANCE: 55 / 68 — 80,9 %.** El denominador subió de 64 a 68: el baseline destapó un rojo previo
 > propio (H1.S1.M5), la extracción destapó código muerto y tres consumidores más de la misma regla
 > (H3.S1.M6 y M7), y separar la vista del perfil destapó una auto-referencia que el propio contrato
 > daba por viva y ya no existe (H4.S1.M6). Cifra calculada, no estimada:
@@ -663,8 +663,8 @@ del motor.
 
 | ID | Microtarea | CA (binario) | DoD (comando de verificación) | Estado |
 |---|---|---|---|---|
-| H6.S1.M1 | `lint` y `typecheck` | Sin rojos nuevos | diff contra baseline | TODO |
-| H6.S1.M2 | `test` completo | Sin rojos nuevos | diff contra baseline | TODO |
+| H6.S1.M1 | `lint` y `typecheck` | Sin rojos nuevos | los dos en `exit=0` y sin salida, igual que el baseline → [`evidencia/h6/lint-typecheck.txt`](./evidencia/h6/lint-typecheck.txt) | HECHO |
+| H6.S1.M2 | `test` completo | Sin rojos nuevos | de 2 rojos previos queda **1**, el ajeno, reproducido aislado; `7 094` medidas contra `7 094` esperadas → [`evidencia/h6/regresion-comparada.md`](./evidencia/h6/regresion-comparada.md) | HECHO |
 | H6.S1.M3 | Cinco consumidores ajenos de `paginated-form`, a mano | Las cinco se comportan igual | **4 de 5** observadas y miradas → [`evidencia/h6/consumidores-ajenos.md`](./evidencia/h6/consumidores-ajenos.md) | A MEDIAS |
 | H6.S1.M4 | E2E dirigido al registro tocado, `--workers=1` | Pasa | salida pegada | TODO |
 | H6.S1.M5 | Barrido de las rutas de `auth` y `my-profile` | Ninguna ruta rompe | salida pegada | TODO |
@@ -713,7 +713,39 @@ del motor.
 
 | # | Decisión | Motivo | Evidencia |
 |---|---|---|---|
-| D-1 | La familia que se extrae en H3 es **la validación del respaldo de un alta** (formato y peso), no la de la contraseña ni la del documento | Es la única de las tres con lógica propia, con **pieza canónica ya existente a medio adoptar** y con sus tres copias enteras dentro de la reserva | `evidencia/h2/ficha-familia-respaldo.md` |
+| D-1 | La familia que se extrae en H3 es **la validación del respaldo de un alta** (formato y peso), no la de la contraseña ni la del documento. **Se cumplió a medias y se corrige debajo:** el respaldo se unificó, pero la contraseña **también** | Es la única de las tres con lógica propia, con **pieza canónica ya existente a medio adoptar** y con sus tres copias enteras dentro de la reserva | `evidencia/h2/ficha-familia-respaldo.md` |
 | D-2 | Los dos consumidores que se migran son **profesional y laboratorio**; imagenología queda como tercero si los dos primeros pasan sin diferencia | El DoD pide dos consumidores reales migrados y comparados contra el «antes» | ficha, campo 7 |
 | D-3 | **Desvío declarado del kill-test del encargo**: dice «profesional y paciente», pero el alta de paciente **no tiene adjuntos**. El kill-test se corre sobre profesional y laboratorio, que son los consumidores de la regla elegida | El kill-test comprueba que la regla viva una sola vez; se aplica a quienes la usan | `recorrido-paciente.md` (10 páginas, ninguna con adjunto) |
-| D-4 | La familia B (contraseña, 8 copias idénticas respaldadas por `@MinLength(8)` de la API) queda **declarada para la oleada 2**, no se toca hoy | 3 de sus 8 consumidores están fuera de la reserva (`reset-password`, `activate-account`, `admin/user-registration`) | ficha, tabla de candidatas |
+| D-4 | La familia B (contraseña, 8 copias idénticas respaldadas por `@MinLength(8)` de la API) quedaba **declarada para la oleada 2**, sin tocarse hoy. **No se cumplió: se extrajo igual** — corrección debajo | 3 de sus 8 consumidores están fuera de la reserva (`reset-password`, `activate-account`, `admin/user-registration`) | ficha, tabla de candidatas · `registro-compartido/politica-de-contrasena.ts` |
+
+> **Corrección de D-1 y D-4 — escrita el 2026-09-22 al cerrar `H6.S1.M2` (regla 20 §6.7).**
+> El plan decía una cosa y el árbol hace otra. Se detectó al explicar por qué la suite tiene un
+> archivo de spec más que el baseline, y se comprobó midiendo, no recordando:
+>
+> ```text
+> $ git diff --diff-filter=A --name-only d40b5631 HEAD
+> src/app/features/auth/registro-compartido/politica-de-contrasena.spec.ts
+> src/app/features/auth/registro-compartido/politica-de-contrasena.ts
+> ```
+>
+> **Los únicos dos archivos que el carril creó son los de la familia B**, la que D-4 mandaba a la
+> oleada 2. Y las cinco altas de la reserva la importan
+> (`register-{practitioner,patient,laboratory,imaging-center,organization}.ts`).
+>
+> **La familia A (el respaldo), que es la que D-1 eligió, sí se unificó — pero sin archivo nuevo**,
+> y por eso no saltaba a la vista: su pieza canónica **ya existía** a medio adoptar, tal como D-1
+> anticipaba. Terminar de adoptarla fue reemplazar las constantes propias por
+> `MAX_ATTACHMENT_BYTES` y `SUPPORT_FILE_FORMATS` de
+> `registro-compartido/credenciales-del-medico` y borrar las copias
+> (`register-laboratory.ts`, `-imaging-center.ts`, `-practitioner.ts`, −63/−63/−77 líneas).
+> D-1 se cumplió; lo que su redacción negaba —«no la de la contraseña»— es lo que no se sostuvo.
+>
+> **Qué parte de D-4 sí se respetó, y es la que importaba:** su motivo era que 3 de los 8
+> consumidores viven **fuera de la reserva**. Esos tres —`reset-password`, `activate-account`,
+> `admin/user-registration`— **siguen intactos**: `H3.S1.M5` los deja declarados y medidos. La
+> extracción alcanzó sólo a los cinco de adentro, así que **no se invadió territorio ajeno**; lo que
+> falló es el registro de la decisión, no la frontera.
+>
+> **Por qué se corrige acá y no se deja pasar:** el `REPORTE.md` se escribe desde este plan. Sin
+> esta nota diría que la política de contraseña quedó para otra oleada mientras el diff la muestra
+> extraída — y quien lea el reporte no tendría cómo saber cuál de los dos miente.

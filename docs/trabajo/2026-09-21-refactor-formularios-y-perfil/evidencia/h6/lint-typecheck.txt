@@ -1,0 +1,37 @@
+H6.S1.M1 — cierre, commit 4146fcd3fb5bd4d73b0027742ae12cc5192174ab
+rama itzan/separacion-smart-dumb-registros, arbol limpio (git status --short vacio)
+Mismos comandos literales que el baseline de H1.S1.M2, para que la comparacion valga.
+
+$ corepack yarn lint            # eslint .
+(sin salida)
+exit=0  (139 s)
+
+$ corepack yarn typecheck       # tsc -p tsconfig.app.json && tsc -p cypress/tsconfig.json && tsc -p playwright/tsconfig.json (--noEmit)
+(sin salida)
+exit=0  (62 s)
+
+COMPARACION CONTRA EL BASELINE (evidencia/antes/lint-typecheck.txt)
+
+  gate        baseline d76e3054   cierre 4146fcd3   diferencia
+  lint        exit=0, sin salida  exit=0, sin salida  ninguna
+  typecheck   exit=0, sin salida  exit=0, sin salida  ninguna
+
+Sin rojos nuevos. Las dos salidas son vacias en los dos estados, asi que no hay diff que
+mostrar: la comparacion es la igualdad de los dos pares (exit, salida).
+
+MISMA CONDICION DEL VERDE DE TYPECHECK QUE EN EL BASELINE
+  src/app/features/component-stock/component-index.generated.ts existe localmente
+  (632 763 bytes, regenerado 2026-09-22 19:51 por el servidor de desarrollo; ignorado por
+  .gitignore:160). En CI ese archivo no se genera antes del paso de tipos (HALL-I13 del turno
+  anterior), por eso alla el mismo gate da rojo. Este cierre, como el baseline, es el local:
+  no dice nada del CI.
+
+LO QUE ESTE GATE NO MIRA, Y DONDE SE CUBRE
+  `yarn typecheck` es `tsc --noEmit`: NO revisa las plantillas de Angular. Lo que las revisa
+  es `corepack yarn build`, corrido sobre este mismo commit al cerrar H4.S2 (exit 0) sin
+  cambios posteriores en el arbol. Hallazgo registrado en H4.S1.M3.
+
+CONDICIONES DE MEDICION
+  El servidor de desarrollo se detuvo ANTES de correr los dos gates y se comprobo que el
+  puerto 4200 quedara libre (riesgo previsto en la seccion 6 del plan, regla 70.2). Se midio
+  sin nada mas corriendo, como el baseline.
