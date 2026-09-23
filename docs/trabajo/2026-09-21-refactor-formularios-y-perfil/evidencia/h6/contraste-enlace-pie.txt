@@ -1,0 +1,4 @@
+light · /auth/register/imaging-center    · tinta=rgb(11, 85, 126) → rgb(11,85,126) sobre color(srgb 1 1 1 / 0.92) → rgb(255,255,255) · 12px/500 · ratio=8.03:1 · AA(4.5) PASA
+light · /auth/register/patient           · tinta=rgb(11, 85, 126) → rgb(11,85,126) sobre color(srgb 1 1 1 / 0.92) → rgb(255,255,255) · 12px/500 · ratio=8.03:1 · AA(4.5) PASA
+dark  · /auth/register/imaging-center    · tinta=rgb(18, 113, 159) → rgb(18,113,159) sobre color(srgb 0.0392157 0.168627 0.239216 / 0.92) → rgb(10,43,61) · 12px/500 · ratio=2.73:1 · AA(4.5) NO PASA
+dark  · /auth/register/patient           · tinta=rgb(18, 113, 159) → rgb(18,113,159) sobre color(srgb 0.0392157 0.168627 0.239216 / 0.92) → rgb(10,43,61) · 12px/500 · ratio=2.73:1 · AA(4.5) NO PASA

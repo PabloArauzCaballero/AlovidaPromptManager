@@ -1,6 +1,6 @@
 # PLAN — Separar quién decide de quién pinta en los registros y en el perfil
 
-> **AVANCE: 57 / 68 — 83,8 %.** El denominador subió de 64 a 68: el baseline destapó un rojo previo
+> **AVANCE: 59 / 68 — 86,8 %.** El denominador subió de 64 a 68: el baseline destapó un rojo previo
 > propio (H1.S1.M5), la extracción destapó código muerto y tres consumidores más de la misma regla
 > (H3.S1.M6 y M7), y separar la vista del perfil destapó una auto-referencia que el propio contrato
 > daba por viva y ya no existe (H4.S1.M6). Cifra calculada, no estimada:
@@ -710,8 +710,8 @@ habilitaciones; sus tres respuestas están abajo.
 
 | ID | Microtarea | CA (binario) | DoD (comando de verificación) | Estado |
 |---|---|---|---|---|
-| H6.S2.M1 | Capturas finales por viewport y tema | Cinco capturas con su línea | `evidencia/h6/` | TODO |
-| H6.S2.M2 | Teclado en el formulario tocado | Se completa sin mouse | descripción por paso | TODO |
+| H6.S2.M1 | Capturas finales por viewport y tema | Cinco capturas con su línea | **20 celdas** (5 altas × 2 anchos × 2 temas), desborde 0 y etiquetas 100 % en todas; seis abiertas y miradas, una comparada contra el baseline → [`evidencia/h6/capturas-finales.md`](./evidencia/h6/capturas-finales.md) | HECHO |
+| H6.S2.M2 | Teclado en el formulario tocado | Se completa sin mouse | `Paso 1 de 10` → `Paso 2 de 10` sin un clic; 7 paradas en orden visual, anillo de foco medido esperando por condición → [`evidencia/h6/teclado.md`](./evidencia/h6/teclado.md) | HECHO |
 | H6.S2.M3 | Las 20 preguntas del §19 | Cada una con evidencia | sección en `REPORTE.md` | TODO |
 | H6.S2.M4 | Peldaño por área (regla 30) | Hay peldaño por área | sección en `REPORTE.md` | TODO |
 | H6.S2.M5 | `REPORTE.md` con el avance primero | `head -3` muestra el avance | `head -3 REPORTE.md` | TODO |

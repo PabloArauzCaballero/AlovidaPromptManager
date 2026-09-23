@@ -1,0 +1,54 @@
+1 · orden de tabulación
+    1 · button[button] «Claro» · foco visible=true (solid 4px)
+    2 · button[button] «Oscuro» · foco visible=true (solid 4px)
+    3 · button[button] «Sistema» · foco visible=true (solid 4px)
+    4 · input[text]    «Nombre o razón social *(obligatorio)» · foco visible=false (none 3px)
+    5 · select[select-one] «Tipo de sociedad *(obligatorio)» · foco visible=false (none 3px)
+    6 · input[text]    «Número de NIT *(obligatorio)» · foco visible=false (none 3px)
+    7 · button[submit] «Siguiente» · foco visible=true (solid 4px)
+1b · paradas=7 · sin anillo de foco=3
+2 · avanzar con el primer obligatorio vacío
+   campos marcados inválidos: 3 · primero: «Nombre o razón social *(obligatorio)»
+   el foco quedó en: «Siguiente» · ¿en el primer inválido? false
+   ¿el campo apunta a su mensaje? true → Escribí el nombre o la razón social de la empresa.
+   mensajes visibles: ["Escribí el nombre o la razón social de la empresa.","Elegí el tipo de sociedad.","Escribí el NIT: sólo números, al menos cuatro dígitos."]
+   ¿avanzó de paso? false (se esperaba false)
+3 · completar el paso sin mouse
+   tras Tab el foco está en: select[select-one] «Tipo de sociedad *(obligatorio)»
+   elegido con flechas: {"valor":"0","texto":"Unipersonal"}
+   «Paso 1 de 10» → «Paso 2 de 10» · url cambió=false
+4 · problemas de consola: 1
+      Executing inline script violates the following Content Security Policy directive 'script-src 'self' 
+sin foco  · borde=0px none rgb(36, 40, 40) · outline=none 3px rgb(36, 40, 40) · sombra=none
+con foco  · input · borde=0px none rgb(36, 40, 40) · outline=none 3px rgb(36, 40, 40) · sombra=none
+¿cambió algo al enfocar? borde=false · sombra=false · outline=false
+sin foco · el campo               borde=0px none rgb(36, 40, 40) · sombra=none
+sin foco · ancestro 1 (div)       borde=1px solid rgb(125, 135, 134) · sombra=none
+sin foco · ancestro 2 (app-input) borde=0px none rgb(36, 40, 40) · sombra=none
+sin foco · ancestro 3 (div)       borde=0px none rgb(36, 40, 40) · sombra=none
+con foco · el campo               borde=0px none rgb(36, 40, 40) · sombra=none
+con foco · ancestro 1 (div)       borde=1px solid rgb(125, 135, 134) · sombra=none
+con foco · ancestro 2 (app-input) borde=0px none rgb(36, 40, 40) · sombra=none
+con foco · ancestro 3 (div)       borde=0px none rgb(36, 40, 40) · sombra=none
+→ ninguna de las cuatro capas cambia al enfocar
+sin foco · el campo               borde=0px none rgb(36, 40, 40) · sombra=none · (sin pseudo-elementos)
+sin foco · ancestro 1 (div)       borde=1px solid rgb(125, 135, 134) · sombra=none · (sin pseudo-elementos)
+sin foco · ancestro 2 (app-input) borde=0px none rgb(36, 40, 40) · sombra=none · (sin pseudo-elementos)
+sin foco · ancestro 3 (div)       borde=0px none rgb(36, 40, 40) · sombra=none · (sin pseudo-elementos)
+con foco · el campo               borde=0px none rgb(36, 40, 40) · sombra=none · (sin pseudo-elementos)
+con foco · ancestro 1 (div)       borde=1px solid rgb(125, 135, 134) · sombra=none · (sin pseudo-elementos)
+con foco · ancestro 2 (app-input) borde=0px none rgb(36, 40, 40) · sombra=none · (sin pseudo-elementos)
+con foco · ancestro 3 (div)       borde=0px none rgb(36, 40, 40) · sombra=none · (sin pseudo-elementos)
+→ ninguna de las cuatro capas cambia al enfocar
+el foco quedó en: input «Nombre o razón social *(obligatorio)»
+elementos del formulario que cambian al enfocar: 0
+campo enfocado: «Nombre o razón social *(obligatorio)»
+¿apareció el anillo esperando por condición? true
+   clases del envoltorio: input-wrapper is-focused
+   box-shadow: rgba(79, 179, 169, 0.45) 0px 0px 0px 4px
+   borde: rgb(11, 85, 126)
+campos inválidos (3): ["Nombre o razón social *(obligatorio)","Tipo de sociedad *(obligatorio)","Número de NIT *(obligatorio)"]
+¿el foco se movió a un campo con error, esperando por condición? false
+   el foco quedó en: «Siguiente» · ¿es un campo con error? false
+   el primer campo apunta a: Escribí el nombre o la razón social de la empresa.
+   ¿hay un resumen con role=alert? true
