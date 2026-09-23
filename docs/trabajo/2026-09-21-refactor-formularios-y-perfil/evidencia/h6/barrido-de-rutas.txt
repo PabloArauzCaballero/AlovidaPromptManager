@@ -1,0 +1,22 @@
+OK   /auth/register -> /auth/register | title="AloVida - Crear cuenta" | h1="Crear cuenta" | problemas=2
+       console.error: Executing inline script violates the following Content Security Policy directive 'script-src 'self' 'sha256-Ohy6Wz7NFFGmQaVW/a8g5BXylUJrN/hbRM2QuMglZ6Q=' 'sha25
+       console.error: Executing inline script violates the following Content Security Policy directive 'script-src 'self' 'sha256-Ohy6Wz7NFFGmQaVW/a8g5BXylUJrN/hbRM2QuMglZ6Q=' 'sha25
+OK   /auth/register/patient -> /auth/register/patient | title="AloVida - Crear cuenta de paciente" | h1="Crear cuenta de paciente" | problemas=2
+       console.error: Executing inline script violates the following Content Security Policy directive 'script-src 'self' 'sha256-Ohy6Wz7NFFGmQaVW/a8g5BXylUJrN/hbRM2QuMglZ6Q=' 'sha25
+       console.error: Executing inline script violates the following Content Security Policy directive 'script-src 'self' 'sha256-Ohy6Wz7NFFGmQaVW/a8g5BXylUJrN/hbRM2QuMglZ6Q=' 'sha25
+OK   /auth/register/practitioner -> /auth/register/practitioner | title="AloVida - Crear cuenta de profesional" | h1="Crear cuenta de profesional" | problemas=2
+       console.error: Executing inline script violates the following Content Security Policy directive 'script-src 'self' 'sha256-Ohy6Wz7NFFGmQaVW/a8g5BXylUJrN/hbRM2QuMglZ6Q=' 'sha25
+       console.error: Executing inline script violates the following Content Security Policy directive 'script-src 'self' 'sha256-Ohy6Wz7NFFGmQaVW/a8g5BXylUJrN/hbRM2QuMglZ6Q=' 'sha25
+OK   /auth/register/organization -> /auth/register/organization | title="AloVida - Registrar aseguradora" | h1="Registrá tu aseguradora" | problemas=2
+       console.error: Executing inline script violates the following Content Security Policy directive 'script-src 'self' 'sha256-Ohy6Wz7NFFGmQaVW/a8g5BXylUJrN/hbRM2QuMglZ6Q=' 'sha25
+       console.error: Executing inline script violates the following Content Security Policy directive 'script-src 'self' 'sha256-Ohy6Wz7NFFGmQaVW/a8g5BXylUJrN/hbRM2QuMglZ6Q=' 'sha25
+OK   /auth/register/laboratory -> /auth/register/laboratory | title="AloVida - Registrar laboratorio" | h1="Registrá tu laboratorio" | problemas=2
+       console.error: Executing inline script violates the following Content Security Policy directive 'script-src 'self' 'sha256-Ohy6Wz7NFFGmQaVW/a8g5BXylUJrN/hbRM2QuMglZ6Q=' 'sha25
+       console.error: Executing inline script violates the following Content Security Policy directive 'script-src 'self' 'sha256-Ohy6Wz7NFFGmQaVW/a8g5BXylUJrN/hbRM2QuMglZ6Q=' 'sha25
+OK   /auth/register/imaging-center -> /auth/register/imaging-center | title="AloVida - Registrar centro de imagenología" | h1="Registrá tu centro de imagenología" | problemas=0
+-- sesión: medica@alovida.mock
+OK   /my-account -> /my-account | title="AloVida - Mi perfil" | h1="Mi perfil" | problemas=0
+OK   /my-account/edit -> /my-account/edit | title="AloVida - Configurar tu perfil" | h1="Configurar tu perfil" | problemas=0
+-- sesión: paciente@alovida.mock
+OK   /my-account -> /my-account | title="AloVida - Mi perfil" | h1="Mi perfil" | problemas=0
+OK   /my-account/profile/edit -> /my-account/profile/edit | title="AloVida - Editar tus datos" | h1="Editar tus datos" | problemas=0

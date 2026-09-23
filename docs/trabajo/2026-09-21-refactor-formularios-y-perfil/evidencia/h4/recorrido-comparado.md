@@ -92,6 +92,25 @@ Cero respuestas ≥ 400.
 
 ## 3 · La foto: qué se intentó, qué se sabe y qué no
 
+> [!important] Corrección del 2026-09-22, escrita al cerrar `H6.S1.M4`
+> **Esta sección se equivocaba de instrumento, y la conclusión cambió.** Lo que sigue se conserva
+> tal como se escribió, porque el registro no se maquilla; pero hay que leerlo con esto al lado:
+>
+> - **«No sale ninguna petición» no medía nada.** El backend simulado es un `HttpInterceptorFn`
+>   (`core/mock/mock-backend.interceptor.ts:44`), no un servidor: responde dentro de Angular y
+>   **ninguna operación de la maqueta llega a la capa de red** que la sonda observaba. Cero
+>   peticiones era el valor esperado para cualquier operación, saliera bien o mal.
+> - **«El manejador corre» estaba bien, pero mal deducido.** Se infirió de que la entrada quedaba
+>   en cero archivos, y eso también es compatible con que nunca se le asignara ninguno. Ahora está
+>   medido directo, con un espía puesto antes del evento: `change con 1 archivo(s)`.
+> - **La subida sí ocurre.** `fotoRecien` pasa de `null` a tener valor, y esa señal sólo se escribe
+>   al final del ciclo.
+> - **Lo que falla es el dato que vuelve**: un sobre `{body, headers}` etiquetado
+>   `application/octet-stream`, que ningún `<img>` puede dibujar, y que además trae el avatar por
+>   defecto en lugar de la foto. Lo arma `core/mock/handlers/files.handlers.ts` — ajeno al carril.
+>
+> Medición completa en [`../h6/e2e-dirigido.md`](../h6/e2e-dirigido.md) §5.
+
 Se intentó con **dos** instrumentos distintos:
 
 1. `setInputFiles` directo sobre la entrada oculta.

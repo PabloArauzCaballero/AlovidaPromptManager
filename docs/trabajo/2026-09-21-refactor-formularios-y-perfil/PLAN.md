@@ -1,6 +1,6 @@
 # PLAN — Separar quién decide de quién pinta en los registros y en el perfil
 
-> **AVANCE: 55 / 68 — 80,9 %.** El denominador subió de 64 a 68: el baseline destapó un rojo previo
+> **AVANCE: 57 / 68 — 83,8 %.** El denominador subió de 64 a 68: el baseline destapó un rojo previo
 > propio (H1.S1.M5), la extracción destapó código muerto y tres consumidores más de la misma regla
 > (H3.S1.M6 y M7), y separar la vista del perfil destapó una auto-referencia que el propio contrato
 > daba por viva y ya no existe (H4.S1.M6). Cifra calculada, no estimada:
@@ -659,15 +659,31 @@ del motor.
 
 **CA:** Dado el cambio, cuando se corren los comandos del baseline, entonces ningún rojo es nuevo; y si se tocó `paginated-form` o `form-field`, cinco consumidores ajenos están comprobados a mano.
 **DoD:** salidas comparadas + cinco capturas de consumidores ajenos.
-**Estado:** EN CURSO
+**Estado:** A MEDIAS — cuatro de cinco microtareas cerradas y **ningún rojo nuevo** en ninguna de
+las cuatro. Lo que falta es el quinto consumidor ajeno de `M3`, que necesita una cuenta con otras
+habilitaciones; sus tres respuestas están abajo.
+
+> **Lo que el cierre destapó, y que ningún gate en verde habría mostrado (`M4`).** Dos
+> instrumentos que devolvían el número esperado por el motivo equivocado:
+> - **Los cinco rojos del E2E no son de los adjuntos**: los cinco son el mismo test a cinco anchos
+>   y mueren en la aserción de consola. Se demostró con un A/B —devolviendo `register-laboratory`
+>   al commit del corte— que **fallan igual sin este carril**. Causa: el baseline de consola que
+>   ese spec versiona (del 2026-09-09, ajeno) ya no contiene el mensaje de CSP que la app emite
+>   hoy, y el filtro compara el texto entero.
+> - **«La foto no sale» era el instrumento, no el producto.** El backend simulado es un
+>   `HttpInterceptorFn`, no un servidor: **ninguna** operación de la maqueta llega a la capa de red
+>   que la sonda de `H4` observaba, así que «cero peticiones» era el valor esperado siempre. Medido
+>   por señales en vez de por red, la subida **sí ocurre**; lo que no se puede dibujar es el sobre
+>   `{body, headers}` que devuelve el manejador de archivos de la maqueta. Ajeno, anotado, y la
+>   evidencia de `H4` quedó corregida en su propio archivo en vez de reescrita.
 
 | ID | Microtarea | CA (binario) | DoD (comando de verificación) | Estado |
 |---|---|---|---|---|
 | H6.S1.M1 | `lint` y `typecheck` | Sin rojos nuevos | los dos en `exit=0` y sin salida, igual que el baseline → [`evidencia/h6/lint-typecheck.txt`](./evidencia/h6/lint-typecheck.txt) | HECHO |
 | H6.S1.M2 | `test` completo | Sin rojos nuevos | de 2 rojos previos queda **1**, el ajeno, reproducido aislado; `7 094` medidas contra `7 094` esperadas → [`evidencia/h6/regresion-comparada.md`](./evidencia/h6/regresion-comparada.md) | HECHO |
 | H6.S1.M3 | Cinco consumidores ajenos de `paginated-form`, a mano | Las cinco se comportan igual | **4 de 5** observadas y miradas → [`evidencia/h6/consumidores-ajenos.md`](./evidencia/h6/consumidores-ajenos.md) | A MEDIAS |
-| H6.S1.M4 | E2E dirigido al registro tocado, `--workers=1` | Pasa | salida pegada | TODO |
-| H6.S1.M5 | Barrido de las rutas de `auth` y `my-profile` | Ninguna ruta rompe | salida pegada | TODO |
+| H6.S1.M4 | E2E dirigido al registro tocado, `--workers=1` | Pasa | **9 pasan · 5 rojos previos ajenos demostrados con A/B** contra el commit del corte; la foto del perfil, cerrada por observación → [`evidencia/h6/e2e-dirigido.md`](./evidencia/h6/e2e-dirigido.md) | HECHO |
+| H6.S1.M5 | Barrido de las rutas de `auth` y `my-profile` | Ninguna ruta rompe | **10/10 cargan, 0 desvíos**, mismos títulos y mismo ruido preexistente que el baseline → [`evidencia/h6/barrido-de-rutas.md`](./evidencia/h6/barrido-de-rutas.md) | HECHO |
 
 > **H6.S1.M3 — `A MEDIAS`, las tres respuestas (regla 20 §5).**
 > - **Qué anda:** cuatro consumidores ajenos de cuatro funcionalidades distintas montan el motor y
