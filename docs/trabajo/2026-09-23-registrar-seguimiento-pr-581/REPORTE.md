@@ -15,6 +15,7 @@
 ## A medias
 
 - PR #581: CI remoto y observación autenticada del SHA pendientes al momento de publicar este registro.
+- PR #31 de este registro: bloqueado por el candado de `main`. El log atribuye el rojo a los formatos obligatorios ausentes en los archivos del carril de Marcelo; no los modifica este seguimiento.
 
 ## Pendiente
 
