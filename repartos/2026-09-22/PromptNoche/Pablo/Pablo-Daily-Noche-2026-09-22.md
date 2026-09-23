@@ -1,6 +1,6 @@
 # Pablo — daily de la noche del 2026-09-22
 
-> **AVANCE: 52 / 68 — 76,5 %.** Sale de `microtareas HECHO / total`.
+> **AVANCE: 53 / 68 — 77,9 %.** Sale de `microtareas HECHO / total`.
 > `A MEDIAS` cuenta como **no hecha**. Prohibido el porcentaje estimado a ojo (regla 50 §5).
 
 - Carril: [`Noche-DisciplinaDeTablas.PatronYDondeAtiendo`](Noche-DisciplinaDeTablas.PatronYDondeAtiendo/TablaConAccionesModalConfirmacionYPaginacionEnCliente.md)
@@ -17,7 +17,7 @@
 | `app-pagination` con texto y select de página | Itzan | H3.S1 | primera mitad | `molecules/pagination/**` — **PUBLICADO**, spec 30/30 |
 | `filter-bar` con proyección de la acción a la derecha | Itzan | H3.S3 | primera mitad | `organisms/filter-bar/**` — **PUBLICADO**, spec 13/13, verificado en «Dónde atiendo» |
 | `data-table` con alto máximo, sin scroll lateral (opt-in) | Itzan | H3.S2 | | `organisms/data-table/**` — **PUBLICADO**, spec 31/31. Ojo: a 375 px con sólo columnas de prioridad 1 puede seguir sin entrar (se oculta, no hay scroll) — medido en mi propio consumidor, ver mi `REPORTE.md` |
-| `work-history layout="tabla"` (historial) | Itzan | H4.S3 | segunda mitad | rama `pablo/noche-disciplina-tablas-2026-09-22` (repo de producto): input `layout="tabla"` con `secciones="ambas"` o `"historial"`; editar/retirar/adjunto contra doble local (recargar pierde los cambios), **A MEDIAS**: falta re-captura y doble revisión |
+| `work-history layout="tabla"` (historial) | Itzan | H4.S3 | segunda mitad | rama `pablo/noche-disciplina-tablas-2026-09-22` (repo de producto): input `layout="tabla"` con `secciones="ambas"` o `"historial"`; editar/retirar/adjunto contra doble local (recargar pierde los cambios), doble revisión hecha (con reservas MENOR) |
 | Inventario de los 78 `iconOnly` con veredicto y dueño | los cinco | H5 | | no llegué — **TODO** |
 
 ## 1. Instalación del estándar — pegá la salida acá

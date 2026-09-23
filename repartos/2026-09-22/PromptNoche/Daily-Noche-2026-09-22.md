@@ -3,10 +3,10 @@
 > **REPARTIDO: 5 / 5 carriles · 19 / 19 observaciones con dueño · 32 hitos · 64 subtareas · 319 microtareas.**
 <<<<<<< HEAD
 > **AVANCE DEL TURNO: 65 / 319 — 20,4 %.** ← se llena al cerrar, con `microtareas HECHO / total`.
-> Pablo 45/68 · Itzan 0/93 · Justin 20/51 · Ender 0/48 · Marcelo 0/59.
+> Pablo 53/68 · Itzan 0/93 · Justin 20/51 · Ender 0/48 · Marcelo 0/59.
 =======
 > **AVANCE DEL TURNO: 0 / 319 — 0 %.** ← se llena al cerrar, con `microtareas HECHO / total`.
-> Pablo 0/68 · Itzan 0/93 · Justin 29/51 · Ender 14/48 · Marcelo 0/59.
+> Pablo 53/68 · Itzan 0/93 · Justin 29/51 · Ender 14/48 · Marcelo 0/59.
 >>>>>>> origin/main
 > **`A MEDIAS` cuenta como no hecha. `DESCARTADO` no suma: se declara aparte con su motivo.**
 
