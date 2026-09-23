@@ -2,10 +2,10 @@
 
 ## Completado
 
-- Se publicó `28/51 HECHO`: 20 del reporte legado y 8 no solapadas de #583.
-- La fuente técnica es el commit `21099f01` del PR #583; incluye capturas,
-  teclado, gates locales y protección contra navegación duplicada de
-  especialidades.
+- Se publicó `29/51 HECHO`: 20 del reporte legado y 9 no solapadas de #583.
+- La fuente técnica es el commit `4c9e419f` del PR #583; incluye capturas,
+  teclado, gates locales, protección contra navegación duplicada y la acción
+  visible de disponibilidad con una medición local hasta cupo.
 
 ## Descartado
 

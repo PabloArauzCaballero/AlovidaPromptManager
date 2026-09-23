@@ -2,7 +2,7 @@
 
 > **REPARTIDO: 5 / 5 carriles · 19 / 19 observaciones con dueño · 32 hitos · 64 subtareas · 319 microtareas.**
 > **AVANCE DEL TURNO: 0 / 319 — 0 %.** ← se llena al cerrar, con `microtareas HECHO / total`.
-> Pablo 0/68 · Itzan 0/93 · Justin 28/51 · Ender 0/48 · Marcelo 0/59.
+> Pablo 0/68 · Itzan 0/93 · Justin 29/51 · Ender 0/48 · Marcelo 0/59.
 > **`A MEDIAS` cuenta como no hecha. `DESCARTADO` no suma: se declara aparte con su motivo.**
 
 > **Estado:** `REPARTIDO` al 2026-09-22. Este documento se escribió **al repartir, antes del turno**;
@@ -229,7 +229,7 @@ Las 20 están con supuesto y dueño en el documento fuente. Las que **bloquean c
 |---|---|---|---|---|---|
 | Pablo | 19 / 68 | 1 / 6 | H2 (S1 HECHO y publicado; S2 reordenado a TODO); H3 (S1 HECHO, 3 consumidores comprobados; S2/S3 sin empezar) | ninguno | [Pablo-Daily-Noche-2026-09-22.md](Pablo/Pablo-Daily-Noche-2026-09-22.md) |
 | Itzan | __ / 93 | __ / 8 | | | [Itzan-Daily-Noche-2026-09-22.md](Itzan/Itzan-Daily-Noche-2026-09-22.md) |
-| Justin | 28 / 51 | 0 / 6 | 20 HECHO legados + 8 HECHO no solapados, publicados en #583: capturas por viewport/tema, teclado, gates locales y clic único también en la portada de especialidades. Las 6 de documentos son `DESCARTADO` por la decisión «Cotizaciones solamente». | Quedan medición histórica hasta cupos, contratos de negocio para precios/origen/acciones y validación remota de Coolify. | [Justin-Daily-Noche-2026-09-22.md](Justin/Justin-Daily-Noche-2026-09-22.md) |
+| Justin | 29 / 51 | 0 / 6 | 20 HECHO legados + 9 HECHO no solapados, publicados en #583: capturas por viewport/tema, teclado, gates locales, clic único y acción visible de disponibilidad. Las 6 de documentos son `DESCARTADO` por la decisión «Cotizaciones solamente». | Quedan baseline histórico, contratos de negocio para precios/origen/acciones y validación remota de Coolify. | [Justin-Daily-Noche-2026-09-22.md](Justin/Justin-Daily-Noche-2026-09-22.md) |
 | Ender | __ / 48 | __ / 6 | | | [Ender-Daily-Noche-2026-09-22.md](Ender/Ender-Daily-Noche-2026-09-22.md) |
 | Marcelo | __ / 59 | __ / 6 | | | [Marcelo-Daily-Noche-2026-09-22.md](Marcelo/Marcelo-Daily-Noche-2026-09-22.md) |
 | **Total** | **__ / 319** | **__ / 32** | | | |

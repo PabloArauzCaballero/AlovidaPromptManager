@@ -1,7 +1,7 @@
 # Plan — publicar el cierre local de reserva y Cotizaciones
 
 - Fecha: 2026-09-23.
-- Fuente de producto: `mantra-core-health` PR [#583](https://github.com/mdavila-2001/mantra-core-health/pull/583), commit `21099f01`.
+- Fuente de producto: `mantra-core-health` PR [#583](https://github.com/mdavila-2001/mantra-core-health/pull/583), commit `4c9e419f`.
 
 ## Resultado
 
