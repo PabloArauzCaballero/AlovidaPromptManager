@@ -257,3 +257,13 @@ Las 20 están con supuesto y dueño en el documento fuente. Las que **bloquean c
 - Un `VERIFIED` sobre algo que sólo persiste el simulador sin decir «contra el doble».
 - Un precio sin procedencia.
 - Datos de pacientes reales en cualquier salida pegada.
+
+
+## Inventario de `iconOnly` con veredicto (Pablo, H5.S1 — D-05)
+
+Tabla completa, una fila por aparición, con veredicto y dueño: `docs/trabajo/2026-09-22-pablo-disciplina-tablas/evidencia/h5/iconos.md` (repo de producto, rama `pablo/noche-disciplina-tablas-2026-09-22`).
+
+- **74 apariciones** en la rama (el reparto contó 78 sobre `origin/mockup`; −2 de `pagination.html` que ya son texto, el resto por PR ajenos).
+- Veredictos (criterio ADR-0012 §3: `aria-label` **y** globo **y** motivo en una línea): **40** excepciones candidatas a las que les falta el motivo · **23** con `aria-label` sin globo (convertir o agregar globo y motivo) · **11** sin nombre accesible visible (convertir).
+- Dueños: Itzan 26 (+8 de `register-patient`, sólo los dos bloques de ubicación) · Ender 3 · sin dueño 32 · Pablo 1 (**ya aplicado**: `site-bank-qr-dialog.html` pasó a texto) · 2 no se tocan (ADR-0014).
+- Heurística mecánica (lectura de la etiqueta), **no** se ejercitó cada botón en el navegador.
