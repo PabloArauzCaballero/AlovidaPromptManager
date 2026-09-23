@@ -22,7 +22,7 @@
 
 **CA:** Dado el daily de Justin, cuando alguien lo abre, entonces puede distinguir lo fusionado en `mockup`, el PR abierto, la evidencia disponible y los pendientes sin consultar el chat.
 **DoD:** `git diff --check` y búsquedas de los tres PRs en los dos dailies.
-**Estado:** A MEDIAS
+**Estado:** HECHO
 
 ### H1.S1 — Registrar hechos y límites
 
@@ -30,7 +30,7 @@
 |---|---|---|---|---|
 | H1.S1.M1 | Escribir el reporte de publicación con los SHAs/PRs y el estado del mockup | El reporte no presenta la pantalla como desplegada/verificada | `rg -n '#578|#579|#580' REPORTE.md` → 5 coincidencias | HECHO |
 | H1.S1.M2 | Actualizar los dos dailies con el avance y los punteros | Pablo puede encontrar el avance desde el daily de equipo | `rg -n '#578|#579|#580' …` → 9 coincidencias | HECHO |
-| H1.S1.M3 | Publicar un PR de PromptManager | El registro es revisable desde GitHub | `gh pr view <número>` | TODO |
+| H1.S1.M3 | Publicar un PR de PromptManager | El registro es revisable desde GitHub | `gh pr view 27` | HECHO |
 
 ## Riesgos y bloqueos previstos
 

@@ -2,7 +2,7 @@
 
 - Fecha: 2026-09-23 · Plan: [PLAN.md](./PLAN.md) · Rama: `justin/publicar-avance-reserva-cotizaciones-2026-09-23`.
 - Peldaño de evidencia alcanzado: `WRITTEN` en PromptManager; los tests dirigidos del frontend se registran como evidencia externa, no como verificación del despliegue.
-- Avance: **2 / 3 — 66.7 %**. El registro y los punteros están escritos y verificados; falta publicar el PR de PromptManager.
+- Avance: **3 / 3 — 100 %**. El registro y los punteros están publicados en el PR #27 de PromptManager; su merge sigue siendo decisión de revisión.
 
 ## Completado
 
@@ -10,21 +10,16 @@
 |---|---|---|---|
 | H1.S1.M1 | Reporte con el estado de #578, #579, #580 y el límite de despliegue | `rg -n '#578\|#579\|#580' …/REPORTE.md` | 5 coincidencias |
 | H1.S1.M2 | Daily personal y daily de equipo apuntan al avance | `rg -n '#578\|#579\|#580' …` | 9 coincidencias |
+| H1.S1.M3 | PR de PromptManager abierto para revisión | `gh pr view 27` | `OPEN` · `isDraft: true` |
 
 ## A medias
 
-### H1.S1.M3 — Publicar el registro por PR
-
-- Qué anda: el plan, reporte y ambos dailies están en la rama local y pasaron `check_reparto`.
-- Qué no anda: aún no existe el PR de PromptManager, por lo que el equipo no puede verlo desde `main`.
-- Qué falta exactamente: commit, push y creación del PR de esta rama.
-- Dónde quedó: `justin/publicar-avance-reserva-cotizaciones-2026-09-23`.
+Ninguna para la publicación en PromptManager. El carril original de frontend sigue `A MEDIAS` y se detalla en los dailies enlazados.
 
 ## Pendiente
 
 | ID | Estado | Qué lo destraba |
 |---|---|---|
-| H1.S1.M3 | TODO | Crear el PR de PromptManager y obtener su URL |
 | Carril Justin H1–H6 | A MEDIAS | Medición, capturas, barridos y gates definidos en el encargo original |
 | Despliegue del mockup | BLOQUEADO | Acceso al host que contiene `/opt/alovida-mockup/estado/redeploy.log` |
 
