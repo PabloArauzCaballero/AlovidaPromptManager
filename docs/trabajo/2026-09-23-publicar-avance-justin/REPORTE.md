@@ -33,13 +33,13 @@ $ gh pr view 579 …
 {"mergedAt":"2026-09-23T14:13:03Z","number":579,"state":"MERGED"}
 
 $ gh pr view 580 …
-{"mergedAt":null,"number":580,"state":"OPEN"}
+{"number":580,"state":"MERGED"}
 
-$ git log --oneline -4 origin/mockup
+$ git log --oneline -6 origin/mockup
+05d83cb8 Merge pull request #580 from mdavila-2001/justin/continuar-reserva-cotizaciones-2026-09-23
+d6a73e27 fix: expose quotation order loading states
 8ae7283a Merge pull request #579 from mdavila-2001/justin/continuar-reserva-cotizaciones-2026-09-23
 12d8c407 feat: show own diagnostic orders in quotations
-38072e84 Merge pull request #578 from mdavila-2001/justin/continuar-reserva-cotizaciones-2026-09-23
-5910ad8d docs: report reservation and quotation continuation
 
 $ curl -k -I https://pablo-h310.taila8f993.ts.net:8443/
 HTTP/1.1 200 OK
@@ -59,7 +59,7 @@ Ninguno.
 ## Riesgos residuales
 
 - El equipo puede confundir commits fusionados con un despliegue actualizado; los dos hechos deben seguir separados hasta observar el SHA servido.
-- #580 contiene correcciones posteriores a #579 y no forma parte de `mockup` mientras siga abierto.
+- El mockup público conserva `Last-Modified` anterior a #579 aunque `origin/mockup` ya contiene #580.
 
 ## Decisiones y ambigüedades
 
