@@ -5,10 +5,10 @@
 
 - Carril: [`Refactor-CatalogoEInventario.Plataforma`](Refactor-CatalogoEInventario.Plataforma/CatalogoRealScannerYFactoriesTipadas.md)
 - Corte: `origin/mockup` @ `5a0776c6…` → **el tuyo:** `d40b5631f68a52c79fe94f0dc689df3bc7e70140` (base auditada). `mockup` avanzó después a `b655e844` (7 commits, incluido #570) **sin solape** con los 14 archivos del carril, verificado antes del commit y antes del push
-- Rama: `ender/catalogo-real-scanner-factories-tipadas` · commit `bf5abde379613749a06b82347b27a46b1b9dfa44` · [PR #575](https://github.com/mdavila-2001/mantra-core-health/pull/575) contra `mockup`, **OPEN, sin merge** · Peldaño alcanzado (regla 30): **AUDITADO · COMMITEADO · PUSHEADO · PR ABIERTA** — no DONE
+- Rama: `ender/catalogo-real-scanner-factories-tipadas` · commit `bf5abde379613749a06b82347b27a46b1b9dfa44` · [PR #575](https://github.com/mdavila-2001/mantra-core-health/pull/575) contra `mockup`, **OPEN, sin merge** · Peldaño alcanzado (regla 30): **AUDITADO · COMMITEADO · PUSHEADO · PR ABIERTA** · carril **CLOSED** · `DONE_FORMAL = NO` (ver §7)
 - Daily de equipo: [`Daily-Noche-2026-09-21.md`](../Daily-Noche-2026-09-21.md)
 - Repo real: `mdavila-2001/mantra-core-health` (el reparto dice `alovida/mantra-core-health`, que no resuelve en GitHub)
-- Próxima acción de Ender: **ninguna** hasta cambio externo en CI/PR o reasignación explícita. La revisión y el merge del PR #575 quedan a cargo de quien corresponda.
+- Próxima acción de Ender: **ninguna**. El carril está cerrado. La revisión y el merge del PR #575 quedan a cargo de quien corresponda.
 
 ## 0. Por qué tu carril va primero
 
@@ -194,11 +194,14 @@ regla 65 no aplica.
 | Corte del producto | `origin/mockup` @ `d40b5631f68a52c79fe94f0dc689df3bc7e70140` (después avanzó a `b655e844` sin solape) |
 | Rama de producto | `ender/catalogo-real-scanner-factories-tipadas` |
 | FINAL_COMMIT | `bf5abde379613749a06b82347b27a46b1b9dfa44` (14 archivos, todos dentro de la reserva) |
-| PR | [#575](https://github.com/mdavila-2001/mantra-core-health/pull/575) |
-| PR_STATE | OPEN |
-| MERGE | NO |
+| PR_575 | [#575](https://github.com/mdavila-2001/mantra-core-health/pull/575) OPEN · NOT_MERGED |
 | Peldaño real | AUDITADO · COMMITEADO · PUSHEADO · PR ABIERTA |
 | PROCESSES_LEFT_RUNNING | NONE |
+| CARRIL_ENDER | CLOSED |
+| IMPLEMENTATION_WORK_REMAINING_FOR_ENDER | 0 |
+| RESIDUALES | 2 BLOCKED + 1 A MEDIAS, documentados y fuera de acción actual |
+| DONE_FORMAL | NO |
+| NEXT_ACTION_FOR_ENDER | NONE |
 
 **Tests y gates** (medidos antes del commit `bf5abde3`):
 
@@ -233,9 +236,15 @@ regla 65 no aplica.
 
 **Cierre:**
 
-`DONE = NO` — PR #575 todavía no está mergeada.
+`CARRIL_ENDER = CLOSED` · `IMPLEMENTATION_WORK_REMAINING_FOR_ENDER = 0` · `NEXT_ACTION_FOR_ENDER = NONE`
 
-`NEXT_ACTION_FOR_ENDER = NONE` hasta cambio externo en CI/PR o reasignación explícita.
+`DONE_FORMAL = NO`. La escala canónica de evidencia e integración todavía no alcanza el DONE formal:
+PR #575 está OPEN · NOT_MERGED y siguen declarados 2 BLOCKED + 1 A MEDIAS. Esto no implica trabajo
+pendiente para Ender.
+
+> El carril de Ender está cerrado y no tiene acciones pendientes. `DONE_FORMAL = NO` refleja sólo la
+> escala canónica de evidencia e integración y los tres residuales declarados. No significa que Ender
+> deba volver periódicamente a trabajar esta tarea.
 
 Hallazgos para otros dueños, que no se tocaron:
 - 11 `selector-no-importado` reales en producto; por ejemplo, `organization-detail.html:68` usa `<button app-button>` sin importar `AppButton`.
