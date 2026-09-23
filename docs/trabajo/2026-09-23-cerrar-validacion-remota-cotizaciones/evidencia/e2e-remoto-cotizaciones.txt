@@ -1,0 +1,18 @@
+Directorio de ejecución: C:\Users\usuario\Documents\Sistema Salud\wt-justin-reserva-cotizaciones
+Fecha: 2026-09-23
+URL remota: https://mockup.173.249.39.237.sslip.io
+
+Comando:
+$env:E2E_BASE_URL = 'https://mockup.173.249.39.237.sslip.io'
+npx playwright test playwright/cotizaciones-paciente.spec.ts --workers=1 --reporter=list
+
+Salida:
+Running 1 test using 1 worker
+
+(node:10536) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 [chromium] › playwright\cotizaciones-paciente.spec.ts:14:7 › Cotizaciones del paciente › compara resultados sin cargar ni mostrar documentos personales (28.2s)
+
+  1 passed (29.2s)
+
+Límite declarado: el escenario prueba contra el backend simulado incluido en el mockup público; no verifica una API real ni datos clínicos reales.
