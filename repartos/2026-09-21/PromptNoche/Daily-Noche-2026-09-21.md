@@ -211,6 +211,20 @@ real. Quedan pendientes los 5 filtros que el diseño especifica y que la pantall
 > `marcelo/noche-2026-09-21-dialogos-adjuntos-expediente`). Detalle completo en
 > [`Marcelo-Daily-Noche-2026-09-21.md`](Marcelo/Marcelo-Daily-Noche-2026-09-21.md).
 
+> **Cierre de Itzan (2026-09-21/22, 91,2 % — 62/68, denominador propio: subió de 64 a 68 porque el
+> trabajo destapó cuatro piezas que el plan no preveía):** la política de contraseña de las cinco
+> altas vive una sola vez y las cinco la consumen; el perfil del profesional quedó partido en vista
+> y contenedor. **Sin cambiar comportamiento**: el diff de `features/auth/` son 10 archivos `.ts` y
+> cero `.html`/`.css`, y `paginated-form` no se tocó. Entregado en `mantra-core-health` PR
+> [#576](https://github.com/mdavila-2001/mantra-core-health/pull/576) (merge `480c9ecf`) y en este
+> repo PR [#26](https://github.com/PabloArauzCaballero/AlovidaPromptManager/pull/26) (merge
+> `94f0843`). Suite completa **7 107/7 107, 0 fallos**, reconciliada contra la medición previa; los
+> 6 rojos de E2E se probaron ajenos con un A/B contra la base limpia. **Peldaño del trabajo:
+> `VERIFIED`, no `REGRESSION_VERIFIED`** — las tres pruebas de recorrido del perfil se saltan solas
+> contra la maqueta y un `exit=0` con saltadas no es cobertura. Quedan **3 `A MEDIAS`**, todas del
+> motor de formularios, que alcanza a sus otros consumidores. Nueve hallazgos ajenos documentados
+> con `ruta:línea` en [`Itzan-Daily-Noche-2026-09-21.md`](Itzan/Itzan-Daily-Noche-2026-09-21.md) §9.
+
 ## 9. Advertencia sobre el alcance
 
 **Ningún carril entra completo en una noche, y está dicho a propósito en los cinco prompts.** 31 y 39

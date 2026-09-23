@@ -10,7 +10,15 @@
 - Corte: `origin/mockup` @ `5a0776c6…` → **el mío:** `b655e844` *(se movió dos veces; ver abajo)*
 - Rama: `itzan/separacion-smart-dumb-registros` · Peldaño alcanzado (regla 30): **`VERIFIED`**
 - Plan y reporte: [`docs/trabajo/2026-09-21-refactor-formularios-y-perfil/`](../../../../docs/trabajo/2026-09-21-refactor-formularios-y-perfil/)
+- Entregado en: `mantra-core-health` PR [#576](https://github.com/mdavila-2001/mantra-core-health/pull/576) · `AlovidaPromptManager` PR [#26](https://github.com/PabloArauzCaballero/AlovidaPromptManager/pull/26) — **los dos fusionados**
 - Daily de equipo: [`Daily-Noche-2026-09-21.md`](../Daily-Noche-2026-09-21.md)
+
+> **Puntero publicado tarde — 2026-09-23.** El carril se entregó en dos PRs, [#576](https://github.com/mdavila-2001/mantra-core-health/pull/576)
+> (front → `mockup`, merge `480c9ecf`, 2026-09-23 12:12 UTC) y [#26](https://github.com/PabloArauzCaballero/AlovidaPromptManager/pull/26)
+> (este repo → `main`, merge `94f0843`, 2026-09-23 03:42 UTC). **Este daily se había escrito antes de que los PRs
+> existieran y no se volvió a tocar**, así que el equipo tuvo el trabajo fusionado sin manera de encontrarlo. El
+> avance sigue siendo `62 / 68`: publicar el puntero no cierra ninguna de las tres `A MEDIAS`. Detalle en
+> [`docs/trabajo/2026-09-23-publicar-avance-itzan/REPORTE.md`](../../../../docs/trabajo/2026-09-23-publicar-avance-itzan/REPORTE.md).
 
 > **El corte se movió y se declara.** Antes de abrir H4, `origin/mockup` había avanzado un commit:
 > `d40b5631` *«fix(mi-perfil): el rechazo del servidor, junto a su campo (#571)»*, **dentro de mi
@@ -182,6 +190,19 @@ el avance de su primera línea se recalculó con `plan_status.py` en cada cierre
       vista del perfil no inyecta nada, recibe por `input()` y avisa por `output()`.
 - [x] **Procesos:** quedó **uno** durante el turno, el servidor de desarrollo en el 4200, levantado
       a propósito para las verificaciones en navegador. **Se cierra al entregar** y se declara acá.
+
+### 8.1 Qué se entregó, dónde y con qué estado
+
+| Qué | Para quién | Ruta + hora | Estado |
+|---|---|---|---|
+| La política de contraseña de las cinco altas, escrita una sola vez y consumida por las cinco | Pablo, Marcelo | `mantra-core-health` PR [#576](https://github.com/mdavila-2001/mantra-core-health/pull/576), merge `480c9ecf`, 2026-09-23 12:12 UTC | `HECHO`: peldaño `REGRESSION_VERIFIED` en esa área |
+| El perfil del profesional: la vista pinta, el contenedor decide | Pablo, Marcelo | `mantra-core-health` PR [#576](https://github.com/mdavila-2001/mantra-core-health/pull/576), merge `480c9ecf` | `HECHO` como cambio · el área queda en `VERIFIED`: sus tres pruebas de recorrido se saltan solas contra la maqueta y un `exit=0` con saltadas no es cobertura |
+| Plan, reporte y evidencia del carril (182 archivos) | Pablo | `AlovidaPromptManager` PR [#26](https://github.com/PabloArauzCaballero/AlovidaPromptManager/pull/26), merge `94f0843`, 2026-09-23 03:42 UTC | `HECHO` |
+| Anclar el error del servidor a su campo, y mover el foco al primer error | Quien tome el motor de formularios | Sin entregar — contrato escrito con `ruta:línea` en el reporte del carril | `A MEDIAS`: el motor no tiene hoy por dónde recibir errores por campo venidos de afuera, y tocarlo alcanza a sus otros consumidores |
+| El quinto consumidor ajeno del motor, observado | — | Sin entregar | `A MEDIAS`: **4 de 5** abiertos; el quinto necesita una cuenta con otras habilitaciones |
+
+**El avance con el que cerró el carril es `62 / 68 — 91,2 %`.** Las tres `A MEDIAS` de arriba son
+las que faltan para llegar a 65; las otras tres son `DESCARTADO` con su motivo en el plan.
 
 ## 9. Lo que encontré y no era mío — para quien corresponda
 
