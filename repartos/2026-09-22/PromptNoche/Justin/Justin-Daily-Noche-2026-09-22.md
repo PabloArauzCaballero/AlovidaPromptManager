@@ -1,6 +1,6 @@
 # Justin — daily de la noche del 2026-09-22
 
-> **AVANCE: 20 / 51 — 39.2 %.** ← fuente: plan ejecutado `2026-09-23-reserva-y-cotizaciones`. Hay trabajo posterior en planes que se solapan; no se suma para no inflar el porcentaje.
+> **AVANCE: 29 / 51 — 56.9 %.** ← 20 HECHO legados + 9 HECHO posteriores no solapados, adjudicados por ID en el cierre local de #583. Seis tareas de documentos están `DESCARTADO` por la decisión de producto y no suman.
 > `A MEDIAS` cuenta como **no hecha**. Prohibido el porcentaje estimado a ojo (regla 50 §5).
 
 - Carril: [`Noche-ReservaYCotizaciones.DirectorioYPrecios`](Noche-ReservaYCotizaciones.DirectorioYPrecios/ClicUnicoEnElDirectorioYCotizacionesPorPrecioYCercania.md)
@@ -91,7 +91,8 @@ AVANCE — reserva y cotizaciones — <fase> — <ID de microtarea>
 | Pantalla, ruta y menú de Cotizaciones | Pablo, Ender | `mantra-core-health` PR [#578](https://github.com/mdavila-2001/mantra-core-health/pull/578), merge `38072e84`, 2026-09-23 13:56 UTC | `A MEDIAS`: no cubre los DoD completos del carril |
 | Órdenes diagnósticas propias con etiquetas, sin IDs impresos | Pablo | `mantra-core-health` PR [#579](https://github.com/mdavila-2001/mantra-core-health/pull/579), merge `8ae7283a`, 2026-09-23 14:13 UTC | `A MEDIAS`: falta publicación observable en mockup |
 | Estados de perfil, error y truncamiento de órdenes | Pablo | `mantra-core-health` PR [#580](https://github.com/mdavila-2001/mantra-core-health/pull/580), merge `05d83cb8` | `A MEDIAS`: fusionado; falta publicación observable y DoD del carril |
-| Simplificación: Cotizaciones sin estudios personales, con contrato de menú sincronizado | Pablo, Ender | `mantra-core-health` PR [#581](https://github.com/mdavila-2001/mantra-core-health/pull/581), rama `justin/simplificar-cotizaciones-2026-09-23` | `A MEDIAS`: prueba de Cotizaciones 3/3, menú 54/54 y typecheck verdes; falta CI y observación autenticada del SHA |
+| Simplificación: Cotizaciones sin estudios personales, con contrato de menú sincronizado | Pablo, Ender | `mantra-core-health` PR [#581](https://github.com/mdavila-2001/mantra-core-health/pull/581), merge `66bbcb76` en `mockup` | `HECHO` en su plan propio 4/4: prueba focal, observación autenticada local y recorrido de Chromium. No declara despliegue remoto. |
+| Cierre local de Cotizaciones y disponibilidad en Directorio | Pablo, Ender | `mantra-core-health` PR [#583](https://github.com/mdavila-2001/mantra-core-health/pull/583), commit `4c9e419f`, rama `justin/verificar-cotizaciones-navegador-2026-09-23`, sobre `origin/mockup@b7785e36` | `PUBLICADO`: seis capturas (390/768/1440, claro/oscuro), teclado/orden/filtro, gates locales, cuatro toques → una navegación y la acción visible `Revisar disponibilidad` → `#horarios`. El recorrido hasta un cupo midió 1.468 ms localmente. La adjudicación suma 9 HECHO no solapados: 29/51 total. |
 
 ## 8. Al cerrar
 
@@ -108,8 +109,7 @@ AVANCE — reserva y cotizaciones — <fase> — <ID de microtarea>
 
 ## 9. Estado real al publicar este daily
 
-- **`20 / 51 HECHO` es el avance fuente:** el plan ejecutado de reserva y cotizaciones declaró 20 microtareas con pruebas focalizadas y typecheck. Las 31 restantes siguen sin cerrar: faltan baseline, medición antes/después, capturas por tema/viewport, barridos y gates. Los cambios de frontend posteriores no sustituyen esos DoD.
-- **Código fusionado:** #578, #579 y #580 forman parte de `origin/mockup`; la punta observada fue `05d83cb8`.
-- **Seguimiento abierto:** #581 retira de Cotizaciones los estudios personales y sus consultas; además alinea el contrato de navegación que la ruta ya cumplía. No aumenta `20/51`: es seguimiento de calidad sobre trabajo que se solapa con el carril original.
-- **No es un despliegue verificado:** el mockup público respondió HTML con `Last-Modified: 2026-09-23 13:59 UTC`, anterior al merge de #579. El host no pudo consultarse por SSH desde este equipo (`atlas-db`: host desconocido; host público: puerto 22 inaccesible).
-- **Siguiente paso concreto:** revisar `/opt/alovida-mockup/estado/redeploy.log` desde un equipo con acceso al host; después repetir el recorrido autenticado y las mediciones del carril.
+- **`29 / 51 HECHO` es el avance publicado:** conserva 20 HECHO legados y añade 9 no solapados, con evidencia por ID en [`adjudicación del cierre local`](../../../../docs/trabajo/2026-09-23-publicar-cierre-local-reserva-cotizaciones/REPORTE.md). Seis tareas H4 de documentos son `DESCARTADO`: Cotizaciones sólo muestra cotizaciones. No se contabilizan.
+- **Código fusionado:** #578, #579, #580 y #581 forman parte de `origin/mockup`; la punta de verificación fue `b7785e36`.
+- **No es un despliegue verificado:** la validación remota queda expresamente para Coolify; este corte sólo afirma resultados locales reproducibles.
+- **Pendiente no técnico local:** baseline histórico hasta cupos, contratos de precios/origen/acciones y su validación remota. No se inventan ni se marcan HECHO.
