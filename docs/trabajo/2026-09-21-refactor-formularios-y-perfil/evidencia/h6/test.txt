@@ -1,5 +1,5 @@
 [generate-env] src/environments/env.generated.ts · sin variables definidas (se usan los valores por defecto)
-Using Vitest configuration file: C:\Users\User\Documents\Proyectos-Didi-Dinero\Salud-Software\mantra-core-health\vitest.config.ts
+Using Vitest configuration file: <raiz-del-repo-del-front>\vitest.config.ts
 [33m❯[39m Building...
 [32m✔[39m Building...
 [1mInitial chunk files[22m                                                                                                               [2m | [22m[1mNames[22m                                                                                                                          [2m | [22m [1mRaw size[22m
@@ -1353,7 +1353,7 @@ Application bundle generation complete. [150.329 seconds] - 2026-09-23T00:44:17.
 
 [39m[22m
 
-[1m[30m[46m RUN [49m[39m[22m [36mv4.1.10 [39m[90mC:/Users/User/Documents/Proyectos-Didi-Dinero/Salud-Software/mantra-core-health[39m
+[1m[30m[46m RUN [49m[39m[22m [36mv4.1.10 [39m[90m<raiz-del-repo-del-front>[39m
 
 Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
 Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package

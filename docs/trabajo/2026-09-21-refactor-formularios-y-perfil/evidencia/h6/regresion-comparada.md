@@ -105,3 +105,11 @@ transformación — la contención conocida de esta máquina no contaminó la co
   `component-index.generated.ts` (HALL-I13, ajeno y anterior).
 - Que no haya rojos nuevos **no demuestra que el comportamiento en pantalla sea igual**: eso lo
   tienen que demostrar `H6.S1.M4`, `H6.S1.M5` y las capturas de `H6.S2`.
+
+## 6. Un enmascarado, declarado
+
+`test.txt` y `test-completo.raw.txt` son la salida literal del corredor de pruebas, y su cabecera
+imprimía la ruta absoluta del checkout. **Se reemplazó por `<raiz-del-repo-del-front>`** —dos
+apariciones en cada archivo, 108 bytes en total— porque una ruta de máquina no es parte de la
+evidencia y no tiene por qué viajar en la entrega. **Ninguna otra línea se tocó**: los conteos, los
+nombres de archivo y los fallos están tal como salieron.
