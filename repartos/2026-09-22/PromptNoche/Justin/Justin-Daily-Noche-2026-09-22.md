@@ -1,6 +1,6 @@
 # Justin — daily de la noche del 2026-09-22
 
-> **AVANCE: 0 / 51 — 0 %.** ← actualizá esta línea al cerrar. Sale de `microtareas HECHO / total`.
+> **AVANCE: 20 / 51 — 39.2 %.** ← fuente: plan ejecutado `2026-09-23-reserva-y-cotizaciones`. Hay trabajo posterior en planes que se solapan; no se suma para no inflar el porcentaje.
 > `A MEDIAS` cuenta como **no hecha**. Prohibido el porcentaje estimado a ojo (regla 50 §5).
 
 - Carril: [`Noche-ReservaYCotizaciones.DirectorioYPrecios`](Noche-ReservaYCotizaciones.DirectorioYPrecios/ClicUnicoEnElDirectorioYCotizacionesPorPrecioYCercania.md)
@@ -107,7 +107,7 @@ AVANCE — reserva y cotizaciones — <fase> — <ID de microtarea>
 
 ## 9. Estado real al publicar este daily
 
-- **`0 / 51 HECHO` se conserva:** las microtareas originales exigen baseline, medición antes/después, capturas por tema/viewport, barridos y gates que no se ejecutaron. Los cambios de frontend no sustituyen esos DoD.
+- **`20 / 51 HECHO` es el avance fuente:** el plan ejecutado de reserva y cotizaciones declaró 20 microtareas con pruebas focalizadas y typecheck. Las 31 restantes siguen sin cerrar: faltan baseline, medición antes/después, capturas por tema/viewport, barridos y gates. Los cambios de frontend posteriores no sustituyen esos DoD.
 - **Código fusionado:** #578, #579 y #580 forman parte de `origin/mockup`; la punta observada fue `05d83cb8`.
 - **No es un despliegue verificado:** el mockup público respondió HTML con `Last-Modified: 2026-09-23 13:59 UTC`, anterior al merge de #579. El host no pudo consultarse por SSH desde este equipo (`atlas-db`: host desconocido; host público: puerto 22 inaccesible).
 - **Siguiente paso concreto:** revisar `/opt/alovida-mockup/estado/redeploy.log` desde un equipo con acceso al host; después repetir el recorrido autenticado y las mediciones del carril.
