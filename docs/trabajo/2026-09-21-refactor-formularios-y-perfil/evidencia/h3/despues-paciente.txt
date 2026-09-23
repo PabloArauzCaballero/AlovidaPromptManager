@@ -1,0 +1,46 @@
+P01 «¿Cómo te llamás?» · botón: «Siguiente»
+  «Siguiente» vacío: NO avanza
+    error: registro-apellido-paterno → «Ingresá tu apellido paterno. | El apellido de tu papá, como figura en tu documento.»
+    foco: paginated-form-continuar
+P02 «Tu documento de identidad» · botón: «Siguiente»
+  «12#45» y Tab (sin «Siguiente») → inválidos: []
+  «Siguiente» vacío: NO avanza
+    error: registro-documento → «Ingresá tu documento: letras, números, punto y guion. | El número de tu cédula, sin el complemento: el departamento que la emitió va en la casilla de al lado.»
+    error: mch-field-36-control → «Elegí el departamento que expidió tu cédula. | El departamento que emitió tu cédula: distingue dos documentos con el mismo número.»
+    foco: paginated-form-continuar
+P03 «Contanos un poco sobre vos» · botón: «Siguiente»
+  «Siguiente» vacío: NO avanza
+    error: mch-field-38-control → «Ingresá tu fecha de nacimiento. | Con ella calculamos tu edad, y con la edad las dosis, los valores de referencia del laboratorio y qué controles te tocan.»
+    error: mch-field-40-control → «Elegí una opción. | Es el sexo que registra tu documento de identidad. Lo usamos como dato clínico, no para dirigirnos a vos.»
+    foco: paginated-form-continuar
+P04 «¿Cómo te contactamos?» · botón: «Siguiente»
+  «7001» y Tab (sin «Siguiente») → inválidos: []
+  «Siguiente» vacío: NO avanza
+    error: registro-telefono → «Ingresá un número completo para el país elegido. | Es por donde te avisamos de un turno o de un resultado. No se muestra a nadie más.»
+    foco: paginated-form-continuar
+P05 «¿Dónde vivís?» · botón: «Siguiente»
+  «Siguiente» vacío: NO avanza
+    foco: paginated-form-continuar
+P06 «¿Dónde trabajás?» · botón: «Siguiente»
+  «Siguiente» vacío: avanza (opcional)
+P07 «El lugar donde trabajás» · botón: «Siguiente»
+  «Siguiente» vacío: avanza (opcional)
+P08 «Tu acceso» · botón: «Siguiente»
+  «no-es-un-correo» y Tab (sin «Siguiente») → inválidos: []
+  «Siguiente» vacío: NO avanza
+    error: registro-correo → «Ingresá un correo válido. | No es con lo que entrás —eso es tu documento—, pero sin él no hay forma de devolverte el acceso si perdés la contraseña.»
+    error: registro-password → «La contraseña necesita al menos 8 caracteres. | Se guarda cifrada: ni el equipo de AloVida puede verla, y por eso nunca te la vamos a pedir por teléfono ni por correo.»
+    foco: paginated-form-continuar
+P09 «Tu seguro de salud» · botón: «Siguiente»
+  «Siguiente» vacío: avanza (opcional)
+P10 «Datos de facturación» · botón: «Crear cuenta»
+ERROR DE GUARDADO (modo «error», doble clic en la última página «Datos de facturación»):
+  envíos al servicio: 1
+  alerta: «Error: Simulado: fallo del servidor. (mock-fallo)»
+  página tras el fallo: «Datos de facturación»
+  botón habilitado otra vez: true
+  valores del formulario idénticos antes/después: true
+SALIR A MITAD Y VOLVER (Atrás del navegador): página «¿Cómo te llamás?» · nombre=«»
+CONSOLA (errores únicos): 1
+  Executing inline script violates the following Content Security Policy directive 'script-src 'self' 'sha256-Ohy6Wz7NFFGmQaVW/a8g5BXylUJrN/hb
+

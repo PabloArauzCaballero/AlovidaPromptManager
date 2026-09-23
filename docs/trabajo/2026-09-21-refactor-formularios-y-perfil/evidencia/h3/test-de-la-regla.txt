@@ -1,0 +1,21 @@
+H3.S1.M1 — El test que protege la regla, en rojo antes de extraer y en verde después.
+
+=== ANTES de escribir la función (el spec ya existía) ===
+$ corepack yarn test --watch=false --include=src/app/features/auth/registro-compartido/respaldo-de-registro.spec.ts
+exit=1
+Application bundle generation failed.
+X [ERROR] TS2307: Cannot find module './respaldo-de-registro' or its corresponding type declarations. [plugin angular-compiler]
+X [ERROR] Could not resolve "./respaldo-de-registro"
+
+=== DESPUÉS de escribir la función ===
+$ corepack yarn test --watch=false --include=src/app/features/auth/registro-compartido/respaldo-de-registro.spec.ts
+exit=0
+Test Files  1 passed (1)
+Tests  6 passed (6)
+Duration  22.51s
+
+Los seis casos: los tres formatos aceptados · un .docx rechazado por formato ·
+el límite exacto de 5 MB aceptado · un byte de más rechazado por peso · formato
+inválido y pasado de peso a la vez (gana el formato: el orden es parte del
+comportamiento) · archivo sin tipo MIME aunque la extensión diga .pdf
+(rechazado, que es lo que hacen hoy las tres altas).

@@ -1,0 +1,59 @@
+# Experimento descartable: tipar el FormGroup del motor
+# 2026-09-22 · rama itzan/separacion-smart-dumb-registros · corte d76e3054
+#
+# QUE SE HIZO (y se revirtio):
+#   paginated-form.types.ts  -> CampoDeFormulario<TControles>, PaginaDeFormulario<TControles>,
+#                               SeccionDeFormulario<TControles>, key: keyof TControles & string
+#   paginar-campos.ts        -> paginarCampos<TControles>(...)
+#   paginated-form.ts        -> class PaginatedForm<TControles extends {...} = Record<string, AbstractControl>>
+#                               paginas: PaginaDeFormulario<TControles>[] · form: FormGroup<TControles>
+#   El valor por defecto preserva el comportamiento de hoy: keyof Record<string, X> es string.
+#
+# COMANDO: corepack yarn typecheck
+# RESULTADO: exit=2 · 19 errores TS
+
+--- LOS 9 INTERNOS DEL MOTOR (mecanicos, archivos propios) ---
+src/app/shared/components/organisms/paginated-form/paginated-form.ts(339,11): error TS2322: Type 'PaginaDeFormulario<TControles>' is not assignable to type 'PaginaDeFormulario<Record<string, unknown>>'.
+src/app/shared/components/organisms/paginated-form/paginated-form.ts(521,23): error TS2345: Argument of type 'Date | null' is not assignable to parameter of type 'Navigate<...>'.
+src/app/shared/components/organisms/paginated-form/paginated-form.ts(548,23): error TS2345: Argument of type 'boolean' is not assignable to parameter of type 'Navigate<...>'.
+src/app/shared/components/organisms/paginated-form/paginated-form.ts(614,29): error TS2345: Argument of type 'PaginaDeFormulario<TControles>' is not assignable to parameter of type 'PaginaDeFormulario<Record<string, unknown>>'.
+src/app/shared/components/organisms/paginated-form/paginated-form.ts(650,38): error TS2345: Argument of type 'CampoDeFormulario<TControles>' is not assignable to parameter of type 'CampoDeFormulario<Record<string, unknown>>'.
+src/app/shared/components/organisms/paginated-form/paginated-form.ts(655,38): error TS2345: Argument of type 'PaginaDeFormulario<TControles>' is not assignable to parameter of type 'PaginaDeFormulario<Record<string, unknown>>'.
+src/app/shared/forms/paginated/paginar-campos.ts(36,40): error TS2345: Argument of type 'readonly CampoDeFormulario<TControles>[] | readonly SeccionDeFormulario<TControles>[]' is not assignable to parameter of type 'readonly CampoDeFormulario<Record<string, unknown>>[] | ...'.
+src/app/shared/forms/paginated/paginar-campos.ts(40,20): error TS2349: This expression is not callable.
+src/app/shared/forms/paginated/paginar-campos.ts(40,29): error TS7006: Parameter 'seccion' implicitly has an 'any' type.
+
+--- LOS 2 QUE DECIDEN: la `key` de un campo proyectado NO es un control ---
+src/app/features/admin/organizations/child-organization-new/child-organization-new.ts(202,13): error TS2322: Type '"administrador"' is not assignable to type '"code" | "tipo" | "legalName"'.
+src/app/features/admin/organizations/organization-new/organization-new.ts(390,13): error TS2322: Type '"owner"' is not assignable to type '"code" | "timeZone" | "tradeName" | "tipo" | "legalName"'.
+
+# Los dos son control: 'custom'. Su valor vive fuera del formulario a proposito:
+#   child-organization-new.ts:205  control: 'custom'
+#   child-organization-new.ts:222  administrador = signal<ReferenceOption | null>(null)
+#   child-organization-new.ts:389  const administrador = this.administrador()   <- se lee de ahi al enviar
+#   organization-new.ts:393        control: 'custom'
+#
+# PERO NO ES UNIFORME, y eso es lo que lo vuelve una decision:
+#   register-patient.ts:1380-1400  campoDepartamentoEmisor usa LA MISMA key para
+#                                  control:'custom' y control:'select'. La clave se
+#                                  mantiene porque SI es un control -- linea 1377:
+#                                  "La clave es la misma en los dos casos -la del control-,
+#                                   asi que lo que se haya elegido antes de un fallo no se pierde."
+
+--- LOS 8 RESTANTES (inferencia de paginarCampos sobre la union, colateral del threading incompleto) ---
+child-organization-new.ts(173,7) · organization-new.ts(299,7) · organization-new.ts(323,7)
+organization-new.ts(361,7) · organization-new.ts(401,9) · access-request-resolution.ts(123,7)
+geofence-form.ts(134,7) · geofence-form.ts(165,7)
+  Todos TS2322: el literal {titulo, hint, campos} no resuelve contra
+  'CampoDeFormulario<...> | SeccionDeFormulario<...>' mientras paginarCampos no infiera.
+
+--- ESCALA DEL ASUNTO ---
+$ campos con control: 'custom' entre los 53 consumidores
+55 campos custom en 12 de 53 consumidores
+
+--- REVERSION ---
+$ git checkout -- <los 3 archivos>
+$ git status --short
+(sin salida: arbol limpio)
+$ corepack yarn typecheck
+exit=0

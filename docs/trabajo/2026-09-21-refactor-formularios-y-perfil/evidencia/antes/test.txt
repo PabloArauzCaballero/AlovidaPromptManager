@@ -1,0 +1,34 @@
+Baseline H1.S1.M3 — corte d76e3054, rama itzan/separacion-smart-dumb-registros, sin cambios
+$ corepack yarn test --watch=false
+exit=1  (297 s de reloj)
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+ FAIL  |mantra-core-health| src/app/core/mock/handlers/insurance-analytics.handlers.spec.ts > handlers de analítica de seguros > con las primas de fábrica del catálogo, el loss ratio ya viene calculado
+AssertionError: expected 1 to be +0 // Object.is equality
+- Expected
++ Received
+- 0
++ 1
+ ❯ src/app/core/mock/handlers/insurance-analytics.handlers.spec.ts:86:57
+     84|
+     85|     expect(dashboard.kpis.lossRatioPercent).not.toBeNull();
+     86|     expect(dashboard.kpis.coveragesWithoutPremiumCount).toBe(0);
+       |                                                         ^
+     87|   });
+     88|
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+ FAIL  |mantra-core-health| src/app/features/auth/register-practitioner/register-practitioner.spec.ts > RegisterPractitioner con mockBackend > resuelve los cinco tipos canónicos de credencial desde el backend simulado
+Error: Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ src/app/features/auth/register-practitioner/register-practitioner.spec.ts:2002:3
+    2000|
+    2001| describe('RegisterPractitioner con mockBackend', () => {
+    2002|   it('resuelve los cinco tipos canónicos de credencial desde el backen…
+       |   ^
+    2003|     TestBed.resetTestingModule();
+    2004|     await TestBed.configureTestingModule({
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+ Test Files  2 failed | 569 passed (571)
+      Tests  2 failed | 7085 passed (7087)
+   Start at  13:21:56
+   Duration  162.66s (transform 51.39s, setup 6.72s, import 80.02s, tests 366.09s, environment 4078.64s)

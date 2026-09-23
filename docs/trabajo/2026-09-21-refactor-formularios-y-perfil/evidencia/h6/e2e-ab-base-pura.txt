@@ -1,0 +1,470 @@
+A/B: base pura b655e844, SIN el carril
+$ corepack yarn pw playwright/file-upload-preview.spec.ts --workers=1 --grep 'shared picker'
+
+Running 1 test using 1 worker
+
+  ok 1 [chromium] › playwright\file-upload-preview.spec.ts:224:5 › shared picker previews text and audio, and disabled picker rejects drops (6.7s)
+
+  1 passed (8.8s)
+exit=0
+
+A/B: MI RAMA 88c91da0, el mismo test SOLO (sin los cinco de laboratorio antes)
+
+Running 1 test using 1 worker
+
+  ok 1 [chromium] › playwright\file-upload-preview.spec.ts:224:5 › shared picker previews text and audio, and disabled picker rejects drops (7.8s)
+
+  1 passed (10.5s)
+exit=0
+
+A/B DECISIVO: base pura b655e844, el ARCHIVO COMPLETO (mismo orden que la corrida de 6 fallos)
+
+Running 10 tests using 1 worker
+
+  x   1 [chromium] › playwright\file-upload-preview.spec.ts:80:7 › laboratory: drag, PDF, images and layout at 390px (12.2s)
+  x   2 [chromium] › playwright\file-upload-preview.spec.ts:80:7 › laboratory: drag, PDF, images and layout at 768px (16.7s)
+  x   3 [chromium] › playwright\file-upload-preview.spec.ts:80:7 › laboratory: drag, PDF, images and layout at 1024px (15.1s)
+  x   4 [chromium] › playwright\file-upload-preview.spec.ts:80:7 › laboratory: drag, PDF, images and layout at 1440px (15.1s)
+  x   5 [chromium] › playwright\file-upload-preview.spec.ts:80:7 › laboratory: drag, PDF, images and layout at 1920px (18.5s)
+  ok  6 [chromium] › playwright\file-upload-preview.spec.ts:162:5 › rejections preserve the file; navigation restores previews; removal restores required validation (10.3s)
+  ok  7 [chromium] › playwright\file-upload-preview.spec.ts:198:5 › imaging center inherits the document picker and preview (6.3s)
+  ok  8 [chromium] › playwright\file-upload-preview.spec.ts:206:5 › dark theme and damaged document feedback (5.5s)
+  ok  9 [chromium] › playwright\file-upload-preview.spec.ts:224:5 › shared picker previews text and audio, and disabled picker rejects drops (7.7s)
+  ok 10 [chromium] › playwright\file-upload-preview.spec.ts:295:5 › compact comment picker rejects invalid drag without uploading (2.2s)
+
+
+  1) [chromium] › playwright\file-upload-preview.spec.ts:80:7 › laboratory: drag, PDF, images and layout at 390px 
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 4
+
+    - Array []
+    + Array [
+    +   "Executing inline script violates the following Content Security Policy directive 'script-src 'self' 'sha256-Ohy6Wz7NFFGmQaVW/a8g5BXylUJrN/hbRM2QuMglZ6Q=' 'sha256-HasAYtZ13nA92vtyhOH9KYrQLVFmnxB9+lraZXpGRQc=''. Either the 'unsafe-inline' keyword, a hash ('sha256-VM2mZqyEQZoLzoTrp5EigFvzQ0+f1wSeBuoOn95WHCg='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked.",
+    +   "Executing inline script violates the following Content Security Policy directive 'script-src 'self' 'sha256-Ohy6Wz7NFFGmQaVW/a8g5BXylUJrN/hbRM2QuMglZ6Q=' 'sha256-HasAYtZ13nA92vtyhOH9KYrQLVFmnxB9+lraZXpGRQc=''. Either the 'unsafe-inline' keyword, a hash ('sha256-+V6QP2X/8MAj8YK3o3LJClmuAjZSIqYg5HgbBWnPKKo='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked.",
+    + ]
+
+      129 |     const baseline = JSON.parse(readFileSync(`${evidence}/baseline/console.json`, 'utf8')) as { errors: string[] };
+      130 |     const unexpectedConsole = consoleErrors.filter(message => !baseline.errors.includes(message));
+    > 131 |     expect(unexpectedConsole).toEqual([]);
+          |                               ^
+      132 |     expect(failedRequests).toEqual([]);
+      133 |     writeFileSync(
+      134 |       `${evidence}/manifest-${width}.json`,
+        at <raiz-del-repo-del-front>\playwright\file-upload-preview.spec.ts:131:31
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    artifacts\playwright\salida\file-upload-preview-labora-0336c--images-and-layout-at-390px-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: artifacts\playwright\salida\file-upload-preview-labora-0336c--images-and-layout-at-390px-chromium\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    artifacts\playwright\salida\file-upload-preview-labora-0336c--images-and-layout-at-390px-chromium\trace.zip
+    Usage:
+
+        yarn playwright show-trace artifacts\playwright\salida\file-upload-preview-labora-0336c--images-and-layout-at-390px-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) [chromium] › playwright\file-upload-preview.spec.ts:80:7 › laboratory: drag, PDF, images and layout at 768px 
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 4
+
+    - Array []
+    + Array [
+    +   "Executing inline script violates the following Content Security Policy directive 'script-src 'self' 'sha256-Ohy6Wz7NFFGmQaVW/a8g5BXylUJrN/hbRM2QuMglZ6Q=' 'sha256-HasAYtZ13nA92vtyhOH9KYrQLVFmnxB9+lraZXpGRQc=''. Either the 'unsafe-inline' keyword, a hash ('sha256-VM2mZqyEQZoLzoTrp5EigFvzQ0+f1wSeBuoOn95WHCg='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked.",
+    +   "Executing inline script violates the following Content Security Policy directive 'script-src 'self' 'sha256-Ohy6Wz7NFFGmQaVW/a8g5BXylUJrN/hbRM2QuMglZ6Q=' 'sha256-HasAYtZ13nA92vtyhOH9KYrQLVFmnxB9+lraZXpGRQc=''. Either the 'unsafe-inline' keyword, a hash ('sha256-+V6QP2X/8MAj8YK3o3LJClmuAjZSIqYg5HgbBWnPKKo='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked.",
+    + ]
+
+      129 |     const baseline = JSON.parse(readFileSync(`${evidence}/baseline/console.json`, 'utf8')) as { errors: string[] };
+      130 |     const unexpectedConsole = consoleErrors.filter(message => !baseline.errors.includes(message));
+    > 131 |     expect(unexpectedConsole).toEqual([]);
+          |                               ^
+      132 |     expect(failedRequests).toEqual([]);
+      133 |     writeFileSync(
+      134 |       `${evidence}/manifest-${width}.json`,
+        at <raiz-del-repo-del-front>\playwright\file-upload-preview.spec.ts:131:31
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    artifacts\playwright\salida\file-upload-preview-labora-414a7--images-and-layout-at-768px-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: artifacts\playwright\salida\file-upload-preview-labora-414a7--images-and-layout-at-768px-chromium\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    artifacts\playwright\salida\file-upload-preview-labora-414a7--images-and-layout-at-768px-chromium\trace.zip
+    Usage:
+
+        yarn playwright show-trace artifacts\playwright\salida\file-upload-preview-labora-414a7--images-and-layout-at-768px-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) [chromium] › playwright\file-upload-preview.spec.ts:80:7 › laboratory: drag, PDF, images and layout at 1024px 
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 4
+
+    - Array []
+    + Array [
+    +   "Executing inline script violates the following Content Security Policy directive 'script-src 'self' 'sha256-Ohy6Wz7NFFGmQaVW/a8g5BXylUJrN/hbRM2QuMglZ6Q=' 'sha256-HasAYtZ13nA92vtyhOH9KYrQLVFmnxB9+lraZXpGRQc=''. Either the 'unsafe-inline' keyword, a hash ('sha256-VM2mZqyEQZoLzoTrp5EigFvzQ0+f1wSeBuoOn95WHCg='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked.",
+    +   "Executing inline script violates the following Content Security Policy directive 'script-src 'self' 'sha256-Ohy6Wz7NFFGmQaVW/a8g5BXylUJrN/hbRM2QuMglZ6Q=' 'sha256-HasAYtZ13nA92vtyhOH9KYrQLVFmnxB9+lraZXpGRQc=''. Either the 'unsafe-inline' keyword, a hash ('sha256-+V6QP2X/8MAj8YK3o3LJClmuAjZSIqYg5HgbBWnPKKo='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked.",
+    + ]
+
+      129 |     const baseline = JSON.parse(readFileSync(`${evidence}/baseline/console.json`, 'utf8')) as { errors: string[] };
+      130 |     const unexpectedConsole = consoleErrors.filter(message => !baseline.errors.includes(message));
+    > 131 |     expect(unexpectedConsole).toEqual([]);
+          |                               ^
+      132 |     expect(failedRequests).toEqual([]);
+      133 |     writeFileSync(
+      134 |       `${evidence}/manifest-${width}.json`,
+        at <raiz-del-repo-del-front>\playwright\file-upload-preview.spec.ts:131:31
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    artifacts\playwright\salida\file-upload-preview-labora-f3142-images-and-layout-at-1024px-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: artifacts\playwright\salida\file-upload-preview-labora-f3142-images-and-layout-at-1024px-chromium\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    artifacts\playwright\salida\file-upload-preview-labora-f3142-images-and-layout-at-1024px-chromium\trace.zip
+    Usage:
+
+        yarn playwright show-trace artifacts\playwright\salida\file-upload-preview-labora-f3142-images-and-layout-at-1024px-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  4) [chromium] › playwright\file-upload-preview.spec.ts:80:7 › laboratory: drag, PDF, images and layout at 1440px 
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 4
+
+    - Array []
+    + Array [
+    +   "Executing inline script violates the following Content Security Policy directive 'script-src 'self' 'sha256-Ohy6Wz7NFFGmQaVW/a8g5BXylUJrN/hbRM2QuMglZ6Q=' 'sha256-HasAYtZ13nA92vtyhOH9KYrQLVFmnxB9+lraZXpGRQc=''. Either the 'unsafe-inline' keyword, a hash ('sha256-VM2mZqyEQZoLzoTrp5EigFvzQ0+f1wSeBuoOn95WHCg='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked.",
+    +   "Executing inline script violates the following Content Security Policy directive 'script-src 'self' 'sha256-Ohy6Wz7NFFGmQaVW/a8g5BXylUJrN/hbRM2QuMglZ6Q=' 'sha256-HasAYtZ13nA92vtyhOH9KYrQLVFmnxB9+lraZXpGRQc=''. Either the 'unsafe-inline' keyword, a hash ('sha256-+V6QP2X/8MAj8YK3o3LJClmuAjZSIqYg5HgbBWnPKKo='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked.",
+    + ]
+
+      129 |     const baseline = JSON.parse(readFileSync(`${evidence}/baseline/console.json`, 'utf8')) as { errors: string[] };
+      130 |     const unexpectedConsole = consoleErrors.filter(message => !baseline.errors.includes(message));
+    > 131 |     expect(unexpectedConsole).toEqual([]);
+          |                               ^
+      132 |     expect(failedRequests).toEqual([]);
+      133 |     writeFileSync(
+      134 |       `${evidence}/manifest-${width}.json`,
+        at <raiz-del-repo-del-front>\playwright\file-upload-preview.spec.ts:131:31
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    artifacts\playwright\salida\file-upload-preview-labora-094be-images-and-layout-at-1440px-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: artifacts\playwright\salida\file-upload-preview-labora-094be-images-and-layout-at-1440px-chromium\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    artifacts\playwright\salida\file-upload-preview-labora-094be-images-and-layout-at-1440px-chromium\trace.zip
+    Usage:
+
+        yarn playwright show-trace artifacts\playwright\salida\file-upload-preview-labora-094be-images-and-layout-at-1440px-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  5) [chromium] › playwright\file-upload-preview.spec.ts:80:7 › laboratory: drag, PDF, images and layout at 1920px 
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 4
+
+    - Array []
+    + Array [
+    +   "Executing inline script violates the following Content Security Policy directive 'script-src 'self' 'sha256-Ohy6Wz7NFFGmQaVW/a8g5BXylUJrN/hbRM2QuMglZ6Q=' 'sha256-HasAYtZ13nA92vtyhOH9KYrQLVFmnxB9+lraZXpGRQc=''. Either the 'unsafe-inline' keyword, a hash ('sha256-VM2mZqyEQZoLzoTrp5EigFvzQ0+f1wSeBuoOn95WHCg='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked.",
+    +   "Executing inline script violates the following Content Security Policy directive 'script-src 'self' 'sha256-Ohy6Wz7NFFGmQaVW/a8g5BXylUJrN/hbRM2QuMglZ6Q=' 'sha256-HasAYtZ13nA92vtyhOH9KYrQLVFmnxB9+lraZXpGRQc=''. Either the 'unsafe-inline' keyword, a hash ('sha256-+V6QP2X/8MAj8YK3o3LJClmuAjZSIqYg5HgbBWnPKKo='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked.",
+    + ]
+
+      129 |     const baseline = JSON.parse(readFileSync(`${evidence}/baseline/console.json`, 'utf8')) as { errors: string[] };
+      130 |     const unexpectedConsole = consoleErrors.filter(message => !baseline.errors.includes(message));
+    > 131 |     expect(unexpectedConsole).toEqual([]);
+          |                               ^
+      132 |     expect(failedRequests).toEqual([]);
+      133 |     writeFileSync(
+      134 |       `${evidence}/manifest-${width}.json`,
+        at <raiz-del-repo-del-front>\playwright\file-upload-preview.spec.ts:131:31
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    artifacts\playwright\salida\file-upload-preview-labora-a591a-images-and-layout-at-1920px-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: artifacts\playwright\salida\file-upload-preview-labora-a591a-images-and-layout-at-1920px-chromium\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    artifacts\playwright\salida\file-upload-preview-labora-a591a-images-and-layout-at-1920px-chromium\trace.zip
+    Usage:
+
+        yarn playwright show-trace artifacts\playwright\salida\file-upload-preview-labora-a591a-images-and-layout-at-1920px-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  5 failed
+    [chromium] › playwright\file-upload-preview.spec.ts:80:7 › laboratory: drag, PDF, images and layout at 390px 
+    [chromium] › playwright\file-upload-preview.spec.ts:80:7 › laboratory: drag, PDF, images and layout at 768px 
+    [chromium] › playwright\file-upload-preview.spec.ts:80:7 › laboratory: drag, PDF, images and layout at 1024px 
+    [chromium] › playwright\file-upload-preview.spec.ts:80:7 › laboratory: drag, PDF, images and layout at 1440px 
+    [chromium] › playwright\file-upload-preview.spec.ts:80:7 › laboratory: drag, PDF, images and layout at 1920px 
+  5 passed (2.0m)
+exit=1
+
+A/B PAREJO: base pura b655e844, LOS DOS archivos, mismo comando que la corrida de 6 fallos
+
+Running 14 tests using 1 worker
+
+  x   1 [chromium] › playwright\file-upload-preview.spec.ts:80:7 › laboratory: drag, PDF, images and layout at 390px (17.0s)
+  x   2 [chromium] › playwright\file-upload-preview.spec.ts:80:7 › laboratory: drag, PDF, images and layout at 768px (17.4s)
+  x   3 [chromium] › playwright\file-upload-preview.spec.ts:80:7 › laboratory: drag, PDF, images and layout at 1024px (9.3s)
+  x   4 [chromium] › playwright\file-upload-preview.spec.ts:80:7 › laboratory: drag, PDF, images and layout at 1440px (14.5s)
+  x   5 [chromium] › playwright\file-upload-preview.spec.ts:80:7 › laboratory: drag, PDF, images and layout at 1920px (16.2s)
+  ok  6 [chromium] › playwright\file-upload-preview.spec.ts:162:5 › rejections preserve the file; navigation restores previews; removal restores required validation (12.1s)
+  ok  7 [chromium] › playwright\file-upload-preview.spec.ts:198:5 › imaging center inherits the document picker and preview (5.4s)
+  ok  8 [chromium] › playwright\file-upload-preview.spec.ts:206:5 › dark theme and damaged document feedback (4.1s)
+  x   9 [chromium] › playwright\file-upload-preview.spec.ts:224:5 › shared picker previews text and audio, and disabled picker rejects drops (17.5s)
+  ok 10 [chromium] › playwright\file-upload-preview.spec.ts:295:5 › compact comment picker rejects invalid drag without uploading (2.5s)
+  ok 11 [chromium] › playwright\registro-documento-ayuda.spec.ts:52:7 › alta pública — el documento y su expedición › paciente: el carnet y su departamento de emisión comparten renglón (6.9s)
+  ok 12 [chromium] › playwright\registro-documento-ayuda.spec.ts:75:7 › alta pública — el documento y su expedición › profesional: el carnet y su departamento de emisión comparten renglón (7.0s)
+  ok 13 [chromium] › playwright\registro-documento-ayuda.spec.ts:102:7 › alta pública — por qué te pedimos esto › la columna acompaña al paso y el sello de privacidad no se va nunca (9.0s)
+  ok 14 [chromium] › playwright\registro-documento-ayuda.spec.ts:131:7 › alta pública — por qué te pedimos esto › en teléfono la ayuda sigue estando, debajo del formulario (9.3s)
+
+
+  1) [chromium] › playwright\file-upload-preview.spec.ts:80:7 › laboratory: drag, PDF, images and layout at 390px 
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 4
+
+    - Array []
+    + Array [
+    +   "Executing inline script violates the following Content Security Policy directive 'script-src 'self' 'sha256-Ohy6Wz7NFFGmQaVW/a8g5BXylUJrN/hbRM2QuMglZ6Q=' 'sha256-HasAYtZ13nA92vtyhOH9KYrQLVFmnxB9+lraZXpGRQc=''. Either the 'unsafe-inline' keyword, a hash ('sha256-VM2mZqyEQZoLzoTrp5EigFvzQ0+f1wSeBuoOn95WHCg='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked.",
+    +   "Executing inline script violates the following Content Security Policy directive 'script-src 'self' 'sha256-Ohy6Wz7NFFGmQaVW/a8g5BXylUJrN/hbRM2QuMglZ6Q=' 'sha256-HasAYtZ13nA92vtyhOH9KYrQLVFmnxB9+lraZXpGRQc=''. Either the 'unsafe-inline' keyword, a hash ('sha256-+V6QP2X/8MAj8YK3o3LJClmuAjZSIqYg5HgbBWnPKKo='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked.",
+    + ]
+
+      129 |     const baseline = JSON.parse(readFileSync(`${evidence}/baseline/console.json`, 'utf8')) as { errors: string[] };
+      130 |     const unexpectedConsole = consoleErrors.filter(message => !baseline.errors.includes(message));
+    > 131 |     expect(unexpectedConsole).toEqual([]);
+          |                               ^
+      132 |     expect(failedRequests).toEqual([]);
+      133 |     writeFileSync(
+      134 |       `${evidence}/manifest-${width}.json`,
+        at <raiz-del-repo-del-front>\playwright\file-upload-preview.spec.ts:131:31
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    artifacts\playwright\salida\file-upload-preview-labora-0336c--images-and-layout-at-390px-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: artifacts\playwright\salida\file-upload-preview-labora-0336c--images-and-layout-at-390px-chromium\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    artifacts\playwright\salida\file-upload-preview-labora-0336c--images-and-layout-at-390px-chromium\trace.zip
+    Usage:
+
+        yarn playwright show-trace artifacts\playwright\salida\file-upload-preview-labora-0336c--images-and-layout-at-390px-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) [chromium] › playwright\file-upload-preview.spec.ts:80:7 › laboratory: drag, PDF, images and layout at 768px 
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 4
+
+    - Array []
+    + Array [
+    +   "Executing inline script violates the following Content Security Policy directive 'script-src 'self' 'sha256-Ohy6Wz7NFFGmQaVW/a8g5BXylUJrN/hbRM2QuMglZ6Q=' 'sha256-HasAYtZ13nA92vtyhOH9KYrQLVFmnxB9+lraZXpGRQc=''. Either the 'unsafe-inline' keyword, a hash ('sha256-VM2mZqyEQZoLzoTrp5EigFvzQ0+f1wSeBuoOn95WHCg='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked.",
+    +   "Executing inline script violates the following Content Security Policy directive 'script-src 'self' 'sha256-Ohy6Wz7NFFGmQaVW/a8g5BXylUJrN/hbRM2QuMglZ6Q=' 'sha256-HasAYtZ13nA92vtyhOH9KYrQLVFmnxB9+lraZXpGRQc=''. Either the 'unsafe-inline' keyword, a hash ('sha256-+V6QP2X/8MAj8YK3o3LJClmuAjZSIqYg5HgbBWnPKKo='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked.",
+    + ]
+
+      129 |     const baseline = JSON.parse(readFileSync(`${evidence}/baseline/console.json`, 'utf8')) as { errors: string[] };
+      130 |     const unexpectedConsole = consoleErrors.filter(message => !baseline.errors.includes(message));
+    > 131 |     expect(unexpectedConsole).toEqual([]);
+          |                               ^
+      132 |     expect(failedRequests).toEqual([]);
+      133 |     writeFileSync(
+      134 |       `${evidence}/manifest-${width}.json`,
+        at <raiz-del-repo-del-front>\playwright\file-upload-preview.spec.ts:131:31
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    artifacts\playwright\salida\file-upload-preview-labora-414a7--images-and-layout-at-768px-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: artifacts\playwright\salida\file-upload-preview-labora-414a7--images-and-layout-at-768px-chromium\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    artifacts\playwright\salida\file-upload-preview-labora-414a7--images-and-layout-at-768px-chromium\trace.zip
+    Usage:
+
+        yarn playwright show-trace artifacts\playwright\salida\file-upload-preview-labora-414a7--images-and-layout-at-768px-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) [chromium] › playwright\file-upload-preview.spec.ts:80:7 › laboratory: drag, PDF, images and layout at 1024px 
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 4
+
+    - Array []
+    + Array [
+    +   "Executing inline script violates the following Content Security Policy directive 'script-src 'self' 'sha256-Ohy6Wz7NFFGmQaVW/a8g5BXylUJrN/hbRM2QuMglZ6Q=' 'sha256-HasAYtZ13nA92vtyhOH9KYrQLVFmnxB9+lraZXpGRQc=''. Either the 'unsafe-inline' keyword, a hash ('sha256-VM2mZqyEQZoLzoTrp5EigFvzQ0+f1wSeBuoOn95WHCg='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked.",
+    +   "Executing inline script violates the following Content Security Policy directive 'script-src 'self' 'sha256-Ohy6Wz7NFFGmQaVW/a8g5BXylUJrN/hbRM2QuMglZ6Q=' 'sha256-HasAYtZ13nA92vtyhOH9KYrQLVFmnxB9+lraZXpGRQc=''. Either the 'unsafe-inline' keyword, a hash ('sha256-+V6QP2X/8MAj8YK3o3LJClmuAjZSIqYg5HgbBWnPKKo='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked.",
+    + ]
+
+      129 |     const baseline = JSON.parse(readFileSync(`${evidence}/baseline/console.json`, 'utf8')) as { errors: string[] };
+      130 |     const unexpectedConsole = consoleErrors.filter(message => !baseline.errors.includes(message));
+    > 131 |     expect(unexpectedConsole).toEqual([]);
+          |                               ^
+      132 |     expect(failedRequests).toEqual([]);
+      133 |     writeFileSync(
+      134 |       `${evidence}/manifest-${width}.json`,
+        at <raiz-del-repo-del-front>\playwright\file-upload-preview.spec.ts:131:31
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    artifacts\playwright\salida\file-upload-preview-labora-f3142-images-and-layout-at-1024px-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: artifacts\playwright\salida\file-upload-preview-labora-f3142-images-and-layout-at-1024px-chromium\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    artifacts\playwright\salida\file-upload-preview-labora-f3142-images-and-layout-at-1024px-chromium\trace.zip
+    Usage:
+
+        yarn playwright show-trace artifacts\playwright\salida\file-upload-preview-labora-f3142-images-and-layout-at-1024px-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  4) [chromium] › playwright\file-upload-preview.spec.ts:80:7 › laboratory: drag, PDF, images and layout at 1440px 
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 4
+
+    - Array []
+    + Array [
+    +   "Executing inline script violates the following Content Security Policy directive 'script-src 'self' 'sha256-Ohy6Wz7NFFGmQaVW/a8g5BXylUJrN/hbRM2QuMglZ6Q=' 'sha256-HasAYtZ13nA92vtyhOH9KYrQLVFmnxB9+lraZXpGRQc=''. Either the 'unsafe-inline' keyword, a hash ('sha256-VM2mZqyEQZoLzoTrp5EigFvzQ0+f1wSeBuoOn95WHCg='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked.",
+    +   "Executing inline script violates the following Content Security Policy directive 'script-src 'self' 'sha256-Ohy6Wz7NFFGmQaVW/a8g5BXylUJrN/hbRM2QuMglZ6Q=' 'sha256-HasAYtZ13nA92vtyhOH9KYrQLVFmnxB9+lraZXpGRQc=''. Either the 'unsafe-inline' keyword, a hash ('sha256-+V6QP2X/8MAj8YK3o3LJClmuAjZSIqYg5HgbBWnPKKo='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked.",
+    + ]
+
+      129 |     const baseline = JSON.parse(readFileSync(`${evidence}/baseline/console.json`, 'utf8')) as { errors: string[] };
+      130 |     const unexpectedConsole = consoleErrors.filter(message => !baseline.errors.includes(message));
+    > 131 |     expect(unexpectedConsole).toEqual([]);
+          |                               ^
+      132 |     expect(failedRequests).toEqual([]);
+      133 |     writeFileSync(
+      134 |       `${evidence}/manifest-${width}.json`,
+        at <raiz-del-repo-del-front>\playwright\file-upload-preview.spec.ts:131:31
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    artifacts\playwright\salida\file-upload-preview-labora-094be-images-and-layout-at-1440px-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: artifacts\playwright\salida\file-upload-preview-labora-094be-images-and-layout-at-1440px-chromium\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    artifacts\playwright\salida\file-upload-preview-labora-094be-images-and-layout-at-1440px-chromium\trace.zip
+    Usage:
+
+        yarn playwright show-trace artifacts\playwright\salida\file-upload-preview-labora-094be-images-and-layout-at-1440px-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  5) [chromium] › playwright\file-upload-preview.spec.ts:80:7 › laboratory: drag, PDF, images and layout at 1920px 
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 4
+
+    - Array []
+    + Array [
+    +   "Executing inline script violates the following Content Security Policy directive 'script-src 'self' 'sha256-Ohy6Wz7NFFGmQaVW/a8g5BXylUJrN/hbRM2QuMglZ6Q=' 'sha256-HasAYtZ13nA92vtyhOH9KYrQLVFmnxB9+lraZXpGRQc=''. Either the 'unsafe-inline' keyword, a hash ('sha256-VM2mZqyEQZoLzoTrp5EigFvzQ0+f1wSeBuoOn95WHCg='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked.",
+    +   "Executing inline script violates the following Content Security Policy directive 'script-src 'self' 'sha256-Ohy6Wz7NFFGmQaVW/a8g5BXylUJrN/hbRM2QuMglZ6Q=' 'sha256-HasAYtZ13nA92vtyhOH9KYrQLVFmnxB9+lraZXpGRQc=''. Either the 'unsafe-inline' keyword, a hash ('sha256-+V6QP2X/8MAj8YK3o3LJClmuAjZSIqYg5HgbBWnPKKo='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked.",
+    + ]
+
+      129 |     const baseline = JSON.parse(readFileSync(`${evidence}/baseline/console.json`, 'utf8')) as { errors: string[] };
+      130 |     const unexpectedConsole = consoleErrors.filter(message => !baseline.errors.includes(message));
+    > 131 |     expect(unexpectedConsole).toEqual([]);
+          |                               ^
+      132 |     expect(failedRequests).toEqual([]);
+      133 |     writeFileSync(
+      134 |       `${evidence}/manifest-${width}.json`,
+        at <raiz-del-repo-del-front>\playwright\file-upload-preview.spec.ts:131:31
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    artifacts\playwright\salida\file-upload-preview-labora-a591a-images-and-layout-at-1920px-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: artifacts\playwright\salida\file-upload-preview-labora-a591a-images-and-layout-at-1920px-chromium\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    artifacts\playwright\salida\file-upload-preview-labora-a591a-images-and-layout-at-1920px-chromium\trace.zip
+    Usage:
+
+        yarn playwright show-trace artifacts\playwright\salida\file-upload-preview-labora-a591a-images-and-layout-at-1920px-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  6) [chromium] › playwright\file-upload-preview.spec.ts:224:5 › shared picker previews text and audio, and disabled picker rejects drops 
+
+    Error: expect(locator).toContainText(expected) failed
+
+    Locator: locator('app-file-input').first().locator('pre')
+    Expected substring: "Catálogo de prueba"
+    Timeout: 15000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toContainText" with timeout 15000ms
+      - waiting for locator('app-file-input').first().locator('pre')
+
+
+      235 |       buffer: Buffer.from('{"nombre":"Catálogo de prueba","activo":true}'),
+      236 |     });
+    > 237 |   await expect(picker.locator('pre')).toContainText('Catálogo de prueba');
+          |                                       ^
+      238 |   await picker.scrollIntoViewIfNeeded();
+      239 |   await picker.screenshot({ path: `${evidence}/text-preview.png` });
+      240 |   // WAV PCM real: un segundo de silencio, sólo para probar decodificación y controles.
+        at <raiz-del-repo-del-front>\playwright\file-upload-preview.spec.ts:237:39
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    artifacts\playwright\salida\file-upload-preview-shared-22148-sabled-picker-rejects-drops-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: artifacts\playwright\salida\file-upload-preview-shared-22148-sabled-picker-rejects-drops-chromium\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    artifacts\playwright\salida\file-upload-preview-shared-22148-sabled-picker-rejects-drops-chromium\trace.zip
+    Usage:
+
+        yarn playwright show-trace artifacts\playwright\salida\file-upload-preview-shared-22148-sabled-picker-rejects-drops-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  6 failed
+    [chromium] › playwright\file-upload-preview.spec.ts:80:7 › laboratory: drag, PDF, images and layout at 390px 
+    [chromium] › playwright\file-upload-preview.spec.ts:80:7 › laboratory: drag, PDF, images and layout at 768px 
+    [chromium] › playwright\file-upload-preview.spec.ts:80:7 › laboratory: drag, PDF, images and layout at 1024px 
+    [chromium] › playwright\file-upload-preview.spec.ts:80:7 › laboratory: drag, PDF, images and layout at 1440px 
+    [chromium] › playwright\file-upload-preview.spec.ts:80:7 › laboratory: drag, PDF, images and layout at 1920px 
+    [chromium] › playwright\file-upload-preview.spec.ts:224:5 › shared picker previews text and audio, and disabled picker rejects drops 
+  8 passed (2.7m)
+exit=1

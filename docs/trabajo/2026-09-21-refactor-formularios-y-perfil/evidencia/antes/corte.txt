@@ -1,0 +1,4 @@
+$ git rev-parse origin/mockup && git branch --show-current
+d76e3054487eed8ed106fb834842d607f57b8351
+itzan/separacion-smart-dumb-registros
+exit=0

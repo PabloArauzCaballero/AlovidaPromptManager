@@ -1,0 +1,12 @@
+PROFESIONAL · «Tu título profesional y foto» — diploma del título
+  formato inválido (.txt): mensaje=«Formato no permitido.» · archivo listado=true · esperado=«Formato no permitido.» · OK
+  peso 5 MB + 1 byte: mensaje=«Supera el límite de 5 MB.» · archivo listado=true · esperado=«Supera el límite de 5 MB.» · OK
+  PDF válido: mensaje=ninguno · archivo listado=true · esperado=aceptar · OK
+PROFESIONAL · foto de perfil (contraejemplo: acepta WebP, el respaldo no)
+  WebP en la foto: mensaje=ninguno · archivo listado=false · esperado=aceptar · DIFERENCIA
+LABORATORIO · «La empresa»
+LABORATORIO · «Los papeles de la empresa»
+  formato inválido (.txt): mensaje=«Formato no permitido.» · archivo listado=true · esperado=«Formato no permitido.» · OK
+  peso 5 MB + 1 byte: mensaje=«Supera el límite de 5 MB.» · archivo listado=true · esperado=«Supera el límite de 5 MB.» · OK
+  PDF válido: mensaje=ninguno · archivo listado=true · esperado=aceptar · OK
+

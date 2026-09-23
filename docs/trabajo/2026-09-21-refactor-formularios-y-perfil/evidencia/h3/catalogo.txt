@@ -1,0 +1,10 @@
+ruta:        /design-system
+título:      «Identidad»
+indicador:   (sin indicador de texto)
+pasos:       4
+controles:   4
+botón:       «Siguiente»
+avanza:      «Identidad» → «Identidad» · NO
+consola/red: 2 problema(s)
+  console: Executing inline script violates the following Content Security Policy directive 'script-src 'self' 'sha256-Ohy6Wz7NFFGm
+  console: Executing inline script violates the following Content Security Policy directive 'script-src 'self' 'sha256-Ohy6Wz7NFFGm
