@@ -1,6 +1,6 @@
 # Marcelo — daily de la noche del 2026-09-22
 
-> **AVANCE: 58 / 60 — 96,7 %.** (Se agregó H3.S2.M9 por decisión de Pablo sobre `microphone=(self)`.)
+> **AVANCE: 59 / 60 — 98,3 %.** (Se agregó H3.S2.M9 por decisión de Pablo sobre `microphone=(self)`; H6.S1.M2 se cerró en una segunda pasada.)
 > `A MEDIAS` cuenta como **no hecha**. Prohibido el porcentaje estimado a ojo (regla 50 §5).
 
 - Carril: [`Noche-InicioPaciente.SintomasYConfirmacion`](Noche-InicioPaciente.SintomasYConfirmacion/SiluetaDelCuerpoVozYModalDeConfirmacion.md)

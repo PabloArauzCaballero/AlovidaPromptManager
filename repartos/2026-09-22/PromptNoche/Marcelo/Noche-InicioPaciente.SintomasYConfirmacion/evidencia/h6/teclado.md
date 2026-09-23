@@ -19,18 +19,22 @@ Verificado en vivo en Chromium (`evidencia/h2/capturas/mediciones.json`), sobre 
 
 ## 2. El dictado (P-02)
 
-Verificado en Chromium (`evidencia/h3/dictado/`):
+Verificado en Chromium, en vivo, el 23/09 (`evidencia/h6/teclado-dictar.json`):
 
 1. El botón «Dictar» es un `<button app-button>` real —no un `<div>` con `role="button"`—, así que
-   hereda la activación por teclado nativa del elemento `<button>` (`Enter` y `Espacio` lo activan
-   por especificación del navegador, sin código propio que lo replique).
-2. Se ejercitó el ciclo completo con clic (permiso → «Escuchando…» → transcripción → «Dictar» de
-   vuelta) y se observó `aria-pressed` cambiar de `"false"` a `"true"` y de vuelta.
-3. **No cubierto**: no se grabó explícitamente una secuencia `Tab` hasta el botón + `Enter`/`Espacio`
-   para activarlo (se usó `.click()` programático en las pruebas automatizadas). La activación por
-   teclado se apoya en la semántica nativa de `<button>`, verificada indirectamente por el spec
-   `dialog.spec.ts`/`body-map.spec.ts` sobre botones equivalentes del mismo átomo `app-button`, pero
-   no se ejercitó en vivo sobre «Dictar» específicamente.
+   hereda la activación por teclado nativa del elemento `<button>`.
+2. `Tab` desde el principio de la página lo alcanza en 25 pasos (`focoTrasTabs ===
+   "sintomas-dictar"`), sin saltarlo ni quedar atrapado antes.
+3. `Enter` con el foco puesto lo activa: `aria-pressed` pasa de `"false"` a `"true"`, el texto del
+   botón pasa a «Detener» y el estado dice «Escuchando… decí qué te pasa.».
+4. `Espacio` alterna igual que `Enter` y que el clic: lo apagó una vez y lo volvió a encender otra,
+   en las dos observado por el cambio de `aria-pressed`.
+5. Se detuvo con `Espacio` al cerrar la prueba, se vació el área de texto (`limpio: true`) y se
+   cerró la página — el micrófono no quedó abierto.
+
+**Ya no queda nada sin cubrir en este punto**: el ciclo completo (permiso → «Escuchando…» →
+transcripción) ya estaba verificado por clic en `evidencia/h3/dictado/`; esta prueba agrega la
+activación por teclado, que faltaba.
 
 ## 3. La confirmación de guardado (D-08, H4)
 
@@ -50,5 +54,5 @@ con `dialogs.confirmarCambios()` disparado encima:
 | Flujo | Tab en orden | Activación con teclado | Foco atrapado/devuelto | Estado |
 |---|---|---|---|---|
 | Silueta | Verificado (6 zonas) | Verificado (Enter y Espacio, sin scroll) | N/A (no es un diálogo) | Completo |
-| Dictado | No cubierto (botón nativo, no ejercitado en vivo) | No cubierto en vivo (sí por semántica HTML) | N/A | Parcial |
+| Dictado | Verificado (25 Tab desde el inicio de la página) | Verificado (Enter y Espacio alternan igual que el clic) | N/A | Completo |
 | Confirmación D-08 | N/A | N/A | Verificado (2 navegadores) | Completo |

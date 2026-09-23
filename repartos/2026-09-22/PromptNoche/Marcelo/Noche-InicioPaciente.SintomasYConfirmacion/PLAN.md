@@ -329,12 +329,12 @@ demostrado, qué quedó a medias con las cuatro respuestas, en qué navegadores 
 
 **CA:** Dado el reporte, cuando se lee la primera línea, entonces está el avance calculado.
 **DoD:** las 5 microtareas en `HECHO`.
-**Estado:** HECHO — 5/5
+**Estado:** HECHO — 5/5 (M2 completado en una segunda pasada)
 
 | ID | Microtarea | CA (binario) | DoD (comando de verificación) | Estado |
 |---|---|---|---|---|
 | H6.S1.M1 | Capturas finales por viewport y tema, miradas | Con su línea | `evidencia/h6/` | HECHO — consolidado en \`evidencia/h6/capturas-finales.md\`, referenciando las capturas de H2/H3 ya miradas; desvío declarado (máquina en 1,1 GB libres, no se abrió navegador nuevo) |
-| H6.S1.M2 | Teclado completo: silueta (Tab/Enter), dictado (Tab al botón, activar, detener), confirmación (foco adentro y de vuelta) | Descripción por paso | `evidencia/h6/teclado.md` | A MEDIAS — silueta y confirmación completos; dictado con el botón nativo activable por teclado según semántica HTML, pero no ejercitado Tab+Enter en vivo (\`evidencia/h6/teclado.md\`) |
+| H6.S1.M2 | Teclado completo: silueta (Tab/Enter), dictado (Tab al botón, activar, detener), confirmación (foco adentro y de vuelta) | Descripción por paso | `evidencia/h6/teclado.md` | HECHO — completado el 23/09 tras el primer cierre: `Tab` (25 pasos) llega al botón, `Enter` y `Espacio` lo activan/alternan igual que el clic, micrófono cerrado y área vaciada al terminar (`evidencia/h6/teclado-dictar.json`) |
 | H6.S1.M3 | Declarar navegadores probados para la voz, y que nada de lo dictado se registró | Lista + afirmación con el grep | sección en `REPORTE.md` | HECHO — \`evidencia/h6/navegadores-y-privacidad.md\` |
 | H6.S1.M4 | Declarar el peldaño por área (regla 30) | Hay peldaño por área | sección en `REPORTE.md` | HECHO — \`evidencia/h6/peldano-por-area.md\` |
 | H6.S1.M5 | Escribir `REPORTE.md` con el avance primero y enumerar procesos que quedaron corriendo | `head -3` muestra el avance | `head -3 REPORTE.md` | HECHO — \`REPORTE.md\` escrito con avance 57/60 en la primera línea y sus tres secciones |

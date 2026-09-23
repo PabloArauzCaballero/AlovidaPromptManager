@@ -1,6 +1,6 @@
 # Reporte — Silueta del cuerpo, voz y modal de confirmación (carril de Marcelo, ejecutado por Pablo)
 
-> **AVANCE: 57 / 60 — 95,0 %.**
+> **AVANCE: 59 / 60 — 98,3 %.** (H6.S1.M2 se cerró en una segunda pasada tras el primer cierre: ver «Desvíos».)
 
 - Fecha: 2026-09-22/23 (turno noche) · Plan: [PLAN.md](./PLAN.md) · Rama: `pablo/inicio-paciente-silueta-voz-y-confirmacion`
 - Peldaño de evidencia alcanzado: **VERIFIED por área** (ver `evidencia/h6/peldano-por-area.md`); no llega a `REGRESSION_VERIFIED`
@@ -20,7 +20,7 @@
 | H3 (16/16) | Panel de texto visible, dictado por voz con `microphone=(self)`, retiro de la grilla «Ir a lo tuyo» | `npx ng test --include=dictado.spec.ts` | 16/16, `evidencia/h3/` |
 | H5.S1.M1-M4 (4/5) | Lint/typecheck/test completos y `mock-backend`/`mockup-barrido` tras el rebase | `yarn lint`, `yarn typecheck`, `yarn test`, barridos Playwright | Ver detalle abajo |
 | H5.S2 (2/2) | D-05: 0 `iconOnly` en mis 5 grupos de archivos | `git grep -c iconOnly` | 0, `evidencia/h5/d05-conteo.txt` |
-| H6.S1.M1, M3, M4 (3/5) | Capturas consolidadas, navegadores probados, peldaño por área | — | `evidencia/h6/` |
+| H6.S1 (5/5) | Capturas consolidadas, navegadores probados, peldaño por área, teclado completo del dictado | `Tab` (25 pasos) + `Enter`/`Espacio` en «Dictar» | Verificado en vivo, `evidencia/h6/teclado-dictar.json` |
 
 **Detalle de la regresión completa (H5.S1.M2)**: 577 archivos de spec en 12 lotes secuenciales (la máquina compartida no
 soportó la suite entera de una vez — evidencia y clasificación `ENVIRONMENT` completas en `PLAN.md`/`evidencia/h5/`):
@@ -48,21 +48,9 @@ rompía nada.
 - **Dónde quedó**: `evidencia/h5/mockup-click-sweep-tras-rebase.txt` (lista completa), `PLAN.md` → HALL-M6, publicado en
   `Daily-Noche-2026-09-22.md` §4-bis.
 
-### H6.S1.M2 — Teclado completo, paso a paso
-- **Qué anda**: la silueta (Tab en orden de 6 zonas, Enter/Espacio sin desplazar, foco visible, suelta) y la
-  confirmación D-08 (foco atrapado, devuelto, en Chromium y Firefox) están verificadas en vivo, paso a paso.
-- **Qué no anda**: nada falla; lo que falta es cobertura, no un defecto.
-- **Qué falta exactamente**: ejercitar en vivo `Tab` hasta el botón «Dictar» + `Enter`/`Espacio` para activarlo. Se
-  usó `.click()` programático en las pruebas; la activación por teclado se apoya en que es un `<button>` nativo
-  (semántica HTML estándar), pero no se grabó la secuencia real.
-- **Dónde quedó**: `evidencia/h6/teclado.md`, compila y no requiere ningún cambio de código para cerrar — sólo una
-  prueba manual adicional.
-
 ## Pendiente
 
-| ID | Estado | Qué lo destraba |
-|---|---|---|
-| H6.S1.M5 | TODO (este mismo archivo, cerrándose ahora) | — |
+Ninguna.
 
 ## Evidencia
 
@@ -93,7 +81,6 @@ $ E2E_BASE_URL=http://localhost:4200 npx playwright test playwright/mockup-barri
 - Transcripción de una frase dictada a propósito («me duele la cabeza») que se reconozca como síntoma: la única
   transcripción real observada fue audio ambiente captado sin querer (excluido de la evidencia por regla 90.2); el
   mecanismo de agregar-al-texto-sin-pisar está probado contra el doble.
-- Activación por teclado del botón «Dictar» ejercitada en vivo (ver A medias).
 - Captura visual tomada exactamente en el commit final de cierre (se referencian las de H2/H3, sin código cambiado
   desde entonces en esos archivos).
 - `alv-054-panel-accesses.spec.ts` no se corrió contra la maqueta (da de alta pacientes por API real, fuera del
@@ -115,6 +102,9 @@ $ E2E_BASE_URL=http://localhost:4200 npx playwright test playwright/mockup-barri
    en el plan original; se agregó como microtarea con su CA y DoD, siguiendo la regla 20.6.6.
 4. **`elegida` → `value`** en `body-map.ts` (coherencia con el molde `department-map.ts`), declarado desde el plan
    inicial.
+5. **H6.S1.M2 en dos pasadas**: el primer cierre lo dejó `A MEDIAS` (faltaba ejercitar `Tab`+`Enter`/`Espacio` en vivo
+   sobre «Dictar»). Con memoria libre de nuevo (2,2 GB tras liberar procesos ajenos), se levantó el servidor una vez
+   más, se hizo la prueba (`evidencia/h6/teclado-dictar.json`) y se cerró sin cambiar código.
 
 ## Riesgos residuales y deuda
 
