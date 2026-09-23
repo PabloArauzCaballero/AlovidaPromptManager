@@ -1,0 +1,31 @@
+$ grep -cE '^## (D|R|P|N)-' docs/requisitos/CORRECCIONES-DOCTOR-Y-PACIENTE-2026-09-22.md
+19
+$ grep -cE '^\| Q-[0-9]+ \|' docs/requisitos/CORRECCIONES-DOCTOR-Y-PACIENTE-2026-09-22.md
+20
+$ grep -c '^## Ficha de procedencia' docs/requisitos/CORRECCIONES-DOCTOR-Y-PACIENTE-2026-09-22.md
+1
+$ grep -cE '^\| (D|R|P|N)-[0-9]+ \|' docs/requisitos/CORRECCIONES-DOCTOR-Y-PACIENTE-2026-09-22.md   (filas de cobertura)
+19
+
+$ git log -1 --format='%H %ad %s' --date=iso origin/mockup        (alovida/mantra-core-health)
+b655e8449abd662d6b24156fd6e2b06aeb120cc1 2026-09-22 18:04:42 -0400 Merge pull request #570 from mdavila-2001/pablo/refactor-tabla-canonica
+$ git log -1 --format='%H %ad %s' --date=iso origin/dev           (alovida/mantra-core-health)
+723ddb409968add40c947b3d2658a89bc1043b16 2026-09-22 18:04:30 -0400 Merge pull request #572 from mdavila-2001/pablo/rescate-carril-c
+$ git log -1 --format='%H %ad %s' --date=iso origin/dev           (alovida/mantra-core-health-api)
+7a604d4edd7afecb4b82ce041a988fd46b762216 2026-09-22 01:47:55 -0400 Merge pull request #451 from mdavila-2001/feat/admin-portal-catalog
+
+$ git fetch origin dev mockup                                      (alovida/mantra-core-health, a pedido de Pablo)
+   c7573a97..723ddb40  dev        -> origin/dev
+   d76e3054..b655e844  mockup     -> origin/mockup
+$ git rev-list --count origin/dev..origin/mockup → 303 · origin/mockup..origin/dev → 4 · merge-base c7573a97
+
+$ git grep -o 'iconOnly' origin/mockup -- 'src/app/**/*.html' | wc -l → 78   (en 33 archivos)
+$ git grep -l '<app-data-table' origin/mockup -- 'src/app/**/*.html' | wc -l → 30
+$ git grep -l '<app-content-dialog' origin/mockup -- 'src/app/**/*.html' | wc -l → 29
+$ git grep -l '<app-pagination' … → 3 · '<app-filter-bar' → 8 · '<app-row-actions' → 2
+$ git grep -c 'dialogs.confirm(' origin/mockup -- 'src/app/**/*.ts' ':!*.spec.ts' | wc -l → 26 archivos
+$ git grep -n -E "practitioners/me" origin/dev -- 'src/modules/profiles/controllers/*.ts'   (API)
+  L90 GET summary · L113 GET onboarding · L228 PATCH practitioners/me · L343/375/386/406/427 affiliations
+  L449 POST practitioners/me/credentials · L471 DELETE practitioners/me/credentials/:credentialId
+  L529 PATCH practitioners/me/specialties/:specialtyId/primary
+  → NO existe PATCH de credenciales ni PATCH/DELETE de especialidades o matrículas (HALL-E3)

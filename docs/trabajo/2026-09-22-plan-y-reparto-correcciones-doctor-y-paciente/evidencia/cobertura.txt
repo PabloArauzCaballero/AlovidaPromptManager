@@ -1,0 +1,37 @@
+$ cobertura: cada ID citado en al menos un prompt de tarea
+  D-01 -> Itzan
+  D-02 -> Itzan
+  D-03 -> Itzan
+  D-04 -> Itzan, Pablo
+  D-05 -> Ender, Itzan, Justin, Marcelo, Pablo
+  D-06 -> Itzan, Pablo
+  D-07 -> Itzan
+  D-08 -> Itzan, Marcelo, Pablo
+  D-09 -> Itzan, Pablo
+  D-10 -> Itzan
+  R-01 -> Ender, Justin
+  R-02 -> Ender, Justin
+  R-03 -> Ender
+  P-01 -> Marcelo
+  P-02 -> Marcelo
+  P-03 -> Marcelo
+  N-01 -> Ender
+  N-02 -> Ender, Justin
+  N-03 -> Ender, Itzan
+observaciones sin dueno: 0
+
+$ capas por prompt (hitos / subtareas / microtareas / CA / DoD / Estado) y seccion 1
+  Ender    6 / 11 / 48 / 17 / 17 / 17   seccion 1: OK
+  Itzan    8 / 18 / 93 / 26 / 26 / 26   seccion 1: OK
+  Justin   6 / 10 / 51 / 16 / 16 / 16   seccion 1: OK
+  Marcelo  6 / 12 / 59 / 18 / 18 / 18   seccion 1: OK
+  Pablo    6 / 13 / 68 / 19 / 19 / 19   seccion 1: OK
+TOTAL microtareas repartidas: 319
+
+$ dailies
+  Daily-Noche-2026-09-22.md OK
+  Ender\Ender-Daily-Noche-2026-09-22.md OK
+  Itzan\Itzan-Daily-Noche-2026-09-22.md OK
+  Justin\Justin-Daily-Noche-2026-09-22.md OK
+  Marcelo\Marcelo-Daily-Noche-2026-09-22.md OK
+  Pablo\Pablo-Daily-Noche-2026-09-22.md OK

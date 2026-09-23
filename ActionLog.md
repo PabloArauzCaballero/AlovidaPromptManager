@@ -7,6 +7,77 @@ resumen de alto nivel para quien no quiere abrir carpeta por carpeta. Entradas n
 
 ---
 
+## 2026-09-22 — Pablo, plan maestro y reparto del turno noche 2026-09-22 · "Correcciones del doctor y del paciente"
+
+**Rama:** `main` de este repo · **Estado: reparto cerrado, 25/25 microtareas del trabajo en `HECHO`.**
+**Ejecución de lo repartido: 0 / 319.** Nada se corrió todavía en `mantra-core-health`.
+
+**Pedido:** 19 observaciones nuevas del cliente — 10 del perfil del doctor (`D-01…D-10`), 3 del flujo de
+reserva (`R-01…R-03`), 3 de la pantalla de inicio del paciente (`P-01…P-03`) y 3 del menú lateral
+(`N-01…N-03`) —, transcritas verbatim en
+[`docs/requisitos/CORRECCIONES-DOCTOR-Y-PACIENTE-2026-09-22.md`](docs/requisitos/CORRECCIONES-DOCTOR-Y-PACIENTE-2026-09-22.md)
+y localizadas con archivo y línea en
+[`docs/verificacion/VERIFICACION-CONTRA-CODIGO-2026-09-22.md`](docs/verificacion/VERIFICACION-CONTRA-CODIGO-2026-09-22.md)
+sobre `origin/mockup` @ `b655e8449abd662d6b24156fd6e2b06aeb120cc1` (traído con `git fetch` a pedido, junto con
+`origin/dev` del front y de la API).
+
+### Qué quedó repartido
+
+Cinco carriles en [`repartos/2026-09-22/PromptNoche/`](repartos/2026-09-22/PromptNoche/), con un
+[plan maestro](docs/trabajo/2026-09-22-plan-y-reparto-correcciones-doctor-y-paciente/PLAN-MAESTRO.md) que fija
+orden, dependencias y un kill-test por observación:
+
+| Persona | Carril | Micro |
+|---|---|---|
+| Pablo | La disciplina de tabla con acciones como **ADR-0015**, `pagination`/`filter-bar`/`data-table`, y «Dónde atiendo» que la cumple | 68 |
+| Itzan | Perfil del médico sin «principal», sin datos del trabajo; Trayectoria y Credenciales con modal, adjunto, buscador y paginación; mapa que vacía la dirección; «Mis puntos» como pestaña | 93 |
+| Justin | Clic único y carga visible en el directorio; «Cotizaciones» del paciente por precio y cercanía | 51 |
+| Ender | Latencia del simulador decidida por ruta; agendas para los 13 médicos registrados; Chats y Tutoriales en la cabecera | 48 |
+| Marcelo | Silueta del cuerpo accesible (molde de `department-map`); texto visible y dictado por voz; `confirmarCambios()` para todos | 59 |
+
+### Dos guías de trabajo nuevas del cliente
+
+D-04 («todo formulario que nace de una acción de tabla va en modal») y D-08 (la disciplina completa de tabla
+con acciones) se adoptan «a partir de ahora»: quedan como ADR-0015 en el frontend (Pablo H2) y como memoria
+de trabajo de este repo.
+
+### Hallazgos que cambian el encargo
+
+- **Sólo `POST`/`DELETE` de credenciales existen en la API real**; editar título/especialidad/matrícula y
+  retirar especialidad/matrícula viven sólo en el simulador (el propio `profiles.client.ts:775-786` lo declara).
+  Todo eso se cierra `VERIFIED` contra el doble, con la brecha declarada para `dev` (HALL-E3).
+- **`DataTable` pagina por cursor por decisión documentada** y D-08 pide números y selects: se resuelve con
+  `app-pagination` en cliente para listas locales, sin romper 30 consumidores (HALL-E4).
+- **Los 13 médicos registrados no reciben agenda** en los fixtures (`agenda.ts:106`): es la causa probable de
+  «no tiene turnos» al elegir médico (HALL-E9).
+- **La latencia del simulador es 120–300 ms aleatoria por petición** (`mock-backend.interceptor.ts:251-259`) y
+  «elegir médico» dispara varias en serie: R-02 se mide antes de tocar (HALL-E8).
+- **No hay precios con procedencia** fuera de farmacias: el arancel médico está en UMA sin conversión. N-02 se
+  implementa con «precio no publicado», nunca con un número inventado (HALL-E11, `DECISION_REQUIRED`).
+- **39 de los 78 `iconOnly` no tienen dueño esta noche** (eran 107 el 20/09): declarado con denominador.
+
+### Cómo se verificó el reparto, en vez de afirmarlo
+
+```text
+python tools/check_reparto.py repartos/2026-09-22   -> exit 0
+python tools/check_skills_citadas.py                -> exit 0, 114 skills citadas, 0 inexistentes
+script de cobertura                                 -> 19/19 observaciones con dueño, 0 sin dueño
+                                                       5/5 prompts con la sección 1 obligatoria
+                                                       32 hitos / 64 subtareas / 319 microtareas
+script de intersección de reservas                  -> 0 choques entre 5 carriles; 1 ruta cambia de dueño
+                                                       respecto del 21/09 (work-history → Pablo), declarada
+```
+
+Reporte completo: [`docs/trabajo/2026-09-22-plan-y-reparto-correcciones-doctor-y-paciente/REPORTE.md`](docs/trabajo/2026-09-22-plan-y-reparto-correcciones-doctor-y-paciente/REPORTE.md).
+
+### Nada tocado en los repos de producto
+
+Por diseño: este trabajo reparte, no implementa. `mantra-core-health` y `mantra-core-health-api` se
+**leyeron** (con `git fetch` de `dev` y `mockup`) y se citan con archivo y línea; **ninguno tiene commits de
+este trabajo**. Ningún subagente ni workflow: regla 70.
+
+---
+
 ## 2026-09-21 — Pablo, reparto del turno noche 2026-09-21 · "Refactorización frontend: limpio y declarativo"
 
 **Rama:** `main` de este repo · **Estado: reparto cerrado, 16/16 microtareas del trabajo en `HECHO`.**

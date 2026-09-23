@@ -1,0 +1,12 @@
+$ interseccion de reservas de esta noche (2026-09-22), tabla del documento fuente
+  Ender: 11 rutas
+  Itzan: 13 rutas
+  Justin: 14 rutas
+  Marcelo: 5 rutas
+  Pablo: 8 rutas
+  excepcion declarada: Itzan src/app/features/account/my-profile/** **menos** work-history; Pablo src/app/features/account/my-profile/work-history/**
+RESULTADO: 0 choque(s) entre 5 carriles de esta noche
+
+$ cruce con las reservas del 2026-09-21: rutas que esta noche son de otra persona
+  Pablo reserva src/app/features/account/my-profile/work-history/**; el 21/09 era de Itzan (features/account/my-profile/**)
+RESULTADO: 1 ruta(s) que cambian de dueno respecto del 21/09; declarada(s) en el documento fuente (work-history -> Pablo; pagination -> Pablo por carril de Justin cerrado con #573)
