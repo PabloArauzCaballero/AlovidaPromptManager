@@ -29,7 +29,7 @@
 | ID | Microtarea | CA | DoD | Estado |
 |---|---|---|---|---|
 | H1.S1.M1 | Confirmar el diff y el contrato de Cotizaciones | Los archivos de los cuatro rojos globales no están en el diff de #583 | `git diff --name-only b7785e36 4c9e419f` y escaneo focal registrados | HECHO |
-| H1.S1.M2 | Ejecutar gates estáticos y specs focales | No hay errores de lint en los 7 TypeScript del diff y sus pruebas pasan | lint de diff `0`; typecheck `0`; 7 archivos / 73 tests pasan | HECHO |
+| H1.S1.M2 | Ejecutar gates estáticos y specs focales | No hay errores de lint en los 7 TypeScript y 2 plantillas del diff; sus pruebas pasan | lint de diff `0`; typecheck `0`; 7 archivos / 73 tests pasan | HECHO |
 
 ## H2 — Gate de entrega y navegador
 

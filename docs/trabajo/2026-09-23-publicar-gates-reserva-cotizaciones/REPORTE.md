@@ -9,7 +9,7 @@
 | ID | Qué se logró | Evidencia | Resultado |
 |---|---|---|---|
 | H1.S1.M1 | Contrastar los rojos globales con el cambio de #583 | [gates-locales.md](evidencia/gates-locales.md) | Los cuatro archivos que fallan en la suite completa no están en `git diff --name-only b7785e36 4c9e419f`. |
-| H1.S1.M2 | Ejecutar gates estáticos y tests del foco | [gates-locales.md](evidencia/gates-locales.md) | lint de los 7 TypeScript del diff `0`; `typecheck` exit `0`; 7 archivos y 73 tests focales pasan. |
+| H1.S1.M2 | Ejecutar gates estáticos y tests del foco | [gates-locales.md](evidencia/gates-locales.md) | lint de los 7 TypeScript y 2 plantillas del diff `0`; `typecheck` exit `0`; 7 archivos y 73 tests focales pasan. |
 | H2.S1.M1 | Construir la aplicación | [gates-locales.md](evidencia/gates-locales.md) | `corepack yarn build` terminó con exit `0`; sus advertencias de presupuesto y prerender no impidieron el build. |
 | H2.S1.M2 | Probar el recorrido de navegador en una instancia fresca | [gates-locales.md](evidencia/gates-locales.md) | Playwright pasó 2/2: Cotizaciones no expone documentos personales y Directorio → Cotizaciones no produjo errores de consola ni requests. |
 | H2.S1.M3 | Triage de gates globales | [gates-locales.md](evidencia/gates-locales.md) | El lint global reporta 243 reglas `prefer-on-push-component-change-detection`; la suite total conserva cuatro fallos fuera del diff. Son seguimiento, no bloqueo activo de este PR. |
@@ -18,7 +18,7 @@
 
 ## A medias
 
-- Lint global: 243 errores de `@angular-eslint/prefer-on-push-component-change-detection`; los 7 TypeScript del diff de #583 dan cero en lint, por lo que esos rojos no se adjudican a este cambio.
+- Lint global: 243 errores de `@angular-eslint/prefer-on-push-component-change-detection`; los 7 TypeScript y 2 plantillas del diff de #583 dan cero en lint, por lo que esos rojos no se adjudican a este cambio.
 - Suite completa: 4 archivos fallan y 573 pasan; esos cuatro archivos no pertenecen al diff de #583. Se requiere su dueño y triage propio, no una corrección oportunista desde este carril.
 
 No hay bloqueos activos: los gates focalizados necesarios para #583 están verdes y la deuda global queda declarada como seguimiento `A MEDIAS`.

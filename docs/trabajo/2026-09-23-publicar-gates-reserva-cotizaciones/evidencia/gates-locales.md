@@ -29,6 +29,10 @@ $ corepack yarn eslint @changedTs
 7 TypeScript del diff
 exit 0
 
+$ corepack yarn eslint src/app/features/directory/practitioners-directory/practitioners-directory.html src/app/shared/components/molecules/result-card/result-card.html
+2 plantillas HTML del diff
+exit 0
+
 $ corepack yarn typecheck
 exit 0
 
@@ -62,7 +66,7 @@ $ corepack yarn lint
 ✖ 243 problems (243 errors, 0 warnings)
 ```
 
-Todos corresponden a `@angular-eslint/prefer-on-push-component-change-detection`; los siete archivos TypeScript del diff de #583 también dieron cero en el lint focal, por lo que los 243 rojos no se adjudican a ese cambio.
+Todos corresponden a `@angular-eslint/prefer-on-push-component-change-detection`; los siete TypeScript y las dos plantillas HTML del diff de #583 también dieron cero en el lint focal, por lo que los 243 rojos no se adjudican a ese cambio.
 
 ```text
 $ corepack yarn test --watch=false
