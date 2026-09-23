@@ -2,7 +2,7 @@
 
 > **REPARTIDO: 5 / 5 carriles · 19 / 19 observaciones con dueño · 32 hitos · 64 subtareas · 319 microtareas.**
 > **AVANCE DEL TURNO: 0 / 319 — 0 %.** ← se llena al cerrar, con `microtareas HECHO / total`.
-> Pablo 0/68 · Itzan 0/93 · Justin 20/51 · Ender 0/48 · Marcelo 0/59.
+> Pablo 0/68 · Itzan 0/93 · Justin 20/51 · Ender 14/48 · Marcelo 0/59.
 > **`A MEDIAS` cuenta como no hecha. `DESCARTADO` no suma: se declara aparte con su motivo.**
 
 > **Estado:** `REPARTIDO` al 2026-09-22. Este documento se escribió **al repartir, antes del turno**;
@@ -156,7 +156,7 @@ Cada carril anuncia acá lo que otros consumen, con ruta y ejemplo. Vacío al re
 | **HALL-M6 — `mockup-click-sweep` rota para Médica en ~10 rutas ajenas al reparto** | Pablo (coordinador), a triar | — | 67-85 botones sin responder en 4s en `/messaging`, `/groups`, `/glossary`, `/settings`, `/notification-center`, `/administration/pharmacy-*`, `/my-account/edit`, `/my-account/identity`, `/my-account/access-requests`. Ya estaba así en `origin/mockup` antes del rebase de esta noche (no lo causó ningún carril de hoy); Paciente y Visitador pasan limpio. Lista completa en `Marcelo/…/evidencia/h5/mockup-click-sweep-tras-rebase.txt`. No tiene dueño obvio esta noche: lo triage quien coordine. | **A TRIAR** |
 | **HALL-M4 — el micrófono está bloqueado por la propia app** | Pablo (carril de Marcelo), H3.S2 | — | `src/server/security-headers.ts:268` manda `Permissions-Policy: camera=(), microphone=(), geolocation=(self)`: ningún documento puede capturar audio, conceda o no la persona (Chrome: «AudioCapture permission has been blocked because of a permissions policy»). Afecta al dictado nuevo **y al `Grabador` de notas de voz de mensajería que ya existía**. **Decisión de Pablo 2026-09-23: `microphone=(self)` en este carril (H3.S2.M9), cámara sigue cerrada.** **Hecho en la rama `pablo/inicio-paciente-silueta-voz-y-confirmacion`: `microphone=(self)`, spec 25/25, `docs/security/*` al día; verificado en Chrome (sin warning, escucha y transcribe).** Quien toque `src/server/security-headers.ts` esta noche: partir de esa rama. | **PUBLICADO + RESUELTO** |
 | Medición del flujo de reserva (peticiones, tiempos) | Justin, H1.S2 | **temprano** | No publicada: ver Justin §9; faltan baseline y recorrido | `A MEDIAS` |
-| Tabla de latencia por prefijo | Ender, H2.S1 | primera mitad | | `TODO` |
+| Tabla de latencia por prefijo | Ender, H2.S1 | primera mitad | [Ender §4](Ender/Ender-Daily-Noche-2026-09-22.md): `/terminology` 40 · `/scheduling/slots` 80 · `/profiles` 100 · subida 600 · resto 120, sin azar. Local, sin commit en producto | `PUBLICADO` |
 | Renglón «Cotizaciones» PATIENT + ruta · retiro «Mis puntos» + redirect | Ender, H4.S2 | a pedido | | `TODO` |
 | `output` del `ubicacion-picker` al tocar el mapa | Itzan, H5.S1 | | | `TODO` |
 
@@ -230,7 +230,7 @@ Las 20 están con supuesto y dueño en el documento fuente. Las que **bloquean c
 | Pablo | 19 / 68 | 1 / 6 | H2 (S1 HECHO y publicado; S2 reordenado a TODO); H3 (S1 HECHO, 3 consumidores comprobados; S2/S3 sin empezar) | ninguno | [Pablo-Daily-Noche-2026-09-22.md](Pablo/Pablo-Daily-Noche-2026-09-22.md) |
 | Itzan | __ / 93 | __ / 8 | | | [Itzan-Daily-Noche-2026-09-22.md](Itzan/Itzan-Daily-Noche-2026-09-22.md) |
 | Justin | 20 / 51 | 0 / 6 | El plan fuente registra 20 microtareas verificadas; #578, #579 y #580 están fusionados. Faltan medición/gates/publicación del mockup para las restantes. | Mockup observado anterior a #579; estado del host sin acceso SSH | [Justin-Daily-Noche-2026-09-22.md](Justin/Justin-Daily-Noche-2026-09-22.md) |
-| Ender | __ / 48 | __ / 6 | | | [Ender-Daily-Noche-2026-09-22.md](Ender/Ender-Daily-Noche-2026-09-22.md) |
+| Ender | 14 / 48 | 1 / 6 | H2 (H2.S1 5/5; H2.S2 sin empezar). Latencia determinista y medida: «elegir médico» 311–557 → 231–247 ms en arnés. Cambios locales, sin commit en producto | H3 y H4 sin autorizar todavía; H3 con decisiones de alcance tomadas (los 13 registrados, `comunidad.ts` fuera) | [Ender-Daily-Noche-2026-09-22.md](Ender/Ender-Daily-Noche-2026-09-22.md) |
 | Marcelo | __ / 59 | __ / 6 | | | [Marcelo-Daily-Noche-2026-09-22.md](Marcelo/Marcelo-Daily-Noche-2026-09-22.md) |
 | **Total** | **__ / 319** | **__ / 32** | | | |
 
