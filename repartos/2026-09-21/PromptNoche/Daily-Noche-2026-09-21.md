@@ -211,17 +211,6 @@ real. Quedan pendientes los 5 filtros que el diseño especifica y que la pantall
 > `marcelo/noche-2026-09-21-dialogos-adjuntos-expediente`). Detalle completo en
 > [`Marcelo-Daily-Noche-2026-09-21.md`](Marcelo/Marcelo-Daily-Noche-2026-09-21.md).
 
-> **Cierre de Ender (2026-09-22, 95,1 % — 58/61):** el índice del catálogo distingue instancia en
-> plantilla, import disponible, sólo tipo y carga dinámica, y declara lo no resuelto con causa.
-> `DataTable` y `ContentDialog` montan con escenarios tipados en tres niveles; el inválido se rechaza
-> y se conserva el último válido. El faker dice qué entrada quedó sin verificar. A→B→A y el montaje
-> fallido quedan limpios. Auditado, commit `bf5abde3`, [PR #575](https://github.com/mdavila-2001/mantra-core-health/pull/575)
-> **OPEN** contra `mockup`, sin merge.
->
-> Quedan tres: `H2.S3.M2` BLOCKED (requiere un componente fuera de la reserva),
-> `H4.S2.M2` BLOCKED_BY_SCOPE (la ADR va en `docs/`) y `H5.S2.M3` A MEDIAS (dos dimensiones son de
-> runtime). Detalle en [`Ender-Daily-Noche-2026-09-21.md`](Ender/Ender-Daily-Noche-2026-09-21.md).
-
 ## 9. Advertencia sobre el alcance
 
 **Ningún carril entra completo en una noche, y está dicho a propósito en los cinco prompts.** 31 y 39
