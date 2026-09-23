@@ -1,14 +1,14 @@
 # Ender — daily de la noche del 2026-09-21
 
-> **AVANCE: 58 / 61 — 95,1 %.** Sale de `microtareas HECHO / total`: 58 HECHO · 1 A MEDIAS · 2 BLOQUEADO · 0 DESCARTADO · 0 TODO.
-> `A MEDIAS` cuenta como **no hecha**. Prohibido el porcentaje estimado a ojo (regla 50 §5).
+> **AVANCE: 58 / 61 — 95.1 %.** Sale de `microtareas HECHO / total`: 58 HECHO · 1 A MEDIAS · 2 BLOQUEADO · 0 DESCARTADO · 0 TODO.
+> `A MEDIAS` y `BLOQUEADO` cuentan como **no hechas**; el denominador sigue siendo **61**. Prohibido el porcentaje estimado a ojo (regla 50 §5).
 
 - Carril: [`Refactor-CatalogoEInventario.Plataforma`](Refactor-CatalogoEInventario.Plataforma/CatalogoRealScannerYFactoriesTipadas.md)
 - Corte: `origin/mockup` @ `5a0776c6…` → **el tuyo:** `d40b5631f68a52c79fe94f0dc689df3bc7e70140` (base auditada). `mockup` avanzó después a `b655e844` (7 commits, incluido #570) **sin solape** con los 14 archivos del carril, verificado antes del commit y antes del push
 - Rama: `ender/catalogo-real-scanner-factories-tipadas` · commit `bf5abde379613749a06b82347b27a46b1b9dfa44` · [PR #575](https://github.com/mdavila-2001/mantra-core-health/pull/575) contra `mockup`, **OPEN, sin merge** · Peldaño alcanzado (regla 30): **AUDITADO · COMMITEADO · PUSHEADO · PR ABIERTA** — no DONE
 - Daily de equipo: [`Daily-Noche-2026-09-21.md`](../Daily-Noche-2026-09-21.md)
 - Repo real: `mdavila-2001/mantra-core-health` (el reparto dice `alovida/mantra-core-health`, que no resuelve en GitHub)
-- Próxima acción de Ender: **ninguna**. Queda la revisión y el merge del PR #575 por quien corresponda.
+- Próxima acción de Ender: **ninguna** hasta cambio externo en CI/PR o reasignación explícita. La revisión y el merge del PR #575 quedan a cargo de quien corresponda.
 
 ## 0. Por qué tu carril va primero
 
@@ -187,15 +187,55 @@ regla 65 no aplica.
 
 | Campo | Valor |
 |---|---|
-| AVANCE | 58 / 61 |
+| AVANCE | 58 / 61 (95.1 %) |
 | H2.S3.M2 | BLOCKED |
 | H4.S2.M2 | BLOCKED_BY_SCOPE |
 | H5.S2.M3 | A MEDIAS |
-| PR de producto | [#575](https://github.com/mdavila-2001/mantra-core-health/pull/575) OPEN — sin merge |
-| Commit de producto | `bf5abde379613749a06b82347b27a46b1b9dfa44` (14 archivos, todos dentro de la reserva) |
+| Corte del producto | `origin/mockup` @ `d40b5631f68a52c79fe94f0dc689df3bc7e70140` (después avanzó a `b655e844` sin solape) |
+| Rama de producto | `ender/catalogo-real-scanner-factories-tipadas` |
+| FINAL_COMMIT | `bf5abde379613749a06b82347b27a46b1b9dfa44` (14 archivos, todos dentro de la reserva) |
+| PR | [#575](https://github.com/mdavila-2001/mantra-core-health/pull/575) |
+| PR_STATE | OPEN |
+| MERGE | NO |
 | Peldaño real | AUDITADO · COMMITEADO · PUSHEADO · PR ABIERTA |
-| DONE | NO |
-| Próxima acción de Ender | NINGUNA |
+| PROCESSES_LEFT_RUNNING | NONE |
+
+**Tests y gates** (medidos antes del commit `bf5abde3`):
+
+| Gate | Resultado |
+|---|---|
+| Tests propios (escenarios + faker) | 62/62 PASS |
+| `relaciones-de-uso` (`node --test`) | 25/25 PASS |
+| `yarn typecheck` | PASS |
+| ESLint de superficie (los 14 archivos) | PASS |
+| `yarn stock:generate` ×2 | idempotente (sha idéntico) |
+| `git diff --check` | PASS |
+| Navegador (recorridos del catálogo) | PASS |
+| Suite global | **NO VERDE**: fallos baseline e intermitentes ajenos al cambio (TestBed ya instanciado, cuota de storage, entorno). No se presenta como verde |
+| `check-architecture` | los mismos 5 hallazgos previos, ninguno nuevo |
+| `yarn audit:vistas` | drift idéntico al baseline, fuera del diff |
+
+**Residuales exactos:**
+
+- **H2.S3.M2 = BLOCKED.**
+  - *Qué anda:* el soporte de `@nivelAtomico` está implementado y probado.
+  - *Qué no puede cumplirse:* el DoD literal exige marcar un componente real fuera de la reserva.
+  - *Qué falta:* editar un componente ajeno bajo `shared/components/**` o `features/**`.
+  - *Quién decide:* Pablo + el dueño del componente.
+- **H4.S2.M2 = BLOCKED_BY_SCOPE.**
+  - *Qué anda:* la decisión de aislamiento está redactada y sustentada con evidencia.
+  - *Qué no puede cumplirse:* escribirla en la ubicación documental exigida.
+  - *Qué falta:* publicarla en `docs/adr/` o una ubicación equivalente del producto.
+  - *Quién decide:* Pablo / coordinación.
+- **H5.S2.M3 = A MEDIAS.**
+  - *Qué anda:* 4 dimensiones estáticas del catálogo tienen conteo y denominador; el montaje y la interacción existen en runtime.
+  - *Qué falta:* una fuente versionable de evidencia runtime, para que el generador estático pueda contar honestamente las 6.
+
+**Cierre:**
+
+`DONE = NO` — PR #575 todavía no está mergeada.
+
+`NEXT_ACTION_FOR_ENDER = NONE` hasta cambio externo en CI/PR o reasignación explícita.
 
 Hallazgos para otros dueños, que no se tocaron:
 - 11 `selector-no-importado` reales en producto; por ejemplo, `organization-detail.html:68` usa `<button app-button>` sin importar `AppButton`.
