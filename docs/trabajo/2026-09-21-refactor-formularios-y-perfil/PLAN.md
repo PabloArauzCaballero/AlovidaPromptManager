@@ -62,7 +62,7 @@ d76e3054487eed8ed106fb834842d607f57b8351 Tue Sep 22 11:45:09 2026 -0400 fix(scri
 
 | Campo | Valor |
 |---|---|
-| **SHA fijado** | `d40b56312…` (rebasado el 2026-09-22; el corte original fue `d76e3054487eed8ed106fb834842d607f57b8351`) |
+| **SHA fijado** | **`b655e844`** — el corte se movió **dos veces**: `d76e3054` → `d40b5631` (rebase del 2026-09-22, ver arriba) → `b655e844` al entregar. **Los gates se volvieron a correr enteros sobre esta última base** ([`evidencia/h6/reverificacion-tras-rebase.md`](./evidencia/h6/reverificacion-tras-rebase.md)): la suite da **572 archivos · 7 107 pruebas · 0 fallos** y el E2E dirigido da los **mismos 6 rojos con y sin el carril** |
 | **Rama de trabajo (front)** | `itzan/separacion-smart-dumb-registros` |
 | **Base del PR (front)** | `mockup` |
 | **Rama de este repo** | `itzan/refactor-formularios-y-perfil` → PR a `main` |

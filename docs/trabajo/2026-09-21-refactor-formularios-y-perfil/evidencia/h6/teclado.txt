@@ -19,36 +19,25 @@
    «Paso 1 de 10» → «Paso 2 de 10» · url cambió=false
 4 · problemas de consola: 1
       Executing inline script violates the following Content Security Policy directive 'script-src 'self' 
-sin foco  · borde=0px none rgb(36, 40, 40) · outline=none 3px rgb(36, 40, 40) · sombra=none
-con foco  · input · borde=0px none rgb(36, 40, 40) · outline=none 3px rgb(36, 40, 40) · sombra=none
-¿cambió algo al enfocar? borde=false · sombra=false · outline=false
-sin foco · el campo               borde=0px none rgb(36, 40, 40) · sombra=none
-sin foco · ancestro 1 (div)       borde=1px solid rgb(125, 135, 134) · sombra=none
-sin foco · ancestro 2 (app-input) borde=0px none rgb(36, 40, 40) · sombra=none
-sin foco · ancestro 3 (div)       borde=0px none rgb(36, 40, 40) · sombra=none
-con foco · el campo               borde=0px none rgb(36, 40, 40) · sombra=none
-con foco · ancestro 1 (div)       borde=1px solid rgb(125, 135, 134) · sombra=none
-con foco · ancestro 2 (app-input) borde=0px none rgb(36, 40, 40) · sombra=none
-con foco · ancestro 3 (div)       borde=0px none rgb(36, 40, 40) · sombra=none
-→ ninguna de las cuatro capas cambia al enfocar
-sin foco · el campo               borde=0px none rgb(36, 40, 40) · sombra=none · (sin pseudo-elementos)
-sin foco · ancestro 1 (div)       borde=1px solid rgb(125, 135, 134) · sombra=none · (sin pseudo-elementos)
-sin foco · ancestro 2 (app-input) borde=0px none rgb(36, 40, 40) · sombra=none · (sin pseudo-elementos)
-sin foco · ancestro 3 (div)       borde=0px none rgb(36, 40, 40) · sombra=none · (sin pseudo-elementos)
-con foco · el campo               borde=0px none rgb(36, 40, 40) · sombra=none · (sin pseudo-elementos)
-con foco · ancestro 1 (div)       borde=1px solid rgb(125, 135, 134) · sombra=none · (sin pseudo-elementos)
-con foco · ancestro 2 (app-input) borde=0px none rgb(36, 40, 40) · sombra=none · (sin pseudo-elementos)
-con foco · ancestro 3 (div)       borde=0px none rgb(36, 40, 40) · sombra=none · (sin pseudo-elementos)
-→ ninguna de las cuatro capas cambia al enfocar
-el foco quedó en: input «Nombre o razón social *(obligatorio)»
-elementos del formulario que cambian al enfocar: 0
 campo enfocado: «Nombre o razón social *(obligatorio)»
-¿apareció el anillo esperando por condición? true
-   clases del envoltorio: input-wrapper is-focused
-   box-shadow: rgba(79, 179, 169, 0.45) 0px 0px 0px 4px
-   borde: rgb(11, 85, 126)
+¿apareció el anillo esperando por condición? false
+   clases del envoltorio: input-wrapper
+   box-shadow: none
+   borde: rgb(125, 135, 134)
 campos inválidos (3): ["Nombre o razón social *(obligatorio)","Tipo de sociedad *(obligatorio)","Número de NIT *(obligatorio)"]
 ¿el foco se movió a un campo con error, esperando por condición? false
    el foco quedó en: «Siguiente» · ¿es un campo con error? false
    el primer campo apunta a: Escribí el nombre o la razón social de la empresa.
    ¿hay un resumen con role=alert? true
+  tab 1/5 · foco en «Nombre o razón social *(obli» · anillo=true
+  tab 2/5 · foco en «Nombre o razón social *(obli» · anillo=true
+  tab 3/5 · foco en «Nombre o razón social *(obli» · anillo=true
+  tab 4/5 · foco en «Nombre o razón social *(obli» · anillo=true
+  tab 5/5 · foco en «Nombre o razón social *(obli» · anillo=true
+tab: anillo presente en 5/5
+  focus-directo 1/5 · foco en «Nombre o razón social *(obli» · anillo=true
+  focus-directo 2/5 · foco en «Nombre o razón social *(obli» · anillo=true
+  focus-directo 3/5 · foco en «Nombre o razón social *(obli» · anillo=true
+  focus-directo 4/5 · foco en «Nombre o razón social *(obli» · anillo=true
+  focus-directo 5/5 · foco en «Nombre o razón social *(obli» · anillo=true
+focus-directo: anillo presente en 5/5

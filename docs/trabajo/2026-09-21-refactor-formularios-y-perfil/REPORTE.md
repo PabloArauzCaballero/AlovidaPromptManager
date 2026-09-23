@@ -7,7 +7,10 @@
 
 - **Fecha:** 2026-09-22 · **Plan:** [PLAN.md](./PLAN.md) · **Persona:** Itzan · **Línea:** C del reparto 2026-09-21
 - **Ramas:** front `itzan/separacion-smart-dumb-registros` → `mockup` · este repo `itzan/refactor-formularios-y-perfil` → `main`
-- **Corte:** `d40b5631` (rebasado a mitad del trabajo; declarado en `PLAN.md` §1)
+- **Corte:** `b655e844` — se movió **dos veces** y las dos se declaran: `d76e3054` → `d40b5631`
+  (`PLAN.md` §1) → `b655e844` al entregar. **Todos los gates se volvieron a correr sobre esta
+  última base**, en vez de entregar con evidencia de un árbol que ya no existe:
+  [`evidencia/h6/reverificacion-tras-rebase.md`](./evidencia/h6/reverificacion-tras-rebase.md).
 - **Peldaño de evidencia alcanzado: `VERIFIED`** — el detalle por área está en §7, con las dos
   cosas concretas que impiden declarar `REGRESSION_VERIFIED`.
 
@@ -34,8 +37,8 @@ perdió lo escrito»— también: no se pierde
 | H4 (10/10) | Vista y contenedor separados en `practitioner-profile`; ocho celdas visuales comparadas | sondas de perfil, 8 celdas | PASS · [`evidencia/h4/recorrido-comparado.md`](./evidencia/h4/recorrido-comparado.md) |
 | H5 (7/8) | Las dos decisiones escritas antes de ejecutarlas; **1 `DESCARTADO`** | documento | PASS · [`evidencia/h5/`](./evidencia/h5/) |
 | H6.S1.M1 | `lint` y `typecheck` sin rojos nuevos | `yarn lint` · `yarn typecheck` | `exit=0` y sin salida, igual que el baseline · [`evidencia/h6/lint-typecheck.txt`](./evidencia/h6/lint-typecheck.txt) |
-| H6.S1.M2 | La suite completa sin rojos nuevos | `yarn test` | **7 094 medidas / 7 094 esperadas**, 572 archivos; de 2 rojos previos queda 1, ajeno · [`evidencia/h6/regresion-comparada.md`](./evidencia/h6/regresion-comparada.md) |
-| H6.S1.M4 | E2E dirigido a lo que el diff cambió | `yarn pw … --workers=1` | **9 pasan**; 5 rojos previos **ajenos demostrados con A/B** · [`evidencia/h6/e2e-dirigido.md`](./evidencia/h6/e2e-dirigido.md) |
+| H6.S1.M2 | La suite completa sin rojos nuevos | `yarn test` | Sobre la base final: **572 archivos · 7 107 pruebas · 0 fallos**, total reconciliado · [`evidencia/h6/reverificacion-tras-rebase.md`](./evidencia/h6/reverificacion-tras-rebase.md) §3 |
+| H6.S1.M4 | E2E dirigido a lo que el diff cambió | `yarn pw … --workers=1` | **8 pasan**; los **6 rojos reproducidos en la base sin el carril**, con A/B pareja · [`evidencia/h6/e2e-dirigido.md`](./evidencia/h6/e2e-dirigido.md) y [`reverificacion-tras-rebase.md`](./evidencia/h6/reverificacion-tras-rebase.md) §4.3 |
 | H6.S1.M5 | Ninguna ruta de `auth` ni de `my-profile` rompe | sonda de barrido | **10/10 cargan, 0 desvíos** · [`evidencia/h6/barrido-de-rutas.md`](./evidencia/h6/barrido-de-rutas.md) |
 | H6.S2.M1 | La matriz visual final, mirada | sonda de capturas | **20/20 celdas**: desborde 0 px y etiquetas 100 % · [`evidencia/h6/capturas-finales.md`](./evidencia/h6/capturas-finales.md) |
 | H6.S2.M2 | El alta tocada se completa sin mouse | sonda de teclado | `Paso 1 de 10` → `Paso 2 de 10`, 7 paradas en orden visual · [`evidencia/h6/teclado.md`](./evidencia/h6/teclado.md) |
@@ -113,19 +116,25 @@ son las secciones §6, §7 y la primera línea de este mismo reporte, y se cerra
 
 Índice completo en [`evidencia/`](./evidencia/). Lo que sostiene cada afirmación:
 
+Todo lo de abajo está medido **sobre la base final `b655e844`**, la que se va a fusionar.
+
 ```text
 $ yarn lint && yarn typecheck
 exit=0, sin salida (las dos)                          → evidencia/h6/lint-typecheck.txt
 
 $ yarn test
-Baseline d76e3054 → 7 087 · + rebase sobre d40b5631 (#571) → 7 089
-+ 26 añadidas − 21 quitadas = Esperado 7 094 / Medido 7 094 · 572 archivos
-                                                       → evidencia/h6/regresion-comparada.md
+ Test Files  572 passed (572)
+      Tests  7107 passed (7107)          ← cero fallos
+exit=0
+Reconciliación: 7 094 (medición anterior) + 13 que aportan los 7 commits de la base
+                (+14 −1 pruebas, 0 archivos) = Esperado 7 107 / Medido 7 107
+                                                       → evidencia/h6/reverificacion-tras-rebase.md
 
 $ yarn pw playwright/file-upload-preview.spec.ts playwright/registro-documento-ayuda.spec.ts --workers=1
-  5 failed · 9 passed (2.7m)   ← los 5 son el mismo test a cinco anchos, previo y ajeno
-$ git checkout d40b5631 -- src/app/features/auth/register-laboratory/ && yarn pw … --grep "layout at 1440px"
-  1 failed  ← con el código de ANTES del carril falla idéntico     → evidencia/h6/e2e-dirigido.md
+  6 failed · 8 passed (2.7m)
+$ git checkout --detach origin/mockup   # la base PURA, sin el carril
+$ yarn pw <los mismos dos archivos> --workers=1
+  6 failed · 8 passed (2.7m)   ← idéntico sin el carril            → evidencia/h6/e2e-ab-base-pura.txt
 
 $ node tmp/sonda-capturas-h6.mjs
 20 celdas · desborde=0px en todas · campos etiquetados 5/5, 4/4, 3/3 → evidencia/h6/matriz-final.txt
@@ -234,6 +243,7 @@ Lo que se hizo pero no se ejercitó, y los caminos que no se recorrieron:
 | 3 | **El kill-test se corrió sobre profesional y laboratorio**, no sobre profesional y paciente como dice el encargo | El alta de paciente **no tiene adjuntos**: no es consumidora de la regla elegida. Declarado como D-3 |
 | 4 | **La evidencia de H4 se reescribió en su propio archivo** | Su conclusión sobre la foto era falsa por culpa del instrumento. Se corrigió con un callout fechado **conservando el texto original al lado**: el registro no se maquilla |
 | 5 | **H6.S1.M3 se adelantó** a antes de terminar H4 | Su sujeto quedó congelado al cerrar H3 y se demostró estructuralmente (`git diff` vacío sobre el organismo), así que su evidencia no se invalida con lo que faltaba de H4 |
+| 6 | **Al entregar, el corte se movió por segunda vez** (`d40b5631` → `b655e844`, 7 commits) y **se volvieron a correr todos los gates** en vez de entregar con la evidencia vieja | La regla 30 §4 dice que un cambio posterior invalida el peldaño del área tocada. Los 7 commits no tocan la reserva, pero eso es una condición previa, no la verificación: el árbol combinado es otro y había que medirlo |
 
 ## 10. Riesgos residuales y deuda
 
@@ -243,6 +253,7 @@ Lo que se hizo pero no se ejercitó, y los caminos que no se recorrieron:
 | 2 | **El foco no se mueve al primer error** en los 53 consumidores del organismo | Quien navega por teclado tiene que buscar el error a mano | Deuda propia, `A MEDIAS` (H3.S2.M4) |
 | 3 | **`file-upload-preview.spec.ts` reescribe 14 capturas versionadas** del repo al correr | Ensucia el árbol de trabajo de quien corra el gate | Ajeno: el spec y su carpeta de evidencia son de otra persona |
 | 4 | **El baseline de consola de ese spec está desactualizado** desde el 2026-09-09: no contiene el hash que la política de la app nombra hoy, así que sus 5 casos fallan siempre | Un rojo permanente que cualquiera puede atribuirse por error | Ajeno |
+| 4-bis | **Un sexto caso del mismo spec falla por contaminación entre pruebas**: `shared picker previews text and audio` pasa aislado y falla cuando corre después del resto. Apareció con los 7 commits que la base sumó al entregar, y se reprodujo en la base **sin** este carril | Otro rojo permanente, y este es intermitente según qué se corra junto | Ajeno |
 | 5 | **Las cinco altas no comparten una misma cáscara** (indicador de pasos, ancho, botón de avance, tarjetas de contexto, ejemplos en los campos) | Incoherencia visible entre pantallas hermanas | Ajeno a este carril: unificarlo es el refactor no solicitado que la regla 00 §3.2 prohíbe |
 | 6 | **Tres specs del perfil se saltan solos** contra la maqueta y devuelven `exit=0` | Un verde de pruebas saltadas se lee como cobertura | Ajeno |
 | 7 | **Cuatro respuestas distintas preexistentes** a cómo llega un `FormControl` a un `computed`, incluido un espejo mutable sincronizado a mano | Deuda de diseño que multiplica los caminos por los que un dato llega a la vista | Anotado en H2.S3, fuera de alcance |

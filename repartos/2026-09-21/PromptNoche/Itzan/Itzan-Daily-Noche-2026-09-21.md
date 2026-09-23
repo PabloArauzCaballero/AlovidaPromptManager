@@ -7,7 +7,7 @@
 > preveía. El porcentaje es peor por eso, y se dice acá arriba (§19.19).
 
 - Carril: [`Refactor-FormulariosYPerfil.RegistroYMiPerfil`](Refactor-FormulariosYPerfil.RegistroYMiPerfil/SeparacionSmartDumbDeLosSeisRegistrosYDelPerfil.md)
-- Corte: `origin/mockup` @ `5a0776c6…` → **el mío:** `d40b5631` *(se movió a mitad del turno; ver abajo)*
+- Corte: `origin/mockup` @ `5a0776c6…` → **el mío:** `b655e844` *(se movió dos veces; ver abajo)*
 - Rama: `itzan/separacion-smart-dumb-registros` · Peldaño alcanzado (regla 30): **`VERIFIED`**
 - Plan y reporte: [`docs/trabajo/2026-09-21-refactor-formularios-y-perfil/`](../../../../docs/trabajo/2026-09-21-refactor-formularios-y-perfil/)
 - Daily de equipo: [`Daily-Noche-2026-09-21.md`](../Daily-Noche-2026-09-21.md)
@@ -60,13 +60,24 @@ plan_gate self-test: 11 PASS, 0 FAIL
 >
 > Y `yarn typecheck` **no mira las plantillas** (es `tsc --noEmit`); sólo `yarn build` las mira.
 
-**Al cierre (H6.S1.M2), la comparación que reemplaza a «no vi rojos nuevos»:**
+**Al cierre, sobre la base final `b655e844`, la comparación que reemplaza a «no vi rojos nuevos»:**
 
 ```text
-Baseline d76e3054 → 7 087 · + rebase sobre d40b5631 (#571) → 7 089
-+ 26 añadidas − 21 quitadas = Esperado 7 094 / Medido 7 094 · 572 archivos
-De los 2 rojos previos queda 1, el ajeno, reproducido aislado (5 passed, exit=0)
+ Test Files  572 passed (572)
+      Tests  7107 passed (7107)     ← cero fallos
+exit=0
+Reconciliación: 7 094 (medición sobre d40b5631) + 13 que aportan los 7 commits
+                nuevos de la base (+14 −1 pruebas, 0 archivos) = 7 107 esperadas / 7 107 medidas
 ```
+
+> **El corte se movió otra vez al entregar**, de `d40b5631` a `b655e844` (7 commits). Ninguno toca
+> la reserva, pero eso es una condición previa y no la verificación: se rebasó y **se volvieron a
+> correr todos los gates** sobre el árbol que de verdad se va a fusionar. Detalle en
+> [`reverificacion-tras-rebase.md`](../../../../docs/trabajo/2026-09-21-refactor-formularios-y-perfil/evidencia/h6/reverificacion-tras-rebase.md).
+>
+> **El rojo previo y ajeno que arrastraba el baseline no apareció en esta corrida, y no se declara
+> corregido:** ya se sabía que era dependiente del orden (pasaba aislado, fallaba en la suite), y
+> un fallo de ese tipo no se demuestra ausente con una corrida en verde.
 
 ## 3. El comportamiento de ANTES
 
@@ -182,6 +193,7 @@ reporte.
 | 1 | El enlace «Iniciá sesión» del pie de las altas da **2,73 : 1** en tema oscuro, contra los 4,5 : 1 que exige AA | Es el único enlace de salida de las cinco altas |
 | 2 | `file-upload-preview.spec.ts` **reescribe 14 capturas versionadas** del repo al correr | Ensucia el árbol de quien corra el gate |
 | 3 | El baseline de consola de ese spec está desactualizado desde el 09/09 y **sus 5 casos fallan siempre** | Un rojo permanente que cualquiera puede atribuirse por error. Demostrado ajeno con un A/B contra el commit del corte |
+| 3-bis | Un **sexto** caso del mismo spec (`shared picker previews text and audio`) **pasa aislado y falla cuando corre después del resto**. Apareció con los 7 commits que la base sumó al entregar | Contaminación entre pruebas. Reproducido en la base **sin** el carril, con el mismo comando: 6 fallan / 8 pasan en las dos ramas |
 | 4 | **Tres specs del perfil se saltan solos** contra la maqueta y devuelven `exit=0` | Un verde de pruebas saltadas se lee como cobertura |
 | 5 | La maqueta devuelve la foto subida en un **sobre `{body, headers}`** con `application/octet-stream`, y además trae el avatar por defecto | El camino del producto corre entero, pero la imagen no se puede dibujar |
 | 6 | **Las cinco altas no comparten una misma cáscara**: indicador de pasos, ancho de la tarjeta, botón de avance, tarjetas de contexto y ejemplos en los campos difieren | Incoherencia visible entre pantallas hermanas. La aseguradora es la que más se aparta |
@@ -202,3 +214,17 @@ El tercero es el que más enseña: **una captura mostraba el anillo y cinco lect
 Estuve a punto de descartar la captura y reportar un incumplimiento de WCAG AA que no existe. Lo
 que lo evitó fue no aceptar la contradicción y buscar la regla en el CSS, que explicó las dos cosas
 a la vez. **Cuando una observación directa y una medición se contradicen, no se descarta ninguna.**
+
+Y hubo un cuarto y un quinto, al re-verificar sobre la base nueva:
+
+4. La sonda del anillo volvió a dar `false`. En vez de elegir el resultado que convenía, se midió
+   la **frecuencia**: **10 de 10 con anillo** cuando la sonda espera a que la aplicación hidrate
+   antes de tabular. La que fallaba tabulaba antes de que el manejador estuviera enganchado.
+5. Apareció un rojo nuevo en el E2E y el primer A/B decía «pasa en la base, falla en mi rama». Era
+   una **comparación despareja**: un comando corría un archivo de specs y el otro corría dos.
+   Con el mismo comando en las dos ramas, el resultado es idéntico — **6 fallan, 8 pasan** — y el
+   rojo es ajeno.
+
+Cinco veces, la misma forma: **medir en el lugar, el momento o las condiciones equivocadas, y
+creerle al número.** Lo único que funcionó siempre fue mirar qué mide el comando antes de aceptar
+lo que dice.
