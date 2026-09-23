@@ -10,7 +10,7 @@
 |---|---|---|---|
 | H1.S1.M1 | Reporte con el estado de #578, #579, #580 y el límite de despliegue | `rg -n '#578\|#579\|#580' …/REPORTE.md` | 5 coincidencias |
 | H1.S1.M2 | Daily personal y daily de equipo apuntan al avance | `rg -n '#578\|#579\|#580' …` | 9 coincidencias |
-| H1.S1.M3 | PR de PromptManager abierto para revisión | `gh pr view 27` | `OPEN` · `isDraft: true` |
+| H1.S1.M3 | PR de PromptManager abierto para revisión | `gh pr view 27` | `OPEN` · `isDraft: false` · `mergeStateStatus: CLEAN` |
 
 ## A medias
 
