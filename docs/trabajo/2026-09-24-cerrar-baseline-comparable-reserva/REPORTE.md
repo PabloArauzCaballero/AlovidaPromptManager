@@ -1,7 +1,9 @@
 # Reporte — Cerrar el baseline comparable de Directorio y Reserva
 
-> **AVANCE: 9 / 9 microtareas HECHO (100 %)** de este plan. **El conteo del carril original no se
-> toca: sigue en 29 / 51.** Esto cierra un pendiente, no adjudica microtareas nuevas.
+> **AVANCE: 8 / 9 microtareas HECHO (88,9 %)** de este plan. La restante, `M3.1`, está `A MEDIAS`:
+> el PR de producto quedó `MERGEABLE` pero `UNSTABLE`, y la regla 35.2 no admite eso como entrega.
+> **El conteo del carril original no se toca: sigue en 29 / 51.** Esto cierra un pendiente, no
+> adjudica microtareas nuevas.
 
 - Fecha: 2026-09-24 · Plan: [PLAN.md](./PLAN.md) · Rama:
   `justin/cerrar-baseline-comparable-reserva-2026-09-24`, apilada sobre la del PR
@@ -30,7 +32,6 @@ y una carpeta de evidencia de una sesión anterior que no llegó a cerrar.
 | M1.4 | El DoD «hasta cupos» cubierto con un recorrido que **llega** a cupos | escenario A del spec | 2 sedes · 15 cupos · «vie 25 · 08:30–09:00» en los dos cortes |
 | M2.1 | Primera pasada de verificación sobre las 14 capturas | las 14 abiertas como imagen | una línea por captura |
 | M2.2 | Pasadas adversariales, por un agente distinto del que implementó (regla 35.1.6, y 35.1.4: toda corrección exige volver a revisar) | `evidencia/doble-revision.md` del repo de producto | **tres rondas**: rechazó 4 de 7 pares, después 1 de 7, y la tercera aprobó las catorce |
-| M3.1 | PR de producto [#610](https://github.com/mdavila-2001/mantra-core-health/pull/610) hacia `mockup` | `gh pr view 610` | `MERGEABLE`; sus checks **encolados**, ver abajo |
 | M3.2 | Las dos filas del daily actualizadas | [daily de equipo](../../repartos/2026-09-22/PromptNoche/Daily-Noche-2026-09-22.md) §4-bis y [daily de Justin](../../repartos/2026-09-22/PromptNoche/Justin/Justin-Daily-Noche-2026-09-22.md) §7 y §9 | `A MEDIAS` → `PUBLICADO con límites` |
 | M3.3 | PR de PromptManager [#38](https://github.com/PabloArauzCaballero/AlovidaPromptManager/pull/38) hacia `main` | `gh pr view 38` | `MERGEABLE` · `CLEAN`, su check en verde |
 
@@ -115,7 +116,17 @@ sostiene.
 
 ## A medias
 
-- Ninguna.
+- **M3.1 — dejar el PR de producto mergeable.**
+  1. *Qué anda:* [#610](https://github.com/mdavila-2001/mantra-core-health/pull/610) está abierto,
+     no es borrador, `mergeable` da `MERGEABLE` y no tiene conflictos con `mockup`.
+  2. *Qué no anda:* `mergeStateStatus` da `UNSTABLE`, que la regla 35.2 no admite como entrega.
+  3. *Qué falta exactamente:* que los tres checks del frontend salgan de la cola y terminen.
+     **Ninguno falla: están encolados**, y no por este PR — #604, #605, #606 y #607 están igual,
+     el más viejo desde hace más de una hora. Es `ENVIRONMENT` (regla 80.4). En su lugar se
+     corrieron a mano los guardrails que el `CLAUDE.md` de ese repo manda correr así, y sus rojos
+     caen enteros fuera del diff.
+  4. *Dónde quedó:* rama `justin/baseline-historico-reserva-2026-09-23`, empujada, PR abierto, sin
+     auto-merge. No se tocaron privilegios ni se deshabilitó ningún check.
 
 ## Pendiente
 
