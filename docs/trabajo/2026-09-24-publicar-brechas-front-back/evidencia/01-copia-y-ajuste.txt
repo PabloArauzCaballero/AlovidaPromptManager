@@ -1,0 +1,14 @@
+$ sha256sum de los 45 archivos: origen (rama justin/docs-brechas-front-back-2026-09-24 del front) vs destino (planes/03-brechas-front-back-2026-09-24)
+origen: 45 archivos · destino: 45 archivos
+$ diff <(origen normalizado) <(destino normalizado)
+1c1
+< 58f114b4fe0440fa990a5a443ed2890044ffc94f0b32206faf793c9c609cba00 *README.md
+---
+> 8108fa38089ab289e9680ae2ba0157f93c7065ce89ef3c63bd882d0e3ac33eea *README.md
+exit=1  (única diferencia esperada: README.md, ajustado en H1.S1.M2)
+
+$ grep -c "mantra-core-health/docs/brechas" planes/03-brechas-front-back-2026-09-24/README.md
+0
+
+$ grep -rniE "password\s*[:=]\s*[\x27\"]…|secret\s*[:=]|BEGIN (RSA )?PRIVATE|AKIA…|ghp_…" planes/03-brechas-front-back-2026-09-24 | wc -l
+0
