@@ -7,6 +7,42 @@ resumen de alto nivel para quien no quiere abrir carpeta por carpeta. Entradas n
 
 ---
 
+## 2026-09-24 — Justin · "Brechas front↔back para cerrar el frontend"
+
+**Rama:** `justin/planes-brechas-front-back-2026-09-24` (este repo).
+**Paquete:** [`planes/03-brechas-front-back-2026-09-24/`](planes/03-brechas-front-back-2026-09-24/README.md).
+Viene de una primera publicación en el repo del front
+(PR [#628](https://github.com/mdavila-2001/mantra-core-health/pull/628)), que se cerró al aclarar que
+el destino era este repo.
+
+**Pedido:** analizar el backend contra el front, que está por cerrarse, para saber qué brechas
+quedan y qué hay que tener en cuenta. Pasarela de pago y delivery quedan fuera. El resultado va en
+forma de prompts.
+
+### Qué se entregó
+
+- **Informe:** [`README.md`](planes/03-brechas-front-back-2026-09-24/README.md) con cifras,
+  18 bloqueantes, 9 decisiones que necesitan dueño y orden de ejecución en tres olas.
+- **30 prompts** `BR-01…BR-30` con la plantilla oficial de tareas.
+- **202 hallazgos** con evidencia `archivo:línea` en los anexos A–E, más 12 nuevos (N-01…N-12)
+  que salieron al redactar.
+- **Inventarios** con sus scripts: 1 362 rutas de la API, 490 llamadas del front y 538 rutas del
+  mock.
+
+### Lo que cambia el plan
+
+- **No hay front de producción contra la API:** `mockBackend: true` está fijo, también en `dev`.
+- **El mock esconde las brechas.** 21 llamadas del front no tienen ruta en la API.
+- **Muchos 403 salen de roles que nadie emite o asigna.**
+- **«El paciente dueño de su historia» no cierra de punta a punta.**
+- **El modelo vive en `mantra-core-health-model`**, con la copia en `database/` de la API.
+
+**Peldaño:** `DISCOVERED`. Todo sale de leer el código; nada se ejercitó contra la API viva, y
+cada prompt exige reproducirlo en runtime. Trabajo:
+[PLAN y REPORTE](docs/trabajo/2026-09-24-publicar-brechas-front-back/REPORTE.md).
+
+---
+
 ## 2026-09-24 — Justin · "Terminar el baseline comparable de Directorio y Reserva"
 
 **Ramas:** `justin/cerrar-baseline-comparable-reserva-2026-09-24` (este repo, apilada sobre la del
