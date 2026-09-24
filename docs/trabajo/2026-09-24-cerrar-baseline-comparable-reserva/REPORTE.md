@@ -29,10 +29,10 @@ y una carpeta de evidencia de una sesión anterior que no llegó a cerrar.
 | M1.3 | Diez muestras por corte y escenario, con un runner que falla fuerte | `muestras2.sh`, que aborta si una corrida no escribe su medición | 40 muestras, cada una en su archivo |
 | M1.4 | El DoD «hasta cupos» cubierto con un recorrido que **llega** a cupos | escenario A del spec | 2 sedes · 15 cupos · «vie 25 · 08:30–09:00» en los dos cortes |
 | M2.1 | Primera pasada de verificación sobre las 14 capturas | las 14 abiertas como imagen | una línea por captura |
-| M2.2 | Segunda pasada adversarial, por un agente distinto del que implementó (regla 35.1.6) | `evidencia/doble-revision.md` del repo de producto | **tres rondas**: rechazó la primera entrega entera y la segunda en parte |
-| M3.1 | PR de producto hacia `mockup` | `gh pr view 610` | ver «Estado de los PRs» |
+| M2.2 | Pasadas adversariales, por un agente distinto del que implementó (regla 35.1.6, y 35.1.4: toda corrección exige volver a revisar) | `evidencia/doble-revision.md` del repo de producto | **tres rondas**: rechazó 4 de 7 pares, después 1 de 7, y la tercera aprobó las catorce |
+| M3.1 | PR de producto [#610](https://github.com/mdavila-2001/mantra-core-health/pull/610) hacia `mockup` | `gh pr view 610` | `MERGEABLE`; sus checks **encolados**, ver abajo |
 | M3.2 | Las dos filas del daily actualizadas | [daily de equipo](../../repartos/2026-09-22/PromptNoche/Daily-Noche-2026-09-22.md) §4-bis y [daily de Justin](../../repartos/2026-09-22/PromptNoche/Justin/Justin-Daily-Noche-2026-09-22.md) §7 y §9 | `A MEDIAS` → `PUBLICADO con límites` |
-| M3.3 | PR de PromptManager hacia `main` | `gh pr view` | ver «Estado de los PRs» |
+| M3.3 | PR de PromptManager [#38](https://github.com/PabloArauzCaballero/AlovidaPromptManager/pull/38) hacia `main` | `gh pr view 38` | `MERGEABLE` · `CLEAN`, su check en verde |
 
 ## Los números que se publican
 
@@ -94,7 +94,12 @@ del `CLAUDE.md` del frontend).
   comparar. Además: publicar una corrida suelta daba **−36 %** donde por medianas era −18 %.
 - **Ronda 2 — rechazó 1 de 7.** Dos bloqueantes cerrados, pero una captura seguía en vuelo **pese
   al flag**, y el reporte declaraba `HECHO` que eso ya no pasaba.
-- **Ronda 3 —** sobre la entrega que está en el PR.
+- **Ronda 3 — aprobó las catorce.** `07` quedó asentado (el subtítulo pasó de 3,37:1 a 7,88:1 de
+  contraste y el par da cero píxeles de diferencia de contenido) y el `resumen.json` se recalculó de
+  cero contra las 40 muestras crudas. Tres pares van `ACEPTABLE CON RESERVAS`, y no por la captura:
+  es el defecto real del corte anterior que quedó anotado como `P-2`. Dejó seis observaciones de
+  texto —entre ellas que el reporte arrastraba dos medianas del set anterior— y todas están
+  corregidas en el PR.
 
 El resultado de esa disciplina no es cosmético: sin ella, este cierre habría publicado un −36 % que
 no existe, capturas con datos de personas reales y una atribución al PR #583 que la evidencia no
@@ -127,13 +132,25 @@ sostiene.
 - **No se tocó código de producto.** El PR del frontend son un spec de Playwright y una carpeta de
   evidencia.
 - **No hay validación remota.** Todo es local, contra dos `ng serve`.
+- **No se esperó a que el CI del frontend corriera**, porque no arranca en ningún PR de ese
+  repositorio. Si arranca y algo cae dentro del diff de #610, es información nueva que este reporte
+  no tiene.
 
 ## Estado de los PRs
 
-```text
-$ gh pr view 610 --json number,url,isDraft,mergeable,mergeStateStatus,baseRefName,headRefName
-<pegado en evidencia/pr-mergeable.txt>
-```
+| PR | Base | `mergeable` | `mergeStateStatus` | Checks |
+|---|---|---|---|---|
+| [`mantra-core-health#610`](https://github.com/mdavila-2001/mantra-core-health/pull/610) | `mockup` | `MERGEABLE` | `UNSTABLE` | los tres **encolados**, no fallando |
+| [`AlovidaPromptManager#38`](https://github.com/PabloArauzCaballero/AlovidaPromptManager/pull/38) | `main` | `MERGEABLE` | `CLEAN` | `Espejo sin deriva y candados en verde` · `pass` |
 
-La salida literal de los dos PRs está en
-[`evidencia/pr-mergeable.txt`](evidencia/pr-mergeable.txt).
+Salida literal de los dos, en [`evidencia/pr-mergeable.txt`](evidencia/pr-mergeable.txt).
+
+**El CI del frontend no llegó a correr, y no es por este cambio.** Los tres checks de #610
+quedaron encolados; **todos** los PR abiertos de ese repositorio están igual —#604, #605, #606,
+#607— y el más viejo lleva más de una hora así. Coincide con lo que su `CLAUDE.md` ya declara:
+«El CI propio está caído; los `check-*.mjs` se corren a mano». Así que se corrieron a mano:
+`check-tokens` da `0`; `check-architecture`, `check-css-tokens`, `check-doc-coverage` y
+`check-doc-links` dan `1`, y sus rojos caen **enteros fuera** del diff de #610 —dependencias
+circulares en `src/app/core/mock/fixtures/`, tokens sin declarar en `src/app/features/` y
+`src/app/shared/`, y enlaces rotos en `docs/tareas/subtarea-2.4-transparencia-copagos/`—.
+Ninguno nombra un archivo que #610 agregue o modifique.
