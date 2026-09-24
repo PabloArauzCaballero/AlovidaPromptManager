@@ -31,7 +31,7 @@ enlace a este.
 - el PR consultado con `gh pr view --json mergeable,mergeStateStatus`;
 - el PR 628 en estado `CLOSED`.
 
-**Estado:** TODO
+**Estado:** A MEDIAS — H1.S1 y H1.S2 en HECHO; H1.S3 BLOQUEADO por decisión (ver H1.S3)
 
 ### H1.S1 — Copiar y ajustar el paquete
 
@@ -46,21 +46,31 @@ del front en el README. **Estado:** HECHO
 
 ### H1.S2 — Registrar y publicar
 
-**CA:** el trabajo queda registrado y el PR queda abierto y mergeable. **DoD:** salida de `gh` pegada. **Estado:** TODO
+**CA:** el trabajo queda registrado y el PR queda abierto y mergeable. **DoD:** salida de `gh` pegada. **Estado:** HECHO
 
 | ID | Microtarea | CA (binario) | DoD (comando de verificación) | Estado |
 |---|---|---|---|---|
 | H1.S2.M1 | Entrada en `ActionLog.md` | La entrada del 2026-09-24 está arriba de todo | `head -20 ActionLog.md` la muestra | HECHO |
 | H1.S2.M2 | Gate de skills citadas | Ninguna skill citada inexistente | `python tools/check_skills_citadas.py` → exit 0 | HECHO |
-| H1.S2.M3 | Publicar la rama y abrir el PR contra `main` | PR abierto, `MERGEABLE` | `gh pr view <n> --json mergeable,mergeStateStatus` y `gh pr checks <n>` | TODO |
+| H1.S2.M3 | Publicar la rama y abrir el PR contra `main` | PR abierto, `MERGEABLE` | `gh pr view <n> --json mergeable,mergeStateStatus` y `gh pr checks <n>` | HECHO |
 
 ### H1.S3 — Retirar la publicación equivocada
 
-**CA:** nadie encuentra dos versiones vivas del informe. **DoD:** el PR 628 figura `CLOSED` con su comentario. **Estado:** TODO
+**CA:** nadie encuentra dos versiones vivas del informe. **DoD:** el PR 628 figura `CLOSED` con su comentario. **Estado:** BLOQUEADO
+
+> **Desvío registrado (2026-09-24, durante la ejecución):** cuando se intentó cerrarlo, el PR 628 ya
+> estaba **mergeado** en `mockup`: lo mergeó la cuenta `Jsaldias39` a las 21:26:03Z, commit
+> `a96ad90c`. Un PR mergeado no se puede cerrar. Retirar `docs/brechas-front-back-2026-09-24/` del
+> front es una acción sobre una rama compartida y necesita decisión: **DECISION_REQUIRED**, a
+> confirmar con Justin. Opciones:
+> - (a) dejar la copia del front como referencia, con el comentario que ya apunta a este PR;
+> - (b) un PR contra `mockup` que la retire.
+>
+> Ya se publicó en el 628 un comentario que apunta a este PR (evidencia 03).
 
 | ID | Microtarea | CA (binario) | DoD (comando de verificación) | Estado |
 |---|---|---|---|---|
-| H1.S3.M1 | Cerrar el PR 628 del front con un comentario que apunte al nuevo PR | 628 en `CLOSED` | `gh pr view 628 -R mdavila-2001/mantra-core-health --json state` → `CLOSED` | TODO |
+| H1.S3.M1 | Cerrar el PR 628 del front con un comentario que apunte al nuevo PR | 628 en `CLOSED` | `gh pr view 628 -R mdavila-2001/mantra-core-health --json state` → `CLOSED` | BLOQUEADO — DECISION_REQUIRED (ver abajo) |
 
 ## Riesgos y bloqueos previstos
 
