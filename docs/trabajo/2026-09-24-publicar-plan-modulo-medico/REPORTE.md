@@ -2,28 +2,22 @@
 
 - Fecha: 2026-09-24 · Plan: [PLAN.md](./PLAN.md) · Rama: `docs/planes-medical-module-20260924`
 - Peldaño de evidencia alcanzado: TESTED
-- Avance: 1 / 2 (50 %)
+- Avance: 2 / 2 (100 %)
 
 ## Completado
 
 | ID | Qué se logró | Comando | Resultado |
 |---|---|---|---|
 | H1.S1.M1 | Se copió el paquete médico completo bajo `planes/02-medical-module-plan-b57dfd316c4d/` | manifiestos recursivos con `shasum -a 256` y `diff -u` | 50 archivos en origen, 50 en destino, cero diferencias |
+| H1.S1.M2 | Se publicó el cambio en GitHub | `git push` y PR 40 | rama remota creada y PR abierto contra `main` |
 
 ## A medias
 
-### H1.S1.M2 — Publicar el cambio
-
-- Qué anda: el paquete completo está preparado en una rama local y sus bytes coinciden con el origen.
-- Qué no anda: todavía no fue publicado ni integrado en GitHub al momento de escribir este reporte.
-- Qué falta exactamente: commit, push, PR, gates y merge.
-- Dónde quedó: rama `docs/planes-medical-module-20260924` del clon de AlovidaPromptManager.
+Ninguna.
 
 ## Pendiente
 
-| ID | Estado | Qué lo destraba |
-|---|---|---|
-| H1.S1.M2 | EN CURSO | Publicar la rama y completar la integración en GitHub |
+Ninguna.
 
 ## Evidencia
 
@@ -35,10 +29,16 @@
 
 `diff -u` entre ambos manifiestos no produjo salida y terminó con código 0. `git diff --check` señaló ocho espacios finales en `sources/medical-metaprompt.md`; ya estaban en el original y se conservaron para mantener la copia byte por byte. Cinco corresponden al encabezado Markdown y tres a líneas vacías del extracto literal.
 
+```text
+To https://github.com/PabloArauzCaballero/AlovidaPromptManager.git
+ * [new branch]      docs/planes-medical-module-20260924 -> docs/planes-medical-module-20260924
+https://github.com/PabloArauzCaballero/AlovidaPromptManager/pull/40
+```
+
 ## No cubierto
 
 - No se ejecutaron evals de comportamiento porque ningún prompt fue editado: el paquete se trasladó byte por byte.
-- La publicación y el estado de GitHub se verifican después de este registro.
+- No se ejecutaron pruebas de aplicación porque el cambio agrega documentación y evidencia sin modificar código ejecutable del repositorio.
 
 ## Desvíos del plan
 

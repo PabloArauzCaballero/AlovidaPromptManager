@@ -16,16 +16,16 @@
 
 **DoD:** comparación recursiva de hashes SHA-256 sin diferencias; la única salida de `git diff --check` corresponde a ocho espacios finales preservados del metaprompt original; publicación confirmada mediante GitHub.
 
-**Estado:** A MEDIAS
+**Estado:** HECHO
 
 ### H1.S1 — Copiar y publicar el paquete
 
-**CA:** el destino conserva nombres, estructura y bytes del origen. **DoD:** hash recursivo idéntico y commit publicado. **Estado:** A MEDIAS
+**CA:** el destino conserva nombres, estructura y bytes del origen. **DoD:** hash recursivo idéntico y commit publicado. **Estado:** HECHO
 
 | ID | Microtarea | CA (binario) | DoD (comando de verificación) | Estado |
 |---|---|---|---|---|
 | H1.S1.M1 | Copiar el paquete completo | Existen exactamente los mismos 50 archivos | Comparación de manifiestos SHA-256 → sin diferencias | HECHO |
-| H1.S1.M2 | Publicar el cambio | El contenido aparece en GitHub bajo `planes/` | `gh` confirma commit y ruta en la rama principal | TODO |
+| H1.S1.M2 | Publicar el cambio | El contenido aparece en GitHub bajo `planes/` | `gh` confirma commit y ruta en la rama principal | HECHO |
 
 ## Riesgos y bloqueos previstos
 
