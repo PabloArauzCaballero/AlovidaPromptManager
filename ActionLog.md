@@ -7,6 +7,65 @@ resumen de alto nivel para quien no quiere abrir carpeta por carpeta. Entradas n
 
 ---
 
+## 2026-09-24 — Justin · "Terminar el baseline comparable de Directorio y Reserva"
+
+**Ramas:** `justin/cerrar-baseline-comparable-reserva-2026-09-24` (este repo, apilada sobre la del
+PR [#36](https://github.com/PabloArauzCaballero/AlovidaPromptManager/pull/36)) y
+`justin/baseline-historico-reserva-2026-09-23` en `mantra-core-health`
+(PR [#610](https://github.com/mdavila-2001/mantra-core-health/pull/610) → `mockup`).
+**Estado: 9/9 microtareas del plan en `HECHO`.** El conteo del carril original **no se toca**:
+sigue en 29 / 51.
+
+**Pedido:** terminar lo que había quedado a medias y subirlo como PR. Lo que estaba a medias era la
+medición del flujo de reserva, que el daily de equipo del 22/09 tenía en `A MEDIAS` con el motivo
+«faltan baseline y recorrido», y que el reporte de gates del 23/09 repetía como pendiente. En disco
+había un `PLAN.md` con todo en `TODO`, un spec de Playwright y evidencia, **sin commitear**.
+
+### Qué se avanzó
+
+- **La medición, terminada y auditada** — [PLAN y
+  REPORTE](docs/trabajo/2026-09-24-cerrar-baseline-comparable-reserva/REPORTE.md). Dos escenarios,
+  **10 muestras por corte cada uno**, entre `b7785e36` y la punta de `mockup` `a43ad2b3`: hasta los
+  cupos con cuatro activaciones, mediana **1428 → 1108 ms** (rangos solapados); camino por defecto
+  que termina sin horarios, **1460 → 892 ms** (sin solapamiento). **Cero peticiones de negocio
+  observables** en los dos cortes: el simulador es un interceptor en memoria.
+- **Seis defectos del instrumento heredado**, encontrados auditándolo antes de creerle: el
+  cronómetro paraba en «Semana anterior» y no llegaba a medir la carga de los cupos; `estable()`
+  espera un `networkidle` que con `ng serve` no llega; el preset `Desktop Chrome` pisaba el viewport
+  y los archivos `-1440` guardaban 1280 px; `fullPage` con la barra lateral fija la pintaba encima
+  del resto; `page.screenshot()` no congela animaciones; y `animations: 'disabled'` **tampoco
+  alcanzó**, así que ahora se espera a que terminen las animaciones finitas y se asevera el estado
+  asentado.
+- **Tres cosas del daily corregidas:** los «1.468 ms hasta un cupo» **no se reproducen** con
+  instrumento declarado; «cuatro toques → una navegación» **ya se cumplía en `b7785e36`**, no es un
+  delta de #583; y el corte posterior **no es #583** sino la punta de `mockup`, 8 merges de PR más
+  adelante. Nada se adjudica a un PR: entre los dos cortes entró también la tabla de latencia
+  determinista de Ender, que toca justo la ruta caliente de elegir médico.
+- **Hallazgo de producto:** el camino que un paciente toma por defecto —primera tarjeta de la
+  primera especialidad— **no llega a un cupo en ninguno de los dos cortes**, porque los médicos de
+  la red de aseguradoras no tienen agenda a propósito. Queda `DECISION_REQUIRED`.
+- **Las dos filas del daily actualizadas**, de `A MEDIAS` a `PUBLICADO con límites`, en el daily de
+  equipo (§4-bis) y en el de Justin (§7 y §9).
+
+### La doble revisión no fue un trámite
+
+Tres rondas, siempre por un agente distinto del que implementó (regla 35.1.6). La primera **rechazó
+4 de 7 pares** de capturas: mostraban **médicos reales** del catálogo que publican las aseguradoras,
+con nombre y dirección de consultorio; dos pares estaban fotografiados a mitad de animación; y el
+corte «después» no era el que el plan declaraba. También destapó que publicar una corrida suelta
+daba **−36 %** donde por medianas era −18 %. La segunda rechazó una captura más, que seguía en vuelo
+**pese al flag** de Playwright. Sin esa disciplina, este cierre habría publicado un número que no
+existe y datos de personas reales.
+
+### Nada más quedó a medias
+
+Se revisaron los otros repositorios y worktrees: `mantra-core-health-redesa-api`,
+`mantra_core_health_mobile` y el resto de los worktrees de Justin no tienen commits sin subir ni
+trabajo sin commitear. El worktree `wt-justin-gates-reserva-cotizaciones` sólo tenía un `PLAN.md`
+suelto, superado por el PR #36 de este repo.
+
+---
+
 ## 2026-09-22 — Pablo, plan maestro y reparto del turno noche 2026-09-22 · "Correcciones del doctor y del paciente"
 
 **Rama:** `main` de este repo · **Estado: reparto cerrado, 25/25 microtareas del trabajo en `HECHO`.**

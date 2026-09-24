@@ -1,0 +1,30 @@
+Origen: observación de la interfaz de Coolify proporcionada por Justin el 2026-09-23.
+Recurso: Root Team / ALOVIDA / test / mockup-frontend.
+Estado mostrado: Running.
+
+Historial de despliegue seleccionado:
+- Estado: Success.
+- Commit: fc8adc4.
+- Inicio mostrado: 22 minutes ago.
+- Duración mostrada: 21m 35s.
+- Servidor: localhost.
+
+Líneas visibles del log:
+2026-Sep-23 20:34:56 Docker 29.8.0 with BuildKit and Buildx detected on deployment server (localhost).
+2026-Sep-23 20:35:06 Starting deployment of mockup-frontend to localhost.
+2026-Sep-23 20:35:08 Preparing container with helper image: docker.io/coollabsio/coolify-helper:1.0.17
+2026-Sep-23 20:35:26 Importing <REDACTED>:mdavila-2001/mantra-core-health.git:mockup (commit sha fc8adc4e491f2cca9c159ba1ce74cb214d4359dd) to /artifacts/0xpicnyvb1puuqcico10q16v.
+2026-Sep-23 20:43:15 Pulling & building required images.
+2026-Sep-23 20:43:18 Adding build arguments to Docker Compose build command.
+2026-Sep-23 20:55:22 Pulling image-based services before stopping the current deployment.
+2026-Sep-23 20:55:24 Removing old containers.
+2026-Sep-23 20:56:12 Starting new application.
+
+Trazabilidad GitHub consultada el 2026-09-23:
+- PR #583: MERGED en mockup, merge commit 5dc38c907828346d05eec936dbbf94f8d0d06263.
+- PR #584: MERGED en mockup, merge commit fc8adc4e491f2cca9c159ba1ce74cb214d4359dd.
+- PR #581: MERGED en mockup, merge commit 66bbcb76; sus commits 0d318531 y c0510209 son ancestros de mockup.
+- La vista de GitHub del commit fc8adc4 mostró 5dc38c9 entre sus padres; por tanto el despliegue posterior contiene el merge de #583.
+
+Dominio empleado para la prueba: https://mockup.173.249.39.237.sslip.io.
+Coolify lo marcó con DNS matches. No se usó demo.alovidasalud.com.
