@@ -3,6 +3,8 @@
 > **AVANCE: 29 / 51 — 56.9 %.** ← 20 HECHO legados + 9 HECHO posteriores no solapados, adjudicados por ID en el cierre local de #583. Seis tareas de documentos están `DESCARTADO` por la decisión de producto y no suman.
 > `A MEDIAS` cuenta como **no hecha**. Prohibido el porcentaje estimado a ojo (regla 50 §5).
 
+> **Antes de seguir, leé [`CERRAR-EL-CARRIL-SIN-FRENOS.md`](CERRAR-EL-CARRIL-SIN-FRENOS.md)** (2026-09-24): terminar las 16 microtareas que faltan sin frenos y documentar todo junto al final.
+
 - Carril: [`Noche-ReservaYCotizaciones.DirectorioYPrecios`](Noche-ReservaYCotizaciones.DirectorioYPrecios/ClicUnicoEnElDirectorioYCotizacionesPorPrecioYCercania.md)
 - Corte: `origin/mockup` @ `b655e844…` → **el tuyo:** `________________`
 - Rama: `________________` · Peldaño alcanzado (regla 30): `________________`
