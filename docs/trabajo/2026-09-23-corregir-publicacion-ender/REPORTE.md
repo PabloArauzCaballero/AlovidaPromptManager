@@ -2,7 +2,7 @@
 
 - Fecha: 2026-09-23 · Plan: [PLAN.md](./PLAN.md) · Rama: `ender/corregir-latencia-y-avance-2026-09-23` (desde `origin/main` `17ce735c`).
 - Peldaño: `WRITTEN` en PromptManager. Los datos vienen de la rama reconciliada de producto (local) y de `origin/mockup` `a43ad2b3`.
-- Avance: **3 / 3 — 100 %**.
+- Avance: **4 / 4 — 100 %**.
 
 ## Completado
 
@@ -11,6 +11,7 @@
 | H1.S1.M1 | Daily de Ender coherente: 30/48, `LATENCY_CURRENT_CONTRACT = 40/40/90/600/120`, `LATENCY_BEFORE` sin cambios, contrato C, `JUSTIN_CAN_MEASURE_CURRENT_LATENCY_ON_MOCKUP = YES` | `grep -c '^<<<<<<<'` | 0 |
 | H1.S1.M2 | Daily de equipo: `Ender 30/48` en los dos lados del bloque sin resolver, fila de latencia corregida, renglón de H4.S2 y fila de cierre | `git diff` | sólo entradas de Ender |
 | H1.S1.M3 | PR a `main` | `gh pr view` | ver el PR |
+| H1.S1.M4 | Cierre del carril reflejado: AVANCE 44/48 (HECHO 44 · A MEDIAS 3: H4.S2.M2–M4, esperan a Itzan · DESCARTADO 1: H2.S2.M2); producto en PR #604 a `mockup` (sin merge) | `grep -c '44 / 48'` | daily de Ender y fila del equipo |
 
 ## A medias
 
@@ -21,7 +22,7 @@ Ninguna en esta corrección.
 | ID | Estado | Qué lo destraba |
 |---|---|---|
 | 2 bloques de conflicto en `Daily-Noche-2026-09-22.md` (encabezado y tabla PUBLICADO) | BLOQUEADO | Mezclan valores de Pablo, Justin y otras filas: los resuelve quien los introdujo (#34) o coordinación |
-| Rama reconciliada de producto (H2/H3/H4.S1) | local | Autorización de Ender para push/PR |
+| Rama reconciliada de producto | PR #604 abierto | Merge de #604 (no autorizado en este carril) |
 
 ## Evidencia
 

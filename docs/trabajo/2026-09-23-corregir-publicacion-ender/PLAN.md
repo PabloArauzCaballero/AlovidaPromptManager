@@ -24,3 +24,4 @@
 | H1.S1.M1 | Resolver los 8 bloques del daily de Ender con 30/48, 40/40/90/600/120 y el contrato C | Sin marcadores; sin 80/100 como tabla vigente | `grep -c '^<<<<<<<' …/Ender-Daily-Noche-2026-09-22.md` → 0 | HECHO |
 | H1.S1.M2 | Entradas de Ender en el daily de equipo (avance, tabla, renglones, cierre) sin tocar las de otros | Sólo cambian valores de Ender | `git diff` | HECHO |
 | H1.S1.M3 | PR a `main` | Revisable en GitHub | `gh pr view` | HECHO |
+| H1.S1.M4 | Reflejar el cierre del carril: 44/48 · 3 A MEDIAS · 1 DESCARTADO · PR #604 de producto | El daily de Ender y su fila del equipo dicen 44/48 | `grep -c '44 / 48'` | HECHO |

@@ -1,23 +1,26 @@
 # Ender — daily de la noche del 2026-09-22
 
-> **AVANCE: 30 / 48 — 62,5 %.** H1 9/9 · H2.S1 5/5 · H3 9/9 · H4.S1 7/7. Sin contar todavía: H4.S2.M1
-> (Cotizaciones, de Justin, ya en `mockup`), H5 (lo que ya está en `mockup`) ni H6. `A MEDIAS` cuenta como **no hecha**.
-> Corregido el 2026-09-23 (este daily había quedado con marcadores de conflicto sin resolver desde #34).
+> **AVANCE: 44 / 48 — 91,7 %.** HECHO 44 · A MEDIAS 3 (H4.S2.M2–M4, esperan a Itzan) · DESCARTADO 1
+> (H2.S2.M2: no se comparten GET idénticos en vuelo, así que no hay spec que escribir). H1 9/9 · H2 6/7 (+1 descartada) ·
+> H3 9/9 · H4 8/11 · H5 3/3 · H6 9/9. `A MEDIAS` y `DESCARTADO` cuentan como **no hechas**. Carril **A MEDIAS**.
+> Corregido el 2026-09-23 (este daily había quedado con marcadores de conflicto sin resolver desde #34) y
+> actualizado al cierre del carril el mismo día.
 
 > **Dos ejecuciones del mismo reparto.** Este encargo lo corrieron dos carriles a la vez:
 > `ender/simulador-cabecera-2026-09-22`, que entró a `mockup` por **#584, #592 y #598** y había declarado
 > 41/48, y `ender/simulador-latencia-agendas-cabecera-2026-09-22`, que se **reconcilió** sobre ese `mockup`
 > (`a43ad2b3`) y es la que fija el estado de arriba. La diferencia principal está en H3 (ver §3-bis): el
 > contrato vigente es **D-H3-PROV-01 = C · equivalentes sintéticos**, y la versión de #584 (agenda para las
-> personas reales de la planilla) quedó superada. **La rama reconciliada sigue local**: no está en `mockup`
-> ni tiene PR.
+> personas reales de la planilla) quedó superada. **La rama reconciliada está en el PR #604 de producto**
+> (a `mockup`, abierto, **sin merge**).
 
 - Carril: [`Noche-SimuladorYCabecera.MockNavegacion`](Noche-SimuladorYCabecera.MockNavegacion/LatenciaAgendasParaTodosYChatsYTutorialesEnLaCabecera.md)
 - Corte vigente: `origin/mockup` @ `a43ad2b311e1a69ff708fba5cef1e5a2100bbbc2` (reconciliación). Cortes de las
   mediciones: `8ae7283a` (carril reconciliado) y `05d83cb8` (carril paralelo).
-- Rama vigente: `ender/simulador-latencia-agendas-cabecera-2026-09-22` (local, 2 commits sobre `a43ad2b3`, sin push
-  ni PR) · Peldaño (regla 30): `TESTED` en H2/H3/H4.S1 (specs dirigidos y suite completa sin rojos nuevos) ·
-  `VERIFIED` visual de la cabecera (12/12 capturas miradas) y de los escenarios de reserva en el navegador.
+- Rama vigente: `ender/simulador-latencia-agendas-cabecera-2026-09-22` @ `af91a547` (3 commits sobre `a43ad2b3`),
+  **PR #604** a `mockup`, abierto y sin merge · Peldaño (regla 30) por área: H2 (tabla), H5 y Cotizaciones ya
+  **mergeados** en `mockup`; H3 (contrato C), H4.S1 (contador pasivo, accesibilidad, 375 px) y la higiene de
+  evidencia en **PR** #604, `TESTED` + `VERIFIED`; H4.S2 final **A MEDIAS** (espera a Itzan).
 - Plan y reporte del carril paralelo: `docs/trabajo/2026-09-22-ender-simulador-cabecera/` (en `mockup`).
 - Daily de equipo: [`Daily-Noche-2026-09-22.md`](../Daily-Noche-2026-09-22.md)
 
@@ -88,7 +91,7 @@ plan_gate self-test: 11 PASS, 0 FAIL
 - La agenda de R-03 la tienen **13 profesionales de demostración** (`origen: 'DEMO'`, «Profesional demo NN»): 13/13
   con recurso, plantilla de lunes a viernes y cupos ±21 días, en Clínica Los Olivos u Hospital San Lucas (las
   instituciones inventadas de la maqueta), sin credenciales ni matrícula.
-- La versión de #584 (agenda para los registrados reales) quedó superada en la rama reconciliada, que sigue local.
+- La versión de #584 (agenda para los registrados reales) quedó superada en la rama reconciliada (PR #604 de producto, sin merge).
 
 ## 4. La tabla de latencia que publicás (H2.S1)
 
@@ -125,8 +128,8 @@ AVANCE — simulador y cabecera — <fase> — <ID de microtarea>
 
 | Qué | Quién | Estado | Si no llegó el pedido: contrato simulado (regla 65) |
 |---|---|---|---|
-| Renglón «Cotizaciones» (PATIENT, Mi cuenta) + ruta lazy | Justin | **Ya en `mockup`, lo escribió Justin** (`b3af9887`, #577), verificado contra código y no recreado. H4.S2.M1 todavía no se acredita | no aplica |
-| Retirar «Mis puntos» del menú + redirect `/my-account/loyalty` → pestaña | Itzan | **Simulación previa en `mockup`**: renglón retirado y `/my-account/loyalty` → `/my-account`. El contrato final del handoff de Itzan es `/my-account?pestana=puntos` y su código **todavía no está en `mockup`**: esperando a Itzan | redirect a `/my-account`, declarado (regla 65) |
+| Renglón «Cotizaciones» (PATIENT, Mi cuenta) + ruta lazy | Justin | **Ya en `mockup`, lo escribió Justin** (`b3af9887`, #577), verificado contra código y no recreado. **H4.S2.M1 HECHO** (acreditado por trabajo integrado) | no aplica |
+| Retirar «Mis puntos» del menú + redirect `/my-account/loyalty` → pestaña | Itzan | **Simulación previa en `mockup`**: renglón retirado y `/my-account/loyalty` → `/my-account`. El contrato final del handoff de Itzan es `/my-account?pestana=puntos` y su código **todavía no está en `mockup`** (revalidado al cierre: `itzan/perfil-medico-nucleo` no lo trae). **H4.S2.M2–M4 A MEDIAS**: esperando a Itzan | redirect a `/my-account`, declarado (regla 65) |
 | Filtro por profesional en `GET /scheduling/slots` | Justin | No llegó | fuera del alcance (la ficha y sus peticiones son de Justin) |
 | Medición del flujo de reserva | Justin (te la da) | No llegó con dato → **medición propia** (§3) | la medís vos y lo declarás |
 
@@ -136,10 +139,23 @@ AVANCE — simulador y cabecera — <fase> — <ID de microtarea>
 |---|---|---|
 | Números del «antes» (latencia, agendas, «elegir médico») | Justin | §3 de este daily · PR #32 de PromptManager · 2026-09-23 |
 | Tabla de latencia por prefijo | Justin | §4 de este daily. Publicada en #32 con 80/100 (**incorrecto**) y **corregida** en este PR a 40/40/90/600/120 · 2026-09-23 |
-| Escenarios de flujo completo en `core/mock/README.md` | los cinco | Rama reconciliada (local): escenario A con la médica de prueba y B con «Profesional demo 01»; la reserva del portal queda **solicitada** (`BK-REQUESTED`) |
+| Escenarios de flujo completo en `core/mock/README.md` | los cinco | PR #604 de producto (sin merge): escenario A con la médica de prueba y B con «Profesional demo 01»; la reserva del portal queda **solicitada** (`BK-REQUESTED`) |
 | Estado de Cotizaciones y Mis puntos (N-02/N-03) · corrección de HALL-M5 | Justin, Itzan, Pablo | `Daily-Noche-2026-09-22.md` §4-bis (carril paralelo) |
 
 ## 8. Al cerrar
+
+> **Cierre del carril reconciliado (2026-09-23)** — vale éste.
+>
+> - H6 9/9: `yarn typecheck` exit 0. `yarn lint` da 246 contra 243 del baseline; los +3 vienen de `mockup` (#435, #588), 0 son del carril.
+>   `yarn test` 7350/7351 (sólo `fichas-estandar`, ENTORNO). Flakes de carga que aislados pasan 2/2: `mock-backend-latencia`
+>   (reloj real, deuda de upstream) y `fallos-simulados` (cuota de `sessionStorage` en el worker).
+> - `stock:generate` ×2 idéntico; `yarn build` y `yarn start` sirven.
+> - Barrido de 5 cuentas: 183 rutas, 0 con problema. Barrido de clics: 294 botones en `<main>` más 162 en la cabecera
+>   y `/directory`, 0 con problema. 12 capturas finales miradas.
+> - H2.S2: `DO_NOT_SHARE_IN_FLIGHT_GETS` (M1 HECHO, M2 DESCARTADO). H5: acreditado por auditoría (ya en `mockup`).
+> - Datos personales: el tip de la rama está saneado (0 coincidencias en lo que agrega). La **historia de Git no se purgó**:
+>   eso requiere una decisión aparte del dueño o administrador del repositorio.
+> - Producto: **PR #604** a `mockup` (`af91a547`), abierto, sin merge.
 
 > **Cierre del carril paralelo** (`ender/simulador-cabecera-2026-09-22`, #584/#592/#598), tal como lo dejó. La
 > casilla de «los 12 registrados con agenda» quedó **superada** por D-H3-PROV-01 (ver §3-bis).

@@ -3,10 +3,10 @@
 > **REPARTIDO: 5 / 5 carriles · 19 / 19 observaciones con dueño · 32 hitos · 64 subtareas · 319 microtareas.**
 <<<<<<< HEAD
 > **AVANCE DEL TURNO: 65 / 319 — 20,4 %.** ← se llena al cerrar, con `microtareas HECHO / total`.
-> Pablo 45/68 · Itzan 0/93 · Justin 20/51 · Ender 30/48 · Marcelo 0/59.
+> Pablo 45/68 · Itzan 0/93 · Justin 20/51 · Ender 44/48 · Marcelo 0/59.
 =======
 > **AVANCE DEL TURNO: 0 / 319 — 0 %.** ← se llena al cerrar, con `microtareas HECHO / total`.
-> Pablo 0/68 · Itzan 0/93 · Justin 29/51 · Ender 30/48 · Marcelo 0/59.
+> Pablo 0/68 · Itzan 0/93 · Justin 29/51 · Ender 44/48 · Marcelo 0/59.
 >>>>>>> origin/main
 > **`A MEDIAS` cuenta como no hecha. `DESCARTADO` no suma: se declara aparte con su motivo.**
 
@@ -244,7 +244,7 @@ Las 20 están con supuesto y dueño en el documento fuente. Las que **bloquean c
 | Pablo | 45 / 68 | 3 / 6 | H4.S2.M9 (teclado del modal, sin verificar; resto de H4.S2 HECHO) | ninguno | [Pablo-Daily-Noche-2026-09-22.md](Pablo/Pablo-Daily-Noche-2026-09-22.md) |
 | Itzan | __ / 93 | __ / 8 | | | [Itzan-Daily-Noche-2026-09-22.md](Itzan/Itzan-Daily-Noche-2026-09-22.md) |
 | Justin | 29 / 51 | 0 / 6 | 20 HECHO legados + 9 HECHO no solapados, publicados en #583: capturas por viewport/tema, teclado, gates locales, clic único y acción visible de disponibilidad. Las 6 de documentos son `DESCARTADO` por la decisión «Cotizaciones solamente». | Quedan baseline histórico, contratos de negocio para precios/origen/acciones y validación remota de Coolify. | [Justin-Daily-Noche-2026-09-22.md](Justin/Justin-Daily-Noche-2026-09-22.md) |
-| Ender | 30 / 48 | 2 / 6 | H2 (H2.S2 sin empezar) · H4 (H4.S2 sin empezar; «Mis puntos» espera a Itzan). H1 y H3 cerrados. H3 con el contrato **D-H3-PROV-01 = C**: agenda para 13 profesionales de demostración, ninguna para las personas reales de la planilla. Rama reconciliada sobre `mockup` `a43ad2b3`, local, sin PR | H4.S2.M2 espera el código de Itzan en `mockup` | [Ender-Daily-Noche-2026-09-22.md](Ender/Ender-Daily-Noche-2026-09-22.md) |
+| Ender | 44 / 48 | 5 / 6 | H4 A MEDIAS: H4.S2.M2–M4 esperan el contrato `?pestana=puntos` de Itzan (1 descartada: H2.S2.M2). H1, H2, H3, H5 y H6 cerrados. H3 con el contrato **D-H3-PROV-01 = C**: agenda para 13 profesionales de demostración, ninguna para las personas reales de la planilla. Rama reconciliada sobre `mockup` `a43ad2b3`: PR #604 de producto, sin merge | H4.S2.M2 espera el código de Itzan en `mockup` | [Ender-Daily-Noche-2026-09-22.md](Ender/Ender-Daily-Noche-2026-09-22.md) |
 | Marcelo | __ / 59 | __ / 6 | | | [Marcelo-Daily-Noche-2026-09-22.md](Marcelo/Marcelo-Daily-Noche-2026-09-22.md) |
 | **Total** | **__ / 319** | **__ / 32** | | | |
 
