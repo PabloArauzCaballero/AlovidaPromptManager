@@ -7,6 +7,35 @@ resumen de alto nivel para quien no quiere abrir carpeta por carpeta. Entradas n
 
 ---
 
+## 2026-09-25 — Justin, plan y reparto del turno noche 2026-09-25 · "Farmacia como ecommerce"
+
+**Rama:** `justin/reparto-farmacia-ecommerce-2026-09-25` (este repo), publicada en `main` por pedido del propietario.
+**Reparto:** [`repartos/2026-09-25/PromptNoche/`](repartos/2026-09-25/PromptNoche/Daily-Noche-2026-09-25.md) —
+cuatro carriles de persona (Pablo, Justin, Marcelo, Itzan; **Ender fuera por pedido del propietario**) que
+cubren los ocho carriles del plan (41–48): **27 hitos · 43 subtareas · 159 microtareas**.
+**Plan completo:** [`planes/04-farmacia-ecommerce-2026-09-25/README.md`](planes/04-farmacia-ecommerce-2026-09-25/README.md).
+**Fuente y hechos:** [`docs/requisitos/FARMACIA-ECOMMERCE-2026-09-25.md`](docs/requisitos/FARMACIA-ECOMMERCE-2026-09-25.md) ·
+[`docs/verificacion/VERIFICACION-CONTRA-CODIGO-2026-09-25.md`](docs/verificacion/VERIFICACION-CONTRA-CODIGO-2026-09-25.md) ·
+[`PLAN-MAESTRO.md`](docs/trabajo/2026-09-25-plan-y-reparto-farmacia-ecommerce/PLAN-MAESTRO.md).
+
+### Qué se decidió
+
+- «Farmacia» del paciente deja de ser una pantalla con pestañas (PR #658 y #659 del front, descartados por el
+  propietario) y pasa a ser una tienda: buscador con filtros de precio y distancia en dos modos (productos y
+  farmacias), página por farmacia con catálogo a precio real, carrito en la cabecera (uno por sede, persistente
+  por usuario), y la receta completa de la historia clínica como segunda vía de entrada. Todo desemboca en la
+  revisión y el checkout que ya existen. Cotizaciones **se queda** aparte; «Lugares cercanos» **desaparece**.
+- **Ola 0 de una hora** (Pablo H2 + Marcelo H2: tipos, `CartStore` en memoria, cliente y mocks) y después cuatro
+  carriles en paralelo con archivos disjuntos; la Ola 3 (borrar el hub, e2e y veredicto) es lo único que espera.
+- Brecha real de la API declarada: no lista sedes sueltas ni filtra productos por farmacia; Marcelo la cierra en
+  `dev` en paralelo, sin que nadie lo espere (la maqueta usa mocks).
+
+### Verificación
+
+`tools/check_reparto.py` y `tools/check_skills_citadas.py` en verde sobre `repartos/2026-09-25` (salidas en el
+[`REPORTE.md`](docs/trabajo/2026-09-25-plan-y-reparto-farmacia-ecommerce/REPORTE.md)). Peldaño del reparto:
+`DISCOVERED` — nada del plan se ejecutó.
+
 ## 2026-09-24 — Justin · "Brechas front↔back para cerrar el frontend"
 
 **Rama:** `justin/planes-brechas-front-back-2026-09-24` (este repo).
