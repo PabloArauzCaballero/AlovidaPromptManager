@@ -1,14 +1,25 @@
 # Daily de equipo — noche del 2026-09-25
 
-> **REPARTIDO: 4 / 4 carriles de persona (8 / 8 carriles del plan) · 8 / 8 requisitos con dueño · 27 hitos · 43 subtareas · 159 microtareas.**
-> **AVANCE DEL TURNO: 0 / 159 — 0,0 %.** ← se llena al cerrar, con `microtareas HECHO / total`.
-> Pablo 0/43 · Justin 0/41 · Marcelo 0/30 · Itzan 0/45. **Ender no participa de este reparto** (pedido del propietario).
+> **REPARTIDO: 4 / 4 carriles de persona · dos paquetes por persona (8 / 8 carriles del plan Farmacia +
+> 4 carriles del contrato Carga Masiva) · 8 / 8 requisitos de Farmacia con dueño · 52 hitos · 93 subtareas ·
+> 493 microtareas.**
+> **AVANCE DEL TURNO: 0 / 493 — 0,0 %.** ← se llena al cerrar, con `microtareas HECHO / total`.
+> Pablo 0/102 (43 Farmacia + 59 Carga Masiva) · Justin 0/109 (41 + 68) · Marcelo 0/128 (30 + 98) ·
+> Itzan 0/154 (45 + 109). **Ender no participa de ninguno de los dos** (pedido del propietario).
 > **`A MEDIAS` cuenta como no hecha. `DESCARTADO` no suma: se declara aparte con su motivo.**
 
-> **Estado:** `REPARTIDO` al 2026-09-25. Este documento se escribió **al repartir, antes del turno**;
-> las secciones «PUBLICADO» y la tabla de cierre se llenan con lo que cada carril ejecute.
+> **Estado:** `REPARTIDO` al 2026-09-25. **Esta noche el equipo tiene DOS paquetes de trabajo en paralelo**,
+> cada persona con un carril de cada uno, documentados como dos secciones en este mismo daily porque la
+> estructura del repo admite un único daily de equipo y un único daily personal por turno y fecha. Ninguno
+> reemplaza al otro: **ambos se hacen** (decisión del propietario, 2026-09-25). Este documento se escribió
+> **al repartir, antes del turno**; las secciones «PUBLICADO» y la tabla de cierre se llenan con lo que cada
+> carril ejecute.
 
-- **Turno:** noche · **Fecha:** 2026-09-25 · **Paquete fuente:** el pedido del propietario de rehacer «Farmacia» como una tienda (ecommerce)
+- **Turno:** noche · **Fecha:** 2026-09-25
+
+## Paquete 1 — Farmacia como tienda (ecommerce)
+
+- **Paquete fuente:** el pedido del propietario de rehacer «Farmacia» como una tienda (ecommerce)
 - **Fuente del pedido (verbatim, con procedencia):** [`FARMACIA-ECOMMERCE-2026-09-25.md`](../../../docs/requisitos/FARMACIA-ECOMMERCE-2026-09-25.md)
 - **Verificación contra el código real:** [`VERIFICACION-CONTRA-CODIGO-2026-09-25.md`](../../../docs/verificacion/VERIFICACION-CONTRA-CODIGO-2026-09-25.md)
 - **Plan maestro (orden, dependencias, kill-tests):** [`PLAN-MAESTRO.md`](../../../docs/trabajo/2026-09-25-plan-y-reparto-farmacia-ecommerce/PLAN-MAESTRO.md) · **Plan completo:** [`planes/04-farmacia-ecommerce-2026-09-25/README.md`](../../../planes/04-farmacia-ecommerce-2026-09-25/README.md)
@@ -16,7 +27,7 @@
   **Corte: `bf2c35452363ede1d367f94c4fd726b2b9a63cb1`** (2026-09-25T00:34-04, PR #660). Y para Marcelo, además, `alovida/mantra-core-health-api` · `origin/dev` @ `343795cc2d08745692f491c50e81427215043315`
 - Peldaño de evidencia del reparto: **`DISCOVERED`** (regla 30). Se leyó el árbol de git de los dos repos; **no se ejecutó nada del plan**.
 
-## 0. Los cuatro hechos que ordenan toda la noche
+### 0. Los cuatro hechos que ordenan la Ola de Farmacia
 
 1. **El motor del pedido ya existe y sirve sin receta.** `prepararBorrador()` → revisión `/my-account/pharmacy-orders/new`
    → checkout → `POST /pharmacy/orders`; con `requestId: ''` el adaptador omite `medicationRequestId`. **Nadie
@@ -31,7 +42,7 @@
    `src/app/core/mock/**`, que esta noche es de **Marcelo** (`pharmacy.handlers.ts`). El contrato real de la API
    (sedes sueltas, filtro por farmacia) lo cierra Marcelo en su repo, en paralelo, sin que nadie lo espere.
 
-## 1. Quién tiene qué
+### 1. Quién tiene qué
 
 | Persona | Encargo | Carriles del plan | Requisitos | Hitos | Subtareas | Microtareas | Estado |
 |---|---|---|---|---:|---:|---:|---|
@@ -45,7 +56,7 @@
 > ir y qué vale más si hay que elegir. **Lo que no se cierre va `A MEDIAS`** con qué anda, qué no anda y qué
 > falta exactamente. **Recortar alcance es decisión de coordinación, y se registra.**
 
-## 2. Cobertura de los 8 — el kill-test del reparto
+### 2. Cobertura de los 8 — el kill-test del reparto
 
 Una fila sin persona o sin hito significa que ese requisito **no está repartido**.
 
@@ -60,7 +71,7 @@ Una fila sin persona o sin hito significa que ese requisito **no está repartido
 | R7 | Botón de receta «lo más limpio» (dentro de Farmacia) | Justin | H3.S1.M3 |
 | R8 | Plan repartido sin Ender, publicado en `main` | Coordinación (este documento) | — |
 
-## 3. Lo primero, para todos
+### 3. Lo primero, para todos (Farmacia)
 
 Antes de la primera microtarea: instalar el estándar (sección 1 del encargo) y **pegar la salida de
 los tres comandos** en el daily personal. Un turno que arranca sin eso arranca en `BLOQUEADO`.
@@ -89,7 +100,7 @@ medicamentos: es dato de salud, y se trata como tal (Pablo, `data-privacy-phi`).
 **Regla 70:** un `yarn start`, un build, un navegador, Playwright con `--workers=1`. Nada en background que no cierres vos.
 **En la API, nadie levanta el stack Docker sin pedir permiso** (`CLAUDE.md` de la raíz): Marcelo trabaja con specs de controlador.
 
-## 4. Orden de dependencia — quién espera a quién
+### 4. Orden de dependencia — quién espera a quién (Farmacia)
 
 ```
 Pablo   ──(H2: tipos + CartStore en memoria + rutas + testids, PR propio, 1 h)──▶ Justin, Itzan (importan el store)
@@ -116,7 +127,7 @@ puede nombrar —y acá **todos** los contratos están nombrados en el plan §4�
 **Si dos personas miden lo mismo y les da distinto, eso es un hallazgo, no un empate a resolver charlando.**
 Gana el archivo abierto, y la diferencia se registra.
 
-## 4-bis. PUBLICADO — se llena durante el turno
+### 4-bis. PUBLICADO — se llena durante el turno
 
 Cada carril anuncia acá lo que otros consumen, con ruta y ejemplo. Vacío al repartir.
 
@@ -136,7 +147,7 @@ Cada carril anuncia acá lo que otros consumen, con ruta y ejemplo. Vacío al re
 | Hub viejo borrado | Pablo, H7 | **Ola 3** | | `TODO` |
 | Tres e2e + regla visual + veredicto por requisito | Itzan, H5–H6 | **Ola 3** | | `TODO` |
 
-## 5. Reservas de archivos — para que nadie se pise
+### 5. Reservas de archivos — para que nadie se pise (Farmacia)
 
 Rutas relativas a `mantra-core-health/src/app/`, sobre la rama `mockup`. Sin intersección entre personas.
 
@@ -153,7 +164,7 @@ Rutas relativas a `mantra-core-health/src/app/`, sobre la rama `mockup`. Sin int
 escribiendo el mismo archivo fuera de eso es un defecto del reparto, no un accidente.** Quien necesite un cambio en
 la ruta de otro **lo pide por este daily y no lo escribe**.
 
-## 6. Ambigüedades abiertas — se arrastran, no se resuelven
+### 6. Ambigüedades abiertas — se arrastran, no se resuelven (Farmacia)
 
 Las de cada carril están con supuesto y dueño en su prompt (§5). Las que cruzan a más de una persona:
 
@@ -165,7 +176,7 @@ Las de cada carril están con supuesto y dueño en su prompt (§5). Las que cruz
 | Q-T4 | ¿`requiresPrescription` y los montos existen en `PharmacySitePriceDto` real? | Marcelo, abriendo el DTO en H2.S1.M1 | `ABIERTA` |
 | Q-T5 | Imagenología y centros médicos cercanos pierden pantalla al borrar «Lugares cercanos» | Justin — supuesto: es lo pedido; queda en `DECISIONS.md` | `ABIERTA` |
 
-## 7. Hallazgos que afectan a todo el equipo (de la verificación contra el código)
+### 7. Hallazgos que afectan a todo el equipo (Farmacia, de la verificación contra el código)
 
 | ID | Qué | A quién le pega |
 |---|---|---|
@@ -176,3 +187,82 @@ Las de cada carril están con supuesto y dueño en su prompt (§5). Las que cruz
 | **HALL-F5** | `Tabs` monta la pestaña 0 de forma transitoria; deja de importar sin pestañas | nadie |
 | **HALL-F6** | El carrito en `localStorage` es dato de salud: clave por usuario, sin logs | Pablo |
 | **HALL-F7** | Dos rojos preexistentes en `origin/mockup` (`shell-layout.spec` íconos; lint de `navigation.service.spec:16`): se anotan, no se tocan | los cuatro |
+
+---
+
+## Paquete 2 — Motor de carga masiva (CSV/XLSX) por modelo, con drag & drop
+
+- **Paquete fuente:** el pedido del cliente del 2026-09-25 — «un motor para upload masivo de datos… terminología
+  médica y otros elementos… dado un Excel o un CSV… seleccionar qué modelo se va a subir y un drag and drop»
+- **Contrato compartido:** [`CONTRATO-CARGA-MASIVA.md`](CONTRATO-CARGA-MASIVA.md) — tipos, HTTP, `data-testid`,
+  fixtures, supuestos, orden de integración, kill-test. **Todos escriben contra él.**
+- **Verificación contra el código real:** «Hechos ya verificados» de cada prompt de este paquete (lectura del
+  árbol de los dos repos; **nada ejecutado**)
+- **Repos de destino:** `alovida/mantra-core-health-api` (ref `origin/dev`, PR a `dev`) y
+  `alovida/mantra-core-health` (ref **`origin/mockup`**, PR a **`mockup`** — regla del propietario: todo cambio
+  de frontend termina en PR mergeable a `mockup`), en **worktrees limpios** (el checkout local del front tiene
+  cambios sin commitear de Ender del 22/09)
+- Peldaño de evidencia del reparto: **`DISCOVERED`**.
+
+### 0. Los tres hechos que ordenan este paquete
+
+1. **El motor ya existe y es angosto.** `POST /terminology/versions/:id/import-file` importa conceptos por
+   archivo, por tandas, con lote y errores por línea — **sólo NDJSON**. Itzan lo ensancha (CSV/XLSX vía
+   contrato, dry-run, todo o nada, idempotencia contra Postgres) y escribe el contrato de fila, el detector, el
+   CSV y los perfiles; Marcelo escribe el parseador XLSX, los fixtures y decide la dependencia. **Ender no está
+   esta noche**: su carril de parseo se repartió entre los dos (Q-10).
+2. **La pantalla y el drag & drop ya existen.** `admin/terminology/version-import` + `app-file-input`
+   (dropzone). Justin agrega «qué se carga» con plantilla, «validar sin guardar», vista previa, resumen.
+3. **Los «otros elementos» ya son conceptos de terminología** (`src/common/seed/*.catalog.ts`): entran por el
+   mismo motor eligiendo su sistema (Q-1). El esquema no se toca.
+
+### 1. Carriles — archivos disjuntos, nadie espera a nadie
+
+| Persona | Carril | Repo | Hitos | Sub | Micro | Publica temprano (para quién) | Prompt |
+|---|---|---|---|---|---|---|---|
+| **Itzan** | Motor **y parseo**: contrato de fila, detector, CSV, perfiles, NDJSON + servicio, dry-run, todo o nada, idempotencia, authz, plantilla, OpenAPI | API | 7 | 16 | 109 | `row-contract.ts` **hora 1** (Marcelo, Pablo) · rama arrancable (Justin H6, Marcelo H5/H6, Pablo) | [`ServicioEnsanchadoDryRunTodoONadaIdempotenciaAutorizacionYPlantilla.md`](Itzan/Noche-CargaMasiva.MotorDryRunIdempotencia/ServicioEnsanchadoDryRunTodoONadaIdempotenciaAutorizacionYPlantilla.md) |
+| **Justin** | Pantalla: qué se carga, arrastrar, validar sin guardar, vista previa, resumen, doble del simulador | Front | 6 | 10 | 68 | doble del simulador **hora 1,5** (Marcelo) | [`QueSeCargaArrastrarValidarSinGuardarVistaPreviaYResumen.md`](Justin/Noche-CargaMasiva.PantallaDragAndDrop/QueSeCargaArrastrarValidarSinGuardarVistaPreviaYResumen.md) |
+| **Marcelo** | Calidad **y parseo XLSX**: E2E, capturas con doble revisión, gates, Q-9, regresión + dependencia XLSX, fixtures de la API, `xlsx-parser.ts` | Front + API | 7 | 15 | 98 | **Q-9 hora 1** (Itzan, Justin) · **fixtures hora 2** (Itzan, Justin) · spec del contrato (Justin) | [`E2EPlaywrightCapturasDobleRevisionGatesYSegundoPerfil.md`](Marcelo/Noche-CargaMasiva.CalidadE2EVisualYGates/E2EPlaywrightCapturasDobleRevisionGatesYSegundoPerfil.md) |
+| **Pablo** | Integración: decisiones Q-1…Q-9, merges incrementales, cableado del XLSX, kill-test, dos PR mergeables (API a `dev`, front a `mockup`), reporte consolidado | Ambos | 5 | 9 | 59 | decisiones Q-1…Q-9 en el contrato (todos) | [`IntegrarLosCuatroCarrilesKillTestDelContratoYDosPRMergeables.md`](Pablo/Noche-CargaMasiva.IntegracionYEntrega/IntegrarLosCuatroCarrilesKillTestDelContratoYDosPRMergeables.md) |
+
+### 2. Por qué es imposible bloquearse (regla 65 aplicada al reparto)
+
+| Dependencia | Cómo se rompe |
+|---|---|
+| Marcelo (XLSX) ← contrato de Itzan | Itzan publica `row-contract.ts` en la hora 1; Marcelo lo cherry-pickea, o lo escribe literal desde el contrato si no está. Itzan no depende del XLSX: sin él, 422 «xlsx no admitido» y CSV + NDJSON enteros; Pablo cablea `XlsxParser` en dos líneas al integrar |
+| Justin ← API de Itzan | Justin ensancha el **doble del simulador** (`terminology.handlers.ts`) en tres niveles contra §2; mira la rama de Itzan **una vez** al final |
+| Marcelo ← pantalla de Justin | Marcelo escribe el E2E contra los `data-testid` del contrato y lo corre tres veces (pantalla de hoy → rama de Justin → API real), declarando el peldaño de cada una |
+| Itzan / Justin ← Q-9 de Marcelo | Marcelo la publica en su daily **antes de la hora 1**; si no está, cada uno la mira 5 min y decide |
+| Itzan / Justin ← fixtures de Marcelo (hora 2) | Los tres primeros son triviales: cada uno los crea a mano con §4 si aún no están |
+| Pablo ← que los cuatro terminen | Integra **lo que hay** al cerrar cada microtarea; un carril que no llega queda `A MEDIAS` con dueño y el resto se entrega |
+| Cualquiera ← Docker / `gh` / cuenta demo / lib XLSX con audit rojo | Columna «Si se traba» en cada fila con el camino alternativo |
+
+**Lo único que legítimamente queda sin cerrar:** una decisión de negocio (Q-1…Q-9 ya tienen supuesto: se
+trabaja con él) o una acción destructiva sobre algo compartido (no hay ninguna: esquema y `dev`/`mockup` no se tocan).
+
+### 3. Ambigüedades del reparto (con supuesto; Pablo las confirma en el contrato en su H1.S2)
+
+| ID | Supuesto |
+|---|---|
+| Q-1 | «Modelo» = perfil + sistema de codificación + versión en borrador |
+| Q-2 | Errores parciales → todo o nada |
+| Q-3 | Síncrono hasta 10 MiB; sin job |
+| Q-4 | Formato/dry-run/perfil no persisten (sin columna): respuesta |
+| Q-5 | Vista previa desde el servidor; el front no parsea |
+| Q-6 | `code` repetido en el archivo → problema, aborta |
+| Q-7 | `code` existente → `skipped`, no se actualiza |
+| Q-8 | Desde la UI no se importa sin validar |
+| Q-9 | `designaciones` sólo si Marcelo confirma entidad + DTO + repositorio |
+| Q-10 | Ender no está: parseo repartido entre Itzan (contrato, detector, CSV, perfiles) y Marcelo (dependencia, fixtures, XLSX) |
+
+---
+
+## Cierre del turno (se llena al cerrar, sumando los dos paquetes por persona)
+
+| Persona | Farmacia HECHO/total | Carga Masiva HECHO/total | **Total persona** | Peldaño | PRs (`mergeable`) | Contra el doble | Sin reporte al cierre |
+|---|---|---|---|---|---|---|---|
+| Pablo | 0 / 43 | 0 / 59 | **0 / 102** | — | — | — | |
+| Justin | 0 / 41 | 0 / 68 | **0 / 109** | — | — | — | |
+| Marcelo | 0 / 30 | 0 / 98 | **0 / 128** | — | — | — | |
+| Itzan | 0 / 45 | 0 / 109 | **0 / 154** | — | — | — | |
+| **Total** | **0 / 159** | **0 / 334** | **0 / 493** | el más bajo | | | |

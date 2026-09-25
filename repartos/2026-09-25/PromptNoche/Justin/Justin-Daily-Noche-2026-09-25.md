@@ -1,21 +1,28 @@
 # Justin — daily de la noche del 2026-09-25
 
-> **AVANCE: 0 / 41 — 0,0 %.** ← se llena al cerrar, con `microtareas HECHO / total`.
-> `A MEDIAS` cuenta como **no hecha**. Prohibido el porcentaje estimado a ojo (regla 50 §5).
+> **AVANCE COMBINADO: 0 / 109 — 0,0 %.** Sale de `microtareas HECHO / total`, sumando los dos carriles de
+> abajo. `A MEDIAS` cuenta como **no hecha**. Prohibido el porcentaje estimado a ojo (regla 50 §5).
+
+- Daily de equipo: [`Daily-Noche-2026-09-25.md`](../Daily-Noche-2026-09-25.md) — **dos paquetes esta noche**, uno por sección de este documento.
+
+---
+
+## Carril A — Farmacia: la tienda, el buscador y la receta al carrito
+
+> **AVANCE: 0 / 41 — 0,0 %.**
 
 - Carril: [`Noche-Farmacia.TiendaYReceta`](Noche-Farmacia.TiendaYReceta/BuscadorPorPrecioYDistanciaYLaRecetaAlCarrito.md) (carriles 43 y 45 del plan)
 - Corte: `origin/mockup` @ `bf2c3545…` → **el tuyo (después de la Ola 0):** `________`
 - Rama: `justin/farmacia-tienda-y-receta-2026-09-25` · Peldaño alcanzado (regla 30): `UNKNOWN`
-- Daily de equipo: [`Daily-Noche-2026-09-25.md`](../Daily-Noche-2026-09-25.md)
 
-## 0. Arrancás cuando la Ola 0 esté publicada — y no antes de una hora
+### 0. Arrancás cuando la Ola 0 esté publicada — y no antes de una hora
 
-Mirá §4-bis del daily de equipo: cuando Pablo (H2) y Marcelo (H2) estén **PUBLICADO**, fijás tu corte desde ese
-`origin/mockup`. Si a la hora no llegaron, codeás contra el contrato del plan §4 con un doble local y lo declarás
-(regla 65). **Tu primera entrega visible es H3.S5**: la ruta `/my-account/pharmacy` apuntando a la tienda — Pablo
-la espera para borrar el hub.
+Mirá §4-bis del Paquete 1 del daily de equipo: cuando Pablo (H2) y Marcelo (H2) estén **PUBLICADO**, fijás tu
+corte desde ese `origin/mockup`. Si a la hora no llegaron, codeás contra el contrato del plan §4 con un doble
+local y lo declarás (regla 65). **Tu primera entrega visible es H3.S5**: la ruta `/my-account/pharmacy`
+apuntando a la tienda — Pablo la espera para borrar el hub.
 
-## 1. Instalación del estándar — pegá la salida acá
+### 1. Instalación del estándar — pegá la salida acá
 
 ```text
 $ ls .claude/skills | wc -l
@@ -31,7 +38,7 @@ $ python .claude/hooks/plan_gate.py --self-test
 - [ ] Leí `skills-router` y las 23 skills de mi lote, empezando por `search-and-filtering`.
 - [ ] Creé mi `PLAN.md` antes del primer `Edit`/`Write` de código.
 
-## 2. Baseline
+### 2. Baseline
 
 | Comando | Exit code | Rojos previos | Clase (regla 80.4) |
 |---|---|---|---|
@@ -39,7 +46,7 @@ $ python .claude/hooks/plan_gate.py --self-test
 | `corepack yarn typecheck` | | | |
 | `corepack yarn test --watch=false` | | | |
 
-## 3. El servicio de búsqueda (H2) — lo que fija el spec
+### 3. El servicio de búsqueda (H2) — lo que fija el spec
 
 | Caso | Esperado | Resultado |
 |---|---|---|
@@ -48,7 +55,7 @@ $ python .claude/hooks/plan_gate.py --self-test
 | término de 1 letra | ninguna petición | |
 | fila con precio sin `availability()` | **no existe** | |
 
-## 4. La receta al carrito (H5) — lo que fija el spec
+### 4. La receta al carrito (H5) — lo que fija el spec
 
 | Caso | Esperado | Resultado |
 |---|---|---|
@@ -56,7 +63,7 @@ $ python .claude/hooks/plan_gate.py --self-test
 | carrito previo de otra sede | confirm; cancelar no cambia | |
 | `createOrderRequest(toDraft(...))` | trae `medicationRequestId` | |
 
-## 5. Checkpoints del turno
+### 5. Checkpoints del turno
 
 ```text
 AVANCE — tienda y receta — <fase> — <ID de microtarea>
@@ -68,7 +75,7 @@ AVANCE — tienda y receta — <fase> — <ID de microtarea>
 - Peldaño:    UNKNOWN | DISCOVERED | WRITTEN | RUNS | TESTED | VERIFIED | REGRESSION_VERIFIED
 ```
 
-## 6. Cierre
+### 6. Cierre
 
 | Hito | Microtareas HECHO / total | Estado | Peldaño |
 |---|---|---|---|
@@ -84,3 +91,70 @@ AVANCE — tienda y receta — <fase> — <ID de microtarea>
 - `git diff --stat origin/mockup -- src/app/features/account/cotizaciones` → tiene que estar vacío: `________`
 - Qué quedó `A MEDIAS` (con las cuatro respuestas): `________`
 - Qué quedó corriendo y se cerró: `________`
+
+---
+
+## Carril B — Carga masiva: la pantalla (elegir modelo, arrastrar, validar, resumen)
+
+> **AVANCE: 0 / 68 — 0 %.**
+
+- Carril: [`Noche-CargaMasiva.PantallaDragAndDrop`](Noche-CargaMasiva.PantallaDragAndDrop/QueSeCargaArrastrarValidarSinGuardarVistaPreviaYResumen.md)
+- Contrato: [`CONTRATO-CARGA-MASIVA.md`](../CONTRATO-CARGA-MASIVA.md) §2 (consumís), §3 (`data-testid`: los ponés vos)
+- Repo: `alovida/mantra-core-health` · Ref: `origin/mockup` — **el mismo repo que el Carril A, pero en un
+  worktree y rama propios** (`justin/carga-masiva-pantalla-2026-09-25`), no mezclés commits de los dos carriles
+- Peldaño alcanzado (regla 30): `DISCOVERED` al repartir · se actualiza al cerrar
+
+### 0. Tu carril destraba a Marcelo: publicá temprano
+
+| Qué publicás | Para quién | Hito | Cuándo | Publicado (SHA + hora) |
+|---|---|---|---|---|
+| Doble del simulador en tres niveles (`terminology.handlers.ts`) | Marcelo (corre su E2E contra tu rama) | H2 | **hora 1,5** | |
+| Pantalla con los `data-testid` de §3 | Marcelo (H3, H4.S2) | H4 | segunda mitad | |
+
+### 1. Instalación del estándar — pegá la salida acá
+
+```text
+$ ls .claude/skills | wc -l
+<pendiente>
+
+$ ls .claude/rules/[0-9]*.md | wc -l
+<pendiente>
+
+$ python .claude/hooks/plan_gate.py --self-test
+<pendiente>
+```
+
+- [ ] Leí `skills-router` y las 26 skills del lote, empezando por `frontend-forms-ux`.
+- [ ] Creé el `PLAN.md` antes del primer `Edit`/`Write` de código.
+
+### 2. Avance por hito (se llena al cerrar)
+
+| Hito | Micro | HECHO | A MEDIAS | BLOQUEADO | DESCARTADO | Nota |
+|---|---|---|---|---|---|---|
+| H1 Corte, baseline, pantalla de hoy | 10 | | | | | |
+| H2 Doble del simulador | 7 | | | | | |
+| H3 Cliente y tipos | 7 | | | | | |
+| H4 Pantalla en tres pasos | 27 | | | | | |
+| H5 Prueba visual y regresión | 6 | | | | | |
+| H6 API real, PR, cierre | 11 | | | | | |
+
+### 3. Qué se cerró contra el doble (regla 65)
+
+<todo lo verificado con `mockBackend: true`; qué se recorrió contra la API real (H6.S1) o por qué no>
+
+### 4. Defectos que Marcelo te reportó
+
+<lista con estado: corregido + re-captura / pendiente>
+
+### 5. Procesos que quedaron corriendo
+
+<lista o «ninguno»>
+
+---
+
+## Cómo repartís tu noche entre los dos carriles
+
+Los dos son del mismo repo (`mantra-core-health`) pero en **worktrees y ramas separadas** — nunca mezclés un
+commit del Carril A con uno del Carril B. **No hay orden impuesto** (decisión del propietario: ambos se hacen).
+El Carril A tiene una precondición externa (Ola 0 de Pablo/Marcelo, hasta una hora); mientras esperás eso podés
+adelantar H1 del Carril B. Si el tiempo aprieta, decilo en este daily con qué carril priorizaste y por qué.

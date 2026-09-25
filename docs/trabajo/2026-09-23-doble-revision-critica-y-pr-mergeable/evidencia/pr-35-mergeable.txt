@@ -1,0 +1,8 @@
+2026-09-23T20:24:02Z
+$ gh pr checks 35 --watch --fail-fast
+Espejo sin deriva y candados en verde	pending	0	https://github.com/PabloArauzCaballero/AlovidaPromptManager/actions/runs/35915669029/job/107366380932	
+Espejo sin deriva y candados en verde	pass	10s	https://github.com/PabloArauzCaballero/AlovidaPromptManager/actions/runs/35915669029/job/107366380932	
+Espejo sin deriva y candados en verde	pass	10s	https://github.com/PabloArauzCaballero/AlovidaPromptManager/actions/runs/35915669029/job/107366380932	
+exit=0
+$ gh pr view 35 --json ...
+{"headRefOid":"38e1ab779aacebb322b335e7273b308c702cc532","isDraft":false,"mergeStateStatus":"CLEAN","mergeable":"MERGEABLE","number":35,"reviewDecision":""}
