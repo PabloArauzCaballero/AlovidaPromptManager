@@ -193,9 +193,14 @@ a los dos completos, decilo en este daily con cuál priorizaste y por qué.
 
 | Carril | Prompt | Corte propio | Rama | HECHO/total | Peldaño (regla 30) | PR | Push a `mockup` | Bloqueos / avisos |
 |---|---|---|---|---|---|---|---|---|
-| C9 · «Mis órdenes» por tipo con barra y paginación | [prompt](Noche-EncuentroClinico.C9-MisOrdenes/MisOrdenesPorTipoConBarraYPaginacion.md) | `963b7283` | `claude/clinica-c9-mis-ordenes` | 8/10 | **Playwright corrido**: encontró un bug real (ver abajo) | #677 (mergeado) + **#683 fix** | **#677 MERGEADO** · #683 abierto, mergeable | Bug real en producción, ver «Lo que publicás» |
-| C5 · Receta ligada a diagnóstico confirmado o motivo | [prompt](Noche-EncuentroClinico.C5-Receta/RecetaLigadaADiagnosticoConfirmadoOMotivo.md) | `963b7283` | `claude/clinica-c5-receta` | 8/9 | **Playwright corrido**: 5 bugs del spec corregidos, 1 hallazgo sin resolver (ver abajo) | #679 (mergeado) + **#685 fix de specs** | **#679 MERGEADO** · #685 abierto, mergeable | Integración triple pendiente en `patient-chart.ts`/`consultation.ts`/`medical-record.ts` (C3) — ver su `REPORTE.md` |
-| C7 · Homogeneización de nombres y «Notas médicas» | [prompt](Noche-EncuentroClinico.C7-Nombres/HomogeneizacionDeNombresYNotasMedicas.md) | `963b7283`→`9fa933be` | `claude/clinica-c7-nombres` | 7/8 | **Playwright corrido**: «Notas médicas» PASS, 5 viewports, doble revisión APROBADA | #682 | Abierto, `MERGEABLE`/`UNSTABLE` (checks del runner propio en `pending`, caído) | `consulta-rejilla.spec.ts` bloqueado por un locator ajeno en `clinical-record.html` (pre-existente) — no se pudo verificar `observation-block` ni el envoltorio `free-note-block` en navegador. Detalle en su `REPORTE.md` |
+| C9 · «Mis órdenes» por tipo con barra y paginación | [prompt](Noche-EncuentroClinico.C9-MisOrdenes/MisOrdenesPorTipoConBarraYPaginacion.md) | `963b7283` | `claude/clinica-c9-mis-ordenes` | 8/10 | **Playwright corrido**: encontró un bug real (ver abajo) | #677 + **#683 fix** | **#677 MERGEADO · #683 MERGEADO** | Bug real que estuvo en producción, ya corregido — ver «Lo que publicás» |
+| C5 · Receta ligada a diagnóstico confirmado o motivo | [prompt](Noche-EncuentroClinico.C5-Receta/RecetaLigadaADiagnosticoConfirmadoOMotivo.md) | `963b7283` | `claude/clinica-c5-receta` | 8/9 | **Playwright corrido**: 5 bugs del spec corregidos, 1 hallazgo sin resolver (ver abajo) | #679 + **#685 fix de specs** | **#679 MERGEADO · #685 MERGEADO** | Integración triple pendiente en `patient-chart.ts`/`consultation.ts`/`medical-record.ts` (C3) — ver su `REPORTE.md` |
+| C7 · Homogeneización de nombres y «Notas médicas» | [prompt](Noche-EncuentroClinico.C7-Nombres/HomogeneizacionDeNombresYNotasMedicas.md) | `963b7283`→`9fa933be` | `claude/clinica-c7-nombres` | 7/8 | **Playwright corrido**: «Notas médicas» PASS, 5 viewports, doble revisión APROBADA | #682 | **MERGEADO** | `consulta-rejilla.spec.ts` bloqueado por un locator ajeno en `clinical-record.html` (pre-existente) — no se pudo verificar `observation-block` ni el envoltorio `free-note-block` en navegador. Detalle en su `REPORTE.md` |
+
+**Los seis PR de esta noche (Carril C + Farmacia) están mergeados a `mockup`:** #671 (Farmacia),
+#677 (C9), #679 (C5), #682 (C7), #683 (fix C9), #685 (fix C5) — confirmado con `gh pr view <n>
+--json state` → `MERGED` en los seis, y el contenido de cada uno presente en `origin/mockup`
+(`9b8bc46e` al cierre de este daily).
 
 ### El pase consolidado de Playwright — sí se hizo, y encontró cosas reales
 
@@ -245,10 +250,10 @@ la pantalla de recetas de C5) sigue sin capturas por los bloqueos de arriba.
 
 ### Cierre
 
-- PR: C9 #677 (mergeado) + **#683 fix del filtro** (abierto) · C5 #679 (mergeado) + **#685 fix de
-  specs** (abierto) · C7 #682 (abierto, mergeable)
-- Push a `mockup` verificado: C9 y C5 sí (mergeados); C7 con `gh pr view` pegado en su `REPORTE.md`;
-  los dos fixes (#683, #685) con el mismo chequeo, `MERGEABLE`/`UNSTABLE` por el runner caído
+- PR: C9 #677 + **#683 fix del filtro** · C5 #679 + **#685 fix de specs** · C7 #682 — **los seis
+  MERGEADOS a `mockup`**, confirmado con `gh pr view <n> --json state` en cada uno
+- Push a `mockup` verificado: los seis, con el contenido real de cada fix presente en
+  `origin/mockup` (`9b8bc46e` al cierre)
 - `REPORTE.md`: los tres tienen el suyo actualizado, en
   `docs/trabajo/2026-09-25-encuentro-clinico/{c9,c5,c7}/REPORTE.md` de cada worktree, más
   `docs/trabajo/2026-09-25-fix-mis-ordenes-filtro-tabla/` (C9) y la evidencia de Playwright de C5/C7
