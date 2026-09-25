@@ -1,6 +1,6 @@
 # Marcelo — daily de la noche del 2026-09-25
 
-> **AVANCE COMBINADO: 0 / 128 — 0,0 %.** Sale de `microtareas HECHO / total`, sumando los dos carriles de
+> **AVANCE COMBINADO: 82 / 128 — 64,1 %.** Carril A (Farmacia) sin tocar esta sesión: 0/30. Carril B: 82/98. Sale de `microtareas HECHO / total`, sumando los dos carriles de
 > abajo. `A MEDIAS` cuenta como **no hecha**. Prohibido el porcentaje estimado a ojo (regla 50 §5).
 
 - Daily de equipo: [`Daily-Noche-2026-09-25.md`](../Daily-Noche-2026-09-25.md) — **dos paquetes esta noche**, uno por sección de este documento.
@@ -96,7 +96,7 @@ AVANCE — datos y contrato real — <fase> — <ID de microtarea>
 
 ## Carril B — Carga masiva: calidad (E2E, doble revisión, gates) y parseo XLSX
 
-> **AVANCE: 0 / 98 — 0 %.**
+> **AVANCE: 82 / 98 — 83,7 %.**
 
 - Carril: [`Noche-CargaMasiva.CalidadE2EVisualYGates`](Noche-CargaMasiva.CalidadE2EVisualYGates/E2EPlaywrightCapturasDobleRevisionGatesYSegundoPerfil.md)
 - Contrato: [`CONTRATO-CARGA-MASIVA.md`](../CONTRATO-CARGA-MASIVA.md) §3, §4, §7; **Q-9 es tuya**
@@ -147,30 +147,34 @@ plan_gate self-test: 11 PASS, 0 FAIL
 
 | Hito | Micro | HECHO | A MEDIAS | BLOQUEADO | DESCARTADO | Nota |
 |---|---|---|---|---|---|---|
-| H1 Corte, baseline, Q-9, fixtures | 15 | | | | | |
-| H2 Specs: baseline de hoy y contrato | 19 | | | | | |
-| H3 Corrida contra la rama de Justin | 6 | | | | | |
-| H4 Capturas y doble revisión | 10 | | | | | |
-| H5 Gate de seguridad y PHI | 12 | | | | | |
-| H6 API real, regresión, PR, cierre | 14 | | | | | |
-| H7 Dependencia XLSX, fixtures de la API, parseador XLSX | 22 | | | | | |
+| H1 Corte, baseline, Q-9, fixtures | 15 | 14 | 1 | | | `pw:rutas` diferido a H2/H3 (evita un `ng serve` extra) |
+| H2 Specs: baseline de hoy y contrato | 19 | 19 | | | | Justin ya integrado en `mockup`: no hubo «rama de Justin» aparte |
+| H3 Corrida contra la rama de Justin | 6 | 3 | 1 | | 2 | La «rama de Justin» ya no existe como tal (integrada); 2 microtareas de esa premisa quedaron `DESCARTADO` |
+| H4 Capturas y doble revisión | 10 | 8 | 1 | | 1 | Drag & drop real `A MEDIAS` (no automatizable); re-captura `DESCARTADO` porque Justin aún no corrigió |
+| H5 Gate de seguridad y PHI | 12 | 8 | | | 4 | Matriz `curl` `DESCARTADO`: la API de Itzan no arranca (`InsuranceModule` roto, ajeno) |
+| H6 API real, regresión, PR, cierre | 14 | 8 | 3 | | 3 | PR #684 `MERGEABLE`; API real/regresión con backend real bloqueadas por lo mismo que H5 |
+| H7 Dependencia XLSX, fixtures de la API, parseador XLSX | 22 | 22 | | | | Completo — PR #462 `MERGEABLE`, 59/59 pruebas |
 
 ### 3. Peldaño del E2E por corrida
 
 | Corrida | Contra qué | Resultado | Evidencia |
 |---|---|---|---|
-| Baseline (pantalla de hoy) | simulador, respuesta fija | | |
-| Contrato | rama de Justin, doble en tres niveles (`[backend simulado]`) | | |
-| Real | rama de Justin + API de Itzan (`[API real]`) | | |
+| Baseline (pantalla de hoy) | simulador, respuesta fija | **VERIFIED** — 1/1 PASS | `mantra-core-health/docs/trabajo/2026-09-25-marcelo-calidad/evidencia/h2/baseline.txt` |
+| Contrato | pantalla ya integrada (Justin mergeado en `mockup`), `[backend simulado]` | **VERIFIED (10/11)** — el 11º es un hallazgo real de `axe-core`, reportado no arreglado | `.../evidencia/h3/simulado.txt` |
+| Real | API de Itzan (`d99ff9e7`) | **BLOCKED** — la API no arranca (`UnknownDependenciesException` en `InsuranceModule`, ajeno a terminología) | `.../evidencia/h5/api-no-arranca.txt` |
 
 ### 4. Defectos reportados (nunca arreglados por vos)
 
 | A quién | Qué | Severidad | Captura / pasos | Estado |
 |---|---|---|---|---|
+| Justin | Contraste 4,27:1 en `.carga__nota` (`version-import.css:134-138`, token `--text-muted`); WCAG 2 AA exige 4,5:1. Afecta 4 párrafos. Hallado con `axe-core` en el test 11 del contrato. | MAYOR | `mantra-core-health/docs/trabajo/2026-09-25-marcelo-calidad/defectos.md` + `evidencia/h3/simulado.txt` | Reportado en su daily §4, sin corregir |
+| Itzan | La rama `carga-masiva-motor-2026-09-25` (`d99ff9e7`) no arranca: `UnknownDependenciesException` en `PractitionerSettlementBatchesService`/`InsuranceModule`. Él mismo ya lo dejó dicho en su daily (`b2e092f6`). | BLOQUEANTE (para H5.S2 y H6 de este carril) | `mantra-core-health-api/docs/trabajo/2026-09-25-marcelo-calidad/REPORTE.md` sección A medias | Ya en curso de corrección por Itzan, según su propio daily |
 
 ### 5. Procesos que quedaron corriendo
 
-<lista o «ninguno»>
+Ninguno. `ng serve` (puerto 4200) y el intento de `yarn start:dev` de la API (puerto 3000, nunca
+llegó a escuchar) se detuvieron antes de cerrar — verificado con `Get-NetTCPConnection -LocalPort
+4200,3000` (libres) y sin procesos `node` huérfanos de esta sesión.
 
 ---
 
