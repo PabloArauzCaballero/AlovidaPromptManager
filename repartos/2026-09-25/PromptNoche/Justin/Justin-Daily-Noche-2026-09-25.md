@@ -144,7 +144,16 @@ $ python .claude/hooks/plan_gate.py --self-test
 
 ### 4. Defectos que Marcelo te reportó
 
-<lista con estado: corregido + re-captura / pendiente>
+1. **MAYOR — Contraste insuficiente en `.carga__nota`**
+   (`src/app/features/admin/terminology/version-import/version-import.css:134-138`):
+   `color: var(--text-muted)` sobre fondo blanco da **4,27:1**; WCAG 2 AA exige 4,5:1 para texto
+   normal de 12px. Afecta 4 párrafos: la nota de la plantilla, `importar-tope`, la nota de
+   habilitación de «Importar» y `carga-sin-resultado`. Hallado con `axe-core`
+   (`color-contrast`, `serious`) corriendo el spec del contrato contra tu pantalla ya integrada
+   en `mockup`. Probablemente afecta a otras pantallas que usan el mismo token para texto chico
+   — no es exclusivo de esta. Evidencia completa:
+   `mantra-core-health/docs/trabajo/2026-09-25-marcelo-calidad/defectos.md`.
+   **Estado: pendiente.**
 
 ### 5. Procesos que quedaron corriendo
 
