@@ -1,26 +1,31 @@
 # Ender — daily de la noche del 2026-09-22
 
-> **AVANCE: 44 / 48 — 91,7 %.** HECHO 44 · A MEDIAS 3 (H4.S2.M2–M4, esperan a Itzan) · DESCARTADO 1
-> (H2.S2.M2: no se comparten GET idénticos en vuelo, así que no hay spec que escribir). H1 9/9 · H2 6/7 (+1 descartada) ·
-> H3 9/9 · H4 8/11 · H5 3/3 · H6 9/9. `A MEDIAS` y `DESCARTADO` cuentan como **no hechas**. Carril **A MEDIAS**.
-> Corregido el 2026-09-23 (este daily había quedado con marcadores de conflicto sin resolver desde #34) y
-> actualizado al cierre del carril el mismo día.
+> **AVANCE: 47 / 48 — 97,9 %.** HECHO 47 · A MEDIAS 0 · DESCARTADO 1 (H2.S2.M2: no se comparten GET
+> idénticos en vuelo, así que no hay spec que escribir; **cuenta como no hecha**). H1 9/9 · H2 6/7 (+1 descartada) ·
+> H3 9/9 · H4 11/11 · H5 3/3 · H6 9/9. Carril **cerrado** con ese único DESCARTADO declarado.
+> Corregido el 2026-09-23 (este daily había quedado con marcadores de conflicto sin resolver desde #34),
+> actualizado al cierre del carril el mismo día y, el **2026-09-24**, con el cierre de H4.S2: Itzan publicó el
+> contrato (`/my-account?pestana=puntos`, #606 en `mockup`) y la integración final quedó validada (PR **#655**
+> de producto, abierto, sin merge). Antes de este cierre: 44/48 · 3 A MEDIAS (H4.S2.M2–M4).
 
 > **Dos ejecuciones del mismo reparto.** Este encargo lo corrieron dos carriles a la vez:
 > `ender/simulador-cabecera-2026-09-22`, que entró a `mockup` por **#584, #592 y #598** y había declarado
 > 41/48, y `ender/simulador-latencia-agendas-cabecera-2026-09-22`, que se **reconcilió** sobre ese `mockup`
 > (`a43ad2b3`) y es la que fija el estado de arriba. La diferencia principal está en H3 (ver §3-bis): el
 > contrato vigente es **D-H3-PROV-01 = C · equivalentes sintéticos**, y la versión de #584 (agenda para las
-> personas reales de la planilla) quedó superada. **La rama reconciliada está en el PR #604 de producto**
-> (a `mockup`, abierto, **sin merge**).
+> personas reales de la planilla) quedó superada. **La rama reconciliada entró a `mockup` con el PR #604 de
+> producto** (MERGED el 2026-09-24, `923397c4`).
 
 - Carril: [`Noche-SimuladorYCabecera.MockNavegacion`](Noche-SimuladorYCabecera.MockNavegacion/LatenciaAgendasParaTodosYChatsYTutorialesEnLaCabecera.md)
 - Corte vigente: `origin/mockup` @ `a43ad2b311e1a69ff708fba5cef1e5a2100bbbc2` (reconciliación). Cortes de las
   mediciones: `8ae7283a` (carril reconciliado) y `05d83cb8` (carril paralelo).
-- Rama vigente: `ender/simulador-latencia-agendas-cabecera-2026-09-22` @ `af91a547` (3 commits sobre `a43ad2b3`),
-  **PR #604** a `mockup`, abierto y sin merge · Peldaño (regla 30) por área: H2 (tabla), H5 y Cotizaciones ya
-  **mergeados** en `mockup`; H3 (contrato C), H4.S1 (contador pasivo, accesibilidad, 375 px) y la higiene de
-  evidencia en **PR** #604, `TESTED` + `VERIFIED`; H4.S2 final **A MEDIAS** (espera a Itzan).
+- Rama del carril: `ender/simulador-latencia-agendas-cabecera-2026-09-22` @ `af91a547` (3 commits sobre `a43ad2b3`),
+  **PR #604** a `mockup`, **MERGED** (2026-09-24) · Peldaño (regla 30) por área: H2 (tabla), H5, Cotizaciones,
+  H3 (contrato C), H4.S1 (contador pasivo, accesibilidad, 375 px) y la higiene de evidencia **mergeados** en
+  `mockup`.
+- Seguimiento de H4.S2 (2026-09-24): `ender/h4s2-mis-puntos-final-2026-09-24` @ `9dfd815c`, desde `origin/mockup`
+  `e7437a5e`, **PR #655** a `mockup`, abierto y **sin merge** · `TESTED` + `VERIFIED` (recorrido integrado 53/53).
+  No se reutilizó la rama de #604.
 - Plan y reporte del carril paralelo: `docs/trabajo/2026-09-22-ender-simulador-cabecera/` (en `mockup`).
 - Daily de equipo: [`Daily-Noche-2026-09-22.md`](../Daily-Noche-2026-09-22.md)
 
@@ -91,7 +96,7 @@ plan_gate self-test: 11 PASS, 0 FAIL
 - La agenda de R-03 la tienen **13 profesionales de demostración** (`origen: 'DEMO'`, «Profesional demo NN»): 13/13
   con recurso, plantilla de lunes a viernes y cupos ±21 días, en Clínica Los Olivos u Hospital San Lucas (las
   instituciones inventadas de la maqueta), sin credenciales ni matrícula.
-- La versión de #584 (agenda para los registrados reales) quedó superada en la rama reconciliada (PR #604 de producto, sin merge).
+- La versión de #584 (agenda para los registrados reales) quedó superada en la rama reconciliada (PR #604 de producto, MERGED el 2026-09-24).
 
 ## 4. La tabla de latencia que publicás (H2.S1)
 
@@ -129,7 +134,7 @@ AVANCE — simulador y cabecera — <fase> — <ID de microtarea>
 | Qué | Quién | Estado | Si no llegó el pedido: contrato simulado (regla 65) |
 |---|---|---|---|
 | Renglón «Cotizaciones» (PATIENT, Mi cuenta) + ruta lazy | Justin | **Ya en `mockup`, lo escribió Justin** (`b3af9887`, #577), verificado contra código y no recreado. **H4.S2.M1 HECHO** (acreditado por trabajo integrado) | no aplica |
-| Retirar «Mis puntos» del menú + redirect `/my-account/loyalty` → pestaña | Itzan | **Simulación previa en `mockup`**: renglón retirado y `/my-account/loyalty` → `/my-account`. El contrato final del handoff de Itzan es `/my-account?pestana=puntos` y su código **todavía no está en `mockup`** (revalidado al cierre: `itzan/perfil-medico-nucleo` no lo trae). **H4.S2.M2–M4 A MEDIAS**: esperando a Itzan | redirect a `/my-account`, declarado (regla 65) |
+| Retirar «Mis puntos» del menú + redirect `/my-account/loyalty` → pestaña | Itzan | **Llegó.** Itzan publicó el contrato: «Mis puntos» es pestaña de «Mi perfil» (#606, en `mockup` desde el 24/09) y la ficha la abre con `?pestana=puntos` (`indiceDePestana`). Integración final en **PR #655**: `/my-account/loyalty` → **`/my-account?pestana=puntos`**, conservando el query previo (`?foo=bar` → `?pestana=puntos&foo=bar`, con `RedirectFunction`/`UrlTree`, porque un `redirectTo` de texto lo pierde en Angular 21.2.18). El renglón sigue fuera del menú. Validado en navegador: paciente (pestaña seleccionada, billetera a la vista, una sola cabecera) y médica (su perfil, sin pestaña de paciente). **H4.S2.M2–M4 HECHO** | **reemplazado**: el fallback a `/my-account` (regla 65) ya no es la historia final |
 | Filtro por profesional en `GET /scheduling/slots` | Justin | No llegó | fuera del alcance (la ficha y sus peticiones son de Justin) |
 | Medición del flujo de reserva | Justin (te la da) | No llegó con dato → **medición propia** (§3) | la medís vos y lo declarás |
 
@@ -139,8 +144,9 @@ AVANCE — simulador y cabecera — <fase> — <ID de microtarea>
 |---|---|---|
 | Números del «antes» (latencia, agendas, «elegir médico») | Justin | §3 de este daily · PR #32 de PromptManager · 2026-09-23 |
 | Tabla de latencia por prefijo | Justin | §4 de este daily. Publicada en #32 con 80/100 (**incorrecto**) y **corregida** en este PR a 40/40/90/600/120 · 2026-09-23 |
-| Escenarios de flujo completo en `core/mock/README.md` | los cinco | PR #604 de producto (sin merge): escenario A con la médica de prueba y B con «Profesional demo 01»; la reserva del portal queda **solicitada** (`BK-REQUESTED`) |
+| Escenarios de flujo completo en `core/mock/README.md` | los cinco | PR #604 de producto (MERGED): escenario A con la médica de prueba y B con «Profesional demo 01»; la reserva del portal queda **solicitada** (`BK-REQUESTED`) |
 | Estado de Cotizaciones y Mis puntos (N-02/N-03) · corrección de HALL-M5 | Justin, Itzan, Pablo | `Daily-Noche-2026-09-22.md` §4-bis (carril paralelo) |
+| Contrato final de «Mis puntos»: `/my-account/loyalty` → `/my-account?pestana=puntos`, conservando el query | Itzan, el equipo | PR **#655** de producto (a `mockup`, abierto, sin merge) · este daily §6 y §8 · 2026-09-24 |
 
 ## 8. Al cerrar
 
@@ -155,7 +161,29 @@ AVANCE — simulador y cabecera — <fase> — <ID de microtarea>
 > - H2.S2: `DO_NOT_SHARE_IN_FLIGHT_GETS` (M1 HECHO, M2 DESCARTADO). H5: acreditado por auditoría (ya en `mockup`).
 > - Datos personales: el tip de la rama está saneado (0 coincidencias en lo que agrega). La **historia de Git no se purgó**:
 >   eso requiere una decisión aparte del dueño o administrador del repositorio.
-> - Producto: **PR #604** a `mockup` (`af91a547`), abierto, sin merge.
+> - Producto: **PR #604** a `mockup` (`af91a547`), MERGED el 2026-09-24 (`923397c4`).
+
+> **Cierre de H4.S2 (2026-09-24)** — completa el carril.
+>
+> - Handoff de Itzan `PEDIDO-A-ENDER-mis-puntos.md` (sha256 `8339abc0…0675`), comparado contra el código: coincide en lo que pide (destino, comentarios y roles). Su tabla de claves dice «Seguros y tutores» y quedó vieja por #654.
+>   #606 entró a `mockup` **por squash** (`de4f6d41`), así que la punta de `itzan/perfil-medico-configurar-tu-perfil`
+>   (`7bb08ca9`) no es ancestro de `mockup`, pero su contenido sí está. Después, #654 (Justin) separó «Seguros» y
+>   «Tutores»: `PESTANA.puntos` pasó de 4 a 5 y la clave `puntos` sigue valiendo.
+> - Producto: `ender/h4s2-mis-puntos-final-2026-09-24` @ `9dfd815c`, desde `origin/mockup` `e7437a5e`, **PR #655**
+>   a `mockup`, abierto y **sin merge**. Toca `app.routes.ts`, `navigation.map.ts`, `app.routes.spec.ts` y
+>   `shell-layout.spec.ts`; `features/account/my-profile/**` no se toca.
+> - Contrato final: `/my-account/loyalty` → `/my-account?pestana=puntos`, conservando el query previo (`RedirectFunction` →
+>   `UrlTree`; si se repite una clave, gana el destino). El fallback de la regla 65 (`/my-account`) quedó **reemplazado**.
+> - H4.S2.M3: seis aserciones específicas en `app.routes.spec.ts` (destino exacto, `foo=bar`, valores repetidos y
+>   codificados, `pestana` entrante, clave ↔ `PESTANA.puntos`, Cotizaciones) y el test genérico de destinos que
+>   ahora también cubre las secciones redirigidas.
+> - Regresión: `yarn typecheck` exit 0 · eslint de los 4 archivos exit 0 · suite pertinente 769/770. El único rojo es
+>   `shell-layout.spec.ts:259` (íconos), que es **preexistente**: también falla en `origin/mockup` puro.
+>   Recorrido en navegador 53/53: paciente en 1440 claro/oscuro y 390, médica, menú y Cotizaciones.
+> - CI de #655: **en cola**. El runner del repo no toma trabajos: 49 corridas en cola, 0 en curso y la más vieja del
+>   2026-09-24 03:56Z (medido el 2026-09-25 ~03:30Z). No se lo da por verde.
+> - Datos personales: el delta de #655 da 0. Las rutas del carril en el `mockup` actual dan 0. La historia de Git **no** se
+>   purgó (`GIT_HISTORY_PII_REMEDIATED = NO`). El fixture con personas reales sigue siendo un hallazgo aparte.
 
 > **Cierre del carril paralelo** (`ender/simulador-cabecera-2026-09-22`, #584/#592/#598), tal como lo dejó. La
 > casilla de «los 12 registrados con agenda» quedó **superada** por D-H3-PROV-01 (ver §3-bis).
