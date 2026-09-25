@@ -180,7 +180,8 @@ AVANCE — simulador y cabecera — <fase> — <ID de microtarea>
 > - Regresión: `yarn typecheck` exit 0 · eslint de los 4 archivos exit 0 · suite pertinente 769/770. El único rojo es
 >   `shell-layout.spec.ts:259` (íconos), que es **preexistente**: también falla en `origin/mockup` puro.
 >   Recorrido en navegador 53/53: paciente en 1440 claro/oscuro y 390, médica, menú y Cotizaciones.
-> - CI de #655: **en cola**, igual que el resto de las ramas del repo desde las 00:32Z. No se lo da por verde.
+> - CI de #655: **en cola**. El runner del repo no toma trabajos: 49 corridas en cola, 0 en curso y la más vieja del
+>   2026-09-24 03:56Z (medido el 2026-09-25 ~03:30Z). No se lo da por verde.
 > - Datos personales: el delta de #655 da 0. Las rutas del carril en el `mockup` actual dan 0. La historia de Git **no** se
 >   purgó (`GIT_HISTORY_PII_REMEDIATED = NO`). El fixture con personas reales sigue siendo un hallazgo aparte.
 

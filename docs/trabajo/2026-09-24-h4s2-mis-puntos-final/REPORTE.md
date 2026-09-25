@@ -36,7 +36,7 @@ Ninguna.
 | Qué | Estado | Qué lo destraba |
 |---|---|---|
 | Merge de #655 | abierto, `MERGEABLE` | revisión y merge externos (no autorizado en este carril) |
-| CI de #655 | **en cola**: el runner no toma trabajos, y hay ramas de otras personas en cola desde las 00:32Z | que vuelva el runner |
+| CI de #655 | **en cola**: el runner no toma trabajos (49 corridas en cola, 0 en curso, la más vieja del 2026-09-24 03:56Z) | que vuelva el runner |
 | `shell-layout.spec.ts:259` (íconos del registro vs. nav) | rojo **preexistente**: también falla en `origin/mockup` `e7437a5e` puro | ajeno a este carril |
 | `playwright/mis-puntos-quinta-pestana.mjs` (Itzan) | espera 5 pestañas, y después de #654 son 6 | Itzan |
 | Tira de pestañas a 390 | no se desplaza hasta la pestaña que llega preseleccionada (`tabs.ts:88-95`) | dueño de la molécula `tabs` |
