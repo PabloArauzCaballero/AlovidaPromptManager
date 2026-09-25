@@ -1,0 +1,17 @@
+$ head -12 ActionLog.md
+# ActionLog
+
+Registro cronológico de qué se avanzó en este repositorio, entrada por sesión/turno. No
+reemplaza los dailies (`repartos/<fecha>/<turno>/`) ni los `REPORTE.md` de cada persona — es el
+resumen de alto nivel para quien no quiere abrir carpeta por carpeta. Entradas nuevas van
+**arriba**, más recientes primero.
+
+---
+
+## 2026-09-24 — Justin · "Brechas front↔back para cerrar el frontend"
+
+**Rama:** `justin/planes-brechas-front-back-2026-09-24` (este repo).
+
+$ python tools/check_skills_citadas.py
+check_skills_citadas: OK, 114 skill(s) distinta(s) citada(s), 0 inexistentes (de 179 en disco)
+exit=0

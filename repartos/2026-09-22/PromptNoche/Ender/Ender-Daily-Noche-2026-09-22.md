@@ -1,26 +1,32 @@
 # Ender — daily de la noche del 2026-09-22
 
-<<<<<<< HEAD
-> **AVANCE: 41 / 48 — 85,4 %.** Sale de `microtareas HECHO / total`. `A MEDIAS` cuenta como no hecha:
-> el detalle completo (qué anda / qué no anda / qué falta) está en `REPORTE.md` del trabajo.
+> **AVANCE: 47 / 48 — 97,9 %.** HECHO 47 · A MEDIAS 0 · DESCARTADO 1 (H2.S2.M2: no se comparten GET
+> idénticos en vuelo, así que no hay spec que escribir; **cuenta como no hecha**). H1 9/9 · H2 6/7 (+1 descartada) ·
+> H3 9/9 · H4 11/11 · H5 3/3 · H6 9/9. Carril **cerrado** con ese único DESCARTADO declarado.
+> Corregido el 2026-09-23 (este daily había quedado con marcadores de conflicto sin resolver desde #34),
+> actualizado al cierre del carril el mismo día y, el **2026-09-24**, con el cierre de H4.S2: Itzan publicó el
+> contrato (`/my-account?pestana=puntos`, #606 en `mockup`) y la integración final quedó validada (PR **#655**
+> de producto, abierto, sin merge). Antes de este cierre: 44/48 · 3 A MEDIAS (H4.S2.M2–M4).
+
+> **Dos ejecuciones del mismo reparto.** Este encargo lo corrieron dos carriles a la vez:
+> `ender/simulador-cabecera-2026-09-22`, que entró a `mockup` por **#584, #592 y #598** y había declarado
+> 41/48, y `ender/simulador-latencia-agendas-cabecera-2026-09-22`, que se **reconcilió** sobre ese `mockup`
+> (`a43ad2b3`) y es la que fija el estado de arriba. La diferencia principal está en H3 (ver §3-bis): el
+> contrato vigente es **D-H3-PROV-01 = C · equivalentes sintéticos**, y la versión de #584 (agenda para las
+> personas reales de la planilla) quedó superada. **La rama reconciliada entró a `mockup` con el PR #604 de
+> producto** (MERGED el 2026-09-24, `923397c4`).
 
 - Carril: [`Noche-SimuladorYCabecera.MockNavegacion`](Noche-SimuladorYCabecera.MockNavegacion/LatenciaAgendasParaTodosYChatsYTutorialesEnLaCabecera.md)
-- Corte: `origin/mockup` @ `b655e844…` → **el tuyo:** `05d83cb8a29463033066ccfbdfc5b4b3f113535d` (reconsultado:
-  el declarado en la ficha había quedado viejo, `origin/mockup` ya traía el trabajo de Justin sobre
-  cotizaciones del paciente y de Itzan sobre registros)
-- Rama: `ender/simulador-cabecera-2026-09-22` · Peldaño alcanzado (regla 30): `TESTED` en todo lo que
-  toca código de producto (typecheck + lint + specs dirigidos + regresión del árbol completo en verde);
-  `DISCOVERED` en las mediciones que exigían navegador y no se pudieron cerrar (ver REPORTE.md)
-- Plan y reporte completos: `docs/trabajo/2026-09-22-ender-simulador-cabecera/` (en este mismo repo de
-  producto — el carril es la estructura del plan, este `PLAN.md` la referencia sin duplicarla)
-=======
-> **AVANCE: 14 / 48 — 29,2 %.** H1 9/9 · H2.S1 5/5 · el resto `TODO` (H3 y H4 sin autorizar todavía). Publicado 2026-09-23.
-> `A MEDIAS` cuenta como **no hecha**. Prohibido el porcentaje estimado a ojo (regla 50 §5).
-
-- Carril: [`Noche-SimuladorYCabecera.MockNavegacion`](Noche-SimuladorYCabecera.MockNavegacion/LatenciaAgendasParaTodosYChatsYTutorialesEnLaCabecera.md)
-- Corte: `origin/mockup` @ `b655e844…` → **el tuyo:** `8ae7283a2944074d5aecd4f1c634def57ca23083` (tras `git fetch`, 2026-09-23; `mockup` siguió a `05d83cb8` con #580 de Justin, que no toca este carril: no se integró)
-- Rama: `ender/simulador-latencia-agendas-cabecera-2026-09-22` (worktree local, **sin commit ni PR**: Git de producto no autorizado) · Peldaño alcanzado (regla 30): `TESTED` en H2.S1 (spec verde, suite sin rojos nuevos) · `RUNS` en H1
->>>>>>> origin/main
+- Corte vigente: `origin/mockup` @ `a43ad2b311e1a69ff708fba5cef1e5a2100bbbc2` (reconciliación). Cortes de las
+  mediciones: `8ae7283a` (carril reconciliado) y `05d83cb8` (carril paralelo).
+- Rama del carril: `ender/simulador-latencia-agendas-cabecera-2026-09-22` @ `af91a547` (3 commits sobre `a43ad2b3`),
+  **PR #604** a `mockup`, **MERGED** (2026-09-24) · Peldaño (regla 30) por área: H2 (tabla), H5, Cotizaciones,
+  H3 (contrato C), H4.S1 (contador pasivo, accesibilidad, 375 px) y la higiene de evidencia **mergeados** en
+  `mockup`.
+- Seguimiento de H4.S2 (2026-09-24): `ender/h4s2-mis-puntos-final-2026-09-24` @ `9dfd815c`, desde `origin/mockup`
+  `e7437a5e`, **PR #655** a `mockup`, abierto y **sin merge** · `TESTED` + `VERIFIED` (recorrido integrado 53/53).
+  No se reutilizó la rama de #604.
+- Plan y reporte del carril paralelo: `docs/trabajo/2026-09-22-ender-simulador-cabecera/` (en `mockup`).
 - Daily de equipo: [`Daily-Noche-2026-09-22.md`](../Daily-Noche-2026-09-22.md)
 
 ## 0. Dos cosas que sólo vos podés romper, y dos números que sólo vos podés dar
@@ -37,12 +43,9 @@
 
 ```text
 $ ls .claude/skills | wc -l
-<<<<<<< HEAD
-180   ← 176 del estándar + 4 propias del repo (fable-refactor-orchestrator, frontend-production-gate,
-        project-design-system, visual-quality-gate), fusionadas sin pisarlas
-=======
-180        # 176 del estándar + 4 propias del producto (versionadas; no se pisaron)
->>>>>>> origin/main
+180   ← 176 del estándar + 4 propias del repo de producto (fable-refactor-orchestrator,
+        frontend-production-gate, project-design-system, visual-quality-gate), fusionadas sin pisarlas
+        (igual en los dos carriles)
 
 $ ls .claude/rules/[0-9]*.md | wc -l
 14
@@ -51,89 +54,68 @@ $ python .claude/hooks/plan_gate.py --self-test
 plan_gate self-test: 11 PASS, 0 FAIL
 ```
 
-<<<<<<< HEAD
-- [x] Leí `skills-router` y las skills de mi lote (síntesis, no las 27 una por una: priorizadas
+- [x] Leí `skills-router` y las skills de mi lote (síntesis priorizada, no las 27 una por una:
       `synthetic-test-data-generation`, `frontend-performance`, `root-cause-debugging`,
       `frontend-navigation-ia`, `frontend-accessibility`, `e2e-playwright`).
-- [x] Creé mi `PLAN.md` antes del primer `Edit`/`Write` de código (`docs/trabajo/2026-09-22-ender-simulador-cabecera/PLAN.md`).
-=======
-- [ ] Leí `skills-router` y las 27 skills de mi lote, empezando por `synthetic-test-data-generation`.
-- [x] Creé mi `PLAN.md` antes del primer `Edit`/`Write` de código (`docs/trabajo/2026-09-22-simulador-latencia-agendas-cabecera/PLAN.md`, local y excluido del Git de producto).
+- [x] Creé el `PLAN.md` antes del primer `Edit`/`Write` de código. Carril paralelo:
+      `docs/trabajo/2026-09-22-ender-simulador-cabecera/PLAN.md` (versionado en `mockup`). Carril
+      reconciliado: `docs/trabajo/2026-09-22-simulador-latencia-agendas-cabecera/PLAN.md` (local, excluido
+      del Git de producto).
 
-> Instalación: `settings.json` del producto está versionado y no se tocó; los hooks del estándar van en `.claude/settings.local.json`. `AGENTS.md` y `.agents/` no se copiaron porque quedarían sin ignorar.
->>>>>>> origin/main
+> Instalación: el `settings.json` del producto está versionado y no se tocó; los hooks del estándar van en
+> `.claude/settings.local.json`. `AGENTS.md` y `.agents/` no se copiaron porque quedarían sin ignorar.
 
 ## 2. Baseline
 
 | Comando | Exit code | Rojos previos | Archivo de evidencia |
 |---|---|---|---|
-<<<<<<< HEAD
-| `yarn lint` | 0 | ninguno | `evidencia/antes/lint.txt` |
-| `yarn typecheck` | 0 | ninguno | `evidencia/antes/typecheck.txt` |
-| `yarn test --watch=false` | 1 | 2 (`shell-layout.spec.ts`, ya en `origin/mockup` por el merge de Justin de cotizaciones — corregidos, ver §7) + errores de worker `EPIPE` (entorno, no producto) | `evidencia/antes/test.txt` |
-| `yarn stock:generate` ×2 + `diff` | 0 / 0 | diff vacío: **sí** | `evidencia/antes/stock-{1,2}.txt`, `stock-diff.txt` |
-=======
-| `yarn lint` | 1 | 243 × `prefer-on-push-component-change-detection` en 194 archivos (deuda previa; en el carril sólo 3 specs) | `evidencia/antes/lint.txt` |
+| `yarn lint` | 1 | 243 × `prefer-on-push-component-change-detection` en 194 archivos (deuda previa; en el carril sólo 3 specs). El carril paralelo registró exit 0 sobre su corte | `evidencia/antes/lint.txt` |
 | `yarn typecheck` | 2 → 0 | 1.ª corrida: falta `env.generated.ts` en un checkout nuevo (`ENVIRONMENT`); 2.ª corrida verde | `evidencia/antes/typecheck.txt`, `typecheck-2.txt` |
-| `yarn test --watch=false` | 1 | 3 de 7173: `shell-layout.spec.ts:147` (`TEST_BUG`: la lista cerrada no tiene `/my-account/cotizaciones`, de `b3af9887`) · `shell-layout.spec.ts:449` (`PRODUCT_BUG` candidato: `navigation.subgroups.ts:326` parte el bloque clínico) · `fichas-estandar.spec.ts` (`ENVIRONMENT`: ruta de la API) | `evidencia/antes/test.txt` |
-| `yarn stock:generate` ×2 + `diff` | 0 · 0 | diff vacío: **sí** (sha256 `f7380c47…` las dos veces) | `evidencia/antes/stock-generate.txt` |
->>>>>>> origin/main
+| `yarn test --watch=false` | 1 | 3 de 7173 al corte `8ae7283a`: `shell-layout.spec.ts:147` y `:449` (lista cerrada y agrupación tras `b3af9887`, de Cotizaciones; en `mockup` ya resueltos por #581) · `fichas-estandar.spec.ts` (`ENVIRONMENT`: ruta de la API) | `evidencia/antes/test.txt` |
+| `yarn stock:generate` ×2 + `diff` | 0 · 0 | diff vacío: **sí** (sha256 `f7380c47…` las dos veces; el carril paralelo, también) | `evidencia/antes/stock-generate.txt` |
 
 ## 3. Los dos números (H1.S2)
 
 | Medida | Valor | Archivo |
 |---|---|---|
-<<<<<<< HEAD
-| Latencia por prefijo (leída del interceptor) | `/terminology` 40ms fijos · resto 120-299ms al azar | `evidencia/antes/latencia.md` |
-| Latencia observada en 10 `GET /scheduling/slots` (mín–máx) | 135,5–319,9 ms (9 de 10; la 1.ª incluye el costo único de carga del router) | idem |
-| Profesionales en el directorio / con recurso / con cupos ±14 días | 791 / 14 / 14 | `evidencia/antes/agendas.txt` |
-| Peticiones y total de «elegir médico» (de Justin, o propia) | **6 peticiones** medidas en vivo (médica, 2 sedes; contador temporal ya retirado). La Red del navegador no puede verlas: el interceptor nunca emite un request real | `evidencia/h2/elegir-medico-en-vivo.md` |
-=======
-| Latencia por prefijo (leída del interceptor) | `/terminology*` 40 fijo · subida de documentos 600 fijo · resto `120 + floor(Math.random()·180)` = 120–299 (`mock-backend.interceptor.ts:250-259`) | `evidencia/antes/latencia.md` |
-| Latencia observada en 10 `GET /scheduling/slots` (mín–máx) | **139–323 ms**, media 228, desvío 68 · `/scheduling/resources` 172–299 · `/profiles` 142–263 · `/public/search` 140–296 · `/terminology` 46–47 → **NO determinista** | idem |
-| Profesionales en el directorio / con recurso / con cupos ±14 días | **791 / 14 / 14** (15 escritos, 763 de la red de aseguradoras, 13 registrados) · **los 13 registrados: 13 / 0 / 0** | `evidencia/antes/agendas.txt` |
-| Peticiones y total de «elegir médico» (de Justin, o propia) | **Propia** (la de Justin no llegó con dato): **4–5 peticiones**, 2 saltos en serie por rama, **311–557 ms** | `evidencia/antes/red-flujo-reserva.md` |
+| Latencia por prefijo (leída del interceptor, **antes**) | `/terminology*` 40 fijo · subida de documentos 600 fijo · resto `120 + floor(Math.random()·180)` = 120–299 (`mock-backend.interceptor.ts:250-259`) | `evidencia/antes/latencia.md` |
+| Latencia observada en 10 `GET /scheduling/slots` (**antes**, mín–máx) | **139–323 ms**, media 228, desvío 68 · `/scheduling/resources` 172–299 · `/profiles` 142–263 · `/public/search` 140–296 · `/terminology` 46–47 → **NO determinista**. El carril paralelo midió 135,5–319,9 ms (9 de 10) | idem |
+| Profesionales en el directorio / con recurso / con cupos ±14 días (**antes**) | **791 / 14 / 14** (15 escritos, 763 de la red de aseguradoras, 13 de la planilla del propietario) · **los 13 de la planilla: 13 / 0 / 0** | `evidencia/antes/agendas.txt` |
+| Peticiones y total de «elegir médico» (**antes**) | **4–5 peticiones** en 2 ramas paralelas de 2 saltos en serie, **311–557 ms** (arnés, carril reconciliado). El carril paralelo contó **6** en vivo con la médica de 2 sedes (`evidencia/h2/elegir-medico-en-vivo.md`, en `mockup`). La de Justin no llegó con dato | `evidencia/antes/red-flujo-reserva.md` |
 
 > **Cómo se midió, y por qué no con la Red.** En modo mock el interceptor responde **antes** de `next()`
 > (`mock-backend.interceptor.ts:48-57`): las llamadas no salen a la red, así que DevTools Network y
 > `page.waitForResponse` no las ven. Por eso la medición de Justin quedó sin dato. Se midió dentro de la app con un
-> arnés reproducible (`HttpClient` + interceptor real + clientes reales, reloj real; spec `h1-medicion.local.spec.ts`,
-> comando y datos crudos en `evidencia/antes/`). No es observación de navegador: no incluye render ni navegación.
-> Las rutas `evidencia/…` son locales, bajo `docs/trabajo/2026-09-22-simulador-latencia-agendas-cabecera/` del
-> worktree de Ender; los números que importan están copiados acá.
->>>>>>> origin/main
+> arnés reproducible (`HttpClient` + interceptor real + clientes reales, reloj real). No es observación de
+> navegador: no incluye render ni navegación.
+
+## 3-bis. H3 — estado vigente (D-H3-PROV-01 = C · equivalentes sintéticos)
+
+- Las 13 personas de la planilla del propietario son **reales** y la planilla no dice dónde atienden: **no reciben
+  agenda** (recursos nuevos: **0**).
+- La agenda de R-03 la tienen **13 profesionales de demostración** (`origen: 'DEMO'`, «Profesional demo NN»): 13/13
+  con recurso, plantilla de lunes a viernes y cupos ±21 días, en Clínica Los Olivos u Hospital San Lucas (las
+  instituciones inventadas de la maqueta), sin credenciales ni matrícula.
+- La versión de #584 (agenda para los registrados reales) quedó superada en la rama reconciliada (PR #604 de producto, MERGED el 2026-09-24).
 
 ## 4. La tabla de latencia que publicás (H2.S1)
 
 | Prefijo | ms | Motivo |
 |---|---|---|
-<<<<<<< HEAD
-| `/terminology` | 40 | mínimo elegido (Q-E1) — ya se venía usando y es visible como estado de carga |
+| `/terminology` | 40 | mínimo elegido (Q-E1): ya se venía usando y el estado de carga se llega a ver |
 | `/scheduling/slots` | 40 | ruta caliente de «elegir médico»: hasta 2 llamadas por sede, no multiplicar la espera |
 | `/profiles` | 90 | trae más forma (perfiles, catálogos) |
-| subida de documentos | 600 | sin cambios — la barra de «subiendo» necesita verse |
+| subida de documentos | 600 | la barra de «subiendo» necesita verse avanzar (el simulador no emite progreso) |
 | resto | 120 | ni tan rápido que no se note, ni tan lento como llegaba el azar viejo (hasta 299) |
-=======
-| `/terminology` | 40 | rótulos de catálogo: casi toda pantalla los pide después de su dato principal; es el **mínimo** de la tabla (2,5 cuadros a 60 Hz: el estado de carga llega a pintarse) |
-| `/scheduling/slots` | 80 | segundo salto de la disponibilidad (recursos → cupos): se paga en serie |
-| `/profiles` | 100 | primer salto de la ficha (perfil → rótulos ∥ foto): se paga en serie |
-| subida de documentos | 600 | la barra de subida tiene que verse avanzar (el simulador no emite progreso) |
-| resto | 120 | valor por omisión |
 
-Regla: gana la primera fila que coincide con la ruta exacta o con la ruta más un segmento debajo (`/profilesx`
-no coincide). **Sin azar**, también bajo E2E: la misma ruta espera siempre lo mismo. Código: `LATENCIA_SIMULADA` y
-`latenciaDe` en `mock-backend.interceptor.ts`; `git grep -c 'Math.random'` sobre ese archivo → sin coincidencias.
-Spec de tres niveles (tabla / desconocida / subida) + reloj simulado: `mock-backend.spec.ts` 27/27 en dos corridas.
-
-| Medido con el mismo arnés | Antes | Después |
-|---|---|---|
-| `GET /scheduling/slots` ×10 | 139–323 ms (desvío 68) | 89–103 ms (desvío 4) |
-| «elegir médico», 3 corridas × 2 casos | 311–557 ms | 231–247 ms |
-
-Regresión: lint con los mismos 243 errores · typecheck 0 · test 7176/7179, **los mismos 3 rojos** del baseline.
-**Todavía no está en ningún ref compartido** (sin commit en producto): Justin puede leer la tabla acá, pero no
-medir contra ella hasta que Ender autorice el commit.
->>>>>>> origin/main
+- `LATENCY_BEFORE` = la medición histórica de §3 (azar de 120 a 299 ms; `/scheduling/slots` 139–323 ms).
+- `LATENCY_CURRENT_CONTRACT` = **40 / 40 / 90 / 600 / 120**, la tabla de arriba, que es la del código ejecutable
+  (`mock-backend.interceptor.ts`, `LATENCIA_POR_PREFIJO`), sin `Math.random`. Spec: `mock-backend-latencia.spec.ts`.
+- **Corrección 2026-09-23:** la versión anterior de esta sección (#32) publicaba `/scheduling/slots` **80** y
+  `/profiles` **100**. Esos valores eran de una variante local que **no quedó**: en la reconciliación se adoptó la
+  tabla ya mergeada en `mockup`. Los números de «antes» no cambian.
+- **Justin puede medir contra esta tabla ahora:** `JUSTIN_CAN_MEASURE_CURRENT_LATENCY_ON_MOCKUP = YES` (está en
+  `origin/mockup` desde #584).
 
 ## 5. Checkpoints del turno
 
@@ -151,34 +133,61 @@ AVANCE — simulador y cabecera — <fase> — <ID de microtarea>
 
 | Qué | Quién | Estado | Si no llegó el pedido: contrato simulado (regla 65) |
 |---|---|---|---|
-<<<<<<< HEAD
-| Renglón «Cotizaciones» (PATIENT, Mi cuenta) + ruta lazy | Justin | **Ya estaba hecho** — `b3af9887`, verificado contra código, no recreado | no aplica |
-| Retirar «Mis puntos» del menú + redirect `/my-account/loyalty` → pestaña | Itzan | **A medias** — renglón retirado y redirect hechos; la pestaña real de Itzan no llegó | redirect a `/my-account`, declarado (regla 65) |
-| Filtro por profesional en `GET /scheduling/slots` | Justin | No llegó | fuera de mi alcance (§3 «OUT» de la ficha: «la ficha del médico y sus peticiones son de Justin») |
-| Medición del flujo de reserva | Justin (te la da) | No llegó — Justin también quedó bloqueado (timeout de login) | forma del fan-out verificada contra código; N en vivo pendiente para los dos |
-=======
-| Renglón «Cotizaciones» (PATIENT, Mi cuenta) + ruta lazy | Justin | **Ya en `mockup`, lo escribió Justin** (`b3af9887`, #577): H4.S2.M1 se acredita con esa evidencia al llegar a H4 | renglón hacia ruta declarada con componente vacío |
-| Retirar «Mis puntos» del menú + redirect `/my-account/loyalty` → pestaña | Itzan | | redirect a `/my-account`, declarado |
-| Filtro por profesional en `GET /scheduling/slots` | Justin | | se decide y se escribe |
+| Renglón «Cotizaciones» (PATIENT, Mi cuenta) + ruta lazy | Justin | **Ya en `mockup`, lo escribió Justin** (`b3af9887`, #577), verificado contra código y no recreado. **H4.S2.M1 HECHO** (acreditado por trabajo integrado) | no aplica |
+| Retirar «Mis puntos» del menú + redirect `/my-account/loyalty` → pestaña | Itzan | **Llegó.** Itzan publicó el contrato: «Mis puntos» es pestaña de «Mi perfil» (#606, en `mockup` desde el 24/09) y la ficha la abre con `?pestana=puntos` (`indiceDePestana`). Integración final en **PR #655**: `/my-account/loyalty` → **`/my-account?pestana=puntos`**, conservando el query previo (`?foo=bar` → `?pestana=puntos&foo=bar`, con `RedirectFunction`/`UrlTree`, porque un `redirectTo` de texto lo pierde en Angular 21.2.18). El renglón sigue fuera del menú. Validado en navegador: paciente (pestaña seleccionada, billetera a la vista, una sola cabecera) y médica (su perfil, sin pestaña de paciente). **H4.S2.M2–M4 HECHO** | **reemplazado**: el fallback a `/my-account` (regla 65) ya no es la historia final |
+| Filtro por profesional en `GET /scheduling/slots` | Justin | No llegó | fuera del alcance (la ficha y sus peticiones son de Justin) |
 | Medición del flujo de reserva | Justin (te la da) | No llegó con dato → **medición propia** (§3) | la medís vos y lo declarás |
->>>>>>> origin/main
 
 ## 7. Lo que publicaste
 
 | Qué | Para quién | Ruta + hora |
 |---|---|---|
-<<<<<<< HEAD
-| Tabla de latencia por prefijo | Justin | `Daily-Noche-2026-09-22.md` §4-bis, 2026-09-23 ~17:00 UTC |
-| Escenarios de flujo completo en `core/mock/README.md` | los cinco | `src/app/core/mock/README.md`, rama `ender/simulador-cabecera-2026-09-22` |
-| Estado de Cotizaciones/Mis puntos (N-02/N-03) | Justin, Itzan | `Daily-Noche-2026-09-22.md` §4-bis |
-| Corrección de HALL-M5 (`shell-layout.spec.ts` en rojo) | Justin, Pablo | `Daily-Noche-2026-09-22.md` §4-bis |
-=======
-| Tabla de latencia por prefijo | Justin | §4 de este daily · PR de PromptManager `ender/publicar-avance-simulador-2026-09-23` · 2026-09-23 |
-| Números del «antes» (latencia, agendas, «elegir médico») | Justin | §3 de este daily · mismo PR · 2026-09-23 |
-| Escenarios de flujo completo en `core/mock/README.md` | los cinco | |
->>>>>>> origin/main
+| Números del «antes» (latencia, agendas, «elegir médico») | Justin | §3 de este daily · PR #32 de PromptManager · 2026-09-23 |
+| Tabla de latencia por prefijo | Justin | §4 de este daily. Publicada en #32 con 80/100 (**incorrecto**) y **corregida** en este PR a 40/40/90/600/120 · 2026-09-23 |
+| Escenarios de flujo completo en `core/mock/README.md` | los cinco | PR #604 de producto (MERGED): escenario A con la médica de prueba y B con «Profesional demo 01»; la reserva del portal queda **solicitada** (`BK-REQUESTED`) |
+| Estado de Cotizaciones y Mis puntos (N-02/N-03) · corrección de HALL-M5 | Justin, Itzan, Pablo | `Daily-Noche-2026-09-22.md` §4-bis (carril paralelo) |
+| Contrato final de «Mis puntos»: `/my-account/loyalty` → `/my-account?pestana=puntos`, conservando el query | Itzan, el equipo | PR **#655** de producto (a `mockup`, abierto, sin merge) · este daily §6 y §8 · 2026-09-24 |
 
 ## 8. Al cerrar
+
+> **Cierre del carril reconciliado (2026-09-23)** — vale éste.
+>
+> - H6 9/9: `yarn typecheck` exit 0. `yarn lint` da 246 contra 243 del baseline; los +3 vienen de `mockup` (#435, #588), 0 son del carril.
+>   `yarn test` 7350/7351 (sólo `fichas-estandar`, ENTORNO). Flakes de carga que aislados pasan 2/2: `mock-backend-latencia`
+>   (reloj real, deuda de upstream) y `fallos-simulados` (cuota de `sessionStorage` en el worker).
+> - `stock:generate` ×2 idéntico; `yarn build` y `yarn start` sirven.
+> - Barrido de 5 cuentas: 183 rutas, 0 con problema. Barrido de clics: 294 botones en `<main>` más 162 en la cabecera
+>   y `/directory`, 0 con problema. 12 capturas finales miradas.
+> - H2.S2: `DO_NOT_SHARE_IN_FLIGHT_GETS` (M1 HECHO, M2 DESCARTADO). H5: acreditado por auditoría (ya en `mockup`).
+> - Datos personales: el tip de la rama está saneado (0 coincidencias en lo que agrega). La **historia de Git no se purgó**:
+>   eso requiere una decisión aparte del dueño o administrador del repositorio.
+> - Producto: **PR #604** a `mockup` (`af91a547`), MERGED el 2026-09-24 (`923397c4`).
+
+> **Cierre de H4.S2 (2026-09-24)** — completa el carril.
+>
+> - Handoff de Itzan `PEDIDO-A-ENDER-mis-puntos.md` (sha256 `8339abc0…0675`), comparado contra el código: coincide en lo que pide (destino, comentarios y roles). Su tabla de claves dice «Seguros y tutores» y quedó vieja por #654.
+>   #606 entró a `mockup` **por squash** (`de4f6d41`), así que la punta de `itzan/perfil-medico-configurar-tu-perfil`
+>   (`7bb08ca9`) no es ancestro de `mockup`, pero su contenido sí está. Después, #654 (Justin) separó «Seguros» y
+>   «Tutores»: `PESTANA.puntos` pasó de 4 a 5 y la clave `puntos` sigue valiendo.
+> - Producto: `ender/h4s2-mis-puntos-final-2026-09-24` @ `9dfd815c`, desde `origin/mockup` `e7437a5e`, **PR #655**
+>   a `mockup`, abierto y **sin merge**. Toca `app.routes.ts`, `navigation.map.ts`, `app.routes.spec.ts` y
+>   `shell-layout.spec.ts`; `features/account/my-profile/**` no se toca.
+> - Contrato final: `/my-account/loyalty` → `/my-account?pestana=puntos`, conservando el query previo (`RedirectFunction` →
+>   `UrlTree`; si se repite una clave, gana el destino). El fallback de la regla 65 (`/my-account`) quedó **reemplazado**.
+> - H4.S2.M3: seis aserciones específicas en `app.routes.spec.ts` (destino exacto, `foo=bar`, valores repetidos y
+>   codificados, `pestana` entrante, clave ↔ `PESTANA.puntos`, Cotizaciones) y el test genérico de destinos que
+>   ahora también cubre las secciones redirigidas.
+> - Regresión: `yarn typecheck` exit 0 · eslint de los 4 archivos exit 0 · suite pertinente 769/770. El único rojo es
+>   `shell-layout.spec.ts:259` (íconos), que es **preexistente**: también falla en `origin/mockup` puro.
+>   Recorrido en navegador 53/53: paciente en 1440 claro/oscuro y 390, médica, menú y Cotizaciones.
+> - CI de #655: **en cola**. El runner del repo no toma trabajos: 49 corridas en cola, 0 en curso y la más vieja del
+>   2026-09-24 03:56Z (medido el 2026-09-25 ~03:30Z). No se lo da por verde.
+> - Datos personales: el delta de #655 da 0. Las rutas del carril en el `mockup` actual dan 0. La historia de Git **no** se
+>   purgó (`GIT_HISTORY_PII_REMEDIATED = NO`). El fixture con personas reales sigue siendo un hallazgo aparte.
+
+> **Cierre del carril paralelo** (`ender/simulador-cabecera-2026-09-22`, #584/#592/#598), tal como lo dejó. La
+> casilla de «los 12 registrados con agenda» quedó **superada** por D-H3-PROV-01 (ver §3-bis).
+
 
 - [x] `REPORTE.md` con el avance en la **primera línea** y sus tres secciones (`docs/trabajo/2026-09-22-ender-simulador-cabecera/REPORTE.md`).
 - [x] Baseline repetido y comparado: los 2 rojos previos, corregidos con motivo; **con reserva**: `core/` 1541/1541, `shared/` 1439/1439, raíz 48/48; `features/` 4098-4099 de 4101 por corrida, 2-3 timeouts de 5 s en specs ajenos que pasan en aislamiento (ambiente, ver REPORTE H6.S1.M2).
@@ -195,6 +204,9 @@ AVANCE — simulador y cabecera — <fase> — <ID de microtarea>
       libre con `netstat`; navegador Playwright cerrado.
 
 ## 9. Nota para quien cierre el turno (commit)
+
+> Nota del carril paralelo, ya resuelta: ese trabajo entró a `mockup` por #584, #592 y #598.
+
 
 No hice ningún `git commit` ni `git push` esta noche: 19 archivos modificados + 4 specs nuevos quedaron
 en el árbol de trabajo de la rama `ender/simulador-cabecera-2026-09-22`, sin confirmar. El checkout

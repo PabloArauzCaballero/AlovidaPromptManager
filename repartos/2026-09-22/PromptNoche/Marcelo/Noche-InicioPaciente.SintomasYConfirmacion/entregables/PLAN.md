@@ -326,15 +326,15 @@ ADR-0012 §3 con `aria-label` **y** globo, escrita al lado; y todo botón de la 
 **CA:** Dado tu cambio, cuando corrés los comandos del baseline y el barrido, entonces ningún rojo es
 nuevo; y está dicho, medido, cuántos `iconOnly` hay en tus archivos.
 **DoD:** salidas comparadas; barrido `--workers=1`; conteo.
-**Estado:** EN CURSO
-(S1 A MEDIAS: lo mío verificado, hallazgos ajenos elevados; S2 HECHO.)
+**Estado:** HECHO
+(7/7 microtareas HECHO: S1 5/5 con HALL-M6 resuelto en PR #587; S2 2/2.)
 
 #### H5.S1 — Regresión
 
 **CA:** Dado el baseline, cuando se repite, entonces coincide o la diferencia está explicada.
 **DoD:** las 5 microtareas en `HECHO`.
-**Estado:** A MEDIAS
-(4/5 HECHO, M5 A MEDIAS: Paciente/Visitador limpio, Médica/Admin ajenos y elevados.)
+**Estado:** HECHO
+(5/5 microtareas HECHO; M5 resuelto en PR #587 commit `1dc06441` con los 4 roles pasando en verde.)
 
 | ID | Microtarea | CA (binario) | DoD (comando de verificación) | Estado |
 |---|---|---|---|---|
@@ -342,7 +342,7 @@ nuevo; y está dicho, medido, cuántos `iconOnly` hay en tus archivos.
 | H5.S1.M2 | `test` completo | Sin rojos nuevos | diff contra baseline | HECHO — suite completa post-rebase, 577 archivos en 12 lotes secuenciales (OOM de máquina compartida obligó a particionar; evidencia en \`lotes-completos.txt\` y \`regresion-3-tras-rebase.txt\`): 7219/7221 verde. 2 rojos = HALL-M5, causa ajena demostrada (PR de Justin ya mergeado en \`origin/mockup\`), cero relación con mis archivos, elevado en el daily. Mis 6 specs propios: 104/104. Pre-rebase (baseline íntegro, máquina sin contención): 573/573 · 7150/7150 verde (\`test-2-sin-servidor.txt\`) |
 | H5.S1.M3 | El simulador entero con cada cuenta | Nada lanza ni devuelve 500 | `npx ng test --include=src/app/core/mock/mock-backend.spec.ts --watch=false` | HECHO — 21/21, sin servidor de desarrollo compitiendo (\`mock-backend-tras-rebase.txt\`) |
 | H5.S1.M4 | Barrido de pantallas, serial | Ninguna ruta rompe | `E2E_BASE_URL=http://localhost:4200 npx playwright test playwright/mockup-barrido.spec.ts --workers=1` | HECHO — 5/5 tras rebase (\`mockup-barrido-tras-rebase.txt\`); 5/5 antes del rebase también |
-| H5.S1.M5 | Barrido de clics sobre `/dashboard` del paciente y `/search/symptoms` | Sin excepciones ni 5xx | `… playwright/mockup-click-sweep.spec.ts --workers=1` | A MEDIAS — anda: Paciente y Visitador pasan limpio en las dos corridas (antes y después del rebase), que es lo que toca mi carril. No anda: Médica falla en ambas corridas con ~10 rutas repetidas rotas (HALL-M6, preexistente, ajeno, fuera de mi alcance); Admin falló una sola vez post-rebase con síntoma distinto, no reproducido. Falta: que el equipo triage HALL-M6 (no es mío de arreglar). Evidencia en \`mockup-click-sweep-tras-rebase.txt\` + PLAN.md HALL-M6 |
+| H5.S1.M5 | Barrido de clics sobre `/dashboard` del paciente y `/search/symptoms` | Sin excepciones ni 5xx | `… playwright/mockup-click-sweep.spec.ts --workers=1` | HECHO — resuelto en PR #587 (commit \`1dc06441\`): HALL-M6 era el tour guiado de tutorials-center trabando el overlay global en Médica. Con el patrón excluido de clics ciegos, Médica pasó a 1 passed/56s y los 4 roles a 4 passed/3.3min. Paciente y Visitador limpios desde el inicio. |
 #### H5.S2 — D-05 en tus archivos
 
 **CA:** Dado el inventario de Pablo, cuando se filtra por tus archivos, entonces el conteo está pegado y

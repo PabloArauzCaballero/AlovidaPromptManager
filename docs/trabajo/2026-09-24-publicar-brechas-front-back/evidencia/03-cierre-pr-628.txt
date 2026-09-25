@@ -1,0 +1,9 @@
+$ gh pr view 628 -R mdavila-2001/mantra-core-health --json state,url
+{"state":"MERGED","url":"https://github.com/mdavila-2001/mantra-core-health/pull/628"}
+
+$ gh pr close 628 ...
+X Pull request mdavila-2001/mantra-core-health#628 (...) can't be closed because it was already merged
+
+$ gh pr view 628 --json mergedAt,mergedBy,mergeCommit
+{"by":"Jsaldias39","commit":"a96ad90c","mergedAt":"2026-09-24T21:26:03Z"}
+$ gh pr comment 628 → comentario publicado apuntando a AlovidaPromptManager#43

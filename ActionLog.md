@@ -7,6 +7,186 @@ resumen de alto nivel para quien no quiere abrir carpeta por carpeta. Entradas n
 
 ---
 
+## 2026-09-25 — Justin, plan y reparto del turno noche 2026-09-25 · "Farmacia como ecommerce"
+
+**Rama:** `justin/reparto-farmacia-ecommerce-2026-09-25` (este repo), publicada en `main` por pedido del propietario.
+**Reparto:** [`repartos/2026-09-25/PromptNoche/`](repartos/2026-09-25/PromptNoche/Daily-Noche-2026-09-25.md) —
+cuatro carriles de persona (Pablo, Justin, Marcelo, Itzan; **Ender fuera por pedido del propietario**) que
+cubren los ocho carriles del plan (41–48): **27 hitos · 43 subtareas · 159 microtareas**.
+**Plan completo:** [`planes/04-farmacia-ecommerce-2026-09-25/README.md`](planes/04-farmacia-ecommerce-2026-09-25/README.md).
+**Fuente y hechos:** [`docs/requisitos/FARMACIA-ECOMMERCE-2026-09-25.md`](docs/requisitos/FARMACIA-ECOMMERCE-2026-09-25.md) ·
+[`docs/verificacion/VERIFICACION-CONTRA-CODIGO-2026-09-25.md`](docs/verificacion/VERIFICACION-CONTRA-CODIGO-2026-09-25.md) ·
+[`PLAN-MAESTRO.md`](docs/trabajo/2026-09-25-plan-y-reparto-farmacia-ecommerce/PLAN-MAESTRO.md).
+
+### Qué se decidió
+
+- «Farmacia» del paciente deja de ser una pantalla con pestañas (PR #658 y #659 del front, descartados por el
+  propietario) y pasa a ser una tienda: buscador con filtros de precio y distancia en dos modos (productos y
+  farmacias), página por farmacia con catálogo a precio real, carrito en la cabecera (uno por sede, persistente
+  por usuario), y la receta completa de la historia clínica como segunda vía de entrada. Todo desemboca en la
+  revisión y el checkout que ya existen. Cotizaciones **se queda** aparte; «Lugares cercanos» **desaparece**.
+- **Ola 0 de una hora** (Pablo H2 + Marcelo H2: tipos, `CartStore` en memoria, cliente y mocks) y después cuatro
+  carriles en paralelo con archivos disjuntos; la Ola 3 (borrar el hub, e2e y veredicto) es lo único que espera.
+- Brecha real de la API declarada: no lista sedes sueltas ni filtra productos por farmacia; Marcelo la cierra en
+  `dev` en paralelo, sin que nadie lo espere (la maqueta usa mocks).
+
+### Verificación
+
+`tools/check_reparto.py` y `tools/check_skills_citadas.py` en verde sobre `repartos/2026-09-25` (salidas en el
+[`REPORTE.md`](docs/trabajo/2026-09-25-plan-y-reparto-farmacia-ecommerce/REPORTE.md)). Peldaño del reparto:
+`DISCOVERED` — nada del plan se ejecutó.
+
+## 2026-09-24 — Justin · "Brechas front↔back para cerrar el frontend"
+
+**Rama:** `justin/planes-brechas-front-back-2026-09-24` (este repo).
+**Paquete:** [`planes/03-brechas-front-back-2026-09-24/`](planes/03-brechas-front-back-2026-09-24/README.md).
+Viene de una primera publicación en el repo del front
+(PR [#628](https://github.com/mdavila-2001/mantra-core-health/pull/628)), que se cerró al aclarar que
+el destino era este repo.
+
+**Pedido:** analizar el backend contra el front, que está por cerrarse, para saber qué brechas
+quedan y qué hay que tener en cuenta. Pasarela de pago y delivery quedan fuera. El resultado va en
+forma de prompts.
+
+### Qué se entregó
+
+- **Informe:** [`README.md`](planes/03-brechas-front-back-2026-09-24/README.md) con cifras,
+  18 bloqueantes, 9 decisiones que necesitan dueño y orden de ejecución en tres olas.
+- **30 prompts** `BR-01…BR-30` con la plantilla oficial de tareas.
+- **202 hallazgos** con evidencia `archivo:línea` en los anexos A–E, más 12 nuevos (N-01…N-12)
+  que salieron al redactar.
+- **Inventarios** con sus scripts: 1 362 rutas de la API, 490 llamadas del front y 538 rutas del
+  mock.
+
+### Lo que cambia el plan
+
+- **No hay front de producción contra la API:** `mockBackend: true` está fijo, también en `dev`.
+- **El mock esconde las brechas.** 21 llamadas del front no tienen ruta en la API.
+- **Muchos 403 salen de roles que nadie emite o asigna.**
+- **«El paciente dueño de su historia» no cierra de punta a punta.**
+- **El modelo vive en `mantra-core-health-model`**, con la copia en `database/` de la API.
+
+**Peldaño:** `DISCOVERED`. Todo sale de leer el código; nada se ejercitó contra la API viva, y
+cada prompt exige reproducirlo en runtime. Trabajo:
+[PLAN y REPORTE](docs/trabajo/2026-09-24-publicar-brechas-front-back/REPORTE.md).
+
+---
+
+## 2026-09-24 — Justin · "Cerrar el carril reserva y Cotizaciones sin frenos, y 6 rondas de revisión adversarial"
+
+**Ramas:** `justin/cierre-carril-reserva-cotizaciones-2026-09-24` (este repo). En
+`mantra-core-health`, dos tandas de PR:
+- **Código original** (H2+H3+H5+H6), por hito: [#630](https://github.com/mdavila-2001/mantra-core-health/pull/630)–[#635](https://github.com/mdavila-2001/mantra-core-health/pull/635).
+  **Se fusionaron el 24/09 a las 21:25 UTC, antes de que terminara la doble revisión adversarial**
+  (regla 35.1) — el estado que quedó en `mockup`/`dev` es el de la primera versión, sin las
+  correcciones que encontraron las rondas 1 a 5.
+- **Corrección post-fusión**, con esas correcciones: [#651](https://github.com/mdavila-2001/mantra-core-health/pull/651) → `mockup`,
+  [#652](https://github.com/mdavila-2001/mantra-core-health/pull/652) → `dev`. `MERGEABLE` los dos.
+
+**Avance del carril: 29 / 51 → 44 / 51 (86,3 %).** 15 `HECHO`, 1 `A MEDIAS`, 6 `DESCARTADO`.
+
+**Pedido:** terminar las 16 microtareas pendientes siguiendo
+[`CERRAR-EL-CARRIL-SIN-FRENOS.md`](repartos/2026-09-22/PromptNoche/Justin/CERRAR-EL-CARRIL-SIN-FRENOS.md):
+código primero, un PR por hito y la documentación al final.
+
+### Qué se avanzó
+
+- **Ficha del médico (R-02):** una lectura de cupos por sede, en paralelo, que cubre la semana y
+  el horizonte del próximo hueco. Se pasa de hasta 2N lecturas en dos tandas a N. Cada sede tiene
+  su propia carga y su propio error, con captura de los dos estados. Mediana hasta los cupos:
+  **992 ms** (antes 1428, después de #583 1108).
+- **Cotizaciones del paciente (N-02):** la pantalla era una lista fija con importes escritos en el
+  código. Ahora compone farmacias, catálogo diagnóstico y arancel de referencia, sin un número en
+  el código: UMA rotulado y nunca convertido, origen elegible, tarjetas en móvil / tabla en
+  escritorio, y sus siete estados (con datos, cargando, vacío propio, error, sin ubicación,
+  precio no publicado, fuente caída), todos con acción.
+- **Doble de farmacia:** leía `productIds` y el contrato usa `products`, así que la disponibilidad
+  de la maqueta no filtraba nada. Corregido.
+- **6 rondas de revisión adversarial (regla 35.1), 5 con hallazgo real:**
+  1. la captura «cargando» mostraba resultados, no carga;
+  2. **bloqueante** — la procedencia atribuía precios inventados del simulador a sedes con
+     **nombre real** («Farmacias Chávez», «DIACOR S.A.») como si los hubieran publicado
+     (regla 00 §2.1); corregido a «Precio de ejemplo de la maqueta: <sede> no lo publicó»;
+  3. en 390px los resultados seguían siendo una tabla de escritorio ilegible → tarjetas reales;
+  4. las tarjetas nuevas no se habían probado con UMA, precio no publicado ni sin distancia;
+  5. un defecto de encuadre en una captura (línea cortada bajo la barra fija);
+  6. **aprobó** el set final. Detalle completo, hallazgo por hallazgo, en
+     [`evidencia/doble-revision.md`](docs/trabajo/2026-09-24-cerrar-carril-reserva-cotizaciones/evidencia/doble-revision.md).
+- Contraste del enlace de acción en tema oscuro: 3,4:1 → 8,0–8,8:1 (WCAG AA).
+- **Regresión:** lint 249 = 249 contra la base; la suite completa tiene un único rojo, previo.
+- **Corrección de lo publicado:** las medianas de #610 en los dailies (1691 → 1163 y 1431 → 991)
+  pasan a las del `resumen.json` (1428 → 1108 y 1460 → 892).
+- **Registro del trabajo de la Mac mini** en ramas `justin/*` (#607, #608, #611, #612, #615,
+  #616), en el §7-bis del daily de Justin. No suma a este carril.
+
+### Lo que queda
+
+H2.S2.M5 está `A MEDIAS` porque la mejora es −31 % y no −50 %; lo que queda es render y chunks de
+Angular, no peticiones (0 peticiones de negocio en la Red del simulador). Los precios de
+diagnóstico de la maqueta son una fórmula sintética del doble, declarada en cada fila. El anillo
+de foco global (`--focus-ring` de `styles.css`, toda la app) mide 1,3–1,5:1, por debajo de WCAG
+1.4.11 — hallazgo de otro dueño (sistema de diseño), escalado, no corregido desde este carril.
+Detalle en el [reporte](docs/trabajo/2026-09-24-cerrar-carril-reserva-cotizaciones/REPORTE.md).
+
+## 2026-09-24 — Justin · "Terminar el baseline comparable de Directorio y Reserva"
+
+**Ramas:** `justin/cerrar-baseline-comparable-reserva-2026-09-24` (este repo, apilada sobre la del
+PR [#36](https://github.com/PabloArauzCaballero/AlovidaPromptManager/pull/36)) y
+`justin/baseline-historico-reserva-2026-09-23` en `mantra-core-health`
+(PR [#610](https://github.com/mdavila-2001/mantra-core-health/pull/610) → `mockup`).
+**Estado: 9/9 microtareas del plan en `HECHO`.** El conteo del carril original **no se toca**:
+sigue en 29 / 51.
+
+**Pedido:** terminar lo que había quedado a medias y subirlo como PR. Lo que estaba a medias era la
+medición del flujo de reserva, que el daily de equipo del 22/09 tenía en `A MEDIAS` con el motivo
+«faltan baseline y recorrido», y que el reporte de gates del 23/09 repetía como pendiente. En disco
+había un `PLAN.md` con todo en `TODO`, un spec de Playwright y evidencia, **sin commitear**.
+
+### Qué se avanzó
+
+- **La medición, terminada y auditada** — [PLAN y
+  REPORTE](docs/trabajo/2026-09-24-cerrar-baseline-comparable-reserva/REPORTE.md). Dos escenarios,
+  **10 muestras por corte cada uno**, entre `b7785e36` y la punta de `mockup` `a43ad2b3`: hasta los
+  cupos con cuatro activaciones, mediana **1428 → 1108 ms** (rangos solapados); camino por defecto
+  que termina sin horarios, **1460 → 892 ms** (sin solapamiento). **Cero peticiones de negocio
+  observables** en los dos cortes: el simulador es un interceptor en memoria.
+- **Seis defectos del instrumento heredado**, encontrados auditándolo antes de creerle: el
+  cronómetro paraba en «Semana anterior» y no llegaba a medir la carga de los cupos; `estable()`
+  espera un `networkidle` que con `ng serve` no llega; el preset `Desktop Chrome` pisaba el viewport
+  y los archivos `-1440` guardaban 1280 px; `fullPage` con la barra lateral fija la pintaba encima
+  del resto; `page.screenshot()` no congela animaciones; y `animations: 'disabled'` **tampoco
+  alcanzó**, así que ahora se espera a que terminen las animaciones finitas y se asevera el estado
+  asentado.
+- **Tres cosas del daily corregidas:** los «1.468 ms hasta un cupo» **no se reproducen** con
+  instrumento declarado; «cuatro toques → una navegación» **ya se cumplía en `b7785e36`**, no es un
+  delta de #583; y el corte posterior **no es #583** sino la punta de `mockup`, 8 merges de PR más
+  adelante. Nada se adjudica a un PR: entre los dos cortes entró también la tabla de latencia
+  determinista de Ender, que toca justo la ruta caliente de elegir médico.
+- **Hallazgo de producto:** el camino que un paciente toma por defecto —primera tarjeta de la
+  primera especialidad— **no llega a un cupo en ninguno de los dos cortes**, porque los médicos de
+  la red de aseguradoras no tienen agenda a propósito. Queda `DECISION_REQUIRED`.
+- **Las dos filas del daily actualizadas**, de `A MEDIAS` a `PUBLICADO con límites`, en el daily de
+  equipo (§4-bis) y en el de Justin (§7 y §9).
+
+### La doble revisión no fue un trámite
+
+Tres rondas, siempre por un agente distinto del que implementó (regla 35.1.6). La primera **rechazó
+4 de 7 pares** de capturas: mostraban **médicos reales** del catálogo que publican las aseguradoras,
+con nombre y dirección de consultorio; dos pares estaban fotografiados a mitad de animación; y el
+corte «después» no era el que el plan declaraba. También destapó que publicar una corrida suelta
+daba **−36 %** donde por medianas era −18 %. La segunda rechazó una captura más, que seguía en vuelo
+**pese al flag** de Playwright. Sin esa disciplina, este cierre habría publicado un número que no
+existe y datos de personas reales.
+
+### Nada más quedó a medias
+
+Se revisaron los otros repositorios y worktrees: `mantra-core-health-redesa-api`,
+`mantra_core_health_mobile` y el resto de los worktrees de Justin no tienen commits sin subir ni
+trabajo sin commitear. El worktree `wt-justin-gates-reserva-cotizaciones` sólo tenía un `PLAN.md`
+suelto, superado por el PR #36 de este repo.
+
+---
+
 ## 2026-09-22 — Pablo, plan maestro y reparto del turno noche 2026-09-22 · "Correcciones del doctor y del paciente"
 
 **Rama:** `main` de este repo · **Estado: reparto cerrado, 25/25 microtareas del trabajo en `HECHO`.**
