@@ -7,6 +7,31 @@ resumen de alto nivel para quien no quiere abrir carpeta por carpeta. Entradas n
 
 ---
 
+## 2026-09-25 — Justin · "El daily de la noche: 5 PRs mergeados que desde este repo se leían como cero"
+
+**Rama:** `justin/daily-noche-2026-09-25` (este repo). **Daily:** [`repartos/2026-09-25/PromptNoche/Justin/Justin-Daily-Noche-2026-09-25.md`](repartos/2026-09-25/PromptNoche/Justin/Justin-Daily-Noche-2026-09-25.md). **Plan y reporte:** [`docs/trabajo/2026-09-25-justin-daily-noche/`](docs/trabajo/2026-09-25-justin-daily-noche/REPORTE.md). **No se tocó código de ningún repo: el diff son cuatro archivos de documentación.**
+
+### El problema
+
+El trabajo de la noche estaba **hecho y mergeado** —cinco PRs contra `mockup` en el repo del front—, pero acá el daily de Justin seguía en la plantilla del reparto, con `AVANCE COMBINADO: 0 / 109 — 0,0 %` y las tablas en blanco; su último commit era `c0d7b92`, el del propio reparto. Itzan y Pablo sí habían publicado los suyos, así que **desde el seguimiento el carril se leía como si no se hubiera hecho nada**. Laguna de publicación, no de ejecución — y estaba anotada: es la microtarea `H3.S5.M3` del Carril A, que su reporte dejó `A MEDIAS` porque «el daily vive en otro repositorio».
+
+### Qué se publicó
+
+- **Avance real de la noche: 116 / 140 — 82,9 %** (A+B solos, que es lo que el encabezado del reparto definía: 93 / 109 — 85,3 %). Carril A Farmacia **33/41** (PR #675) · Carril B Carga masiva **60/68** (PR #673) · Carril C encuentro clínico **23/31**: C4 **10/12** (#672), C6 **6/9** (#674), C8 **7/10** (#678). **Los cinco PRs `MERGED` contra `mockup`** el 2026-09-25 entre las 15:22 y las 17:15 UTC.
+- **Desglose por hito reconstruido microtarea por microtarea** desde los `PLAN.md` de cada carril, y cuadrado contra el total de su `REPORTE.md`: Carril B da exactamente 60 HECHO · 2 PENDIENTE · 3 A MEDIAS · 3 DESCARTADO = 68; Carril A, 33 HECHO · 6 A MEDIAS · 2 BLOQUEADO = 41.
+- **Los límites, sin maquillar.** Ningún carril alcanzó `REGRESSION_VERIFIED`; el **Carril A no vio un navegador en toda la corrida** y su prueba visual quedó `UNKNOWN`; el Carril B cerró lo visual recién el 2026-09-26; sólo C8 llegó a `VERIFIED`, y sólo para su resultado observable. El cuello de botella fue la máquina —cuatro carriles en paralelo con los servidores prohibidos (regla 70)—, no el alcance.
+- **En ninguno de los cinco PRs se vio un check pasar** (los tres quedaron en cola sin runner; `EXTERNAL` por regla 80.4, con la evidencia de que las cuatro corridas más recientes del repo, de cuatro ramas y dos personas, estaban todas `queued`). Se mergearon igual. Queda escrito para que nadie cite «verde».
+
+### Dos avisos que quedaban enterrados en reportes de otro repo
+
+- Los códigos `IMPORT_*` **no están en `API_ERROR_CODES`** (`core/http/api-error.ts`), así que `errorToViewState` los devuelve como error genérico. **Pablo / Itzan: agregarlos al integrar** (Q-J4).
+- **Q-9 sigue sin confirmar** —no hubo daily de Marcelo esa corrida—, así que la pantalla de carga masiva ofrece **un solo perfil**, «Conceptos». **Marcelo: confirmar** si `designaciones` existe.
+
+### Lo que este trabajo NO hace
+
+No corrige avances, no reabre microtareas y **no re-verifica nada** de lo que el daily describe: las cifras se copian de reportes ya publicados, citando su fuente, y los peldaños se transcriben tal cual, `UNKNOWN` incluidos.
+
+
 ## 2026-09-25 — Claude (sesión de planificación) · "El encuentro clínico doctor–paciente" — Paquete 3 de la noche, repartido por persona
 
 **Rama:** `main` (este repo). **Reparto:** sección «Paquete 3» de [`repartos/2026-09-25/PromptNoche/Daily-Noche-2026-09-25.md`](repartos/2026-09-25/PromptNoche/Daily-Noche-2026-09-25.md) y un prompt por carril en la carpeta de cada persona (`Noche-EncuentroClinico.C*`). **Plan maestro:** [`docs/trabajo/2026-09-25-plan-y-reparto-encuentro-clinico/PLAN-MAESTRO.md`](docs/trabajo/2026-09-25-plan-y-reparto-encuentro-clinico/PLAN-MAESTRO.md). **Se suma a los paquetes Farmacia y Carga Masiva de la misma noche (abajo), sin reemplazarlos.** Ender fuera, por pedido del propietario.
