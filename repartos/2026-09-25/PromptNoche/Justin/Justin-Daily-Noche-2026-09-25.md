@@ -363,3 +363,22 @@ daily, que vive en **otro repositorio**, quedó sin llenar — y es literalmente
 del Carril A, que su propio reporte dejó `A MEDIAS` con este motivo: «el daily vive en otro repositorio,
 fuera del worktree de trabajo de esta sesión». Mientras tanto, desde acá el carril se leía como
 `0 / 109 — 0,0 %`, es decir, como si no se hubiera hecho nada. **Publicarlo cierra esa microtarea.**
+
+---
+
+## Carril D — Diagnóstico con IA y glosario masivo (Paquete 4, pedido del propietario el 2026-09-25)
+
+> Agregado después del reparto, **sin reemplazar** A, B ni C. Plan, hechos verificados y contratos en
+> [`docs/trabajo/2026-09-25-diagnostico-ia-glosario/PLAN.md`](../../../../docs/trabajo/2026-09-25-diagnostico-ia-glosario/PLAN.md) ·
+> prompt en [`Noche-DiagnosticoIA.D1-D4/`](Noche-DiagnosticoIA.D1-D4/DiagnosticoConIAYGlosarioMasivo.md).
+
+- Repos: `mantra-core-health` (`origin/mockup` @ `8b50d188`, worktree `wt-justin-diagnostico-ia-2026-09-25`, rama `justin/diagnostico-ia-glosario-2026-09-25`) y `PabloArauzCaballero/AlovidaAIService` (`feat/triage-service` @ `5a60aec`, rama `justin/glosario-corpus-diagnostico-2026-09-25`).
+- **Aviso al equipo:** D3 entrega **C3** (diagnóstico presuntivo → confirmar/rechazar con evidencia), que no tiene rama ni PR. Si alguien lo retomó en paralelo, que lo diga acá antes de tocar `diagnosis-block/**`.
+- Baseline AI service: `corepack yarn --ignore-engines build && node --test dist/test/*.test.js` → exit 0 (node 24 local; el servicio pide 22).
+
+| Carril | HECHO/total | Peldaño | PR | Avisos |
+|---|---|---|---|---|
+| D1 · Corpus masivo del glosario | 0/7 | `TODO` | — | |
+| D2 · AI service: `glosario.v1` + `/v1/diagnosis/suggest` | 0/8 | `TODO` | — | |
+| D3 · Tabla de presuntivos → evidencia → cierre (C3) | 0/6 | `TODO` | — | |
+| D4 · Cierre del formulario con orden + tentativo (IA) | 0/5 | `TODO` | — | |
