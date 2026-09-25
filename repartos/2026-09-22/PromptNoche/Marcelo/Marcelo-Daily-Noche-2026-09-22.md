@@ -1,7 +1,7 @@
 # Marcelo — daily de la noche del 2026-09-22
 
-> **AVANCE: 59 / 60 — 98,3 %.** (Se agregó H3.S2.M9 por decisión de Pablo sobre `microphone=(self)`; H6.S1.M2 se cerró en una segunda pasada.)
-> `A MEDIAS` cuenta como **no hecha**. Prohibido el porcentaje estimado a ojo (regla 50 §5).
+> **AVANCE: 64 / 64 — 100 %.** (H2.S3 rediseñó la silueta con curvas humanas; HALL-M6 resuelto en PR #587 cerrando H5.S1.M5).
+> Todos los hitos cerrados en `HECHO`. Cero `A MEDIAS`, cero `BLOQUEADO`.
 
 - Carril: [`Noche-InicioPaciente.SintomasYConfirmacion`](Noche-InicioPaciente.SintomasYConfirmacion/SiluetaDelCuerpoVozYModalDeConfirmacion.md)
 - Corte: `origin/mockup` @ `b655e844…` → **el tuyo:** `8ae7283a…` (rebaseado en sesión sobre PRs #574-#579)
