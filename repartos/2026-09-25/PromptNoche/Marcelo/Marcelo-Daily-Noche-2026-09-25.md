@@ -107,17 +107,17 @@ AVANCE — datos y contrato real — <fase> — <ID de microtarea>
 
 ### 0. Q-9 — ¿existe todo lo que «designaciones» necesita? (antes de la hora 1)
 
-> Itzan (H2.S5.M4) y Justin (H4.S1.M3) leen esta sección. Si a la hora 1 está vacía, ellos deciden solos.
+> Itzan (H2.S5.M4) y Justin (H4.S1.M3) leen esta sección.
 
 | Pieza | Ruta:línea | Existe | Qué exige / qué falta |
 |---|---|---|---|
-| DTO `create-designation.dto.ts` | | | |
-| Entidad `concept_designations.entity.ts` | | | |
-| Endpoint `POST :conceptId/designations` | | | |
-| Repositorio con alta / `findByCode` | | | |
-| Índice único | | | |
+| DTO `create-designation.dto.ts` | `mantra-core-health-api/src/modules/terminology/dto/create-designation.dto.ts:53-100` | **SÍ** | `value` obligatorio (≤255) · `language?` `'ES'\|'EN'` · `designationType?` `'PREFERRED'\|'SYNONYM'` · `preferred?` · `properties?`. **No tiene `code` ni `use`**: el concepto va en la URL (`:conceptId`) y el «uso» se llama `designationType` |
+| Entidad `concept_designations.entity.ts` | `mantra-core-health-api/src/modules/terminology/entities/concept_designations.entity.ts:12-76` | **SÍ** | `concept_id` (FK), `language_concept_id?`, `designation_type_concept_id?`, `value` (varchar), `preferred?`, auditoría, `row_version`. **Sin `unique`** en ninguna combinación de columnas |
+| Endpoint `POST :conceptId/designations` | `mantra-core-health-api/src/modules/terminology/controllers/terminology-concepts.controller.ts:241-252` → `services/concepts.service.ts:120-160` | **SÍ** | `@Roles('SECURITY_ADMIN')`, uno por llamada, `conceptId` uuid en la ruta; mapea `language`→`CONCEPTS.LANG_ES/EN` y `designationType`→`CONCEPTS.DESIG_PREFERRED/SYNONYM`; degrada la preferida anterior por idioma con `FOR UPDATE` |
+| Repositorio con alta / `findByCode` | `repositories/concept-designations.repository.ts:69` `createDesignation` · `:110` `findByLanguageForUpdate` · `:126` `findByConcept`. El concepto **padre** se ubica por `repositories/catalog-concepts.repository.ts:104` `findByVersionAndCode(em, versionId, code)` | **SÍ** el alta · **NO** hay búsqueda de designación existente por `(concepto, idioma, valor)` | La idempotencia (Q-7 del contrato: «omitida» si ya existe) exige una consulta nueva en este repositorio, que hoy no está |
+| Índice único | `src/orm/catalog/indexes/terminology.idx.ts:36-40` | **NO** (5 índices `btree` simples: `concept_id`, `language_concept_id`, `designation_type_concept_id`, `created_by_user_id`, `updated_by_user_id`) | Sin clave estable en base: dos altas idénticas conviven sin que Postgres las rechace |
 
-**Decisión Q-9 (hora HH:MM):** <SÍ: columnas `code, language, use, value`, clave estable … / NO: falta …>
+**Decisión Q-9 (2026-09-25, hora de publicación: ver commit):** **SÍ, con matices.** La entidad, el DTO, el endpoint y el repositorio con alta existen y son usables hoy. El perfil `designaciones` es viable con columnas `code` (resuelve el concepto padre vía `findByVersionAndCode`), `language` (`ES|EN`, alias `idioma`), `use` (mapea a `designationType`, `PREFERRED|SYNONYM`, alias `uso`/`tipo`) y `value` (alias `valor`/`término`). Lo que falta —índice único y una consulta de existencia por `(concept_id, language_concept_id, value)`— es trabajo del **servicio** de Itzan, no del esquema (que está prohibido tocar). Si Itzan no quiere abrir eso esta noche, el perfil queda `DESCARTADO` con esta evidencia, y `import-profiles.ts` de su rama ya lo declara así en un comentario («El perfil de designaciones se suma cuando se confirme que su entidad, su DTO y su repositorio existen»).
 
 ## 0-bis. Fixtures de la API (H7.S2) — publicá en la hora 2
 
@@ -131,17 +131,17 @@ AVANCE — datos y contrato real — <fase> — <ID de microtarea>
 
 ```text
 $ ls .claude/skills | wc -l
-<pendiente>
+179
 
 $ ls .claude/rules/[0-9]*.md | wc -l
-<pendiente>
+15
 
 $ python .claude/hooks/plan_gate.py --self-test
-<pendiente>
+plan_gate self-test: 11 PASS, 0 FAIL
 ```
 
-- [ ] Leí `skills-router` y las 29 skills del lote, empezando por `critical-double-review`.
-- [ ] Creé el `PLAN.md` antes del primer `Edit`/`Write` de código.
+- [x] Leí `skills-router` y las skills del lote (leídas por ruta, ver `estandar-de-la-casa-promptmanager`: el pack no es invocable con la herramienta Skill).
+- [x] Creé el `PLAN.md` antes del primer `Edit`/`Write` de código: `mantra-core-health/docs/trabajo/2026-09-25-marcelo-calidad/PLAN.md` (98 microtareas) y su espejo en `mantra-core-health-api` (H7).
 
 ### 2. Avance por hito (se llena al cerrar)
 
