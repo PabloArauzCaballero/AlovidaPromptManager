@@ -2,7 +2,8 @@
 
 Notas médicas · órdenes de análisis · diagnóstico presuntivo→confirmado/rechazado · reconsulta · receta · enfermedad activa · historia clínica del paciente · «Mis órdenes» por tipo.
 
-> **Rol de este documento:** es el contrato que comparten los diez carriles de la noche del 2026-09-25. Cada carril tiene su prompt en `C*-*/` (ese prompt manda cuando difiere de este plan). Este plan fija el modelo, los nombres, los contratos simulados, el reparto, la calidad exigida y las reglas de convivencia.
+> **Rol de este documento:** es el contrato que comparten los diez carriles del **Paquete 3 — Encuentro clínico** de la noche del 2026-09-25. Se **suma** a los paquetes Farmacia como ecommerce y Carga Masiva de la misma noche (decisión del propietario): no los reemplaza y no toca sus archivos. Cada carril tiene su prompt en la carpeta de su responsable dentro de `repartos/2026-09-25/PromptNoche/` (`Marcelo/`, `Itzan/`, `Justin/`, `Pablo/`, carpetas `Noche-EncuentroClinico.C*`); ese prompt manda cuando difiere de este plan.
+> **Reparto (Ender sin carril hoy, por pedido del propietario):** **Marcelo** → C0, C3 · **Itzan** → C1, C2 · **Justin** → C4, C6, C8 · **Pablo** → C9, C5, C7. Total: 113 microtareas (Marcelo 33 · Itzan 22 · Justin 31 · Pablo 27). Este plan fija el modelo, los nombres, los contratos simulados, el reparto, la calidad exigida y las reglas de convivencia.
 > **Repo de producto:** `mantra-core-health` (frontend Angular 21, rama `mockup`, simulador en `src/app/core/mock`). **La API no se toca esta noche**: es referencia de nombres; lo que no tiene se simula y se anota como pendiente (P39–P42, §10).
 > **Corte:** `origin/mockup` @ `bf2c3545` (merge del PR #660). **Cada carril reconsulta el suyo** y lo anota en su `PLAN.md`.
 > **Fuente del pedido:** conversación con el propietario del 2026-09-25, confirmada punto por punto (§0.2) y ampliada esa misma noche con: «Mis órdenes» del paciente por tipo con buscador, filtros y paginación (ADR-0015); calidad visual garantizada con las skills de diseño; Playwright que nunca se queda colgado; todo publicado en `AlovidaPromptManager` `main`.
@@ -250,20 +251,20 @@ Sin tipos ni mock nuevos (usa `GET /diagnostic-results/me/orders` tal cual, con 
 
 ### 4.1 Tabla de reparto
 
-| Carril | Alcance en una línea | Rama | Worktree | Puerto | Horas | Depende de |
-|---|---|---|---|---|---|---|
-| **C0** | Contrato primero: tipos, conceptos, stubs, casillas, ayudante compartido, guardián de Playwright, ADR, glosario | `claude/clinica-c0-base` | `wt-clinica-c0` | 4210 | 3 | nada (**va primero y solo**) |
-| **C1** | Nota médica clave/valor: bloque, lista por encuentro, mock, seed | `claude/clinica-c1-notas-medicas` | `wt-clinica-c1` | 4211 | 5–6 | C0 en `origin/mockup` |
-| **C2** | Orden de análisis desde la consulta, tipo Lab/Imagen/Otro, basada en notas, `category` en las dos lecturas | `claude/clinica-c2-ordenes-analisis` | `wt-clinica-c2` | 4212 | 4–5 | C0 |
-| **C3** | Diagnóstico presuntivo → confirmar/rechazar con motivo y evidencia; enfermedad activa en el expediente del doctor | `claude/clinica-c3-diagnostico` | `wt-clinica-c3` | 4213 | 6–7 | C0 |
-| **C4** | Reconsulta: bloque en la consulta, cita real, sellos en agenda y Mis citas | `claude/clinica-c4-reconsulta` | `wt-clinica-c4` | 4214 | 5–6 | C0 |
-| **C5** | Receta ligada a diagnóstico confirmado o motivo plano; vincular después; PDF | `claude/clinica-c5-receta` | `wt-clinica-c5` | 4215 | 3–4 | C0 |
-| **C6** | Historia clínica del paciente: en estudio/activas/históricas, línea del encuentro, PDF | `claude/clinica-c6-historia-paciente` | `wt-clinica-c6` | 4216 | 5–6 | C0 |
-| **C7** | Homogeneización de nombres fuera de los archivos de C1–C6/C9; retiro de `free-note-block`; «Notas médicas» | `claude/clinica-c7-nombres` | `wt-clinica-c7` | 4217 | 3–4 | C0 |
-| **C9** | «Mis órdenes» del paciente: pestañas por tipo, buscador, filtros, tabla y paginación ADR-0015 | `claude/clinica-c9-mis-ordenes` | `wt-clinica-c9` | 4219 | 4–5 | C0 |
-| **C8** | Integración: mergear C1–C7 y C9, recorrido completo, consolidar pendientes, REPORTE final, daily de equipo | `claude/clinica-c8-integracion` | `wt-clinica-c8` | 4218 | 3–4 | C1–C7, C9 con PR abierto |
+| Carril | Responsable | Alcance en una línea | Rama | Worktree | Puerto | Horas | Depende de |
+|---|---|---|---|---|---|---|---|
+| **C0** | **Marcelo** | Contrato primero: tipos, conceptos, stubs, casillas, ayudante compartido, guardián de Playwright, ADR, glosario | `claude/clinica-c0-base` | `wt-clinica-c0` | 4210 | 3 | nada (**va primero y solo**) |
+| **C1** | **Itzan** | Nota médica clave/valor: bloque, lista por encuentro, mock, seed | `claude/clinica-c1-notas-medicas` | `wt-clinica-c1` | 4211 | 5–6 | C0 en `origin/mockup` |
+| **C2** | **Itzan** | Orden de análisis desde la consulta, tipo Lab/Imagen/Otro, basada en notas, `category` en las dos lecturas | `claude/clinica-c2-ordenes-analisis` | `wt-clinica-c2` | 4212 | 4–5 | C0 |
+| **C3** | **Marcelo** | Diagnóstico presuntivo → confirmar/rechazar con motivo y evidencia; enfermedad activa en el expediente del doctor | `claude/clinica-c3-diagnostico` | `wt-clinica-c3` | 4213 | 6–7 | C0 |
+| **C4** | **Justin** | Reconsulta: bloque en la consulta, cita real, sellos en agenda y Mis citas | `claude/clinica-c4-reconsulta` | `wt-clinica-c4` | 4214 | 5–6 | C0 |
+| **C5** | **Pablo** | Receta ligada a diagnóstico confirmado o motivo plano; vincular después; PDF | `claude/clinica-c5-receta` | `wt-clinica-c5` | 4215 | 3–4 | C0 |
+| **C6** | **Justin** | Historia clínica del paciente: en estudio/activas/históricas, línea del encuentro, PDF | `claude/clinica-c6-historia-paciente` | `wt-clinica-c6` | 4216 | 5–6 | C0 |
+| **C7** | **Pablo** | Homogeneización de nombres fuera de los archivos de C1–C6/C9; retiro de `free-note-block`; «Notas médicas» | `claude/clinica-c7-nombres` | `wt-clinica-c7` | 4217 | 3–4 | C0 |
+| **C9** | **Pablo** | «Mis órdenes» del paciente: pestañas por tipo, buscador, filtros, tabla y paginación ADR-0015 | `claude/clinica-c9-mis-ordenes` | `wt-clinica-c9` | 4219 | 4–5 | C0 |
+| **C8** | **Justin** | Integración: mergear C1–C7 y C9, recorrido completo, consolidar pendientes, REPORTE final, daily de equipo | `claude/clinica-c8-integracion` | `wt-clinica-c8` | 4218 | 3–4 | C1–C7, C9 con PR abierto |
 
-**Concurrencia: 5 sesiones a la vez, no más** (la máquina satura; `vitest` saturado da verde falso). **Ola A:** C0 sola → cuando C0 está en `origin/mockup`: **C1, C2, C3, C4, C5**. **Ola B:** al cerrar cualquiera de la ola A entra **C9**, después **C6**, después **C7** (en ese orden: C9 es lo que el propietario pidió ver). **Mañana:** C8.
+**Ritmo por persona** (cada programador en su máquina; en una misma máquina nunca más de dos sesiones a la vez y un solo build/test pesado por vez, porque `vitest` saturado da verde falso): **Marcelo** hace C0 primero y solo (≈3 h; bloquea al resto) y después C3. **Itzan:** C1 y después C2 (o en paralelo si su máquina aguanta). **Justin:** C4, después C6, y C8 a la mañana. **Pablo:** C9 primero (es lo que el propietario pidió ver), después C5 y C7. Mientras C0 no está en `origin/mockup`, cada uno adelanta lo de §4.5. Cómo conviven estos carriles con los de Farmacia y Carga Masiva de la misma persona: §4.6. **Ender no tiene carril esta noche.**
 
 ### 4.2 Por qué no se bloquean
 
@@ -282,8 +283,10 @@ Si un carril necesita un campo más en un tipo congelado: **lo declara en un arc
 
 ### 4.4 Cómo arranca cada carril (idéntico para todos)
 
+`<raíz de tus repos>` es la carpeta donde conviven `mantra-core-health` y `AlovidaPromptManager` (en la máquina del propietario, `<raíz de tus repos>/`).
+
 ```bash
-cd C:/Users/DELL/Documents/Github/Alovida
+cd <raíz de tus repos>
 git -C mantra-core-health fetch origin mockup
 git -C mantra-core-health log --oneline -8 origin/mockup   # C1..C9: el commit «feat(clinica): contrato primero (C0)» tiene que estar
 git -C mantra-core-health worktree add ../wt-clinica-cN -b claude/clinica-cN-<slug> origin/mockup
@@ -294,12 +297,38 @@ corepack yarn start --port 421N        # en background (Bash run_in_background: 
 
 Baseline obligatorio antes de tocar (`evidencia/antes/`): `yarn lint; echo exit=$?`, `yarn typecheck; echo exit=$?`, `yarn test --watch=false --include=<sus carpetas>; echo exit=$?`. Cada rojo previo se clasifica (`PRODUCT_BUG` / `TEST_BUG` / `ENVIRONMENT`) y, si no toca archivos reservados, **se anota, no se arregla**.
 
+### 4.5 Mientras C0 corre (≈3 h): qué se adelanta sin pisar a C0
+
+| Carril | Podés arrancar ya, desde `origin/mockup` sin C0 | Esperá a C0 para |
+|---|---|---|
+| C1 | `fixtures/medical-notes.ts`, `filasDeNotaMedica` en el faker, diseño del bloque con datos de muestra | `medical-notes.handlers.ts` (lo crea C0), `chart-notes.client.ts` (necesita `entries` en los tipos), el bloque real |
+| C2 | seed de órdenes en `fixtures/clinica.ts` (462-504), catálogo de estudios por tipo | `diagnostics.handlers.ts` (C0 pega ahí `POST /clinical/service-requests`), cliente, bloque |
+| C3 | seed de condiciones (33-52, 227-245), diseño del modal | handler de verificación (C0 crea el stub), cliente, bloque, expediente |
+| C4 | seed de agenda, lógica y spec del handler de cita directa (el mock no depende de los tipos) | cliente, bloque, sellos (necesitan `Booking.followUpOf`) |
+| C5 | **todo** (no depende de C0) | — |
+| C6 | organismo `encounter-timeline` con datos de muestra | pestaña «Diagnósticos» (`diagnosisStateOf` es de C0) |
+| C7 | inventario `grep`; renombres en `care-plan-block`, `procedures-block`, `toast-samples`, `aviso-ficha-medica.spec.ts`; «Notas médicas» | borrar `free-note-block` (C0 quita su import de la consulta), `observation-block`/`measurement-grid` |
+| C9 | **todo** (deriva el tipo por `categoryConceptId`) | — |
+
+Cuando C0 llega: `git fetch origin mockup && git rebase origin/mockup` en tu rama (archivos disjuntos: sin conflictos) y seguís.
+
+### 4.6 Convivencia con los otros dos paquetes de la misma noche
+
+Farmacia como ecommerce y Carga Masiva corren esta misma noche, con las mismas cuatro personas y sobre el mismo repo. Se cruzaron las listas de archivos reservados de sus ocho prompts contra las de estos diez carriles: **no hay ningún archivo compartido entre personas distintas**. Los dos cruces que existen son de la misma persona y se resuelven en secuencia, nunca con dos worktrees abiertos sobre el mismo archivo:
+
+| Persona | Este paquete | Otro paquete | Regla |
+|---|---|---|---|
+| Pablo | C7: una línea de `core/navigation/navigation.map.ts` («Evoluciones» → «Notas médicas») | Farmacia reserva `core/navigation/**` entero («Lugares cercanos desaparece») | El cambio de C7 se hace después o dentro de la rama de Farmacia, y se anota en el daily en qué rama quedó |
+| Justin | C6: `account/medical-record/**` menos `where-to-buy/**` | Farmacia reserva `account/medical-record/where-to-buy/**` | Cada rama toca sólo su parte de la carpeta |
+
+Los dos paquetes anteriores tocan `app.routes.ts` (entradas concretas); este paquete lo deja congelado, así que no compite. Si durante la noche aparece otro cruce, se anota en el daily de equipo **antes** de tocar el archivo.
+
 ## 5. Calidad garantizada: lo que cada carril carga y demuestra
 
 ### 5.1 Instalar el estándar (primero, siempre)
 
 ```bash
-git -C C:/Users/DELL/Documents/Github/Alovida/AlovidaPromptManager pull --ff-only origin main
+git -C <raíz de tus repos>/AlovidaPromptManager pull --ff-only origin main
 # dentro del worktree del carril: fusionar, NO pisar (el front trae 4 skills y 3 agentes propios)
 cp -rn ../AlovidaPromptManager/.claude/skills/* .claude/skills/
 cp -rn ../AlovidaPromptManager/.claude/rules  .claude/ 2>/dev/null || cp -rn ../AlovidaPromptManager/.claude/rules/* .claude/rules/
@@ -378,7 +407,7 @@ Formato: `ID · qué · CA (binario) · DoD (comando)`. El estado vive en el `PL
 
 ---
 
-### C0 — Contrato primero (una sesión, sola, ~3 h)
+### C0 — Contrato primero (una sesión, sola, ~3 h) — **Marcelo**
 
 **Resultado observable:** en `http://localhost:4210/medical-records/<id>/consultation` la rejilla muestra **12 casillas** en este orden: Nota médica · Orden de análisis · Diagnóstico · Reconsulta · Receta · Alergia · Medición · Plan de cuidados · Documento · Formulario clínico · Internación · Pagos; Nota médica, Orden y Reconsulta abren un modal con «En construcción (C1/C2/C4)». `node scripts/pw-guard.mjs --self-test` da 3 PASS. `lint`, `typecheck`, `mock-backend.spec.ts`, `clinical.handlers.spec.ts`, `diagnostics.handlers.spec.ts`, `consultation.spec.ts`, `specialty-form-block.spec.ts` verdes.
 **Kill-test:** si `POST /charts/notes` sigue registrado en `clinical.handlers.ts`, o `pw-guard --self-test` no existe, C0 no está hecho.
@@ -407,11 +436,11 @@ Formato: `ID · qué · CA (binario) · DoD (comando)`. El estado vive en el `PL
 | C0.H5.M1 | `scripts/pw-guard.mjs` según §6 (ESM, sin dependencias nuevas, Windows y POSIX) + `--self-test` + `docs/testing/pw-guard.md` + `.gitignore` de `artifacts/pw-guard/` | `node scripts/pw-guard.mjs --self-test` → `3 PASS, 0 FAIL`; una corrida real contra 4210 con `playwright/consulta-rejilla.spec.ts` sale 0 o 1 con `RESUMEN:` | los dos comandos |
 | C0.H6.M1 | Gates §5.3 (1, 2, 3) + skills de cierre + `REPORTE.md` | Todo con exit 0, salida en `evidencia/despues/` | comandos con `; echo exit=$?` |
 | C0.H6.M2 | Commits Conventional por microtarea (`feat(clinica): contrato primero (C0) — …`, `refactor(mock): …`, `chore(scripts): pw-guard`), `git pull --rebase origin mockup`, `git push origin HEAD:mockup` (regla de cierre del propietario) **y** `git push -u origin claude/clinica-c0-base` + PR `--base mockup` | `git rev-parse origin/mockup` contiene los commits; PR abierto | `git fetch origin mockup && git log --oneline -8 origin/mockup` |
-| C0.H6.M3 | Daily `C0-Base/C0-Daily-Noche-2026-09-25.md` en este repo (formato del daily de Pablo), commit y `git push origin main`; `SendMessage` a las sesiones activas: «C0 en origin/mockup @ <sha>; arranquen C1–C5» | El daily tiene el SHA, los números de la instalación del estándar y la lista de archivos tocados | `git -C ../AlovidaPromptManager log --oneline -1 origin/main` |
+| C0.H6.M3 | Sección «Carril C — Encuentro clínico · C0» de tu daily `Marcelo/Marcelo-Daily-Noche-2026-09-25.md` (sin tocar tus secciones de Farmacia y Carga Masiva) en este repo (formato del daily de Pablo), commit y `git push origin main`; aviso a Itzan, Justin y Pablo (`SendMessage` si comparten máquina; si no, por el canal del equipo): «C0 en origin/mockup @ <sha>; arranquen C1, C2, C4, C5, C9» | El daily tiene el SHA, los números de la instalación del estándar y la lista de archivos tocados | `git -C ../AlovidaPromptManager log --oneline -1 origin/main` |
 
 ---
 
-### C1 — Nota médica (5–6 h)
+### C1 — Nota médica (5–6 h) — **Itzan**
 
 **Resultado observable:** en la consulta, «Nota médica» abre un formulario de **filas campo/valor** (una fila vacía inicial, «Agregar fila», «Quitar», texto libre opcional), guarda con `POST /charts/notes` y debajo lista las notas **de este encuentro** y, plegadas, las anteriores del paciente, cada una con ID corto, fecha, autor, sello Borrador/Firmada y su tabla. F5 conserva la nota.
 **Kill-test:** guardar una nota con dos filas, F5, y si no aparecen las dos filas con sus rótulos, C1 no está hecho.
@@ -436,7 +465,7 @@ Formato: `ID · qué · CA (binario) · DoD (comando)`. El estado vive en el `PL
 
 ---
 
-### C2 — Orden de análisis (4–5 h)
+### C2 — Orden de análisis (4–5 h) — **Itzan**
 
 **Resultado observable:** en la consulta, «Orden de análisis» abre el bloque con **tipo** (Laboratorio · Imagenología · Otro) que filtra el catálogo, la lista de **notas médicas de este encuentro con checkbox** «Basada en esta nota», prioridad y motivo, y guarda con `POST /clinical/service-requests`. Debajo, las órdenes del encuentro con tipo, estado y «según nota #…». Las dos lecturas (doctor y paciente) devuelven `category`. La seed le da al paciente demo material suficiente para que «Mis órdenes» (C9) tenga qué filtrar y paginar.
 **Kill-test:** una orden guardada con «Basada en» marcada que vuelve del `GET /diagnostics/patients/:id/orders` sin `basedOnNoteIds`, o un `GET /diagnostic-results/me/orders` sin `category`, y C2 no está hecho.
@@ -461,7 +490,7 @@ Formato: `ID · qué · CA (binario) · DoD (comando)`. El estado vive en el `PL
 
 ---
 
-### C3 — Diagnóstico: presuntivo → confirmado / rechazado; enfermedad activa (6–7 h)
+### C3 — Diagnóstico: presuntivo → confirmado / rechazado; enfermedad activa (6–7 h) — **Marcelo**
 
 **Resultado observable:** en la consulta, «Diagnóstico» crea un diagnóstico que nace **Presuntivo**. En la lista del bloque y en la pestaña «Diagnósticos» del expediente, cada presuntivo tiene «Acciones → Confirmar… / Rechazar…» que abre un **modal** con motivo, evidencia (ninguna · una nota médica de una cita · un análisis) y, al confirmar, inicio, fin esperado **o** «Crónica». Al guardar, el estado cambia y el expediente muestra arriba **«Enfermedades activas»** («hasta <fecha>» y días restantes), más «En estudio» e «Históricos».
 **Kill-test:** confirmar sin motivo y sin evidencia debe fallar con el 422 visible en el modal; si guarda, C3 no está hecho.
@@ -487,7 +516,7 @@ Formato: `ID · qué · CA (binario) · DoD (comando)`. El estado vive en el `PL
 
 ---
 
-### C4 — Reconsulta (5–6 h)
+### C4 — Reconsulta (5–6 h) — **Justin**
 
 **Resultado observable:** en la consulta, «Reconsulta» abre un bloque con **calendario** (cupos libres del recurso del doctor desde mañana, `GET /scheduling/slots`), motivo precargado «Reconsulta: <motivo de la cita>» editable y «Agendar». Crea una cita real: en «Consultas médicas» la fila lleva el sello **Reconsulta** y «de la cita del <fecha>»; en «Mis citas» del paciente idem. Una segunda reconsulta de la misma cita es rechazada con mensaje.
 **Kill-test:** si la reconsulta no aparece en `/my-account/appointments` de `paciente@alovida.mock` con el sello, C4 no está hecho.
@@ -513,7 +542,7 @@ Formato: `ID · qué · CA (binario) · DoD (comando)`. El estado vive en el `PL
 
 ---
 
-### C5 — Receta ligada a diagnóstico confirmado o motivo plano (3–4 h)
+### C5 — Receta ligada a diagnóstico confirmado o motivo plano (3–4 h) — **Pablo**
 
 **Resultado observable:** en la consulta, «Receta»: «¿Para qué es esta receta?» lista **sólo confirmados** («Confirmado el <fecha>») y «Otro motivo (escribir)» que muestra el textarea; el simulador rechaza con 422 el presuntivo y la receta sin nada, y el modal lo muestra. Lista y PDF dicen «Diagnóstico: X» o «Motivo: …». «Acciones → Vincular a un diagnóstico…» liga después una receta con motivo plano a un confirmado (sólo en borrador; emitida → 409 visible).
 **Kill-test:** si el selector muestra un presuntivo, C5 no está hecho.
@@ -536,7 +565,7 @@ Formato: `ID · qué · CA (binario) · DoD (comando)`. El estado vive en el `PL
 
 ---
 
-### C6 — Historia clínica del paciente (5–6 h)
+### C6 — Historia clínica del paciente (5–6 h) — **Justin**
 
 **Resultado observable:** `paciente@alovida.mock` → «Mi historia clínica» tiene una pestaña **«Diagnósticos»** con tres bloques (En estudio · Enfermedades activas «hasta <fecha>»/«crónica» · Históricos con la razón) y, en «Atenciones», cada atención se despliega en una **línea del encuentro** (nota → orden → diagnóstico → reconsulta → receta). «Descargar tu historia» incluye lo mismo.
 **Kill-test:** si un diagnóstico rechazado aparece como enfermedad activa, C6 no está hecho.
@@ -559,7 +588,7 @@ Formato: `ID · qué · CA (binario) · DoD (comando)`. El estado vive en el `PL
 
 ---
 
-### C7 — Homogeneización de nombres (3–4 h)
+### C7 — Homogeneización de nombres (3–4 h) — **Pablo**
 
 **Resultado observable:** en la interfaz no queda «Nota clínica», «Nota de la consulta», «Evolución/Evoluciones», «Hoja en blanco», «Observación» (medición), «Estudio» (orden), «Prediagnóstico», «Control» (reconsulta) ni «Turno» en rótulos nuevos. El menú «Evoluciones» pasa a **«Notas médicas»** y esa pantalla lista **notas** (una fila por nota) con la tabla de filas al desplegar. `free-note-block` se elimina.
 **Kill-test:** `grep -rniE "nota clínica|evoluci[oó]n|hoja en blanco" src/app --include=*.html --include=*.ts` fuera de los archivos de C1–C6/C9 = 0.
@@ -580,7 +609,7 @@ Formato: `ID · qué · CA (binario) · DoD (comando)`. El estado vive en el `PL
 
 ---
 
-### C9 — «Mis órdenes» del paciente por tipo, con buscador, filtros y paginación (4–5 h)
+### C9 — «Mis órdenes» del paciente por tipo, con buscador, filtros y paginación (4–5 h) — **Pablo**
 
 **Resultado observable:** `paciente@alovida.mock` → «Mis órdenes» (`/my-account/diagnostic-orders`) es **una tarjeta centrada a lo ancho con cuatro pestañas** (Todas · Laboratorio · Imagenología · Otros, cada una con su conteo); en cada pestaña una barra con buscador y tres filtros, una tabla sin scroll lateral y paginación abajo a la derecha con Anterior/Siguiente con texto, número de página y tamaño. Buscar «hemo» deja sólo hemogramas; filtrar «Con resultado» deja las que enlazan a «Mis resultados»; F5 conserva pestaña, búsqueda, filtros y página. Preparación y liquidación del seguro siguen accesibles desde «Acciones».
 **Kill-test:** si la tabla tiene scroll lateral en 390 o 768, o si el paginador no muestra número de página, C9 no está hecho.
@@ -604,12 +633,12 @@ Formato: `ID · qué · CA (binario) · DoD (comando)`. El estado vive en el `PL
 
 ---
 
-### C8 — Integración y recorrido completo (mañana, 3–4 h)
+### C8 — Integración y recorrido completo (mañana, 3–4 h) — **Justin**
 
 **Resultado observable:** `origin/mockup` contiene C0–C7 y C9 sin conflictos; el recorrido completo pasa en un solo Playwright vía `pw-guard`; `PENDIENTES-BACKEND.md` tiene P39–P42; `REPORTE-FINAL.md` y el daily de equipo existen en este repo.
 **Kill-test:** el recorrido completo verde con `--workers=1`; si no, C8 no cierra.
 
-**Archivos reservados:** los `// TODO C8` de C1–C7/C9 (subir tipos a los congelados, unificar clientes duplicados, `GET /charts/patients/:id/chart` limpio, enchufar `encounter-timeline` en `consultation` y `patient-chart`), `PENDIENTES-BACKEND.md`, `docs/trabajo/2026-09-25-encuentro-clinico/REPORTE-FINAL.md`, `playwright/clinica-c8-recorrido-completo.spec.ts`, `ESTADO-FRONTEND.md` (una entrada), `docs/index.md` (enlace); en este repo `repartos/2026-09-25/PromptNoche/Daily-Noche-2026-09-25.md` y `ActionLog.md`.
+**Archivos reservados:** los `// TODO C8` de C1–C7/C9 (subir tipos a los congelados, unificar clientes duplicados, `GET /charts/patients/:id/chart` limpio, enchufar `encounter-timeline` en `consultation` y `patient-chart`), `PENDIENTES-BACKEND.md`, `docs/trabajo/2026-09-25-encuentro-clinico/REPORTE-FINAL.md`, `playwright/clinica-c8-recorrido-completo.spec.ts`, `ESTADO-FRONTEND.md` (una entrada), `docs/index.md` (enlace); en este repo la sección «Paquete 3 — Encuentro clínico» de `repartos/2026-09-25/PromptNoche/Daily-Noche-2026-09-25.md` (las de Farmacia y Carga Masiva no se tocan) y `ActionLog.md`.
 
 | ID | Microtarea | CA | DoD |
 |---|---|---|---|
@@ -621,13 +650,13 @@ Formato: `ID · qué · CA (binario) · DoD (comando)`. El estado vive en el `PL
 | C8.H2.M3 | Barridos `mockup-barrido.spec.ts` y `mockup-click-sweep.spec.ts` vía `pw-guard`: sin `[mock] sin manejador` nuevos ni errores de consola nuevos | diff de `MOCKUP_MATRIX.md` | artefactos |
 | C8.H2.M4 | Revisores `visual-reviewer`, `frontend-reviewer`, `regression-auditor` sobre el conjunto; `critical-double-review` de las capturas finales | Cero BLOCKER/CRITICAL/HIGH | informe |
 | C8.H3.M1 | `PENDIENTES-BACKEND.md`: P39–P42 consolidados desde los `REPORTE.md` | Cuatro filas y cuatro secciones | `node scripts/check-doc-links.mjs` |
-| C8.H3.M2 | `REPORTE-FINAL.md` (Completado / A medias / Pendiente / Evidencia / No cubierto / Desvíos / Riesgos / Decisiones) con enlaces a los nueve `REPORTE.md`; daily de equipo en este repo con la tabla de avance por carril (`HECHO/total`, prohibido el % a ojo) y entrada en `ActionLog.md` | — | — |
+| C8.H3.M2 | `REPORTE-FINAL.md` (Completado / A medias / Pendiente / Evidencia / No cubierto / Desvíos / Riesgos / Decisiones) con enlaces a los nueve `REPORTE.md`; sección «Paquete 3 — Encuentro clínico» del daily de equipo de este repo (sin tocar las de Farmacia y Carga Masiva) con la tabla de avance por carril (`HECHO/total`, prohibido el % a ojo) y entrada en `ActionLog.md` | — | — |
 | C8.H3.M3 | Commits, `pull --rebase`, `git push origin HEAD:mockup`, PR `--base mockup`; PR `--base dev` **sólo si** el propietario lo pide (P39–P42 lo bloquean contra la API real); push de este repo a `main` | `origin/mockup` = HEAD; `origin/main` con el daily | `git log --oneline -3 origin/mockup` |
 
 ## 8. Convivencia nocturna (reglas duras)
 
 1. **Nada fuera de la lista reservada.** Si hace falta, `// TODO C8` en un archivo propio y nota en `REPORTE.md`. Ni «un cambio chiquito» en un tipo congelado.
-2. **Un servidor por carril, en su puerto; máximo 5 sesiones.** Antes de `yarn test`/`yarn build`: `Get-CimInstance Win32_Processor | Select LoadPercentage`; si > 85 %, esperar. `vitest` saturado da verde sin correr: exigir «N passed».
+2. **Un servidor por carril, en su puerto; en una misma máquina, nunca más de dos sesiones a la vez.** Antes de `yarn test`/`yarn build`: `Get-CimInstance Win32_Processor | Select LoadPercentage`; si > 85 %, esperar. `vitest` saturado da verde sin correr: exigir «N passed».
 3. **Tests acotados con `--include`**; la suite entera sólo C8.
 4. **Playwright sólo vía `pw-guard`**, en background, sin `networkidle`, con `data-testid` de §3.9. Un rojo legítimo se diagnostica, no se relanza (D-10).
 5. **Commits por archivo o microtarea, nunca `git add -A`.** `git diff --numstat` antes; un archivo con cambios ajenos queda fuera y se avisa. Nunca `prettier --write` sobre fixtures.
@@ -649,7 +678,7 @@ Formato: `ID · qué · CA (binario) · DoD (comando)`. El estado vive en el `PL
 - [ ] Sin `any`, `console.log`, `eslint-disable`, TODO propio (salvo `// TODO C8` declarado).
 - [ ] `REPORTE.md`: Completado / A medias / Pendiente / Evidencia / No cubierto / Desvíos / Riesgos / Decisiones / Pendiente de backend (texto listo) / `// TODO C8` dejados.
 - [ ] Commits en `origin/mockup` verificados + rama + PR (`pr-mergeable-gate`).
-- [ ] Daily `Cn-…/Cn-Daily-Noche-2026-09-25.md` en este repo, commiteado y pusheado a `main` (`git pull --rebase origin main` antes).
+- [ ] Sección «Carril C — Encuentro clínico · Cn» en tu daily personal `<Persona>/<Persona>-Daily-Noche-2026-09-25.md` (este repo), commiteada y pusheada a `main` (`git pull --rebase origin main` antes). Ese daily también lleva tus carriles de Farmacia y Carga Masiva: esas secciones no se tocan.
 - [ ] Mensaje a las otras sesiones.
 
 ## 10. Pendientes de backend que nacen esta noche (los consolida C8)
@@ -672,7 +701,7 @@ P24 (`indication_text`) sigue abierto; C5 lo referencia.
 | `GET /charts/patients/:id/chart` sin `entries` | C1 sobreescribe la ruta registrándola después (patrón del router documentado); C8 lo deja limpio. |
 | C2/C3 dependen de ids de notas de C1 | Ids deterministas acordados (`uuid('medical-note-<pid>-0')`); si C1 no llega, la UI dice «nota no disponible». |
 | C9 sin `category` porque C2 no llegó | Deriva el tipo en cliente por `categoryConceptId`. |
-| Máquina saturada, verde falso | Máx. 5 sesiones, un build a la vez, «N passed» obligatorio. |
+| Máquina saturada, verde falso (tres paquetes por persona esta noche) | Máx. dos sesiones por máquina, un build a la vez, «N passed» obligatorio. |
 | Playwright colgado | `pw-guard` mata y relanza sólo cuelgues e infraestructura; un rojo legítimo se diagnostica. |
 | Un carril toca la consulta «porque hacía falta» | Kill-test de C8 (`git log -- src/app/features/clinical-record/consultation` sólo con commits de C0) y regla 1 de §8. |
 | La API real rechaza todo esto (`forbidNonWhitelisted`) | Regla de la rama `mockup`: P39–P42 y no se lleva a `dev` sin backend. |

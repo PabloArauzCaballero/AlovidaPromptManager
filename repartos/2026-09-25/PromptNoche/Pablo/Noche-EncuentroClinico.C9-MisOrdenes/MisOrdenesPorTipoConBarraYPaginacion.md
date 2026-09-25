@@ -1,7 +1,7 @@
 # C9 — «Mis órdenes» del paciente: por tipo, con buscador, filtros, tabla sin scroll lateral y paginación (ADR-0015)
 
-> **Rol:** dueño de «Mis órdenes» del paciente · **Carril:** C9 · **Fecha:** 2026-09-25 · **Turno:** noche · **Ola B (entra primero)**
-> **Plan maestro:** [`PLAN-MAESTRO.md`](../PLAN-MAESTRO.md) — §0.2 (6), §0.3 D-9, §3.8, §5, §6, §7 C9
+> **Rol:** dueño de «Mis órdenes» del paciente · **Responsable:** Pablo · **Carril:** C9 · **Fecha:** 2026-09-25 · **Turno:** noche · **Ola B (entra primero)**
+> **Plan maestro:** [`PLAN-MAESTRO.md`](../../../../../docs/trabajo/2026-09-25-plan-y-reparto-encuentro-clinico/PLAN-MAESTRO.md) — §0.2 (6), §0.3 D-9, §3.8, §5, §6, §7 C9
 > **Literal del propietario:** «necesito que te asegures que esto aparecerá en el módulo de paciente como Mis órdenes ahora sí clasificado por el tipo por favor y con buscador y filtro con la disciplina de paginación que hemos documentado acá y con la máxima calidad que se exige».
 > **Referencia de implementación que ya cumple la disciplina:** `features/account/my-profile/work-history/**` («Dónde atiendo»: `app-filter-bar` + `app-data-table maxHeight` + `app-pagination` en cliente, `normalizarTexto`). Copiá el patrón, no la pantalla.
 
@@ -12,13 +12,14 @@
 | `REPO` | `mantra-core-health`. **Nada de backend, nada de mock** |
 | `TARGET_REF` | `origin/mockup` con C0 (ideal: también con C2, que te da `category` y 14 órdenes para el paciente demo; si C2 no llegó, seguís igual) |
 | `RAMA` | `claude/clinica-c9-mis-ordenes` |
-| `WORKTREE` | `C:/Users/DELL/Documents/Github/Alovida/wt-clinica-c9` |
+| `WORKTREE` | `<raíz de tus repos>/wt-clinica-c9` |
 | `PUERTO` | `4219` |
 | `ARCHIVOS RESERVADOS` | `src/app/features/account/diagnostic-orders/**` · `playwright/clinica-c9-mis-ordenes.spec.ts` · `docs/trabajo/2026-09-25-encuentro-clinico/c9/**` |
 | `ARCHIVOS DE OTROS` | `core/mock/handlers/diagnostics.handlers.ts` y `fixtures/clinica.ts` (C2) · `account/diagnostic-results/**` · `laboratory-directory/**` · `shared/components/organisms/{data-table,filter-bar}/**`, `molecules/{pagination,row-actions}/**` (piezas de la casa: si te falta algo, **se anota, no se toca**) · tipos congelados (C0) · `account/medical-record/**` (C6) |
 | `CUENTAS` | `paciente@alovida.mock` |
 | `DÓNDE SE PRUEBA` | `/my-account/diagnostic-orders` (menú «Mis órdenes») |
 | `LÍMITE DE RECURSOS` | un `yarn start`, un build/test a la vez, Playwright sólo vía `pw-guard` |
+| `TUS OTROS CARRILES ESTA NOCHE` | Farmacia: `Noche-Farmacia.CarritoYNavegacion` · Carga Masiva: `Noche-CargaMasiva.IntegracionYEntrega`. Sin cruces de archivos con ellos (verificado). Tu daily es uno solo (`Pablo-Daily-Noche-2026-09-25.md`): este carril va en su sección «Carril C — Encuentro clínico». |
 
 ## 1. Estándar y skills
 
@@ -69,7 +70,7 @@
 
 ## 7. Cierre
 
-Checklist §9. Commits `feat(mis-ordenes): pestañas por tipo, barra, tabla y paginación (ADR-0015)`, `test(mis-ordenes): …`. Push a `mockup` verificado + rama + PR (`--base mockup`, revisores `jsaldias39,PabloArauzCaballero`; en la descripción, la puntuación del `ui-quality-review` y los cinco viewports). `REPORTE.md` con lo que le faltó a las piezas compartidas, si algo. Daily `C9-MisOrdenes/C9-Daily-Noche-2026-09-25.md` aquí y push a `main`.
+Checklist §9. Commits `feat(mis-ordenes): pestañas por tipo, barra, tabla y paginación (ADR-0015)`, `test(mis-ordenes): …`. Push a `mockup` verificado + rama + PR (`--base mockup`, revisores `jsaldias39,PabloArauzCaballero`; en la descripción, la puntuación del `ui-quality-review` y los cinco viewports). `REPORTE.md` con lo que le faltó a las piezas compartidas, si algo. Sección «Carril C — Encuentro clínico · C9» de tu daily `Pablo/Pablo-Daily-Noche-2026-09-25.md` (sin tocar tus secciones de Farmacia y Carga Masiva) y push a `main`.
 
 ## 8. Lo que NO hacés
 

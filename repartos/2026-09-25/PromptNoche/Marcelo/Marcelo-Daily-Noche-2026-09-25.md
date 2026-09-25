@@ -182,3 +182,39 @@ dos horas (destraba a Itzan y a Justin del otro paquete). **Los dos empiezan pri
 Sugerencia de orden: Carril A H2 (una hora) → Carril B H1+Q-9 (paralelo posible si alternás mientras el PR de
 A H2 espera review/checks) → Carril B H7.S1–S2 (dependencia y fixtures, hora 2) → seguís cada uno según su
 propio orden interno. Si no llegás a los dos completos, decilo en este daily con cuál priorizaste y por qué.
+
+---
+
+## Carril C — Encuentro clínico (Paquete 3, agregado por el propietario): C0, C3
+
+> **AVANCE DEL CARRIL C: 0 / 33.** Sale de `microtareas HECHO / total`. `A MEDIAS` cuenta como no hecha. Se suma a tus carriles A y B, no los reemplaza.
+
+- Plan maestro del paquete: [`PLAN-MAESTRO.md`](../../../../docs/trabajo/2026-09-25-plan-y-reparto-encuentro-clinico/PLAN-MAESTRO.md) · Daily de equipo, sección «Paquete 3»: [`Daily-Noche-2026-09-25.md`](../Daily-Noche-2026-09-25.md)
+- Repo: `mantra-core-health` · Ref: `origin/mockup` · Corte de referencia `bf2c3545` → **el tuyo:** (reconsultalo y anotalo por carril)
+- Instalación del estándar: la misma de arriba (no la repitas; si abriste un worktree nuevo, fusioná `.claude/` sin pisar y pegá los tres números).
+- Cómo entra en tu noche: C0 bloquea a Itzan, Justin y Pablo: es lo primero de este paquete (≈3 h). Después C3. Cómo se ordena con tus carriles A y B lo fija el propietario; la sugerencia del plan es C0 apenas cierres la Ola 0 de Farmacia (H2), porque tres personas lo esperan.
+
+| Carril | Prompt | Corte propio | Rama | HECHO/total | Peldaño (regla 30) | PR | Push a `mockup` | Bloqueos / avisos |
+|---|---|---|---|---|---|---|---|---|
+| C0 · Contrato primero (tipos, conceptos, stubs, casillas, `pw-guard`) | [prompt](Noche-EncuentroClinico.C0-ContratoPrimero/ContratoPrimero.md) | | `claude/clinica-c0-base` | 0/21 | | | | |
+| C3 · Diagnóstico presuntivo → confirmado/rechazado; enfermedad activa | [prompt](Noche-EncuentroClinico.C3-Diagnostico/DiagnosticoPresuntivoConfirmarORechazar.md) | | `claude/clinica-c3-diagnostico` | 0/12 | | | | |
+
+### Lo que publicás para otros (con SHA + hora)
+
+(ver «Lo que destraba a otros» en la sección Paquete 3 del daily de equipo)
+
+### Baseline del worktree de este carril
+
+| Comando | Exit code | Rojos previos | Clase (regla 80.4) |
+|---|---|---|---|
+| `yarn lint` | | | |
+| `yarn typecheck` | | | |
+| `yarn test --watch=false --include=<mis carpetas>` | | | |
+
+### Doble revisión crítica de las capturas (regla 35)
+
+(una entrada por captura Playwright: primera mirada · segunda mirada adversarial · qué se corrigió)
+
+### Cierre
+
+- PR: · Push a `mockup` verificado: · `REPORTE.md`: · Pendiente de backend redactado: · `// TODO C8` dejados:

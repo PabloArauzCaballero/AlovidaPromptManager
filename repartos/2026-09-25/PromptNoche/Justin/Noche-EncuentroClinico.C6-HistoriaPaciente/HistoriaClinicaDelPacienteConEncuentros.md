@@ -1,7 +1,7 @@
 # C6 — Historia clínica del paciente: en estudio, enfermedades activas, históricos y la línea de cada encuentro
 
-> **Rol:** dueño de «Mi historia clínica» (paciente) y del organismo compartido `encounter-timeline` · **Carril:** C6 · **Fecha:** 2026-09-25 · **Turno:** noche · **Ola B**
-> **Plan maestro:** [`PLAN-MAESTRO.md`](../PLAN-MAESTRO.md) — §0.1, §0.2 (5), §0.3 D-6, §2, §3.7, §5, §6, §7 C6
+> **Rol:** dueño de «Mi historia clínica» (paciente) y del organismo compartido `encounter-timeline` · **Responsable:** Justin · **Carril:** C6 · **Fecha:** 2026-09-25 · **Turno:** noche · **Ola B**
+> **Plan maestro:** [`PLAN-MAESTRO.md`](../../../../../docs/trabajo/2026-09-25-plan-y-reparto-encuentro-clinico/PLAN-MAESTRO.md) — §0.1, §0.2 (5), §0.3 D-6, §2, §3.7, §5, §6, §7 C6
 > **Literal del propietario:** «esto activa una enfermedad en el paciente que tiene una duración específica, que … aparece en su historia clínica como diagnósticos históricos». Y el principio: cada hecho es un encuentro entre dos entidades — el paciente lo tiene que ver así.
 
 ## 0. Ficha de asignación
@@ -11,13 +11,14 @@
 | `REPO` | `mantra-core-health`. **Nada de backend** |
 | `TARGET_REF` | `origin/mockup` con el commit de C0 (y, si ya están, los de C1–C4: `git log --oneline -20 origin/mockup`) |
 | `RAMA` | `claude/clinica-c6-historia-paciente` |
-| `WORKTREE` | `C:/Users/DELL/Documents/Github/Alovida/wt-clinica-c6` |
+| `WORKTREE` | `<raíz de tus repos>/wt-clinica-c6` |
 | `PUERTO` | `4216` |
 | `ARCHIVOS RESERVADOS` | `src/app/features/account/medical-record/**` (menos `where-to-buy/**`) · `shared/components/organisms/encounter-timeline/**` (nuevo) · `shared/utils/clinical-pdf/from-summary.ts` y `historia*.ts` (**sólo** secciones nuevas de la historia) · `playwright/clinica-c6-historia-paciente.spec.ts` · `playwright/nova-patient-experience.spec.ts` (sólo si tu cambio lo rompe) · `docs/trabajo/2026-09-25-encuentro-clinico/c6/**` |
 | `ARCHIVOS DE OTROS` | todo lo del doctor (C1–C5, C7) · clientes de `core/data-access` (consumís `getSummary`, `getChart`, `searchBookings`, `getOwnOrders` tal como están) · `account/diagnostic-orders/**` (C9) · tipos congelados (C0) · la sección de receta del PDF (C5: si coincidís en una función, agregás otra y C8 unifica) |
 | `CUENTAS` | `paciente@alovida.mock` |
 | `DÓNDE SE PRUEBA` | `/my-account/medical-record` («Mi historia clínica»); `/design-system/stock` para el organismo |
 | `LÍMITE DE RECURSOS` | un `yarn start`, un build/test a la vez, Playwright sólo vía `pw-guard` |
+| `TUS OTROS CARRILES ESTA NOCHE` | Farmacia: `Noche-Farmacia.TiendaYReceta` · Carga Masiva: `Noche-CargaMasiva.PantallaDragAndDrop`. **Cruce en la carpeta `account/medical-record/`:** tu carril Farmacia reserva `where-to-buy/**` y este carril lo excluye. No toques `medical-record.{ts,html,css,spec.ts}` desde la rama de Farmacia ni `where-to-buy/**` desde ésta; nunca dos worktrees abiertos sobre la misma carpeta. Tu daily es uno solo (`Justin-Daily-Noche-2026-09-25.md`): este carril va en su sección «Carril C — Encuentro clínico». |
 
 ## 1. Estándar y skills
 
@@ -61,7 +62,7 @@ Regla 8: **una** `app-card` con `app-tabs` (Atenciones · Recetas · Alergias ·
 
 ## 7. Cierre
 
-Checklist §9. Commits `feat(historia-clinica): diagnósticos por estado y línea del encuentro`, `feat(shared): organismo encounter-timeline`, `feat(pdf): historia con diagnósticos y encuentros`. Push a `mockup` verificado + rama + PR. `REPORTE.md` con lo que se omitió porque C1–C4 no habían llegado (para C8). Daily `C6-HistoriaPaciente/C6-Daily-Noche-2026-09-25.md` aquí y push a `main`.
+Checklist §9. Commits `feat(historia-clinica): diagnósticos por estado y línea del encuentro`, `feat(shared): organismo encounter-timeline`, `feat(pdf): historia con diagnósticos y encuentros`. Push a `mockup` verificado + rama + PR. `REPORTE.md` con lo que se omitió porque C1–C4 no habían llegado (para C8). Sección «Carril C — Encuentro clínico · C6» de tu daily `Justin/Justin-Daily-Noche-2026-09-25.md` (sin tocar tus secciones de Farmacia y Carga Masiva) y push a `main`.
 
 ## 8. Lo que NO hacés
 

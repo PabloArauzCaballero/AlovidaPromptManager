@@ -1,7 +1,7 @@
 # C8 — Integración de la noche: mergear, resolver los `TODO C8`, recorrido completo y cierre documental
 
-> **Rol:** integrador · **Carril:** C8 · **Fecha:** 2026-09-26 (mañana) · **Depende de:** C1–C7 y C9 con PR abierto (los que no llegaron se integran igual hasta donde estén y se anota)
-> **Plan maestro:** [`PLAN-MAESTRO.md`](../PLAN-MAESTRO.md) — §4.3, §5, §6, §7 C8, §10
+> **Rol:** integrador · **Responsable:** Justin · **Carril:** C8 · **Fecha:** 2026-09-26 (mañana) · **Depende de:** C1–C7 y C9 con PR abierto (los que no llegaron se integran igual hasta donde estén y se anota)
+> **Plan maestro:** [`PLAN-MAESTRO.md`](../../../../../docs/trabajo/2026-09-25-plan-y-reparto-encuentro-clinico/PLAN-MAESTRO.md) — §4.3, §5, §6, §7 C8, §10
 
 ## 0. Ficha de asignación
 
@@ -10,11 +10,12 @@
 | `REPO` | `mantra-core-health`; y este repo (`AlovidaPromptManager`) para el daily de equipo y el `ActionLog.md` |
 | `TARGET_REF` | `origin/mockup` a la mañana (con lo que cada carril haya pusheado) |
 | `RAMA` | `claude/clinica-c8-integracion` |
-| `WORKTREE` | `C:/Users/DELL/Documents/Github/Alovida/wt-clinica-c8` |
+| `WORKTREE` | `<raíz de tus repos>/wt-clinica-c8` |
 | `PUERTO` | `4218` |
-| `ARCHIVOS RESERVADOS` | los `// TODO C8` dejados por C1–C7/C9 (subir tipos a los congelados, unificar clientes duplicados, `GET /charts/patients/:id/chart` limpio, montar `encounter-timeline` en `consultation` y `patient-chart`) · `PENDIENTES-BACKEND.md` · `docs/trabajo/2026-09-25-encuentro-clinico/REPORTE-FINAL.md` · `playwright/clinica-c8-recorrido-completo.spec.ts` · `ESTADO-FRONTEND.md` (una entrada) · `docs/index.md` (enlace) · en este repo: `repartos/2026-09-25/PromptNoche/Daily-Noche-2026-09-25.md` y `ActionLog.md` |
+| `ARCHIVOS RESERVADOS` | los `// TODO C8` dejados por C1–C7/C9 (subir tipos a los congelados, unificar clientes duplicados, `GET /charts/patients/:id/chart` limpio, montar `encounter-timeline` en `consultation` y `patient-chart`) · `PENDIENTES-BACKEND.md` · `docs/trabajo/2026-09-25-encuentro-clinico/REPORTE-FINAL.md` · `playwright/clinica-c8-recorrido-completo.spec.ts` · `ESTADO-FRONTEND.md` (una entrada) · `docs/index.md` (enlace) · en este repo: la sección «Paquete 3 — Encuentro clínico» de `repartos/2026-09-25/PromptNoche/Daily-Noche-2026-09-25.md` (las de Farmacia y Carga Masiva no se tocan) y `ActionLog.md` |
 | `CUENTAS` | `medica@alovida.mock`, `paciente@alovida.mock` |
 | `LÍMITE DE RECURSOS` | **sólo vos** corriendo builds y la suite entera; un `yarn start`; Playwright vía `pw-guard` |
+| `TUS OTROS CARRILES ESTA NOCHE` | Farmacia: `Noche-Farmacia.TiendaYReceta` · Carga Masiva: `Noche-CargaMasiva.PantallaDragAndDrop`. C8 va a la mañana, después de tus otros dos carriles. Sin cruces de archivos. Tu daily es uno solo (`Justin-Daily-Noche-2026-09-25.md`): este carril va en su sección «Carril C — Encuentro clínico». |
 
 ## 1. Estándar y skills
 
@@ -45,7 +46,7 @@
 | C8.H2.M3 | Barridos `mockup-barrido.spec.ts` y `mockup-click-sweep.spec.ts` vía `pw-guard`: sin `[mock] sin manejador` nuevos ni errores de consola nuevos | diff de `MOCKUP_MATRIX.md` contra el corte | artefactos |
 | C8.H2.M4 | Revisores sobre el conjunto; `critical-double-review` de las capturas finales | Cero BLOCKER/CRITICAL/HIGH | informe |
 | C8.H3.M1 | `PENDIENTES-BACKEND.md`: P39–P42 (tabla de cabecera + sección por pendiente con Modelo / DTO / Servicio / Estado del frontend, desde los `REPORTE.md`) | Cuatro filas y cuatro secciones | `node scripts/check-doc-links.mjs` |
-| C8.H3.M2 | `REPORTE-FINAL.md` + daily de equipo (tabla HECHO/total por carril, lo que destrabó a quién, incidentes) + entrada en `ActionLog.md` de este repo | — | — |
+| C8.H3.M2 | `REPORTE-FINAL.md` + sección «Paquete 3 — Encuentro clínico» del daily de equipo (tabla HECHO/total por carril, lo que destrabó a quién, incidentes) + entrada en `ActionLog.md` de este repo | — | — |
 | C8.H3.M3 | Commits, `pull --rebase`, `git push origin HEAD:mockup`, PR `--base mockup`; PR `--base dev` **sólo si** el propietario lo pide; push de este repo a `main` | `origin/mockup` = HEAD; `origin/main` con el daily | `git log --oneline -3 origin/mockup` |
 
 ## 5. Playwright del recorrido completo
@@ -56,4 +57,4 @@ médica → Mis citas → «Iniciar la consulta» → Nota médica (3 filas) →
 
 ## 6. Cierre
 
-Checklist §9 del plan. Commits `merge: carriles C1–C7 y C9 en integración`, `fix(integracion): …`, `docs(pendientes): P39–P42`, `docs(reporte): cierre de la noche del 2026-09-25`. Push a `mockup` verificado. En este repo: daily de equipo completo, `ActionLog.md` con la entrada de la noche (rama, paquete, qué se entregó, qué quedó), `git pull --rebase origin main && git push origin main`.
+Checklist §9 del plan. Commits `merge: carriles C1–C7 y C9 en integración`, `fix(integracion): …`, `docs(pendientes): P39–P42`, `docs(reporte): cierre de la noche del 2026-09-25`. Push a `mockup` verificado. En este repo: la sección «Paquete 3 — Encuentro clínico» del daily de equipo completa (sin tocar las de Farmacia y Carga Masiva), `ActionLog.md` con la entrada del cierre (rama, paquete, qué se entregó, qué quedó), `git pull --rebase origin main && git push origin main`.

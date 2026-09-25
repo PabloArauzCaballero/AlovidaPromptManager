@@ -1,7 +1,7 @@
 # C4 — Reconsulta: una cita real agendada desde la consulta, con fecha acordada con el paciente
 
-> **Rol:** dueño de la reconsulta (bloque, simulador de agenda, seed de reservas, sellos en agenda y Mis citas) · **Carril:** C4 · **Fecha:** 2026-09-25 · **Turno:** noche · **Ola A**
-> **Plan maestro:** [`PLAN-MAESTRO.md`](../PLAN-MAESTRO.md) — §0.2 (2c), §0.3 D-5, §2, §3.5, §5, §6, §7 C4
+> **Rol:** dueño de la reconsulta (bloque, simulador de agenda, seed de reservas, sellos en agenda y Mis citas) · **Responsable:** Justin · **Carril:** C4 · **Fecha:** 2026-09-25 · **Turno:** noche · **Ola A**
+> **Plan maestro:** [`PLAN-MAESTRO.md`](../../../../../docs/trabajo/2026-09-25-plan-y-reparto-encuentro-clinico/PLAN-MAESTRO.md) — §0.2 (2c), §0.3 D-5, §2, §3.5, §5, §6, §7 C4
 > **Literal del propietario:** «también agendar una orden de reconsulta para una fecha específica acordada con el paciente».
 
 ## 0. Ficha de asignación
@@ -11,13 +11,14 @@
 | `REPO` | `mantra-core-health`. **Nada de backend** |
 | `TARGET_REF` | `origin/mockup` con el commit de C0 |
 | `RAMA` | `claude/clinica-c4-reconsulta` |
-| `WORKTREE` | `C:/Users/DELL/Documents/Github/Alovida/wt-clinica-c4` |
+| `WORKTREE` | `<raíz de tus repos>/wt-clinica-c4` |
 | `PUERTO` | `4214` |
 | `ARCHIVOS RESERVADOS` | `src/app/features/clinical-record/patient-chart/follow-up-block/**` · `core/data-access/scheduling/scheduling.client.ts` (+ spec: **sólo** `createDirectAppointment` con `followUpOf` y lectura de `followUpOf`) · `core/mock/handlers/scheduling.handlers.ts` (+ spec) · `core/mock/fixtures/agenda.ts` (`ReservaSimulada.followUpOf`, seed de una reconsulta) · `features/agenda/agenda.{ts,html,css,spec.ts}` (**sólo** sello y `CitaVisible.reconsultaDe`) · `features/agenda/my-agenda/detalle-de-la-cita.ts` (+ spec) · `features/account/appointments/appointments.{ts,html,css,spec.ts}` (**sólo** sello y texto) · `playwright/clinica-c4-reconsulta.spec.ts` · `docs/trabajo/2026-09-25-encuentro-clinico/c4/**` |
 | `ARCHIVOS DE OTROS` | `booking-new`, `appointment-new`, `walk-in`, plantillas y cupos · «Completar la cita» (`agenda.ts:2376`, se conserva) · `consultation/**`, tipos congelados, `conceptos.ts` (C0) · todo lo clínico (C1–C3, C5) · `account/medical-record/**` (C6) |
 | `CUENTAS` | `medica@alovida.mock`, `paciente@alovida.mock` |
 | `DÓNDE SE PRUEBA` | consulta abierta desde `/schedule` → «Iniciar la consulta» (llega `?cita=`) → `consulta-casilla-reconsulta`; `/schedule` (Consultas médicas); `/my-account/appointments` (paciente) |
 | `LÍMITE DE RECURSOS` | un `yarn start`, un build/test a la vez, Playwright sólo vía `pw-guard` |
+| `TUS OTROS CARRILES ESTA NOCHE` | Farmacia: `Noche-Farmacia.TiendaYReceta` · Carga Masiva: `Noche-CargaMasiva.PantallaDragAndDrop`. Sin cruces de archivos con ellos (verificado). Tu daily es uno solo (`Justin-Daily-Noche-2026-09-25.md`): este carril va en su sección «Carril C — Encuentro clínico». |
 
 ## 1. Estándar y skills
 
@@ -69,7 +70,7 @@ Reutilizar `app-date-picker` (organismo) o el `app-appointment-calendar` de `acc
 
 ## 7. Cierre
 
-Checklist §9. Commits `feat(reconsulta): …`, `feat(mock): cita directa con followUpOf`, `feat(agenda): sello de reconsulta`, `feat(mis-citas): sello de reconsulta`. Push a `mockup` verificado + rama + PR. `REPORTE.md` con **P42** listo para pegar (`follow_up_of_booking_id`, `ACT_FOLLOW_UP`, regla «una por cita», `BookingItemDto`). Daily `C4-Reconsulta/C4-Daily-Noche-2026-09-25.md` aquí y push a `main`. `SendMessage`: «C4: `followUpOf` en `GET /scheduling/bookings` en origin/mockup @ <sha>» (C6 lo usa).
+Checklist §9. Commits `feat(reconsulta): …`, `feat(mock): cita directa con followUpOf`, `feat(agenda): sello de reconsulta`, `feat(mis-citas): sello de reconsulta`. Push a `mockup` verificado + rama + PR. `REPORTE.md` con **P42** listo para pegar (`follow_up_of_booking_id`, `ACT_FOLLOW_UP`, regla «una por cita», `BookingItemDto`). Sección «Carril C — Encuentro clínico · C4» de tu daily `Justin/Justin-Daily-Noche-2026-09-25.md` (sin tocar tus secciones de Farmacia y Carga Masiva) y push a `main`. Aviso al equipo (`SendMessage` si comparten máquina; si no, por el canal del equipo): «C4: `followUpOf` en `GET /scheduling/bookings` en origin/mockup @ <sha>» (C6 lo usa).
 
 ## 8. Lo que NO hacés
 

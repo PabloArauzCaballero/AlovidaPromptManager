@@ -179,3 +179,40 @@ final. Por eso el orden real de tu noche es: Farmacia H2 (Ola 0, 1 h) → altern
 revisar `git fetch` de los cuatro carriles de Carga Masiva cada vez que cerrás una microtarea propia de
 cualquiera de los dos. El kill-test del Carril B y el cierre de ambos PR van al final de la noche. Si no llegás
 a los dos completos, decilo en este daily con cuál priorizaste y por qué.
+
+---
+
+## Carril C — Encuentro clínico (Paquete 3, agregado por el propietario): C9, C5, C7
+
+> **AVANCE DEL CARRIL C: 0 / 27.** Sale de `microtareas HECHO / total`. `A MEDIAS` cuenta como no hecha. Se suma a tus carriles A y B, no los reemplaza.
+
+- Plan maestro del paquete: [`PLAN-MAESTRO.md`](../../../../docs/trabajo/2026-09-25-plan-y-reparto-encuentro-clinico/PLAN-MAESTRO.md) · Daily de equipo, sección «Paquete 3»: [`Daily-Noche-2026-09-25.md`](../Daily-Noche-2026-09-25.md)
+- Repo: `mantra-core-health` · Ref: `origin/mockup` · Corte de referencia `bf2c3545` → **el tuyo:** (reconsultalo y anotalo por carril)
+- Instalación del estándar: la misma de arriba (no la repitas; si abriste un worktree nuevo, fusioná `.claude/` sin pisar y pegá los tres números).
+- Cómo entra en tu noche: C9 primero (es lo que el propietario pidió ver), después C5 y C7. Cruce con tu carril A (Farmacia): reserva `core/navigation/**` entero y C7 cambia una línea de `navigation.map.ts`; hacelo en secuencia y anotá acá en qué rama quedó.
+
+| Carril | Prompt | Corte propio | Rama | HECHO/total | Peldaño (regla 30) | PR | Push a `mockup` | Bloqueos / avisos |
+|---|---|---|---|---|---|---|---|---|
+| C9 · «Mis órdenes» por tipo con barra y paginación | [prompt](Noche-EncuentroClinico.C9-MisOrdenes/MisOrdenesPorTipoConBarraYPaginacion.md) | | `claude/clinica-c9-mis-ordenes` | 0/10 | | | | |
+| C5 · Receta ligada a diagnóstico confirmado o motivo | [prompt](Noche-EncuentroClinico.C5-Receta/RecetaLigadaADiagnosticoConfirmadoOMotivo.md) | | `claude/clinica-c5-receta` | 0/9 | | | | |
+| C7 · Homogeneización de nombres y «Notas médicas» | [prompt](Noche-EncuentroClinico.C7-Nombres/HomogeneizacionDeNombresYNotasMedicas.md) | | `claude/clinica-c7-nombres` | 0/8 | | | | |
+
+### Lo que publicás para otros (con SHA + hora)
+
+(ver «Lo que destraba a otros» en la sección Paquete 3 del daily de equipo)
+
+### Baseline del worktree de este carril
+
+| Comando | Exit code | Rojos previos | Clase (regla 80.4) |
+|---|---|---|---|
+| `yarn lint` | | | |
+| `yarn typecheck` | | | |
+| `yarn test --watch=false --include=<mis carpetas>` | | | |
+
+### Doble revisión crítica de las capturas (regla 35)
+
+(una entrada por captura Playwright: primera mirada · segunda mirada adversarial · qué se corrigió)
+
+### Cierre
+
+- PR: · Push a `mockup` verificado: · `REPORTE.md`: · Pendiente de backend redactado: · `// TODO C8` dejados:

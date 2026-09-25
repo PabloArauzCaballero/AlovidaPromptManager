@@ -16,6 +16,7 @@
 > carril ejecute.
 
 - **Turno:** noche · **Fecha:** 2026-09-25
+- **Paquete 3, agregado después del reparto por pedido del propietario:** «El encuentro clínico doctor–paciente» — diez carriles (113 microtareas) repartidos entre las mismas cuatro personas, **sin Ender**. Se suma a los dos paquetes de arriba, no los reemplaza; su sección está al final de este daily.
 
 ## Paquete 1 — Farmacia como tienda (ecommerce)
 
@@ -266,3 +267,69 @@ trabaja con él) o una acción destructiva sobre algo compartido (no hay ninguna
 | Marcelo | 0 / 30 | 0 / 98 | **0 / 128** | — | — | — | |
 | Itzan | 0 / 45 | 0 / 109 | **0 / 154** | — | — | — | |
 | **Total** | **0 / 159** | **0 / 334** | **0 / 493** | el más bajo | | | |
+
+---
+
+## Paquete 3 — El encuentro clínico doctor–paciente (agregado por el propietario la misma noche)
+
+- **Paquete fuente:** el pedido del propietario del 2026-09-25: «cada hecho es un encuentro entre dos entidades»; ahora el par doctor–paciente: nota médica clave/valor por cita, orden de análisis (laboratorio / imagenología / otro) a partir de las notas, diagnóstico presuntivo, reconsulta con fecha, confirmar o rechazar con motivo y evidencia, receta ligada a un diagnóstico confirmado o a un motivo, enfermedad activa e historia clínica con diagnósticos históricos, nombres homogéneos, y «Mis órdenes» del paciente por tipo con buscador, filtros y paginación (ADR-0015).
+- **Plan maestro (modelo, glosario, contratos simulados, reparto, calidad, guardián de Playwright):** [`PLAN-MAESTRO.md`](../../../docs/trabajo/2026-09-25-plan-y-reparto-encuentro-clinico/PLAN-MAESTRO.md)
+- **Repo de destino:** `alovida/mantra-core-health` · Ref: `origin/mockup` · **Corte: `bf2c3545`** (PR #660). **La API no se toca**: lo que falta se simula y queda como P39–P42.
+- Peldaño de evidencia del reparto: **`DISCOVERED`** (regla 30): se leyó el código de las dos ramas y el simulador; **no se ejecutó nada del plan**.
+- **Convivencia con los paquetes 1 y 2:** se cruzaron las listas de archivos reservados de los ocho prompts de arriba contra las de estos diez carriles: **ningún archivo compartido entre personas distintas**; dos cruces dentro de la misma persona (Pablo: `core/navigation/**`; Justin: carpeta `account/medical-record/`), resueltos en secuencia (§4.6 del plan). `app.routes.ts` queda congelado para este paquete.
+
+### Los cuatro hechos que ordenan este paquete
+
+1. **C0 va primero y solo** (Marcelo, ≈3 h): tipos, conceptos, mudanzas de handlers, casillas de la consulta, stubs, `diagnosisStateOf` y `scripts/pw-guard.mjs`. Cuando está en `origin/mockup`, los otros nueve carriles compilan contra eso. Mientras tanto cada uno adelanta lo de §4.5 del plan.
+2. **Después de C0 nadie espera a nadie:** listas de archivos reservados disjuntas; los cruces entre carriles son ids en texto (`basedOnNoteIds`, `basedOn.noteId`, `indicationConditionId`, `followUpOf.encounterId`); lo que otro carril no llegó a publicar se deriva o se omite sin romper.
+3. **Playwright nunca a pelo:** todo corre por `pw-guard`, que mata y relanza sólo cuelgues e infraestructura; un rojo legítimo se diagnostica (`e2e-failure-triage`), no se relanza.
+4. **Calidad con las skills de la casa y `NO_SELF_APPROVAL`:** cada carril carga las skills de diseño y QA del estándar, respeta Regla 8 / ADR-0012 / ADR-0013 / ADR-0015 / M34, corre `critical-double-review` tras cada captura y cierra con `visual-reviewer` + `frontend-reviewer` (≥ 92, cero BLOCKER/CRITICAL/HIGH) y `pr-mergeable-gate`.
+
+### Quién tiene qué
+
+| Persona | Carriles (en este orden) | Prompts | Microtareas | Estado |
+|---|---|---|---|---|
+| **Marcelo** | C0 (contrato primero, bloquea a todos) → C3 | [C0 · Contrato primero](Marcelo/Noche-EncuentroClinico.C0-ContratoPrimero/ContratoPrimero.md) · [C3 · Diagnóstico presuntivo → confirmado/rechazado; enfermedad activa](Marcelo/Noche-EncuentroClinico.C3-Diagnostico/DiagnosticoPresuntivoConfirmarORechazar.md) | 21 + 12 = **33** | `TODO` |
+| **Itzan** | C1 → C2 | [C1 · Nota médica clave/valor](Itzan/Noche-EncuentroClinico.C1-NotasMedicas/NotaMedicaClaveValor.md) · [C2 · Orden de análisis desde la consulta](Itzan/Noche-EncuentroClinico.C2-OrdenesDeAnalisis/OrdenDeAnalisisDesdeLaConsulta.md) | 11 + 11 = **22** | `TODO` |
+| **Justin** | C4 → C6 → C8 (mañana) | [C4 · Reconsulta como cita real](Justin/Noche-EncuentroClinico.C4-Reconsulta/ReconsultaComoCitaReal.md) · [C6 · Historia clínica del paciente con encuentros](Justin/Noche-EncuentroClinico.C6-HistoriaPaciente/HistoriaClinicaDelPacienteConEncuentros.md) · [C8 · Integración y recorrido completo](Justin/Noche-EncuentroClinico.C8-Integracion/IntegracionYRecorridoCompleto.md) | 12 + 9 + 10 = **31** | `TODO` |
+| **Pablo** | C9 (lo que el propietario pidió ver) → C5 → C7 | [C9 · «Mis órdenes» por tipo con barra y paginación](Pablo/Noche-EncuentroClinico.C9-MisOrdenes/MisOrdenesPorTipoConBarraYPaginacion.md) · [C5 · Receta ligada a diagnóstico confirmado o motivo](Pablo/Noche-EncuentroClinico.C5-Receta/RecetaLigadaADiagnosticoConfirmadoOMotivo.md) · [C7 · Homogeneización de nombres y «Notas médicas»](Pablo/Noche-EncuentroClinico.C7-Nombres/HomogeneizacionDeNombresYNotasMedicas.md) | 10 + 9 + 8 = **27** | `TODO` |
+| **Ender** | — (sin carril esta noche, pedido del propietario) | — | 0 | — |
+| **Total** | | | **113** | |
+
+### Lo que destraba a otros (publicá temprano)
+
+| Qué | Quién | Para quién | Cuándo | Publicado (SHA + hora) |
+|---|---|---|---|---|
+| Contrato, casillas, stubs, `pw-guard` en `origin/mockup` | Marcelo (C0) | todos | primero, solo | |
+| `GET /charts/notes` con `entries` (ids `uuid('medical-note-<pid>-0')`) | Itzan (C1) | C2, C3, C6, C7 | primera mitad | |
+| `category` en `GET /diagnostic-results/me/orders` + 14 órdenes del paciente demo | Itzan (C2) | C9, C6 | primera mitad | |
+| `POST /clinical/conditions/:id/verification` | Marcelo (C3) | C5, C6 | primera mitad | |
+| `followUpOf` en `GET /scheduling/bookings` | Justin (C4) | C6 | primera mitad | |
+
+### Avance por carril (se llena al cerrar; `A MEDIAS` no suma)
+
+| Carril | Responsable | Corte propio (`origin/mockup @`) | Rama | HECHO/total | Peldaño | PR | Push a `mockup` | Bloqueos / avisos |
+|---|---|---|---|---|---|---|---|---|
+| C0 · Contrato primero | Marcelo | | `claude/clinica-c0-base` | 0/21 | | | | |
+| C3 · Diagnóstico | Marcelo | | `claude/clinica-c3-diagnostico` | 0/12 | | | | |
+| C1 · Nota médica | Itzan | | `claude/clinica-c1-notas-medicas` | 0/11 | | | | |
+| C2 · Orden de análisis | Itzan | | `claude/clinica-c2-ordenes-analisis` | 0/11 | | | | |
+| C4 · Reconsulta | Justin | | `claude/clinica-c4-reconsulta` | 0/12 | | | | |
+| C6 · Historia del paciente | Justin | | `claude/clinica-c6-historia-paciente` | 0/9 | | | | |
+| C8 · Integración | Justin | | `claude/clinica-c8-integracion` | 0/10 | | | | |
+| C9 · Mis órdenes | Pablo | | `claude/clinica-c9-mis-ordenes` | 0/10 | | | | |
+| C5 · Receta | Pablo | | `claude/clinica-c5-receta` | 0/9 | | | | |
+| C7 · Nombres | Pablo | | `claude/clinica-c7-nombres` | 0/8 | | | | |
+
+### Pendientes de backend que nacen de este paquete (C8 los pasa a `PENDIENTES-BACKEND.md` del front)
+
+| # | Carril | En una línea |
+|---|---|---|
+| P39 | C1 | filas clave/valor de la nota médica (`entries_json` en `chart.clinical_note_versions`) |
+| P40 | C2 | `based_on_note_ids` y `category` textual en `POST /clinical/service-requests` y sus lecturas; concepto `SR_OTHER` |
+| P41 | C3 | estados `COND_PROVISIONAL` / `COND_REFUTED`, `POST /clinical/conditions/:id/verification` con motivo y evidencia, regla de activación |
+| P42 | C4 | `follow_up_of_booking_id` en la reserva, `ACT_FOLLOW_UP` en la cita directa, «una reconsulta futura por cita» |
+
+### Incidentes de este paquete
+
+(quién, qué, cómo se resolvió, a qué hora)

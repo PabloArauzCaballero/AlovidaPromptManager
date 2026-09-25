@@ -1,7 +1,7 @@
 # C1 — Nota médica: la tabla clave/valor que el doctor escribe en cada cita
 
-> **Rol:** dueño de la nota médica (bloque, cliente, simulador, seed) · **Carril:** C1 · **Fecha:** 2026-09-25 · **Turno:** noche · **Ola A**
-> **Plan maestro:** [`PLAN-MAESTRO.md`](../PLAN-MAESTRO.md) — §0.2 (1), §2, §3.2, §5, §6, §7 C1
+> **Rol:** dueño de la nota médica (bloque, cliente, simulador, seed) · **Responsable:** Itzan · **Carril:** C1 · **Fecha:** 2026-09-25 · **Turno:** noche · **Ola A**
+> **Plan maestro:** [`PLAN-MAESTRO.md`](../../../../../docs/trabajo/2026-09-25-plan-y-reparto-encuentro-clinico/PLAN-MAESTRO.md) — §0.2 (1), §2, §3.2, §5, §6, §7 C1
 > **Lo que el propietario dijo, literal:** «en cada cita es posible realizar una observación, en la cual el doctor escribe lo que se observa y cada observación tiene su respectivo ID … es una tabla de valores donde los campos son más dinámicos y laxos … llamadas notas médicas (aprovecha para homogeneizar todo)».
 
 ## 0. Ficha de asignación
@@ -11,13 +11,14 @@
 | `REPO` | `mantra-core-health` (frontend, Yarn 4 PnP). **Nada de backend** |
 | `TARGET_REF` | `origin/mockup` **con el commit de C0** («feat(clinica): contrato primero (C0)»). Verificalo con `git log --oneline -8 origin/mockup`; si no está, esperá el aviso de C0 |
 | `RAMA` | `claude/clinica-c1-notas-medicas` desde `origin/mockup` |
-| `WORKTREE` | `C:/Users/DELL/Documents/Github/Alovida/wt-clinica-c1` |
+| `WORKTREE` | `<raíz de tus repos>/wt-clinica-c1` |
 | `PUERTO` | `4211` |
 | `ARCHIVOS RESERVADOS` | `src/app/features/clinical-record/patient-chart/medical-note-block/**` · `core/data-access/chart-notes/chart-notes.client.ts` (+ `chart-notes.client.spec.ts` nuevo) · `core/mock/handlers/medical-notes.handlers.ts` (+ `.spec.ts` nuevo) · `core/mock/fixtures/medical-notes.ts` (nuevo) · `core/mock/faker/clinico.ts` (**sólo agregar** `filasDeNotaMedica(f)`) y su export en `core/mock/faker/index.ts` · `playwright/clinica-c1-nota-medica.spec.ts` · `docs/trabajo/2026-09-25-encuentro-clinico/c1/**` |
 | `ARCHIVOS DE OTROS` | `free-note-block/**`, `note-grid/**`, `observation-block/**`, `progress-notes/**` (C7) · `patient-chart.*` (C3) · `consultation/**`, tipos congelados, `conceptos.ts`, `handlers/index.ts` (C0) · `clinical.handlers.ts` (C5) · `diagnostics.handlers.ts` (C2) · `fixtures/clinica.ts` (C2/C3) |
 | `CUENTAS` | `medica@alovida.mock` (doctor) |
 | `DÓNDE SE PRUEBA` | `/schedule` → «Iniciar la consulta» → `/medical-records/<id>/consultation?cita=…` → casilla «Nota médica» (`consulta-casilla-notas`) |
 | `LÍMITE DE RECURSOS` | un `yarn start`, un build/test a la vez, Playwright sólo vía `pw-guard` |
+| `TUS OTROS CARRILES ESTA NOCHE` | Farmacia: `Noche-Farmacia.PaginaDeFarmaciaYQA` · Carga Masiva (API): `Noche-CargaMasiva.MotorDryRunIdempotencia`. Sin cruces de archivos con ellos (verificado). Tu daily es uno solo (`Itzan-Daily-Noche-2026-09-25.md`): este carril va en su sección «Carril C — Encuentro clínico». |
 
 ## 1. Antes de escribir una línea — estándar y skills
 
@@ -76,7 +77,7 @@ Corrélo con `run_in_background: true` y esperá la notificación. Recorrido: lo
 
 ## 7. Cierre
 
-Checklist §9 del plan completo. Commits: `feat(nota-medica): …`, `feat(mock): notas médicas con filas clave/valor`, `test(nota-medica): …`. `git pull --rebase origin mockup && git push origin HEAD:mockup` verificado; `gh pr create --base mockup --reviewer jsaldias39,PabloArauzCaballero`. `REPORTE.md` con la sección **P39** lista para pegar en `PENDIENTES-BACKEND.md` (modelo: `entries_json jsonb` en `chart.clinical_note_versions`; DTOs; lectura en chart y en `GET /charts/notes`; estado del frontend). Daily `C1-NotasMedicas/C1-Daily-Noche-2026-09-25.md` aquí, `git pull --rebase origin main && git push origin main`. `SendMessage`: «C1: `GET /charts/notes` con `entries` en origin/mockup @ <sha>».
+Checklist §9 del plan completo. Commits: `feat(nota-medica): …`, `feat(mock): notas médicas con filas clave/valor`, `test(nota-medica): …`. `git pull --rebase origin mockup && git push origin HEAD:mockup` verificado; `gh pr create --base mockup --reviewer jsaldias39,PabloArauzCaballero`. `REPORTE.md` con la sección **P39** lista para pegar en `PENDIENTES-BACKEND.md` (modelo: `entries_json jsonb` en `chart.clinical_note_versions`; DTOs; lectura en chart y en `GET /charts/notes`; estado del frontend). Sección «Carril C — Encuentro clínico · C1» de tu daily `Itzan/Itzan-Daily-Noche-2026-09-25.md` (sin tocar tus secciones de Farmacia y Carga Masiva), `git pull --rebase origin main && git push origin main`. Aviso al equipo (`SendMessage` si comparten máquina; si no, por el canal del equipo): «C1: `GET /charts/notes` con `entries` en origin/mockup @ <sha>».
 
 ## 8. Lo que NO hacés
 

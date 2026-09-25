@@ -7,6 +7,19 @@ resumen de alto nivel para quien no quiere abrir carpeta por carpeta. Entradas n
 
 ---
 
+## 2026-09-25 — Claude (sesión de planificación) · "El encuentro clínico doctor–paciente" — Paquete 3 de la noche, repartido por persona
+
+**Rama:** `main` (este repo). **Reparto:** sección «Paquete 3» de [`repartos/2026-09-25/PromptNoche/Daily-Noche-2026-09-25.md`](repartos/2026-09-25/PromptNoche/Daily-Noche-2026-09-25.md) y un prompt por carril en la carpeta de cada persona (`Noche-EncuentroClinico.C*`). **Plan maestro:** [`docs/trabajo/2026-09-25-plan-y-reparto-encuentro-clinico/PLAN-MAESTRO.md`](docs/trabajo/2026-09-25-plan-y-reparto-encuentro-clinico/PLAN-MAESTRO.md). **Se suma a los paquetes Farmacia y Carga Masiva de la misma noche (abajo), sin reemplazarlos.** Ender fuera, por pedido del propietario.
+
+**Pedido del propietario:** «cada hecho es un encuentro entre dos entidades»; ahora el par doctor–paciente: nota médica clave/valor por cita, orden de análisis (laboratorio / imagenología / otro) a partir de las notas, diagnóstico presuntivo, reconsulta con fecha, confirmar o rechazar con motivo y evidencia (nota de qué cita, o qué análisis), receta siempre ligada a un diagnóstico confirmado o a un motivo plano, enfermedad activa con duración e historia clínica con diagnósticos históricos, nombres homogéneos. Ampliado la misma noche: «Mis órdenes» del paciente por tipo con buscador, filtros y paginación (ADR-0015); calidad visual garantizada con las skills de diseño y los revisores; Playwright que no se quede colgado (relanzar sólo cuelgues no legítimos); publicado en este repo y repartido por programador.
+
+### Qué se entregó
+
+- Plan maestro: principio y cadena confirmada, 10 decisiones, foto del corte (`origin/mockup @ bf2c3545`), glosario único, modelo y contratos simulados (P39–P42 como pendientes de backend), reparto C0 + C1–C7 + C9 + C8 con archivos reservados disjuntos, archivos congelados tras C0, qué se adelanta mientras C0 corre, convivencia verificada con los otros dos paquetes (ningún archivo compartido entre personas; dos cruces dentro de la misma persona), calidad exigida (skills por momento, gates, revisores, Regla 8, ADR-0012/0013/0015, M34), `scripts/pw-guard.mjs` (guardián de Playwright), convivencia nocturna y checklist de cierre.
+- Diez prompts listos para pegar: **Marcelo** C0 (contrato primero, bloquea a todos) y C3 · **Itzan** C1 y C2 · **Justin** C4, C6 y C8 (integración, mañana) · **Pablo** C9 (lo que el propietario pidió ver), C5 y C7. 113 microtareas (Marcelo 33 · Itzan 22 · Justin 31 · Pablo 27).
+- Sección «Paquete 3» en el daily de equipo y sección «Carril C» en el daily personal de cada uno, agregadas al final sin tocar lo que ya había.
+
+
 ## 2026-09-25 — Justin, plan y reparto del turno noche 2026-09-25 · "Farmacia como ecommerce"
 
 **Rama:** `justin/reparto-farmacia-ecommerce-2026-09-25` (este repo), publicada en `main` por pedido del propietario.

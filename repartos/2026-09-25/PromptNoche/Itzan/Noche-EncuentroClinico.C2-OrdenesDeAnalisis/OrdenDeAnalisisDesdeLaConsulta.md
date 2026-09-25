@@ -1,7 +1,7 @@
 # C2 — Orden de análisis desde la consulta: laboratorio, imagenología u otro, a partir de las notas
 
-> **Rol:** dueño de la orden de análisis (bloque, cliente, simulador de diagnóstico, seed de órdenes) · **Carril:** C2 · **Fecha:** 2026-09-25 · **Turno:** noche · **Ola A**
-> **Plan maestro:** [`PLAN-MAESTRO.md`](../PLAN-MAESTRO.md) — §0.2 (2a), §2, §3.3, §5, §6, §7 C2
+> **Rol:** dueño de la orden de análisis (bloque, cliente, simulador de diagnóstico, seed de órdenes) · **Responsable:** Itzan · **Carril:** C2 · **Fecha:** 2026-09-25 · **Turno:** noche · **Ola A**
+> **Plan maestro:** [`PLAN-MAESTRO.md`](../../../../../docs/trabajo/2026-09-25-plan-y-reparto-encuentro-clinico/PLAN-MAESTRO.md) — §0.2 (2a), §2, §3.3, §5, §6, §7 C2
 > **Literal del propietario:** «en base a estas observaciones … puede generar una orden de análisis clínico, que … puede ser imagenología, análisis de laboratorio u otro». Y C9 necesita de vos `category` en la lectura del paciente y una seed con volumen.
 
 ## 0. Ficha de asignación
@@ -11,13 +11,14 @@
 | `REPO` | `mantra-core-health`. **Nada de backend** |
 | `TARGET_REF` | `origin/mockup` con el commit de C0 (verificar con `git log --oneline -8 origin/mockup`) |
 | `RAMA` | `claude/clinica-c2-ordenes-analisis` |
-| `WORKTREE` | `C:/Users/DELL/Documents/Github/Alovida/wt-clinica-c2` |
+| `WORKTREE` | `<raíz de tus repos>/wt-clinica-c2` |
 | `PUERTO` | `4212` |
 | `ARCHIVOS RESERVADOS` | `src/app/features/clinical-record/patient-chart/analysis-order-block/**` (ya renombrado por C0) · `core/data-access/diagnostics/diagnostics.client.ts` (+ spec) · `core/mock/handlers/diagnostics.handlers.ts` (+ spec) · `core/mock/fixtures/clinica.ts` **sólo líneas 462-504** (`OrdenSimulada`, `ordenes`) · `features/diagnostics/**` («Laboratorio e imagen» del doctor) · `playwright/clinica-c2-orden-analisis.spec.ts` · `docs/trabajo/2026-09-25-encuentro-clinico/c2/**` |
 | `ARCHIVOS DE OTROS` | `account/diagnostic-orders/**` (C9) · `diagnostic-results/**` · `fixtures/clinica.ts` fuera de tu región (C3) · `medical-notes.handlers.ts`, `chart-notes.client.ts` (C1) · `consultation/**`, tipos congelados (C0) · `clinical.handlers.ts` (C5) |
 | `CUENTAS` | `medica@alovida.mock`; para verificar la lectura del paciente `paciente@alovida.mock` |
 | `DÓNDE SE PRUEBA` | consulta → casilla «Orden de análisis» (`consulta-casilla-ordenes`); `/diagnostics`; y `GET /diagnostic-results/me/orders` desde el spec del handler |
 | `LÍMITE DE RECURSOS` | un `yarn start`, un build/test a la vez, Playwright sólo vía `pw-guard` |
+| `TUS OTROS CARRILES ESTA NOCHE` | Farmacia: `Noche-Farmacia.PaginaDeFarmaciaYQA` · Carga Masiva (API): `Noche-CargaMasiva.MotorDryRunIdempotencia`. Sin cruces de archivos con ellos (verificado). Tu daily es uno solo (`Itzan-Daily-Noche-2026-09-25.md`): este carril va en su sección «Carril C — Encuentro clínico». |
 
 ## 1. Estándar y skills
 
@@ -65,7 +66,7 @@ Tipo con `app-segmented-control` (tres opciones excluyentes que cambian el catá
 
 ## 7. Cierre
 
-Checklist §9 del plan. Commits `feat(orden-analisis): …`, `feat(mock): órdenes con tipo y notas de base; seed del paciente demo`. Push a `mockup` verificado + rama + PR (`--base mockup`, revisores `jsaldias39,PabloArauzCaballero`). `REPORTE.md` con **P40** listo para pegar. Daily `C2-OrdenesDeAnalisis/C2-Daily-Noche-2026-09-25.md` aquí y push a `main`. `SendMessage`: «C2: `category` en las dos lecturas y seed del paciente demo en origin/mockup @ <sha>» (C9 lo espera).
+Checklist §9 del plan. Commits `feat(orden-analisis): …`, `feat(mock): órdenes con tipo y notas de base; seed del paciente demo`. Push a `mockup` verificado + rama + PR (`--base mockup`, revisores `jsaldias39,PabloArauzCaballero`). `REPORTE.md` con **P40** listo para pegar. Sección «Carril C — Encuentro clínico · C2» de tu daily `Itzan/Itzan-Daily-Noche-2026-09-25.md` (sin tocar tus secciones de Farmacia y Carga Masiva) y push a `main`. Aviso al equipo (`SendMessage` si comparten máquina; si no, por el canal del equipo): «C2: `category` en las dos lecturas y seed del paciente demo en origin/mockup @ <sha>» (C9 lo espera).
 
 ## 8. Lo que NO hacés
 

@@ -1,7 +1,7 @@
 # C7 — Homogeneización de nombres: una sola palabra por concepto, «Notas médicas» en el menú, y adiós a la hoja en blanco
 
-> **Rol:** dueño del glosario aplicado (§2 del plan) fuera de los archivos de C1–C6/C9, de «Evoluciones → Notas médicas», de `observation-block` («Medición») y del retiro de `free-note-block` · **Carril:** C7 · **Fecha:** 2026-09-25 · **Turno:** noche · **Ola B**
-> **Plan maestro:** [`PLAN-MAESTRO.md`](../PLAN-MAESTRO.md) — §2, §0.3 D-8, §5, §6, §7 C7
+> **Rol:** dueño del glosario aplicado (§2 del plan) fuera de los archivos de C1–C6/C9, de «Evoluciones → Notas médicas», de `observation-block` («Medición») y del retiro de `free-note-block` · **Responsable:** Pablo · **Carril:** C7 · **Fecha:** 2026-09-25 · **Turno:** noche · **Ola B**
+> **Plan maestro:** [`PLAN-MAESTRO.md`](../../../../../docs/trabajo/2026-09-25-plan-y-reparto-encuentro-clinico/PLAN-MAESTRO.md) — §2, §0.3 D-8, §5, §6, §7 C7
 > **Literal del propietario:** «aprovecha para homogeneizar todo por favor de los nombres y todo».
 
 ## 0. Ficha de asignación
@@ -11,13 +11,14 @@
 | `REPO` | `mantra-core-health`. **Nada de backend** |
 | `TARGET_REF` | `origin/mockup` con C0 (y los de la ola A que ya estén) |
 | `RAMA` | `claude/clinica-c7-nombres` |
-| `WORKTREE` | `C:/Users/DELL/Documents/Github/Alovida/wt-clinica-c7` |
+| `WORKTREE` | `<raíz de tus repos>/wt-clinica-c7` |
 | `PUERTO` | `4217` |
 | `ARCHIVOS RESERVADOS` | `src/app/core/navigation/navigation.map.ts` (**sólo** la línea del rótulo `'Evoluciones'`) · `features/progress-notes/**` · `features/clinical-record/patient-chart/free-note-block/**` (eliminar) · `features/clinical-record/patient-chart/note-grid/**` (→ `measurement-grid/**`) · `features/clinical-record/patient-chart/observation-block/**` · `features/clinical-record/patient-chart/care-plan-block/**` · `features/clinical-record/patient-chart/procedures-block/**` · `core/dev/toast-samples.ts` · `core/mock/faker/clinico.ts` (**sólo** renombrar `notaDeEvolucion`→`textoDeNotaMedica`; C1 agrega otra función en el mismo archivo, región distinta) y su export en `faker/index.ts` · `core/mock/aviso-ficha-medica.spec.ts` · `playwright/pdf-premium-evoluciones.spec.ts` (→ `clinica-c7-notas-medicas-pdf.spec.ts`) · `playwright/consulta-rejilla.spec.ts` · `playwright/formularios-cuadricula.spec.ts` · `docs/components/catalog.md` (fila de `free-note-block`) · `docs/trabajo/2026-09-25-encuentro-clinico/c7/**` |
 | `ARCHIVOS DE OTROS` | todo lo de C1–C6 y C9 (aunque contenga términos viejos: **se anota, no se toca**) · `booking-status.ts` duplicados (no es clínico: se anota) · rutas (`MIS_TURNOS_ROUTE` se queda) · `consultation/**`, tipos congelados (C0) |
 | `CUENTAS` | `medica@alovida.mock` |
 | `DÓNDE SE PRUEBA` | `/progress-notes` (menú «Notas médicas»); consulta → «Medición»; expediente |
 | `LÍMITE DE RECURSOS` | un `yarn start`, un build/test a la vez, Playwright sólo vía `pw-guard` |
+| `TUS OTROS CARRILES ESTA NOCHE` | Farmacia: `Noche-Farmacia.CarritoYNavegacion` · Carga Masiva: `Noche-CargaMasiva.IntegracionYEntrega`. **Cruce:** tu carril Farmacia reserva `src/app/core/navigation/**` entero y C7 cambia una línea de `navigation.map.ts` («Evoluciones» → «Notas médicas»). Hacé ese cambio en secuencia (nunca dos worktrees abiertos sobre ese archivo) y anotá en tu daily en qué rama quedó. Tu daily es uno solo (`Pablo-Daily-Noche-2026-09-25.md`): este carril va en su sección «Carril C — Encuentro clínico». |
 
 ## 1. Estándar y skills
 
@@ -60,7 +61,7 @@ La tabla §2 del plan, columna «Se retira», sobre **tus** archivos. Inventario
 
 ## 7. Cierre
 
-Checklist §9. Commits `refactor(nombres): …` por archivo o carpeta, `feat(notas-medicas): una fila por nota con barra y paginación`, `chore(expediente): retirar free-note-block`. Push a `mockup` verificado + rama + PR. `REPORTE.md` con la lista archivo/línea/dueño de lo que quedó fuera. Daily `C7-Nombres/C7-Daily-Noche-2026-09-25.md` aquí y push a `main`.
+Checklist §9. Commits `refactor(nombres): …` por archivo o carpeta, `feat(notas-medicas): una fila por nota con barra y paginación`, `chore(expediente): retirar free-note-block`. Push a `mockup` verificado + rama + PR. `REPORTE.md` con la lista archivo/línea/dueño de lo que quedó fuera. Sección «Carril C — Encuentro clínico · C7» de tu daily `Pablo/Pablo-Daily-Noche-2026-09-25.md` (sin tocar tus secciones de Farmacia y Carga Masiva) y push a `main`.
 
 ## 8. Lo que NO hacés
 

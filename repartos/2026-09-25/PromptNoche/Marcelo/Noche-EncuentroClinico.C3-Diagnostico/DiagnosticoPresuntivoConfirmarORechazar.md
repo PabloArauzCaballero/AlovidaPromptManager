@@ -1,7 +1,7 @@
 # C3 — Diagnóstico: nace presuntivo, se confirma o rechaza con motivo y evidencia, y activa la enfermedad
 
-> **Rol:** dueño del diagnóstico (bloque, modal de verificación, simulador de verificación, seed de condiciones) y del expediente del doctor · **Carril:** C3 · **Fecha:** 2026-09-25 · **Turno:** noche · **Ola A**
-> **Plan maestro:** [`PLAN-MAESTRO.md`](../PLAN-MAESTRO.md) — §0.2 (2b, 3, 5), §0.3 D-1/D-2/D-6, §2, §3.4, §5, §6, §7 C3
+> **Rol:** dueño del diagnóstico (bloque, modal de verificación, simulador de verificación, seed de condiciones) y del expediente del doctor · **Responsable:** Marcelo · **Carril:** C3 · **Fecha:** 2026-09-25 · **Turno:** noche · **Ola A**
+> **Plan maestro:** [`PLAN-MAESTRO.md`](../../../../../docs/trabajo/2026-09-25-plan-y-reparto-encuentro-clinico/PLAN-MAESTRO.md) — §0.2 (2b, 3, 5), §0.3 D-1/D-2/D-6, §2, §3.4, §5, §6, §7 C3
 > **Literal del propietario:** «un diagnóstico se puede confirmar o rechazar, pero debe haber la opción de adjuntar esto como motivo de decisión: simple observación y cuál observación asociada a qué cita o análisis médico … esto activa una enfermedad en el paciente que tiene una duración específica, que … aparece en su historia clínica como diagnósticos históricos».
 
 ## 0. Ficha de asignación
@@ -11,13 +11,14 @@
 | `REPO` | `mantra-core-health`. **Nada de backend** |
 | `TARGET_REF` | `origin/mockup` con el commit de C0 |
 | `RAMA` | `claude/clinica-c3-diagnostico` |
-| `WORKTREE` | `C:/Users/DELL/Documents/Github/Alovida/wt-clinica-c3` |
+| `WORKTREE` | `<raíz de tus repos>/wt-clinica-c3` |
 | `PUERTO` | `4213` |
 | `ARCHIVOS RESERVADOS` | `src/app/features/clinical-record/patient-chart/diagnosis-block/**` · `…/patient-chart/diagnosis-verify-dialog/**` (nuevo) · `…/patient-chart/patient-chart.{ts,html,css,spec.ts}` · `…/patient-chart/demo-presets.ts` · `core/data-access/clinical/clinical.client.ts` (+ spec: **sólo agregar** `verifyCondition` y el default provisional en `createCondition`) · `core/mock/handlers/diagnosis-verification.handlers.ts` (+ `.spec.ts` nuevo) · `core/mock/fixtures/clinica.ts` **sólo líneas 33-52 y 227-245** (`CondicionSimulada`, `condiciones`) · `playwright/clinica-c3-diagnostico.spec.ts` · `playwright/diagnostico-que-se-ve.spec.ts` · `playwright/expediente-pestanas-navegador.spec.ts` (sólo si tu cambio de pestaña lo rompe) · `docs/trabajo/2026-09-25-encuentro-clinico/c3/**` |
 | `ARCHIVOS DE OTROS` | `medication-block/**` (C5) · `care-plan-block/**` (C7) · `account/medical-record/**` (C6) · `clinical.handlers.ts` (C5; `change-status` se conserva) · `fixtures/clinica.ts` fuera de tus regiones (C2) · `consultation/**`, tipos congelados, `shared/clinical/diagnosis-state.ts` (C0) |
 | `CUENTAS` | `medica@alovida.mock` |
 | `DÓNDE SE PRUEBA` | consulta → `consulta-casilla-diagnosticos`; expediente `/medical-records/<id>` → pestaña «Diagnósticos» y tarjeta «Enfermedades activas» |
 | `LÍMITE DE RECURSOS` | un `yarn start`, un build/test a la vez, Playwright sólo vía `pw-guard` |
+| `TUS OTROS CARRILES ESTA NOCHE` | Farmacia: `Noche-Farmacia.DatosYContratoReal` · Carga Masiva: `Noche-CargaMasiva.CalidadE2EVisualYGates`. Sin cruces de archivos con ellos (verificado). C3 va después de C0. Tu daily es uno solo (`Marcelo-Daily-Noche-2026-09-25.md`): este carril va en su sección «Carril C — Encuentro clínico». |
 
 ## 1. Estándar y skills
 
@@ -70,7 +71,7 @@ Modal `app-content-dialog` «Confirmar el diagnóstico» / «Rechazar el diagnó
 
 ## 7. Cierre
 
-Checklist §9. Commits `feat(diagnostico): …`, `feat(mock): verificación del diagnóstico`, `feat(expediente): enfermedades activas y estados del diagnóstico`. Push a `mockup` verificado + rama + PR. `REPORTE.md` con **P41** listo para pegar (estados `COND_PROVISIONAL`/`COND_REFUTED`, endpoint, regla de activación, camino `.puml` → `gen_ddl.py` → `SQL/` → patch → `gen_entities.py`). Daily `C3-Diagnostico/C3-Daily-Noche-2026-09-25.md` aquí y push a `main`. `SendMessage`: «C3: verificación en origin/mockup @ <sha>» (C5 y C6 lo usan).
+Checklist §9. Commits `feat(diagnostico): …`, `feat(mock): verificación del diagnóstico`, `feat(expediente): enfermedades activas y estados del diagnóstico`. Push a `mockup` verificado + rama + PR. `REPORTE.md` con **P41** listo para pegar (estados `COND_PROVISIONAL`/`COND_REFUTED`, endpoint, regla de activación, camino `.puml` → `gen_ddl.py` → `SQL/` → patch → `gen_entities.py`). Sección «Carril C — Encuentro clínico · C3» de tu daily `Marcelo/Marcelo-Daily-Noche-2026-09-25.md` (sin tocar tus secciones de Farmacia y Carga Masiva) y push a `main`. Aviso al equipo (`SendMessage` si comparten máquina; si no, por el canal del equipo): «C3: verificación en origin/mockup @ <sha>» (C5 y C6 lo usan).
 
 ## 8. Lo que NO hacés
 

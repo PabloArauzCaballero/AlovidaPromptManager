@@ -1,7 +1,7 @@
 # C5 — Receta: siempre ligada a un diagnóstico confirmado, o con motivo plano; vincular después
 
-> **Rol:** dueño de la receta (bloque, reglas del simulador de recetas, sección Diagnóstico/Motivo del PDF) · **Carril:** C5 · **Fecha:** 2026-09-25 · **Turno:** noche · **Ola A**
-> **Plan maestro:** [`PLAN-MAESTRO.md`](../PLAN-MAESTRO.md) — §0.2 (4), §0.3 D-3, §2, §3.6, §5, §6, §7 C5
+> **Rol:** dueño de la receta (bloque, reglas del simulador de recetas, sección Diagnóstico/Motivo del PDF) · **Responsable:** Pablo · **Carril:** C5 · **Fecha:** 2026-09-25 · **Turno:** noche · **Ola A**
+> **Plan maestro:** [`PLAN-MAESTRO.md`](../../../../../docs/trabajo/2026-09-25-plan-y-reparto-encuentro-clinico/PLAN-MAESTRO.md) — §0.2 (4), §0.3 D-3, §2, §3.6, §5, §6, §7 C5
 > **Literal del propietario:** «en base a un diagnóstico realizado se da una receta médica … en todo momento se puede linkear a un diagnóstico confirmado o por motivo plano».
 
 ## 0. Ficha de asignación
@@ -11,13 +11,14 @@
 | `REPO` | `mantra-core-health`. **Nada de backend** |
 | `TARGET_REF` | `origin/mockup` con el commit de C0 |
 | `RAMA` | `claude/clinica-c5-receta` |
-| `WORKTREE` | `C:/Users/DELL/Documents/Github/Alovida/wt-clinica-c5` |
+| `WORKTREE` | `<raíz de tus repos>/wt-clinica-c5` |
 | `PUERTO` | `4215` |
 | `ARCHIVOS RESERVADOS` | `src/app/features/clinical-record/patient-chart/medication-block/**` · `core/mock/handlers/clinical.handlers.ts` (+ spec; **sólo** el bloque de `medication-requests`, líneas 299-349 tras las mudanzas de C0, y sus `attachments`) · `shared/utils/clinical-pdf/**` (**sólo** la sección Diagnóstico/Motivo de la receta) · `playwright/clinica-c5-receta.spec.ts` · `playwright/prescription-official-pdf.spec.ts` (ajustar) · `docs/trabajo/2026-09-25-encuentro-clinico/c5/**` |
 | `ARCHIVOS DE OTROS` | `diagnosis-block/**`, `patient-chart.*` (C3) · `where-to-buy/**` · favoritos (`misc.handlers.ts`) · `consultation/**`, tipos congelados (C0) · `medical-notes.handlers.ts` (C1) · `diagnostics.handlers.ts` (C2) · `account/medical-record/**` (C6; si la función del PDF de la historia coincide con la tuya, C6 agrega otra y C8 unifica) |
 | `CUENTAS` | `medica@alovida.mock` |
 | `DÓNDE SE PRUEBA` | consulta → `consulta-casilla-medicacion`; expediente → pestaña «Medicación» |
 | `LÍMITE DE RECURSOS` | un `yarn start`, un build/test a la vez, Playwright sólo vía `pw-guard` |
+| `TUS OTROS CARRILES ESTA NOCHE` | Farmacia: `Noche-Farmacia.CarritoYNavegacion` · Carga Masiva: `Noche-CargaMasiva.IntegracionYEntrega`. Sin cruces de archivos con ellos (verificado). Tu daily es uno solo (`Pablo-Daily-Noche-2026-09-25.md`): este carril va en su sección «Carril C — Encuentro clínico». |
 
 ## 1. Estándar y skills
 
@@ -62,7 +63,7 @@ En la consulta, «Receta»: «¿Para qué es esta receta?» lista **sólo diagn�
 
 ## 7. Cierre
 
-Checklist §9. Commits `feat(receta): sólo diagnósticos confirmados o motivo plano`, `feat(mock): reglas de la receta y edición del borrador`, `feat(pdf): diagnóstico o motivo en la receta`. Push a `mockup` verificado + rama + PR. `REPORTE.md` referencia P24 (no lo duplica) y anota si `/:id/edit` necesita algo más en la API. Daily `C5-Receta/C5-Daily-Noche-2026-09-25.md` aquí y push a `main`.
+Checklist §9. Commits `feat(receta): sólo diagnósticos confirmados o motivo plano`, `feat(mock): reglas de la receta y edición del borrador`, `feat(pdf): diagnóstico o motivo en la receta`. Push a `mockup` verificado + rama + PR. `REPORTE.md` referencia P24 (no lo duplica) y anota si `/:id/edit` necesita algo más en la API. Sección «Carril C — Encuentro clínico · C5» de tu daily `Pablo/Pablo-Daily-Noche-2026-09-25.md` (sin tocar tus secciones de Farmacia y Carga Masiva) y push a `main`.
 
 ## 8. Lo que NO hacés
 

@@ -158,3 +158,40 @@ Los dos son del mismo repo (`mantra-core-health`) pero en **worktrees y ramas se
 commit del Carril A con uno del Carril B. **No hay orden impuesto** (decisión del propietario: ambos se hacen).
 El Carril A tiene una precondición externa (Ola 0 de Pablo/Marcelo, hasta una hora); mientras esperás eso podés
 adelantar H1 del Carril B. Si el tiempo aprieta, decilo en este daily con qué carril priorizaste y por qué.
+
+---
+
+## Carril C — Encuentro clínico (Paquete 3, agregado por el propietario): C4, C6, C8
+
+> **AVANCE DEL CARRIL C: 0 / 31.** Sale de `microtareas HECHO / total`. `A MEDIAS` cuenta como no hecha. Se suma a tus carriles A y B, no los reemplaza.
+
+- Plan maestro del paquete: [`PLAN-MAESTRO.md`](../../../../docs/trabajo/2026-09-25-plan-y-reparto-encuentro-clinico/PLAN-MAESTRO.md) · Daily de equipo, sección «Paquete 3»: [`Daily-Noche-2026-09-25.md`](../Daily-Noche-2026-09-25.md)
+- Repo: `mantra-core-health` · Ref: `origin/mockup` · Corte de referencia `bf2c3545` → **el tuyo:** (reconsultalo y anotalo por carril)
+- Instalación del estándar: la misma de arriba (no la repitas; si abriste un worktree nuevo, fusioná `.claude/` sin pisar y pegá los tres números).
+- Cómo entra en tu noche: C4, después C6, y C8 a la mañana cuando los demás tengan PR. Cruce con tu carril A (Farmacia) en la carpeta `account/medical-record/`: C6 no entra en `where-to-buy/**`; Farmacia no entra en `medical-record.{ts,html,css,spec.ts}`.
+
+| Carril | Prompt | Corte propio | Rama | HECHO/total | Peldaño (regla 30) | PR | Push a `mockup` | Bloqueos / avisos |
+|---|---|---|---|---|---|---|---|---|
+| C4 · Reconsulta como cita real | [prompt](Noche-EncuentroClinico.C4-Reconsulta/ReconsultaComoCitaReal.md) | | `claude/clinica-c4-reconsulta` | 0/12 | | | | |
+| C6 · Historia clínica del paciente con encuentros | [prompt](Noche-EncuentroClinico.C6-HistoriaPaciente/HistoriaClinicaDelPacienteConEncuentros.md) | | `claude/clinica-c6-historia-paciente` | 0/9 | | | | |
+| C8 · Integración y recorrido completo (mañana) | [prompt](Noche-EncuentroClinico.C8-Integracion/IntegracionYRecorridoCompleto.md) | | `claude/clinica-c8-integracion` | 0/10 | | | | |
+
+### Lo que publicás para otros (con SHA + hora)
+
+(ver «Lo que destraba a otros» en la sección Paquete 3 del daily de equipo)
+
+### Baseline del worktree de este carril
+
+| Comando | Exit code | Rojos previos | Clase (regla 80.4) |
+|---|---|---|---|
+| `yarn lint` | | | |
+| `yarn typecheck` | | | |
+| `yarn test --watch=false --include=<mis carpetas>` | | | |
+
+### Doble revisión crítica de las capturas (regla 35)
+
+(una entrada por captura Playwright: primera mirada · segunda mirada adversarial · qué se corrigió)
+
+### Cierre
+
+- PR: · Push a `mockup` verificado: · `REPORTE.md`: · Pendiente de backend redactado: · `// TODO C8` dejados:
