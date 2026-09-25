@@ -43,6 +43,62 @@ cada prompt exige reproducirlo en runtime. Trabajo:
 
 ---
 
+## 2026-09-24 — Justin · "Cerrar el carril reserva y Cotizaciones sin frenos, y 6 rondas de revisión adversarial"
+
+**Ramas:** `justin/cierre-carril-reserva-cotizaciones-2026-09-24` (este repo). En
+`mantra-core-health`, dos tandas de PR:
+- **Código original** (H2+H3+H5+H6), por hito: [#630](https://github.com/mdavila-2001/mantra-core-health/pull/630)–[#635](https://github.com/mdavila-2001/mantra-core-health/pull/635).
+  **Se fusionaron el 24/09 a las 21:25 UTC, antes de que terminara la doble revisión adversarial**
+  (regla 35.1) — el estado que quedó en `mockup`/`dev` es el de la primera versión, sin las
+  correcciones que encontraron las rondas 1 a 5.
+- **Corrección post-fusión**, con esas correcciones: [#651](https://github.com/mdavila-2001/mantra-core-health/pull/651) → `mockup`,
+  [#652](https://github.com/mdavila-2001/mantra-core-health/pull/652) → `dev`. `MERGEABLE` los dos.
+
+**Avance del carril: 29 / 51 → 44 / 51 (86,3 %).** 15 `HECHO`, 1 `A MEDIAS`, 6 `DESCARTADO`.
+
+**Pedido:** terminar las 16 microtareas pendientes siguiendo
+[`CERRAR-EL-CARRIL-SIN-FRENOS.md`](repartos/2026-09-22/PromptNoche/Justin/CERRAR-EL-CARRIL-SIN-FRENOS.md):
+código primero, un PR por hito y la documentación al final.
+
+### Qué se avanzó
+
+- **Ficha del médico (R-02):** una lectura de cupos por sede, en paralelo, que cubre la semana y
+  el horizonte del próximo hueco. Se pasa de hasta 2N lecturas en dos tandas a N. Cada sede tiene
+  su propia carga y su propio error, con captura de los dos estados. Mediana hasta los cupos:
+  **992 ms** (antes 1428, después de #583 1108).
+- **Cotizaciones del paciente (N-02):** la pantalla era una lista fija con importes escritos en el
+  código. Ahora compone farmacias, catálogo diagnóstico y arancel de referencia, sin un número en
+  el código: UMA rotulado y nunca convertido, origen elegible, tarjetas en móvil / tabla en
+  escritorio, y sus siete estados (con datos, cargando, vacío propio, error, sin ubicación,
+  precio no publicado, fuente caída), todos con acción.
+- **Doble de farmacia:** leía `productIds` y el contrato usa `products`, así que la disponibilidad
+  de la maqueta no filtraba nada. Corregido.
+- **6 rondas de revisión adversarial (regla 35.1), 5 con hallazgo real:**
+  1. la captura «cargando» mostraba resultados, no carga;
+  2. **bloqueante** — la procedencia atribuía precios inventados del simulador a sedes con
+     **nombre real** («Farmacias Chávez», «DIACOR S.A.») como si los hubieran publicado
+     (regla 00 §2.1); corregido a «Precio de ejemplo de la maqueta: <sede> no lo publicó»;
+  3. en 390px los resultados seguían siendo una tabla de escritorio ilegible → tarjetas reales;
+  4. las tarjetas nuevas no se habían probado con UMA, precio no publicado ni sin distancia;
+  5. un defecto de encuadre en una captura (línea cortada bajo la barra fija);
+  6. **aprobó** el set final. Detalle completo, hallazgo por hallazgo, en
+     [`evidencia/doble-revision.md`](docs/trabajo/2026-09-24-cerrar-carril-reserva-cotizaciones/evidencia/doble-revision.md).
+- Contraste del enlace de acción en tema oscuro: 3,4:1 → 8,0–8,8:1 (WCAG AA).
+- **Regresión:** lint 249 = 249 contra la base; la suite completa tiene un único rojo, previo.
+- **Corrección de lo publicado:** las medianas de #610 en los dailies (1691 → 1163 y 1431 → 991)
+  pasan a las del `resumen.json` (1428 → 1108 y 1460 → 892).
+- **Registro del trabajo de la Mac mini** en ramas `justin/*` (#607, #608, #611, #612, #615,
+  #616), en el §7-bis del daily de Justin. No suma a este carril.
+
+### Lo que queda
+
+H2.S2.M5 está `A MEDIAS` porque la mejora es −31 % y no −50 %; lo que queda es render y chunks de
+Angular, no peticiones (0 peticiones de negocio en la Red del simulador). Los precios de
+diagnóstico de la maqueta son una fórmula sintética del doble, declarada en cada fila. El anillo
+de foco global (`--focus-ring` de `styles.css`, toda la app) mide 1,3–1,5:1, por debajo de WCAG
+1.4.11 — hallazgo de otro dueño (sistema de diseño), escalado, no corregido desde este carril.
+Detalle en el [reporte](docs/trabajo/2026-09-24-cerrar-carril-reserva-cotizaciones/REPORTE.md).
+
 ## 2026-09-24 — Justin · "Terminar el baseline comparable de Directorio y Reserva"
 
 **Ramas:** `justin/cerrar-baseline-comparable-reserva-2026-09-24` (este repo, apilada sobre la del
