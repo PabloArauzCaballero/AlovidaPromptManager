@@ -1,9 +1,11 @@
 # Justin — daily de la noche del 2026-09-25
 
-> **AVANCE COMBINADO: 116 / 140 — 82,9 %.** Sale de `microtareas HECHO / total`, sumando los **tres**
-> carriles de abajo (A 33/41 · B 60/68 · C 23/31). El encabezado del reparto decía «los dos carriles»
-> porque se escribió antes del Paquete 3; el Carril C se suma, no reemplaza (A+B solos: **93 / 109 —
-> 85,3 %**). `A MEDIAS` cuenta como **no hecha**. Prohibido el porcentaje estimado a ojo (regla 50 §5).
+> **AVANCE COMBINADO: 133 / 140 — 95,0 %.** Es el estado **después de la corrida de cierre** del
+> 2026-09-25 (A 39/41 · B 66/68 · C 28/31). Al terminar la noche era **116 / 140 — 82,9 %**
+> (A 33/41 · B 60/68 · C 23/31). Sale de `microtareas HECHO / total`, sumando los **tres** carriles
+> de abajo; el encabezado del reparto decía «los dos carriles» porque se escribió antes del
+> Paquete 3, y el Carril C se suma, no reemplaza. `A MEDIAS` cuenta como **no hecha**. Prohibido el
+> porcentaje estimado a ojo (regla 50 §5).
 
 - Daily de equipo: [`Daily-Noche-2026-09-25.md`](../Daily-Noche-2026-09-25.md) — **tres paquetes esta noche**, uno por sección de este documento.
 - **Los cinco PRs están MERGEADOS contra `mockup`.** Horas en UTC:
@@ -15,6 +17,58 @@
 | [#672](https://github.com/mdavila-2001/mantra-core-health/pull/672) | C · C4 reconsulta | `claude/clinica-c4-reconsulta` | 2026-09-25 16:49:59 | 10 / 12 |
 | [#678](https://github.com/mdavila-2001/mantra-core-health/pull/678) | C · C8 integración | `claude/clinica-c8-integracion` | 2026-09-25 17:07:50 | 7 / 10 |
 | [#675](https://github.com/mdavila-2001/mantra-core-health/pull/675) | A · Farmacia tienda y receta | `justin/farmacia-tienda-y-receta-2026-09-25` | 2026-09-25 17:15:41 | 33 / 41 |
+
+## Cierre de la tanda — corrida del 2026-09-25 con la máquina libre
+
+Todo lo que esa noche quedó `UNKNOWN` por no poder levantar un servidor se **observó**: hay 26
+capturas, contraste y Regla 8 **medidos**, tres specs de Playwright que nunca se habían ejecutado
+**ejecutados**, y la suite completa corrida y clasificada. **24 de las 29 microtareas abiertas,
+cerradas.**
+
+Trabajo y evidencia: **[PR #687](https://github.com/mdavila-2001/mantra-core-health/pull/687)** ·
+reporte de este repo: [`docs/trabajo/2026-09-25-justin-cierre-tanda/REPORTE.md`](../../../../docs/trabajo/2026-09-25-justin-cierre-tanda/REPORTE.md)
+
+| Carril | Antes | Ahora | Qué queda |
+|---|---|---|---|
+| A · Farmacia | 33 / 41 | **39 / 41** | 1 `EXTERNAL` (CI caído) · **1 defecto abierto**: el carrito |
+| B · Carga masiva | 60 / 68 | **66 / 68** | 1 `BLOQUEADO` (API real) · 1 parcial (lector de pantalla) |
+| C4 · Reconsulta | 10 / 12 | **11 / 12** | Espera la segunda pasada crítica |
+| C6 · Historia | 6 / 9 | **8 / 9** | 1 `BLOQUEADO`: su spec exige API viva |
+| C8 · Integración | 7 / 10 | **9 / 10** | Espera la segunda pasada crítica |
+
+### Cuatro defectos que sólo aparecen mirando
+
+**Corregidos en el PR #687:** el contraste de `.carga__nota`, que `axe` marcaba *serious* (4,27:1
+contra el mínimo AA de 4,5:1), y el docblock del spec de C8, que seguía diciendo «no se ejecutó»
+después de que lo corrieran 6/6.
+
+**Abiertos, con dueño:**
+
+1. **«Agregar la receta al carrito» no agrega nada** — botón habilitado, sin aviso, y el carrito
+   dice «Tu carrito está vacío». Los 46 unitarios pasan porque miran el *store*; el navegador mira
+   la pantalla. **→ Pablo** (el carrito y la cabecera son de la Ola 0).
+2. **Los sellos de reconsulta suben solos** — `2, 3, 4, 5` en cuatro cargas de «Mis citas» sin que
+   nadie agende; la captura a 375 muestra dos citas idénticas. **→ quien tenga `core/mock/`.**
+
+### Lo que hace falta de otros
+
+- **La segunda pasada crítica de las 26 capturas** — no puede ser propia (regla 35.1.6). Es lo
+  único que separa a C4 y C8 de su última microtarea.
+- **El cableado de `consulta-casilla-reconsulta`**: `FollowUpBlock` está escrito y **ninguna
+  plantilla lo monta**. Bloquea 3 casos de C4. Era de **C1**, que no se entregó.
+- **Itzan**: el endpoint de carga masiva **ya existe** en `origin/itzan/carga-masiva-motor-2026-09-25`,
+  sin mergear. El bloqueo cambió: antes no estaba escrito.
+
+### Lo que la corrida destapó del repo, que no es de este carril
+
+**La suite completa está en rojo: 53 fallos de 7 950**, y ninguno es de estos carriles — demostrado
+por bisección en siete cortes: verde hasta `#669`, rompe en **#670** (10) y suma en **#671** (38);
+uno más es el renombre de C7 que no actualizó su spec. Los 6 `check-*.mjs` en rojo **ya fallaban en
+el corte base**, y `lint` pasó de 6 a 19 errores durante la noche, en archivos ajenos. El **desborde
+a 375 px** que se veía en cuatro pantallas es **del armazón** (`div.app-header__derecha`), no del
+CSS de los carriles. `build` y `typecheck`: **exit 0**.
+
+---
 
 > [!warning] Lo que esta noche **no** tiene
 > **Ningún carril alcanzó `REGRESSION_VERIFIED`.** Los carriles A, B y C corrieron en paralelo en la
