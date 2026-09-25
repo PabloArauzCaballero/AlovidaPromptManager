@@ -203,6 +203,24 @@ AVANCE — página de farmacia y QA — <fase> — <ID de microtarea>
 >
 > **Para Justin:** por ahora, una sola opción en el selector.
 
+> ### ⚠️ El candado de estructura está rojo desde antes, y bloquea a todos
+>
+> `check_reparto.py` sale en **1 sobre `main` limpio**, sin ningún cambio encima. Los diez prompts del
+> Paquete 3 no traen la sección de instalación del estándar, el alcance OUT, el Definition of Done del hito
+> ni las tres capas de identificador:
+>
+> ```text
+> $ py -3 tools/check_reparto.py repartos/2026-09-25/
+> check_reparto: ESTRUCTURA INCOMPLETA en 2026-09-25
+>   - .../Itzan/Noche-EncuentroClinico.C1-NotasMedicas/NotaMedicaClaveValor.md: le FALTA la seccion 1 ...
+>   (diez archivos, uno por cada carril del Paquete 3)
+> exit=1
+> ```
+>
+> Verificado corriendo el mismo comando sobre `main` sin mis cambios: **da igual**. Así que mientras siga
+> así, todo PR al estándar sale con ese check en rojo, sea de quien sea y toque lo que toque. Ningún daily
+> ni reporte lo puede destrabar: hay que completar esos diez prompts.
+
 ### 1. Instalación del estándar — pegá la salida acá
 
 ```text
