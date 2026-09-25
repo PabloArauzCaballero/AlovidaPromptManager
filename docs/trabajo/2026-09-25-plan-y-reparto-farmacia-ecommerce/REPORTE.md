@@ -1,10 +1,10 @@
 # Reporte — Publicar el plan y el reparto de «Farmacia como ecommerce»
 
-> **AVANCE: 7 / 8 — 87,5 %.** ← la que falta (H1.S2.M3, el push a `main`) se cierra con la salida del push debajo.
+> **AVANCE: 8 / 8 — 100 %.**
 
-- Fecha: 2026-09-25 · Plan: [PLAN.md](./PLAN.md) · Rama: `justin/reparto-farmacia-ecommerce-2026-09-25`
-- Peldaño de evidencia alcanzado: **TESTED** (los candados que el CI exige corrieron en local y pasaron). El **plan** en sí queda en `DISCOVERED`: nada de él se ejecutó.
-- Avance: 7 / 8 (87,5 %) al escribir esto; ver «Publicación» al final.
+- Fecha: 2026-09-25 · Plan: [PLAN.md](./PLAN.md) · Rama: `justin/reparto-farmacia-ecommerce-2026-09-25` → publicada en `main`
+- Peldaño de evidencia alcanzado: **TESTED** (los candados que el CI exige corrieron en local y pasaron; el push a `main` está confirmado por el remoto). El **plan** en sí queda en `DISCOVERED`: nada de él se ejecutó.
+- Avance: 8 / 8 (100 %).
 
 ## Completado
 
@@ -16,7 +16,8 @@
 | H1.S1.M4 | Entrada en `ActionLog.md`, arriba | lectura | Entrada «2026-09-25 — Justin, plan y reparto…» antes de la del 24 |
 | H1.S2.M1 | Estructura del reparto | `python3 tools/check_reparto.py repartos/2026-09-25` · `python3 tools/check_reparto.py repartos/*/` | `check_reparto: OK, 2026-09-25 cumple la estructura obligatoria` · las cinco fechas OK (19, 20, 21, 22, 25) |
 | H1.S2.M2 | Skills citadas y espejo | `python3 tools/check_skills_citadas.py` · `python3 tools/sync_agents.py --check` | `check_skills_citadas: OK, 117 skill(s) distinta(s) citada(s), 0 inexistentes (de 179 en disco)` · `sync --check: OK, 198 archivo(s) en espejo, sin deriva` |
-| H1.S2.M4 | Camino alternativo si `main` rechaza el push | — | No hizo falta / hizo falta: ver «Publicación» |
+| H1.S2.M3 | Push a `main` | `git push origin HEAD:main` | `8d82f0b..3d4e4ac  HEAD -> main`. El remoto avisó `Bypassed rule violations for refs/heads/main: Required status check "Espejo sin deriva y candados en verde" is expected.` — el push entró por permiso de administrador; el check corre igual sobre `main` y sus tres candados ya pasaron en local (H1.S2.M1–M2) |
+| H1.S2.M4 | Camino alternativo si `main` rechaza el push | — | No hizo falta: el push directo entró. `DESCARTADO` por no necesario |
 
 ## A medias
 
@@ -24,13 +25,12 @@ Ninguna.
 
 ## Pendiente
 
-| ID | Qué | Qué falta |
-|---|---|---|
-| H1.S2.M3 | Push a `main` | La salida del `git push origin HEAD:main` se pega en «Publicación» al cerrar |
+Ninguna.
 
 ## Publicación
 
-Se completa al cerrar con el SHA en `origin/main` (o el número de PR si `main` rechazó el push directo por el check requerido «Espejo sin deriva y candados en verde»).
+- Commit **`3d4e4ac`** — «docs(reparto): plan y reparto «Farmacia como ecommerce» — 4 carriles sin Ender, 27 hitos, 159 microtareas» — en `origin/main` desde el 2026-09-25.
+- Este cierre del reporte va en un segundo commit, también a `main`.
 
 ## No cubierto
 
