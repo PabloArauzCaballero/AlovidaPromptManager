@@ -1,8 +1,8 @@
 # Daily de equipo — noche del 2026-09-22
 
 > **REPARTIDO: 5 / 5 carriles · 19 / 19 observaciones con dueño · 32 hitos · 64 subtareas · 319 microtareas.**
-> **AVANCE DEL TURNO: 87 / 319 — 27,3 %.** ← se llena al cerrar, con `microtareas HECHO / total`.
-> Pablo 45/68 · Itzan 0/93 · Justin 44/51 (cierre 2026-09-24, doble revisión de 6 rondas) · Ender 0/48 · Marcelo 0/59.
+> **AVANCE DEL TURNO: 131 / 319 — 41,1 %.** ← se llena al cerrar, con `microtareas HECHO / total`.
+> Pablo 45/68 · Itzan 0/93 · Justin 44/51 (cierre 2026-09-24, doble revisión de 6 rondas) · Ender 44/48 · Marcelo 0/59.
 > **`A MEDIAS` cuenta como no hecha. `DESCARTADO` no suma: se declara aparte con su motivo.**
 
 > **Estado:** `REPARTIDO` al 2026-09-22. Este documento se escribió **al repartir, antes del turno**;
@@ -230,7 +230,7 @@ Las 20 están con supuesto y dueño en el documento fuente. Las que **bloquean c
 | Pablo | 45 / 68 | 3 / 6 | H4.S2.M9 (teclado del modal, sin verificar; resto de H4.S2 HECHO) | ninguno | [Pablo-Daily-Noche-2026-09-22.md](Pablo/Pablo-Daily-Noche-2026-09-22.md) |
 | Itzan | __ / 93 | __ / 8 | | | [Itzan-Daily-Noche-2026-09-22.md](Itzan/Itzan-Daily-Noche-2026-09-22.md) |
 | Justin | 29 / 51 | 0 / 6 | 20 HECHO legados + 9 HECHO no solapados, publicados en #583: capturas por viewport/tema, teclado, gates locales, clic único y acción visible de disponibilidad. Las 6 de documentos son `DESCARTADO` por la decisión «Cotizaciones solamente». La verificación remota contra el doble también está cerrada: Coolify desplegó `fc8adc4` con `Success`, posterior a `5dc38c9` (#583), y el E2E público de Cotizaciones pasó `1/1`. Gates focales posteriores: typecheck/build, lint de los 7 TypeScript y 2 plantillas del diff, 7 archivos/73 tests y E2E 2/2 verdes. | Baseline histórico y contratos de negocio quedan `A MEDIAS` o `DECISION_REQUIRED`. Lint global (243) y suite total (4 fallos) son deuda fuera del diff de #583: seguimiento, no bloqueo. Detalle: [cierre remoto](../../../docs/trabajo/2026-09-23-cerrar-validacion-remota-cotizaciones/REPORTE.md) y [gates locales](../../../docs/trabajo/2026-09-23-publicar-gates-reserva-cotizaciones/REPORTE.md). | [Justin-Daily-Noche-2026-09-22.md](Justin/Justin-Daily-Noche-2026-09-22.md) |
-| Ender | 14 / 48 | 1 / 6 | H2 (H2.S1 5/5; H2.S2 sin empezar). Latencia determinista y medida: «elegir médico» 311–557 → 231–247 ms en arnés. Cambios locales, sin commit en producto | H3 y H4 sin autorizar todavía; H3 con decisiones de alcance tomadas (los 13 registrados, `comunidad.ts` fuera) | [Ender-Daily-Noche-2026-09-22.md](Ender/Ender-Daily-Noche-2026-09-22.md) |
+| Ender | 44 / 48 | 5 / 6 | H4 A MEDIAS: H4.S2.M2–M4 esperan el contrato `?pestana=puntos` de Itzan (1 descartada: H2.S2.M2). H1, H2, H3, H5 y H6 cerrados. H3 con el contrato **D-H3-PROV-01 = C**: agenda para 13 profesionales de demostración, ninguna para las personas reales de la planilla. Rama reconciliada sobre `mockup` `a43ad2b3`: PR #604 de producto, sin merge | H4.S2.M2 espera el código de Itzan en `mockup` | [Ender-Daily-Noche-2026-09-22.md](Ender/Ender-Daily-Noche-2026-09-22.md) |
 | Marcelo | 64 / 64 | 6 / 6 | ninguno | ninguno | [Marcelo-Daily-Noche-2026-09-22.md](Marcelo/Marcelo-Daily-Noche-2026-09-22.md) |
 | **Total** | **__ / 319** | **__ / 32** | | | |
 
