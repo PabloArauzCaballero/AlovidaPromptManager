@@ -310,7 +310,7 @@ trabaja con él) o una acción destructiva sobre algo compartido (no hay ninguna
 
 | Carril | Responsable | Corte propio (`origin/mockup @`) | Rama | HECHO/total | Peldaño | PR | Push a `mockup` | Bloqueos / avisos |
 |---|---|---|---|---|---|---|---|---|
-| C0 · Contrato primero | Marcelo | `72450ff5`/`33a33bca` | `marcelo/feat-clinica-c0-contrato-primero` | 14/21 | TESTED (contrato/handlers/componentes); E2E BLOCKED por CSP ajeno | [#693](https://github.com/mdavila-2001/mantra-core-health/pull/693) | No — disponible en PR, no integrado | 31/31 casos del E2E completo fallan solo en el `afterEach` de consola por CSP preexistente (confirmado en `/auth`, no C0); P2 (segunda revisión visual) pendiente |
+| C0 · Contrato primero | Marcelo | `72450ff5`/`33a33bca` | `marcelo/feat-clinica-c0-contrato-primero` | 14/21 | TESTED (contrato/handlers/componentes); E2E BLOCKED por CSP ajeno | [#693](https://github.com/mdavila-2001/mantra-core-health/pull/693) MERGEADO | **Sí** — `mockup` @ `10912eb4` | 31/31 casos del E2E completo fallan solo en el `afterEach` de consola por CSP preexistente (confirmado en `/auth`, no C0); P2 (segunda revisión visual) pendiente |
 | C3 · Diagnóstico | Marcelo | | `claude/clinica-c3-diagnostico` | 0/12 | | | | |
 | C1 · Nota médica | Itzan | | `claude/clinica-c1-notas-medicas` | 0/11 | | | | |
 | C2 · Orden de análisis | Itzan | | `claude/clinica-c2-ordenes-analisis` | 0/11 | | | | |
