@@ -17,7 +17,18 @@
 | `LÍMITE DE RECURSOS` | **sólo vos** corriendo builds y la suite entera; un `yarn start`; Playwright vía `pw-guard` |
 | `TUS OTROS CARRILES ESTA NOCHE` | Farmacia: `Noche-Farmacia.TiendaYReceta` · Carga Masiva: `Noche-CargaMasiva.PantallaDragAndDrop`. C8 va a la mañana, después de tus otros dos carriles. Sin cruces de archivos. Tu daily es uno solo (`Justin-Daily-Noche-2026-09-25.md`): este carril va en su sección «Carril C — Encuentro clínico». |
 
-## 1. Estándar y skills
+## 1. Antes de escribir una línea — instalación OBLIGATORIA del estándar
+
+```bash
+git -C <raíz de tus repos>/AlovidaPromptManager pull --ff-only origin main
+cd <raíz de tus repos>/wt-clinica-c8
+cp -rn ../AlovidaPromptManager/.claude/skills/* .claude/skills/     # fusionar, NO pisar las 4 skills y 3 agentes del repo
+cp -rn ../AlovidaPromptManager/.claude/rules .claude/ 2>/dev/null || cp -rn ../AlovidaPromptManager/.claude/rules/* .claude/rules/
+cp -rn ../AlovidaPromptManager/.claude/hooks .claude/ 2>/dev/null || true
+ls .claude/skills | wc -l; ls .claude/rules/[0-9]*.md | wc -l; python .claude/hooks/plan_gate.py --self-test   # pegá las tres salidas en tu daily
+```
+
+Los `.claude/` instalados **no se commitean**. Si no podés completar este paso estás `BLOQUEADO`: avisá y no sigas.
 
 §5.1 del plan. **Skills:** `skills-router` → `outcome-first` → `factual-discovery` → `git-workflow-multirepo` → `pr-mergeable-gate` → `regression-suite-management` → `qa-orchestration` → `e2e-playwright` → `e2e-failure-triage` → `root-cause-debugging` → `integrity-testing` → `visual-proof` → `critical-double-review` → `evidence-and-verification` → `qa-evidence-reporting` → `work-report-md` → `technical-docs-and-adr` → `finish-your-turn`. Del repo: `visual-quality-gate`, `frontend-production-gate`; agentes `visual-reviewer`, `frontend-reviewer`, `regression-auditor` sobre el conjunto.
 
@@ -29,25 +40,68 @@
 
 ## 3. Lo que integrás
 
-1. Por cada PR de C1–C7/C9: rebase sobre `origin/mockup` **en su rama** (si la rama tiene commits que no son de esa sesión, avisar y no forzar), merge en tu rama. Conflictos esperados: 0. Si aparece uno, es un archivo fuera de lista: anotá el carril culpable y resolvé conservando ambos comportamientos.
+**OUT:** 1. Por cada PR de C1–C7/C9: rebase sobre `origin/mockup` **en su rama** (si la rama tiene commits que no son de esa sesión, avisar y no forzar), merge en tu rama. Conflictos esperados: 0. Si aparece uno, es un archivo fuera de lista: anotá el carril culpable y resolvé conservando ambos comportamientos.
 2. `grep -rn "TODO C8" src` → resolver cada uno: subir `follow-up.types.ts` / `<carril>.types.ts` a los tipos congelados; reemplazar `analysis-order-notes.client` por `ChartNotesClient.listNotes`; hacer que `GET /charts/patients/:id/chart` viva en un solo lugar (función exportada de `clinical.handlers.ts` que `medical-notes.handlers.ts` extiende, o el `chart` que ya lee `notasMedicas`).
 3. Montar `app-encounter-timeline` (C6) en la consulta («Lo registrado en este encuentro», bajo la rejilla) y en la pestaña «Encuentros» del expediente (al desplegar).
 4. Lo que un carril dejó «A medias» y bloquea el recorrido: completarlo si cabe en 1 h; si no, anotarlo en `REPORTE-FINAL.md` como pendiente con dueño.
 
 ## 4. Microtareas
 
+### H1 — Integración de los carriles
+
+**CA:** Todas las microtareas de H1 cumplen su criterio binario de la tabla.
+**DoD:** Los DoD de sus microtareas, ejecutados y con su salida pegada en `evidencia/`.
+**Estado:** TODO
+
+#### H1.S1 — Integración de los carriles
+
+**CA:** El mismo de H1: el hito se entrega en una sola subtarea.
+**DoD:** El mismo de H1: los DoD de las microtareas de abajo.
+**Estado:** TODO
+
 | ID | Microtarea | CA | DoD |
 |---|---|---|---|
-| C8.H1.M1 | Merges | Lista de SHAs; conflictos = 0 (o anotados) | `git log --merges` |
-| C8.H1.M2 | `TODO C8` resueltos | `grep -rn "TODO C8" src` = 0 | `yarn typecheck` |
-| C8.H1.M3 | `encounter-timeline` montado en consulta y expediente | Se ve con datos del recorrido | captura |
-| C8.H2.M1 | Gates completos: `lint`, `typecheck`, `build`, `yarn test --watch=false` **entero** con «N passed» (sin otros servidores), todos los `check-*.mjs`, `generate-inventory.mjs --check` | exit 0; rojos previos comparados con `evidencia/antes/` de C0 | salidas en `evidencia/` |
-| C8.H2.M2 | Playwright `clinica-c8-recorrido-completo.spec.ts` (§6) | verde | `node scripts/pw-guard.mjs --port 4218 --deadline 40 --spec playwright/clinica-c8-recorrido-completo.spec.ts --serve` |
-| C8.H2.M3 | Barridos `mockup-barrido.spec.ts` y `mockup-click-sweep.spec.ts` vía `pw-guard`: sin `[mock] sin manejador` nuevos ni errores de consola nuevos | diff de `MOCKUP_MATRIX.md` contra el corte | artefactos |
-| C8.H2.M4 | Revisores sobre el conjunto; `critical-double-review` de las capturas finales | Cero BLOCKER/CRITICAL/HIGH | informe |
-| C8.H3.M1 | `PENDIENTES-BACKEND.md`: P39–P42 (tabla de cabecera + sección por pendiente con Modelo / DTO / Servicio / Estado del frontend, desde los `REPORTE.md`) | Cuatro filas y cuatro secciones | `node scripts/check-doc-links.mjs` |
-| C8.H3.M2 | `REPORTE-FINAL.md` + sección «Paquete 3 — Encuentro clínico» del daily de equipo (tabla HECHO/total por carril, lo que destrabó a quién, incidentes) + entrada en `ActionLog.md` de este repo | — | — |
-| C8.H3.M3 | Commits, `pull --rebase`, `git push origin HEAD:mockup`, PR `--base mockup`; PR `--base dev` **sólo si** el propietario lo pide; push de este repo a `main` | `origin/mockup` = HEAD; `origin/main` con el daily | `git log --oneline -3 origin/mockup` |
+| H1.S1.M1 | Merges | Lista de SHAs; conflictos = 0 (o anotados) | `git log --merges` |
+| H1.S1.M2 | `TODO C8` resueltos | `grep -rn "TODO C8" src` = 0 | `yarn typecheck` |
+| H1.S1.M3 | `encounter-timeline` montado en consulta y expediente | Se ve con datos del recorrido | captura |
+
+### H2 — Gates, recorrido completo y revisión
+
+**CA:** Todas las microtareas de H2 cumplen su criterio binario de la tabla.
+**DoD:** Los DoD de sus microtareas, ejecutados y con su salida pegada en `evidencia/`.
+**Estado:** TODO
+
+#### H2.S1 — Gates, recorrido completo y revisión
+
+**CA:** El mismo de H2: el hito se entrega en una sola subtarea.
+**DoD:** El mismo de H2: los DoD de las microtareas de abajo.
+**Estado:** TODO
+
+| ID | Microtarea | CA | DoD |
+|---|---|---|---|
+| H2.S1.M1 | Gates completos: `lint`, `typecheck`, `build`, `yarn test --watch=false` **entero** con «N passed» (sin otros servidores), todos los `check-*.mjs`, `generate-inventory.mjs --check` | exit 0; rojos previos comparados con `evidencia/antes/` de C0 | salidas en `evidencia/` |
+| H2.S1.M2 | Playwright `clinica-c8-recorrido-completo.spec.ts` (§6) | verde | `node scripts/pw-guard.mjs --port 4218 --deadline 40 --spec playwright/clinica-c8-recorrido-completo.spec.ts --serve` |
+| H2.S1.M3 | Barridos `mockup-barrido.spec.ts` y `mockup-click-sweep.spec.ts` vía `pw-guard`: sin `[mock] sin manejador` nuevos ni errores de consola nuevos | diff de `MOCKUP_MATRIX.md` contra el corte | artefactos |
+| H2.S1.M4 | Revisores sobre el conjunto; `critical-double-review` de las capturas finales | Cero BLOCKER/CRITICAL/HIGH | informe |
+
+### H3 — Pendientes, reporte final y entrega
+
+**CA:** Todas las microtareas de H3 cumplen su criterio binario de la tabla.
+**DoD:** Los DoD de sus microtareas, ejecutados y con su salida pegada en `evidencia/`.
+**Estado:** TODO
+
+#### H3.S1 — Pendientes, reporte final y entrega
+
+**CA:** El mismo de H3: el hito se entrega en una sola subtarea.
+**DoD:** El mismo de H3: los DoD de las microtareas de abajo.
+**Estado:** TODO
+
+| ID | Microtarea | CA | DoD |
+|---|---|---|---|
+| H3.S1.M1 | `PENDIENTES-BACKEND.md`: P39–P42 (tabla de cabecera + sección por pendiente con Modelo / DTO / Servicio / Estado del frontend, desde los `REPORTE.md`) | Cuatro filas y cuatro secciones | `node scripts/check-doc-links.mjs` |
+| H3.S1.M2 | `REPORTE-FINAL.md` + sección «Paquete 3 — Encuentro clínico» del daily de equipo (tabla HECHO/total por carril, lo que destrabó a quién, incidentes) + entrada en `ActionLog.md` de este repo | — | — |
+| H3.S1.M3 | Commits, `pull --rebase`, `git push origin HEAD:mockup`, PR `--base mockup`; PR `--base dev` **sólo si** el propietario lo pide; push de este repo a `main` | `origin/mockup` = HEAD; `origin/main` con el daily | `git log --oneline -3 origin/mockup` |
+
 
 ## 5. Playwright del recorrido completo
 
@@ -58,3 +112,16 @@ médica → Mis citas → «Iniciar la consulta» → Nota médica (3 filas) →
 ## 6. Cierre
 
 Checklist §9 del plan. Commits `merge: carriles C1–C7 y C9 en integración`, `fix(integracion): …`, `docs(pendientes): P39–P42`, `docs(reporte): cierre de la noche del 2026-09-25`. Push a `mockup` verificado. En este repo: la sección «Paquete 3 — Encuentro clínico» del daily de equipo completa (sin tocar las de Farmacia y Carga Masiva), `ActionLog.md` con la entrada del cierre (rama, paquete, qué se entregó, qué quedó), `git pull --rebase origin main && git push origin main`.
+
+## Ambigüedades registradas
+
+| Ambigüedad | Supuesto que se toma | A quién se confirma |
+|---|---|---|
+| Ninguna registrada al repartir. Toda duda que aparezca en ejecución se anota acá y en el `PLAN.md` del carril, con el supuesto tomado, antes de resolverla | — | Pablo |
+
+## Definition of Done del hito
+
+Un hito es `HECHO` sólo cuando **todas** sus microtareas están `HECHO` con la salida de su DoD
+pegada en `evidencia/`, la regresión del módulo tocado está en verde y los gates aplicables del
+repo pasaron. Falta cualquiera de las tres → el hito es `A MEDIAS`, con qué anda, qué no anda y
+qué falta exactamente.

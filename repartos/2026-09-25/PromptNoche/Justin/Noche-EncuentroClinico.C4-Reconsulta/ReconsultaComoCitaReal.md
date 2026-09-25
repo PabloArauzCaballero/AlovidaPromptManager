@@ -20,7 +20,18 @@
 | `LÍMITE DE RECURSOS` | un `yarn start`, un build/test a la vez, Playwright sólo vía `pw-guard` |
 | `TUS OTROS CARRILES ESTA NOCHE` | Farmacia: `Noche-Farmacia.TiendaYReceta` · Carga Masiva: `Noche-CargaMasiva.PantallaDragAndDrop`. Sin cruces de archivos con ellos (verificado). Tu daily es uno solo (`Justin-Daily-Noche-2026-09-25.md`): este carril va en su sección «Carril C — Encuentro clínico». |
 
-## 1. Estándar y skills
+## 1. Antes de escribir una línea — instalación OBLIGATORIA del estándar
+
+```bash
+git -C <raíz de tus repos>/AlovidaPromptManager pull --ff-only origin main
+cd <raíz de tus repos>/wt-clinica-c4
+cp -rn ../AlovidaPromptManager/.claude/skills/* .claude/skills/     # fusionar, NO pisar las 4 skills y 3 agentes del repo
+cp -rn ../AlovidaPromptManager/.claude/rules .claude/ 2>/dev/null || cp -rn ../AlovidaPromptManager/.claude/rules/* .claude/rules/
+cp -rn ../AlovidaPromptManager/.claude/hooks .claude/ 2>/dev/null || true
+ls .claude/skills | wc -l; ls .claude/rules/[0-9]*.md | wc -l; python .claude/hooks/plan_gate.py --self-test   # pegá las tres salidas en tu daily
+```
+
+Los `.claude/` instalados **no se commitean**. Si no podés completar este paso estás `BLOQUEADO`: avisá y no sigas.
 
 §5.1 del plan. **Skills:** `skills-router` → `outcome-first` → `context-thrift` → `factual-discovery` → `anti-hallucination-guard` → `milestone-planning` → `scope-discipline` → `lane-authoring` → `data-privacy-phi` → `appointment-scheduling` → `state-machines-workflows` → `frontend-ui-design` → `visual-hierarchy-composition` → `frontend-forms-ux` → `angular-forms` → `angular-development` → `angular-signals-state` → `frontend-ux-states` → `frontend-responsive-layout` → `frontend-accessibility` → `ux-writing-microcopy` → `native-code-patterns` → `unit-testing` → `angular-testing` → `edge-case-data-catalog` (fechas, husos) → `e2e-playwright` → (cierre) `frontend-beautiful-ui` → `ui-quality-review` → `visual-proof` → `critical-double-review` → `evidence-and-verification` → `work-report-md` → `pr-mergeable-gate` → `finish-your-turn`. Del repo: `project-design-system`, `frontend-production-gate`, `visual-quality-gate`; agentes `visual-reviewer`, `frontend-reviewer`, `regression-auditor` (tocás `agenda`, que tiene 2700 líneas y muchos specs).
 
@@ -49,20 +60,93 @@ Reutilizar `app-date-picker` (organismo) o el `app-appointment-calendar` de `acc
 
 ## 5. Microtareas
 
+### H1 — Arranque y baseline
+
+**CA:** Todas las microtareas de H1 cumplen su criterio binario de la tabla.
+**DoD:** Los DoD de sus microtareas, ejecutados y con su salida pegada en `evidencia/`.
+**Estado:** TODO
+
+#### H1.S1 — Arranque y baseline
+
+**CA:** El mismo de H1: el hito se entrega en una sola subtarea.
+**DoD:** El mismo de H1: los DoD de las microtareas de abajo.
+**Estado:** TODO
+
 | ID | Microtarea | CA | DoD |
 |---|---|---|---|
-| C4.H1.M1 | Arranque, estándar, baseline, `PLAN.md` | — | baseline |
-| C4.H2.M1 | Seed de agenda | determinismo; `agendas-cobertura.spec.ts` verde | spec |
-| C4.H2.M2 | Handler de cita directa con `followUpOf`; lecturas con `followUpOf`/`followUpBookingId` | spec: 6 casos (ok · 404 · 422 paciente · 422 pasado · 403 recurso · 409 segunda) | `yarn test --watch=false --include=src/app/core/mock/handlers/scheduling.handlers.spec.ts --include=src/app/core/mock/mock-backend.spec.ts` |
-| C4.H2.M3 | Cliente | cuerpo exacto | `yarn test --watch=false --include=src/app/core/data-access/scheduling/**` |
-| C4.H3.M1 | `follow-up-block`: lectura de la cita origen y los tres estados | Se ven los tres | spec |
-| C4.H3.M2 | Día + cupos + motivo + Agendar | Sin cupo no guarda | spec |
-| C4.H3.M3 | Éxito y `cambio` | — | Playwright |
-| C4.H3.M4 | Agenda del doctor: sello y «de la cita del»; detalle «Qué es» = «Reconsulta» | Se ve con la seed | spec + captura |
-| C4.H3.M5 | Mis citas del paciente: sello y frase | Se ve con `paciente@alovida.mock` | spec + captura |
-| C4.H4.M1 | Playwright `clinica-c4-reconsulta.spec.ts` | verde | `node scripts/pw-guard.mjs --port 4214 --spec playwright/clinica-c4-reconsulta.spec.ts --serve` |
-| C4.H4.M2 | Capturas cinco viewports, claro/oscuro; `critical-double-review` | — | capturas |
-| C4.H5.M1 | Revisores (incl. `regression-auditor` sobre `agenda.spec.ts` y `appointments.spec.ts` completos), gates, commits, push a `mockup`, PR, `REPORTE.md` con **P42**, daily en `main` | — | — |
+| H1.S1.M1 | Arranque, estándar, baseline, `PLAN.md` | — | baseline |
+
+### H2 — Datos simulados y cliente
+
+**CA:** Todas las microtareas de H2 cumplen su criterio binario de la tabla.
+**DoD:** Los DoD de sus microtareas, ejecutados y con su salida pegada en `evidencia/`.
+**Estado:** TODO
+
+#### H2.S1 — Datos simulados y cliente
+
+**CA:** El mismo de H2: el hito se entrega en una sola subtarea.
+**DoD:** El mismo de H2: los DoD de las microtareas de abajo.
+**Estado:** TODO
+
+| ID | Microtarea | CA | DoD |
+|---|---|---|---|
+| H2.S1.M1 | Seed de agenda | determinismo; `agendas-cobertura.spec.ts` verde | spec |
+| H2.S1.M2 | Handler de cita directa con `followUpOf`; lecturas con `followUpOf`/`followUpBookingId` | spec: 6 casos (ok · 404 · 422 paciente · 422 pasado · 403 recurso · 409 segunda) | `yarn test --watch=false --include=src/app/core/mock/handlers/scheduling.handlers.spec.ts --include=src/app/core/mock/mock-backend.spec.ts` |
+| H2.S1.M3 | Cliente | cuerpo exacto | `yarn test --watch=false --include=src/app/core/data-access/scheduling/**` |
+
+### H3 — Bloque de reconsulta y sellos en las dos agendas
+
+**CA:** Todas las microtareas de H3 cumplen su criterio binario de la tabla.
+**DoD:** Los DoD de sus microtareas, ejecutados y con su salida pegada en `evidencia/`.
+**Estado:** TODO
+
+#### H3.S1 — Bloque de reconsulta y sellos en las dos agendas
+
+**CA:** El mismo de H3: el hito se entrega en una sola subtarea.
+**DoD:** El mismo de H3: los DoD de las microtareas de abajo.
+**Estado:** TODO
+
+| ID | Microtarea | CA | DoD |
+|---|---|---|---|
+| H3.S1.M1 | `follow-up-block`: lectura de la cita origen y los tres estados | Se ven los tres | spec |
+| H3.S1.M2 | Día + cupos + motivo + Agendar | Sin cupo no guarda | spec |
+| H3.S1.M3 | Éxito y `cambio` | — | Playwright |
+| H3.S1.M4 | Agenda del doctor: sello y «de la cita del»; detalle «Qué es» = «Reconsulta» | Se ve con la seed | spec + captura |
+| H3.S1.M5 | Mis citas del paciente: sello y frase | Se ve con `paciente@alovida.mock` | spec + captura |
+
+### H4 — Recorrido y capturas
+
+**CA:** Todas las microtareas de H4 cumplen su criterio binario de la tabla.
+**DoD:** Los DoD de sus microtareas, ejecutados y con su salida pegada en `evidencia/`.
+**Estado:** TODO
+
+#### H4.S1 — Recorrido y capturas
+
+**CA:** El mismo de H4: el hito se entrega en una sola subtarea.
+**DoD:** El mismo de H4: los DoD de las microtareas de abajo.
+**Estado:** TODO
+
+| ID | Microtarea | CA | DoD |
+|---|---|---|---|
+| H4.S1.M1 | Playwright `clinica-c4-reconsulta.spec.ts` | verde | `node scripts/pw-guard.mjs --port 4214 --spec playwright/clinica-c4-reconsulta.spec.ts --serve` |
+| H4.S1.M2 | Capturas cinco viewports, claro/oscuro; `critical-double-review` | — | capturas |
+
+### H5 — Revisión y entrega
+
+**CA:** Todas las microtareas de H5 cumplen su criterio binario de la tabla.
+**DoD:** Los DoD de sus microtareas, ejecutados y con su salida pegada en `evidencia/`.
+**Estado:** TODO
+
+#### H5.S1 — Revisión y entrega
+
+**CA:** El mismo de H5: el hito se entrega en una sola subtarea.
+**DoD:** El mismo de H5: los DoD de las microtareas de abajo.
+**Estado:** TODO
+
+| ID | Microtarea | CA | DoD |
+|---|---|---|---|
+| H5.S1.M1 | Revisores (incl. `regression-auditor` sobre `agenda.spec.ts` y `appointments.spec.ts` completos), gates, commits, push a `mockup`, PR, `REPORTE.md` con **P42**, daily en `main` | — | — |
+
 
 ## 6. Playwright
 
@@ -74,4 +158,17 @@ Checklist §9. Commits `feat(reconsulta): …`, `feat(mock): cita directa con fo
 
 ## 8. Lo que NO hacés
 
-Tocar «Completar la cita», `booking-new`, `appointment-new`, `walk-in`, plantillas · reescribir `agenda.ts` más allá del sello y del campo `reconsultaDe` · tipos congelados (`follow-up.types.ts` propio + `// TODO C8`).
+**OUT:** Tocar «Completar la cita», `booking-new`, `appointment-new`, `walk-in`, plantillas · reescribir `agenda.ts` más allá del sello y del campo `reconsultaDe` · tipos congelados (`follow-up.types.ts` propio + `// TODO C8`).
+
+## Ambigüedades registradas
+
+| Ambigüedad | Supuesto que se toma | A quién se confirma |
+|---|---|---|
+| Ninguna registrada al repartir. Toda duda que aparezca en ejecución se anota acá y en el `PLAN.md` del carril, con el supuesto tomado, antes de resolverla | — | Pablo |
+
+## Definition of Done del hito
+
+Un hito es `HECHO` sólo cuando **todas** sus microtareas están `HECHO` con la salida de su DoD
+pegada en `evidencia/`, la regresión del módulo tocado está en verde y los gates aplicables del
+repo pasaron. Falta cualquiera de las tres → el hito es `A MEDIAS`, con qué anda, qué no anda y
+qué falta exactamente.

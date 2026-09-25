@@ -56,35 +56,123 @@ Los `.claude/` instalados **no se commitean**. Si no podés completar este paso 
 - **Mudanzas de handlers** (mecánicas, sin cambiar comportamiento): `/charts/notes*` (`clinical.handlers.ts:595-644`) → `handlers/medical-notes.handlers.ts` (`registrarNotasMedicas`, registrado **después** de `registrarClinica` en `index.ts`); `POST /clinical/service-requests` (`clinical.handlers.ts:521-583`) → `diagnostics.handlers.ts`. Stub `handlers/diagnosis-verification.handlers.ts` con `POST /clinical/conditions/:id/verification` → `notFound('Pendiente: carril C3')`.
 - **Rename** `diagnostics-block` → `analysis-order-block` (`git mv`; clase `AnalysisOrderBlock`; selector `app-analysis-order-block`; archivos `analysis-order-block.{ts,html,css,spec.ts}`; consumidores: `specialty-form-block.{ts,html,spec.ts}`, comentario de `misc.handlers.ts:96`; `yarn stock:generate`).
 - **Stubs**: `medical-note-block` (`app-medical-note-block`; inputs `patientProfileId`, `encounterId`, `citas`; output `guardada`) y `follow-up-block` (`app-follow-up-block`; inputs `patientProfileId`, `encounterId`, `bookingId: string | null`; output `cambio`), cada uno con `app-alert` «En construcción (C1)» / «(C4)» y spec mínimo.
-- **Consulta** (`consultation.ts` / `.html` / `.spec.ts`): `CasillaDeConsulta` += `'ordenes' | 'reconsulta'`; rótulos y descripciones exactos en §7 C0.H4.M4; `ORDEN_DE_CASILLAS` = notas, ordenes, diagnosticos, reconsulta, medicacion, alergias, observaciones, planes, documentos, formulario, internacion, pagos; `@case` nuevos en el HTML según C0.H4.M5; quitar el import de `free-note-block`.
+- **Consulta** (`consultation.ts` / `.html` / `.spec.ts`): `CasillaDeConsulta` += `'ordenes' | 'reconsulta'`; rótulos y descripciones exactos en §7 H4.S1.M4; `ORDEN_DE_CASILLAS` = notas, ordenes, diagnosticos, reconsulta, medicacion, alergias, observaciones, planes, documentos, formulario, internacion, pagos; `@case` nuevos en el HTML según H4.S1.M5; quitar el import de `free-note-block`.
 - **`scripts/pw-guard.mjs`** exactamente como §6 (ESM, sin dependencias nuevas, Windows y POSIX, `--self-test`, `docs/testing/pw-guard.md`, `artifacts/pw-guard/` ignorado).
 - **Docs**: `ADR-0016-encuentro-eje-clinico.md` (+ fila en `docs/adr/index.md`), sección «Clínica — nombres únicos» en `docs/business/glossary.md` (tabla §2), `docs/trabajo/2026-09-25-encuentro-clinico/README.md` apuntando a `AlovidaPromptManager/repartos/2026-09-25/PromptNoche/`.
 
 ## 4. Microtareas (estado en tu `PLAN.md`)
 
+### H1 — Arranque, ADR y glosario
+
+**CA:** Todas las microtareas de H1 cumplen su criterio binario de la tabla.
+**DoD:** Los DoD de sus microtareas, ejecutados y con su salida pegada en `evidencia/`.
+**Estado:** TODO
+
+#### H1.S1 — Arranque, ADR y glosario
+
+**CA:** El mismo de H1: el hito se entrega en una sola subtarea.
+**DoD:** El mismo de H1: los DoD de las microtareas de abajo.
+**Estado:** TODO
+
 | ID | Microtarea | CA (binario) | DoD |
 |---|---|---|---|
-| C0.H1.M1 | Worktree, rama, estándar instalado, corte anotado, baseline a `evidencia/antes/` | `PLAN.md` cita SHA; tres `.txt` con exit code | `yarn lint; echo exit=$?` · `yarn typecheck; echo exit=$?` · `yarn test --watch=false --include=src/app/core/mock/** --include=src/app/features/clinical-record/**; echo exit=$?` |
-| C0.H1.M2 | ADR-0016 + fila en el índice | Cita rutas reales; no promete nada fuera del plan | `node scripts/check-doc-links.mjs` |
-| C0.H1.M3 | Glosario + README puntero | Cada fila con tres columnas y «Se retira» | `node scripts/check-doc-links.mjs` |
-| C0.H2.M1 | Conceptos nuevos | `terminology.handlers.spec.ts` verde; `$expand` los devuelve | `yarn test --watch=false --include=src/app/core/mock/handlers/terminology.handlers.spec.ts` |
-| C0.H2.M2 | Tipos de nota médica | `yarn typecheck` limpio; JSDoc | `yarn typecheck` |
-| C0.H2.M3 | Tipos de orden (incl. `PatientOrder.category?`) | ídem | `yarn typecheck` |
-| C0.H2.M4 | Tipos de verificación | ídem | `yarn typecheck` |
-| C0.H2.M5 | Tipos de reconsulta | `scheduling.client.spec.ts` verde | `yarn test --watch=false --include=src/app/core/data-access/scheduling/**` |
-| C0.H2.M6 | `diagnosis-state.ts` + spec (8 casos) | 8 casos verdes | `yarn test --watch=false --include=src/app/shared/clinical/**` |
-| C0.H3.M1 | Mudanza `/charts/notes*` | `router.rutas()` conserva las 3 rutas; specs verdes | `yarn test --watch=false --include=src/app/core/mock/**` |
-| C0.H3.M2 | Mudanza `POST /clinical/service-requests` | ídem | ídem |
-| C0.H3.M3 | Stub de verificación | `mock-backend.spec.ts` verde (404 no es 500) | ídem |
-| C0.H4.M1 | Rename `analysis-order-block` | `grep` = 0 | `yarn typecheck` · `yarn test --watch=false --include=src/app/features/clinical-record/patient-chart/analysis-order-block/** --include=src/app/features/clinical-record/patient-chart/specialty-form-block/**` |
-| C0.H4.M2 | Stub `medical-note-block` | En `/design-system/stock` | `yarn stock:generate` · spec |
-| C0.H4.M3 | Stub `follow-up-block` | ídem | ídem |
-| C0.H4.M4 | Casillas de la consulta | 12 casillas en ese orden | `yarn test --watch=false --include=src/app/features/clinical-record/consultation/**` |
-| C0.H4.M5 | `@case` nuevos en el HTML | Las tres abren `consulta-modal` | ídem + capturas de la rejilla y los tres modales |
-| C0.H5.M1 | `pw-guard.mjs` + `--self-test` + doc + `.gitignore` | `3 PASS, 0 FAIL`; una corrida real contra 4210 con `playwright/consulta-rejilla.spec.ts` termina con `RESUMEN:` | `node scripts/pw-guard.mjs --self-test` · `node scripts/pw-guard.mjs --port 4210 --spec playwright/consulta-rejilla.spec.ts` |
-| C0.H6.M1 | Gates §5.3 (1–3) + `REPORTE.md` | exit 0; salida en `evidencia/despues/` | comandos con `; echo exit=$?` |
-| C0.H6.M2 | Commits por microtarea, `pull --rebase`, `git push origin HEAD:mockup`, rama, PR `--base mockup` | `origin/mockup` contiene los commits; PR abierto | `git fetch origin mockup && git log --oneline -8 origin/mockup` |
-| C0.H6.M3 | Sección «Carril C — Encuentro clínico · C0» de tu daily `Marcelo/Marcelo-Daily-Noche-2026-09-25.md` (sin tocar tus secciones de Farmacia y Carga Masiva) en `AlovidaPromptManager` (commit + `git push origin main`); aviso a Itzan, Justin y Pablo con el SHA (`SendMessage` si comparten máquina; si no, por el canal del equipo) | Daily con SHA, números de instalación, archivos tocados | `git -C ../AlovidaPromptManager log --oneline -1 origin/main` |
+| H1.S1.M1 | Worktree, rama, estándar instalado, corte anotado, baseline a `evidencia/antes/` | `PLAN.md` cita SHA; tres `.txt` con exit code | `yarn lint; echo exit=$?` · `yarn typecheck; echo exit=$?` · `yarn test --watch=false --include=src/app/core/mock/** --include=src/app/features/clinical-record/**; echo exit=$?` |
+| H1.S1.M2 | ADR-0016 + fila en el índice | Cita rutas reales; no promete nada fuera del plan | `node scripts/check-doc-links.mjs` |
+| H1.S1.M3 | Glosario + README puntero | Cada fila con tres columnas y «Se retira» | `node scripts/check-doc-links.mjs` |
+
+### H2 — Conceptos y tipos congelados
+
+**CA:** Todas las microtareas de H2 cumplen su criterio binario de la tabla.
+**DoD:** Los DoD de sus microtareas, ejecutados y con su salida pegada en `evidencia/`.
+**Estado:** TODO
+
+#### H2.S1 — Conceptos y tipos congelados
+
+**CA:** El mismo de H2: el hito se entrega en una sola subtarea.
+**DoD:** El mismo de H2: los DoD de las microtareas de abajo.
+**Estado:** TODO
+
+| ID | Microtarea | CA (binario) | DoD |
+|---|---|---|---|
+| H2.S1.M1 | Conceptos nuevos | `terminology.handlers.spec.ts` verde; `$expand` los devuelve | `yarn test --watch=false --include=src/app/core/mock/handlers/terminology.handlers.spec.ts` |
+| H2.S1.M2 | Tipos de nota médica | `yarn typecheck` limpio; JSDoc | `yarn typecheck` |
+| H2.S1.M3 | Tipos de orden (incl. `PatientOrder.category?`) | ídem | `yarn typecheck` |
+| H2.S1.M4 | Tipos de verificación | ídem | `yarn typecheck` |
+| H2.S1.M5 | Tipos de reconsulta | `scheduling.client.spec.ts` verde | `yarn test --watch=false --include=src/app/core/data-access/scheduling/**` |
+| H2.S1.M6 | `diagnosis-state.ts` + spec (8 casos) | 8 casos verdes | `yarn test --watch=false --include=src/app/shared/clinical/**` |
+
+### H3 — Mudanza de rutas del simulador
+
+**CA:** Todas las microtareas de H3 cumplen su criterio binario de la tabla.
+**DoD:** Los DoD de sus microtareas, ejecutados y con su salida pegada en `evidencia/`.
+**Estado:** TODO
+
+#### H3.S1 — Mudanza de rutas del simulador
+
+**CA:** El mismo de H3: el hito se entrega en una sola subtarea.
+**DoD:** El mismo de H3: los DoD de las microtareas de abajo.
+**Estado:** TODO
+
+| ID | Microtarea | CA (binario) | DoD |
+|---|---|---|---|
+| H3.S1.M1 | Mudanza `/charts/notes*` | `router.rutas()` conserva las 3 rutas; specs verdes | `yarn test --watch=false --include=src/app/core/mock/**` |
+| H3.S1.M2 | Mudanza `POST /clinical/service-requests` | ídem | ídem |
+| H3.S1.M3 | Stub de verificación | `mock-backend.spec.ts` verde (404 no es 500) | ídem |
+
+### H4 — Renombres y casillas de la consulta
+
+**CA:** Todas las microtareas de H4 cumplen su criterio binario de la tabla.
+**DoD:** Los DoD de sus microtareas, ejecutados y con su salida pegada en `evidencia/`.
+**Estado:** TODO
+
+#### H4.S1 — Renombres y casillas de la consulta
+
+**CA:** El mismo de H4: el hito se entrega en una sola subtarea.
+**DoD:** El mismo de H4: los DoD de las microtareas de abajo.
+**Estado:** TODO
+
+| ID | Microtarea | CA (binario) | DoD |
+|---|---|---|---|
+| H4.S1.M1 | Rename `analysis-order-block` | `grep` = 0 | `yarn typecheck` · `yarn test --watch=false --include=src/app/features/clinical-record/patient-chart/analysis-order-block/** --include=src/app/features/clinical-record/patient-chart/specialty-form-block/**` |
+| H4.S1.M2 | Stub `medical-note-block` | En `/design-system/stock` | `yarn stock:generate` · spec |
+| H4.S1.M3 | Stub `follow-up-block` | ídem | ídem |
+| H4.S1.M4 | Casillas de la consulta | 12 casillas en ese orden | `yarn test --watch=false --include=src/app/features/clinical-record/consultation/**` |
+| H4.S1.M5 | `@case` nuevos en el HTML | Las tres abren `consulta-modal` | ídem + capturas de la rejilla y los tres modales |
+
+### H5 — Guardián de Playwright
+
+**CA:** Todas las microtareas de H5 cumplen su criterio binario de la tabla.
+**DoD:** Los DoD de sus microtareas, ejecutados y con su salida pegada en `evidencia/`.
+**Estado:** TODO
+
+#### H5.S1 — Guardián de Playwright
+
+**CA:** El mismo de H5: el hito se entrega en una sola subtarea.
+**DoD:** El mismo de H5: los DoD de las microtareas de abajo.
+**Estado:** TODO
+
+| ID | Microtarea | CA (binario) | DoD |
+|---|---|---|---|
+| H5.S1.M1 | `pw-guard.mjs` + `--self-test` + doc + `.gitignore` | `3 PASS, 0 FAIL`; una corrida real contra 4210 con `playwright/consulta-rejilla.spec.ts` termina con `RESUMEN:` | `node scripts/pw-guard.mjs --self-test` · `node scripts/pw-guard.mjs --port 4210 --spec playwright/consulta-rejilla.spec.ts` |
+
+### H6 — Gates, reporte y entrega
+
+**CA:** Todas las microtareas de H6 cumplen su criterio binario de la tabla.
+**DoD:** Los DoD de sus microtareas, ejecutados y con su salida pegada en `evidencia/`.
+**Estado:** TODO
+
+#### H6.S1 — Gates, reporte y entrega
+
+**CA:** El mismo de H6: el hito se entrega en una sola subtarea.
+**DoD:** El mismo de H6: los DoD de las microtareas de abajo.
+**Estado:** TODO
+
+| ID | Microtarea | CA (binario) | DoD |
+|---|---|---|---|
+| H6.S1.M1 | Gates §5.3 (1–3) + `REPORTE.md` | exit 0; salida en `evidencia/despues/` | comandos con `; echo exit=$?` |
+| H6.S1.M2 | Commits por microtarea, `pull --rebase`, `git push origin HEAD:mockup`, rama, PR `--base mockup` | `origin/mockup` contiene los commits; PR abierto | `git fetch origin mockup && git log --oneline -8 origin/mockup` |
+| H6.S1.M3 | Sección «Carril C — Encuentro clínico · C0» de tu daily `Marcelo/Marcelo-Daily-Noche-2026-09-25.md` (sin tocar tus secciones de Farmacia y Carga Masiva) en `AlovidaPromptManager` (commit + `git push origin main`); aviso a Itzan, Justin y Pablo con el SHA (`SendMessage` si comparten máquina; si no, por el canal del equipo) | Daily con SHA, números de instalación, archivos tocados | `git -C ../AlovidaPromptManager log --oneline -1 origin/main` |
+
 
 ## 5. Cómo cerrás
 
@@ -96,4 +184,17 @@ Los `.claude/` instalados **no se commitean**. Si no podés completar este paso 
 
 ## 6. Lo que NO hacés
 
-Implementar ningún bloque de verdad · tocar `patient-chart.ts` (es de C3) · tocar `medication-block`, `diagnosis-block`, `agenda`, `account/**` · cambiar comportamiento de los handlers que mudás · `prettier --write` sobre fixtures · esperar a nadie: si a las 3 h no terminaste, pusheá lo que compile y pase, anotá lo que falta para C8 y avisá.
+**OUT:** Implementar ningún bloque de verdad · tocar `patient-chart.ts` (es de C3) · tocar `medication-block`, `diagnosis-block`, `agenda`, `account/**` · cambiar comportamiento de los handlers que mudás · `prettier --write` sobre fixtures · esperar a nadie: si a las 3 h no terminaste, pusheá lo que compile y pase, anotá lo que falta para C8 y avisá.
+
+## Ambigüedades registradas
+
+| Ambigüedad | Supuesto que se toma | A quién se confirma |
+|---|---|---|
+| Ninguna registrada al repartir. Toda duda que aparezca en ejecución se anota acá y en el `PLAN.md` del carril, con el supuesto tomado, antes de resolverla | — | Pablo |
+
+## Definition of Done del hito
+
+Un hito es `HECHO` sólo cuando **todas** sus microtareas están `HECHO` con la salida de su DoD
+pegada en `evidencia/`, la regresión del módulo tocado está en verde y los gates aplicables del
+repo pasaron. Falta cualquiera de las tres → el hito es `A MEDIAS`, con qué anda, qué no anda y
+qué falta exactamente.

@@ -20,7 +20,18 @@
 | `LÍMITE DE RECURSOS` | un `yarn start`, un build/test a la vez, Playwright sólo vía `pw-guard` |
 | `TUS OTROS CARRILES ESTA NOCHE` | Farmacia: `Noche-Farmacia.CarritoYNavegacion` · Carga Masiva: `Noche-CargaMasiva.IntegracionYEntrega`. **Cruce:** tu carril Farmacia reserva `src/app/core/navigation/**` entero y C7 cambia una línea de `navigation.map.ts` («Evoluciones» → «Notas médicas»). Hacé ese cambio en secuencia (nunca dos worktrees abiertos sobre ese archivo) y anotá en tu daily en qué rama quedó. Tu daily es uno solo (`Pablo-Daily-Noche-2026-09-25.md`): este carril va en su sección «Carril C — Encuentro clínico». |
 
-## 1. Estándar y skills
+## 1. Antes de escribir una línea — instalación OBLIGATORIA del estándar
+
+```bash
+git -C <raíz de tus repos>/AlovidaPromptManager pull --ff-only origin main
+cd <raíz de tus repos>/wt-clinica-c7
+cp -rn ../AlovidaPromptManager/.claude/skills/* .claude/skills/     # fusionar, NO pisar las 4 skills y 3 agentes del repo
+cp -rn ../AlovidaPromptManager/.claude/rules .claude/ 2>/dev/null || cp -rn ../AlovidaPromptManager/.claude/rules/* .claude/rules/
+cp -rn ../AlovidaPromptManager/.claude/hooks .claude/ 2>/dev/null || true
+ls .claude/skills | wc -l; ls .claude/rules/[0-9]*.md | wc -l; python .claude/hooks/plan_gate.py --self-test   # pegá las tres salidas en tu daily
+```
+
+Los `.claude/` instalados **no se commitean**. Si no podés completar este paso estás `BLOQUEADO`: avisá y no sigas.
 
 §5.1 del plan. **Skills:** `skills-router` → `outcome-first` → `context-thrift` → `factual-discovery` → `anti-hallucination-guard` → `scope-discipline` (**la más importante de tu carril**: un renombre invita a «aprovechar») → `milestone-planning` → `lane-authoring` → `data-privacy-phi` → `frontend-navigation-ia` → `ux-writing-microcopy` → `frontend-data-tables` → `frontend-ui-design` → `angular-development` → `angular-signals-state` → `native-code-patterns` → `unit-testing` → `angular-testing` → `regression-suite-management` → `e2e-playwright` → (cierre) `ui-quality-review` → `visual-proof` → `critical-double-review` → `evidence-and-verification` → `work-report-md` → `pr-mergeable-gate` → `finish-your-turn`. Del repo: `project-design-system`, `frontend-production-gate`, `visual-quality-gate`; agentes `frontend-reviewer`, `regression-auditor` (renombrás cosas con consumidores).
 
@@ -44,16 +55,74 @@ La tabla §2 del plan, columna «Se retira», sobre **tus** archivos. Inventario
 
 ## 5. Microtareas
 
+### H1 — Arranque e inventario
+
+**CA:** Todas las microtareas de H1 cumplen su criterio binario de la tabla.
+**DoD:** Los DoD de sus microtareas, ejecutados y con su salida pegada en `evidencia/`.
+**Estado:** TODO
+
+#### H1.S1 — Arranque e inventario
+
+**CA:** El mismo de H1: el hito se entrega en una sola subtarea.
+**DoD:** El mismo de H1: los DoD de las microtareas de abajo.
+**Estado:** TODO
+
 | ID | Microtarea | CA | DoD |
 |---|---|---|---|
-| C7.H1.M1 | Arranque, estándar, baseline, `PLAN.md`; inventario | La tabla separa «mío» de «de otro carril» | `grep` guardado |
-| C7.H2.M1 | Eliminar `free-note-block/**` (+ catálogo, `yarn stock:generate`) | `grep -rn "free-note-block\|FreeNoteBlock" src` = 0 | `yarn typecheck` |
-| C7.H2.M2 | `observation-block` rótulos; `note-grid` → `measurement-grid` | `consulta-rejilla` ajustado y verde | `yarn test --watch=false --include=src/app/features/clinical-record/patient-chart/observation-block/** --include=src/app/features/clinical-record/patient-chart/measurement-grid/**` |
-| C7.H2.M3 | `progress-notes` → «Notas médicas» (menú, título, una fila por nota, ADR-0015, renombres) | `progress-notes.spec.ts` verde con los nombres nuevos | `yarn test --watch=false --include=src/app/features/progress-notes/**` |
-| C7.H2.M4 | `care-plan-block`, `procedures-block`, `toast-samples`, `faker/clinico.ts`, `aviso-ficha-medica.spec.ts` | inventario en 0 para archivos propios | `grep` |
-| C7.H3.M1 | Playwright renombrado + `consulta-rejilla` | verdes | `node scripts/pw-guard.mjs --port 4217 --spec playwright/clinica-c7-notas-medicas-pdf.spec.ts --spec playwright/consulta-rejilla.spec.ts --serve` |
-| C7.H3.M2 | Capturas de «Notas médicas» cinco viewports, claro/oscuro; `critical-double-review` | — | capturas |
-| C7.H4.M1 | Revisores (incl. `regression-auditor`), gates, commits, push a `mockup`, PR, `REPORTE.md` con lo que quedó en archivos ajenos, daily en `main` | — | — |
+| H1.S1.M1 | Arranque, estándar, baseline, `PLAN.md`; inventario | La tabla separa «mío» de «de otro carril» | `grep` guardado |
+
+### H2 — Eliminación y renombres de bloques
+
+**CA:** Todas las microtareas de H2 cumplen su criterio binario de la tabla.
+**DoD:** Los DoD de sus microtareas, ejecutados y con su salida pegada en `evidencia/`.
+**Estado:** TODO
+
+#### H2.S1 — Eliminación y renombres de bloques
+
+**CA:** El mismo de H2: el hito se entrega en una sola subtarea.
+**DoD:** El mismo de H2: los DoD de las microtareas de abajo.
+**Estado:** TODO
+
+| ID | Microtarea | CA | DoD |
+|---|---|---|---|
+| H2.S1.M1 | Eliminar `free-note-block/**` (+ catálogo, `yarn stock:generate`) | `grep -rn "free-note-block\|FreeNoteBlock" src` = 0 | `yarn typecheck` |
+| H2.S1.M2 | `observation-block` rótulos; `note-grid` → `measurement-grid` | `consulta-rejilla` ajustado y verde | `yarn test --watch=false --include=src/app/features/clinical-record/patient-chart/observation-block/** --include=src/app/features/clinical-record/patient-chart/measurement-grid/**` |
+| H2.S1.M3 | `progress-notes` → «Notas médicas» (menú, título, una fila por nota, ADR-0015, renombres) | `progress-notes.spec.ts` verde con los nombres nuevos | `yarn test --watch=false --include=src/app/features/progress-notes/**` |
+| H2.S1.M4 | `care-plan-block`, `procedures-block`, `toast-samples`, `faker/clinico.ts`, `aviso-ficha-medica.spec.ts` | inventario en 0 para archivos propios | `grep` |
+
+### H3 — Recorrido y capturas
+
+**CA:** Todas las microtareas de H3 cumplen su criterio binario de la tabla.
+**DoD:** Los DoD de sus microtareas, ejecutados y con su salida pegada en `evidencia/`.
+**Estado:** TODO
+
+#### H3.S1 — Recorrido y capturas
+
+**CA:** El mismo de H3: el hito se entrega en una sola subtarea.
+**DoD:** El mismo de H3: los DoD de las microtareas de abajo.
+**Estado:** TODO
+
+| ID | Microtarea | CA | DoD |
+|---|---|---|---|
+| H3.S1.M1 | Playwright renombrado + `consulta-rejilla` | verdes | `node scripts/pw-guard.mjs --port 4217 --spec playwright/clinica-c7-notas-medicas-pdf.spec.ts --spec playwright/consulta-rejilla.spec.ts --serve` |
+| H3.S1.M2 | Capturas de «Notas médicas» cinco viewports, claro/oscuro; `critical-double-review` | — | capturas |
+
+### H4 — Revisión y entrega
+
+**CA:** Todas las microtareas de H4 cumplen su criterio binario de la tabla.
+**DoD:** Los DoD de sus microtareas, ejecutados y con su salida pegada en `evidencia/`.
+**Estado:** TODO
+
+#### H4.S1 — Revisión y entrega
+
+**CA:** El mismo de H4: el hito se entrega en una sola subtarea.
+**DoD:** El mismo de H4: los DoD de las microtareas de abajo.
+**Estado:** TODO
+
+| ID | Microtarea | CA | DoD |
+|---|---|---|---|
+| H4.S1.M1 | Revisores (incl. `regression-auditor`), gates, commits, push a `mockup`, PR, `REPORTE.md` con lo que quedó en archivos ajenos, daily en `main` | — | — |
+
 
 ## 6. Playwright
 
@@ -65,4 +134,17 @@ Checklist §9. Commits `refactor(nombres): …` por archivo o carpeta, `feat(not
 
 ## 8. Lo que NO hacés
 
-Tocar un archivo de otro carril «porque tiene la palabra vieja» · renombrar rutas · unificar `booking-status.ts` · tipos congelados · refactorizar `progress-notes` más allá de lo listado.
+**OUT:** Tocar un archivo de otro carril «porque tiene la palabra vieja» · renombrar rutas · unificar `booking-status.ts` · tipos congelados · refactorizar `progress-notes` más allá de lo listado.
+
+## Ambigüedades registradas
+
+| Ambigüedad | Supuesto que se toma | A quién se confirma |
+|---|---|---|
+| Ninguna registrada al repartir. Toda duda que aparezca en ejecución se anota acá y en el `PLAN.md` del carril, con el supuesto tomado, antes de resolverla | — | Pablo |
+
+## Definition of Done del hito
+
+Un hito es `HECHO` sólo cuando **todas** sus microtareas están `HECHO` con la salida de su DoD
+pegada en `evidencia/`, la regresión del módulo tocado está en verde y los gates aplicables del
+repo pasaron. Falta cualquiera de las tres → el hito es `A MEDIAS`, con qué anda, qué no anda y
+qué falta exactamente.
