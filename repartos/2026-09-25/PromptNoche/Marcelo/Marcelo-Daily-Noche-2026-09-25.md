@@ -191,34 +191,38 @@ propio orden interno. Si no llegás a los dos completos, decilo en este daily co
 
 ## Carril C — Encuentro clínico (Paquete 3, agregado por el propietario): C0, C3
 
-> **AVANCE DEL CARRIL C: 0 / 33.** Sale de `microtareas HECHO / total`. `A MEDIAS` cuenta como no hecha. Se suma a tus carriles A y B, no los reemplaza.
+> **AVANCE DEL CARRIL C: 14 / 33** (C0: 14/21 · C3: 0/12). Sale de `microtareas HECHO / total`. `A MEDIAS` cuenta como no hecha. Se suma a tus carriles A y B, no los reemplaza.
 
 - Plan maestro del paquete: [`PLAN-MAESTRO.md`](../../../../docs/trabajo/2026-09-25-plan-y-reparto-encuentro-clinico/PLAN-MAESTRO.md) · Daily de equipo, sección «Paquete 3»: [`Daily-Noche-2026-09-25.md`](../Daily-Noche-2026-09-25.md)
-- Repo: `mantra-core-health` · Ref: `origin/mockup` · Corte de referencia `bf2c3545` → **el tuyo:** (reconsultalo y anotalo por carril)
+- Repo: `mantra-core-health` · Ref: `origin/mockup` · Corte de referencia `bf2c3545` → **el tuyo:** C0 partió de `9b8bc46e` (base original), reverificado sobre `72450ff5`/`33a33bca` (dos rondas de fusión, incluido un conflicto mecánico en `diagnostics.handlers.ts` resuelto conservando ambas adiciones — detalle en `REPORTE.md` §7).
 - Instalación del estándar: la misma de arriba (no la repitas; si abriste un worktree nuevo, fusioná `.claude/` sin pisar y pegá los tres números).
 - Cómo entra en tu noche: C0 bloquea a Itzan, Justin y Pablo: es lo primero de este paquete (≈3 h). Después C3. Cómo se ordena con tus carriles A y B lo fija el propietario; la sugerencia del plan es C0 apenas cierres la Ola 0 de Farmacia (H2), porque tres personas lo esperan.
 
 | Carril | Prompt | Corte propio | Rama | HECHO/total | Peldaño (regla 30) | PR | Push a `mockup` | Bloqueos / avisos |
 |---|---|---|---|---|---|---|---|---|
-| C0 · Contrato primero (tipos, conceptos, stubs, casillas, `pw-guard`) | [prompt](Noche-EncuentroClinico.C0-ContratoPrimero/ContratoPrimero.md) | | `claude/clinica-c0-base` | 0/21 | | | | |
-| C3 · Diagnóstico presuntivo → confirmado/rechazado; enfermedad activa | [prompt](Noche-EncuentroClinico.C3-Diagnostico/DiagnosticoPresuntivoConfirmarORechazar.md) | | `claude/clinica-c3-diagnostico` | 0/12 | | | | |
+| C0 · Contrato primero (tipos, conceptos, stubs, casillas, `pw-guard`) | [prompt](Noche-EncuentroClinico.C0-ContratoPrimero/ContratoPrimero.md) | `72450ff5`/`33a33bca` | `marcelo/feat-clinica-c0-contrato-primero` | 14/21 (+1 integración necesaria, A MEDIAS) | TESTED (contrato/handlers/componentes); E2E BLOCKED por CSP ajeno, no C0 | [#693](https://github.com/mdavila-2001/mantra-core-health/pull/693) — **disponible en PR, NO integrado en `mockup`** | Rama `marcelo/feat-clinica-c0-contrato-primero` @ `8b48f0b5` | Ninguno nuevo. El E2E completo (31 casos) falla 31/31 solo en el `afterEach` de consola por un CSP preexistente (reproducido en `/auth`, ajeno a C0); 2 de esos 31 arrastran además un overflow de header preexistente. Ninguno debilitado. Falta P2 (segunda revisión visual) y aplicar el rename H4.S1.M1–M5 a VERIFIED completo. |
+| C3 · Diagnóstico presuntivo → confirmado/rechazado; enfermedad activa | [prompt](Noche-EncuentroClinico.C3-Diagnostico/DiagnosticoPresuntivoConfirmarORechazar.md) | | `claude/clinica-c3-diagnostico` | 0/12 | | | | Bloqueado hasta que C0 se integre en `mockup` (el stub 404 de verificación es de C0). |
 
 ### Lo que publicás para otros (con SHA + hora)
 
-(ver «Lo que destraba a otros» en la sección Paquete 3 del daily de equipo)
+- **Contrato, casillas, stubs, `pw-guard` en `origin/mockup`** — Marcelo (C0) → Itzan, Justin, Pablo. **Disponible en PR [#693](https://github.com/mdavila-2001/mantra-core-health/pull/693) (SHA `8b48f0b5`), 2026-09-25 ~21:20 UTC. NO integrado en `mockup` todavía** — falta review/merge. Los tipos quedan congelados desde ese SHA; C1/C2/C4/C9 pueden ramificar desde el PR si no quieren esperar el merge.
 
 ### Baseline del worktree de este carril
 
 | Comando | Exit code | Rojos previos | Clase (regla 80.4) |
 |---|---|---|---|
-| `yarn lint` | | | |
-| `yarn typecheck` | | | |
-| `yarn test --watch=false --include=<mis carpetas>` | | | |
+| `yarn lint` | 1 (263 errores) | Sí, idéntico antes/después de C0 | ENVIRONMENT/preexistente, ajeno a C0 |
+| `yarn typecheck` | 0 | — | — |
+| `yarn test --watch=false --include=<13 carpetas de C0>` | 0 (13 archivos / 309 tests) | No | — |
+| `node scripts/pw-guard.mjs --self-test` | 0 (3 PASS, 0 FAIL) | No | — |
+| `grep -rn "diagnostics-block\|DiagnosticsBlock" src/app` (kill-test) | 1 (0 coincidencias = PASS) | No | — |
+| `node scripts/pw-guard.mjs --port 4210 --spec playwright/consulta-rejilla.spec.ts` (31 casos) | 1 (31/31 fallan) | El CSP se reproduce también en `/auth`, ruta que C0 no toca | ENVIRONMENT — causa en `src/server/security-headers.ts`, confirmada por reproducción independiente, no solo por comparación de hashes |
 
 ### Doble revisión crítica de las capturas (regla 35)
 
-(una entrada por captura Playwright: primera mirada · segunda mirada adversarial · qué se corrigió)
+P1 (primera mirada) completada sobre las 60 capturas finales: 50 OK, 8 defectos menores (tira de pestañas/sello de demo en historia1024, sello en rejilla1440, inspector de stock1440/1920, ambos temas), 2 mayores (historia390 claro/oscuro, por el overflow de 13–52 px del header global — HTML/CSS idénticos a base por SHA-256, fuera de alcance de C0). Detalle en `docs/trabajo/2026-09-25-encuentro-clinico/c0/evidencia/doble-revision-p1.md`. **P2 (segunda mirada adversarial) sigue pendiente** — no se declara la doble revisión concluida.
 
 ### Cierre
 
-- PR: · Push a `mockup` verificado: · `REPORTE.md`: · Pendiente de backend redactado: · `// TODO C8` dejados:
+- **C0** — PR: [#693](https://github.com/mdavila-2001/mantra-core-health/pull/693), abierto contra `mockup`, SHA `8b48f0b5`, reviewers jsaldias39/PabloArauzCaballero. · Push a `mockup` verificado: **no** — sigue en PR, sin merge; `git push` fue a la rama propia (`marcelo/feat-clinica-c0-contrato-primero`), no a `mockup` directo. · `REPORTE.md`: completo, 7 secciones, en `docs/trabajo/2026-09-25-encuentro-clinico/c0/REPORTE.md`. · Pendiente de backend redactado: sí — P39–P42 (verificación de diagnóstico, categorías de orden, notas con firma real) quedan para C1/C2/C3 con backend NestJS real; C0 es solo simulador. · `// TODO C8` dejados: uno, en `src/app/core/mock/fixtures/agenda.ts:217-218`, ya resuelto por C0 (marca dónde C8 debía reemplazar el tipo de cita — el value set `APT-RECONSULTA` ya existe, falta que C8 lo consuma).
+- **C3** — no se trabajó esta noche (priorizado C0 por ser el que bloquea a tres personas).

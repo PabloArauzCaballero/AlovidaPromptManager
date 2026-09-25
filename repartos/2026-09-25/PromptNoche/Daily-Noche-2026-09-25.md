@@ -300,7 +300,7 @@ trabaja con él) o una acción destructiva sobre algo compartido (no hay ninguna
 
 | Qué | Quién | Para quién | Cuándo | Publicado (SHA + hora) |
 |---|---|---|---|---|
-| Contrato, casillas, stubs, `pw-guard` en `origin/mockup` | Marcelo (C0) | todos | primero, solo | |
+| Contrato, casillas, stubs, `pw-guard` en `origin/mockup` | Marcelo (C0) | todos | primero, solo | **Disponible en PR [#693](https://github.com/mdavila-2001/mantra-core-health/pull/693), SHA `8b48f0b5`, 2026-09-25 ~21:20 UTC — NO integrado en `mockup` todavía** (falta review/merge). Quien no quiera esperar el merge puede ramificar directo del PR: los tipos ya están congelados en ese SHA. |
 | `GET /charts/notes` con `entries` (ids `uuid('medical-note-<pid>-0')`) | Itzan (C1) | C2, C3, C6, C7 | primera mitad | |
 | `category` en `GET /diagnostic-results/me/orders` + 14 órdenes del paciente demo | Itzan (C2) | C9, C6 | primera mitad | |
 | `POST /clinical/conditions/:id/verification` | Marcelo (C3) | C5, C6 | primera mitad | |
@@ -310,7 +310,7 @@ trabaja con él) o una acción destructiva sobre algo compartido (no hay ninguna
 
 | Carril | Responsable | Corte propio (`origin/mockup @`) | Rama | HECHO/total | Peldaño | PR | Push a `mockup` | Bloqueos / avisos |
 |---|---|---|---|---|---|---|---|---|
-| C0 · Contrato primero | Marcelo | | `claude/clinica-c0-base` | 0/21 | | | | |
+| C0 · Contrato primero | Marcelo | `72450ff5`/`33a33bca` | `marcelo/feat-clinica-c0-contrato-primero` | 14/21 | TESTED (contrato/handlers/componentes); E2E BLOCKED por CSP ajeno | [#693](https://github.com/mdavila-2001/mantra-core-health/pull/693) | No — disponible en PR, no integrado | 31/31 casos del E2E completo fallan solo en el `afterEach` de consola por CSP preexistente (confirmado en `/auth`, no C0); P2 (segunda revisión visual) pendiente |
 | C3 · Diagnóstico | Marcelo | | `claude/clinica-c3-diagnostico` | 0/12 | | | | |
 | C1 · Nota médica | Itzan | | `claude/clinica-c1-notas-medicas` | 0/11 | | | | |
 | C2 · Orden de análisis | Itzan | | `claude/clinica-c2-ordenes-analisis` | 0/11 | | | | |
