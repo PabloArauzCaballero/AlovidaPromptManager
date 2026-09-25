@@ -1,0 +1,2 @@
+check_reparto: OK, 2026-09-25 cumple la estructura obligatoria
+exit=0
