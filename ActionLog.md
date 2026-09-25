@@ -7,6 +7,37 @@ resumen de alto nivel para quien no quiere abrir carpeta por carpeta. Entradas n
 
 ---
 
+## 2026-09-25 — Justin · "Cerrar la tanda: lo que quedó sin mirar, mirado"
+
+**Rama:** `justin/cierre-tanda-2026-09-25` (este repo). **Trabajo y evidencia:** [PR #687](https://github.com/mdavila-2001/mantra-core-health/pull/687) del front. **Reporte:** [`docs/trabajo/2026-09-25-justin-cierre-tanda/REPORTE.md`](docs/trabajo/2026-09-25-justin-cierre-tanda/REPORTE.md). **Daily actualizado** con el avance por carril.
+
+### El problema
+
+Los cinco carriles de esa noche estaban mergeados pero cerrados con **todo lo visual en `UNKNOWN` o `WRITTEN`**: había cuatro agentes en paralelo y la regla 70 prohibía levantar un servidor. Lo que quedaba abierto no era código —el código ya estaba en `mockup`— era **mirar**. Con la máquina libre, casi todo se mide una sola vez sobre `mockup`, que ya contiene los cinco carriles.
+
+### Avance: 116 / 140 → **133 / 140 — 95,0 %**
+
+A Farmacia 33→**39**/41 · B Carga masiva 60→**66**/68 · C4 10→**11**/12 · C6 6→**8**/9 · C8 7→**9**/10. **24 de las 29 microtareas abiertas, cerradas.** 26 capturas, contraste del tema oscuro medido (13,3–14,33:1 contra AA 4,5:1), Regla 8 medida en «Mi historia» (0 px de diferencia entre holguras, 93,3 % del área, en los dos temas), y tres specs de Playwright que nunca se habían ejecutado, ejecutados (C4 6/10, carga masiva 11/11, barridos 8/9).
+
+### Cuatro defectos que sólo aparecen mirando
+
+**Corregidos:** el contraste de `.carga__nota` que `axe` marcaba *serious* —4,27:1, que es la excepción E1 de `--text-muted`, aceptada «sólo terciario», y estas notas son la instrucción del paso: pasan a `--text-secondary` sin tocar el token compartido de 96 archivos—; y el docblock del spec de C8, que seguía diciendo «no se ejecutó» después de que lo corrieran 6/6, contradiciendo al reporte de su propio carril.
+
+**Abiertos, con dueño:** (1) **«Agregar la receta al carrito» no agrega nada** — botón habilitado, sin aviso, y el carrito dice «Tu carrito está vacío»; los 46 unitarios pasan porque miran el *store*, el navegador mira la pantalla → **Pablo**. (2) **Los sellos de reconsulta suben solos**, `2, 3, 4, 5` en cuatro cargas de «Mis citas» sin que nadie agende, con dos citas idénticas visibles en la captura → **quien tenga `core/mock/`**.
+
+### Lo que la corrida destapó del repo, y nadie había medido
+
+**La suite completa está en rojo: 53 fallos de 7 950**, y **ninguno es de estos carriles** — demostrado por bisección corriendo el mismo subconjunto en siete cortes: verde hasta `#669`, rompe en **#670** (`feature/sintomas-silueta-y-sexo`, 10) y suma en **#671** (Ola 0, 38); uno más es el renombre «Evoluciones» → «Notas médicas» de C7, que no actualizó `access-tree.spec.ts`. Los 6 `check-*.mjs` en rojo **ya fallaban en el corte base**; `lint` pasó de 6 a 19 errores durante la noche, en archivos ajenos; y el **desborde a 375 px** que se veía en cuatro pantallas es **del armazón** (`div.app-header__derecha`), no del CSS de los carriles. `build` y `typecheck`: exit 0.
+
+### Lo que hace falta de otros
+
+**La segunda pasada crítica de las 26 capturas** (no puede ser propia, regla 35.1.6) — es lo único que separa a C4 y C8 de su última microtarea. **El cableado de `consulta-casilla-reconsulta`**: `FollowUpBlock` está escrito y ninguna plantilla lo monta; era de **C1**, que no se entregó, y bloquea 3 casos de C4. **Itzan**: su endpoint de carga masiva ya existe en `origin/itzan/carga-masiva-motor-2026-09-25`, sin mergear.
+
+### Lo que NO se hizo, a propósito
+
+No se escribió `pw-guard.mjs` (era de C0), no se montó la casilla de C1, no se tocó `--text-muted`, y **no se arregló ningún rojo ajeno**: los 53 de la suite, los 19 de lint y los 6 gates quedan reportados con su causa y su corte. Se declara además un desvío propio: el `PLAN.md` del cierre se escribió después de empezar, lo que incumple la regla 20.
+
+
 ## 2026-09-25 — Justin · "El daily de la noche: 5 PRs mergeados que desde este repo se leían como cero"
 
 **Rama:** `justin/daily-noche-2026-09-25` (este repo). **Daily:** [`repartos/2026-09-25/PromptNoche/Justin/Justin-Daily-Noche-2026-09-25.md`](repartos/2026-09-25/PromptNoche/Justin/Justin-Daily-Noche-2026-09-25.md). **Plan y reporte:** [`docs/trabajo/2026-09-25-justin-daily-noche/`](docs/trabajo/2026-09-25-justin-daily-noche/REPORTE.md). **No se tocó código de ningún repo: el diff son cuatro archivos de documentación.**
