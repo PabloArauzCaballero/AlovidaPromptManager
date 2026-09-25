@@ -3,6 +3,11 @@
 > **AVANCE: 0 / 93 — 0 %.** ← actualizá esta línea al cerrar. Sale de `microtareas HECHO / total`.
 > `A MEDIAS` cuenta como **no hecha**. Prohibido el porcentaje estimado a ojo (regla 50 §5).
 
+> **Antes de seguir, leé [`CERRAR-EL-CARRIL-SIN-FRENOS.md`](CERRAR-EL-CARRIL-SIN-FRENOS.md)**
+> (2026-09-24): el 0/93 de arriba no refleja el código real —cinco PRs tuyos ya se fusionaron—;
+> tus dos dependencias (ADR-0015 de Pablo, confirmación de Marcelo) ya están en `mockup`, dejá de
+> simularlas. Cierra sin frenos: código primero, documentación al final.
+
 - Carril: [`Noche-PerfilMedico.ConfigurarTuPerfil`](Noche-PerfilMedico.ConfigurarTuPerfil/PerfilSinPrincipalSinTrabajoYTablasConModal.md)
 - Corte: `origin/mockup` @ `b655e844…` → **el tuyo:** `________________`
 - Rama: `________________` · Peldaño alcanzado (regla 30): `________________`
