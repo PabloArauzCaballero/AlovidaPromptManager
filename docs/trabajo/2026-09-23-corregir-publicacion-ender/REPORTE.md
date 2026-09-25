@@ -21,7 +21,7 @@ Ninguna en esta corrección.
 
 | ID | Estado | Qué lo destraba |
 |---|---|---|
-| 2 bloques de conflicto en `Daily-Noche-2026-09-22.md` (encabezado y tabla PUBLICADO) | BLOQUEADO | Mezclan valores de Pablo, Justin y otras filas: los resuelve quien los introdujo (#34) o coordinación |
+| 2 bloques de conflicto en `Daily-Noche-2026-09-22.md` (encabezado y tabla PUBLICADO) | `HECHO` (2026-09-24) | Resuelto al mergear `origin/main` para destrabar el PR #37 — ver adenda al final de este reporte |
 | Rama reconciliada de producto | PR #604 abierto | Merge de #604 (no autorizado en este carril) |
 
 ## Evidencia
@@ -45,9 +45,50 @@ Ninguno.
 
 ## Riesgos residuales
 
-- Mientras el daily de equipo tenga los 2 bloques sin resolver, su encabezado muestra dos totales distintos.
+- Ninguno nuevo: la deriva de 2 unidades entre el total de la cabecera (131) y la suma de sus 5 filas
+  (133) ya existía en `origin/main` antes de este merge (87 vs. 89 con Ender en 0/48); no se investigó
+  su causa por estar fuera de alcance de este carril.
 
 ## Decisiones y ambigüedades
 
 - Autoría: `baamoc <766851@nur.edu.bo>`, sin trailers (#25, #32).
 - Los datos del carril paralelo se conservan etiquetados; lo que el contrato C dejó sin vigencia se marca «superado», no se borra.
+
+## Adenda — merge contra `origin/main` para destrabar el PR #37 (2026-09-24)
+
+El PR #37 (esta corrección) quedó en conflicto contra `main` cuando #34 avanzó. Se resolvió con
+`git merge origin/main`, en un checkout aparte (sesión de Claude Code de Justin), así:
+
+1. **Cabecera «AVANCE DEL TURNO»** — de los 2 bloques de conflicto literal de #34 que este carril
+   había dejado sin resolver (H1.S1.M2, arriba), se tomó la versión ya cerrada de `origin/main`
+   (`Justin 44/51, cierre 2026-09-24`) y se le aplicó encima el único cambio de este carril: `Ender
+   0/48 → 44/48`. Total: `87 + 44 = 131` — se sumó el delta de Ender al total que ya traía
+   `origin/main`, **sin recalcular** ese total desde cero (ver Riesgos residuales).
+2. **Bloque duplicado de HALL-M5/M6/M4 + latencia + Cotizaciones** — se confirmó que `origin/main`
+   ya tiene, sin marcadores, exactamente la misma versión detallada que esta rama (latencia
+   `40/90/600/120`, Cotizaciones `PUBLICADO`); el duplicado obsoleto (Cotizaciones `TODO`, latencia
+   vieja `80/100`) sólo sobrevivía dentro del marcador nunca limpiado de #34. Se eliminó el
+   duplicado completo, sin tocar contenido de nadie.
+3. **Tabla de cierre (§8)** — se tomaron las filas de Justin y Marcelo de `origin/main` (más
+   completas: verificación remota de Justin con Coolify, Marcelo en `64/64`) y la fila de Ender de
+   esta rama (`44/48`, autorreporte).
+
+Ninguna fila de Pablo, Itzan, Justin o Marcelo fue inventada ni recalculada.
+
+**Evidencia:**
+
+```text
+$ python3 tools/check_reparto.py repartos/2026-09-22/
+check_reparto: OK, 2026-09-22 cumple la estructura obligatoria
+$ python3 tools/sync_agents.py --check
+sync --check: OK, 198 archivo(s) en espejo, sin deriva
+$ python3 tools/check_skills_citadas.py
+check_skills_citadas: OK, 114 skill(s) distinta(s) citada(s), 0 inexistentes (de 179 en disco)
+$ git diff --check HEAD -- repartos/2026-09-22/PromptNoche/Daily-Noche-2026-09-22.md
+(sin salida — limpio)
+$ grep -c '^<<<<<<<\|^=======$\|^>>>>>>>' repartos/2026-09-22/PromptNoche/Daily-Noche-2026-09-22.md
+0
+```
+
+Peldaño de esta adenda: `TESTED` (los tres verificadores del repo pasan sobre el árbol resuelto).
+No sube a `VERIFIED` porque no hay comportamiento en runtime que observar en un documento.
