@@ -47,6 +47,15 @@ máquina libre, lo que faltaba no era código —el código está en `mockup`—
 
 ## Lo que hay que decidir o repartir
 
+> [!important] Documento de decisión
+> Las ocho decisiones están desarrolladas —con contexto, opciones, recomendación y hueco para
+> firmar— en **[`DECISIONES-EQUIPO.md`](./DECISIONES-EQUIPO.md)**. Lo de abajo es el índice.
+>
+> **Corrección respecto de lo publicado antes:** el PR de Itzan **no está mergeado, y no existe
+> ningún PR de esa rama**. Lo que se mergeó en `dev` es el **PR #462 de Marcelo**, que trae
+> `import-file` pero **cero `dryRun`** y **cero `import-template`** — es decir, «Validar sin
+> guardar» y «Bajá la plantilla» siguen sin servidor detrás. Ver D-5.
+
 | Qué | Quién |
 |---|---|
 | El carrito vacío (defecto 1) | **Pablo** |

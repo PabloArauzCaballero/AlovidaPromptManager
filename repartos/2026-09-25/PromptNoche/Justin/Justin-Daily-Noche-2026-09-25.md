@@ -52,6 +52,8 @@ después de que lo corrieran 6/6.
 
 ### Lo que hace falta de otros
 
+**Las ocho decisiones, con opciones y recomendación:** [`DECISIONES-EQUIPO.md`](../../../../docs/trabajo/2026-09-25-justin-cierre-tanda/DECISIONES-EQUIPO.md).
+
 - **La segunda pasada crítica de las 26 capturas** — no puede ser propia (regla 35.1.6). Es lo
   único que separa a C4 y C8 de su última microtarea.
 - **El cableado de `consulta-casilla-reconsulta`**: `FollowUpBlock` está escrito y **ninguna
