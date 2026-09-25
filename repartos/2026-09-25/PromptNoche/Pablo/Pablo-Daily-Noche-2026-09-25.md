@@ -184,7 +184,7 @@ a los dos completos, decilo en este daily con cuál priorizaste y por qué.
 
 ## Carril C — Encuentro clínico (Paquete 3, agregado por el propietario): C9, C5, C7
 
-> **AVANCE DEL CARRIL C: 22 / 27 — 81,5 %.** Sale de `microtareas HECHO / total`. `A MEDIAS` cuenta como no hecha. Se suma a tus carriles A y B, no los reemplaza.
+> **AVANCE DEL CARRIL C: 23 / 27 — 85,2 %.** Sale de `microtareas HECHO / total`. `A MEDIAS` cuenta como no hecha. Se suma a tus carriles A y B, no los reemplaza.
 
 - Plan maestro del paquete: [`PLAN-MAESTRO.md`](../../../../docs/trabajo/2026-09-25-plan-y-reparto-encuentro-clinico/PLAN-MAESTRO.md) · Daily de equipo, sección «Paquete 3»: [`Daily-Noche-2026-09-25.md`](../Daily-Noche-2026-09-25.md)
 - Repo: `mantra-core-health` · Ref: `origin/mockup` · Corte de referencia `bf2c3545` → **el tuyo:** C9/C5 `963b7283` (post Ola 0 Farmacia) · C7 `963b7283` → mergeado con `9fa933be` tras integrarse C9 (#677) y C5 (#679)
@@ -193,16 +193,41 @@ a los dos completos, decilo en este daily con cuál priorizaste y por qué.
 
 | Carril | Prompt | Corte propio | Rama | HECHO/total | Peldaño (regla 30) | PR | Push a `mockup` | Bloqueos / avisos |
 |---|---|---|---|---|---|---|---|---|
-| C9 · «Mis órdenes» por tipo con barra y paginación | [prompt](Noche-EncuentroClinico.C9-MisOrdenes/MisOrdenesPorTipoConBarraYPaginacion.md) | `963b7283` | `claude/clinica-c9-mis-ordenes` | 8/10 | TESTED (16/16 specs + build; falta Playwright/capturas) | #677 | **MERGEADO** | Faltó H4 completo y el cierre de H5 (Playwright, diferido al pase final consolidado que nunca se corrió esta noche) |
-| C5 · Receta ligada a diagnóstico confirmado o motivo | [prompt](Noche-EncuentroClinico.C5-Receta/RecetaLigadaADiagnosticoConfirmadoOMotivo.md) | `963b7283` | `claude/clinica-c5-receta` | 8/9 | TESTED (10/10 + 63/63 + 45/45 specs; falta Playwright/E2E) | #679 | **MERGEADO** | Falta H4/H5 (Playwright corrido); integración triple pendiente en `patient-chart.ts`/`consultation.ts`/`medical-record.ts` (C3, fuera de alcance) — detalle en su `REPORTE.md` |
-| C7 · Homogeneización de nombres y «Notas médicas» | [prompt](Noche-EncuentroClinico.C7-Nombres/HomogeneizacionDeNombresYNotasMedicas.md) | `963b7283`→`9fa933be` | `claude/clinica-c7-nombres` | 6/8 | TESTED (235/235 specs post-merge + build; falta Playwright/capturas) | #682 | Abierto, `MERGEABLE`/`UNSTABLE` (checks del runner propio en `pending`, caído) | `free-note-block/**` no se pudo eliminar (bloquea `patient-chart.ts`, C3): queda `@deprecated`, delegando en `measurement-grid/` nuevo. «Una fila por nota» en Notas médicas no se logró: no existe `GET /charts/notes` de colección en este corte. Detalle completo en su `REPORTE.md` |
+| C9 · «Mis órdenes» por tipo con barra y paginación | [prompt](Noche-EncuentroClinico.C9-MisOrdenes/MisOrdenesPorTipoConBarraYPaginacion.md) | `963b7283` | `claude/clinica-c9-mis-ordenes` | 8/10 | **Playwright corrido**: encontró un bug real (ver abajo) | #677 (mergeado) + **#683 fix** | **#677 MERGEADO** · #683 abierto, mergeable | Bug real en producción, ver «Lo que publicás» |
+| C5 · Receta ligada a diagnóstico confirmado o motivo | [prompt](Noche-EncuentroClinico.C5-Receta/RecetaLigadaADiagnosticoConfirmadoOMotivo.md) | `963b7283` | `claude/clinica-c5-receta` | 8/9 | **Playwright corrido**: 5 bugs del spec corregidos, 1 hallazgo sin resolver (ver abajo) | #679 (mergeado) + **#685 fix de specs** | **#679 MERGEADO** · #685 abierto, mergeable | Integración triple pendiente en `patient-chart.ts`/`consultation.ts`/`medical-record.ts` (C3) — ver su `REPORTE.md` |
+| C7 · Homogeneización de nombres y «Notas médicas» | [prompt](Noche-EncuentroClinico.C7-Nombres/HomogeneizacionDeNombresYNotasMedicas.md) | `963b7283`→`9fa933be` | `claude/clinica-c7-nombres` | 7/8 | **Playwright corrido**: «Notas médicas» PASS, 5 viewports, doble revisión APROBADA | #682 | Abierto, `MERGEABLE`/`UNSTABLE` (checks del runner propio en `pending`, caído) | `consulta-rejilla.spec.ts` bloqueado por un locator ajeno en `clinical-record.html` (pre-existente) — no se pudo verificar `observation-block` ni el envoltorio `free-note-block` en navegador. Detalle en su `REPORTE.md` |
 
-### Lo que publicás para otros (con SHA + hora)
+### El pase consolidado de Playwright — sí se hizo, y encontró cosas reales
 
-- `measurement-grid` (ex `note-grid`, ahora fuera de `free-note-block/`): quien toque `patient-chart.ts` después puede cambiar su import/plantilla a `<app-measurement-grid>` directo y borrar el envoltorio `free-note-block` — instrucción exacta en el JSDoc de `free-note-block.ts` (PR #682, sin mergear todavía).
-- `faker/clinico.ts`: `notaDeEvolucion` ya no existe, es `textoDeNotaMedica` (PR #682).
+Se corrió esta noche (mockup corre contra el interceptor propio, **sin Postgres ni API** — corrección
+sobre lo que este daily decía antes). Hallazgo de infraestructura: **`scripts/pw-guard.mjs` no existe
+en el repo**, aunque los tres prompts clínicos lo asumen como si ya estuviera escrito. Se usó el
+mecanismo real (`ng serve --port <PUERTO>` + `E2E_BASE_URL=http://localhost:<PUERTO> npx playwright
+test <spec>`, que `playwright.config.ts:41` ya soporta). Alguien tiene que escribirlo o corregir los
+tres prompts.
 
-### Baseline del worktree de este carril
+**Bug real en C9 (ya en `mockup` desde el PR #677 mergeado):** `<app-data-table>` en «Mis órdenes»
+estaba atado a `estado()` (todas las filas sin filtrar) en vez de a las filas ya filtradas —
+buscar o filtrar cambiaba el número del resumen pero la tabla seguía mostrando todo. **PR #683** lo
+arregla + agrega un test de regresión (el bug era invisible a los unitarios existentes, que sólo
+afirmaban sobre el `computed` en aislamiento, nunca sobre lo que la tabla realmente recibe).
+
+**Hallazgo en C5 (sin resolver):** con los 5 bugs del propio spec corregidos (ruta 404, selects
+apuntando al host en vez del control nativo, botón «Prescribir» ambiguo, medicamento nunca elegido,
+diálogos de interacción/adjuntos sin manejar), la receta creada queda en estado **Borrador** y el
+badge «Diagnóstico:»/«Motivo:» que el criterio de aceptación espera sólo aparece para una receta
+**firmada**. El spec (ni la versión original ni la corrección de esta noche) firma la receta. Ver
+`docs/trabajo/2026-09-25-encuentro-clinico/c5/evidencia/c5-receta-playwright.md` — falta decidir si
+el criterio esperaba firma o si el badge debería verse en borrador también.
+
+**C7 sí cerró en verde:** «Notas médicas» funciona de punta a punta (heading, botón PDF, sin
+desborde en 5 viewports, descarga real, consola limpia), con doble revisión crítica hecha y
+`APROBADA`. `observation-block` y el envoltorio `free-note-block`→`measurement-grid` no se pudieron
+verificar: `consulta-rejilla.spec.ts` — el único camino E2E hasta esas pantallas — se cae antes, en
+`/medical-records`, por un `label` que cambió (`clinical-record.html:29` dice «Nombre o código»; el
+spec busca «Buscar por nombre o código», de antes de esta noche).
+
+### Baseline del worktree de C7 (el más reciente tocado)
 
 | Comando | Exit code | Rojos previos | Clase (regla 80.4) |
 |---|---|---|---|
@@ -213,15 +238,29 @@ a los dos completos, decilo en este daily con cuál priorizaste y por qué.
 
 ### Doble revisión crítica de las capturas (regla 35)
 
-Ninguna de las tres corrió Playwright ni sacó capturas esta noche — el pase final consolidado que
-los tres `PLAN.md` prometían («se levanta el stack una sola vez para los tres») **no se hizo**: quedó
-como el pendiente más grande de todo el Carril C. Sin capturas no hay doble revisión que hacer
-todavía.
+**«Notas médicas» (C7), tema claro, 5 viewports: hecha, APROBADA**, sin hallazgos bloqueantes —
+`wt-clinica-c7/docs/trabajo/2026-09-25-encuentro-clinico/c7/evidencia/doble-revision.md`. Falta el
+tema oscuro (el spec no lo alterna). El resto (`observation-block`, `measurement-grid` en consulta,
+la pantalla de recetas de C5) sigue sin capturas por los bloqueos de arriba.
 
 ### Cierre
 
-- PR: C9 #677 (mergeado) · C5 #679 (mergeado) · C7 #682 (abierto, mergeable)
-- Push a `mockup` verificado: C9 y C5 sí (mergeados); C7 con `gh pr view` pegado en su `REPORTE.md`
-- `REPORTE.md`: los tres tienen el suyo, en `docs/trabajo/2026-09-25-encuentro-clinico/{c9,c5,c7}/REPORTE.md` de cada worktree
-- Pendiente de backend redactado: C7 (lectura de colección `GET /charts/notes`), C5 (integración triple en `patient-chart.ts`/`consultation.ts`/`medical-record.ts`) — ambos en sus `REPORTE.md`
-- `// TODO C8` dejados: ninguno literal; el inventario de términos en archivos ajenos de C7 (`consultation.ts`, `patient-chart.ts`, `progress-notes-pdf.ts`) queda anotado en `evidencia/inventario.md` de C7 para quien los pueda tocar
+- PR: C9 #677 (mergeado) + **#683 fix del filtro** (abierto) · C5 #679 (mergeado) + **#685 fix de
+  specs** (abierto) · C7 #682 (abierto, mergeable)
+- Push a `mockup` verificado: C9 y C5 sí (mergeados); C7 con `gh pr view` pegado en su `REPORTE.md`;
+  los dos fixes (#683, #685) con el mismo chequeo, `MERGEABLE`/`UNSTABLE` por el runner caído
+- `REPORTE.md`: los tres tienen el suyo actualizado, en
+  `docs/trabajo/2026-09-25-encuentro-clinico/{c9,c5,c7}/REPORTE.md` de cada worktree, más
+  `docs/trabajo/2026-09-25-fix-mis-ordenes-filtro-tabla/` (C9) y la evidencia de Playwright de C5/C7
+- Pendiente de backend redactado: C7 (lectura de colección `GET /charts/notes`), C5 (integración
+  triple en `patient-chart.ts`/`consultation.ts`/`medical-record.ts`) — ambos en sus `REPORTE.md`
+- Pendiente de infraestructura: `scripts/pw-guard.mjs` no existe — alguien lo escribe o se corrigen
+  los tres prompts que lo asumen
+- Pendiente ajeno anotado, no tocado: `clinical-record.html`/`consulta-rejilla.spec.ts` (locator
+  desactualizado), `prescription-official-pdf.spec.ts` (el caso «sin conexión» falla, pre-existente)
+- `// TODO C8` dejados: ninguno literal; el inventario de términos en archivos ajenos de C7
+  (`consultation.ts`, `patient-chart.ts`, `progress-notes-pdf.ts`) queda anotado en
+  `evidencia/inventario.md` de C7 para quien los pueda tocar
+- Farmacia (PR #671) ya está mergeado también, pero **no tiene un spec de Playwright propio** —
+  su ficha nunca definió uno (a diferencia de C9/C5/C7). Queda pendiente si alguien quiere una
+  verificación visual manual de esa pantalla.
