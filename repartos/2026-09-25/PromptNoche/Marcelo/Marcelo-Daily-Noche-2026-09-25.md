@@ -123,9 +123,9 @@ AVANCE — datos y contrato real — <fase> — <ID de microtarea>
 
 | Qué | SHA + hora | Para quién |
 |---|---|---|
-| `test/fixtures/terminology-import/**` (14 CSV + XLSX + README) | | Itzan (specs CSV), Justin (doble), vos (E2E) |
-| `decision-dependencia.md` + `yarn.lock` | | Itzan (plantilla XLSX), Pablo |
-| `xlsx-parser.ts` + spec, PR API | | Pablo (cablea en `index.ts`) |
+| `test/fixtures/terminology-import/**` (13 CSV + 15 XLSX + PDF + README, 30 archivos) | `f3816e3e`, 2026-09-25 12:25 (hora local del commit) | Itzan (specs CSV), Justin (doble), vos (E2E) |
+| `decision-dependencia.md` + `yarn.lock` | `52aa408b` (xlsx 0.20.3), `2026-09-25 12:16` | Itzan (plantilla XLSX), Pablo |
+| `xlsx-parser.ts` + spec, PR API | PR [#462](https://github.com/mdavila-2001/mantra-core-health-api/pull/462), `82c6239f`, 18/18 en verde (spec cruzado sobre los 12 gemelos) | Pablo (cablea en `index.ts`) |
 
 ### 1. Instalación del estándar — pegá la salida acá
 
