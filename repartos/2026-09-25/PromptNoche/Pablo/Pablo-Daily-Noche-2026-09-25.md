@@ -184,35 +184,44 @@ a los dos completos, decilo en este daily con cuál priorizaste y por qué.
 
 ## Carril C — Encuentro clínico (Paquete 3, agregado por el propietario): C9, C5, C7
 
-> **AVANCE DEL CARRIL C: 0 / 27.** Sale de `microtareas HECHO / total`. `A MEDIAS` cuenta como no hecha. Se suma a tus carriles A y B, no los reemplaza.
+> **AVANCE DEL CARRIL C: 22 / 27 — 81,5 %.** Sale de `microtareas HECHO / total`. `A MEDIAS` cuenta como no hecha. Se suma a tus carriles A y B, no los reemplaza.
 
 - Plan maestro del paquete: [`PLAN-MAESTRO.md`](../../../../docs/trabajo/2026-09-25-plan-y-reparto-encuentro-clinico/PLAN-MAESTRO.md) · Daily de equipo, sección «Paquete 3»: [`Daily-Noche-2026-09-25.md`](../Daily-Noche-2026-09-25.md)
-- Repo: `mantra-core-health` · Ref: `origin/mockup` · Corte de referencia `bf2c3545` → **el tuyo:** (reconsultalo y anotalo por carril)
+- Repo: `mantra-core-health` · Ref: `origin/mockup` · Corte de referencia `bf2c3545` → **el tuyo:** C9/C5 `963b7283` (post Ola 0 Farmacia) · C7 `963b7283` → mergeado con `9fa933be` tras integrarse C9 (#677) y C5 (#679)
 - Instalación del estándar: la misma de arriba (no la repitas; si abriste un worktree nuevo, fusioná `.claude/` sin pisar y pegá los tres números).
-- Cómo entra en tu noche: C9 primero (es lo que el propietario pidió ver), después C5 y C7. Cruce con tu carril A (Farmacia): reserva `core/navigation/**` entero y C7 cambia una línea de `navigation.map.ts`; hacelo en secuencia y anotá acá en qué rama quedó.
+- Cómo entra en tu noche: C9 primero (es lo que el propietario pidió ver), después C5 y C7. Cruce con tu carril A (Farmacia): reserva `core/navigation/**` entero y C7 cambia una línea de `navigation.map.ts`; se hizo en secuencia — Farmacia mergeó primero (PR #671), C7 mergeó `origin/mockup` de vuelta sobre su rama después, sin conflictos (`git merge`, evidencia en el `PLAN.md` de C7).
 
 | Carril | Prompt | Corte propio | Rama | HECHO/total | Peldaño (regla 30) | PR | Push a `mockup` | Bloqueos / avisos |
 |---|---|---|---|---|---|---|---|---|
-| C9 · «Mis órdenes» por tipo con barra y paginación | [prompt](Noche-EncuentroClinico.C9-MisOrdenes/MisOrdenesPorTipoConBarraYPaginacion.md) | | `claude/clinica-c9-mis-ordenes` | 0/10 | | | | |
-| C5 · Receta ligada a diagnóstico confirmado o motivo | [prompt](Noche-EncuentroClinico.C5-Receta/RecetaLigadaADiagnosticoConfirmadoOMotivo.md) | | `claude/clinica-c5-receta` | 0/9 | | | | |
-| C7 · Homogeneización de nombres y «Notas médicas» | [prompt](Noche-EncuentroClinico.C7-Nombres/HomogeneizacionDeNombresYNotasMedicas.md) | | `claude/clinica-c7-nombres` | 0/8 | | | | |
+| C9 · «Mis órdenes» por tipo con barra y paginación | [prompt](Noche-EncuentroClinico.C9-MisOrdenes/MisOrdenesPorTipoConBarraYPaginacion.md) | `963b7283` | `claude/clinica-c9-mis-ordenes` | 8/10 | TESTED (16/16 specs + build; falta Playwright/capturas) | #677 | **MERGEADO** | Faltó H4 completo y el cierre de H5 (Playwright, diferido al pase final consolidado que nunca se corrió esta noche) |
+| C5 · Receta ligada a diagnóstico confirmado o motivo | [prompt](Noche-EncuentroClinico.C5-Receta/RecetaLigadaADiagnosticoConfirmadoOMotivo.md) | `963b7283` | `claude/clinica-c5-receta` | 8/9 | TESTED (10/10 + 63/63 + 45/45 specs; falta Playwright/E2E) | #679 | **MERGEADO** | Falta H4/H5 (Playwright corrido); integración triple pendiente en `patient-chart.ts`/`consultation.ts`/`medical-record.ts` (C3, fuera de alcance) — detalle en su `REPORTE.md` |
+| C7 · Homogeneización de nombres y «Notas médicas» | [prompt](Noche-EncuentroClinico.C7-Nombres/HomogeneizacionDeNombresYNotasMedicas.md) | `963b7283`→`9fa933be` | `claude/clinica-c7-nombres` | 6/8 | TESTED (235/235 specs post-merge + build; falta Playwright/capturas) | #682 | Abierto, `MERGEABLE`/`UNSTABLE` (checks del runner propio en `pending`, caído) | `free-note-block/**` no se pudo eliminar (bloquea `patient-chart.ts`, C3): queda `@deprecated`, delegando en `measurement-grid/` nuevo. «Una fila por nota» en Notas médicas no se logró: no existe `GET /charts/notes` de colección en este corte. Detalle completo en su `REPORTE.md` |
 
 ### Lo que publicás para otros (con SHA + hora)
 
-(ver «Lo que destraba a otros» en la sección Paquete 3 del daily de equipo)
+- `measurement-grid` (ex `note-grid`, ahora fuera de `free-note-block/`): quien toque `patient-chart.ts` después puede cambiar su import/plantilla a `<app-measurement-grid>` directo y borrar el envoltorio `free-note-block` — instrucción exacta en el JSDoc de `free-note-block.ts` (PR #682, sin mergear todavía).
+- `faker/clinico.ts`: `notaDeEvolucion` ya no existe, es `textoDeNotaMedica` (PR #682).
 
 ### Baseline del worktree de este carril
 
 | Comando | Exit code | Rojos previos | Clase (regla 80.4) |
 |---|---|---|---|
-| `yarn lint` | | | |
-| `yarn typecheck` | | | |
-| `yarn test --watch=false --include=<mis carpetas>` | | | |
+| `yarn lint` (repo completo, no sólo C7) | 1 | 252 errores `prefer-on-push-component-change-detection`, ninguno en archivos de C7 | `ENVIRONMENT` — baseline preexistente del repo (254 errores antes de tocar nada, verificado con `git stash`), no introducido por ningún carril de esta noche |
+| `yarn typecheck` (C7, tras mergear `origin/mockup`) | 0 | — | — |
+| `yarn build` (C7) | 0 | — | — |
+| `yarn test --watch=false` con 9 `--include` de C7 | 0 | — | 15 files / 235 tests, todos verdes |
 
 ### Doble revisión crítica de las capturas (regla 35)
 
-(una entrada por captura Playwright: primera mirada · segunda mirada adversarial · qué se corrigió)
+Ninguna de las tres corrió Playwright ni sacó capturas esta noche — el pase final consolidado que
+los tres `PLAN.md` prometían («se levanta el stack una sola vez para los tres») **no se hizo**: quedó
+como el pendiente más grande de todo el Carril C. Sin capturas no hay doble revisión que hacer
+todavía.
 
 ### Cierre
 
-- PR: · Push a `mockup` verificado: · `REPORTE.md`: · Pendiente de backend redactado: · `// TODO C8` dejados:
+- PR: C9 #677 (mergeado) · C5 #679 (mergeado) · C7 #682 (abierto, mergeable)
+- Push a `mockup` verificado: C9 y C5 sí (mergeados); C7 con `gh pr view` pegado en su `REPORTE.md`
+- `REPORTE.md`: los tres tienen el suyo, en `docs/trabajo/2026-09-25-encuentro-clinico/{c9,c5,c7}/REPORTE.md` de cada worktree
+- Pendiente de backend redactado: C7 (lectura de colección `GET /charts/notes`), C5 (integración triple en `patient-chart.ts`/`consultation.ts`/`medical-record.ts`) — ambos en sus `REPORTE.md`
+- `// TODO C8` dejados: ninguno literal; el inventario de términos en archivos ajenos de C7 (`consultation.ts`, `patient-chart.ts`, `progress-notes-pdf.ts`) queda anotado en `evidencia/inventario.md` de C7 para quien los pueda tocar
