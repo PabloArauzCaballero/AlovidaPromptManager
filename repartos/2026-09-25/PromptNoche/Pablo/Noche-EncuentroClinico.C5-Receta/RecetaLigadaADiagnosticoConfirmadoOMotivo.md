@@ -20,7 +20,18 @@
 | `LÍMITE DE RECURSOS` | un `yarn start`, un build/test a la vez, Playwright sólo vía `pw-guard` |
 | `TUS OTROS CARRILES ESTA NOCHE` | Farmacia: `Noche-Farmacia.CarritoYNavegacion` · Carga Masiva: `Noche-CargaMasiva.IntegracionYEntrega`. Sin cruces de archivos con ellos (verificado). Tu daily es uno solo (`Pablo-Daily-Noche-2026-09-25.md`): este carril va en su sección «Carril C — Encuentro clínico». |
 
-## 1. Estándar y skills
+## 1. Antes de escribir una línea — instalación OBLIGATORIA del estándar
+
+```bash
+git -C <raíz de tus repos>/AlovidaPromptManager pull --ff-only origin main
+cd <raíz de tus repos>/wt-clinica-c5
+cp -rn ../AlovidaPromptManager/.claude/skills/* .claude/skills/     # fusionar, NO pisar las 4 skills y 3 agentes del repo
+cp -rn ../AlovidaPromptManager/.claude/rules .claude/ 2>/dev/null || cp -rn ../AlovidaPromptManager/.claude/rules/* .claude/rules/
+cp -rn ../AlovidaPromptManager/.claude/hooks .claude/ 2>/dev/null || true
+ls .claude/skills | wc -l; ls .claude/rules/[0-9]*.md | wc -l; python .claude/hooks/plan_gate.py --self-test   # pegá las tres salidas en tu daily
+```
+
+Los `.claude/` instalados **no se commitean**. Si no podés completar este paso estás `BLOQUEADO`: avisá y no sigas.
 
 §5.1 del plan. **Skills:** `skills-router` → `outcome-first` → `context-thrift` → `factual-discovery` → `anti-hallucination-guard` → `milestone-planning` → `scope-discipline` → `lane-authoring` → `data-privacy-phi` → `medication-prescription-safety` → `clinical-records` → `frontend-ui-design` → `frontend-forms-ux` → `angular-forms` → `angular-development` → `angular-signals-state` → `frontend-ux-states` → `frontend-accessibility` → `ux-writing-microcopy` → `native-code-patterns` → `unit-testing` → `angular-testing` → `e2e-playwright` → (cierre) `frontend-beautiful-ui` → `ui-quality-review` → `visual-proof` → `critical-double-review` → `evidence-and-verification` → `work-report-md` → `pr-mergeable-gate` → `finish-your-turn`. Del repo: `project-design-system`, `frontend-production-gate`, `visual-quality-gate`; agentes `visual-reviewer`, `frontend-reviewer`.
 
@@ -45,17 +56,90 @@ En la consulta, «Receta»: «¿Para qué es esta receta?» lista **sólo diagn�
 
 ## 5. Microtareas
 
+### H1 — Arranque y baseline
+
+**CA:** Todas las microtareas de H1 cumplen su criterio binario de la tabla.
+**DoD:** Los DoD de sus microtareas, ejecutados y con su salida pegada en `evidencia/`.
+**Estado:** TODO
+
+#### H1.S1 — Arranque y baseline
+
+**CA:** El mismo de H1: el hito se entrega en una sola subtarea.
+**DoD:** El mismo de H1: los DoD de las microtareas de abajo.
+**Estado:** TODO
+
 | ID | Microtarea | CA | DoD |
 |---|---|---|---|
-| C5.H1.M1 | Arranque, estándar, baseline, `PLAN.md` | — | baseline |
-| C5.H2.M1 | Reglas del handler + ruta `/:id/edit` | spec: 6 casos (sin nada 422 · presuntivo 422 · confirmado 201 · motivo 201 · ambos → gana condición · edit emitida 409) | `yarn test --watch=false --include=src/app/core/mock/handlers/clinical.handlers.spec.ts --include=src/app/core/mock/mock-backend.spec.ts` |
-| C5.H3.M1 | Selector filtrado + «Otro motivo» + renombres | Guardar deshabilitado sin diagnóstico ni motivo | spec |
-| C5.H3.M2 | Errores en el modal | forzado con presuntivo | captura |
-| C5.H3.M3 | Lista: vínculo + «Vincular a un diagnóstico…» | Emitida deshabilitada con «Ya emitida» | spec |
-| C5.H3.M4 | PDF con Diagnóstico/Motivo; `prescription-official-pdf.spec.ts` ajustado | nunca vacío | comando |
-| C5.H4.M1 | Playwright `clinica-c5-receta.spec.ts` | verde | `node scripts/pw-guard.mjs --port 4215 --spec playwright/clinica-c5-receta.spec.ts --spec playwright/prescription-official-pdf.spec.ts --serve` |
-| C5.H4.M2 | Capturas cinco viewports, claro/oscuro; `critical-double-review` | — | capturas |
-| C5.H5.M1 | Revisores, gates, commits, push a `mockup`, PR, `REPORTE.md` (P24 referenciado), daily en `main` | — | — |
+| H1.S1.M1 | Arranque, estándar, baseline, `PLAN.md` | — | baseline |
+
+### H2 — Reglas del simulador
+
+**CA:** Todas las microtareas de H2 cumplen su criterio binario de la tabla.
+**DoD:** Los DoD de sus microtareas, ejecutados y con su salida pegada en `evidencia/`.
+**Estado:** TODO
+
+#### H2.S1 — Reglas del simulador
+
+**CA:** El mismo de H2: el hito se entrega en una sola subtarea.
+**DoD:** El mismo de H2: los DoD de las microtareas de abajo.
+**Estado:** TODO
+
+| ID | Microtarea | CA | DoD |
+|---|---|---|---|
+| H2.S1.M1 | Reglas del handler + ruta `/:id/edit` | spec: 6 casos (sin nada 422 · presuntivo 422 · confirmado 201 · motivo 201 · ambos → gana condición · edit emitida 409) | `yarn test --watch=false --include=src/app/core/mock/handlers/clinical.handlers.spec.ts --include=src/app/core/mock/mock-backend.spec.ts` |
+
+### H3 — Selector, errores, lista y PDF
+
+**CA:** Todas las microtareas de H3 cumplen su criterio binario de la tabla.
+**DoD:** Los DoD de sus microtareas, ejecutados y con su salida pegada en `evidencia/`.
+**Estado:** TODO
+
+#### H3.S1 — Selector, errores, lista y PDF
+
+**CA:** El mismo de H3: el hito se entrega en una sola subtarea.
+**DoD:** El mismo de H3: los DoD de las microtareas de abajo.
+**Estado:** TODO
+
+| ID | Microtarea | CA | DoD |
+|---|---|---|---|
+| H3.S1.M1 | Selector filtrado + «Otro motivo» + renombres | Guardar deshabilitado sin diagnóstico ni motivo | spec |
+| H3.S1.M2 | Errores en el modal | forzado con presuntivo | captura |
+| H3.S1.M3 | Lista: vínculo + «Vincular a un diagnóstico…» | Emitida deshabilitada con «Ya emitida» | spec |
+| H3.S1.M4 | PDF con Diagnóstico/Motivo; `prescription-official-pdf.spec.ts` ajustado | nunca vacío | comando |
+
+### H4 — Recorrido y capturas
+
+**CA:** Todas las microtareas de H4 cumplen su criterio binario de la tabla.
+**DoD:** Los DoD de sus microtareas, ejecutados y con su salida pegada en `evidencia/`.
+**Estado:** TODO
+
+#### H4.S1 — Recorrido y capturas
+
+**CA:** El mismo de H4: el hito se entrega en una sola subtarea.
+**DoD:** El mismo de H4: los DoD de las microtareas de abajo.
+**Estado:** TODO
+
+| ID | Microtarea | CA | DoD |
+|---|---|---|---|
+| H4.S1.M1 | Playwright `clinica-c5-receta.spec.ts` | verde | `node scripts/pw-guard.mjs --port 4215 --spec playwright/clinica-c5-receta.spec.ts --spec playwright/prescription-official-pdf.spec.ts --serve` |
+| H4.S1.M2 | Capturas cinco viewports, claro/oscuro; `critical-double-review` | — | capturas |
+
+### H5 — Revisión y entrega
+
+**CA:** Todas las microtareas de H5 cumplen su criterio binario de la tabla.
+**DoD:** Los DoD de sus microtareas, ejecutados y con su salida pegada en `evidencia/`.
+**Estado:** TODO
+
+#### H5.S1 — Revisión y entrega
+
+**CA:** El mismo de H5: el hito se entrega en una sola subtarea.
+**DoD:** El mismo de H5: los DoD de las microtareas de abajo.
+**Estado:** TODO
+
+| ID | Microtarea | CA | DoD |
+|---|---|---|---|
+| H5.S1.M1 | Revisores, gates, commits, push a `mockup`, PR, `REPORTE.md` (P24 referenciado), daily en `main` | — | — |
+
 
 ## 6. Playwright
 
@@ -67,4 +151,17 @@ Checklist §9. Commits `feat(receta): sólo diagnósticos confirmados o motivo p
 
 ## 8. Lo que NO hacés
 
-Tocar `diagnosis-block` ni `patient-chart` (C3) · favoritos · `where-to-buy` · tipos congelados · esperar a C3: los confirmados de la seed ya existen desde antes de esta noche.
+**OUT:** Tocar `diagnosis-block` ni `patient-chart` (C3) · favoritos · `where-to-buy` · tipos congelados · esperar a C3: los confirmados de la seed ya existen desde antes de esta noche.
+
+## Ambigüedades registradas
+
+| Ambigüedad | Supuesto que se toma | A quién se confirma |
+|---|---|---|
+| Ninguna registrada al repartir. Toda duda que aparezca en ejecución se anota acá y en el `PLAN.md` del carril, con el supuesto tomado, antes de resolverla | — | Pablo |
+
+## Definition of Done del hito
+
+Un hito es `HECHO` sólo cuando **todas** sus microtareas están `HECHO` con la salida de su DoD
+pegada en `evidencia/`, la regresión del módulo tocado está en verde y los gates aplicables del
+repo pasaron. Falta cualquiera de las tres → el hito es `A MEDIAS`, con qué anda, qué no anda y
+qué falta exactamente.

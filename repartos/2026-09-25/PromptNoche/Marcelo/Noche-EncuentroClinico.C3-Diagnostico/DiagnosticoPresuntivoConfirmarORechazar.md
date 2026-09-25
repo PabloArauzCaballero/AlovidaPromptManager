@@ -20,7 +20,18 @@
 | `LÍMITE DE RECURSOS` | un `yarn start`, un build/test a la vez, Playwright sólo vía `pw-guard` |
 | `TUS OTROS CARRILES ESTA NOCHE` | Farmacia: `Noche-Farmacia.DatosYContratoReal` · Carga Masiva: `Noche-CargaMasiva.CalidadE2EVisualYGates`. Sin cruces de archivos con ellos (verificado). C3 va después de C0. Tu daily es uno solo (`Marcelo-Daily-Noche-2026-09-25.md`): este carril va en su sección «Carril C — Encuentro clínico». |
 
-## 1. Estándar y skills
+## 1. Antes de escribir una línea — instalación OBLIGATORIA del estándar
+
+```bash
+git -C <raíz de tus repos>/AlovidaPromptManager pull --ff-only origin main
+cd <raíz de tus repos>/wt-clinica-c3
+cp -rn ../AlovidaPromptManager/.claude/skills/* .claude/skills/     # fusionar, NO pisar las 4 skills y 3 agentes del repo
+cp -rn ../AlovidaPromptManager/.claude/rules .claude/ 2>/dev/null || cp -rn ../AlovidaPromptManager/.claude/rules/* .claude/rules/
+cp -rn ../AlovidaPromptManager/.claude/hooks .claude/ 2>/dev/null || true
+ls .claude/skills | wc -l; ls .claude/rules/[0-9]*.md | wc -l; python .claude/hooks/plan_gate.py --self-test   # pegá las tres salidas en tu daily
+```
+
+Los `.claude/` instalados **no se commitean**. Si no podés completar este paso estás `BLOQUEADO`: avisá y no sigas.
 
 §5.1 del plan. **Skills:** `skills-router` → `outcome-first` → `context-thrift` → `factual-discovery` → `anti-hallucination-guard` → `milestone-planning` → `scope-discipline` → `lane-authoring` → `data-privacy-phi` → `clinical-records` → `state-machines-workflows` → `terminology-value-sets` → `frontend-ui-design` → `visual-hierarchy-composition` → `frontend-forms-ux` → `angular-forms` → `angular-development` → `angular-signals-state` → `frontend-data-tables` → `frontend-ux-states` → `frontend-responsive-layout` → `frontend-accessibility` → `ux-writing-microcopy` → `native-code-patterns` → `unit-testing` → `angular-testing` → `test-case-design-techniques` → `e2e-playwright` → (cierre) `frontend-beautiful-ui` → `ui-quality-review` → `visual-proof` → `critical-double-review` → `evidence-and-verification` → `work-report-md` → `pr-mergeable-gate` → `finish-your-turn`. Del repo: `project-design-system`, `frontend-production-gate`, `visual-quality-gate`; agentes `visual-reviewer`, `frontend-reviewer`, `regression-auditor` (tocás el expediente, que tiene consumidores).
 
@@ -50,20 +61,93 @@ Modal `app-content-dialog` «Confirmar el diagnóstico» / «Rechazar el diagnó
 
 ## 5. Microtareas
 
+### H1 — Arranque y baseline
+
+**CA:** Todas las microtareas de H1 cumplen su criterio binario de la tabla.
+**DoD:** Los DoD de sus microtareas, ejecutados y con su salida pegada en `evidencia/`.
+**Estado:** TODO
+
+#### H1.S1 — Arranque y baseline
+
+**CA:** El mismo de H1: el hito se entrega en una sola subtarea.
+**DoD:** El mismo de H1: los DoD de las microtareas de abajo.
+**Estado:** TODO
+
 | ID | Microtarea | CA | DoD |
 |---|---|---|---|
-| C3.H1.M1 | Arranque, estándar, baseline, `PLAN.md` | — | baseline |
-| C3.H2.M1 | Seed de condiciones | determinismo | spec |
-| C3.H2.M2 | Handler de verificación con todas las reglas; exporta `verificarCondicion()` | spec: 9 casos (motivo · nota · orden · sin nada 422 · ya confirmado 409 · rechazar · sin fin ni crónica 422 · nota ajena 422 · crónica sin fin 200) | `yarn test --watch=false --include=src/app/core/mock/handlers/diagnosis-verification.handlers.spec.ts --include=src/app/core/mock/mock-backend.spec.ts` |
-| C3.H2.M3 | Cliente: `verifyCondition`, default provisional | cuerpo exacto | `yarn test --watch=false --include=src/app/core/data-access/clinical/clinical.client.spec.ts` |
-| C3.H3.M1 | `diagnosis-block`: nace presuntivo; lista con estado y menú | Confirmado sin menú de verificación | spec |
-| C3.H3.M2 | `diagnosis-verify-dialog` | Guardar deshabilitado sin motivo ni evidencia; «Crónica» exime el fin | spec |
-| C3.H3.M3 | 409/422 dentro del diálogo (S4/S9) | forzado con `mock:fallos` y con el 422 real | capturas |
-| C3.H3.M4 | `patient-chart`: «Enfermedades activas», columna Estado agrupada, columna Decisión | Con la seed la médica ve una activa y una en estudio en el primer paciente | spec + captura |
-| C3.H3.M5 | Pestaña «Notas» con `entries` | Se ve con seed de C1 o con una nota creada por `POST` en el spec | spec |
-| C3.H4.M1 | Playwright `clinica-c3-diagnostico.spec.ts` | verde | `node scripts/pw-guard.mjs --port 4213 --spec playwright/clinica-c3-diagnostico.spec.ts --serve` |
-| C3.H4.M2 | Capturas cinco viewports, claro/oscuro; `critical-double-review` | — | capturas |
-| C3.H5.M1 | Revisores (incl. `regression-auditor`), gates, commits, push a `mockup`, PR, `REPORTE.md` con **P41**, daily en `main` | — | — |
+| H1.S1.M1 | Arranque, estándar, baseline, `PLAN.md` | — | baseline |
+
+### H2 — Datos simulados y cliente
+
+**CA:** Todas las microtareas de H2 cumplen su criterio binario de la tabla.
+**DoD:** Los DoD de sus microtareas, ejecutados y con su salida pegada en `evidencia/`.
+**Estado:** TODO
+
+#### H2.S1 — Datos simulados y cliente
+
+**CA:** El mismo de H2: el hito se entrega en una sola subtarea.
+**DoD:** El mismo de H2: los DoD de las microtareas de abajo.
+**Estado:** TODO
+
+| ID | Microtarea | CA | DoD |
+|---|---|---|---|
+| H2.S1.M1 | Seed de condiciones | determinismo | spec |
+| H2.S1.M2 | Handler de verificación con todas las reglas; exporta `verificarCondicion()` | spec: 9 casos (motivo · nota · orden · sin nada 422 · ya confirmado 409 · rechazar · sin fin ni crónica 422 · nota ajena 422 · crónica sin fin 200) | `yarn test --watch=false --include=src/app/core/mock/handlers/diagnosis-verification.handlers.spec.ts --include=src/app/core/mock/mock-backend.spec.ts` |
+| H2.S1.M3 | Cliente: `verifyCondition`, default provisional | cuerpo exacto | `yarn test --watch=false --include=src/app/core/data-access/clinical/clinical.client.spec.ts` |
+
+### H3 — Bloque de diagnóstico y expediente
+
+**CA:** Todas las microtareas de H3 cumplen su criterio binario de la tabla.
+**DoD:** Los DoD de sus microtareas, ejecutados y con su salida pegada en `evidencia/`.
+**Estado:** TODO
+
+#### H3.S1 — Bloque de diagnóstico y expediente
+
+**CA:** El mismo de H3: el hito se entrega en una sola subtarea.
+**DoD:** El mismo de H3: los DoD de las microtareas de abajo.
+**Estado:** TODO
+
+| ID | Microtarea | CA | DoD |
+|---|---|---|---|
+| H3.S1.M1 | `diagnosis-block`: nace presuntivo; lista con estado y menú | Confirmado sin menú de verificación | spec |
+| H3.S1.M2 | `diagnosis-verify-dialog` | Guardar deshabilitado sin motivo ni evidencia; «Crónica» exime el fin | spec |
+| H3.S1.M3 | 409/422 dentro del diálogo (S4/S9) | forzado con `mock:fallos` y con el 422 real | capturas |
+| H3.S1.M4 | `patient-chart`: «Enfermedades activas», columna Estado agrupada, columna Decisión | Con la seed la médica ve una activa y una en estudio en el primer paciente | spec + captura |
+| H3.S1.M5 | Pestaña «Notas» con `entries` | Se ve con seed de C1 o con una nota creada por `POST` en el spec | spec |
+
+### H4 — Recorrido y capturas
+
+**CA:** Todas las microtareas de H4 cumplen su criterio binario de la tabla.
+**DoD:** Los DoD de sus microtareas, ejecutados y con su salida pegada en `evidencia/`.
+**Estado:** TODO
+
+#### H4.S1 — Recorrido y capturas
+
+**CA:** El mismo de H4: el hito se entrega en una sola subtarea.
+**DoD:** El mismo de H4: los DoD de las microtareas de abajo.
+**Estado:** TODO
+
+| ID | Microtarea | CA | DoD |
+|---|---|---|---|
+| H4.S1.M1 | Playwright `clinica-c3-diagnostico.spec.ts` | verde | `node scripts/pw-guard.mjs --port 4213 --spec playwright/clinica-c3-diagnostico.spec.ts --serve` |
+| H4.S1.M2 | Capturas cinco viewports, claro/oscuro; `critical-double-review` | — | capturas |
+
+### H5 — Revisión y entrega
+
+**CA:** Todas las microtareas de H5 cumplen su criterio binario de la tabla.
+**DoD:** Los DoD de sus microtareas, ejecutados y con su salida pegada en `evidencia/`.
+**Estado:** TODO
+
+#### H5.S1 — Revisión y entrega
+
+**CA:** El mismo de H5: el hito se entrega en una sola subtarea.
+**DoD:** El mismo de H5: los DoD de las microtareas de abajo.
+**Estado:** TODO
+
+| ID | Microtarea | CA | DoD |
+|---|---|---|---|
+| H5.S1.M1 | Revisores (incl. `regression-auditor`), gates, commits, push a `mockup`, PR, `REPORTE.md` con **P41**, daily en `main` | — | — |
+
 
 ## 6. Playwright
 
@@ -75,4 +159,17 @@ Checklist §9. Commits `feat(diagnostico): …`, `feat(mock): verificación del 
 
 ## 8. Lo que NO hacés
 
-Tocar `medication-block` (C5) ni el lado paciente (C6) · cambiar `change-status` · reimplementar `diagnosisStateOf` · agregar campos a tipos congelados (`diagnosis.types.ts` propio + `// TODO C8` si hace falta) · editar `fixtures/clinica.ts` fuera de tus regiones.
+**OUT:** Tocar `medication-block` (C5) ni el lado paciente (C6) · cambiar `change-status` · reimplementar `diagnosisStateOf` · agregar campos a tipos congelados (`diagnosis.types.ts` propio + `// TODO C8` si hace falta) · editar `fixtures/clinica.ts` fuera de tus regiones.
+
+## Ambigüedades registradas
+
+| Ambigüedad | Supuesto que se toma | A quién se confirma |
+|---|---|---|
+| Ninguna registrada al repartir. Toda duda que aparezca en ejecución se anota acá y en el `PLAN.md` del carril, con el supuesto tomado, antes de resolverla | — | Pablo |
+
+## Definition of Done del hito
+
+Un hito es `HECHO` sólo cuando **todas** sus microtareas están `HECHO` con la salida de su DoD
+pegada en `evidencia/`, la regresión del módulo tocado está en verde y los gates aplicables del
+repo pasaron. Falta cualquiera de las tres → el hito es `A MEDIAS`, con qué anda, qué no anda y
+qué falta exactamente.
