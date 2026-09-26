@@ -1,7 +1,7 @@
 # M2 · MacBook — daily de máquinas, 2026-09-26
 
-> **AVANCE: 10 / 17 microtareas — 58,8 %.** H3 (5 microtareas) traspasado a M2-MiniMac, no cuenta
-> acá. **`A MEDIAS` cuenta como no hecho. `DESCARTADO` no suma: se declara aparte con su motivo.**
+> **AVANCE: 14 / 17 microtareas — 82,4 %.** Bloqueadas con contrato escrito: H2.S1.M3 (procedencia por fila), H4.S1.M2 (lectura contextual del paciente, es de `clinical`). Descartada: H4.S1.M3 (TX-09 ya mergeado).
+> **`A MEDIAS` cuenta como no hecho. `DESCARTADO` no suma: se declara aparte con su motivo.**
 
 - **Encargo:** ver la carpeta de al lado · **Reparto:** [`Daily-Maquinas-2026-09-26.md`](../Daily-Maquinas-2026-09-26.md)
 - **Estado:** `HECHO` (H1/H2/H4, con dos `BLOQUEADO` registrados) · **Peldaño:** `VERIFIED`
@@ -9,7 +9,7 @@
   `pablo/test-m2-macbook-roles-cuentas-directorio` sobre `origin/test@016caaa1`, **pusheada**
   (5 commits, `d56f35e3` es el último). PR contra `test` sin abrir todavía. Plan y reporte
   vivos en `docs/trabajo/2026-09-26-m2-macbook/` de ese worktree.
-- **H3 traspasado en vivo a la máquina Mac Mini** (worktree/rama propios sobre `origin/test`,
+- **H3**: se hizo en esta rama tras integrar `test` (la Mac Mini no dejó rama en el remoto). Traspaso original a la Mac Mini (worktree/rama propios sobre `origin/test`,
   no la de acá): recibió por chat los hallazgos de `AMB-02`/`AMB-03` (no existen
   `normalize_padron.py` ni `observed-specialties.dataset.json`) y el aviso de que
   `synthetic-person.ts`/`markdown-table.ts` de este carril todavía no estaban pusheados en el
@@ -24,8 +24,8 @@ aseguradoras y la descarga de archivos del paciente.
 |---|---|---|
 | H1 | Cada rol que un `@Roles` menciona existe y se asigna | `HECHO` |
 | H2 | Las 105 personas del padrón entran con su cuenta | `HECHO` (salvo procedencia por fila, `BLOQUEADO`) |
-| H3 | El directorio muestra médicos reales, con sus varias sedes | Traspasado a M2-MiniMac |
-| H4 | El paciente puede bajar el PDF de su propio resultado | `HECHO` (salvo lectura contextual del paciente, `BLOQUEADO` — es de `clinical`, OUT) |
+| H3 | El directorio muestra médicos reales, con sus varias sedes | `HECHO` (763 personas, 1282 sedes, 961 membresías; verificado en la guía sin bypass) |
+| H4 | El paciente puede bajar el PDF de su propio resultado | IDOR cerrado; lectura contextual del paciente `BLOQUEADO` (es de `clinical`, OUT) |
 
 ## Salida de la instalación del estándar
 
