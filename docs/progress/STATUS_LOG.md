@@ -1,3 +1,24 @@
+## 2026-09-26T13:30:00+00:00 — Carril M6 (Acer Aspire 3) — H2 retomado, sigue A MEDIAS
+- Estado: A MEDIAS (H1, H3, H4 ya `REGRESSION_VERIFIED` y mergeados en #482/#720)
+- QA: `VERIFIED` parcial en H2, sin llegar a `REGRESSION_VERIFIED`
+- Retomado tras mergear #720: `test` había recibido código nuevo de otros carriles en paralelo
+  con el mismo patrón de bug. Con un log de orden de archivos por worker (diagnóstico temporal,
+  no commiteado) se encontraron y corrigieron dos causas más: `ChatSocketService` (nuevo,
+  mismo patrón que los 6 servicios ya corregidos — `effect()` sin guarda sobre
+  `session.isAuthenticated()`) y una causa de una clase distinta en
+  `paginated-form.spec.ts` — dos componentes de prueba con el mismo template exacto y sin
+  `selector` colisionan en el ID que Angular genera automáticamente (`NG0912`), y esa colisión
+  también envenena el worker de tests. Con las 5 causas corregidas en total, la mejor corrida
+  dio 22 tests/9 archivos rojos (todos bugs reales de producto, sin cascadas) pero otra corrida
+  volvió a dar 211/10 — confirma que queda al menos una instancia más sin encontrar. Se
+  registró una recomendación sistémica (lint propio contra `effect()` sin guarda sobre
+  `AuthService`/`SessionStore`, o un doble de prueba canónico compartido) en vez de seguir
+  cazando instancias una por una, porque el ritmo de código nuevo de otros carriles iguala o
+  supera el ritmo de encontrarlas. PR
+  [#722](https://github.com/mdavila-2001/mantra-core-health/pull/722) abierto contra `test`.
+  Detalle completo en
+  `mantra-core-health/docs/progress/evidence/lane-m6-datos-y-calidad/REPORTE-H2-H3.md`.
+
 ## 2026-09-26T12:00:00+00:00 — Carril M6 (Acer Aspire 3) — Cierre parcial
 - Estado: 3/4 hitos HECHO, 1 A MEDIAS
 - QA: `REGRESSION_VERIFIED` en H1 (datasets), H3 (lint) y H4 (verificador de inglés);

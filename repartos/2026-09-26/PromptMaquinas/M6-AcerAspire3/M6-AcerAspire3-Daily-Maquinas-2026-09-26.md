@@ -64,14 +64,29 @@ Tres causas raíz reales encontradas y corregidas:
    `session.isAuthenticated()` sin guarda; ~45 specs mockean `AuthService` parcial. Endurecidos
    los 6 con un accesor tolerante — cero cambio de comportamiento en producción.
 
-Resultado: de crash/65 rojos a 11 archivos/23–26 tests rojos, estable en orden de magnitud pero
-**no determinista todavía** — dos corridas seguidas siguen dando conjuntos distintos (probado
-también con `singleThread: true`, que mejora la magnitud pero no cierra el problema; revertido).
-Diagnóstico: hay al menos una instancia más del mismo patrón sin aislar. El rojo que SÍ es
-estable (bugs reales de producto/contenido de otros carriles: ruta `questionnaires` ausente,
-nav "Notas médicas" ausente, label "Evoluciones" ausente, `patient-home` con una petición HTTP
-sin flushear) está explicado archivo por archivo en el reporte. Detalle completo con la tabla de
-corridas y la recomendación para quien retome:
+Resultado del primer round: de crash/65 rojos a 11 archivos/23–26 tests rojos, estable en orden
+de magnitud pero **no determinista todavía** (probado también con `singleThread: true`, que
+mejora la magnitud pero no cierra el problema; revertido). Mergeado en
+[#720](https://github.com/mdavila-2001/mantra-core-health/pull/720).
+
+**Retomado tras el merge** (`test` había recibido código nuevo de otros carriles con el mismo
+patrón): con un log de orden de archivos por worker (hook temporal, no commiteado) se
+encontraron y corrigieron **dos causas más, de dos clases distintas**:
+4. `ChatSocketService` (nuevo desde el último merge), mismo patrón que los 6 anteriores —
+   `session.isAuthenticated()` sin guarda.
+5. `paginated-form.spec.ts` — **causa distinta, no de auth**: dos componentes de prueba con el
+   mismo template exacto y sin `selector` colisionan en el ID que Angular genera
+   automáticamente (`NG0912`), y esa colisión también envenena el worker.
+
+Con las 5 causas corregidas, la mejor corrida dio **22 tests/9 archivos** (el piso real de bugs
+de producto, sin ninguna cascada) — pero otra corrida dio **211/10**, confirmando que queda al
+menos una instancia más sin encontrar. Recomendación registrada para cerrarlo de raíz en vez de
+seguir cazando instancia por instancia: una regla de lint propia, o un doble canónico de
+`AuthService`/`SessionStore` para las ~45 specs que hoy arman el suyo ad-hoc. PR:
+[#722](https://github.com/mdavila-2001/mantra-core-health/pull/722). El rojo estable (bugs
+reales de producto/contenido de otros carriles: ruta `questionnaires` ausente, nav "Notas
+médicas" ausente, label "Evoluciones" ausente, `patient-home` con una petición HTTP sin
+flushear) está explicado archivo por archivo en el reporte. Detalle completo:
 `mantra-core-health/docs/progress/evidence/lane-m6-datos-y-calidad/REPORTE-H2-H3.md`.
 
 ### H3 — `yarn lint` del front vuelve a exit 0 (HECHO)
