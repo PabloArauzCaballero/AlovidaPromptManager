@@ -1,6 +1,6 @@
 # M2 · MacBook — daily de máquinas, 2026-09-26
 
-> **AVANCE: 14 / 17 microtareas — 82,4 %.** Bloqueadas con contrato escrito: H2.S1.M3 (procedencia por fila), H4.S1.M2 (lectura contextual del paciente, es de `clinical`). Descartada: H4.S1.M3 (TX-09 ya mergeado).
+> **AVANCE: 17 / 17 microtareas — 100 %.** Sin bloqueadas ni a medias. PR #484 contra `test`.
 > **`A MEDIAS` cuenta como no hecho. `DESCARTADO` no suma: se declara aparte con su motivo.**
 
 - **Encargo:** ver la carpeta de al lado · **Reparto:** [`Daily-Maquinas-2026-09-26.md`](../Daily-Maquinas-2026-09-26.md)
@@ -23,9 +23,9 @@ aseguradoras y la descarga de archivos del paciente.
 | ID | Hito | Estado |
 |---|---|---|
 | H1 | Cada rol que un `@Roles` menciona existe y se asigna | `HECHO` |
-| H2 | Las 105 personas del padrón entran con su cuenta | `HECHO` (salvo procedencia por fila, `BLOQUEADO`) |
+| H2 | Las 105 personas del padrón entran con su cuenta | `HECHO` (procedencia por `common.identifiers`, sin DDL) |
 | H3 | El directorio muestra médicos reales, con sus varias sedes | `HECHO` (763 personas, 1282 sedes, 961 membresías; verificado en la guía sin bypass) |
-| H4 | El paciente puede bajar el PDF de su propio resultado | IDOR cerrado; lectura contextual del paciente `BLOQUEADO` (es de `clinical`, OUT) |
+| H4 | El paciente puede bajar el PDF de su propio resultado | `HECHO` (IDOR cerrado; PDF del paciente ya existía en `test`; descarga sin token atada al actor) |
 
 ## Salida de la instalación del estándar
 
