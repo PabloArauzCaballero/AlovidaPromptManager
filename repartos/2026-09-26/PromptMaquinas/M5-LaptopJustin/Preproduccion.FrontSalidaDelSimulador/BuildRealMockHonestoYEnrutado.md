@@ -1,7 +1,7 @@
 # M5 · Laptop Justin — encargo de preproducción (2026-09-26)
 
-> **Estado del encargo:** `A MEDIAS` (14/15 microtareas) · **Eje:** front: la salida del simulador · **Hitos:** 3
-> **Peldaño alcanzado:** `VERIFIED` (H1, H2) · `TESTED` (H3). PR [#711](https://github.com/mdavila-2001/mantra-core-health/pull/711).
+> **Estado del encargo:** `HECHO` (15/15 microtareas) · **Eje:** front: la salida del simulador · **Hitos:** 3
+> **Peldaño alcanzado:** `VERIFIED` (H1, H2, H3). PRs [#711](https://github.com/mdavila-2001/mantra-core-health/pull/711) (mergeado) y [#714](https://github.com/mdavila-2001/mantra-core-health/pull/714) (H3.S1.M2, abierto).
 > Detalle: `mantra-core-health/docs/progress/evidence/lane-m5-build-real/REPORTE.md`.
 >
 > - Daily del reparto: [`Daily-Maquinas-2026-09-26.md`](../../Daily-Maquinas-2026-09-26.md)
@@ -155,13 +155,13 @@ Y **N-12**: la médica demo tiene roles que la API no le da
 
 **CA:** Dado `/loyalty`, `/patients/me/reviews` o `/ai`, cuando se piden en producción, entonces llegan a la API en vez de recibir HTML del SSR con 200.
 **DoD:** Las microtareas de H3 en `HECHO`, con `check-api-prefixes` en verde y la respuesta de cada prefijo pegada.
-**Estado:** A MEDIAS
+**Estado:** HECHO
 
 #### H3.S1 — Los tres prefijos que faltan
 
 **CA:** Dados los tres prefijos, cuando se agregan a las tres configuraciones, entonces `check-api-prefixes` y `check-client-prefixes` pasan.
 **DoD:** Las dos microtareas en `HECHO` con la salida pegada.
-**Estado:** A MEDIAS
+**Estado:** HECHO
 
 Faltan en `proxy.conf.json`, `proxy.conf.docker.json` y `deploy/api-locations.conf`. Que el SSR
 conteste **HTML con 200** es peor que un 404: el cliente cree que funcionó.
@@ -169,7 +169,7 @@ conteste **HTML con 200** es peor que un 404: el cliente cree que funcionó.
 | ID | Microtarea | Criterio de aceptación | Definition of Done | Estado |
 |---|---|---|---|---|
 | H3.S1.M1 | Agregar los tres prefijos en las tres configuraciones | los verificadores pasan | salida pegada | HECHO |
-| H3.S1.M2 | Comprobar cada prefijo contra el artefacto levantado | devuelve JSON, no HTML | respuesta pegada | A MEDIAS |
+| H3.S1.M2 | Comprobar cada prefijo contra el artefacto levantado | devuelve JSON, no HTML | respuesta pegada | HECHO |
 
 #### H3.S2 — El triage por IA, que hoy es un problema de datos
 
