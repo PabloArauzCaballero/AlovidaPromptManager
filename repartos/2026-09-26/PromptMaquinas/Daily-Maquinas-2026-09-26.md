@@ -1,8 +1,9 @@
 # Daily de máquinas — preproducción, 2026-09-26
 
-> **REPARTIDO: 6 / 6 máquinas · 33 carriles con dueño · 6 requisitos del pedido con dueño.**
-> **AVANCE: 3 / 36 carriles — 8,3 %.** ← la Ola 0 está hecha (A1, D1, 0.3); el resto en `TODO`.
-> M1 0/6 · M2 0/4 · M3 0/3 · M4 0/3 · M5 0/3 · M6 0/4.
+> **REPARTIDO: 6 / 6 máquinas · 23 hitos · 96 microtareas · 6 requisitos del pedido con dueño.**
+> **AVANCE: 0 / 96 microtareas — 0,0 %.** ← se llena al cerrar, con `microtareas HECHO / total`.
+> La **Ola 0 ya está ejecutada** y medida (`RUNS`), aparte de esas 95.
+> M1 0/22 · M2 0/17 · M3 0/13 · M4 0/14 · M5 0/15 · M6 0/15.
 > **`A MEDIAS` cuenta como no hecho. `DESCARTADO` no suma: se declara aparte con su motivo.**
 
 > **Estado:** `REPARTIDO` al 2026-09-26. **Novedad respecto de los repartos anteriores: el eje no
@@ -41,15 +42,16 @@
 
 ## 1 · Quién tiene qué
 
-| Máquina | Encargo | Eje | Carriles | Estado |
-|---|---|---|---:|---|
-| **M1** Mac mini | [Coolify, autodespliegue y la base del VPS](M1-MacMini/Preproduccion.InfraestructuraYDespliegue/CoolifyAutodespliegueYBaseDelVPS.md) | infraestructura, base de datos y despliegue | 6 | `TODO` |
-| **M2** MacBook | [Roles, cuentas y el directorio de médicos](M2-MacBook/Preproduccion.ApiConBaseViva/RolesCuentasYDirectorioDeMedicos.md) | API con base viva | 4 | `TODO` |
-| **M3** Dell Inspiron 1 | [Receta, notas, formularios y encuestas](M3-DellInspiron1/Preproduccion.ApiClinica/RecetaNotasFormulariosYEncuestas.md) | API clínica, sin base | 3 | `TODO` |
-| **M4** Dell Inspiron 2 | [Agenda, farmacia, cotizaciones y contabilidad](M4-DellInspiron2/Preproduccion.ApiAgendaDirectoriosYDinero/AgendaFarmaciaCotizacionesYContabilidad.md) | API de agenda, directorios y dinero, sin base | 3 | `TODO` |
-| **M5** Laptop Justin | [El build real, el mock honesto y el enrutado](M5-LaptopJustin/Preproduccion.FrontSalidaDelSimulador/BuildRealMockHonestoYEnrutado.md) | front: la salida del simulador | 3 | `TODO` |
-| **M6** Acer Aspire 3 | [Los doce markdown, la suite determinista y el lint](M6-AcerAspire3/Preproduccion.DatosYCalidadDeLaSuite/LosDoceMarkdownSuiteDeterministaYLint.md) | datos y calidad de la suite | 4 | `TODO` |
-| | | **Ola 0** | **3** | `RUNS` |
+| Máquina | Encargo | Su daily | Eje | Hitos | Micro | Estado |
+|---|---|---|---|---:|---:|---|
+| **M1** Mac mini | [Coolify, autodespliegue y la base del VPS](M1-MacMini/Preproduccion.InfraestructuraYDespliegue/CoolifyAutodespliegueYBaseDelVPS.md) | [daily](M1-MacMini/M1-MacMini-Daily-Maquinas-2026-09-26.md) | infraestructura, base de datos y despliegue | 6 | 22 | `TODO` |
+| **M2** MacBook | [Roles, cuentas y el directorio de médicos](M2-MacBook/Preproduccion.ApiConBaseViva/RolesCuentasYDirectorioDeMedicos.md) | [daily](M2-MacBook/M2-MacBook-Daily-Maquinas-2026-09-26.md) | API con base viva | 4 | 17 | `TODO` |
+| **M3** Dell Inspiron 1 | [Receta, notas, formularios y encuestas](M3-DellInspiron1/Preproduccion.ApiClinica/RecetaNotasFormulariosYEncuestas.md) | [daily](M3-DellInspiron1/M3-DellInspiron1-Daily-Maquinas-2026-09-26.md) | API clínica, sin base | 3 | 13 | `TODO` |
+| **M4** Dell Inspiron 2 | [Agenda, farmacia, cotizaciones y contabilidad](M4-DellInspiron2/Preproduccion.ApiAgendaDirectoriosYDinero/AgendaFarmaciaCotizacionesYContabilidad.md) | [daily](M4-DellInspiron2/M4-DellInspiron2-Daily-Maquinas-2026-09-26.md) | API de agenda, directorios y dinero, sin base | 3 | 14 | `TODO` |
+| **M5** Laptop Justin | [El build real, el simulador honesto y el enrutado](M5-LaptopJustin/Preproduccion.FrontSalidaDelSimulador/BuildRealMockHonestoYEnrutado.md) | [daily](M5-LaptopJustin/M5-LaptopJustin-Daily-Maquinas-2026-09-26.md) | front: la salida del simulador | 3 | 15 | `TODO` |
+| **M6** Acer Aspire 3 | [Los doce markdown, la suite determinista y el lint](M6-AcerAspire3/Preproduccion.DatosYCalidadDeLaSuite/LosDoceMarkdownSuiteDeterministaYLint.md) | [daily](M6-AcerAspire3/M6-AcerAspire3-Daily-Maquinas-2026-09-26.md) | datos y calidad de la suite | 4 | 15 | `TODO` |
+| | **Ola 0** — ya ejecutada | — | la rama `test` de los dos repos | 3 | — | `RUNS` |
+| | | | **total** | **23** | **96** | |
 
 > ⚠️ **Esto es más de lo que entra en un turno, y está dicho a propósito.** Cada encargo dice en
 > qué orden ir y qué vale más si hay que elegir. Lo que no cierre va **`A MEDIAS`** con qué anda,

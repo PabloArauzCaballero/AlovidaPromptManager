@@ -1,11 +1,28 @@
 #!/usr/bin/env python
 """Verifica que un reparto de prompts cumpla la estructura obligatoria.
 
-La estructura la fija la convención del equipo:
+La estructura la fija la convención del equipo, sobre uno de dos **ejes de reparto**:
 
-    <AAAA-MM-DD>/<PromptDia|PromptNoche>/Daily-<Dia|Noche>-<AAAA-MM-DD>.md
-    <AAAA-MM-DD>/<PromptDia|PromptNoche>/<Persona>/<Persona>-Daily-<Dia|Noche>-<AAAA-MM-DD>.md
-    <AAAA-MM-DD>/<PromptDia|PromptNoche>/<Persona>/<NombreCorreccion.Modulo>/<NombreTarea>.md
+    <AAAA-MM-DD>/<Turno>/Daily-<Sufijo>-<AAAA-MM-DD>.md
+    <AAAA-MM-DD>/<Turno>/<Destinatario>/<Destinatario>-Daily-<Sufijo>-<AAAA-MM-DD>.md
+    <AAAA-MM-DD>/<Turno>/<Destinatario>/<NombreCorreccion.Modulo>/<NombreTarea>.md
+
+| Eje | Turno | Sufijo | Destinatarios |
+|---|---|---|---|
+| por persona | `PromptDia`, `PromptNoche` | `Dia`, `Noche` | las cinco personas del equipo |
+| por máquina | `PromptMaquinas` | `Maquinas` | las seis computadoras del propietario |
+
+El eje de **máquina** se agregó el 2026-09-26, cuando el propietario pidió repartir un plan
+entre sus seis computadoras —«no son personas, son máquinas»— y asignar por **capacidad de
+cada una**, que es lo que elimina las esperas: sólo dos pueden levantar Postgres, una sola
+tiene el token de Coolify, y las demás corren API sin base o front sin backend. Forzar seis
+máquinas dentro de cinco nombres de persona habría distorsionado el reparto para que pasara
+el validador, que es exactamente lo que la regla 1.2 prohíbe.
+
+**El eje nuevo no relaja nada.** Un reparto por máquina se verifica con las mismas reglas: su
+daily de equipo, un daily por destinatario, un lote `<Nombre>.<Modulo>` por destinatario y, en
+cada prompt, la sección de instalación del estándar, el contenido mínimo y las tres capas con
+CA, DoD y Estado. Lo único que cambia es de quién es la cola.
 
 Por qué existe: un reparto al que le falta el daily de una persona se ve igual de bien a simple
 vista que uno completo. Revisarlo a ojo es exactamente lo que esta comprobación reemplaza.
@@ -37,7 +54,20 @@ import tempfile
 from pathlib import Path
 
 PERSONAS = ("Ender", "Itzan", "Pablo", "Marcelo", "Justin")
-TURNOS = {"PromptDia": "Dia", "PromptNoche": "Noche"}
+# Las seis computadoras del propietario. El nombre lleva el modelo además del identificador
+# porque el reparto asigna por CAPACIDAD —quién puede levantar Postgres, quién tiene el token
+# de Coolify, quién no aguanta un build de Angular— y esa capacidad se lee del modelo.
+MAQUINAS = (
+    "M1-MacMini", "M2-MacBook", "M3-DellInspiron1",
+    "M4-DellInspiron2", "M5-LaptopJustin", "M6-AcerAspire3",
+)
+# Cada turno declara su sufijo de daily y a quién se le reparte. Ver el encabezado del módulo.
+EJES = {
+    "PromptDia": ("Dia", PERSONAS),
+    "PromptNoche": ("Noche", PERSONAS),
+    "PromptMaquinas": ("Maquinas", MAQUINAS),
+}
+TURNOS = {turno: sufijo for turno, (sufijo, _) in EJES.items()}
 FECHA = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 IGNORAR = {".DS_Store", "Thumbs.db"}
 
@@ -100,13 +130,13 @@ def revisar(raiz: Path) -> list[str]:
         problemas.append(f"{fecha}/: no hay ninguna carpeta de turno")
 
     for turno in turnos:
-        if turno.name not in TURNOS:
+        if turno.name not in EJES:
             problemas.append(
                 f"{fecha}/{turno.name}/: turno no permitido "
-                f"(solo {' o '.join(TURNOS)})")
+                f"(solo {' o '.join(EJES)})")
             continue
 
-        sufijo = TURNOS[turno.name]
+        sufijo, destinatarios = EJES[turno.name]
         daily_equipo = turno / f"Daily-{sufijo}-{fecha}.md"
         if not daily_equipo.is_file():
             problemas.append(f"FALTA el daily de equipo: {_rel(daily_equipo, raiz)}")
@@ -114,13 +144,13 @@ def revisar(raiz: Path) -> list[str]:
         personas = _subcarpetas(turno)
         if not personas:
             problemas.append(
-                f"{fecha}/{turno.name}/: no hay ninguna carpeta de persona")
+                f"{fecha}/{turno.name}/: no hay ninguna carpeta de destinatario")
 
         for persona in personas:
-            if persona.name not in PERSONAS:
+            if persona.name not in destinatarios:
                 problemas.append(
                     f"{fecha}/{turno.name}/{persona.name}/: persona desconocida "
-                    f"(esperadas: {', '.join(PERSONAS)})")
+                    f"(esperadas: {', '.join(destinatarios)})")
                 continue
 
             daily = persona / f"{persona.name}-Daily-{sufijo}-{fecha}.md"
@@ -276,6 +306,19 @@ def _armar_arbol_ok(base: Path, fecha: str = "2026-09-19") -> Path:
     return raiz
 
 
+def _armar_arbol_maquinas(base: Path, fecha: str = "2026-09-26") -> Path:
+    """El mismo reparto mínimo, pero sobre el eje de máquinas."""
+    raiz = base / fecha
+    turno = raiz / "PromptMaquinas"
+    (turno / "M1-MacMini" / "Preproduccion.Despliegue").mkdir(parents=True)
+    (turno / f"Daily-Maquinas-{fecha}.md").write_text("x", encoding="utf-8")
+    (turno / "M1-MacMini" / f"M1-MacMini-Daily-Maquinas-{fecha}.md").write_text(
+        "x", encoding="utf-8")
+    (turno / "M1-MacMini" / "Preproduccion.Despliegue" / "Tarea.md").write_text(
+        PROMPT_MINIMO, encoding="utf-8")
+    return raiz
+
+
 def self_test() -> int:
     casos: list[tuple[str, bool]] = []
 
@@ -325,6 +368,45 @@ def self_test() -> int:
         p = revisar(raiz)
         check("detecta persona desconocida",
               any("persona desconocida" in x for x in p))
+
+        # --- el eje de máquinas, con las MISMAS exigencias que el de persona ---
+
+        raiz = _armar_arbol_maquinas(base / "maquinas_ok")
+        check("arbol por maquinas correcto no reporta problemas", revisar(raiz) == [])
+
+        raiz = _armar_arbol_maquinas(base / "maquinas_sin_daily_equipo")
+        (raiz / "PromptMaquinas" / "Daily-Maquinas-2026-09-26.md").unlink()
+        p_m = revisar(raiz)
+        check("por maquinas: detecta falta de daily de equipo",
+              len(p_m) == 1 and "Daily-Maquinas-2026-09-26.md" in p_m[0])
+
+        raiz = _armar_arbol_maquinas(base / "maquinas_sin_daily_propio")
+        (raiz / "PromptMaquinas" / "M1-MacMini"
+         / "M1-MacMini-Daily-Maquinas-2026-09-26.md").unlink()
+        p_m = revisar(raiz)
+        check("por maquinas: detecta falta de daily del destinatario",
+              len(p_m) == 1 and "M1-MacMini-Daily" in p_m[0])
+
+        raiz = _armar_arbol_maquinas(base / "maquinas_desconocida")
+        (raiz / "PromptMaquinas" / "M9-Inventada").mkdir()
+        check("por maquinas: detecta una maquina que no existe",
+              any("persona desconocida" in x for x in revisar(raiz)))
+
+        raiz = _armar_arbol_maquinas(base / "maquinas_prompt_pobre")
+        (raiz / "PromptMaquinas" / "M1-MacMini" / "Preproduccion.Despliegue"
+         / "Tarea.md").write_text("# Sin nada\n", encoding="utf-8")
+        check("por maquinas: el contenido minimo del prompt se exige igual",
+              any("le FALTA" in x for x in revisar(raiz)))
+
+        raiz = _armar_arbol_maquinas(base / "maquinas_persona_no_cruza")
+        (raiz / "PromptMaquinas" / "Pablo").mkdir()
+        check("una persona no es un destinatario valido del eje de maquinas",
+              any("persona desconocida" in x for x in revisar(raiz)))
+
+        raiz = _armar_arbol_ok(base / "maquina_no_cruza")
+        (raiz / "PromptNoche" / "M1-MacMini").mkdir()
+        check("una maquina no es un destinatario valido del eje de persona",
+              any("persona desconocida" in x for x in revisar(raiz)))
 
         raiz = _armar_arbol_ok(base / "turno_raro")
         (raiz / "PromptTarde").mkdir()
