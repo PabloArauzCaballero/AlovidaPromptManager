@@ -375,10 +375,11 @@ fuera del worktree de trabajo de esta sesión». Mientras tanto, desde acá el c
 - Repos: `mantra-core-health` (`origin/mockup` @ `8b50d188`, worktree `wt-justin-diagnostico-ia-2026-09-25`, rama `justin/diagnostico-ia-glosario-2026-09-25`) y `PabloArauzCaballero/AlovidaAIService` (`feat/triage-service` @ `5a60aec`, rama `justin/glosario-corpus-diagnostico-2026-09-25`).
 - **Aviso al equipo:** D3 entrega **C3** (diagnóstico presuntivo → confirmar/rechazar con evidencia), que no tiene rama ni PR. Si alguien lo retomó en paralelo, que lo diga acá antes de tocar `diagnosis-block/**`.
 - Baseline AI service: `corepack yarn --ignore-engines build && node --test dist/test/*.test.js` → exit 0 (node 24 local; el servicio pide 22).
+- **Decisiones del usuario (25/09, tarde):** D1 y D2 en dos sesiones (repos distintos) · D2 recortado al determinista · sin suite completa ni build del front en esta tanda (van en corrida aparte con máquina libre) · D3/D4 para otra tanda · **A1 = sí** (apoyo al profesional, `disclaimer` siempre) · **A2 = sí** (`patient` sólo viaja al prompt, no pesa).
 
 | Carril | HECHO/total | Peldaño | PR | Avisos |
 |---|---|---|---|---|
-| D1 · Corpus masivo del glosario | 0/7 | `TODO` | — | |
-| D2 · AI service: `glosario.v1` + `/v1/diagnosis/suggest` | 0/8 | `TODO` | — | |
-| D3 · Tabla de presuntivos → evidencia → cierre (C3) | 0/6 | `TODO` | — | |
-| D4 · Cierre del formulario con orden + tentativo (IA) | 0/5 | `TODO` | — | |
+| D1 · Corpus masivo del glosario | **9/11** | `TESTED` · visual `UNKNOWN` | [#704](https://github.com/mdavila-2001/mantra-core-health/pull/704) `MERGEABLE` | 2 289 términos (69 curados + 195 enfermedades + 107 análisis + 1 918 ICD-10-CM); 323 códigos verificados contra el NLM. Faltan build (fixture de ~1 MB, carga diferida sin medir) y capturas: corrida aparte con máquina libre |
+| D2 · AI service: `glosario.v1` + `/v1/diagnosis/suggest` | **7/8** | `TESTED` (91/91, `docs:check` 0) | [#2](https://github.com/PabloArauzCaballero/AlovidaAIService/pull/2) `MERGEABLE` | Sólo determinista: el camino con modelo va en un 2.º PR (decisión del usuario). Corpus pinneado a `381ce773`: **resincronizar cuando D1 entre a `mockup`**. Sin despliegue (sin SSH) |
+| D3 · Tabla de presuntivos → evidencia → cierre (C3) | 0/6 | `TODO` | — | **Otra tanda** (decisión del usuario 25/09: 4–6 h de front con navegador) |
+| D4 · Cierre del formulario con orden + tentativo (IA) | 0/5 | `TODO` | — | **Otra tanda**; no depende del modelo: el determinista de D2 responde siempre |
