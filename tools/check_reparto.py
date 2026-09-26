@@ -59,7 +59,7 @@ PERSONAS = ("Ender", "Itzan", "Pablo", "Marcelo", "Justin")
 # de Coolify, quién no aguanta un build de Angular— y esa capacidad se lee del modelo.
 MAQUINAS = (
     "M1-MacMini", "M2-MacBook", "M3-DellInspiron1",
-    "M4-DellInspiron2", "M5-LaptopJustin", "M6-AcerAspire3",
+    "M4-DellInspiron2", "M5-LaptopJustin", "M6-AcerAspire3", "M7-Legion",
 )
 # Cada turno declara su sufijo de daily y a quién se le reparte. Ver el encabezado del módulo.
 EJES = {
