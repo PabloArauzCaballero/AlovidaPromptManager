@@ -1,3 +1,20 @@
+## 2026-09-26T07:20:00+00:00 — Carril M5 (Laptop Justin) — Cierre
+- Estado: a medias
+- QA: 380/381 specs dirigidos en verde (1 rojo preexistente, confirmado con `git stash` contra
+  `origin/test` sin tocar nada); `typecheck` 0; `eslint` 0 en los 18 archivos tocados; build
+  `production-api` y build de la maqueta, los dos exit 0.
+- PR [#711](https://github.com/mdavila-2001/mantra-core-health/pull/711) abierto contra `test`,
+  `mergeable: MERGEABLE` (checks del repo `pending` — su propio `CLAUDE.md` ya declara el CI
+  caído). 14/15 microtareas `HECHO`: `production-api` con SSR real y el mock apagado (H1),
+  `respuestaGenerica`→501 + errores alineados con la API + roles reales de la médica demo (H2),
+  y los 3 prefijos que faltaban + D-C registrada + IP fuera del repo (H3.S2). Queda **A MEDIAS**
+  H3.S1.M2 (verificar los prefijos contra un nginx real): esta máquina no tiene el stack Docker
+  que el reparto asignó a M1. Dos correcciones forzadas por el propio cambio, no scope creep:
+  un ciclo de auto-import en `environment.production-api.ts` (colgaba el build en «extracting
+  routes») y un `TimeoutError` real prerenderizando `/auth/register/practitioner`
+  (`SystemContextClient` sin el guardia SSR que ya tienen sus 3 vecinos). Detalle completo en
+  `mantra-core-health/docs/progress/evidence/lane-m5-build-real/REPORTE.md`.
+
 ## 2026-09-26T05:10:00+00:00 — Reparto preproducción en 6 máquinas — Publicado
 - Estado: repartido
 - QA: n/a (es un reparto; la Ola 0 que sí se ejecutó está en `RUNS`)
