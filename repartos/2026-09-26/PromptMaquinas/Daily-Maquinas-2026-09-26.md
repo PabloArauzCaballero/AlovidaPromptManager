@@ -1,13 +1,13 @@
 # Daily de máquinas — preproducción, 2026-09-26
 
-> **REPARTIDO: 6 / 6 máquinas · 23 hitos · 96 microtareas · 6 requisitos del pedido con dueño.**
-> **AVANCE: 0 / 96 microtareas — 0,0 %.** ← se llena al cerrar, con `microtareas HECHO / total`.
+> **REPARTIDO: 7 / 7 máquinas · 29 hitos · 201 microtareas · 6 requisitos del pedido con dueño.** (M3 agregó 2 a su plan: 197 → 199; M4 agregó 2: 199 → 201.)
+> **AVANCE: 45 / 201 microtareas — 22,4 %.** ← `microtareas HECHO / total` (M5 14 + M3 15 + M4 16).
 > La **Ola 0 ya está ejecutada** y medida (`RUNS`), aparte de esas 95.
-> M1 0/22 · M2 0/17 · M3 0/13 · M4 0/14 · M5 0/15 · M6 0/15.
+> M1 0/22 · M2 0/17 · **M3 15/15** (`TESTED`, PR #473 mergeado en `test`) · **M4 16/16** (`TESTED`, PRs #470 · #471 · #472 mergeados en `test`) · **M5 14/15** · M6 0/15 · M7 0/101.
 > **`A MEDIAS` cuenta como no hecho. `DESCARTADO` no suma: se declara aparte con su motivo.**
 
 > **Estado:** `REPARTIDO` al 2026-09-26. **Novedad respecto de los repartos anteriores: el eje no
-> son personas, son máquinas.** El propietario ejecuta con seis computadoras, cada una como un
+> son personas, son máquinas.** El propietario ejecuta con siete computadoras, cada una como un
 > programador, y el reparto se hace **por capacidad de la máquina** — que es precisamente lo que
 > elimina los bloqueantes.
 
@@ -46,12 +46,13 @@
 |---|---|---|---|---:|---:|---|
 | **M1** Mac mini | [Coolify, autodespliegue y la base del VPS](M1-MacMini/Preproduccion.InfraestructuraYDespliegue/CoolifyAutodespliegueYBaseDelVPS.md) | [daily](M1-MacMini/M1-MacMini-Daily-Maquinas-2026-09-26.md) | infraestructura, base de datos y despliegue | 6 | 22 | `TODO` |
 | **M2** MacBook | [Roles, cuentas y el directorio de médicos](M2-MacBook/Preproduccion.ApiConBaseViva/RolesCuentasYDirectorioDeMedicos.md) | [daily](M2-MacBook/M2-MacBook-Daily-Maquinas-2026-09-26.md) | API con base viva | 4 | 17 | `TODO` |
-| **M3** Dell Inspiron 1 | [Receta, notas, formularios y encuestas](M3-DellInspiron1/Preproduccion.ApiClinica/RecetaNotasFormulariosYEncuestas.md) | [daily](M3-DellInspiron1/M3-DellInspiron1-Daily-Maquinas-2026-09-26.md) | API clínica, sin base | 3 | 13 | `TODO` |
+| **M3** Dell Inspiron 1 | [Receta, notas, formularios y encuestas](M3-DellInspiron1/Preproduccion.ApiClinica/RecetaNotasFormulariosYEncuestas.md) | [daily](M3-DellInspiron1/M3-DellInspiron1-Daily-Maquinas-2026-09-26.md) | API clínica, sin base | 3 | 13 (+2) | `HECHO` · `TESTED` · PR #473 **mergeado en `test`** |
 | **M4** Dell Inspiron 2 | [Agenda, farmacia, cotizaciones y contabilidad](M4-DellInspiron2/Preproduccion.ApiAgendaDirectoriosYDinero/AgendaFarmaciaCotizacionesYContabilidad.md) | [daily](M4-DellInspiron2/M4-DellInspiron2-Daily-Maquinas-2026-09-26.md) | API de agenda, directorios y dinero, sin base | 3 | 14 | `HECHO` (`TESTED`) · 14/14 |
-| **M5** Laptop Justin | [El build real, el simulador honesto y el enrutado](M5-LaptopJustin/Preproduccion.FrontSalidaDelSimulador/BuildRealMockHonestoYEnrutado.md) | [daily](M5-LaptopJustin/M5-LaptopJustin-Daily-Maquinas-2026-09-26.md) | front: la salida del simulador | 3 | 15 | `TODO` |
+| **M5** Laptop Justin | [El build real, el simulador honesto y el enrutado](M5-LaptopJustin/Preproduccion.FrontSalidaDelSimulador/BuildRealMockHonestoYEnrutado.md) | [daily](M5-LaptopJustin/M5-LaptopJustin-Daily-Maquinas-2026-09-26.md) | front: la salida del simulador | 3 | 15 | `A MEDIAS` (14/15) |
 | **M6** Acer Aspire 3 | [Los doce markdown, la suite determinista y el lint](M6-AcerAspire3/Preproduccion.DatosYCalidadDeLaSuite/LosDoceMarkdownSuiteDeterministaYLint.md) | [daily](M6-AcerAspire3/M6-AcerAspire3-Daily-Maquinas-2026-09-26.md) | datos y calidad de la suite | 4 | 15 | `TODO` |
+| **M7** Lenovo Legion | [Las brechas de la API que ningún encargo tomó](M7-Legion/Preproduccion.BrechasSinMaquina/BrechasDeApiSinDueno.md) | [daily](M7-Legion/M7-Legion-Daily-Maquinas-2026-09-26.md) | brechas front ↔ API sin dueño (BR-04, 05, 07, 08, 09, 14–17, 20, 22, 26–30) | 6 | 101 | `TODO` |
 | | **Ola 0** — ya ejecutada | — | la rama `test` de los dos repos | 3 | — | `RUNS` |
-| | | | **total** | **23** | **96** | |
+| | | | **total** | **29** | **197** | |
 
 > ⚠️ **Esto es más de lo que entra en un turno, y está dicho a propósito.** Cada encargo dice en
 > qué orden ir y qué vale más si hay que elegir. Lo que no cierre va **`A MEDIAS`** con qué anda,
@@ -122,7 +123,7 @@ los cuatro que más se van a usar:
 
 ## 6 · Lo que bloquea al propietario, no a las máquinas
 
-Ninguno de los dos impide que las seis arranquen. Se dicen acá para que nadie los descubra a mitad
+Ninguno de los dos impide que las siete arranquen. Se dicen acá para que nadie los descubra a mitad
 de camino.
 
 - **La llave SSH del VPS no está autorizada** (`Permission denied (publickey,password)`). Sólo
@@ -137,7 +138,7 @@ de camino.
 |---|---:|---|---|---|
 | M1 | 0/6 | — | — | — |
 | M2 | 0/4 | — | — | — |
-| M3 | 0/3 | — | — | — |
-| M4 | 3/3 (B10, B12, B13) | `TESTED` (techo sin base) | API [#470](https://github.com/mdavila-2001/mantra-core-health-api/pull/470) · [#471](https://github.com/mdavila-2001/mantra-core-health-api/pull/471) · [#472](https://github.com/mdavila-2001/mantra-core-health-api/pull/472) | ninguna; D-A, D-F y D-G registradas sin resolver; `VERIFIED` pendiente de M1 |
-| M5 | 0/3 | — | — | — |
+| M3 | 3/3 | `TESTED` (sin base; lo que falta correr a M1 está en el reporte de la API, `docs/trabajo/2026-09-26-m3-api-clinica/REPORTE.md`) | **#473** `MERGEABLE`/`CLEAN` → **mergeado en `test`** @ `f5c8c11c` (Jsaldias39). El PR lo abrió el propietario: `gh pr create` estaba denegado para la sesión automática | Nada (este daily: PR #58 del PM, `MERGEABLE`, a la espera de review). ⚠️ **`test` tiene el código de M3 y no el DDL de M1: no desplegar antes del patch** (`encounter_id`, `indication_text`, tabla D-B) |
+| M4 | 3/3 (B10, B12, B13) | `TESTED` (techo sin base; lo que falta correr a M1 está en `docs/progress/evidence/lane-B1x/REPORT.md` de la API) | API **#470 · #471 · #472 → mergeados en `test`** ([#470](https://github.com/mdavila-2001/mantra-core-health-api/pull/470) · [#471](https://github.com/mdavila-2001/mantra-core-health-api/pull/471) · [#472](https://github.com/mdavila-2001/mantra-core-health-api/pull/472)) | ninguna; D-A, D-F y D-G registradas sin resolver; `VERIFIED` pendiente de M1 |
+| M5 | 2/3 `HECHO` (H1, H2) + 1 `A MEDIAS` (H3) | `VERIFIED` (H1, H2) · `TESTED` (H3) | [#711](https://github.com/mdavila-2001/mantra-core-health/pull/711) | H3.S1.M2: sin nginx/API real levantados en esta máquina (sin el stack Docker de M1); `check-api-prefixes`/`check-client-prefixes` sí en verde |
 | M6 | 0/4 | — | — | — |

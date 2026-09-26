@@ -1,7 +1,8 @@
 # M4 · Dell Inspiron 2 — encargo de preproducción (2026-09-26)
 
-> **Estado del encargo:** `TODO` · **Eje:** API de agenda, directorios y dinero, sin base de datos · **Hitos:** 3
-> **Peldaño al repartir:** `DISCOVERED`. Nada de este encargo se ejecutó todavía.
+> **Estado del encargo:** `HECHO` al techo que fija el encargo (`TESTED`, sin base) · **Eje:** API de agenda, directorios y dinero, sin base de datos · **Hitos:** 3
+> **AVANCE: 14 / 14 microtareas del encargo — 100,0 %** (+2 descubiertas en B10, también `HECHO`). **Peldaño alcanzado: `TESTED`** — no `VERIFIED`: lo que le falta correr a M1 está en §9.
+> PRs contra `test`, **mergeados en `test`**: API [#470](https://github.com/mdavila-2001/mantra-core-health-api/pull/470) (B10 · H1) · [#471](https://github.com/mdavila-2001/mantra-core-health-api/pull/471) (B13 · H3) · [#472](https://github.com/mdavila-2001/mantra-core-health-api/pull/472) (B12 · H2).
 >
 > - Daily del reparto: [`Daily-Maquinas-2026-09-26.md`](../../Daily-Maquinas-2026-09-26.md)
 > - Tu daily: [`M4-DellInspiron2-Daily-Maquinas-2026-09-26.md`](../M4-DellInspiron2-Daily-Maquinas-2026-09-26.md)

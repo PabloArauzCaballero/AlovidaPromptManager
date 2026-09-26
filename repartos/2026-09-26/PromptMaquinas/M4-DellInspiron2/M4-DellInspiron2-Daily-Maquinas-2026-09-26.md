@@ -9,7 +9,7 @@
 - **Estado:** `HECHO` al techo del encargo · **Peldaño:** `TESTED`
 - **PRs contra `test`** (API): [#470](https://github.com/mdavila-2001/mantra-core-health-api/pull/470) B10 ·
   [#471](https://github.com/mdavila-2001/mantra-core-health-api/pull/471) B13 ·
-  [#472](https://github.com/mdavila-2001/mantra-core-health-api/pull/472) B12. Los tres están en `mergeable: clean`.
+  [#472](https://github.com/mdavila-2001/mantra-core-health-api/pull/472) B12. Los tres están **mergeados en `test`** (los mergeó M1).
 
 API de agenda, directorios y dinero, sin base de datos: agenda, farmacia y directorios públicos,
 cotizaciones y contabilidad.
