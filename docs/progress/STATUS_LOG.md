@@ -27,6 +27,20 @@
   `mantra-core-health/docs/progress/evidence/lane-m6-datos-y-calidad/REPORTE-H2-H3.md` y
   `mantra-core-health-api/docs/progress/evidence/lane-m6-datos-y-calidad/REPORTE.md`.
 
+## 2026-09-26T10:10:00+00:00 — Carril M5 (Laptop Justin) — Cierre final, 15/15
+- Estado: done
+- QA: nginx real + el stack `mantra-redesa` real levantados en la máquina (Docker Desktop estaba
+  apagado; al arrancarlo el stack subió solo, tenía política de reinicio). `/loyalty/me`,
+  `POST /patients/me/reviews` y `POST /ai/v1/triage/analyze` dan JSON real de la API (o el 503
+  explícito diseñado para `/ai`), nunca el `index.html` del SSR — cierra H3.S1.M2, el único
+  pendiente. En el camino se encontró y corrigió un bug real: `/patients/me/reviews` tenía barra
+  final en `api-locations.conf` y el cliente la llama sin barra, así que nginx nunca la hacía
+  matchear; `check-api-prefixes.mjs` no lo detecta porque normaliza la barra antes de comparar.
+- PR [#714](https://github.com/mdavila-2001/mantra-core-health/pull/714) abierto contra `test`
+  con el fix, `mergeable: MERGEABLE` (checks del repo `pending`, CI ya documentado como caído).
+  El PR de todo lo demás (#711) ya estaba mergeado. Detalle en
+  `mantra-core-health/docs/progress/evidence/lane-m5-build-real/REPORTE.md`.
+
 ## 2026-09-26T07:20:00+00:00 — Carril M5 (Laptop Justin) — Cierre
 - Estado: a medias
 - QA: 380/381 specs dirigidos en verde (1 rojo preexistente, confirmado con `git stash` contra
