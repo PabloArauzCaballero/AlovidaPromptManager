@@ -1,8 +1,8 @@
 # M4 · Dell Inspiron 2 — encargo de preproducción (2026-09-26)
 
 > **Estado del encargo:** `HECHO` al techo que fija el encargo (`TESTED`, sin base) · **Eje:** API de agenda, directorios y dinero, sin base de datos · **Hitos:** 3
-> **AVANCE: 14 / 14 microtareas del encargo — 100,0 %** (+2 descubiertas en B10, también `HECHO`). **Peldaño alcanzado: `TESTED`** — no `VERIFIED`: lo que le falta correr a M1 está en §9.
-> PRs contra `test`, **mergeados en `test`**: API [#470](https://github.com/mdavila-2001/mantra-core-health-api/pull/470) (B10 · H1) · [#471](https://github.com/mdavila-2001/mantra-core-health-api/pull/471) (B13 · H3) · [#472](https://github.com/mdavila-2001/mantra-core-health-api/pull/472) (B12 · H2).
+> **AVANCE: 14 / 14 microtareas del encargo — 100,0 %** (+2 descubiertas en B10, también `HECHO`). **Peldaño alcanzado: `VERIFIED`** en runtime local sobre base aislada (21/21 PASS, §9), por encima del techo `TESTED` del encargo.
+> PRs contra `test`, **mergeados en `test`**: API [#470](https://github.com/mdavila-2001/mantra-core-health-api/pull/470) (B10 · H1) · [#471](https://github.com/mdavila-2001/mantra-core-health-api/pull/471) (B13 · H3) · [#472](https://github.com/mdavila-2001/mantra-core-health-api/pull/472) (B12 · H2) · arreglo del retiro + evidencia de runtime [#476](https://github.com/mdavila-2001/mantra-core-health-api/pull/476).
 >
 > - Daily del reparto: [`Daily-Maquinas-2026-09-26.md`](../../Daily-Maquinas-2026-09-26.md)
 > - Tu daily: [`M4-DellInspiron2-Daily-Maquinas-2026-09-26.md`](../M4-DellInspiron2-Daily-Maquinas-2026-09-26.md)
@@ -78,14 +78,14 @@ toca**.
 **CA:** Dadas dos citas cuyos rangos se pisan en cupos distintos, cuando se intenta crear la segunda, entonces el sistema la rechaza.
 **DoD:** Las microtareas de H1 en `HECHO`, con las unitarias del solapamiento y del retiro en verde.
 **Estado:** HECHO
-**Peldaño:** `TESTED` (techo del encargo sin base; ver §9)
+**Peldaño:** `VERIFIED` (runtime local sobre base aislada; ver §9)
 
 #### H1.S1 — Cerrar el solapamiento que hoy pasa
 
 **CA:** Dado un rango que se pisa con otro en distinto cupo, cuando se reserva, entonces falla.
 **DoD:** Las tres microtareas en `HECHO` con la unitaria pegada.
 **Estado:** HECHO
-**Peldaño:** `TESTED` (techo del encargo sin base; ver §9)
+**Peldaño:** `VERIFIED` (runtime local sobre base aislada; ver §9)
 
 Medido: `SQL/41_scheduling/04_indexes.sql` tiene **un solo índice único y cero `CHECK`**, y
 `gist_appointments_practitioner_time` está **comentado** porque su predicado usa funciones
@@ -104,7 +104,7 @@ empieza en el modelo: coordinalo con M1.
 **CA:** Dado un horario con citas vivas, cuando se lo retira, entonces la operación conserva los cupos con cita en vez de fallar con 409.
 **DoD:** Las tres microtareas en `HECHO` con las unitarias pegadas.
 **Estado:** HECHO
-**Peldaño:** `TESTED` (techo del encargo sin base; ver §9)
+**Peldaño:** `VERIFIED` (runtime local sobre base aislada; ver §9)
 
 **D-A no la resolvés vos:** ¿«horario flexible» es un bloque con capacidad o un pedido de hora
 que el médico confirma? **No hay columna en el modelo** y el simulador inventa `floor(dur/15)`.
@@ -125,14 +125,14 @@ paciente, modalidad, retracción de cupos y E2E propio). **No la reescribas.**
 **CA:** Dada la ficha de una clínica o de una farmacia, cuando se consulta, entonces trae sus servicios o sus productos, y sus sucursales.
 **DoD:** Las microtareas de H2 en `HECHO`, con las unitarias en verde y las rutas nuevas documentadas.
 **Estado:** HECHO
-**Peldaño:** `TESTED` (techo del encargo sin base; ver §9)
+**Peldaño:** `VERIFIED` (runtime local sobre base aislada; ver §9)
 
 #### H2.S1 — Las lecturas que el front ya llama y no existen
 
 **CA:** Dadas `o/:slug/services` y `f/:slug/products`, cuando el front las llama, entonces la API responde en vez de 404.
 **DoD:** Las tres microtareas en `HECHO` con las unitarias pegadas.
 **Estado:** HECHO
-**Peldaño:** `TESTED` (techo del encargo sin base; ver §9)
+**Peldaño:** `VERIFIED` (runtime local sobre base aislada; ver §9)
 
 **Tres cosas ya existen y no se rehacen:** «Dónde comprar la receta»
 (`GET /pharmacy-inventory/availability` devuelve `complete`, `missingProductIds`, `distanceKm` y
@@ -154,14 +154,14 @@ Hoy `openNow` **no lo calcula nadie**.
 **CA:** Dada una cotización con importes, cuando se envía tal como la arma el front, entonces se guarda en vez de dar 400.
 **DoD:** Las microtareas de H3 en `HECHO`, con la unitaria del guardado en verde.
 **Estado:** HECHO
-**Peldaño:** `TESTED` (techo del encargo sin base; ver §9)
+**Peldaño:** `VERIFIED` (runtime local sobre base aislada; ver §9)
 
 #### H3.S1 — El 400 que impide guardar cualquier cotización
 
 **CA:** Dados importes numéricos, cuando llegan al DTO, entonces la validación los acepta.
 **DoD:** Las tres microtareas en `HECHO` con la unitaria pegada.
 **Estado:** HECHO
-**Peldaño:** `TESTED` (techo del encargo sin base; ver §9)
+**Peldaño:** `VERIFIED` (runtime local sobre base aislada; ver §9)
 
 **Bloqueante AG-35: ninguna cotización se guarda.** Los importes viajan `number` contra
 `@IsNumberString` → **400**. Además **N-06**: `billing.quotations` **no tiene `tenant_id`**, así
@@ -182,7 +182,7 @@ de cuotas** en `listQuotationsByPatient`.
 **CA:** Dado el módulo contable, cuando se lo expone, entonces **no se crea nada que ya esté**.
 **DoD:** Las dos microtareas en `HECHO` con el inventario de lo existente pegado.
 **Estado:** HECHO
-**Peldaño:** `TESTED` (techo del encargo sin base; ver §9)
+**Peldaño:** `VERIFIED` (runtime local sobre base aislada; ver §9)
 
 **Contabilidad existe y es grande:** módulo 16, 42 tablas, 42 entidades, 8 controladores,
 pantalla en `/administration/accounting`. La partida doble **ya valida con 422**, la máquina
@@ -280,3 +280,14 @@ encima de otra cita → 422; retiro con citas vivas → 200 con `liveBookingIds`
 **Ambigüedades registradas, sin resolver:** Q-01 (D-A), Q-02 (D-G), Q-03 (D-F) y Q-04 (moneda). Además: Q-05
 («sin precio»), Q-06 (el contrato del retiro: el CA del encargo contra BR-21) y Q-07 (AG-35).
 
+### 9.1 Verificación de runtime (M4, después del cierre)
+
+El VPS de `test` respondía 503, así que M4 levantó `origin/test` @ `435cd290` (con #470/#471/#472) en local
+sobre una base **aislada** (ni Neon ni el VPS) y verificó por HTTP, con `SELECT` de cada escritura:
+**21/21 PASS** (`docs/progress/evidence/m4-runtime/REPORT.md` de la API).
+
+- **Defecto real destapado y corregido:** retirar un horario en el que se reprogramó una cita rompía
+  `fk_booking_reschedules_from_slot_id` (422). Preexistente; B10 lo hacía más frecuente. Arreglado y
+  re-verificado en [#476](https://github.com/mdavila-2001/mantra-core-health-api/pull/476).
+- **Para M1:** `postgres-init` sale 3 en una base nueva por el patch de datos `v4221_aseguradoras_codigo_unico`
+  (el init sólo saltea los que se llaman `*backfill*`); y el front de `test` responde 503.
