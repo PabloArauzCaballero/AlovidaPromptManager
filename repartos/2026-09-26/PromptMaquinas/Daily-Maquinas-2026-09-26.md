@@ -1,13 +1,13 @@
 # Daily de máquinas — preproducción, 2026-09-26
 
-> **REPARTIDO: 6 / 6 máquinas · 23 hitos · 96 microtareas · 6 requisitos del pedido con dueño.**
-> **AVANCE: 0 / 96 microtareas — 0,0 %.** ← se llena al cerrar, con `microtareas HECHO / total`.
+> **REPARTIDO: 7 / 7 máquinas · 29 hitos · 197 microtareas · 6 requisitos del pedido con dueño.**
+> **AVANCE: 0 / 197 microtareas — 0,0 %.** ← se llena al cerrar, con `microtareas HECHO / total`.
 > La **Ola 0 ya está ejecutada** y medida (`RUNS`), aparte de esas 95.
-> M1 0/22 · M2 0/17 · M3 0/13 · M4 0/14 · M5 0/15 · M6 0/15.
+> M1 0/22 · M2 0/17 · M3 0/13 · M4 0/14 · M5 0/15 · M6 0/15 · M7 0/101.
 > **`A MEDIAS` cuenta como no hecho. `DESCARTADO` no suma: se declara aparte con su motivo.**
 
 > **Estado:** `REPARTIDO` al 2026-09-26. **Novedad respecto de los repartos anteriores: el eje no
-> son personas, son máquinas.** El propietario ejecuta con seis computadoras, cada una como un
+> son personas, son máquinas.** El propietario ejecuta con siete computadoras, cada una como un
 > programador, y el reparto se hace **por capacidad de la máquina** — que es precisamente lo que
 > elimina los bloqueantes.
 
@@ -50,8 +50,9 @@
 | **M4** Dell Inspiron 2 | [Agenda, farmacia, cotizaciones y contabilidad](M4-DellInspiron2/Preproduccion.ApiAgendaDirectoriosYDinero/AgendaFarmaciaCotizacionesYContabilidad.md) | [daily](M4-DellInspiron2/M4-DellInspiron2-Daily-Maquinas-2026-09-26.md) | API de agenda, directorios y dinero, sin base | 3 | 14 | `TODO` |
 | **M5** Laptop Justin | [El build real, el simulador honesto y el enrutado](M5-LaptopJustin/Preproduccion.FrontSalidaDelSimulador/BuildRealMockHonestoYEnrutado.md) | [daily](M5-LaptopJustin/M5-LaptopJustin-Daily-Maquinas-2026-09-26.md) | front: la salida del simulador | 3 | 15 | `TODO` |
 | **M6** Acer Aspire 3 | [Los doce markdown, la suite determinista y el lint](M6-AcerAspire3/Preproduccion.DatosYCalidadDeLaSuite/LosDoceMarkdownSuiteDeterministaYLint.md) | [daily](M6-AcerAspire3/M6-AcerAspire3-Daily-Maquinas-2026-09-26.md) | datos y calidad de la suite | 4 | 15 | `TODO` |
+| **M7** Lenovo Legion | [Las brechas de la API que ningún encargo tomó](M7-Legion/Preproduccion.BrechasSinMaquina/BrechasDeApiSinDueno.md) | [daily](M7-Legion/M7-Legion-Daily-Maquinas-2026-09-26.md) | brechas front ↔ API sin dueño (BR-04, 05, 07, 08, 09, 14–17, 20, 22, 26–30) | 6 | 101 | `TODO` |
 | | **Ola 0** — ya ejecutada | — | la rama `test` de los dos repos | 3 | — | `RUNS` |
-| | | | **total** | **23** | **96** | |
+| | | | **total** | **29** | **197** | |
 
 > ⚠️ **Esto es más de lo que entra en un turno, y está dicho a propósito.** Cada encargo dice en
 > qué orden ir y qué vale más si hay que elegir. Lo que no cierre va **`A MEDIAS`** con qué anda,
@@ -122,7 +123,7 @@ los cuatro que más se van a usar:
 
 ## 6 · Lo que bloquea al propietario, no a las máquinas
 
-Ninguno de los dos impide que las seis arranquen. Se dicen acá para que nadie los descubra a mitad
+Ninguno de los dos impide que las siete arranquen. Se dicen acá para que nadie los descubra a mitad
 de camino.
 
 - **La llave SSH del VPS no está autorizada** (`Permission denied (publickey,password)`). Sólo
