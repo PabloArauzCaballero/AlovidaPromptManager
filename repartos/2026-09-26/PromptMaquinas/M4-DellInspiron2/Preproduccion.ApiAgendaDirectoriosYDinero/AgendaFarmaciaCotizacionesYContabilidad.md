@@ -76,13 +76,15 @@ toca**.
 
 **CA:** Dadas dos citas cuyos rangos se pisan en cupos distintos, cuando se intenta crear la segunda, entonces el sistema la rechaza.
 **DoD:** Las microtareas de H1 en `HECHO`, con las unitarias del solapamiento y del retiro en verde.
-**Estado:** HECHO (`TESTED`)
+**Estado:** HECHO
+**Peldaño:** `TESTED` (techo del encargo sin base; ver §9)
 
 #### H1.S1 — Cerrar el solapamiento que hoy pasa
 
 **CA:** Dado un rango que se pisa con otro en distinto cupo, cuando se reserva, entonces falla.
 **DoD:** Las tres microtareas en `HECHO` con la unitaria pegada.
-**Estado:** HECHO (`TESTED`)
+**Estado:** HECHO
+**Peldaño:** `TESTED` (techo del encargo sin base; ver §9)
 
 Medido: `SQL/41_scheduling/04_indexes.sql` tiene **un solo índice único y cero `CHECK`**, y
 `gist_appointments_practitioner_time` está **comentado** porque su predicado usa funciones
@@ -100,7 +102,8 @@ empieza en el modelo: coordinalo con M1.
 
 **CA:** Dado un horario con citas vivas, cuando se lo retira, entonces la operación conserva los cupos con cita en vez de fallar con 409.
 **DoD:** Las tres microtareas en `HECHO` con las unitarias pegadas.
-**Estado:** HECHO (`TESTED`)
+**Estado:** HECHO
+**Peldaño:** `TESTED` (techo del encargo sin base; ver §9)
 
 **D-A no la resolvés vos:** ¿«horario flexible» es un bloque con capacidad o un pedido de hora
 que el médico confirma? **No hay columna en el modelo** y el simulador inventa `floor(dur/15)`.
@@ -120,13 +123,15 @@ paciente, modalidad, retracción de cupos y E2E propio). **No la reescribas.**
 
 **CA:** Dada la ficha de una clínica o de una farmacia, cuando se consulta, entonces trae sus servicios o sus productos, y sus sucursales.
 **DoD:** Las microtareas de H2 en `HECHO`, con las unitarias en verde y las rutas nuevas documentadas.
-**Estado:** HECHO (`TESTED`)
+**Estado:** HECHO
+**Peldaño:** `TESTED` (techo del encargo sin base; ver §9)
 
 #### H2.S1 — Las lecturas que el front ya llama y no existen
 
 **CA:** Dadas `o/:slug/services` y `f/:slug/products`, cuando el front las llama, entonces la API responde en vez de 404.
 **DoD:** Las tres microtareas en `HECHO` con las unitarias pegadas.
-**Estado:** HECHO (`TESTED`)
+**Estado:** HECHO
+**Peldaño:** `TESTED` (techo del encargo sin base; ver §9)
 
 **Tres cosas ya existen y no se rehacen:** «Dónde comprar la receta»
 (`GET /pharmacy-inventory/availability` devuelve `complete`, `missingProductIds`, `distanceKm` y
@@ -147,13 +152,15 @@ Hoy `openNow` **no lo calcula nadie**.
 
 **CA:** Dada una cotización con importes, cuando se envía tal como la arma el front, entonces se guarda en vez de dar 400.
 **DoD:** Las microtareas de H3 en `HECHO`, con la unitaria del guardado en verde.
-**Estado:** HECHO (`TESTED`)
+**Estado:** HECHO
+**Peldaño:** `TESTED` (techo del encargo sin base; ver §9)
 
 #### H3.S1 — El 400 que impide guardar cualquier cotización
 
 **CA:** Dados importes numéricos, cuando llegan al DTO, entonces la validación los acepta.
 **DoD:** Las tres microtareas en `HECHO` con la unitaria pegada.
-**Estado:** HECHO (`TESTED`)
+**Estado:** HECHO
+**Peldaño:** `TESTED` (techo del encargo sin base; ver §9)
 
 **Bloqueante AG-35: ninguna cotización se guarda.** Los importes viajan `number` contra
 `@IsNumberString` → **400**. Además **N-06**: `billing.quotations` **no tiene `tenant_id`**, así
@@ -173,7 +180,8 @@ de cuotas** en `listQuotationsByPatient`.
 
 **CA:** Dado el módulo contable, cuando se lo expone, entonces **no se crea nada que ya esté**.
 **DoD:** Las dos microtareas en `HECHO` con el inventario de lo existente pegado.
-**Estado:** HECHO (`TESTED`)
+**Estado:** HECHO
+**Peldaño:** `TESTED` (techo del encargo sin base; ver §9)
 
 **Contabilidad existe y es grande:** módulo 16, 42 tablas, 42 entidades, 8 controladores,
 pantalla en `/administration/accounting`. La partida doble **ya valida con 422**, la máquina
