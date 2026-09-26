@@ -1,6 +1,6 @@
 # M3 · Dell Inspiron 1 — daily de máquinas, 2026-09-26
 
-> **AVANCE: 15 / 15 microtareas — 100,0 %.** (13 del encargo + 2 descubiertas y agregadas al plan.) **3 / 3 hitos en `HECHO` al peldaño `TESTED`.** **PR #473 mergeado en `test`** (`f5c8c11c`, por Jsaldias39). Sólo queda `A MEDIAS` el PR de este daily en el PM (ver abajo).
+> **AVANCE: 15 / 15 microtareas — 100,0 %.** (13 del encargo + 2 descubiertas y agregadas al plan.) **3 / 3 hitos en `HECHO` al peldaño `TESTED`.** **PR #473 mergeado en `test`** (`f5c8c11c`, por Jsaldias39). Este daily viaja en el PR #58 del PM (`MERGEABLE`, a la espera de review). Nada queda `A MEDIAS`.
 > **`A MEDIAS` cuenta como no hecho. `DESCARTADO` no suma: se declara aparte con su motivo.**
 >
 > ⚠️ **`test` ya tiene el código de M3 y todavía no el DDL de M1** (`allergy_intolerances.encounter_id`, `medication_requests.indication_text`, tabla `patient_reported_health_statements`). **No desplegar `test` hasta que entre el patch de M1**: alergias, recetas y aspectos médicos responderían 500. El arranque con `ORM_SCHEMA_SYNC=dry-run` lo reporta como `columna-ausente`/`tabla-ausente`.
@@ -73,11 +73,12 @@ por git) y los hooks en `.claude/settings.local.json`, sin tocar el `settings.js
 **C.5 — PR contra `test`: cerrado.** Abierto por el propietario (`gh pr create` estaba denegado
 para la sesión), `MERGEABLE`/`CLEAN` tras el último push, y mergeado en `test` (`f5c8c11c`).
 
-**C.6 — este daily por PR.** Qué anda: rama `justin/m3-daily-2026-09-26` del PM pusheada con el
-daily de M3 y la fila de M3 del daily de máquinas. Qué no anda: el PR contra `main` del PM no está
-abierto (misma denegación del clasificador). Qué falta exactamente:
-`gh pr create --base main --head justin/m3-daily-2026-09-26` en `AlovidaPromptManager`, por el
-propietario. Dónde quedó: `origin/justin/m3-daily-2026-09-26`.
+**C.6 — este daily por PR: cerrado.** PR #58 abierto por el propietario (misma denegación).
+Conflicto con `main` en la cabecera del daily de máquinas (entraron el cierre de M5 y el reparto de
+M7) resuelto sumando ambos lados: 7/7 máquinas, 29/199 microtareas. Tras el push del merge:
+`mergeable=MERGEABLE`, `mergeStateStatus=BLOCKED` sólo por la review humana requerida en `main`.
+
+Nada queda `A MEDIAS` en M3.
 
 ## Pedidos a M1 (modelo) — la forma exacta está en el reporte §«Pedidos a M1»
 

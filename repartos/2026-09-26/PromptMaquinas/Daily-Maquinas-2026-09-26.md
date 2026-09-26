@@ -138,7 +138,7 @@ de camino.
 |---|---:|---|---|---|
 | M1 | 0/6 | — | — | — |
 | M2 | 0/4 | — | — | — |
-| M3 | 3/3 | `TESTED` (sin base; lo que falta correr a M1 está en el reporte de la API, `docs/trabajo/2026-09-26-m3-api-clinica/REPORTE.md`) | **#473** `MERGEABLE`/`CLEAN` → **mergeado en `test`** @ `f5c8c11c` (Jsaldias39). El PR lo abrió el propietario: `gh pr create` estaba denegado para la sesión automática | Sólo C.6 (este daily por PR en el PM: rama `justin/m3-daily-2026-09-26` pusheada, PR sin abrir). ⚠️ **`test` tiene el código de M3 y no el DDL de M1: no desplegar antes del patch** (`encounter_id`, `indication_text`, tabla D-B) |
+| M3 | 3/3 | `TESTED` (sin base; lo que falta correr a M1 está en el reporte de la API, `docs/trabajo/2026-09-26-m3-api-clinica/REPORTE.md`) | **#473** `MERGEABLE`/`CLEAN` → **mergeado en `test`** @ `f5c8c11c` (Jsaldias39). El PR lo abrió el propietario: `gh pr create` estaba denegado para la sesión automática | Nada (este daily: PR #58 del PM, `MERGEABLE`, a la espera de review). ⚠️ **`test` tiene el código de M3 y no el DDL de M1: no desplegar antes del patch** (`encounter_id`, `indication_text`, tabla D-B) |
 | M4 | 0/3 | — | — | — |
 | M5 | 2/3 `HECHO` (H1, H2) + 1 `A MEDIAS` (H3) | `VERIFIED` (H1, H2) · `TESTED` (H3) | [#711](https://github.com/mdavila-2001/mantra-core-health/pull/711) | H3.S1.M2: sin nginx/API real levantados en esta máquina (sin el stack Docker de M1); `check-api-prefixes`/`check-client-prefixes` sí en verde |
 | M6 | 0/4 | — | — | — |
