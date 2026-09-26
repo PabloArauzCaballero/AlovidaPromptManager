@@ -1,11 +1,13 @@
 # M3 · Dell Inspiron 1 — daily de máquinas, 2026-09-26
 
-> **AVANCE: 15 / 15 microtareas — 100,0 %.** (13 del encargo + 2 descubiertas y agregadas al plan.) **3 / 3 hitos en `HECHO` al peldaño `TESTED`.** La entrega por PR quedó **`A MEDIAS`**: rama pusheada, PR sin abrir (ver bitácora).
+> **AVANCE: 15 / 15 microtareas — 100,0 %.** (13 del encargo + 2 descubiertas y agregadas al plan.) **3 / 3 hitos en `HECHO` al peldaño `TESTED`.** **PR #473 mergeado en `test`** (`f5c8c11c`, por Jsaldias39). Sólo queda `A MEDIAS` el PR de este daily en el PM (ver abajo).
 > **`A MEDIAS` cuenta como no hecho. `DESCARTADO` no suma: se declara aparte con su motivo.**
+>
+> ⚠️ **`test` ya tiene el código de M3 y todavía no el DDL de M1** (`allergy_intolerances.encounter_id`, `medication_requests.indication_text`, tabla `patient_reported_health_statements`). **No desplegar `test` hasta que entre el patch de M1**: alergias, recetas y aspectos médicos responderían 500. El arranque con `ORM_SCHEMA_SYNC=dry-run` lo reporta como `columna-ausente`/`tabla-ausente`.
 
 - **Encargo:** ver la carpeta de al lado · **Reparto:** [`Daily-Maquinas-2026-09-26.md`](../Daily-Maquinas-2026-09-26.md)
-- **Estado:** `HECHO` (código y unitarias) · `A MEDIAS` (PR) · **Peldaño:** `TESTED` — el techo honesto sin base, declarado así en el reporte; **no** `VERIFIED`
-- **Repo:** `mantra-core-health-api` · rama `justin/test-m3-api-clinica-2026-09-26` desde `origin/test` @ `016caaa1` · pusheada @ `6406d4f3`+
+- **Estado:** `HECHO` · **Peldaño:** `TESTED` — el techo honesto sin base, declarado así en el reporte; **no** `VERIFIED`
+- **Repo:** `mantra-core-health-api` · rama `justin/test-m3-api-clinica-2026-09-26` desde `origin/test` @ `016caaa1` · **PR #473** https://github.com/mdavila-2001/mantra-core-health-api/pull/473 · consultado tras el push `ba7ff18b`: `MERGEABLE` · `CLEAN` · `isDraft=false` · sin checks reportados (runners propios apagados) · **MERGED** en `test` @ `f5c8c11c` (2026-09-26 07:05 UTC, Jsaldias39). El commit de cierre `ffe4ee22`+ (sólo docs: C.5 y la evidencia de `gh`) quedó en la rama, no en `test`.
 - **Plan y reporte en el repo:** `docs/trabajo/2026-09-26-m3-api-clinica/{PLAN.md,REPORTE.md,evidencia/}` · decisiones en `docs/progress/DECISIONS.md` · puntero `docs/progress/evidence/lane-m3-api-clinica/REPORT.md`
 
 API clínica, sin base de datos. Receta, alergias, aspectos médicos del paciente, notas
@@ -64,19 +66,18 @@ por git) y los hooks en `.claude/settings.local.json`, sin tocar el `settings.js
 | 04:05 | Lint: 42 avisos de prettier en archivos del carril → prettier sólo sobre esos archivos; lint 0, typecheck 0 | `TESTED` |
 | 04:15 | Hueco propio detectado: el genérico rechazaba los tres tipos clínicos pero no había ruta clínica de lectura → H1.S1.M5 (`GET …/:id/attachments` ×3). Finales: 90 suites / 1168 | `TESTED` |
 | 04:25 | Reporte escrito; rama pusheada. **`gh pr create` denegado por el clasificador del modo automático** («Out-of-Place Publication»): el PR queda sin abrir, cuerpo y comando en `evidencia/pr-body.md` | `TESTED` |
+| 07:0x | El propietario abre **PR #473** con el comando de `pr-body.md` (`! gh pr create …`). `gh pr view 473`: `MERGEABLE` · `CLEAN` · `isDraft=false`; `gh pr checks`: sin checks reportados. **Mergeado en `test`** por Jsaldias39 a los minutos (`f5c8c11c`). Evidencia en `evidencia/pr-mergeable.txt` (commit `ffe4ee22`, sólo en la rama) | `TESTED` |
 
 ## Lo que quedó `A MEDIAS`, con qué anda y qué no
 
-**C.5 — PR contra `test`.** Qué anda: rama `justin/test-m3-api-clinica-2026-09-26` pusheada con
-ocho commits (uno por hito + plan, formato, reporte); cuerpo del PR listo en
-`docs/trabajo/2026-09-26-m3-api-clinica/evidencia/pr-body.md` con revisores `jsaldias39` y
-`PabloArauzCaballero`. Qué no anda: el PR no está abierto (denegación del clasificador, que prohíbe
-buscar el mismo resultado por otra vía). Qué falta exactamente: correr la línea de `pr-body.md` y
-pegar `gh pr view <n> --json isDraft,mergeable,mergeStateStatus` en `evidencia/pr-mergeable.txt`.
-Dónde quedó: `origin/justin/test-m3-api-clinica-2026-09-26`, compila, lint 0, 1168 specs en verde.
+**C.5 — PR contra `test`: cerrado.** Abierto por el propietario (`gh pr create` estaba denegado
+para la sesión), `MERGEABLE`/`CLEAN` tras el último push, y mergeado en `test` (`f5c8c11c`).
 
-**C.6 — este daily por PR.** Misma causa: rama `justin/m3-daily-2026-09-26` del PM pusheada, PR
-sin abrir.
+**C.6 — este daily por PR.** Qué anda: rama `justin/m3-daily-2026-09-26` del PM pusheada con el
+daily de M3 y la fila de M3 del daily de máquinas. Qué no anda: el PR contra `main` del PM no está
+abierto (misma denegación del clasificador). Qué falta exactamente:
+`gh pr create --base main --head justin/m3-daily-2026-09-26` en `AlovidaPromptManager`, por el
+propietario. Dónde quedó: `origin/justin/m3-daily-2026-09-26`.
 
 ## Pedidos a M1 (modelo) — la forma exacta está en el reporte §«Pedidos a M1»
 
