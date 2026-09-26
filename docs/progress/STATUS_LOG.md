@@ -1,3 +1,32 @@
+## 2026-09-26T12:00:00+00:00 — Carril M6 (Acer Aspire 3) — Cierre parcial
+- Estado: 3/4 hitos HECHO, 1 A MEDIAS
+- QA: `REGRESSION_VERIFIED` en H1 (datasets), H3 (lint) y H4 (verificador de inglés);
+  `VERIFIED` parcial en H2 (suite determinista) — no se llegó a REGRESSION_VERIFIED.
+- Ramas pusheadas contra `origin/test`: API `marcelo/test-m6-datasets-lint`, front
+  `marcelo/test-m6-suite-lint`. `gh pr create` fue denegado por el clasificador de modo
+  automático de la sesión (mismo bloqueo que ya documentó M3); los PRs quedan para que los abra
+  el propietario. H1 corrigió al propio encargo: de los diez markdown institucionales, nueve ya
+  llegaban a la API en `origin/test` (el encargo decía que faltaban seis); sólo faltaba
+  `LISTA_DE_ESPECIALIDADES_ODONTOLOGICAS.md` (10 filas reales, no 14) — se agregó junto con
+  `source_file`/`source_row` y coordenadas ya derivadas en las 6 salidas, y `--check` para CI.
+  H3 bajó `yarn lint` de 144+19 errores (no 244+8 como decía el encargo) a 0: el generador
+  `port-vistas-alovida.mjs` arreglado + el mismo transform aplicado a mano a sus 120 vistas
+  (rutas de macOS hardcodeadas impidieron correr el generador acá), la regla OnPush excluida de
+  `*.spec.ts`/Playwright (mismo criterio que ya usa el propio `eslint.config.js` para otras
+  reglas), y los 3 componentes de producción reales (`app.ts` y los dos shells alovida)
+  verificados uno por uno y con capturas reales antes de tocarlos. H2 encontró y corrigió tres
+  causas raíz reales del no-determinismo (un pool de hilos sin límite que crasheaba el proceso;
+  dos specs con `SessionStore` incompleto; y el mismo patrón generalizado en 6 servicios
+  `providedIn:'root'` — `CartStore`, `TutorialProgressStore`, `HelpBlockDismissalStore`,
+  `PatientContextService`, `IdleLogout`, `SessionEndedRedirect` — con un `effect()` del
+  constructor sin guarda contra un doble de `AuthService`/`SessionStore` incompleto, de los
+  cuales hay ~45 specs en la suite), bajando el rojo de un crash/65 fallos a 11 archivos/23–26
+  tests — pero sin llegar a determinismo real: dos corridas seguidas siguen dando conjuntos
+  distintos, evidencia de que queda al menos una instancia más del mismo patrón sin aislar.
+  Detalle completo, tabla de corridas y recomendación de diagnóstico para quien retome en
+  `mantra-core-health/docs/progress/evidence/lane-m6-datos-y-calidad/REPORTE-H2-H3.md` y
+  `mantra-core-health-api/docs/progress/evidence/lane-m6-datos-y-calidad/REPORTE.md`.
+
 ## 2026-09-26T10:10:00+00:00 — Carril M5 (Laptop Justin) — Cierre final, 15/15
 - Estado: done
 - QA: nginx real + el stack `mantra-redesa` real levantados en la máquina (Docker Desktop estaba
