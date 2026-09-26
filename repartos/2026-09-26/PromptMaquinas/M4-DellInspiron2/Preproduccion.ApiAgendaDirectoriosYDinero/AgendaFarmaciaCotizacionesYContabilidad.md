@@ -1,7 +1,8 @@
 # M4 · Dell Inspiron 2 — encargo de preproducción (2026-09-26)
 
-> **Estado del encargo:** `TODO` · **Eje:** API de agenda, directorios y dinero, sin base de datos · **Hitos:** 3
-> **Peldaño al repartir:** `DISCOVERED`. Nada de este encargo se ejecutó todavía.
+> **Estado del encargo:** `HECHO` al techo que fija el encargo (`TESTED`, sin base) · **Eje:** API de agenda, directorios y dinero, sin base de datos · **Hitos:** 3
+> **AVANCE: 14 / 14 microtareas del encargo — 100,0 %** (+2 descubiertas en B10, también `HECHO`). **Peldaño alcanzado: `TESTED`** — no `VERIFIED`: lo que le falta correr a M1 está en §9.
+> PRs contra `test`, **mergeados en `test`**: API [#470](https://github.com/mdavila-2001/mantra-core-health-api/pull/470) (B10 · H1) · [#471](https://github.com/mdavila-2001/mantra-core-health-api/pull/471) (B13 · H3) · [#472](https://github.com/mdavila-2001/mantra-core-health-api/pull/472) (B12 · H2).
 >
 > - Daily del reparto: [`Daily-Maquinas-2026-09-26.md`](../../Daily-Maquinas-2026-09-26.md)
 > - Tu daily: [`M4-DellInspiron2-Daily-Maquinas-2026-09-26.md`](../M4-DellInspiron2-Daily-Maquinas-2026-09-26.md)
@@ -76,13 +77,15 @@ toca**.
 
 **CA:** Dadas dos citas cuyos rangos se pisan en cupos distintos, cuando se intenta crear la segunda, entonces el sistema la rechaza.
 **DoD:** Las microtareas de H1 en `HECHO`, con las unitarias del solapamiento y del retiro en verde.
-**Estado:** TODO
+**Estado:** HECHO
+**Peldaño:** `TESTED` (techo del encargo sin base; ver §9)
 
 #### H1.S1 — Cerrar el solapamiento que hoy pasa
 
 **CA:** Dado un rango que se pisa con otro en distinto cupo, cuando se reserva, entonces falla.
 **DoD:** Las tres microtareas en `HECHO` con la unitaria pegada.
-**Estado:** TODO
+**Estado:** HECHO
+**Peldaño:** `TESTED` (techo del encargo sin base; ver §9)
 
 Medido: `SQL/41_scheduling/04_indexes.sql` tiene **un solo índice único y cero `CHECK`**, y
 `gist_appointments_practitioner_time` está **comentado** porque su predicado usa funciones
@@ -92,15 +95,16 @@ empieza en el modelo: coordinalo con M1.
 
 | ID | Microtarea | Criterio de aceptación | Definition of Done | Estado |
 |---|---|---|---|---|
-| H1.S1.M1 | Escribir la prueba que hoy falla | reproduce el solapamiento | salida en rojo pegada | TODO |
-| H1.S1.M2 | Cubrirlo en el servicio | la prueba pasa | salida en verde pegada | TODO |
-| H1.S1.M3 | Pedir a M1 la exclusión en el modelo | el pedido queda escrito con su forma | pedido en el reporte | TODO |
+| H1.S1.M1 | Escribir la prueba que hoy falla | reproduce el solapamiento | salida en rojo pegada | HECHO |
+| H1.S1.M2 | Cubrirlo en el servicio | la prueba pasa | salida en verde pegada | HECHO |
+| H1.S1.M3 | Pedir a M1 la exclusión en el modelo | el pedido queda escrito con su forma | pedido en el reporte | HECHO |
 
 #### H1.S2 — Horario flexible, retiro y mostrador
 
 **CA:** Dado un horario con citas vivas, cuando se lo retira, entonces la operación conserva los cupos con cita en vez de fallar con 409.
 **DoD:** Las tres microtareas en `HECHO` con las unitarias pegadas.
-**Estado:** TODO
+**Estado:** HECHO
+**Peldaño:** `TESTED` (techo del encargo sin base; ver §9)
 
 **D-A no la resolvés vos:** ¿«horario flexible» es un bloque con capacidad o un pedido de hora
 que el médico confirma? **No hay columna en el modelo** y el simulador inventa `floor(dur/15)`.
@@ -112,21 +116,23 @@ paciente, modalidad, retracción de cupos y E2E propio). **No la reescribas.**
 
 | ID | Microtarea | Criterio de aceptación | Definition of Done | Estado |
 |---|---|---|---|---|
-| H1.S2.M1 | Registrar D-A y D-G con su forma propuesta | quedan en `DECISIONS.md` | enlace pegado | TODO |
-| H1.S2.M2 | Permitir retirar un horario con citas vivas | conserva los cupos con cita | unitaria pegada | TODO |
-| H1.S2.M3 | Dejar que el paciente reprograme | la ruta responde | unitaria pegada | TODO |
+| H1.S2.M1 | Registrar D-A y D-G con su forma propuesta | quedan en `DECISIONS.md` | enlace pegado | HECHO |
+| H1.S2.M2 | Permitir retirar un horario con citas vivas | conserva los cupos con cita | unitaria pegada | HECHO |
+| H1.S2.M3 | Dejar que el paciente reprograme | la ruta responde | unitaria pegada | HECHO |
 
 ### H2 — Los directorios públicos y la farmacia dicen la verdad
 
 **CA:** Dada la ficha de una clínica o de una farmacia, cuando se consulta, entonces trae sus servicios o sus productos, y sus sucursales.
 **DoD:** Las microtareas de H2 en `HECHO`, con las unitarias en verde y las rutas nuevas documentadas.
-**Estado:** TODO
+**Estado:** HECHO
+**Peldaño:** `TESTED` (techo del encargo sin base; ver §9)
 
 #### H2.S1 — Las lecturas que el front ya llama y no existen
 
 **CA:** Dadas `o/:slug/services` y `f/:slug/products`, cuando el front las llama, entonces la API responde en vez de 404.
 **DoD:** Las tres microtareas en `HECHO` con las unitarias pegadas.
-**Estado:** TODO
+**Estado:** HECHO
+**Peldaño:** `TESTED` (techo del encargo sin base; ver §9)
 
 **Tres cosas ya existen y no se rehacen:** «Dónde comprar la receta»
 (`GET /pharmacy-inventory/availability` devuelve `complete`, `missingProductIds`, `distanceKm` y
@@ -139,21 +145,23 @@ Hoy `openNow` **no lo calcula nadie**.
 
 | ID | Microtarea | Criterio de aceptación | Definition of Done | Estado |
 |---|---|---|---|---|
-| H2.S1.M1 | Agregar la lectura de servicios de una organización | responde con precio de referencia | unitaria pegada | TODO |
-| H2.S1.M2 | Agregar la de productos de una farmacia | responde con marca, precio y stock | unitaria pegada | TODO |
-| H2.S1.M3 | Registrar D-F | queda en `DECISIONS.md` | enlace pegado | TODO |
+| H2.S1.M1 | Agregar la lectura de servicios de una organización | responde con precio de referencia | unitaria pegada | HECHO |
+| H2.S1.M2 | Agregar la de productos de una farmacia | responde con marca, precio y stock | unitaria pegada | HECHO |
+| H2.S1.M3 | Registrar D-F | queda en `DECISIONS.md` | enlace pegado | HECHO |
 
 ### H3 — Las cotizaciones se guardan y la contabilidad se puede alcanzar
 
 **CA:** Dada una cotización con importes, cuando se envía tal como la arma el front, entonces se guarda en vez de dar 400.
 **DoD:** Las microtareas de H3 en `HECHO`, con la unitaria del guardado en verde.
-**Estado:** TODO
+**Estado:** HECHO
+**Peldaño:** `TESTED` (techo del encargo sin base; ver §9)
 
 #### H3.S1 — El 400 que impide guardar cualquier cotización
 
 **CA:** Dados importes numéricos, cuando llegan al DTO, entonces la validación los acepta.
 **DoD:** Las tres microtareas en `HECHO` con la unitaria pegada.
-**Estado:** TODO
+**Estado:** HECHO
+**Peldaño:** `TESTED` (techo del encargo sin base; ver §9)
 
 **Bloqueante AG-35: ninguna cotización se guarda.** Los importes viajan `number` contra
 `@IsNumberString` → **400**. Además **N-06**: `billing.quotations` **no tiene `tenant_id`**, así
@@ -165,15 +173,16 @@ de cuotas** en `listQuotationsByPatient`.
 
 | ID | Microtarea | Criterio de aceptación | Definition of Done | Estado |
 |---|---|---|---|---|
-| H3.S1.M1 | Alinear el contrato de importes entre front y DTO | la petición del front se guarda | unitaria pegada | TODO |
-| H3.S1.M2 | Pedir a M1 el `tenant_id` de `quotations` | el pedido queda escrito | pedido en el reporte | TODO |
-| H3.S1.M3 | Resolver el N+1 de cuotas | una consulta, no N | consulta pegada | TODO |
+| H3.S1.M1 | Alinear el contrato de importes entre front y DTO | la petición del front se guarda | unitaria pegada | HECHO |
+| H3.S1.M2 | Pedir a M1 el `tenant_id` de `quotations` | el pedido queda escrito | pedido en el reporte | HECHO |
+| H3.S1.M3 | Resolver el N+1 de cuotas | una consulta, no N | consulta pegada | HECHO |
 
 #### H3.S2 — Exponer la contabilidad que ya existe
 
 **CA:** Dado el módulo contable, cuando se lo expone, entonces **no se crea nada que ya esté**.
 **DoD:** Las dos microtareas en `HECHO` con el inventario de lo existente pegado.
-**Estado:** TODO
+**Estado:** HECHO
+**Peldaño:** `TESTED` (techo del encargo sin base; ver §9)
 
 **Contabilidad existe y es grande:** módulo 16, 42 tablas, 42 entidades, 8 controladores,
 pantalla en `/administration/accounting`. La partida doble **ya valida con 422**, la máquina
@@ -189,8 +198,8 @@ El `approve` de asientos hoy **sólo lo alcanza `SUPERADMIN`** porque falta
 
 | ID | Microtarea | Criterio de aceptación | Definition of Done | Estado |
 |---|---|---|---|---|
-| H3.S2.M1 | Inventariar qué del módulo 16 ya existe antes de tocar nada | la lista sale del código | `grep` y salida pegados | TODO |
-| H3.S2.M2 | Registrar el hallazgo de la moneda sin corregirlo por tu cuenta | queda en `DECISIONS.md` | enlace pegado | TODO |
+| H3.S2.M1 | Inventariar qué del módulo 16 ya existe antes de tocar nada | la lista sale del código | `grep` y salida pegados | HECHO |
+| H3.S2.M2 | Registrar el hallazgo de la moneda sin corregirlo por tu cuenta | queda en `DECISIONS.md` | enlace pegado | HECHO |
 
 
 ## 6. Ambigüedades registradas
@@ -232,3 +241,42 @@ explícitamente `TESTED` —no `VERIFIED`— con lo que le falta correr a M1.
 - Los conceptos van por `*_concept_id`. Sin enums de TS inventados, sin labels hardcodeados.
 - Estados y transiciones validados **en el servidor**, atómicos donde hay concurrencia.
 - Acciones sensibles **idempotentes** si hay reintentos.
+
+## 9. Cierre del encargo (M4 · 2026-09-26)
+
+Tres carriles, uno por hito, cada uno con rama propia desde `origin/test`, PR contra `test`, y su
+`PLAN.md` / `REPORT.md` / `DECISIONS.md` / `evidencia/` en `docs/progress/evidence/lane-<id>/` del repo de la
+API.
+
+| Hito | Carril | PR | Micro | Compuertas | Reporte |
+|---|---|---|---:|---|---|
+| H1 | B10 | [#470](https://github.com/mdavila-2001/mantra-core-health-api/pull/470) | 6/6 (+2) | typecheck 0 · lint 0 · `scheduling` 507/507 | `docs/progress/evidence/lane-B10/REPORT.md` |
+| H2 | B12 | [#472](https://github.com/mdavila-2001/mantra-core-health-api/pull/472) | 3/3 | typecheck 0 · lint 0 · `public\|community\|pharmacy\|billing\|wiring` 902/902 | `docs/progress/evidence/lane-B12/REPORT.md` |
+| H3 | B13 | [#471](https://github.com/mdavila-2001/mantra-core-health-api/pull/471) | 5/5 | typecheck 0 · lint 0 · `quotation\|billing\|accounting` 284/284 | `docs/progress/evidence/lane-B13/REPORT.md` |
+
+**Hallazgos que corrigen la verificación del 26/09:**
+
+- **Kill-test de H1.** Los caminos que **crean** una cita (confirmar, solicitar, aceptar, directa, walk-in) **ya** corrían
+  `assertRangoLibre`, que compara rangos en cualquier cupo del profesional. El que ocupaba un rango sin preguntar era
+  **reprogramar**, y ése se cerró (prueba roja → verde). Además, el guardia unía por `b.resource_id` (nulable) y dejaba
+  invisibles algunas citas: ahora une por el recurso del cupo.
+- **AG-35 no se reproduce.** Con el `ValidationPipe` global, el body del front con importes `number` **pasa** (la
+  conversión implícita lo convierte a texto). El contrato funcionaba por accidente; ahora el DTO lo declara solo y está
+  probado con y sin esa opción, hasta el guardado.
+- **`haversineKm` son cuatro copias, no tres** (la cuarta está en `community`). Queda registrado y no se tocó.
+- **`app.module.wiring.spec.ts` no ve un módulo sin `imports`.** Se esquivó en el módulo nuevo y se reportó.
+
+**Lo que le falta correr a M1 (de `TESTED` a `VERIFIED`):** está detallado en cada `REPORT.md`. En resumen: reprogramar
+encima de otra cita → 422; retiro con citas vivas → 200 con `liveBookingIds`; cerrar un cupo uuid5 → 200; `POST
+/quotations` con el body del front → 201 y `SELECT` de los importes; `curl` sin token a las dos fichas y ver
+`Mapped {…}` en el arranque.
+
+**Pedidos escritos, con su forma:**
+
+- **A M1:** la exclusión en el modelo para citas que se pisan (H1.S1.M3) y `tenant_id` en `billing.quotations`
+  (H3.S1.M2).
+- **A M2:** decidir D-G y sembrar `ACCOUNTING_APPROVER`, que hoy `role-mapping.ts` descarta.
+
+**Ambigüedades registradas, sin resolver:** Q-01 (D-A), Q-02 (D-G), Q-03 (D-F) y Q-04 (moneda). Además: Q-05
+(«sin precio»), Q-06 (el contrato del retiro: el CA del encargo contra BR-21) y Q-07 (AG-35).
+
