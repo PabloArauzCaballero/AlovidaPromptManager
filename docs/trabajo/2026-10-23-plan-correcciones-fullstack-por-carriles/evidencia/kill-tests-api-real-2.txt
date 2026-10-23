@@ -1,0 +1,23 @@
+# recorrida de las ocho pruebas endurecidas · kill-tests-api-real-2 · --grep 'PA-09.a|MD-06|MD-01 el alta|MD-05.b|MD-07 un término|PA-03.d|MD-10 la reserva|PA-03.a'
+
+  ✘  1 @carril-1 @leo › PA-03.a la cabecera no tiene el botón de emergencia (20.3s)
+  ✘  2 @carril-1 @leo › PA-03.d Promociones vive dentro del Carrito y no tiene el mapa (20.1s)
+  ✘  3 @carril-1 @leo › PA-09.a la orientación del triage no ofrece «Recomendar medicamentos» (20.1s)
+  ✘  4 @carril-2 @pablo › MD-06 la facturación tiene la tabla de pagos por sesión con su estado (19.9s)
+  ✘  5 @carril-2 @pablo › MD-01 el alta del médico avisa si el documento ya está registrado por otro médico (19.9s)
+  ✘  6 @carril-2 @pablo › MD-05.b en modo marketing hay preguntas de escala de Likert (20.2s)
+  ✘  7 @carril-2 @justin › MD-10 la reserva de mostrador del médico no devuelve 403 y avisa al paciente (19.9s)
+  ✘  8 @carril-2 @justin › MD-07 un término del atlas muestra artículo con fuente e imagen con licencia (20.1s)
+
+  8 failed
+EXIT 1
+
+# causa por prueba
+  1) [chromium] › playwright/correcciones-2026-10-23-kill-tests.spec.ts:121:7 › @carril-1 @leo › PA-03.a la cabece ::     Error: expect(locator).toHaveCount(expected) failed
+  2) [chromium] › playwright/correcciones-2026-10-23-kill-tests.spec.ts:149:7 › @carril-1 @leo › PA-03.d Promocion ::     Error: expect(locator).toHaveCount(expected) failed
+  3) [chromium] › playwright/correcciones-2026-10-23-kill-tests.spec.ts:185:7 › @carril-1 @leo › PA-09.a la orient ::     Error: expect(locator).toHaveCount(expected) failed
+  4) [chromium] › playwright/correcciones-2026-10-23-kill-tests.spec.ts:294:7 › @carril-2 @pablo › MD-06 la factur ::     Error: Falta la pestaña «Pagos por sesión» en /billing (MD-06, P-H2.S3)
+  5) [chromium] › playwright/correcciones-2026-10-23-kill-tests.spec.ts:307:7 › @carril-2 @pablo › MD-01 el alta d ::     Error: No se encontró el campo «Cédula de identidad» en el alta del médico
+  6) [chromium] › playwright/correcciones-2026-10-23-kill-tests.spec.ts:351:7 › @carril-2 @pablo › MD-05.b en modo ::     Error: Falta el toggle Médico – Marketing en el editor de encuestas (MD-05.c)
+  7) [chromium] › playwright/correcciones-2026-10-23-kill-tests.spec.ts:397:7 › @carril-2 @justin › MD-10 la reser ::     Error: No hay cupos libres: generar cupos antes de correr esta prueba
+  8) [chromium] › playwright/correcciones-2026-10-23-kill-tests.spec.ts:428:7 › @carril-2 @justin › MD-07 un térm ::     Error: El término no tiene pestaña «Artículo»: el atlas no llegó a este término (MD-07)

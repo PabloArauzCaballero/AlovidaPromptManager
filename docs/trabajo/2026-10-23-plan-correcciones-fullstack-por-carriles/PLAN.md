@@ -56,20 +56,20 @@
 
 **CA:** Dado el front levantado (simulador o API real), cuando se corre `playwright test playwright/correcciones-2026-10-23-kill-tests.spec.ts`, entonces hay una prueba por punto verificable del cliente, cada una falla hoy por el motivo exacto que describe la verificación, y pasará cuando el punto esté hecho sin cambiar la aserción.
 **DoD:** la suite corre; la salida con los rojos esperados queda en `evidencia/`; ninguna prueba usa `skip` ni `waitForTimeout`.
-**Estado:** TODO
+**Estado:** HECHO
 
 | ID | Microtarea | CA (binario) | DoD | Estado |
 |---|---|---|---|---|
 | H3.S1.M1 | Escribir la suite con una prueba por punto, etiquetada por carril (`@carril-1`…) | ≥ 20 pruebas, cada una cita su ID | `grep -c "test(" …spec.ts` ≥ 20; `grep -c "test.skip\|waitForTimeout"` = 0 | HECHO |
-| H3.S1.M2 | Correrla contra el simulador (`ng serve --configuration development,demo`) | Salida con pasa/falla por prueba | `playwright test … --reporter=list` → `evidencia/kill-tests-simulador.txt` | EN CURSO |
-| H3.S1.M3 | Levantar Postgres y Redis nativos, cargar DDL y seeds, arrancar la API, correrla contra la API real | Salida con pasa/falla por prueba | `evidencia/kill-tests-api-real.txt` o `BLOCKED` con causa | EN CURSO |
+| H3.S1.M2 | Correrla contra el simulador (`ng serve --configuration development,demo`) | Salida con pasa/falla por prueba | `playwright test … --reporter=list` → `evidencia/kill-tests-simulador.txt` | HECHO |
+| H3.S1.M3 | Levantar Postgres y Redis nativos, cargar DDL y seeds, arrancar la API, correrla contra la API real | Salida con pasa/falla por prueba | `evidencia/kill-tests-api-real.txt` o `BLOCKED` con causa | HECHO |
 
 ## H4 — Cierre
 
 | ID | Microtarea | CA (binario) | DoD | Estado |
 |---|---|---|---|---|
-| H4.S1.M1 | `REPORTE.md` con avance calculado, evidencia, no cubierto, desvíos | Tres secciones obligatorias presentes | `python .claude/hooks/report_gate.py --self-test` PASS; el archivo existe | TODO |
-| H4.S1.M2 | Revertir la sustitución local de `xlsx`; `git status` limpio salvo lo planificado; commit y push a `claude/intelligent-faraday-444u25` en los repos tocados | `git diff --stat` sólo muestra lo planificado | `git status --porcelain` | TODO |
+| H4.S1.M1 | `REPORTE.md` con avance calculado, evidencia, no cubierto, desvíos | Tres secciones obligatorias presentes | `python .claude/hooks/report_gate.py --self-test` PASS; el archivo existe | HECHO |
+| H4.S1.M2 | Revertir la sustitución local de `xlsx`; `git status` limpio salvo lo planificado; commit y push a `claude/intelligent-faraday-444u25` en los repos tocados | `git diff --stat` sólo muestra lo planificado | `git status --porcelain` | HECHO |
 
 ## Riesgos y bloqueos previstos
 

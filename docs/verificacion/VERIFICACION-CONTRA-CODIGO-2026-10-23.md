@@ -880,3 +880,49 @@ v1, `pageSize` 500, 59 MB en `shards/<categoría>/page-N.json` + 14 MB en `mock/
 - E2E: `clinica-c9-mis-ordenes.spec.ts` (pestañas, filtros, diálogo de preparación; sin reserva ni QR);
   `hito2-laboratory-insurance.spec.ts` (**demo/simulador**; dice que no certifica la API real);
   `lab-visits-como-la-agenda.mjs` es de **visitadores médicos** (`pharma_lab`), no de laboratorios.
+
+## 5 · Lo que sí se ejecutó en esta sesión (peldaño `RUNS`)
+
+Para que el plan no arranque desde cero, se levantó el producto en el contenedor y se corrió la suite
+de kill-tests contra los dos destinos. Salidas literales en
+[`docs/trabajo/2026-10-23-plan-correcciones-fullstack-por-carriles/evidencia/`](../trabajo/2026-10-23-plan-correcciones-fullstack-por-carriles/evidencia/).
+
+| Qué | Resultado |
+|---|---|
+| `corepack yarn typecheck` del front | exit 0 |
+| `corepack yarn typecheck` de la API | exit 0 (necesita `NODE_OPTIONS=--max-old-space-size≥8192`; sin eso muere por memoria con exit 129) |
+| DDL relacional sobre Postgres 16 nativo (`apply_all.sql` + `apply_deferred.sql`) | exit 0, 1 179 tablas, 16 s |
+| API `nest build` + arranque con `SEED_ON_BOOT=true` sobre esa base | `/health` 200; `/readiness` degradado (Mongo y OpenSearch ausentes); 28 seeds: 9 833 conceptos, 24 910 procedimientos, 4 526 establecimientos, 2 541 medicamentos, 908 términos de glosario, 4 575 campos de formularios, administrador de arranque y 4 cuentas de proveedores |
+| `node tools/e2e/seed-e2e.mjs` (los médicos E2E) | **FALLA** 6/6: el alta asistida devuelve 400 por `nationalId` e `issuerAdministrativeAreaConceptId` ausentes y el script exige `E2E_DOCTOR_1/2_*` sin ejemplo. Hallazgo nuevo; los actores se crearon por API a mano |
+| Suite de kill-tests contra el **simulador** (`start:demo`) | **41 rojos · 1 verde**, 27,4 min. El único verde (PA-03.a) era **falso**: `toHaveCount(0)` antes de que la cabecera pintara. Corregido en el commit siguiente |
+| Suite de kill-tests contra la **API real** (`start:real-api` + API en 3005) | **42 rojos · 0 verdes**. PA-03.a ya falla como corresponde con la aserción endurecida |
+
+### Clasificación de los 42 rojos contra la API real
+
+| Clase | Cuántos | Cuáles | Qué significa |
+|---|---:|---|---|
+| **Producto** (la UI o la API no tienen lo pedido) | 26 | PA-01 estado, PA-03.a/b/c/d, PA-08 tabla, PA-12, PA-05 `/rx`, PA-02, PA-09.b, PA-11, PA-10, MD-06, MD-01, MD-02, MD-03, MD-05.a/c, MD-09 sedes, MD-04, MD-07 ×2, MD-08, PA-05 farmacia, PA-06, FA-01, FA-02, LI-01 ×2, LI-02, LI-03, PA-07 `/orden` | El baseline que cada carril tiene que poner en verde |
+| **Precondición de datos** (la pantalla existe pero la cuenta sintética no tiene el dato) | 10 | PA-01 cola sin casos, PA-08 sin pedidos, PA-04 sin cargos, PA-07 sin órdenes, MD-10 sin citas (paciente), MD-09 sin bloqueos, MD-10 sin cupos (médico), MD-05.b sin encuestas, LI-01 sin órdenes confirmadas | Fallan **con mensaje** que dice qué sembrar. En la Ola 0 cada persona siembra sus precondiciones por API y vuelve a correr |
+| **Defecto de la prueba** (corregido antes de cerrar) | 4 + 2 | PA-09.a (buscaba un `testid` que es un `div`), MD-06, MD-05.b, MD-07 artículo (clic a ciegas → timeout de 180 s), y los dos clics sin guardia de PA-03.d y MD-10 | Ya no hacen clic sin una aserción previa con mensaje; ninguna aserción del comportamiento cambió |
+
+La lectura de estos números es la que importa para el plan: **ninguno de los 28 puntos del cliente
+pasa hoy contra la API real**, y la suite falla por el motivo que esta verificación describe en cada
+sección, no por azar.
+
+### Recorrida de las ocho pruebas endurecidas
+
+Tras corregir los seis defectos de prueba se repitieron las ocho pruebas tocadas (`PA-03.a`, `PA-03.d`,
+`PA-09.a`, `MD-06`, `MD-01`, `MD-05.b`, `MD-10` médico, `MD-07` artículo) contra los dos destinos
+(`evidencia/kill-tests-api-real-2.txt`, `evidencia/kill-tests-simulador-2.txt`): **8 rojos y 8 rojos, todos
+en ~20 s y con causa** («Falta la pestaña «Pagos por sesión»», «Falta el toggle Médico – Marketing», «El
+término no tiene pestaña «Artículo»», `toHaveCount` del botón de emergencia…). Dos matices para quien
+retome:
+
+- **El simulador no pinta la misma cabecera que la API real para el paciente**: contra `start:demo`,
+  `header-ajustes` / `header-cuenta` no aparecen y el inicio no muestra el triage, así que `PA-03.a`,
+  `PA-03.d` y `PA-09.a` fallan ahí en la guardia previa, no en la aserción del cliente. Es una divergencia
+  **del simulador** (que el plan ya trata como secundario); contra la API real la guardia pasa y la aserción
+  falla por el producto, que es lo que importa.
+- **`MD-01` todavía no llega al paso del asistente donde vive «Cédula de identidad»** (avanzar con
+  «Siguiente» sin completar los pasos previos no alcanza): falla con mensaje claro y es la primera
+  microtarea de prueba que Pablo ajusta en P-H1 (completar los pasos previos con datos sintéticos).
