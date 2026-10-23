@@ -1,0 +1,6 @@
+$ python3 tools/check_reparto.py --self-test
+  [PASS] detecta un estado inventado fuera de los seis de la regla 20
+check_reparto self-test: 37 PASS, 0 FAIL
+
+$ python3 tools/check_reparto.py repartos/2026-10-23
+check_reparto: OK, 2026-10-23 cumple la estructura obligatoria

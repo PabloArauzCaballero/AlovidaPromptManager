@@ -1,0 +1,7 @@
+$ psql ... -f database/SQL/apply_all.sql ; apply_deferred.sql  (Postgres 16 nativo, puerto 5433)
+real	0m16.389s
+user	0m0.353s
+sys	0m0.569s
+Time: 8.470 ms
+=== apply_deferred completado ===
+tablas: 1179

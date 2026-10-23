@@ -53,7 +53,9 @@ import sys
 import tempfile
 from pathlib import Path
 
-PERSONAS = ("Ender", "Itzan", "Pablo", "Marcelo", "Justin")
+# Leo y Richard entraron el 2026-10-23 con el carril Paciente del plan 06 (pedido del propietario
+# en la sesion de ese dia). Marcelo sigue en la lista: no participa de ese plan, pero si de los anteriores.
+PERSONAS = ("Ender", "Itzan", "Pablo", "Marcelo", "Justin", "Leo", "Richard")
 # Las seis computadoras del propietario. El nombre lleva el modelo además del identificador
 # porque el reparto asigna por CAPACIDAD —quién puede levantar Postgres, quién tiene el token
 # de Coolify, quién no aguanta un build de Angular— y esa capacidad se lee del modelo.

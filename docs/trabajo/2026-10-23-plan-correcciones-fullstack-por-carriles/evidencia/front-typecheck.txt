@@ -1,0 +1,7 @@
+$ cd mantra-core-health && corepack yarn typecheck
+  nivel: 0 declarado · 633 por-ruta · 5 unresolvedEvidence en 5 componentes
+  acreditación: descubiertos 633/633 · con escenario 3/633 · verificados visualmente 3/633 · bloqueados 86/633 · montó e interactuó: se miden en el banco (runtime)
+real	0m49.556s
+user	1m17.136s
+sys	0m3.021s
+EXIT 0

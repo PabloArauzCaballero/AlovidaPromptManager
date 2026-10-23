@@ -1,0 +1,3 @@
+$ cd mantra-core-health-api && NODE_OPTIONS=--max-old-space-size=10240 corepack yarn typecheck
+EXIT 0
+(sin NODE_OPTIONS: el proceso muere con exit 129 por memoria, 0 errores TS impresos)
