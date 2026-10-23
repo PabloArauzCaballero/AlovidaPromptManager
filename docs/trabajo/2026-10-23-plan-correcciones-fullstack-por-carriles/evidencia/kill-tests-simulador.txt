@@ -1,0 +1,92 @@
+$ E2E_BASE_URL=http://127.0.0.1:4200 corepack yarn playwright test playwright/correcciones-2026-10-23-kill-tests.spec.ts --reporter=list
+# front: ng serve --configuration development,demo (simulador) · 2026-10-23
+
+  ✘   1 @carril-1 @leo › PA-01 el paciente ve el estado de su verificación de identidad y la próxima acción (24.9s)
+  ✘   2 @carril-1 @leo › PA-01 el administrador acepta o rechaza la identidad con un botón, sin pegar UUIDs (24.4s)
+  ✓   3 @carril-1 @leo › PA-03.a la cabecera no tiene el botón de emergencia (7.9s)
+  ✘   4 @carril-1 @leo › PA-03.b Tutoriales vive dentro de Ajustes y la ruta vieja redirige (24.3s)
+  ✘   5 @carril-1 @leo › PA-03.c Mis facturas es la pestaña «Resumen» de Mis gastos para el paciente (25.4s)
+  ✘   6 @carril-1 @leo › PA-03.d Promociones vive dentro del Carrito y no tiene el mapa (25.5s)
+  ✘   7 @carril-1 @leo › PA-08 la tabla de permisos muestra sección de la historia, sistema del cuerpo y motivo (22.7s)
+  ✘   8 @carril-1 @leo › PA-08 rechazar un permiso exige motivo (21.6s)
+  ✘   9 @carril-1 @leo › PA-09.a la orientación del triage no ofrece «Recomendar medicamentos» (3.1m)
+  ✘  10 @carril-1 @leo › PA-12 el buzón de encuestas está en el menú y agrupa por tipo de partner (24.0s)
+  ✘  11 @carril-1 @leo › PA-05 un enlace /rx sin sesión pide iniciar sesión y recuerda a dónde volver (16.6s)
+  ✘  12 @carril-1 @richard › PA-02 el paciente ve su cobertura y la tabla de solicitudes de aprobación (22.0s)
+  ✘  13 @carril-1 @richard › PA-04 la pantalla de pago muestra el QR de la sede, el comprobante y «Pagué en efectivo» (23.8s)
+  ✘  14 @carril-1 @richard › PA-09.b los directorios no tienen el mapa de Bolivia y vienen prefiltrados por ubicación (23.4s)
+  ✘  15 @carril-1 @richard › PA-11 el directorio de médicos tiene filtros de ubicación y calificación y selector de orden (23.6s)
+  ✘  16 @carril-1 @richard › PA-10 las promociones se filtran por tipo de partner (23.8s)
+  ✘  17 @carril-1 @richard › PA-07 «Reservar hora» desde una orden lleva la orden a la reserva (23.2s)
+  ✘  18 @carril-1 @richard › MD-10 el paciente puede mover su cita desde el portal (23.3s)
+  ✘  19 @carril-2 @pablo › MD-06 la facturación tiene la tabla de pagos por sesión con su estado (3.1m)
+  ✘  20 @carril-2 @pablo › MD-01 el alta del médico avisa si el documento ya está registrado por otro médico (17.7s)
+  ✘  21 @carril-2 @pablo › MD-02 el alta del médico pide la matrícula del Colegio (17.1s)
+  ✘  22 @carril-2 @pablo › MD-03 el médico tiene una bandeja de sus pedidos de acceso con estado por sección (26.3s)
+  ✘  23 @carril-2 @pablo › MD-05.a el constructor de formularios tiene un botón Guardar explícito (22.6s)
+  ✘  24 @carril-2 @pablo › MD-05.c el constructor tiene el toggle Médico – Marketing arriba a la derecha (23.2s)
+  ✘  25 @carril-2 @pablo › MD-05.b en modo marketing hay preguntas de escala de Likert (3.0m)
+  ✘  26 @carril-2 @justin › MD-09 los bloqueos listan todas las sedes y se filtran por sede (22.4s)
+  ✘  27 @carril-2 @justin › MD-09 la semana no pinta el día entero por un bloqueo parcial (22.8s)
+  ✘  28 @carril-2 @justin › MD-04 existe la línea de tiempo multi-sede y multi-servicio (22.7s)
+  ✘  29 @carril-2 @justin › MD-10 la reserva de mostrador del médico no devuelve 403 y avisa al paciente (22.8s)
+  ✘  30 @carril-2 @justin › MD-07 la barra de filtros del glosario queda fija y las categorías no desaparecen al buscar (22.4s)
+  ✘  31 @carril-2 @justin › MD-07 un término del atlas muestra artículo con fuente e imagen con licencia (3.1m)
+  ✘  32 @carril-2 @justin › MD-08 el mapa de relaciones del término dice de dónde sale cada relación (22.5s)
+  ✘  33 @carril-3 @ender › PA-05 la farmacia tiene una bandeja de recetas cargadas con «Escanear receta» (21.2s)
+  ✘  34 @carril-3 @ender › PA-06 el inventario del ERP muestra el estado del sistema de farmacia externo (22.9s)
+  ✘  35 @carril-3 @ender › FA-01 cada pestaña del ERP tiene «Importar» y acepta CSV y XLSX (22.9s)
+  ✘  36 @carril-3 @ender › FA-02 el catálogo de farmacia es una sola pantalla con cuatro pestañas y las rutas viejas redirigen (22.7s)
+  ✘  37 @carril-3 @itzan › LI-01 la pantalla de órdenes tiene «Crear instancia de servicio» y las cinco columnas (22.2s)
+  ✘  38 @carril-3 @itzan › LI-01 los estados son INICIADA, RECIBIDA, EN PROCESO, RECHAZADA y CONFIRMADO (22.6s)
+  ✘  39 @carril-3 @itzan › LI-01 una orden confirmada no deja borrar ni subir resultados (22.6s)
+  ✘  40 @carril-3 @itzan › LI-02 el catálogo de servicios del centro tiene alta, edición e importación masiva (21.5s)
+  ✘  41 @carril-3 @itzan › LI-03 el perfil del centro tiene Identidad, Operación, Legal, Gerentes y Acreditaciones (22.9s)
+  ✘  42 @carril-3 @itzan › PA-07 un enlace /orden sin sesión pide iniciar sesión y recuerda a dónde volver (16.5s)
+
+  41 failed
+  1 passed (27.4m)
+EXIT 1
+
+# primera línea de error por prueba
+  1) [chromium] › playwright/correcciones-2026-10-23-kill-tests.spec.ts:92:7 › @carril-1 @leo › PA-01 el paciente  ::     Error: Falta la tarjeta de estado del caso (PA-01, L-H2.S4)
+  2) [chromium] › playwright/correcciones-2026-10-23-kill-tests.spec.ts:100:7 › @carril-1 @leo › PA-01 el administ ::     Error: No hay casos en la cola: sembrar un caso de KYC antes de correr esta prueba
+  3) [chromium] › playwright/correcciones-2026-10-23-kill-tests.spec.ts:117:7 › @carril-1 @leo › PA-03.b Tutoriale ::     Error: expect(page).toHaveURL(expected) failed
+  4) [chromium] › playwright/correcciones-2026-10-23-kill-tests.spec.ts:126:7 › @carril-1 @leo › PA-03.c Mis factu ::     Error: expect(page).toHaveURL(expected) failed
+  5) [chromium] › playwright/correcciones-2026-10-23-kill-tests.spec.ts:136:7 › @carril-1 @leo › PA-03.d Promocion ::     Error: expect(page).toHaveURL(expected) failed
+  6) [chromium] › playwright/correcciones-2026-10-23-kill-tests.spec.ts:147:7 › @carril-1 @leo › PA-08 la tabla de ::     Error: Falta la tabla de permisos (PA-08, L-H4)
+  7) [chromium] › playwright/correcciones-2026-10-23-kill-tests.spec.ts:157:7 › @carril-1 @leo › PA-08 rechazar un ::     Error: No hay pedidos pendientes: sembrar un pedido de acceso antes de correr esta prueba
+  8) [chromium] › playwright/correcciones-2026-10-23-kill-tests.spec.ts:168:7 › @carril-1 @leo › PA-09.a la orient ::     Test timeout of 180000ms exceeded.
+  9) [chromium] › playwright/correcciones-2026-10-23-kill-tests.spec.ts:179:7 › @carril-1 @leo › PA-12 el buzón d ::     Error: El buzón de encuestas no está en el menú (PA-12, L-H7)
+  10) [chromium] › playwright/correcciones-2026-10-23-kill-tests.spec.ts:189:7 › @carril-1 @leo › PA-05 un enlace  ::     Error: expect(page).toHaveURL(expected) failed
+  11) [chromium] › playwright/correcciones-2026-10-23-kill-tests.spec.ts:201:7 › @carril-1 @richard › PA-02 el pac ::     Error: expect(locator).toBeVisible() failed
+  12) [chromium] › playwright/correcciones-2026-10-23-kill-tests.spec.ts:213:7 › @carril-1 @richard › PA-04 la pan ::     Error: No hay cargos pendientes de pago para este paciente: sembrar una consulta iniciada antes de correr esta prueba
+  13) [chromium] › playwright/correcciones-2026-10-23-kill-tests.spec.ts:227:7 › @carril-1 @richard › PA-09.b los  ::     Error: expect(locator).toBeVisible() failed
+  14) [chromium] › playwright/correcciones-2026-10-23-kill-tests.spec.ts:236:7 › @carril-1 @richard › PA-11 el dir ::     Error: expect(locator).toBeVisible() failed
+  15) [chromium] › playwright/correcciones-2026-10-23-kill-tests.spec.ts:245:7 › @carril-1 @richard › PA-10 las pr ::     Error: expect(locator).toBeVisible() failed
+  16) [chromium] › playwright/correcciones-2026-10-23-kill-tests.spec.ts:253:7 › @carril-1 @richard › PA-07 «Rese ::     Error: El paciente no tiene órdenes: sembrar una orden de laboratorio antes de correr esta prueba
+  17) [chromium] › playwright/correcciones-2026-10-23-kill-tests.spec.ts:261:7 › @carril-1 @richard › MD-10 el pac ::     Error: El paciente no tiene citas: sembrar una cita confirmada antes de correr esta prueba
+  18) [chromium] › playwright/correcciones-2026-10-23-kill-tests.spec.ts:275:7 › @carril-2 @pablo › MD-06 la factu ::     Test timeout of 180000ms exceeded.
+  19) [chromium] › playwright/correcciones-2026-10-23-kill-tests.spec.ts:286:7 › @carril-2 @pablo › MD-01 el alta  ::     Error: expect(locator).toBeVisible() failed
+  20) [chromium] › playwright/correcciones-2026-10-23-kill-tests.spec.ts:295:7 › @carril-2 @pablo › MD-02 el alta  ::     Error: expect(locator).toBeVisible() failed
+  21) [chromium] › playwright/correcciones-2026-10-23-kill-tests.spec.ts:300:7 › @carril-2 @pablo › MD-03 el médi ::     Error: Falta la bandeja del médico (MD-03, P-H5)
+  22) [chromium] › playwright/correcciones-2026-10-23-kill-tests.spec.ts:310:7 › @carril-2 @pablo › MD-05.a el con ::     Error: expect(locator).toBeVisible() failed
+  23) [chromium] › playwright/correcciones-2026-10-23-kill-tests.spec.ts:316:7 › @carril-2 @pablo › MD-05.c el con ::     Error: expect(locator).toBeVisible() failed
+  24) [chromium] › playwright/correcciones-2026-10-23-kill-tests.spec.ts:325:7 › @carril-2 @pablo › MD-05.b en mod ::     Test timeout of 180000ms exceeded.
+  25) [chromium] › playwright/correcciones-2026-10-23-kill-tests.spec.ts:343:7 › @carril-2 @justin › MD-09 los blo ::     Error: expect(locator).toBeVisible() failed
+  26) [chromium] › playwright/correcciones-2026-10-23-kill-tests.spec.ts:350:7 › @carril-2 @justin › MD-09 la sema ::     Error: No hay bloqueos esta semana: crear uno parcial antes de correr esta prueba
+  27) [chromium] › playwright/correcciones-2026-10-23-kill-tests.spec.ts:358:7 › @carril-2 @justin › MD-04 existe  ::     Error: expect(locator).toBeVisible() failed
+  28) [chromium] › playwright/correcciones-2026-10-23-kill-tests.spec.ts:367:7 › @carril-2 @justin › MD-10 la rese ::     Error: No hay cupos libres: generar cupos antes de correr esta prueba
+  29) [chromium] › playwright/correcciones-2026-10-23-kill-tests.spec.ts:386:7 › @carril-2 @justin › MD-07 la barr ::     Error: expect(locator).toBeVisible() failed
+  30) [chromium] › playwright/correcciones-2026-10-23-kill-tests.spec.ts:396:7 › @carril-2 @justin › MD-07 un tér ::     Test timeout of 180000ms exceeded.
+  31) [chromium] › playwright/correcciones-2026-10-23-kill-tests.spec.ts:406:7 › @carril-2 @justin › MD-08 el mapa ::     Error: Las relaciones no muestran su procedencia (MD-08, J-H7)
+  32) [chromium] › playwright/correcciones-2026-10-23-kill-tests.spec.ts:419:7 › @carril-3 @ender › PA-05 la farma ::     Error: expect(locator).toBeVisible() failed
+  33) [chromium] › playwright/correcciones-2026-10-23-kill-tests.spec.ts:426:7 › @carril-3 @ender › PA-06 el inven ::     Error: expect(locator).toBeVisible() failed
+  34) [chromium] › playwright/correcciones-2026-10-23-kill-tests.spec.ts:433:7 › @carril-3 @ender › FA-01 cada pes ::     Error: La pestaña productos no tiene «Importar» (FA-01)
+  35) [chromium] › playwright/correcciones-2026-10-23-kill-tests.spec.ts:447:7 › @carril-3 @ender › FA-02 el catá ::     Error: expect(locator).toBeVisible() failed
+  36) [chromium] › playwright/correcciones-2026-10-23-kill-tests.spec.ts:465:7 › @carril-3 @itzan › LI-01 la panta ::     Error: expect(locator).toBeVisible() failed
+  37) [chromium] › playwright/correcciones-2026-10-23-kill-tests.spec.ts:477:7 › @carril-3 @itzan › LI-01 los esta ::     Error: expect(locator).toBeVisible() failed
+  38) [chromium] › playwright/correcciones-2026-10-23-kill-tests.spec.ts:487:7 › @carril-3 @itzan › LI-01 una orde ::     Error: No hay órdenes confirmadas: confirmar una antes de correr esta prueba
+  39) [chromium] › playwright/correcciones-2026-10-23-kill-tests.spec.ts:496:7 › @carril-3 @itzan › LI-02 el catá ::     Error: expect(locator).toBeVisible() failed
+  40) [chromium] › playwright/correcciones-2026-10-23-kill-tests.spec.ts:504:7 › @carril-3 @itzan › LI-03 el perfi ::     Error: El perfil del laboratorio sigue siendo la tarjeta de tres campos (LI-03)
+  41) [chromium] › playwright/correcciones-2026-10-23-kill-tests.spec.ts:512:7 › @carril-3 @itzan › PA-07 un enlac ::     Error: expect(page).toHaveURL(expected) failed
