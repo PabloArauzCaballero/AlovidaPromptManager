@@ -38,7 +38,8 @@ Estas no son opcionales ni dependen del tipo de tarea. Son el esqueleto de todo 
 | **Si dejás un PR — OBLIGATORIO** | **`pr-mergeable-gate`** | **Entregar un PR con conflictos, en draft o con checks en rojo** |
 | Al cerrar el turno | `finish-your-turn` | Devolver con trabajo en alcance a medias |
 
-Si delegás en subagentes: `agent-orchestration` + `agent-resource-control`.
+Si delegás en subagentes u orquestación de agentes paralelos: `kman` + `agent-orchestration` + `agent-resource-control`.
+
 
 ## 2. Por tipo de trabajo
 

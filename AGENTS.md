@@ -93,6 +93,16 @@ Esta plataforma maneja datos clínicos. Estas prohibiciones **no admiten excepci
 Detalle: regla [`35`](.claude/rules/35-doble-revision-critica-y-pr-mergeable.md), skills
 `critical-double-review` y `pr-mergeable-gate`.
 
+### 1.7 Reforma estructural: código Lean, arquitectura hexagonal, descomposición subatómica y tope ≤ 300 líneas
+
+- **Regla durísima de código Lean:** Escribir única y exclusivamente las líneas de código necesarias. Prohibido el boilerplate innecesario, la duplicación y la sobre-ingeniería.
+- **Tope estricto:** Ningún archivo de código nuevo puede superar **300 líneas**.
+- **Ratchet anti-crecimiento:** Los archivos heredados que superan 300 líneas quedan congelados en sus baselines y tienen **prohibido crecer**.
+- **Backend Hexagonal (Ports & Adapters):** Dominio puro, puertos inbound/outbound desacoplados, casos de uso atómicos (≤ 150 lín.) y DTOs atómicos (≤ 80 lín.).
+- **Frontend Subatómico:** Componente contenedor Smart (≤ 150 lín.) con subcomponentes Dumb (≤ 120 lín.), plantilla y estilos desacoplados. Rutas modularizadas con lazy loading por módulo.
+- **Orquestación con KMAN:** Toda instancia debe instalar y usar `kman` (`npm i -g @unliftedq/kman`). La skill `kman` gobierna la orquestación de agentes especializados en carriles disjuntos.
+
+
 ---
 
 ## 2. Formato obligatorio de trabajo
